@@ -4,9 +4,10 @@ using System.Collections;
 public class C4_InputManager : MonoBehaviour {
 
     public GameObject c4_camera;
-    public GameObject playManager;
+    public GameObject c4_playManager;
 
     C4_Camera cameraScript;
+    C4_Playmanager playManagerScript;
     InputData inputData;
     bool isClick;
     bool clickFlag;
@@ -16,6 +17,7 @@ public class C4_InputManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         cameraScript = c4_camera.GetComponent<C4_Camera>();
+        playManagerScript = c4_playManager.GetComponent<C4_Playmanager>();
         clickFlag = false;
         isClick = false;
 	}
@@ -41,11 +43,11 @@ public class C4_InputManager : MonoBehaviour {
         if (clickFlag)
         {
             clickFlag = false;
-            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 배에 무조건 data보내기
             if (inputData.clickObjectType == InputData.ObjectType.WATER)
             {
                 cameraScript.cameraMove(inputData);
             }
+            playManagerScript.dispatchData(inputData);
         }
     
     }
@@ -66,6 +68,7 @@ public class C4_InputManager : MonoBehaviour {
         }
         else if (clickHit.collider.CompareTag("boat"))
         {
+            playManagerScript.selectedBoat = clickHit.collider.transform.root.gameObject;;
             inputData.clickObjectType = InputData.ObjectType.BOAT;
         }
     }
@@ -75,7 +78,6 @@ public class C4_InputManager : MonoBehaviour {
         clickFlag = true;
         Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out dragHit, Mathf.Infinity, (1 << 4));
         inputData.dragPosition = dragHit.point;
-        Debug.Log(dragHit.point);
         inputData.dragPosition.y = 0;
         inputData.keyState = InputData.KeyState.DRAG;
 
