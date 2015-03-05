@@ -11,10 +11,8 @@ public class C4_InputManager : MonoBehaviour {
     InputData inputData;
     bool isClick;
     bool clickFlag;
-    RaycastHit clickHit;
-    RaycastHit dragHit;
+    RaycastHit hit;
 
-	// Use this for initialization
 	void Start () {
         cameraScript = c4_camera.GetComponent<C4_Camera>();
         playManagerScript = c4_playManager.GetComponent<C4_Playmanager>();
@@ -22,7 +20,6 @@ public class C4_InputManager : MonoBehaviour {
         isClick = false;
 	}
 	
-	// Update is called once per frame
 	void Update () {
         
         if (Input.GetMouseButtonDown(0))
@@ -56,45 +53,48 @@ public class C4_InputManager : MonoBehaviour {
     {
         clickFlag = true;
         isClick = true;
-        Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out clickHit, Mathf.Infinity, (1 << 4));
-        inputData.clickPosition = clickHit.point;
-        inputData.dragPosition = clickHit.point;
+        Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, (1 << 4));
+        inputData.clickPosition = hit.point;
+        inputData.dragPosition = hit.point;
         inputData.clickPosition.y = 0;
         inputData.dragPosition.y = 0;
 
-        if (clickHit.collider.CompareTag("water"))
+        checkObjectType(ref inputData.clickObjectType);
+        if (hit.collider.CompareTag("ally"))
         {
-            inputData.clickObjectType = InputData.ObjectType.WATER;            
-        }
-        else if (clickHit.collider.CompareTag("boat"))
-        {
-            playManagerScript.selectedBoat = clickHit.collider.transform.root.gameObject;;
-            inputData.clickObjectType = InputData.ObjectType.BOAT;
+            if (hit.collider.transform.root.gameObject.GetComponent<C4_Boat>().isActive)
+            {
+                playManagerScript.selectedBoat = hit.collider.transform.root.gameObject;
+            }
         }
     }
 
     void onClick()
     {
         clickFlag = true;
-        Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out dragHit, Mathf.Infinity, (1 << 4));
-        inputData.dragPosition = dragHit.point;
+        Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, (1 << 4));
+        inputData.dragPosition = hit.point;
         inputData.dragPosition.y = 0;
         inputData.keyState = InputData.KeyState.DRAG;
-
-        if (dragHit.collider.CompareTag("water"))
-        {
-            inputData.dragObjectType = InputData.ObjectType.WATER;
-        }
-        else if (dragHit.collider.CompareTag("boat"))
-        {
-            inputData.dragObjectType = InputData.ObjectType.BOAT;
-        }
+        checkObjectType(ref inputData.dragObjectType);
     }
 
     void onClickUp()
     {
         isClick = false;        
         inputData.keyState = InputData.KeyState.UP;
+    }
+
+    void checkObjectType(ref InputData.ObjectType type)
+    {
+        if (hit.collider.CompareTag("water"))
+        {
+            type = InputData.ObjectType.WATER;
+        }
+        else if (hit.collider.CompareTag("ally"))
+        {
+            type = InputData.ObjectType.BOAT;
+        }
     }
 
 }
