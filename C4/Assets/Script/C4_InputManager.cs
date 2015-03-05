@@ -6,6 +6,7 @@ public class C4_InputManager : MonoBehaviour {
     public GameObject c4_camera;
     public GameObject playManager;
 
+    C4_Camera cameraScript;
     InputData inputData;
     bool isClick;
     bool clickFlag;
@@ -14,6 +15,7 @@ public class C4_InputManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        cameraScript = c4_camera.GetComponent<C4_Camera>();
         clickFlag = false;
         isClick = false;
 	}
@@ -21,12 +23,7 @@ public class C4_InputManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         
-        if (isClick)
-        {
-            onClick();
-        }
-
-        else if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             onClickDown();
         }
@@ -36,11 +33,19 @@ public class C4_InputManager : MonoBehaviour {
             onClickUp();
         }
 
+        else if (isClick)
+        {
+            onClick();
+        }
+
         if (clickFlag)
         {
-            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 배에 무조건 data보내기
-            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 첫 input이 지형이라면 카메라에 data보내기
             clickFlag = false;
+            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 배에 무조건 data보내기
+            if (inputData.clickObjectType == InputData.ObjectType.WATER)
+            {
+                cameraScript.cameraMove(inputData);
+            }
         }
     
     }
@@ -51,7 +56,9 @@ public class C4_InputManager : MonoBehaviour {
         isClick = true;
         Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out clickHit, Mathf.Infinity, (1 << 4));
         inputData.clickPosition = clickHit.point;
+        inputData.dragPosition = clickHit.point;
         inputData.clickPosition.y = 0;
+        inputData.dragPosition.y = 0;
 
         if (clickHit.collider.CompareTag("water"))
         {
@@ -65,8 +72,10 @@ public class C4_InputManager : MonoBehaviour {
 
     void onClick()
     {
+        clickFlag = true;
         Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out dragHit, Mathf.Infinity, (1 << 4));
         inputData.dragPosition = dragHit.point;
+        Debug.Log(dragHit.point);
         inputData.dragPosition.y = 0;
         inputData.keyState = InputData.KeyState.DRAG;
 

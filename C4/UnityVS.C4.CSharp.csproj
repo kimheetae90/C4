@@ -54,6 +54,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\C4_Camera.cs" />
     <Compile Include="Assets\Script\C4_InputManager.cs" />
     <Compile Include="Assets\Script\InputData.cs" />
   </ItemGroup>
