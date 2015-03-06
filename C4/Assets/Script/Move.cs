@@ -5,7 +5,6 @@ public class Move : MonoBehaviour {
 
     public float moveSpeed;
     Vector3 toMove;
-    C4_Boat boatFeature;
 
     [System.NonSerialized]
     public bool isMove;
@@ -14,8 +13,6 @@ public class Move : MonoBehaviour {
 	// Use this for initialization
     void Start()
     {
-        boatFeature = transform.GetComponent<C4_Boat>();
-        moveSpeed = boatFeature.moveSpeed;
         toMove = transform.position;
         isMove = false;
         isCoroutine = false;
@@ -35,7 +32,6 @@ public class Move : MonoBehaviour {
     IEnumerator move()
     {
         yield return null;
-
         if (isMove)
         {
             float distance = Vector3.Distance(toMove, transform.position);

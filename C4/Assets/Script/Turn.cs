@@ -6,7 +6,6 @@ public class Turn : MonoBehaviour {
     float turnSpeed;
     Quaternion toTurn;
 
-	// Use this for initialization
     void Start()
     {
         toTurn = Quaternion.LookRotation(transform.forward);

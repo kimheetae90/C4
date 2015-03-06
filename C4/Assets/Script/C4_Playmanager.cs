@@ -5,9 +5,6 @@ public class C4_Playmanager : MonoBehaviour {
 
     [System.NonSerialized]
     public GameObject selectedBoat;
-    
-    Move moveScript;
-    Turn turnScript;
     C4_Boat boatFeature;
 
     bool isAim;
@@ -16,35 +13,33 @@ public class C4_Playmanager : MonoBehaviour {
     {
         Vector3 aimDirection = (selectedBoat.transform.position - clickPosition).normalized;
         aimDirection.y = 0;
-        turnScript.setToTurn(aimDirection);
+        boatFeature.startTurn(clickPosition);
     }
 
-    void orderShot()
+    void orderShot(Vector3 shotDirection)
     {
+        boatFeature.shot(shotDirection);
         activeDone();
     }
 
     void orderMove(Vector3 toMove)
     {
-        moveScript.setToMove(toMove);
-        turnScript.setToTurn(toMove);
+        boatFeature.startMove(toMove);
+        boatFeature.startTurn(toMove);
         activeDone();
     }
 
     void setBoatScript()
     {
-        moveScript = selectedBoat.GetComponent<Move>();
-        turnScript = selectedBoat.GetComponentInChildren<Turn>();
         boatFeature = selectedBoat.GetComponent<C4_Boat>();
+        boatFeature.missile.SetActive(true);
     }
 
     void activeDone()
     {
         isAim = false;
-        moveScript = null;
-        turnScript = null;
-        boatFeature.resetActive();
-        selectedBoat = null;        
+        boatFeature = null;
+        selectedBoat = null;
     }
 
     public void dispatchData(InputData inputData)
@@ -75,7 +70,7 @@ public class C4_Playmanager : MonoBehaviour {
             {
                 if (isAim)
                 {
-                    orderShot();//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 발포, 리셋
+                    orderShot(inputData.dragPosition);
                 }
                 else
                 {
