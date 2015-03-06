@@ -10,54 +10,50 @@ public class C4_InputManager : MonoBehaviour {
     C4_Playmanager playManagerScript;
     InputData inputData;
     bool isClick;
-    bool clickFlag;
     RaycastHit hit;
 
 	void Start () {
         cameraScript = c4_camera.GetComponent<C4_Camera>();
         playManagerScript = c4_playManager.GetComponent<C4_Playmanager>();
-        clickFlag = false;
         isClick = false;
 	}
 	
 	void Update () {
-        
-        if (Input.GetMouseButtonDown(0))
-        {
-            onClickDown();
-        }
-        
-        else if (Input.GetMouseButtonUp(0))
-        {
-            onClickUp();
-        }
 
-        else if (isClick)
+        if (isClick)
         {
             onClick();
-        }
-
-        if (clickFlag)
-        {
-            clickFlag = false;
+            playManagerScript.dispatchData(inputData);
             if (inputData.clickObjectType == InputData.ObjectType.WATER)
             {
                 cameraScript.cameraMove(inputData);
             }
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            onClickDown();
+        }
+
+        if (isClick&&Input.GetMouseButtonUp(0))
+        {
+            onClickUp();
             playManagerScript.dispatchData(inputData);
         }
+
     
     }
 
     void onClickDown()
     {
-        clickFlag = true;
         isClick = true;
-        Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, (1 << 4));
+
+        Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity);
         inputData.clickPosition = hit.point;
         inputData.dragPosition = hit.point;
         inputData.clickPosition.y = 0;
         inputData.dragPosition.y = 0;
+        inputData.keyState = InputData.KeyState.DRAG;
 
         checkObjectType(ref inputData.clickObjectType);
         if (hit.collider.CompareTag("ally"))
@@ -65,24 +61,23 @@ public class C4_InputManager : MonoBehaviour {
             if (hit.collider.transform.root.gameObject.GetComponent<C4_Boat>().isActive)
             {
                 playManagerScript.selectedBoat = hit.collider.transform.root.gameObject;
+                playManagerScript.SendMessage("setBoatScript");
             }
         }
     }
 
     void onClick()
     {
-        clickFlag = true;
-        Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, (1 << 4));
+        Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity);
         inputData.dragPosition = hit.point;
         inputData.dragPosition.y = 0;
-        inputData.keyState = InputData.KeyState.DRAG;
         checkObjectType(ref inputData.dragObjectType);
     }
 
     void onClickUp()
     {
-        isClick = false;        
         inputData.keyState = InputData.KeyState.UP;
+        isClick = false;
     }
 
     void checkObjectType(ref InputData.ObjectType type)

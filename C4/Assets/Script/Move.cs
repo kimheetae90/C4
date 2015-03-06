@@ -3,28 +3,35 @@ using System.Collections;
 
 public class Move : MonoBehaviour {
 
-
     public float moveSpeed;
-    public Turn turning;
     Vector3 toMove;
+    C4_Boat boatFeature;
 
     [System.NonSerialized]
     public bool isMove;
+    bool isCoroutine;
 
 	// Use this for initialization
     void Start()
     {
+        boatFeature = transform.GetComponent<C4_Boat>();
+        moveSpeed = boatFeature.moveSpeed;
         toMove = transform.position;
-        isMove = false;	
+        isMove = false;
+        isCoroutine = false;
 	}
 
-    void setToMove(Vector3 click, float speed)
+    public void setToMove(Vector3 click)
     {
-        moveSpeed = speed;
         toMove = click;
         isMove = true;
+        if (!isCoroutine)
+        {
+            StartCoroutine(move());
+            isCoroutine = true;
+        }
     }
-
+    
     IEnumerator move()
     {
         yield return null;
@@ -40,11 +47,13 @@ public class Move : MonoBehaviour {
             else
             {
                 isMove = false;
+                isCoroutine = false;
                 StopCoroutine("move");
             }
         }
         else
         {
+            isCoroutine = false;
             StopCoroutine("move");
         }
     }

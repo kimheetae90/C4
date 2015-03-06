@@ -3,24 +3,22 @@ using System.Collections;
 
 public class Turn : MonoBehaviour {
 
-
-    bool isTurn;
     float turnSpeed;
     Quaternion toTurn;
 
 	// Use this for initialization
     void Start()
     {
-        isTurn = false;
         toTurn = Quaternion.LookRotation(transform.forward);
-        turnSpeed = 5f;	
+        turnSpeed = 10f;	
 	}
 	
-    void setToTurn(Vector3 click)
+    public void setToTurn(Vector3 click)
 	{
 		toTurn = Quaternion.LookRotation((click - transform.position).normalized);
 		toTurn.x = 0;
 		toTurn.z = 0;
+        StartCoroutine(turn());
 	}
 
 	IEnumerator turn()
