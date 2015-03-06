@@ -13,7 +13,7 @@ public class C4_Playmanager : MonoBehaviour {
 
     void aiming(Vector3 clickPosition)
     {
-        Vector3 aimDirection = selectedBoat.transform.position - clickPosition;
+        Vector3 aimDirection = (selectedBoat.transform.position - clickPosition).normalized;
         aimDirection.y = 0;
         turnScript.setToTurn(aimDirection);
     }
@@ -27,12 +27,13 @@ public class C4_Playmanager : MonoBehaviour {
     void orderMove(Vector3 toMove)
     {
         moveScript.setToMove(toMove);
+        turnScript.setToTurn(toMove);
     }
 
     void setBoatScript()
     {
         moveScript = selectedBoat.GetComponent<Move>();
-        turnScript = selectedBoat.GetComponent<Turn>();
+        turnScript = selectedBoat.GetComponentInChildren<Turn>();
     }
 
     public void dispatchData(InputData inputData)
