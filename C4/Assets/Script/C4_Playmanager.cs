@@ -8,6 +8,7 @@ public class C4_Playmanager : MonoBehaviour {
     
     Move moveScript;
     Turn turnScript;
+    C4_Boat boatFeature;
 
     bool isAim;
 
@@ -20,20 +21,30 @@ public class C4_Playmanager : MonoBehaviour {
 
     void orderShot()
     {
-        Debug.Log("orderShot");
-        isAim = false;
+        activeDone();
     }
 
     void orderMove(Vector3 toMove)
     {
         moveScript.setToMove(toMove);
         turnScript.setToTurn(toMove);
+        activeDone();
     }
 
     void setBoatScript()
     {
         moveScript = selectedBoat.GetComponent<Move>();
         turnScript = selectedBoat.GetComponentInChildren<Turn>();
+        boatFeature = selectedBoat.GetComponent<C4_Boat>();
+    }
+
+    void activeDone()
+    {
+        isAim = false;
+        moveScript = null;
+        turnScript = null;
+        boatFeature.resetActive();
+        selectedBoat = null;        
     }
 
     public void dispatchData(InputData inputData)
@@ -49,7 +60,7 @@ public class C4_Playmanager : MonoBehaviour {
                     {
                         isAim = false;
                     }
-                    aiming(inputData.dragPosition); //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 조준하고있을때의 행동넣기 (회전, 애니메이션, 조준bar)
+                    aiming(inputData.dragPosition);
                 }
                 else
                 {
@@ -70,7 +81,7 @@ public class C4_Playmanager : MonoBehaviour {
                 {
                     if (inputData.clickObjectType == InputData.ObjectType.WATER)
                     {
-                        if (Vector3.Distance(inputData.clickPosition, inputData.dragPosition) < 0.5)
+                        if(inputData.clickPosition == inputData.dragPosition)
                         {
                             orderMove(inputData.clickPosition);
                         }

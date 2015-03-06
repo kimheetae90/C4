@@ -7,5 +7,4 @@ public class C4_Camera : MonoBehaviour {
     {
         transform.Translate(inputData.clickPosition - inputData.dragPosition);
     }
-
 }

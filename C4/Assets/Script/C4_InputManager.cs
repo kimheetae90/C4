@@ -23,10 +23,13 @@ public class C4_InputManager : MonoBehaviour {
         if (isClick)
         {
             onClick();
-            playManagerScript.dispatchData(inputData);
             if (inputData.clickObjectType == InputData.ObjectType.WATER)
             {
                 cameraScript.cameraMove(inputData);
+            }
+            else
+            {
+                playManagerScript.dispatchData(inputData);
             }
         }
 
@@ -58,7 +61,7 @@ public class C4_InputManager : MonoBehaviour {
         checkObjectType(ref inputData.clickObjectType);
         if (hit.collider.CompareTag("ally"))
         {
-            if (hit.collider.transform.root.gameObject.GetComponent<C4_Boat>().isActive)
+            if (hit.collider.transform.root.gameObject.GetComponent<C4_Boat>().isReady)
             {
                 playManagerScript.selectedBoat = hit.collider.transform.root.gameObject;
                 playManagerScript.SendMessage("setBoatScript");

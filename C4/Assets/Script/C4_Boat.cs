@@ -11,13 +11,13 @@ public class C4_Boat : C4_Object
     [System.NonSerialized]
     public int gage;
     public int hp;
-    public bool isActive;
+    public bool isReady;
 
     void Start()
     {
         gage = 0;
         hp = fullHP;
-        isActive = false;
+        isReady = false;
     }
 
     void Update()
@@ -45,7 +45,7 @@ public class C4_Boat : C4_Object
     {
         if (gage == fullGage)
         {
-            isActive = true;
+            isReady = true;
             return;
         }
 
@@ -55,9 +55,9 @@ public class C4_Boat : C4_Object
         }
     }
 
-    void resetActive()
+    public void resetActive()
     {
         gage = 0;
-        isActive = false;
+        isReady = false;
     }
 }
