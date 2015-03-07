@@ -1,6 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+///  움직이는 기능의 스크립트
+///  setToMove : 움직일 지점을 선택하고 코루틴을 시작한다.
+///  move : 움직이는 코루틴, 목표지점에 다다를때까지 계속 움직이며 목표지점에 다다르면 코루틴이 종료된다.
+///  움직임의 상태는 isMove로 체크한다.
+/// </summary>
+
 public class Move : MonoBehaviour {
 
     public float moveSpeed;

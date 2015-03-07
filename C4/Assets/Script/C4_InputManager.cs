@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+///  Input에 대한 것을 처리하는 Manager
+///  - click Down, cliking, click Up의 경우로 나누어 처리한다
+///  - input에 대한 Data를 수집하여 Camera와 Play Manager에게 전송한다
+/// </summary>
+
 public class C4_InputManager : MonoBehaviour {
 
     public GameObject c4_camera;
@@ -9,6 +15,7 @@ public class C4_InputManager : MonoBehaviour {
     C4_Camera cameraScript;
     C4_Playmanager playManagerScript;
     InputData inputData;
+
     bool isClick;
     RaycastHit hit;
 
@@ -47,6 +54,8 @@ public class C4_InputManager : MonoBehaviour {
     
     }
 
+
+    /* 버튼을 눌렀을 때의 Data 처리 */
     void onClickDown()
     {
         isClick = true;
@@ -61,14 +70,16 @@ public class C4_InputManager : MonoBehaviour {
         checkObjectType(ref inputData.clickObjectType);
         if (hit.collider.CompareTag("ally"))
         {
-            if (hit.collider.transform.root.gameObject.GetComponent<C4_Boat>().isReady)
+            if (hit.collider.transform.root.gameObject.GetComponent<C4_Boat>().canMove)
             {
-                playManagerScript.selectedBoat = hit.collider.transform.root.gameObject;
-                playManagerScript.SendMessage("setBoatScript");
+                playManagerScript.SendMessage("setBoatScript",hit.collider.transform.root.gameObject);
             }
         }
     }
 
+
+
+    /* 계속 클릭했을 때(드래그)의 Data 처리 */
     void onClick()
     {
         Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity);
@@ -77,6 +88,9 @@ public class C4_InputManager : MonoBehaviour {
         checkObjectType(ref inputData.dragObjectType);
     }
 
+
+
+    /* 버튼을 올렸을 때의 Data 처리 */
     void onClickUp()
     {
         inputData.keyState = InputData.KeyState.UP;

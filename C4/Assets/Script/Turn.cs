@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+///  회전하는 기능의 스크립트
+///  setToTurn : 회전할 방향을 계산하고 코루틴을 시작한다.
+///  turn : 회전하는 코루틴, 회전 방향이 일치할 때까지 회전하며 회전이완료되면 코루틴이 종료된다.
+/// </summary>
+
 public class Turn : MonoBehaviour {
 
     float turnSpeed;
