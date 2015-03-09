@@ -21,7 +21,7 @@ public class C4_Boat : C4_Object
     public int fullGage;
     public int needGageBlockToMove;
     public int needGageBlockToShot;
-    public int moveRageOfOneBlock;
+    public int moveRangeOfOneBlock=10;
 
     [System.NonSerialized]
     public C4_Missile missileFeature;

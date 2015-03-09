@@ -13,14 +13,74 @@ public class C4_BoatMove : Move {
 
     [System.NonSerialized]
     public C4_Boat boat;
+    public Move move;
+    float distance;
+    int range;
+
+    Vector3 firstpos;
+    Vector3 lastpos;
+    float totaldistance;
+    bool isover = false;
 
 	// Use this for initialization
 	void Start () {
+               
         boat = transform.GetComponent<C4_Boat>();
+        move = transform.GetComponent<Move>();
+        range = boat.moveRangeOfOneBlock;
 	}
 	
     public void startMove(Vector3 toMove)  // 진입하는 함수(Boat에서 호출)
     {
+        firstpos = boat.transform.position;
+        lastpos = toMove;
+        totaldistance = Vector3.Distance(firstpos, lastpos);
         setToMove(toMove);
+        boat.gageDown(boat.needGageBlockToMove);
+        StartCoroutine("distancecheck");
+        
+        
+        
+    }
+
+
+    IEnumerator distancecheck()
+    {
+        yield return null;
+        distance = Vector3.Distance(firstpos, boat.transform.position);
+
+
+        if (distance > range)
+        {
+            Debug.Log("rangeover!");
+            isover = true;
+            range += boat.moveRangeOfOneBlock;
+           
+        }
+        if (isover)
+        {
+            Debug.Log("gagedown");
+            boat.gageDown(boat.needGageBlockToMove);
+            isover = false;
+        }
+        
+        if (totaldistance-distance <=0.5f)
+        {
+            Debug.Log("stop");
+            StopCoroutine("distancecheck");
+        }
+        else
+        {
+            Debug.Log("distance = " + distance);
+            StartCoroutine("distancecheck");
+        }
+        
+       
+        
+        
+
+        
     }
 }
+
+
