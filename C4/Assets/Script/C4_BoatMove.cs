@@ -19,12 +19,13 @@ public class C4_BoatMove : Move {
 
     Vector3 firstpos;
     Vector3 lastpos;
-    float totaldistance;
-    bool isover = false;
+    float totalDistance;
+    bool isOver;
 
 	// Use this for initialization
 	void Start () {
-               
+        totalDistance = 0;
+        isOver = false;
         boat = transform.GetComponent<C4_Boat>();
         move = transform.GetComponent<Move>();
         range = boat.moveRangeOfOneBlock;
@@ -34,17 +35,17 @@ public class C4_BoatMove : Move {
     {
         firstpos = boat.transform.position;
         lastpos = toMove;
-        totaldistance = Vector3.Distance(firstpos, lastpos);
+        totalDistance = Vector3.Distance(firstpos, lastpos);
         setToMove(toMove);
         boat.gageDown(boat.needGageBlockToMove);
-        StartCoroutine("distancecheck");
+        StartCoroutine(distanceCheck());
         
         
         
     }
 
 
-    IEnumerator distancecheck()
+    IEnumerator distanceCheck()
     {
         yield return null;
         distance = Vector3.Distance(firstpos, boat.transform.position);
@@ -52,33 +53,24 @@ public class C4_BoatMove : Move {
 
         if (distance > range)
         {
-            Debug.Log("rangeover!");
-            isover = true;
+            isOver = true;
             range += boat.moveRangeOfOneBlock;
            
         }
-        if (isover)
+        if (isOver)
         {
-            Debug.Log("gagedown");
             boat.gageDown(boat.needGageBlockToMove);
-            isover = false;
+            isOver = false;
         }
-        
-        if (totaldistance-distance <=0.5f)
+
+        if (totalDistance - distance <= 0.5f)
         {
-            Debug.Log("stop");
-            StopCoroutine("distancecheck");
+            StopCoroutine(distanceCheck());
         }
         else
         {
-            Debug.Log("distance = " + distance);
-            StartCoroutine("distancecheck");
+            StartCoroutine(distanceCheck());
         }
-        
-       
-        
-        
-
         
     }
 }
