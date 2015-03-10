@@ -8,10 +8,10 @@ using System.Collections;
 ///  움직임의 상태는 isMove로 체크한다.
 /// </summary>
 
-public class Move : MonoBehaviour {
+public class C4_Move : MonoBehaviour {
 
-    public float moveSpeed;
-    Vector3 toMove;
+    protected float moveSpeed;
+    protected Vector3 toMove;
 
     [System.NonSerialized]
     public bool isMove;
@@ -25,9 +25,8 @@ public class Move : MonoBehaviour {
         isCoroutine = false;
 	}
 
-    public void setToMove(Vector3 click)
+    public void setToMove()
     {
-        toMove = click;
         isMove = true;
         if (!isCoroutine)
         {

@@ -9,11 +9,10 @@ using System.Collections;
 /// </summary>
 
 
-public class C4_BoatMove : Move {
+public class C4_BoatMove : C4_Move {
 
     [System.NonSerialized]
     public C4_Boat boat;
-    public Move move;
     float distance;
     int range;
 
@@ -23,21 +22,23 @@ public class C4_BoatMove : Move {
     bool isOver;
 
 	// Use this for initialization
-	void Start () {
+    void Start()
+    {
+        moveSpeed = GetComponent<C4_Boat>().moveSpeed;
         totalDistance = 0;
         isOver = false;
         boat = transform.GetComponent<C4_Boat>();
-        move = transform.GetComponent<Move>();
-        range = boat.moveRangeOfOneBlock;
+        range = boat.moveRangeOfOneStack;
 	}
 	
-    public void startMove(Vector3 toMove)  // 진입하는 함수(Boat에서 호출)
+    public void startMove(Vector3 click)  // 진입하는 함수(Boat에서 호출)
     {
         firstpos = boat.transform.position;
-        lastpos = toMove;
+        lastpos = click;
         totalDistance = Vector3.Distance(firstpos, lastpos);
-        setToMove(toMove);
-        boat.gageDown(boat.needGageBlockToMove);
+        toMove = click;
+        setToMove();
+        boat.gageDown(boat.needGageStackToMove);
         StartCoroutine(distanceCheck());
         
         
@@ -54,12 +55,12 @@ public class C4_BoatMove : Move {
         if (distance > range)
         {
             isOver = true;
-            range += boat.moveRangeOfOneBlock;
+            range += boat.moveRangeOfOneStack;
            
         }
         if (isOver)
         {
-            boat.gageDown(boat.needGageBlockToMove);
+            boat.gageDown(boat.needGageStackToMove);
             isOver = false;
         }
 

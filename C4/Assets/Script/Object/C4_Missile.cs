@@ -17,6 +17,7 @@ public class C4_Missile : C4_Object {
     void Start()
     {
         moveScript = transform.GetComponent<C4_MissileMove>();
+        gameObject.SetActive(false);
     }
 
     public void startMove(Vector3 toMove)

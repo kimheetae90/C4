@@ -16,4 +16,8 @@ public class C4_Object : MonoBehaviour {
         return objectID;
     }
 
+    public bool isValid()
+    {
+        return true;
+    }
 }

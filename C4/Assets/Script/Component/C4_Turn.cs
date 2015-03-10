@@ -7,7 +7,7 @@ using System.Collections;
 ///  turn : 회전하는 코루틴, 회전 방향이 일치할 때까지 회전하며 회전이완료되면 코루틴이 종료된다.
 /// </summary>
 
-public class Turn : MonoBehaviour {
+public class C4_Turn : MonoBehaviour {
 
     float turnSpeed;
     Quaternion toTurn;

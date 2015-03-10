@@ -9,19 +9,13 @@ using System.Collections;
 
 public class C4_InputManager : MonoBehaviour {
 
-    public GameObject c4_camera;
-    public GameObject c4_playManager;
-
-    C4_Camera cameraScript;
-    C4_Playmanager playManagerScript;
     InputData inputData;
+    public C4_Camera camObject;
 
     bool isClick;
     RaycastHit hit;
 
 	void Start () {
-        cameraScript = c4_camera.GetComponent<C4_Camera>();
-        playManagerScript = c4_playManager.GetComponent<C4_Playmanager>();
         isClick = false;
 	}
 	
@@ -32,11 +26,11 @@ public class C4_InputManager : MonoBehaviour {
             onClick();
             if (inputData.clickObjectType == InputData.ObjectType.WATER)
             {
-                cameraScript.cameraMove(inputData);
+                camObject.cameraMove(inputData);
             }
             else
             {
-                playManagerScript.dispatchData(inputData);
+                C4_Playmanager.Instance.dispatchData(inputData);
             }
         }
 
@@ -48,7 +42,7 @@ public class C4_InputManager : MonoBehaviour {
         if (isClick&&Input.GetMouseButtonUp(0))
         {
             onClickUp();
-            playManagerScript.dispatchData(inputData);
+            C4_Playmanager.Instance.dispatchData(inputData);
         }
 
     
@@ -70,9 +64,9 @@ public class C4_InputManager : MonoBehaviour {
         checkObjectType(ref inputData.clickObjectType);
         if (hit.collider.CompareTag("ally"))
         {
-            if (hit.collider.transform.root.gameObject.GetComponent<C4_Boat>().canMove)
+            if (hit.collider.transform.root.gameObject.GetComponent<C4_Player>().canMove)
             {
-                playManagerScript.SendMessage("setBoatScript",hit.collider.transform.root.gameObject);
+                C4_Playmanager.Instance.setBoatScript(hit.collider.transform.root.gameObject);
             }
         }
     }
