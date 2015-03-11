@@ -39,6 +39,7 @@ public class C4_Boat : C4_Object
     void Update()
     {
         gageUp();
+        stackCount = gage / oneGageStack;
     }   
 
     /* 행동을 하였을 때 gageStack만큼 gage를 감소시키는 함수 */
@@ -56,6 +57,5 @@ public class C4_Boat : C4_Object
             gage++;
         }
 
-        stackCount = gage / oneGageStack;
     }
 }
