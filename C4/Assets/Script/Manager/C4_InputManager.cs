@@ -14,7 +14,8 @@ public class C4_InputManager : MonoBehaviour {
 
     bool isClick;
     RaycastHit hit;
-
+    Object clickObject_temp;
+    C4_Object clickObject;
 	void Start () {
         isClick = false;
 	}
@@ -24,7 +25,7 @@ public class C4_InputManager : MonoBehaviour {
         if (isClick)
         {
             onClick();
-            if (inputData.clickObjectType == InputData.ObjectType.WATER)
+            if (inputData.clickObjectID.type == ObjectID.Type.Water)
             {
                 camObject.cameraMove(inputData);
             }
@@ -55,17 +56,19 @@ public class C4_InputManager : MonoBehaviour {
         isClick = true;
 
         Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity);
+        clickObject_temp = hit.collider.transform.root.gameObject;
+        clickObject = clickObject_temp as C4_Object;
+        inputData.clickObjectID = clickObject.getObjectID();
+        inputData.dragObjectID = clickObject.getObjectID();
         inputData.clickPosition = hit.point;
         inputData.dragPosition = hit.point;
         inputData.clickPosition.y = 0;
         inputData.dragPosition.y = 0;
         inputData.keyState = InputData.KeyState.Down;
 
-
-
-        if (hit.collider.CompareTag("ally"))
+        if (inputData.clickObjectID.type == ObjectID.Type.Player)
         {
-                C4_Playmanager.Instance.setBoatScript(hit.collider.transform.root.gameObject);
+            C4_Playmanager.Instance.setBoatScript(hit.collider.transform.root.gameObject);
         }
     }
 
@@ -77,7 +80,9 @@ public class C4_InputManager : MonoBehaviour {
         Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity);
         inputData.dragPosition = hit.point;
         inputData.dragPosition.y = 0;
-        checkObjectType(ref inputData.dragObjectType);
+        clickObject_temp = hit.collider.transform.root.gameObject;
+        clickObject = clickObject_temp as C4_Object;
+        inputData.dragObjectID = clickObject.getObjectID();
     }
 
 
@@ -85,7 +90,7 @@ public class C4_InputManager : MonoBehaviour {
     /* 버튼을 올렸을 때의 Data 처리 */
     void onClickUp()
     {
-        inputData.keyState = InputData.KeyState.UP;
+        inputData.keyState = InputData.KeyState.Up;
         isClick = false;
     }
 }

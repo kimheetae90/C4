@@ -16,6 +16,12 @@ public class C4_Object : MonoBehaviour {
         return objectID;
     }
 
+    public void setObjectID(ObjectID.Type inputType, int inputId)
+    {
+        objectID.type = inputType;
+        objectID.id = inputId;
+    }
+
     public bool isValid()
     {
         return true;

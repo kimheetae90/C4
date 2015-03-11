@@ -7,7 +7,7 @@ using System.Collections;
 ///  gageUp : 게이지 충전
 /// </summary>
 
-public class C4_Boat : C4_Object
+public class C4_Boat : MonoBehaviour
 {
     public GameObject missile;
     public int numOfStack;

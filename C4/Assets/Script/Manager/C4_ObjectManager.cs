@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class C4_ObjectManager : MonoBehaviour {
-
+    
     private static C4_ObjectManager _instance;
     public static C4_ObjectManager Instance
     {
@@ -21,6 +22,13 @@ public class C4_ObjectManager : MonoBehaviour {
 
             return _instance;
         }
-    }   
+    }
 
+    public List<C4_Object> objectList;
+    public Dictionary<ObjectID, C4_Object> objectID2Object;
+
+    void initStartObject()
+    {
+        
+    }
 }

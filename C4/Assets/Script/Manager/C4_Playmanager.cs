@@ -87,11 +87,11 @@ public class C4_Playmanager : MonoBehaviour {
 
         if (selectedBoat != null)
         {
-            if (inputData.keyState == InputData.KeyState.DRAG)
+            if (inputData.keyState == InputData.KeyState.Down)
             {
                 if (isAim)
                 {
-                    if ((inputData.clickObjectType == InputData.ObjectType.BOAT) && (inputData.dragObjectType == InputData.ObjectType.BOAT))
+                    if (inputData.clickObjectID.id == inputData.dragObjectID.id)
                     {
                         isAim = false;
                     }
@@ -99,11 +99,10 @@ public class C4_Playmanager : MonoBehaviour {
                 }
                 else
                 {
-                    if ((inputData.clickObjectType == InputData.ObjectType.BOAT) && !(inputData.dragObjectType == InputData.ObjectType.BOAT) && character.canShot)
+                    if ((inputData.clickObjectID.type == ObjectID.Type.Player) && inputData.clickObjectID.id != inputData.dragObjectID.id)
                     {
                         isAim = true;
                     }
-
                 }
             }
             else
@@ -114,7 +113,7 @@ public class C4_Playmanager : MonoBehaviour {
                 }
                 else
                 {
-                    if (inputData.clickObjectType == InputData.ObjectType.WATER)
+                    if (inputData.clickObjectID.type == ObjectID.Type.Water)
                     {
                         if(inputData.clickPosition == inputData.dragPosition)
                         {
