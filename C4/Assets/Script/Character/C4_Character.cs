@@ -12,13 +12,13 @@ public abstract class C4_Character : C4_Object
 
     protected C4_BoatMove moveComponent;
     protected C4_Turn turnComponent;
-    protected C4_Shot shotComponent;
+    protected C4_IntShot shotComponent;
 
     void Start()
     {
         moveComponent = GetComponent<C4_BoatMove>();
         turnComponent = GetComponentInChildren<C4_Turn>();
-        shotComponent = GetComponent<C4_Shot>();
+        shotComponent = GetComponent<C4_IntShot>();
         boatFeature = GetComponent<C4_Boat>();
     }
 

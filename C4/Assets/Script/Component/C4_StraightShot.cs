@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class C4_Shot : MonoBehaviour {
+public class C4_StraightShot : MonoBehaviour, C4_IntShot {
 
     C4_Boat boatFeature;
     C4_Missile missileFeature;
@@ -9,6 +9,7 @@ public class C4_Shot : MonoBehaviour {
 
     Vector3 shotDirection;
     Vector3 missileToMove;
+
 	// Use this for initialization
 	void Start () {
         boatFeature = GetComponent<C4_Boat>();
