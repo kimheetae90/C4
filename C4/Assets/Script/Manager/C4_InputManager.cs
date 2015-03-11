@@ -59,15 +59,13 @@ public class C4_InputManager : MonoBehaviour {
         inputData.dragPosition = hit.point;
         inputData.clickPosition.y = 0;
         inputData.dragPosition.y = 0;
-        inputData.keyState = InputData.KeyState.DRAG;
+        inputData.keyState = InputData.KeyState.Down;
 
-        checkObjectType(ref inputData.clickObjectType);
+
+
         if (hit.collider.CompareTag("ally"))
         {
-            if (hit.collider.transform.root.gameObject.GetComponent<C4_Player>().canMove)
-            {
                 C4_Playmanager.Instance.setBoatScript(hit.collider.transform.root.gameObject);
-            }
         }
     }
 
@@ -90,17 +88,4 @@ public class C4_InputManager : MonoBehaviour {
         inputData.keyState = InputData.KeyState.UP;
         isClick = false;
     }
-
-    void checkObjectType(ref InputData.ObjectType type)
-    {
-        if (hit.collider.CompareTag("water"))
-        {
-            type = InputData.ObjectType.WATER;
-        }
-        else if (hit.collider.CompareTag("ally"))
-        {
-            type = InputData.ObjectType.BOAT;
-        }
-    }
-
 }
