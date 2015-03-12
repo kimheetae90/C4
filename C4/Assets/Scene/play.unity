@@ -95,11 +95,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 115797975}
-  - 114: {fileID: 115797976}
   - 114: {fileID: 115797977}
+  - 114: {fileID: 115797976}
   m_Layer: 0
   m_Name: Missile
-  m_TagString: missile
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,8 +120,7 @@ Transform:
 --- !u!114 &115797976
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11415712, guid: 5e7f3d4cc0abfd141834b5e725670474,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 115797974}
   m_Enabled: 1
@@ -130,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   power: 30
+  moveSpeed: 70
 --- !u!114 &115797977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,7 +141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3a6be0419362147999b1dbe0abef01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missileSpeed: 60
 --- !u!1 &287786460
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,9 +151,9 @@ GameObject:
   - 4: {fileID: 287786464}
   - 33: {fileID: 287786463}
   - 23: {fileID: 287786461}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: C4_Ground
-  m_TagString: water
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -211,9 +210,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 479912724}
   - 114: {fileID: 479912725}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: BoatFBX
-  m_TagString: ally
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -255,7 +254,7 @@ GameObject:
   - 65: {fileID: 569126111}
   m_Layer: 0
   m_Name: Cylinder
-  m_TagString: missile
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -387,7 +386,7 @@ GameObject:
   - 4: {fileID: 722548752}
   m_Layer: 0
   m_Name: MissileFBX
-  m_TagString: missile
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -405,6 +404,45 @@ Transform:
   - {fileID: 569126110}
   m_Father: {fileID: 115797975}
   m_RootOrder: 0
+--- !u!1 &844984557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 844984558}
+  - 114: {fileID: 844984559}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &844984558
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 844984557}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+--- !u!114 &844984559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 844984557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be89648f88d4a7a45b857c1778f39d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1023275518
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,9 +454,10 @@ GameObject:
   - 33: {fileID: 1023275522}
   - 64: {fileID: 1023275521}
   - 23: {fileID: 1023275520}
-  m_Layer: 4
+  - 114: {fileID: 1023275523}
+  m_Layer: 0
   m_Name: C4_Water
-  m_TagString: water
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -479,6 +518,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1023275518}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1023275523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1023275518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10ae4bab3d145d5488d2cbfd6dee6047, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1511529347
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,46 +569,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62df96351af1ca943885750f6cc9bd49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1549660324
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1549660326}
-  - 114: {fileID: 1549660325}
-  m_Layer: 0
-  m_Name: C4_InputManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
---- !u!114 &1549660325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1549660324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b4f67f873ae5b646806bd91c871a46b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  camObject: {fileID: 1511529349}
---- !u!4 &1549660326
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1549660324}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
 --- !u!1 &1669099846
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,13 +577,13 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1669099847}
-  - 114: {fileID: 1669099848}
-  - 114: {fileID: 1669099851}
   - 114: {fileID: 1669099850}
   - 114: {fileID: 1669099849}
-  m_Layer: 8
+  - 114: {fileID: 1669099848}
+  - 114: {fileID: 1669099851}
+  m_Layer: 0
   m_Name: Boat
-  m_TagString: ally
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -599,18 +609,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1669099846}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 671a6f61f820c024dbb0c17d6732a311, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f9ae75136ac5a24c9a83a843c79a40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missile: {fileID: 115797974}
-  numOfStack: 3
-  fullHP: 100
-  fullGage: 300
-  moveSpeed: 30
-  power: 30
-  needGageStackToMove: 1
-  needGageStackToShot: 2
-  moveRangeOfOneStack: 10
 --- !u!114 &1669099849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -630,9 +631,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1669099846}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e29d6a95b6693f44ea7df4796114bf0c, type: 3}
+  m_Script: {fileID: 11500000, guid: 671a6f61f820c024dbb0c17d6732a311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  missile: {fileID: 115797974}
+  numOfStack: 3
+  fullHP: 300
+  oneGageStack: 100
+  moveSpeed: 30
+  power: 30
+  needGageStackToMove: 1
+  needGageStackToShot: 2
+  moveRange: 10
 --- !u!114 &1669099851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -641,7 +651,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1669099846}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f9ae75136ac5a24c9a83a843c79a40f, type: 3}
+  m_Script: {fileID: 11500000, guid: e29d6a95b6693f44ea7df4796114bf0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1681437524
@@ -739,9 +749,9 @@ GameObject:
   - 33: {fileID: 1888459817}
   - 136: {fileID: 1888459816}
   - 23: {fileID: 1888459815}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Capsule
-  m_TagString: ally
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
