@@ -7,32 +7,30 @@ using System.Collections;
 ///  gageUp : 게이지 충전
 /// </summary>
 
-public class C4_Boat : MonoBehaviour
+public class C4_BoatFeature : MonoBehaviour
 {
     public GameObject missile;
     public int numOfStack;
     public int fullHP;
-    public int fullGage;
+    public int oneGageStack;
     public int moveSpeed;
     public int power;
     public int needGageStackToMove;
     public int needGageStackToShot;
-    public int moveRangeOfOneStack;
+    public int moveRange;
 
     [System.NonSerialized]
     public int stackCount;
     [System.NonSerialized]
     public int hp;
-    [System.NonSerialized]
-    public int oneGageStack;
     int gage;
-    
+    int fullGage;
     
     void Start()
     {
         gage = 0;
         hp = fullHP;
-        oneGageStack = fullGage/numOfStack;
+        fullGage = numOfStack * oneGageStack;
         stackCount = 0;
     }
 

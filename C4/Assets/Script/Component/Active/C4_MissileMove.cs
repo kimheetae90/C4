@@ -8,13 +8,12 @@ using System.Collections;
 /// </summary>
 public class C4_MissileMove : C4_Move
 {
-    public int missileSpeed;
     [System.NonSerialized]
     public GameObject missile;
     // Use this for initialization
     void Start()
     {
-        moveSpeed = missileSpeed;
+        moveSpeed = GetComponent<C4_MissileFeature>().moveSpeed;
         missile = transform.gameObject;
     }
 

@@ -8,9 +8,10 @@ using System.Collections;
 ///  startMove : 이동 시작
 /// </summary>
 
-public class C4_Missile : C4_Object {
-
+public class C4_MissileFeature : MonoBehaviour
+{
     public int power;
+    public int moveSpeed;
     [System.NonSerialized]
     public C4_MissileMove moveScript;
 

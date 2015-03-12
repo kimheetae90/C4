@@ -12,7 +12,7 @@ using System.Collections;
 public class C4_BoatMove : C4_Move {
 
     [System.NonSerialized]
-    public C4_Boat boat;
+    public C4_BoatFeature boatFeature;
     float distance;
     int range;
 
@@ -24,21 +24,21 @@ public class C4_BoatMove : C4_Move {
 	// Use this for initialization
     void Start()
     {
-        moveSpeed = GetComponent<C4_Boat>().moveSpeed;
+        moveSpeed = GetComponent<C4_BoatFeature>().moveSpeed;
         totalDistance = 0;
         isOver = false;
-        boat = transform.GetComponent<C4_Boat>();
-        range = boat.moveRangeOfOneStack;
+        boatFeature = transform.GetComponent<C4_BoatFeature>();
+        range = boatFeature.moveRange;
 	}
 	
     public void startMove(Vector3 click)  // 진입하는 함수(Boat에서 호출)
     {
-        firstpos = boat.transform.position;
+        firstpos = transform.position;
         lastpos = click;
         totalDistance = Vector3.Distance(firstpos, lastpos);
         toMove = click;
         setToMove();
-        boat.gageDown(boat.needGageStackToMove);
+        boatFeature.gageDown(boatFeature.needGageStackToMove);
         StartCoroutine(distanceCheck());
         
         
@@ -49,18 +49,18 @@ public class C4_BoatMove : C4_Move {
     IEnumerator distanceCheck()
     {
         yield return null;
-        distance = Vector3.Distance(firstpos, boat.transform.position);
+        distance = Vector3.Distance(firstpos, transform.position);
 
 
         if (distance > range)
         {
             isOver = true;
-            range += boat.moveRangeOfOneStack;
+            range += boatFeature.moveRange;
            
         }
         if (isOver)
         {
-            boat.gageDown(boat.needGageStackToMove);
+            boatFeature.gageDown(boatFeature.needGageStackToMove);
             isOver = false;
         }
 

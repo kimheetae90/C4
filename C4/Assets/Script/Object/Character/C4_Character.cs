@@ -8,18 +8,18 @@ public abstract class C4_Character : C4_Object
     [System.NonSerialized]
     public bool canShot;
     [System.NonSerialized]
-    public C4_Boat boatFeature;
-
+    
+    protected C4_BoatFeature boatFeature;
     protected C4_BoatMove moveComponent;
     protected C4_Turn turnComponent;
     protected C4_IntShot shotComponent;
 
-    void Start()
+    void Awake()
     {
         moveComponent = GetComponent<C4_BoatMove>();
         turnComponent = GetComponentInChildren<C4_Turn>();
         shotComponent = GetComponent<C4_IntShot>();
-        boatFeature = GetComponent<C4_Boat>();
+        boatFeature = GetComponent<C4_BoatFeature>();
     }
 
     void Update()
@@ -52,19 +52,28 @@ public abstract class C4_Character : C4_Object
     /* 발포 함수 */
     public void shot(Vector3 click)
     {
-        shotComponent.startShot(click);
+        if (canShot)
+        {
+            shotComponent.startShot(click);
+        }
     }
 
     /* 이동함수 */
     public void startMove(Vector3 toMove)
     {
-        moveComponent.startMove(toMove);
+        if (canMove)
+        {
+            moveComponent.startMove(toMove);
+        }
     }
 
     /* 방향전환함수 */
     public void startTurn(Vector3 toMove)
     {
-        turnComponent.setToTurn(toMove);
+        if (canMove)
+        {
+            turnComponent.setToTurn(toMove);
+        }
     }
 
 

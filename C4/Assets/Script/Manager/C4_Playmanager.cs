@@ -12,27 +12,41 @@ using System.Collections;
 ///  dispatchData : 전달받은 Data 분석
 /// </summary>
 
-public class C4_Playmanager : MonoBehaviour {
+public class C4_PlayManager : MonoBehaviour, C4_IntInitInstance{
 
-    private static C4_Playmanager _instance;
-    public static C4_Playmanager Instance
+    private static C4_PlayManager _instance;
+    public static C4_PlayManager Instance
     {
         get
         {
             if (!_instance)
             {
-                _instance = GameObject.FindObjectOfType(typeof(C4_Playmanager)) as C4_Playmanager;
+                _instance = GameObject.FindObjectOfType(typeof(C4_PlayManager)) as C4_PlayManager;
                 if (!_instance)
                 {
                     GameObject container = new GameObject();
-                    container.name = "C4_Playmanager";
-                    _instance = container.AddComponent(typeof(C4_Playmanager)) as C4_Playmanager;
+                    container.name = "C4_PlayManager";
+                    _instance = container.AddComponent(typeof(C4_PlayManager)) as C4_PlayManager;
                 }
             }
 
             return _instance;
+        } 
+    }
+
+    public void initInstance()
+    {
+        if (!_instance)
+        {
+            _instance = GameObject.FindObjectOfType(typeof(C4_PlayManager)) as C4_PlayManager;
+            if (!_instance)
+            {
+                GameObject container = new GameObject();
+                container.name = "C4_PlayManager";
+                _instance = container.AddComponent(typeof(C4_PlayManager)) as C4_PlayManager;
+            }
         }
-    }  
+    }
 
     [System.NonSerialized]
     public GameObject selectedBoat;

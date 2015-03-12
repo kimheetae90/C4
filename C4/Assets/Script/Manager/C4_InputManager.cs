@@ -7,17 +7,52 @@ using System.Collections;
 ///  - input에 대한 Data를 수집하여 Camera와 Play Manager에게 전송한다
 /// </summary>
 
-public class C4_InputManager : MonoBehaviour {
+public class C4_InputManager : MonoBehaviour, C4_IntInitInstance {
+
+    private static C4_InputManager _instance;
+    public static C4_InputManager Instance
+    {
+        get
+        {
+            if (!_instance)
+            {
+                _instance = GameObject.FindObjectOfType(typeof(C4_InputManager)) as C4_InputManager;
+                if (!_instance)
+                {
+                    GameObject container = new GameObject();
+                    container.name = "C4_InputManager";
+                    _instance = container.AddComponent(typeof(C4_InputManager)) as C4_InputManager;
+                }
+            }
+
+            return _instance;
+        }
+    }
+    
+    public void initInstance()
+    {
+        if (!_instance)
+        {
+            _instance = GameObject.FindObjectOfType(typeof(C4_InputManager)) as C4_InputManager;
+            if (!_instance)
+            {
+                GameObject container = new GameObject();
+                container.name = "C4_InputManager";
+                _instance = container.AddComponent(typeof(C4_InputManager)) as C4_InputManager;
+            }
+        }
+    }
 
     InputData inputData;
-    public C4_Camera camObject;
+    C4_Camera camObject;
 
     bool isClick;
     RaycastHit hit;
-    Object clickObject_temp;
     C4_Object clickObject;
+
 	void Start () {
         isClick = false;
+        camObject = Camera.main.transform.root.GetComponent<C4_Camera>();
 	}
 	
 	void Update () {
@@ -31,7 +66,7 @@ public class C4_InputManager : MonoBehaviour {
             }
             else
             {
-                C4_Playmanager.Instance.dispatchData(inputData);
+                C4_PlayManager.Instance.dispatchData(inputData);
             }
         }
 
@@ -43,10 +78,8 @@ public class C4_InputManager : MonoBehaviour {
         if (isClick&&Input.GetMouseButtonUp(0))
         {
             onClickUp();
-            C4_Playmanager.Instance.dispatchData(inputData);
+            C4_PlayManager.Instance.dispatchData(inputData);
         }
-
-    
     }
 
 
@@ -56,10 +89,9 @@ public class C4_InputManager : MonoBehaviour {
         isClick = true;
 
         Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity);
-        clickObject_temp = hit.collider.transform.root.gameObject;
-        clickObject = clickObject_temp as C4_Object;
-        inputData.clickObjectID = clickObject.getObjectID();
-        inputData.dragObjectID = clickObject.getObjectID();
+        clickObject = hit.collider.transform.root.gameObject.GetComponent<C4_Object>();
+        inputData.clickObjectID = clickObject.objectID;
+        inputData.dragObjectID = clickObject.objectID;
         inputData.clickPosition = hit.point;
         inputData.dragPosition = hit.point;
         inputData.clickPosition.y = 0;
@@ -68,7 +100,7 @@ public class C4_InputManager : MonoBehaviour {
 
         if (inputData.clickObjectID.type == ObjectID.Type.Player)
         {
-            C4_Playmanager.Instance.setBoatScript(hit.collider.transform.root.gameObject);
+            C4_PlayManager.Instance.setBoatScript(hit.collider.transform.root.gameObject);
         }
     }
 
@@ -78,11 +110,10 @@ public class C4_InputManager : MonoBehaviour {
     void onClick()
     {
         Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity);
+        clickObject = hit.collider.transform.root.gameObject.GetComponent<C4_Object>();
         inputData.dragPosition = hit.point;
         inputData.dragPosition.y = 0;
-        clickObject_temp = hit.collider.transform.root.gameObject;
-        clickObject = clickObject_temp as C4_Object;
-        inputData.dragObjectID = clickObject.getObjectID();
+        inputData.dragObjectID = clickObject.objectID;
     }
 
 

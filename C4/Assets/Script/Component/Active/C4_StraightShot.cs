@@ -3,8 +3,8 @@ using System.Collections;
 
 public class C4_StraightShot : MonoBehaviour, C4_IntShot {
 
-    C4_Boat boatFeature;
-    C4_Missile missileFeature;
+    C4_BoatFeature boatFeature;
+    C4_MissileFeature missileFeature;
     GameObject missile;
 
     Vector3 shotDirection;
@@ -12,9 +12,9 @@ public class C4_StraightShot : MonoBehaviour, C4_IntShot {
 
 	// Use this for initialization
 	void Start () {
-        boatFeature = GetComponent<C4_Boat>();
+        boatFeature = GetComponent<C4_BoatFeature>();
         missile = boatFeature.missile;
-        missileFeature = missile.GetComponent<C4_Missile>();
+        missileFeature = missile.GetComponent<C4_MissileFeature>();
 	}
 
     public void startShot(Vector3 click)

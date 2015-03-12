@@ -9,18 +9,7 @@ using System.Collections;
 
 public class C4_Object : MonoBehaviour {
 
-    ObjectID objectID;
-
-    public ObjectID getObjectID()
-    {
-        return objectID;
-    }
-
-    public void setObjectID(ObjectID.Type inputType, int inputId)
-    {
-        objectID.type = inputType;
-        objectID.id = inputId;
-    }
+    public ObjectID objectID;
 
     public bool isValid()
     {
