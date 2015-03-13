@@ -6,12 +6,12 @@ using System.IO;
 public class BehaviorImportTool : EditorWindow
 {
 	// Use this for initialization
-    List<string> listXmlFile = new List<string>();
+    List<string> ListXmlFile = new List<string>();
 
-    bool bNeedUpdateRawDataPath = true;
-    int selectedIndex = 0;
-    string basePathToLoad = Application.dataPath + "/Data/AI/Raw";
-    string basePathToSave = Application.dataPath + "/Data/AI/";
+    bool NeedUpdateRawDataPath = true;
+    int SelectedIndex = 0;
+    string BasePathToLoad = Application.dataPath + "/Data/AI/Raw";
+    string BasePathToSave = Application.dataPath + "/Data/AI/";
    
     BehaviorRawDataParser parser = new BehaviorRawDataParser();
 
@@ -29,28 +29,28 @@ public class BehaviorImportTool : EditorWindow
 
     void ReloadProcess()
     {
-        if (bNeedUpdateRawDataPath)
+        if (NeedUpdateRawDataPath)
         {
             ReloadRawDataDirectory();
-            bNeedUpdateRawDataPath = false;
+            NeedUpdateRawDataPath = false;
         }
     }
 
     void OnHierarchyChange()
     {
-        bNeedUpdateRawDataPath = true;
+        NeedUpdateRawDataPath = true;
     }
 
     private void ReloadRawDataDirectory()
     {
-        listXmlFile.Clear();
-        var info = new DirectoryInfo(basePathToLoad);
+        ListXmlFile.Clear();
+        var info = new DirectoryInfo(BasePathToLoad);
         var fileInfo = info.GetFiles();
         foreach (FileInfo file in fileInfo)
         {
             if (file.Extension == ".xgml")
             {
-                listXmlFile.Add(file.FullName);
+                ListXmlFile.Add(file.FullName);
             }
         }
     }
@@ -63,7 +63,7 @@ public class BehaviorImportTool : EditorWindow
     void ShowParserUI()
     {
         GUILayout.Label("GXML 파일을 로드해주세요", EditorStyles.boldLabel);
-        selectedIndex = EditorGUILayout.Popup(selectedIndex, listXmlFile.ToArray());
+        SelectedIndex = EditorGUILayout.Popup(SelectedIndex, ListXmlFile.ToArray());
         if (GUILayout.Button("Load"))
         {
             ProcLoadBtn();
@@ -72,7 +72,7 @@ public class BehaviorImportTool : EditorWindow
 
     void ProcLoadBtn()
     {
-        if (listXmlFile.Count > 0)
+        if (ListXmlFile.Count > 0)
         {
             ParseRawData();
         }
@@ -85,7 +85,7 @@ public class BehaviorImportTool : EditorWindow
 
     private void ParseRawData()
     {
-        string targetPath = listXmlFile[selectedIndex];
+        string targetPath = ListXmlFile[SelectedIndex];
         if (parser.Parse(targetPath))
         {
             EditorUtility.DisplayDialog("파일 읽기 성공",

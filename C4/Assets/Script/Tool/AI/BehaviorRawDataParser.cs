@@ -1,18 +1,26 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.IO;
 using System.Xml;
+using System.Collections.Generic;
 
 public class BehaviorRawDataParser
 {
+    List<BehaviorRawEdgeData> ListEdgeData;
+    List<BehaviorRawNodeData> ListNodeData;
+
     public BehaviorRawDataParser()
     {
-
+        ListEdgeData = new List<BehaviorRawEdgeData>();
+        ListNodeData = new List<BehaviorRawNodeData>();
+        clear();
     }
 
     void clear()
     {
-
+        ListEdgeData.Clear();
+        ListNodeData.Clear();
     }
 
     XmlElement LoadXML(string targetpath)
@@ -80,6 +88,7 @@ public class BehaviorRawDataParser
         {
             parseNode(childNode,data);
         }
+        ListNodeData.Add(data);
     }
 
     void parseNode(XmlNode node, BehaviorRawNodeData data)
@@ -116,8 +125,7 @@ public class BehaviorRawDataParser
         {
             case "id":
                 {
-                    //set
-                    Debug.Log("asdf");
+                    Int32.TryParse(node.Value, out data.ID);            
                 }
                 break;
             case "label":
@@ -144,6 +152,7 @@ public class BehaviorRawDataParser
         {
             parseEdge(childNode, data);
         }
+        ListEdgeData.Add(data);
     }
 
     void parseEdge(XmlNode node, BehaviorRawEdgeData data)
