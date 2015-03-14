@@ -12,8 +12,8 @@ using System.Collections;
 ///  dispatchData : 전달받은 Data 분석
 /// </summary>
 
-public class C4_PlayManager : MonoBehaviour, C4_IntInitInstance{
-
+public class C4_PlayManager : C4_Manager, C4_IntInitInstance{
+    
     private static C4_PlayManager _instance;
     public static C4_PlayManager Instance
     {

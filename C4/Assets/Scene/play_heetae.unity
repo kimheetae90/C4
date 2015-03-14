@@ -643,6 +643,8 @@ MonoBehaviour:
   needGageStackToMove: 1
   needGageStackToShot: 2
   moveRange: 10
+  stackCount: 0
+  gage: 0
 --- !u!114 &1669099851
 MonoBehaviour:
   m_ObjectHideFlags: 0

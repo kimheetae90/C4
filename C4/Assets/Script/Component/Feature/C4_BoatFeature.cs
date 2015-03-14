@@ -19,11 +19,11 @@ public class C4_BoatFeature : MonoBehaviour
     public int needGageStackToShot;
     public int moveRange;
 
-    [System.NonSerialized]
+    //[System.NonSerialized]
     public int stackCount;
     [System.NonSerialized]
     public int hp;
-    int gage;
+    public int gage;
     int fullGage;
     
     void Start()

@@ -10,5 +10,6 @@ public class C4_GameManager : MonoBehaviour {
         C4_ObjectManager.Instance.initInstance();
         C4_PlayManager.Instance.initInstance();
         C4_InputManager.Instance.initInstance();
+        C4_EnemyManager.Instance.initInstance();
 	}
 }

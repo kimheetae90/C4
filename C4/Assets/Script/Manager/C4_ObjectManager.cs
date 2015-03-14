@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class C4_ObjectManager : MonoBehaviour, C4_IntInitInstance {
+public class C4_ObjectManager : C4_Manager, C4_IntInitInstance
+{
     
     private static C4_ObjectManager _instance;
     public static C4_ObjectManager Instance
@@ -36,16 +37,5 @@ public class C4_ObjectManager : MonoBehaviour, C4_IntInitInstance {
                 _instance = container.AddComponent(typeof(C4_ObjectManager)) as C4_ObjectManager;
             }
         }
-    }
-
-    public Queue<C4_Object> removeReservedObjectList;
-    public Dictionary<ObjectID, C4_Object> objectList;
-    
-    public int currentObjectCode;
-    Queue<int> deletedObjectCode;
-    
-    void Start()
-    {
-        currentObjectCode = 0;
     }
 }
