@@ -37,7 +37,6 @@ public class C4_EnemyManager : C4_Manager {
         }
     }
 
-    [System.NonSerialized]
     public enum Action { NULL, Attack, Move };
 
     bool isSelected;
@@ -53,6 +52,7 @@ public class C4_EnemyManager : C4_Manager {
     {
         isSelected = false;
         selectNum = 0;
+        action = Action.NULL;
     }
 
     void Update()
