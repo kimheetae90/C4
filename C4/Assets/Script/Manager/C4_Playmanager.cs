@@ -59,7 +59,7 @@ public class C4_PlayManager : C4_Manager, C4_IntInitInstance{
     {
         Vector3 aimDirection = (selectedBoat.transform.position - clickPosition).normalized;
         aimDirection.y = 0;
-        character.startTurn(clickPosition);
+        character.turn(clickPosition);
     }
 
 
@@ -74,8 +74,8 @@ public class C4_PlayManager : C4_Manager, C4_IntInitInstance{
     /* 움직임을 명령할 함수 */
     void orderMove(Vector3 toMove)
     {
-        character.startMove(toMove);
-        character.startTurn(toMove);
+        character.move(toMove);
+        character.turn(toMove);
         activeDone();
     }
 

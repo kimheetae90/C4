@@ -59,7 +59,7 @@ public abstract class C4_Character : C4_Object
     }
 
     /* 이동함수 */
-    public void startMove(Vector3 toMove)
+    public void move(Vector3 toMove)
     {
         if (canMove)
         {
@@ -68,7 +68,7 @@ public abstract class C4_Character : C4_Object
     }
 
     /* 방향전환함수 */
-    public void startTurn(Vector3 toMove)
+    public void turn(Vector3 toMove)
     {
         if (canMove)
         {

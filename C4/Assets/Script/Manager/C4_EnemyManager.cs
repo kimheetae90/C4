@@ -37,9 +37,17 @@ public class C4_EnemyManager : C4_Manager {
         }
     }
 
+    [System.NonSerialized]
+    public enum Action { NULL, Attack, Move };
+
     bool isSelected;
     int selectNum;
     C4_Enemy selectedBoat;
+    C4_StartAIBehave behavior;
+
+    float tempValue;
+    [System.NonSerialized]
+    public Action action;
 
     void Start()
     {
@@ -49,32 +57,83 @@ public class C4_EnemyManager : C4_Manager {
 
     void Update()
     {
-        if (!isSelected)
+        if (action == Action.NULL)
         {
-            selectBoat();
+            chooseAction();
         }
         else
         {
-            //***************************** invoke 명령
+            if (!isSelected)
+            {
+                selectBoat();
+            }
+            else
+            {
+                Invoke("startBehave", 0.5f);
+            }
+        }
+    }
+
+    public void startBehave()
+    {
+        behavior.startBehave();
+    }
+
+    public void resetSelect()
+    {
+        action = Action.NULL;
+        isSelected = false;
+        selectedBoat = null;
+        behavior = null;
+    }
+
+    public void showSelect()
+    { 
+    }
+
+    void chooseAction()
+    {
+        tempValue = Random.Range(0, 2);
+        if (tempValue > 1)
+        {
+            action = Action.Attack;
+        }
+        else
+        {
+            action = Action.Move;
         }
     }
 
     void selectBoat()
     {
-        for (int i = selectNum; i < objectList.Count; i++)
+        for (int i = selectNum; i<objectList.Count ; i++)
         {
             selectedBoat = objectList[i].GetComponent<C4_Enemy>();
-            if (selectedBoat.canMove)
+            switch (action)
             {
-                isSelected = true;
-                selectNum = i;
-                break;
+                case Action.Move:
+                    settingSelect(selectedBoat.canMove);
+                    selectNum = i;
+                    break;
+
+                case Action.Attack:
+                    settingSelect(selectedBoat.canShot);
+                    break;
             }
         }
 
         if (selectNum == objectList.Count)
         {
             selectNum = 0;
+        }
+    }
+
+    void settingSelect(bool flag)
+    {
+        if (flag)
+        {
+            behavior = selectedBoat.GetComponent<C4_StartAIBehave>();
+            isSelected = true;
         }
     }
 }
