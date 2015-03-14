@@ -10,10 +10,12 @@ public class BehaviorImportTool : EditorWindow
 
     bool NeedUpdateRawDataPath = true;
     int SelectedIndex = 0;
-    string BasePathToLoad = Application.dataPath + "/Data/AI/Raw";
-    string BasePathToSave = Application.dataPath + "/Data/AI/";
+
+    public static string BasePathToLoad = Application.dataPath + "/Data/AI/Raw";
+	public static string BasePathToSave = Application.dataPath + "/Data/AI/";
    
     BehaviorRawDataParser parser = new BehaviorRawDataParser();
+	BehaviorRawDataSaver saver = new BehaviorRawDataSaver();
 
     [MenuItem("Window/AI/Behavior Import Tool")]
     public static void ShowWindow()
@@ -64,6 +66,7 @@ public class BehaviorImportTool : EditorWindow
     {
         GUILayout.Label("GXML 파일을 로드해주세요", EditorStyles.boldLabel);
         SelectedIndex = EditorGUILayout.Popup(SelectedIndex, ListXmlFile.ToArray());
+
         if (GUILayout.Button("Load"))
         {
             ProcLoadBtn();
@@ -74,7 +77,7 @@ public class BehaviorImportTool : EditorWindow
     {
         if (ListXmlFile.Count > 0)
         {
-            ParseRawData();
+			ParseRawDataAndSaveFilteredData();
         }
         else
         {
@@ -83,18 +86,38 @@ public class BehaviorImportTool : EditorWindow
         }
     }
 
-    private void ParseRawData()
+	private void ParseRawDataAndSaveFilteredData()
     {
-        string targetPath = ListXmlFile[SelectedIndex];
-        if (parser.Parse(targetPath))
-        {
-            EditorUtility.DisplayDialog("파일 읽기 성공",
-                        "파일이 올바르게 저장되었습니다. 파일명 : " + targetPath, "OK");
-        }
-        else
-        {
-            EditorUtility.DisplayDialog("파일 읽기 실패",
-                        "파일 읽기에 실패하였습니다. 파일명 : " + targetPath, "OK");
-        }
+		string targetPath = "";
+		string savePath = ""; 
+
+		try
+		{
+			getTargetAndSavePath(out targetPath,out savePath);
+			parser.ParseRawBehaviorData(targetPath);
+			saver.saveFileterdData(savePath,parser.getParsedRawNodeData(),parser.getParsedRawEdgeData());
+		}
+		catch(BehaviorRawDataParseException e)
+		{
+			EditorUtility.DisplayDialog("파일 읽기 실패",
+			                            e.Message, "OK");
+			return;
+		}
+
+		EditorUtility.DisplayDialog("파일 읽기 성공",
+		                            "파일이 올바르게 저장되었습니다. 파일명 : " + savePath, "OK");
     }
+
+	private void getTargetAndSavePath(out string targetPath, out string savePath)
+	{
+		if(SelectedIndex < ListXmlFile.Count && ListXmlFile.Count != 0)
+		{
+			targetPath = ListXmlFile[SelectedIndex];
+			savePath = BasePathToSave + Path.GetFileNameWithoutExtension(targetPath) + ".xml";
+		}
+		else
+		{
+			throw new BehaviorRawDataParseException("Parse Path is Invalid");
+		}
+	}
 }

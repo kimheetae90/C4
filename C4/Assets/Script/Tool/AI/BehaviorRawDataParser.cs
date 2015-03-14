@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
+using UnityEditor;
 using System;
+using System.Linq;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Xml;
-using System.Collections.Generic;
 
 public class BehaviorRawDataParser
 {
@@ -32,8 +34,10 @@ public class BehaviorRawDataParser
         return root;
     }
 
-    public bool Parse(string targetpath)
+    public bool ParseRawBehaviorData(string targetpath)
     {
+		clear();
+
         XmlElement root = LoadXML(targetpath);
         XmlNodeList nodes = root.ChildNodes;
 
@@ -125,26 +129,62 @@ public class BehaviorRawDataParser
         {
             case "id":
                 {
-                    Int32.TryParse(node.Value, out data.ID);            
+					Int32.TryParse(node.InnerText, out data.ID);            
                 }
                 break;
             case "label":
                 {
-                    //set
-                    Debug.Log("asdf");
-                }
+					string value = node.InnerText;
+					data.param = value;
+			    }
                 break;
             case "type":
                 {
-                    //set
-                    Debug.Log("asdf");
+					data.type = getBehaviorNodeType(node.InnerText);
                 }
+				break;
+			case "x":
+				{
+					Double.TryParse(node.InnerText, out data.priority);
+				}
                 break;
         }
     }
 
-    //concrete function
-    void readEdge(XmlNode node)
+	string getBehaviorNodeType(string text)
+	{
+		string ret = "";
+		switch (text) 
+		{
+		case "diamond":
+			{
+				ret = "Selector";
+			}
+			break;
+		case "rectangle":
+			{
+				ret = "sequence";
+			}
+			break;
+		case "ellipse":
+			{
+				ret = "precondition";
+			}
+			break;
+		case "parallelogram":
+			{
+				ret = "action";
+			}
+			break;
+		default:
+			{
+				throw new BehaviorRawDataParseException("Invalid Node Type : "+text);
+			}
+		}
+		return ret;
+	}
+	
+	void readEdge(XmlNode node)
     {
         BehaviorRawEdgeData data = new BehaviorRawEdgeData();
         XmlNodeList childNodes = node.ChildNodes;
@@ -165,16 +205,24 @@ public class BehaviorRawDataParser
         {
             case "source":
                 {
-                    //set
-                    Debug.Log("asdf");
-                }
+					Int32.TryParse(node.InnerText,out data.Source);
+			    }
                 break;
             case "target":
                 {
-                    //set
-                    Debug.Log("asdf");
+					Int32.TryParse(node.InnerText,out data.Target);
                 }
                 break;
         }
     }
+	
+	public List<BehaviorRawEdgeData> getParsedRawEdgeData()
+	{
+		return ListEdgeData;
+	}
+
+	public List<BehaviorRawNodeData> getParsedRawNodeData()
+	{
+		return ListNodeData;
+	}
 }
