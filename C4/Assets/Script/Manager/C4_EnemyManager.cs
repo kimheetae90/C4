@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class C4_EnemyManager : C4_Manager {
 
@@ -47,30 +48,72 @@ public class C4_EnemyManager : C4_Manager {
     float tempValue;
     [System.NonSerialized]
     public Action action;
+    bool isActing;
+    bool canActing;
 
     void Start()
     {
         isSelected = false;
         selectNum = 0;
         action = Action.NULL;
+        isActing = false;
+        canActing = false;
     }
 
     void Update()
     {
-        if (action == Action.NULL)
+        if (!isActing)
         {
-            chooseAction();
-        }
-        else
-        {
-            if (!isSelected)
+            if (action == Action.NULL)
             {
-                selectBoat();
+                chooseAction();
             }
             else
             {
-                Invoke("startBehave", 0.5f);
+                if (!isSelected)
+                {
+                    selectBoat();
+                }
+                else
+                {
+                    if (canActing)
+                    {
+                        isActing = true;
+                        startBehave();
+                    }
+                    else
+                    {
+                        checkCanAct();
+                    }
+                }
             }
+        }
+    }
+
+    void checkCanAct()
+    {
+        switch (action)
+        {
+            case Action.Attack:
+                if (selectedBoat.canShot)
+                {
+                    canActing = true;
+                }
+                else
+                {
+                    resetSelect();
+                }
+                break;
+            case Action.Move:
+                if (selectedBoat.canMove)
+                {
+                    canActing = true;
+                }
+                else
+                {
+                    resetSelect();
+                }
+                break;
         }
     }
 
@@ -80,11 +123,14 @@ public class C4_EnemyManager : C4_Manager {
     }
 
     public void resetSelect()
-    {
+    {   
         action = Action.NULL;
         isSelected = false;
         selectedBoat = null;
         behavior = null;
+        isActing = false;
+        canActing = false;
+        
     }
 
     public void showSelect()
@@ -93,8 +139,8 @@ public class C4_EnemyManager : C4_Manager {
 
     void chooseAction()
     {
-        tempValue = Random.Range(0, 2);
-        if (tempValue > 1)
+        tempValue = Random.Range(0, 10);
+        if (tempValue > 5)
         {
             action = Action.Attack;
         }
@@ -106,34 +152,15 @@ public class C4_EnemyManager : C4_Manager {
 
     void selectBoat()
     {
-        for (int i = selectNum; i<objectList.Count ; i++)
-        {
-            selectedBoat = objectList[i].GetComponent<C4_Enemy>();
-            switch (action)
-            {
-                case Action.Move:
-                    settingSelect(selectedBoat.canMove);
-                    selectNum = i;
-                    break;
-
-                case Action.Attack:
-                    settingSelect(selectedBoat.canShot);
-                    break;
-            }
-        }
-
-        if (selectNum == objectList.Count)
+        selectNum++;
+        if (selectNum >= objectList.Count)
         {
             selectNum = 0;
         }
+        selectedBoat = objectList[selectNum].GetComponent<C4_Enemy>();
+        behavior = selectedBoat.GetComponent<C4_StartAIBehave>();
+        isSelected = true;
+
     }
 
-    void settingSelect(bool flag)
-    {
-        if (flag)
-        {
-            behavior = selectedBoat.GetComponent<C4_StartAIBehave>();
-            isSelected = true;
-        }
-    }
 }

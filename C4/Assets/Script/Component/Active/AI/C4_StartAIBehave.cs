@@ -33,69 +33,72 @@ public class C4_StartAIBehave : MonoBehaviour {
     public void startBehave()
     {
         checkDistanceWithPlayer();
-        if (distanceWithPlayer < checkBound && (C4_EnemyManager.Instance.action == C4_EnemyManager.Action.Move))
+        if (C4_EnemyManager.Instance.action == C4_EnemyManager.Action.Move)
         {
-            if (boatFeature.stackCount == 3)
+            if (distanceWithPlayer > checkBound)
             {
-                C4_EnemyManager.Instance.showSelect();
-                Invoke("moveToPlayer", 1f);
+                if (boatFeature.stackCount == 3)
+                {
+                    C4_EnemyManager.Instance.showSelect();
+                    Invoke("moveToPlayer", 1f);
+                }
+                else
+                {
+                    C4_EnemyManager.Instance.resetSelect();
+                }
+            }
+            else
+            {
+                C4_EnemyManager.Instance.resetSelect();
             }
         }
         else
         {
-            if (attackPercent > attackOrMovePercent && (C4_EnemyManager.Instance.action == C4_EnemyManager.Action.Attack))
+            if (distanceWithPlayer < checkBound)
             {
-                C4_EnemyManager.Instance.showSelect();
-                Invoke("attackPlayer", 1f);
+                attackPercent = Random.Range(0, 10);
+                if (attackPercent > attackOrMovePercent)
+                {
+                    C4_EnemyManager.Instance.showSelect();
+                    Invoke("attackPlayer", 1f);
+                }
+                else
+                {
+                    C4_EnemyManager.Instance.showSelect();
+                    Invoke("moveBesidePlayer", 1f);
+                }
             }
             else
             {
-                C4_EnemyManager.Instance.showSelect();
-                Invoke("moveBesidePlayer", 1f);
+                C4_EnemyManager.Instance.resetSelect();
             }
-
         }
     }
 
     void attackPlayer()
     {
+        successAttackPercent = Random.Range(0, 10);
         if (successAttackPercent > attackSuccessOrFailPercent)
         {
             toMove = shortestDistancePlayer.transform.position;
         }
         else
         {
-            playerPositionVector = shortestDistancePlayer.transform.position - transform.position;
-            perpendicularAtPlayerVector = new Vector3(playerPositionVector.z, 0, -playerPositionVector.x) - transform.position;
-            tempValue = Random.Range(0, 2);
-            if (tempValue > 1)
-            {
-                angleToPerpendicular = Random.Range(1, 2);
-            }
-            else
-            {
-                angleToPerpendicular = Random.Range(-2, -1);
-            }
-            tempValue = Random.Range(0, 2);
-            if (tempValue > 1)
-            {
-                angleToPlayer = Random.Range(0, 2);
-            }
-            else
-            {
-                angleToPlayer = Random.Range(-2, 0);
-            }
-            tempValue = Random.Range(boatFeature.moveRange / 2, boatFeature.moveRange * 2 + boatFeature.moveRange / 2);
-            toMove = (playerPositionVector * angleToPlayer + angleToPerpendicular * perpendicularAtPlayerVector).normalized * tempValue + shortestDistancePlayer.transform.position;
+            perpendicularAtPlayerVector = (new Vector3(playerPositionVector.z, 0, -playerPositionVector.x) - transform.position).normalized;
+            tempValue = Random.Range(-5, 5);
+            toMove = shortestDistancePlayer.transform.position + perpendicularAtPlayerVector * tempValue;
         }
+
+        enemy.turn(toMove);
+        toMove = 2 * transform.position - toMove;
         enemy.shot(toMove);
         C4_EnemyManager.Instance.resetSelect();
     }
 
     void moveBesidePlayer()
     {
-        playerPositionVector = shortestDistancePlayer.transform.position - transform.position;
-        perpendicularAtPlayerVector = new Vector3(playerPositionVector.z, 0, -playerPositionVector.x) - transform.position;
+        playerPositionVector = (shortestDistancePlayer.transform.position - transform.position).normalized;
+        perpendicularAtPlayerVector = (new Vector3(playerPositionVector.z, 0, -playerPositionVector.x) - transform.position).normalized;
         tempValue = Random.Range(0,2);
         if(tempValue >1)
         {
@@ -117,18 +120,22 @@ public class C4_StartAIBehave : MonoBehaviour {
         tempValue = Random.Range(boatFeature.moveRange / 2,boatFeature.moveRange * 2 + boatFeature.moveRange / 2);
         toMove = (playerPositionVector * angleToPlayer + angleToPerpendicular * perpendicularAtPlayerVector).normalized * tempValue + transform.position;
         enemy.move(toMove);
+        enemy.turn(toMove);
         C4_EnemyManager.Instance.resetSelect();
     }
 
     void moveToPlayer()
     {
-        toMove = shortestDistancePlayer.transform.position.normalized * boatFeature.moveRange * 3 + transform.position;
+        toMove = (shortestDistancePlayer.transform.position - transform.position).normalized * boatFeature.moveRange * 3 + transform.position;
+        enemy.turn(toMove);
         enemy.move(toMove);
         C4_EnemyManager.Instance.resetSelect();
     }
 
     void checkDistanceWithPlayer()
     {
+        shortestDistancePlayer = C4_PlayManager.Instance.objectList[0].GetComponent<C4_Player>();
+        distanceWithPlayer = Vector3.Distance(shortestDistancePlayer.transform.position, transform.position);
         for (int i = 0; i < C4_PlayManager.Instance.objectList.Count; i++)
         {
             checkDistanceEachPlayer = Vector3.Distance(C4_PlayManager.Instance.objectList[i].transform.position, transform.position);

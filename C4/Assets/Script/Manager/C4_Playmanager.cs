@@ -48,11 +48,22 @@ public class C4_PlayManager : C4_Manager, C4_IntInitInstance{
         }
     }
 
+    public C4_Player ourBoat;
     [System.NonSerialized]
     public GameObject selectedBoat;
     C4_Player character;
 
     bool isAim;
+
+    void Start()
+    {
+        ourBoat = FindObjectOfType(typeof(C4_Player)) as C4_Player;
+        ourBoat.objectID.id = C4_ObjectManager.Instance.currentObjectCode++;
+        ourBoat.objectID.type = ObjectID.Type.Player;
+        C4_ObjectManager.Instance.addObject(ourBoat);
+        addObject(ourBoat);
+    }
+
 
     /* 조준하고 있는 방향으로 회전하고 UI를 출력할 함수 */
     void aiming(Vector3 clickPosition)
@@ -113,7 +124,7 @@ public class C4_PlayManager : C4_Manager, C4_IntInitInstance{
                 }
                 else
                 {
-                    if ((inputData.clickObjectID.type == ObjectID.Type.Player) && inputData.clickObjectID.id != inputData.dragObjectID.id)
+                    if ((inputData.clickObjectID.type == ObjectID.Type.Player) && (inputData.clickObjectID.id != inputData.dragObjectID.id))
                     {
                         isAim = true;
                     }
