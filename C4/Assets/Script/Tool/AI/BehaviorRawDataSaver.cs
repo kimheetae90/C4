@@ -9,29 +9,29 @@ using System.Xml;
 
 public class BehaviorRawDataSaver {
 	public string savePath;
-	public List<BehaviorRawNodeData> ListNodeData;
-	public List<BehaviorRawEdgeData> ListEdgeData;
+	public List<BehaviorRawNodeData> listNodeData;
+	public List<BehaviorRawEdgeData> listEdgeData;
 	public BehaviorRawNodeData root;
 
-	public void saveFileterdData(string savePath, List<BehaviorRawNodeData> ListNodeData, List<BehaviorRawEdgeData> ListEdgeData)
+	public void saveFileterdData(string savePath, List<BehaviorRawNodeData> listNodeData, List<BehaviorRawEdgeData> listEdgeData)
 	{
 		root = null;
 		this.savePath = savePath;
-		this.ListNodeData = ListNodeData;
-		this.ListEdgeData = ListEdgeData;
+		this.listNodeData = listNodeData;
+		this.listEdgeData = listEdgeData;
 
-		BuildTreeStruct();
+		buildTreeStruct();
 		createXmlFile();
 	}
 
-	public void BuildTreeStruct()
+	public void buildTreeStruct()
 	{
-		foreach (BehaviorRawEdgeData node in ListEdgeData) 
+		foreach (BehaviorRawEdgeData node in listEdgeData) 
 		{
-			var source = ListNodeData.FirstOrDefault(i => i.ID == node.Source);
+			var source = listNodeData.FirstOrDefault(i => i.id == node.source);
 			
-			var targets = from n in ListNodeData
-				where n.ID == node.Target
+			var targets = from n in listNodeData
+				where n.id == node.target 
 					orderby n.priority
 					select n;
 			
@@ -42,7 +42,7 @@ public class BehaviorRawDataSaver {
 			}
 		}
 
-		root = ListNodeData.FirstOrDefault(i => i.parant == null);
+		root = listNodeData.FirstOrDefault(i => i.parant == null);
 
 		if(root == null)
 		{
@@ -73,7 +73,7 @@ public class BehaviorRawDataSaver {
 		XmlNode xmlNode =  doc.CreateElement("node");
 
 		XmlAttribute id = doc.CreateAttribute("id");
-		id.Value = data.ID.ToString();
+		id.Value = data.id.ToString();
 		XmlAttribute type = doc.CreateAttribute("type");
 		type.Value = data.type;
 

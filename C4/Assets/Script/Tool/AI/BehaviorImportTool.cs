@@ -6,19 +6,20 @@ using System.IO;
 public class BehaviorImportTool : EditorWindow
 {
 	// Use this for initialization
-    List<string> ListXmlFile = new List<string>();
+    public List<string> listXmlFile = new List<string>();
+	string[] listFilePath = {""};
+    bool needUpdateRawDataPath = true;
+    int selectedIndex = 0;
 
-    bool NeedUpdateRawDataPath = true;
-    int SelectedIndex = 0;
-
-    public static string BasePathToLoad = Application.dataPath + "/Data/AI/Raw";
-	public static string BasePathToSave = Application.dataPath + "/Data/AI/";
+    public static string basePathToLoad = Application.dataPath + "/Data/AI/Raw";
+	public static string basePathToSave = Application.dataPath + "/Data/AI/";
    
     BehaviorRawDataParser parser = new BehaviorRawDataParser();
 	BehaviorRawDataSaver saver = new BehaviorRawDataSaver();
 
+
     [MenuItem("Window/AI/Behavior Import Tool")]
-    public static void ShowWindow()
+    public static void showWindow()
     {
         //Show existing window instance. If one doesn't exist, make one.
         EditorWindow.GetWindow(typeof(BehaviorImportTool));
@@ -26,58 +27,60 @@ public class BehaviorImportTool : EditorWindow
 
     void Update()
     {
-        ReloadProcess();
+        reloadProcess();
     }
 
-    void ReloadProcess()
+    void reloadProcess()
     {
-        if (NeedUpdateRawDataPath)
+        if (needUpdateRawDataPath)
         {
-            ReloadRawDataDirectory();
-            NeedUpdateRawDataPath = false;
+            reloadRawDataDirectory();
+            needUpdateRawDataPath = false;
         }
     }
 
     void OnHierarchyChange()
     {
-        NeedUpdateRawDataPath = true;
+        needUpdateRawDataPath = true;
     }
 
-    private void ReloadRawDataDirectory()
+    private void reloadRawDataDirectory()
     {
-        ListXmlFile.Clear();
-        var info = new DirectoryInfo(BasePathToLoad);
+        listXmlFile.Clear();
+        var info = new DirectoryInfo(basePathToLoad);
         var fileInfo = info.GetFiles();
         foreach (FileInfo file in fileInfo)
         {
             if (file.Extension == ".xgml")
             {
-                ListXmlFile.Add(file.FullName);
+                listXmlFile.Add(file.FullName);
             }
         }
+
+		listFilePath = listXmlFile.ToArray();
     }
 
     void OnGUI()
     {
-        ShowParserUI();
+        showParserUI();
     }
 
-    void ShowParserUI()
+    void showParserUI()
     {
         GUILayout.Label("GXML 파일을 로드해주세요", EditorStyles.boldLabel);
-        SelectedIndex = EditorGUILayout.Popup(SelectedIndex, ListXmlFile.ToArray());
+		selectedIndex = EditorGUILayout.Popup(selectedIndex,listFilePath, EditorStyles.popup);
 
         if (GUILayout.Button("Load"))
         {
-            ProcLoadBtn();
+            procLoadBtn();
         }
     }
 
-    void ProcLoadBtn()
+    void procLoadBtn()
     {
-        if (ListXmlFile.Count > 0)
+        if (listXmlFile.Count > 0)
         {
-			ParseRawDataAndSaveFilteredData();
+			parseRawDataAndSaveFilteredData();
         }
         else
         {
@@ -86,7 +89,7 @@ public class BehaviorImportTool : EditorWindow
         }
     }
 
-	private void ParseRawDataAndSaveFilteredData()
+	private void parseRawDataAndSaveFilteredData()
     {
 		string targetPath = "";
 		string savePath = ""; 
@@ -94,7 +97,7 @@ public class BehaviorImportTool : EditorWindow
 		try
 		{
 			getTargetAndSavePath(out targetPath,out savePath);
-			parser.ParseRawBehaviorData(targetPath);
+			parser.parseRawBehaviorData(targetPath);
 			saver.saveFileterdData(savePath,parser.getParsedRawNodeData(),parser.getParsedRawEdgeData());
 		}
 		catch(BehaviorRawDataParseException e)
@@ -108,12 +111,14 @@ public class BehaviorImportTool : EditorWindow
 		                            "파일이 올바르게 저장되었습니다. 파일명 : " + savePath, "OK");
     }
 
+
+
 	private void getTargetAndSavePath(out string targetPath, out string savePath)
 	{
-		if(SelectedIndex < ListXmlFile.Count && ListXmlFile.Count != 0)
+		if(selectedIndex < listXmlFile.Count && listXmlFile.Count != 0)
 		{
-			targetPath = ListXmlFile[SelectedIndex];
-			savePath = BasePathToSave + Path.GetFileNameWithoutExtension(targetPath) + ".xml";
+			targetPath = listXmlFile[selectedIndex];
+			savePath = basePathToSave + Path.GetFileNameWithoutExtension(targetPath) + ".xml";
 		}
 		else
 		{

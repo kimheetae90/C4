@@ -9,23 +9,23 @@ using System.Xml;
 
 public class BehaviorRawDataParser
 {
-    List<BehaviorRawEdgeData> ListEdgeData;
-    List<BehaviorRawNodeData> ListNodeData;
+    List<BehaviorRawEdgeData> listEdgeData;
+    List<BehaviorRawNodeData> listNodeData;
 
     public BehaviorRawDataParser()
     {
-        ListEdgeData = new List<BehaviorRawEdgeData>();
-        ListNodeData = new List<BehaviorRawNodeData>();
+        listEdgeData = new List<BehaviorRawEdgeData>();
+        listNodeData = new List<BehaviorRawNodeData>();
         clear();
     }
 
     void clear()
     {
-        ListEdgeData.Clear();
-        ListNodeData.Clear();
+        listEdgeData.Clear();
+        listNodeData.Clear();
     }
 
-    XmlElement LoadXML(string targetpath)
+    XmlElement loadXML(string targetpath)
     {
         var sr = new StreamReader(targetpath);
         XmlDocument xmldoc = new XmlDocument();
@@ -34,11 +34,11 @@ public class BehaviorRawDataParser
         return root;
     }
 
-    public bool ParseRawBehaviorData(string targetpath)
+    public bool parseRawBehaviorData(string targetpath)
     {
 		clear();
 
-        XmlElement root = LoadXML(targetpath);
+        XmlElement root = loadXML(targetpath);
         XmlNodeList nodes = root.ChildNodes;
 
         foreach(XmlNode node in nodes)
@@ -92,7 +92,7 @@ public class BehaviorRawDataParser
         {
             parseNode(childNode,data);
         }
-        ListNodeData.Add(data);
+        listNodeData.Add(data);
     }
 
     void parseNode(XmlNode node, BehaviorRawNodeData data)
@@ -129,7 +129,7 @@ public class BehaviorRawDataParser
         {
             case "id":
                 {
-					Int32.TryParse(node.InnerText, out data.ID);            
+					Int32.TryParse(node.InnerText, out data.id);            
                 }
                 break;
             case "label":
@@ -158,7 +158,7 @@ public class BehaviorRawDataParser
 		{
 		case "diamond":
 			{
-				ret = "Selector";
+				ret = "selector";
 			}
 			break;
 		case "rectangle":
@@ -192,7 +192,7 @@ public class BehaviorRawDataParser
         {
             parseEdge(childNode, data);
         }
-        ListEdgeData.Add(data);
+        listEdgeData.Add(data);
     }
 
     void parseEdge(XmlNode node, BehaviorRawEdgeData data)
@@ -205,12 +205,12 @@ public class BehaviorRawDataParser
         {
             case "source":
                 {
-					Int32.TryParse(node.InnerText,out data.Source);
+					Int32.TryParse(node.InnerText,out data.source);
 			    }
                 break;
             case "target":
                 {
-					Int32.TryParse(node.InnerText,out data.Target);
+					Int32.TryParse(node.InnerText,out data.target);
                 }
                 break;
         }
@@ -218,11 +218,11 @@ public class BehaviorRawDataParser
 	
 	public List<BehaviorRawEdgeData> getParsedRawEdgeData()
 	{
-		return ListEdgeData;
+		return listEdgeData;
 	}
 
 	public List<BehaviorRawNodeData> getParsedRawNodeData()
 	{
-		return ListNodeData;
+		return listNodeData;
 	}
 }

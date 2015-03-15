@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class BehaviorRawNodeData {
-    public int ID;
+    public int id;
     public string param;
 	public string type;
 	public double priority;
