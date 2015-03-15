@@ -8,16 +8,15 @@ using System.Collections;
 
 public struct InputData
 {
-    public enum ObjectType { BOAT, WATER };
-    public enum KeyState { DRAG, UP };
+    public enum KeyState { Down, Up };
 
     //좌표 정보
     public Vector3 clickPosition;
     public Vector3 dragPosition;
 
     //클릭한 대상에 대한 정보
-    public ObjectType clickObjectType;
-    public ObjectType dragObjectType;
+    public ObjectID clickObjectID;
+    public ObjectID dragObjectID;
 
     //클릭,드래그 상태
     public KeyState keyState;

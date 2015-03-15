@@ -12,28 +12,72 @@ using System.Collections;
 ///  dispatchData : 전달받은 Data 분석
 /// </summary>
 
-public class C4_Playmanager : MonoBehaviour {
+public class C4_PlayManager : C4_Manager, C4_IntInitInstance{
+    
+    private static C4_PlayManager _instance;
+    public static C4_PlayManager Instance
+    {
+        get
+        {
+            if (!_instance)
+            {
+                _instance = GameObject.FindObjectOfType(typeof(C4_PlayManager)) as C4_PlayManager;
+                if (!_instance)
+                {
+                    GameObject container = new GameObject();
+                    container.name = "C4_PlayManager";
+                    _instance = container.AddComponent(typeof(C4_PlayManager)) as C4_PlayManager;
+                }
+            }
 
+            return _instance;
+        } 
+    }
+
+    public void initInstance()
+    {
+        if (!_instance)
+        {
+            _instance = GameObject.FindObjectOfType(typeof(C4_PlayManager)) as C4_PlayManager;
+            if (!_instance)
+            {
+                GameObject container = new GameObject();
+                container.name = "C4_PlayManager";
+                _instance = container.AddComponent(typeof(C4_PlayManager)) as C4_PlayManager;
+            }
+        }
+    }
+
+    public C4_Player ourBoat;
     [System.NonSerialized]
     public GameObject selectedBoat;
-    C4_Boat boatFeature;
+    C4_Player character;
 
     bool isAim;
-    
+
+    void Start()
+    {
+        ourBoat = FindObjectOfType(typeof(C4_Player)) as C4_Player;
+        ourBoat.objectID.id = C4_ObjectManager.Instance.currentObjectCode++;
+        ourBoat.objectID.type = ObjectID.Type.Player;
+        C4_ObjectManager.Instance.addObject(ourBoat);
+        addObject(ourBoat);
+    }
+
 
     /* 조준하고 있는 방향으로 회전하고 UI를 출력할 함수 */
     void aiming(Vector3 clickPosition)
     {
         Vector3 aimDirection = (selectedBoat.transform.position - clickPosition).normalized;
         aimDirection.y = 0;
-        boatFeature.startTurn(clickPosition);
+        character.turn(clickPosition);
     }
 
 
     /* 발포하고 상태를 초기화할 함수 */
     void orderShot(Vector3 shotDirection)
     {
-        boatFeature.shot(shotDirection);
+        character.shot(shotDirection);
         activeDone();
     }
 
@@ -41,33 +85,24 @@ public class C4_Playmanager : MonoBehaviour {
     /* 움직임을 명령할 함수 */
     void orderMove(Vector3 toMove)
     {
-        boatFeature.startMove(toMove);
-        boatFeature.startTurn(toMove);
-        boatFeature.missile.SetActive(false);
+        character.move(toMove);
+        character.turn(toMove);
         activeDone();
     }
 
 
     /* 배를 선택하는 함수 */
-    void setBoatScript(GameObject clickBoat)
+    public void setBoatScript(GameObject clickBoat)
     {
-        if (selectedBoat != null)   //이미 선택된 배가 있는 경우 그 배의 missile을 비활성화시킴
-        {
-            if(!boatFeature.missileFeature.moveScript.isMove)
-            {
-                boatFeature.missile.SetActive(false);
-            }
-        }
         selectedBoat = clickBoat;
-        boatFeature = selectedBoat.GetComponent<C4_Boat>();
-        boatFeature.missile.SetActive(true);
+        character = selectedBoat.GetComponent<C4_Player>();
     }
 
     /* 선택 정보를 초기화 */
     void activeDone()
     {
         isAim = false;
-        boatFeature = null;
+        character = null;
         selectedBoat = null;
     }
 
@@ -77,11 +112,11 @@ public class C4_Playmanager : MonoBehaviour {
 
         if (selectedBoat != null)
         {
-            if (inputData.keyState == InputData.KeyState.DRAG)
+            if (inputData.keyState == InputData.KeyState.Down)
             {
                 if (isAim)
                 {
-                    if ((inputData.clickObjectType == InputData.ObjectType.BOAT) && (inputData.dragObjectType == InputData.ObjectType.BOAT))
+                    if (inputData.clickObjectID.id == inputData.dragObjectID.id)
                     {
                         isAim = false;
                     }
@@ -89,11 +124,10 @@ public class C4_Playmanager : MonoBehaviour {
                 }
                 else
                 {
-                    if ((inputData.clickObjectType == InputData.ObjectType.BOAT) && !(inputData.dragObjectType == InputData.ObjectType.BOAT) && boatFeature.canShot)
+                    if ((inputData.clickObjectID.type == ObjectID.Type.Player) && (inputData.clickObjectID.id != inputData.dragObjectID.id))
                     {
                         isAim = true;
                     }
-
                 }
             }
             else
@@ -104,7 +138,7 @@ public class C4_Playmanager : MonoBehaviour {
                 }
                 else
                 {
-                    if (inputData.clickObjectType == InputData.ObjectType.WATER)
+                    if (inputData.clickObjectID.type == ObjectID.Type.Water)
                     {
                         if(inputData.clickPosition == inputData.dragPosition)
                         {

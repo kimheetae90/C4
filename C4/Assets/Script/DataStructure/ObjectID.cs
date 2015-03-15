@@ -3,6 +3,7 @@ using System.Collections;
 
 public struct ObjectID
 {
-    public enum Type { Character, Enemy, Missile, Water };
+    public enum Type { Player, Enemy, Missile, Water, UI , Camera};
+    public Type type;
     public int id;
 }

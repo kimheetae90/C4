@@ -9,11 +9,10 @@ using System.Collections;
 
 public class C4_Object : MonoBehaviour {
 
-    ObjectID objectID;
+    public ObjectID objectID;
 
-    public ObjectID getObjectID()
+    public bool isValid()
     {
-        return objectID;
+        return true;
     }
-
 }

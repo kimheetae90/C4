@@ -7,22 +7,52 @@ using System.Collections;
 ///  - input에 대한 Data를 수집하여 Camera와 Play Manager에게 전송한다
 /// </summary>
 
-public class C4_InputManager : MonoBehaviour {
+public class C4_InputManager : MonoBehaviour, C4_IntInitInstance {
 
-    public GameObject c4_camera;
-    public GameObject c4_playManager;
+    private static C4_InputManager _instance;
+    public static C4_InputManager Instance
+    {
+        get
+        {
+            if (!_instance)
+            {
+                _instance = GameObject.FindObjectOfType(typeof(C4_InputManager)) as C4_InputManager;
+                if (!_instance)
+                {
+                    GameObject container = new GameObject();
+                    container.name = "C4_InputManager";
+                    _instance = container.AddComponent(typeof(C4_InputManager)) as C4_InputManager;
+                }
+            }
 
-    C4_Camera cameraScript;
-    C4_Playmanager playManagerScript;
+            return _instance;
+        }
+    }
+    
+    public void initInstance()
+    {
+        if (!_instance)
+        {
+            _instance = GameObject.FindObjectOfType(typeof(C4_InputManager)) as C4_InputManager;
+            if (!_instance)
+            {
+                GameObject container = new GameObject();
+                container.name = "C4_InputManager";
+                _instance = container.AddComponent(typeof(C4_InputManager)) as C4_InputManager;
+            }
+        }
+    }
+
     InputData inputData;
+    C4_Camera camObject;
 
     bool isClick;
     RaycastHit hit;
+    C4_Object clickObject;
 
 	void Start () {
-        cameraScript = c4_camera.GetComponent<C4_Camera>();
-        playManagerScript = c4_playManager.GetComponent<C4_Playmanager>();
         isClick = false;
+        camObject = Camera.main.transform.root.GetComponent<C4_Camera>();
 	}
 	
 	void Update () {
@@ -30,13 +60,13 @@ public class C4_InputManager : MonoBehaviour {
         if (isClick)
         {
             onClick();
-            if (inputData.clickObjectType == InputData.ObjectType.WATER)
+            if (inputData.clickObjectID.type == ObjectID.Type.Water)
             {
-                cameraScript.cameraMove(inputData);
+                camObject.cameraMove(inputData);
             }
             else
             {
-                playManagerScript.dispatchData(inputData);
+                C4_PlayManager.Instance.dispatchData(inputData);
             }
         }
 
@@ -48,10 +78,8 @@ public class C4_InputManager : MonoBehaviour {
         if (isClick&&Input.GetMouseButtonUp(0))
         {
             onClickUp();
-            playManagerScript.dispatchData(inputData);
+            C4_PlayManager.Instance.dispatchData(inputData);
         }
-
-    
     }
 
 
@@ -61,19 +89,18 @@ public class C4_InputManager : MonoBehaviour {
         isClick = true;
 
         Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity);
+        clickObject = hit.collider.transform.root.gameObject.GetComponent<C4_Object>();
+        inputData.clickObjectID = clickObject.objectID;
+        inputData.dragObjectID = clickObject.objectID;
         inputData.clickPosition = hit.point;
         inputData.dragPosition = hit.point;
         inputData.clickPosition.y = 0;
         inputData.dragPosition.y = 0;
-        inputData.keyState = InputData.KeyState.DRAG;
+        inputData.keyState = InputData.KeyState.Down;
 
-        checkObjectType(ref inputData.clickObjectType);
-        if (hit.collider.CompareTag("ally"))
+        if (inputData.clickObjectID.type == ObjectID.Type.Player)
         {
-            if (hit.collider.transform.root.gameObject.GetComponent<C4_Boat>().canMove)
-            {
-                playManagerScript.SendMessage("setBoatScript",hit.collider.transform.root.gameObject);
-            }
+            C4_PlayManager.Instance.setBoatScript(hit.collider.transform.root.gameObject);
         }
     }
 
@@ -83,9 +110,10 @@ public class C4_InputManager : MonoBehaviour {
     void onClick()
     {
         Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity);
+        clickObject = hit.collider.transform.root.gameObject.GetComponent<C4_Object>();
         inputData.dragPosition = hit.point;
         inputData.dragPosition.y = 0;
-        checkObjectType(ref inputData.dragObjectType);
+        inputData.dragObjectID = clickObject.objectID;
     }
 
 
@@ -93,20 +121,7 @@ public class C4_InputManager : MonoBehaviour {
     /* 버튼을 올렸을 때의 Data 처리 */
     void onClickUp()
     {
-        inputData.keyState = InputData.KeyState.UP;
+        inputData.keyState = InputData.KeyState.Up;
         isClick = false;
     }
-
-    void checkObjectType(ref InputData.ObjectType type)
-    {
-        if (hit.collider.CompareTag("water"))
-        {
-            type = InputData.ObjectType.WATER;
-        }
-        else if (hit.collider.CompareTag("ally"))
-        {
-            type = InputData.ObjectType.BOAT;
-        }
-    }
-
 }
