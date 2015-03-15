@@ -17,15 +17,12 @@ public class C4_BoatMove : C4_Move {
     int range;
 
     Vector3 firstpos;
-    Vector3 lastpos;
-    float totalDistance;
     bool isOver;
 
 	// Use this for initialization
     void Start()
     {
         moveSpeed = GetComponent<C4_BoatFeature>().moveSpeed;
-        totalDistance = 0;
         isOver = false;
         boatFeature = transform.GetComponent<C4_BoatFeature>();
         range = boatFeature.moveRange;
@@ -34,12 +31,10 @@ public class C4_BoatMove : C4_Move {
     public void startMove(Vector3 click)  // 진입하는 함수(Boat에서 호출)
     {
         firstpos = transform.position;
-        lastpos = click;
-        totalDistance = Vector3.Distance(firstpos, lastpos);
         toMove = click;
         setToMove();
         boatFeature.gageDown(boatFeature.needGageStackToMove);
-        StartCoroutine(distanceCheck());
+        StartCoroutine("distanceCheck");
         
         
         
@@ -51,12 +46,10 @@ public class C4_BoatMove : C4_Move {
         yield return null;
         distance = Vector3.Distance(firstpos, transform.position);
 
-
-        if (distance > range)
+        if (distance >= range)
         {
             isOver = true;
-            range += boatFeature.moveRange;
-           
+            range += boatFeature.moveRange;         
         }
         if (isOver)
         {
@@ -64,13 +57,13 @@ public class C4_BoatMove : C4_Move {
             isOver = false;
         }
 
-        if (totalDistance - distance <= 0.5f)
+        if (isMove)
         {
-            StopCoroutine(distanceCheck());
+            StartCoroutine("distanceCheck");
         }
         else
         {
-            StartCoroutine(distanceCheck());
+            StopCoroutine("distanceCheck");
         }
         
     }
