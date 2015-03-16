@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 public class BehaviorNode : IBehaviorNode
 {
-    public GameObject targetObject;
-    public BehaviorNode parents;
-    public List<BehaviorNode> listChild;
+    protected GameObject targetObject;
+    protected IBehaviorNode parents;
+    protected List<IBehaviorNode> listChild;
 
     public BehaviorNode(GameObject targetObject)
     {
         this.targetObject = targetObject;
-        parents     = null;
-        listChild   = new List<BehaviorNode>();
+        parents = null;
+        listChild = new List<IBehaviorNode>();
     }
 
     virtual public bool traversalNode()
@@ -23,5 +23,14 @@ public class BehaviorNode : IBehaviorNode
     {
         return null;
     }
-    
+
+    virtual public void setParents(IBehaviorNode node) 
+    {
+        parents = node;
+    }
+
+    virtual public void addChild(IBehaviorNode node)
+    {
+        listChild.Add(node);
+    }   
 }
