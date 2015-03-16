@@ -25,11 +25,12 @@ public class C4_BoatMove : C4_Move {
         moveSpeed = GetComponent<C4_BoatFeature>().moveSpeed;
         isOver = false;
         boatFeature = transform.GetComponent<C4_BoatFeature>();
-        range = boatFeature.moveRange;
+        
 	}
 	
     public void startMove(Vector3 click)  // 진입하는 함수(Boat에서 호출)
     {
+        range = boatFeature.moveRange;
         firstpos = transform.position;
         toMove = click;
         setToMove();
