@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class C4_EnemyManager : C4_Manager {
+public class C4_EnemyManager : MonoBehaviour
+{
 
     private static C4_EnemyManager _instance;
     public static C4_EnemyManager Instance
@@ -152,15 +153,21 @@ public class C4_EnemyManager : C4_Manager {
 
     void selectBoat()
     {
-        selectNum++;
-        if (selectNum >= objectList.Count)
+        if (C4_ObjectManager.Instance.getSubObjectManager(ObjectID.Type.Enemy).objectList.Count > 0)
         {
-            selectNum = 0;
+            selectNum++;
+            if (selectNum >= C4_ObjectManager.Instance.getSubObjectManager(ObjectID.Type.Enemy).objectList.Count)
+            {
+                selectNum = 0;
+            }
+            selectedBoat = C4_ObjectManager.Instance.getSubObjectManager(ObjectID.Type.Enemy).objectList[selectNum].GetComponent<C4_Enemy>();
+            behavior = selectedBoat.GetComponent<C4_StartAIBehave>();
+            isSelected = true;
         }
-        selectedBoat = objectList[selectNum].GetComponent<C4_Enemy>();
-        behavior = selectedBoat.GetComponent<C4_StartAIBehave>();
-        isSelected = true;
-
+        else
+        {
+            isSelected = false;
+        }
     }
 
 }

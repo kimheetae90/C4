@@ -134,15 +134,15 @@ public class C4_StartAIBehave : MonoBehaviour {
 
     void checkDistanceWithPlayer()
     {
-        shortestDistancePlayer = C4_PlayManager.Instance.objectList[0].GetComponent<C4_Player>();
+        shortestDistancePlayer = C4_ObjectManager.Instance.getSubObjectManager(ObjectID.Type.Player).objectList[0].GetComponent<C4_Player>();
         distanceWithPlayer = Vector3.Distance(shortestDistancePlayer.transform.position, transform.position);
-        for (int i = 0; i < C4_PlayManager.Instance.objectList.Count; i++)
+        for (int i = 0; i < C4_ObjectManager.Instance.getSubObjectManager(ObjectID.Type.Player).objectList.Count; i++)
         {
-            checkDistanceEachPlayer = Vector3.Distance(C4_PlayManager.Instance.objectList[i].transform.position, transform.position);
+            checkDistanceEachPlayer = Vector3.Distance(C4_ObjectManager.Instance.getSubObjectManager(ObjectID.Type.Player).objectList[i].transform.position, transform.position);
             if (distanceWithPlayer > checkDistanceEachPlayer)
             {
                 distanceWithPlayer = checkDistanceEachPlayer;
-                shortestDistancePlayer = C4_PlayManager.Instance.objectList[i].GetComponent<C4_Player>();
+                shortestDistancePlayer = C4_ObjectManager.Instance.getSubObjectManager(ObjectID.Type.Player).objectList[i].GetComponent<C4_Player>();
             }
         }
     }

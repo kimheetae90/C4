@@ -17,12 +17,10 @@ public class C4_EnemyMaker : MonoBehaviour {
 
     void makeEnemy()
     {
-        initObject = Instantiate(enemyGameObejct,transform.position,transform.rotation) as GameObject;
+        initObject = Instantiate(enemyGameObejct, transform.position, transform.rotation) as GameObject;
         enemy = initObject.GetComponent<C4_Object>();
-        objectID = C4_ObjectManager.Instance.currentObjectCode++;
-        enemy.objectID.id = objectID;
+        enemy.objectID.id = C4_ObjectManager.Instance.currentObjectCode++;
         enemy.objectID.type = ObjectID.Type.Enemy;
-        C4_ObjectManager.Instance.addObject(enemy);
-        C4_EnemyManager.Instance.addObject(enemy);
+        C4_ObjectManager.Instance.addObjectToAll(enemy);
     }
 }

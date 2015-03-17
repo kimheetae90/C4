@@ -632,6 +632,9 @@ MonoBehaviour:
   needGageStackToMove: 1
   needGageStackToShot: 2
   moveRange: 10
+  imgHPbar: {fileID: 0}
+  imgGageWhite: {fileID: 0}
+  imgGageYellow: {fileID: 0}
   stackCount: 0
   gage: 0
 --- !u!1 &722548751
@@ -901,6 +904,9 @@ MonoBehaviour:
   needGageStackToMove: 1
   needGageStackToShot: 2
   moveRange: 10
+  imgHPbar: {fileID: 0}
+  imgGageWhite: {fileID: 0}
+  imgGageYellow: {fileID: 0}
   stackCount: 0
   gage: 0
 --- !u!114 &1669099851

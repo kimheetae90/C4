@@ -6,7 +6,7 @@ using System.Collections;
 /// </summary>
 public class C4_Camera : C4_Object {
 
-    void Start()
+    public void Start()
     {
         objectID.id = C4_ObjectManager.Instance.currentObjectCode++;
         objectID.type = ObjectID.Type.Camera;
