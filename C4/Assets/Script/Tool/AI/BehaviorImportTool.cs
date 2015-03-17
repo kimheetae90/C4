@@ -17,6 +17,7 @@ public class BehaviorImportTool : EditorWindow
     BehaviorRawDataParser parser = new BehaviorRawDataParser();
 	BehaviorRawDataSaver saver = new BehaviorRawDataSaver();
 
+    BehaviorNodeFactory builder = new BehaviorNodeFactory();
 
     [MenuItem("Window/AI/Behavior Import Tool")]
     public static void showWindow()
@@ -73,6 +74,11 @@ public class BehaviorImportTool : EditorWindow
         if (GUILayout.Button("Load"))
         {
             procLoadBtn();
+        }
+
+        if (GUILayout.Button("test"))
+        {
+            builder.buildBehaviorNode(Application.dataPath + "/Data/AI/test.xml");
         }
     }
 

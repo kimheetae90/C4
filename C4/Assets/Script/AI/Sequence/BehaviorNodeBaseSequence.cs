@@ -3,9 +3,8 @@ using System.Collections;
 
 public class BehaviorNodeBaseSequence : BehaviorNode
 {
-
-    public BehaviorNodeBaseSequence(GameObject targetObject)
-        : base(targetObject)
+    public BehaviorNodeBaseSequence()
+        : base()
     {
 
     }
@@ -14,7 +13,7 @@ public class BehaviorNodeBaseSequence : BehaviorNode
     {
         bool bRet = true;
 
-        foreach (var node in listChild)
+        foreach (var node in listChilds)
         {
             if (node.traversalNode() == false)
             {
@@ -28,6 +27,6 @@ public class BehaviorNodeBaseSequence : BehaviorNode
 
     override public object Clone()
     {
-        return new BehaviorNodeBaseSequence(targetObject);
+        return new BehaviorNodeBaseSequence();
     }
 }

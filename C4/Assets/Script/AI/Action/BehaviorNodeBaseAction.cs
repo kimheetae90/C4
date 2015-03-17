@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class BehaviorNodeBaseAction : BehaviorNode
 {
-    string param;
+    List<string> listParams;
 
-    public BehaviorNodeBaseAction(GameObject targetObject, string param)
-        : base(targetObject)
+    public BehaviorNodeBaseAction(List<string> listParams)
+        : base()
     {
-        this.param = param;
+        this.listParams = listParams;
     }
 
     override public bool traversalNode()
@@ -18,6 +18,6 @@ public class BehaviorNodeBaseAction : BehaviorNode
 
     override public object Clone()
     {
-        return new BehaviorNodeBaseAction(targetObject, param);
+        return new BehaviorNodeBaseAction(listParams);
     }
 }

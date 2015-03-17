@@ -5,13 +5,13 @@ public class BehaviorNode : IBehaviorNode
 {
     protected GameObject targetObject;
     protected IBehaviorNode parents;
-    protected List<IBehaviorNode> listChild;
+    protected List<IBehaviorNode> listChilds;
 
-    public BehaviorNode(GameObject targetObject)
+    public BehaviorNode()
     {
-        this.targetObject = targetObject;
+        targetObject = null;
         parents = null;
-        listChild = new List<IBehaviorNode>();
+        listChilds = new List<IBehaviorNode>();
     }
 
     virtual public bool traversalNode()
@@ -31,6 +31,16 @@ public class BehaviorNode : IBehaviorNode
 
     virtual public void addChild(IBehaviorNode node)
     {
-        listChild.Add(node);
-    }   
+        listChilds.Add(node);
+    }
+
+    public void setTargetObject(GameObject obj)
+    {
+        targetObject = obj;
+
+        foreach (IBehaviorNode child in listChilds)
+        {
+            child.setTargetObject(obj);
+        }
+    }
 }
