@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<BehaviorTree>
+  <node id="1" type="sequence">BaseSequence@test<node id="2" type="precondition">BasePrecondition@test</node><node id="0" type="selector">BaseSelector@test<node id="3" type="sequence">BaseSequence@test<node id="5" type="precondition">BasePrecondition@test</node><node id="4" type="action">BaseAction@test</node></node></node></node>
+</BehaviorTree>

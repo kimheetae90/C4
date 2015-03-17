@@ -39,7 +39,7 @@ public class BehaviorImportTool : EditorWindow
         }
     }
 
-    void OnHierarchyChange()
+    void OnProjectChange()
     {
         needUpdateRawDataPath = true;
     }
