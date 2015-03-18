@@ -4,7 +4,7 @@ using System.Collections;
 
 public class C4_HPUI : MonoBehaviour {
     
-    [System.NonSerialized]
+    
     public Image imgHPbar;
     [System.NonSerialized]
     public C4_BoatFeature boatFeature;

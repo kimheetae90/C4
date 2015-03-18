@@ -3,9 +3,9 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class C4_GageUI : MonoBehaviour {
-    [System.NonSerialized]
+    
     public Image imgGageWhite;
-    [System.NonSerialized]
+    
     public Image imgGageYellow;
     [System.NonSerialized]
     public C4_BoatFeature boatFeature;
