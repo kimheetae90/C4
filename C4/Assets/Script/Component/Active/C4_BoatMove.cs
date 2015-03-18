@@ -13,11 +13,13 @@ public class C4_BoatMove : C4_Move {
 
     [System.NonSerialized]
     public C4_BoatFeature boatFeature;
-    float distance;
-    int range;
+    public C4_Move move;
+    public float distance;
+    public int range;
 
     Vector3 firstpos;
-    bool isOver;
+    public bool isOver;
+    public int gage;
 
 	// Use this for initialization
     void Start()
@@ -25,6 +27,8 @@ public class C4_BoatMove : C4_Move {
         moveSpeed = GetComponent<C4_BoatFeature>().moveSpeed;
         isOver = false;
         boatFeature = transform.GetComponent<C4_BoatFeature>();
+        move = transform.GetComponent<C4_Move>();
+        
         
 	}
 	
@@ -35,12 +39,30 @@ public class C4_BoatMove : C4_Move {
         toMove = click;
         setToMove();
         boatFeature.gageDown(boatFeature.needGageStackToMove);
-        StartCoroutine("distanceCheck");
+        StartCoroutine(distanceCheck());
+        StartCoroutine(moveCheck());
         
         
         
     }
 
+    IEnumerator moveCheck() {
+        yield return null;
+        gage = boatFeature.gage;
+        if (boatFeature.gage < 0)
+        {
+            boatFeature.gage += boatFeature.oneGageStack;
+            move.isMove = false;
+            StopCoroutine(distanceCheck());
+            StopCoroutine(moveCheck());
+        }
+        else
+        {
+            StartCoroutine(moveCheck());
+        }
+
+
+    }
 
     IEnumerator distanceCheck()
     {
