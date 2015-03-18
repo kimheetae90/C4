@@ -3,14 +3,19 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class C4_GageUI : MonoBehaviour {
-
+    [System.NonSerialized]
     public Image imgGageWhite;
+    [System.NonSerialized]
     public Image imgGageYellow;
+    [System.NonSerialized]
     public C4_BoatFeature boatFeature;
-
+    [System.NonSerialized]
     public int gage;
+    [System.NonSerialized]
     public int fullGage;
+    [System.NonSerialized]
     public int stackCount;
+    [System.NonSerialized]
     public int numOfStack;
 	// Use this for initialization
 	void Start () {

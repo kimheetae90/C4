@@ -1118,9 +1118,6 @@ MonoBehaviour:
   needGageStackToMove: 1
   needGageStackToShot: 2
   moveRange: 10
-  stackCount: 0
-  gage: 0
-  fullGage: 0
 --- !u!114 &1669099851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1143,10 +1140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd20d339a379e8d45ae75d4d5965c1ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imgHPbar: {fileID: 830337981}
-  boatFeature: {fileID: 0}
-  hp: 0
-  fullHP: 0
 --- !u!114 &1669099853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1158,13 +1151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 376f58a8ed2a49b428cacb6f35ef6baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imgGageWhite: {fileID: 1464115180}
-  imgGageYellow: {fileID: 1375519878}
-  boatFeature: {fileID: 0}
-  gage: 0
-  fullGage: 0
-  stackCount: 0
-  numOfStack: 0
 --- !u!1 &1681437524
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,12 +13,17 @@ public class C4_BoatMove : C4_Move {
 
     [System.NonSerialized]
     public C4_BoatFeature boatFeature;
+    [System.NonSerialized]
     public C4_Move move;
+    [System.NonSerialized]
     public float distance;
+    [System.NonSerialized]
     public int range;
 
     Vector3 firstpos;
+    [System.NonSerialized]
     public bool isOver;
+    [System.NonSerialized]
     public int gage;
 
 	// Use this for initialization

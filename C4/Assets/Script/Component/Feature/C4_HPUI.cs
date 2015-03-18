@@ -3,10 +3,14 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class C4_HPUI : MonoBehaviour {
-
+    
+    [System.NonSerialized]
     public Image imgHPbar;
+    [System.NonSerialized]
     public C4_BoatFeature boatFeature;
+    [System.NonSerialized]
     public int hp;
+    [System.NonSerialized]
     public int fullHP;
 
 	// Use this for initialization
