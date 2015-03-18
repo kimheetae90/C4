@@ -41,7 +41,7 @@ public class C4_Move : MonoBehaviour {
         if (isMove)
         {
             float distance = Vector3.Distance(toMove, transform.position);
-            if (distance > moveSpeed*0.2f)
+            if (distance > moveSpeed*0.02f)
             {
                 transform.Translate((toMove - transform.position).normalized * moveSpeed * Time.deltaTime);
                 StartCoroutine("move");
