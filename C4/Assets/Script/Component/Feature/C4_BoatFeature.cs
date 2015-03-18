@@ -20,16 +20,15 @@ public class C4_BoatFeature : MonoBehaviour
     public int needGageStackToShot;
     public int moveRange;
 
-    public Image imgHPbar;
-    public Image imgGageWhite;
-    public Image imgGageYellow;
+   
+  
 
     //[System.NonSerialized]
     public int stackCount;
     [System.NonSerialized]
     public int hp;
     public int gage;
-    int fullGage;
+    public int fullGage;
     
     void Start()
     {
@@ -44,9 +43,8 @@ public class C4_BoatFeature : MonoBehaviour
         gageUp();
         stackCount = gage / oneGageStack;
 
-        imgGageWhite.fillAmount = (float)gage / fullGage;
-        imgGageYellow.fillAmount = (float)stackCount / numOfStack;
-        imgHPbar.fillAmount = (float)hp / fullHP;
+       
+        
     }   
 
     /* 행동을 하였을 때 gageStack만큼 gage를 감소시키는 함수 */
