@@ -53,7 +53,7 @@ public class C4_PlayManager : MonoBehaviour, C4_IntInitInstance{
     public GameObject selectedBoat;
     C4_Player character;
 
-    bool isAim;
+    public bool isAim;
 
     void Start()
     {
