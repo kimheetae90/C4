@@ -153,14 +153,14 @@ public class C4_EnemyManager : MonoBehaviour
 
     void selectBoat()
     {
-        if (C4_ObjectManager.Instance.getSubObjectManager(ObjectID.Type.Enemy).objectList.Count > 0)
+        if (C4_ObjectManager.Instance.getSubObjectManager(GameObjectType.Enemy).objectList.Count > 0)
         {
             selectNum++;
-            if (selectNum >= C4_ObjectManager.Instance.getSubObjectManager(ObjectID.Type.Enemy).objectList.Count)
+            if (selectNum >= C4_ObjectManager.Instance.getSubObjectManager(GameObjectType.Enemy).objectList.Count)
             {
                 selectNum = 0;
             }
-            selectedBoat = C4_ObjectManager.Instance.getSubObjectManager(ObjectID.Type.Enemy).objectList[selectNum].GetComponent<C4_Enemy>();
+            selectedBoat = C4_ObjectManager.Instance.getSubObjectManager(GameObjectType.Enemy).objectList[selectNum].GetComponent<C4_Enemy>();
             behavior = selectedBoat.GetComponent<C4_StartAIBehave>();
             isSelected = true;
         }

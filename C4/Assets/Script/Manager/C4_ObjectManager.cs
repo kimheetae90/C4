@@ -48,7 +48,7 @@ public class C4_ObjectManager : C4_BaseObjectManager, C4_IntInitInstance
     public Queue<int> deletedObjectCode;
 
     [System.NonSerialized]
-    public Dictionary<ObjectID.Type, C4_BaseObjectManager> objectManagerList;
+    public Dictionary<GameObjectType, C4_BaseObjectManager> objectManagerList;
 
     C4_BaseObjectManager objectManager;
     C4_Object removeReservedObject;
@@ -56,12 +56,12 @@ public class C4_ObjectManager : C4_BaseObjectManager, C4_IntInitInstance
     {
         base.Awake();
         removeReservedObjectQueue = new Queue<C4_Object>();
-        objectManagerList = new Dictionary<ObjectID.Type, C4_BaseObjectManager>();
+        objectManagerList = new Dictionary<GameObjectType, C4_BaseObjectManager>();
         currentObjectCode = 0;
         C4_PlayerObjectManager.Instance.initInstance();
         C4_EnemyObjectManager.Instance.initInstance();
-        objectManagerList.Add(ObjectID.Type.Player, C4_PlayerObjectManager.Instance);
-        objectManagerList.Add(ObjectID.Type.Enemy, C4_EnemyObjectManager.Instance);
+        objectManagerList.Add(GameObjectType.Player, C4_PlayerObjectManager.Instance);
+        objectManagerList.Add(GameObjectType.Enemy, C4_EnemyObjectManager.Instance);
     }
 
     void LateUpdate()
@@ -97,7 +97,7 @@ public class C4_ObjectManager : C4_BaseObjectManager, C4_IntInitInstance
         removeReservedObjectQueue.Enqueue(removeObject);
     }
 
-    public C4_BaseObjectManager getSubObjectManager(ObjectID.Type type)
+    public C4_BaseObjectManager getSubObjectManager(GameObjectType type)
     {
         objectManagerList.TryGetValue(type, out objectManager);
         return objectManager;

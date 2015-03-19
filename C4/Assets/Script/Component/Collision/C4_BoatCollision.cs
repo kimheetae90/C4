@@ -15,11 +15,11 @@ public class C4_BoatCollision : MonoBehaviour {
 
         switch(collisionObject.objectID.type)
         {
-            case ObjectID.Type.Player:
-            case ObjectID.Type.Enemy:
+            case GameObjectType.Player:
+            case GameObjectType.Enemy:
                 moveScript.isMove = false;
                 break;
-            case ObjectID.Type.Missile:
+            case GameObjectType.Missile:
                 C4_MissileFeature missileFeature = collisionObject.GetComponent<C4_MissileFeature>();
                 character.damaged(missileFeature.power);
                 break;

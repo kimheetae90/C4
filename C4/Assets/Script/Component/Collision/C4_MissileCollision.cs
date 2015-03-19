@@ -12,8 +12,8 @@ public class C4_MissileCollision : MonoBehaviour {
         missileMove = GetComponent<C4_MissileMove>();
         switch (collisionObject.objectID.type)
         {
-            case ObjectID.Type.Player:
-            case ObjectID.Type.Enemy:
+            case GameObjectType.Player:
+            case GameObjectType.Enemy:
                 missileMove.isMove = false;
                 break;
         }

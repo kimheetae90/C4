@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class BehaviorNodeFindObjectPrecondition : BehaviorNodeBasePrecondition 
 {
-    ObjectID.Type type;
+    GameObjectType type;
     float radious;
 
     public BehaviorNodeFindObjectPrecondition(List<string> listParams)

@@ -20,7 +20,7 @@ public class C4_EnemyMaker : MonoBehaviour {
         initObject = Instantiate(enemyGameObejct, transform.position, transform.rotation) as GameObject;
         enemy = initObject.GetComponent<C4_Object>();
         enemy.objectID.id = C4_ObjectManager.Instance.currentObjectCode++;
-        enemy.objectID.type = ObjectID.Type.Enemy;
+        enemy.objectID.type = GameObjectType.Enemy;
         C4_ObjectManager.Instance.addObjectToAll(enemy);
     }
 }

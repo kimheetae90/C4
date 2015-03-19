@@ -60,7 +60,7 @@ public class C4_InputManager : MonoBehaviour, C4_IntInitInstance {
         if (isClick)
         {
             onClick();
-            if (inputData.clickObjectID.type == ObjectID.Type.Water)
+            if (inputData.clickObjectID.type == GameObjectType.Water)
             {
                 camObject.cameraMove(inputData);
             }
@@ -98,7 +98,7 @@ public class C4_InputManager : MonoBehaviour, C4_IntInitInstance {
         inputData.dragPosition.y = 0;
         inputData.keyState = InputData.KeyState.Down;
 
-        if (inputData.clickObjectID.type == ObjectID.Type.Player)
+        if (inputData.clickObjectID.type == GameObjectType.Player)
         {
             C4_PlayManager.Instance.setBoatScript(hit.collider.transform.root.gameObject);
         }

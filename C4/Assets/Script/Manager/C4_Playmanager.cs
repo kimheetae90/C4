@@ -59,7 +59,7 @@ public class C4_PlayManager : MonoBehaviour, C4_IntInitInstance{
     {
         ourBoat = FindObjectOfType(typeof(C4_Player)) as C4_Player;
         ourBoat.objectID.id = C4_ObjectManager.Instance.currentObjectCode++;
-        ourBoat.objectID.type = ObjectID.Type.Player;
+        ourBoat.objectID.type = GameObjectType.Player;
         C4_ObjectManager.Instance.addObjectToAll(ourBoat);
     }
 
@@ -123,7 +123,7 @@ public class C4_PlayManager : MonoBehaviour, C4_IntInitInstance{
                 }
                 else
                 {
-                    if ((inputData.clickObjectID.type == ObjectID.Type.Player) && (inputData.clickObjectID.id != inputData.dragObjectID.id))
+                    if ((inputData.clickObjectID.type == GameObjectType.Player) && (inputData.clickObjectID.id != inputData.dragObjectID.id))
                     {
                         isAim = true;
                     }
@@ -137,7 +137,7 @@ public class C4_PlayManager : MonoBehaviour, C4_IntInitInstance{
                 }
                 else
                 {
-                    if (inputData.clickObjectID.type == ObjectID.Type.Water)
+                    if (inputData.clickObjectID.type == GameObjectType.Water)
                     {
                         if(inputData.clickPosition == inputData.dragPosition)
                         {
