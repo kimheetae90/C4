@@ -69,6 +69,19 @@ public class C4_ObjectManager : C4_BaseObjectManager, C4_IntInitInstance
         clearRemoveReservedObjectQueue();
     }
 
+    void clearRemoveReservedObjectQueue()
+    {
+        while (removeReservedObjectQueue.Count > 0)
+        {
+            Debug.Log(removeReservedObjectQueue.Count);
+            removeReservedObject = removeReservedObjectQueue.Dequeue();
+            Destroy(removeReservedObject.gameObject);
+            objectManagerList.TryGetValue(removeReservedObject.objectID.type, out objectManager);
+            objectManager.removeObject(removeReservedObject);
+            removeObject(removeReservedObject);
+        }
+    }
+
     public void addObjectToAll(C4_Object inputObject)
     {
         addObject(inputObject);
@@ -78,18 +91,7 @@ public class C4_ObjectManager : C4_BaseObjectManager, C4_IntInitInstance
             objectManager.addObject(inputObject);
         }
     }
-
-    void clearRemoveReservedObjectQueue()
-    {
-        if (removeReservedObjectQueue.Count > 0)
-        {
-            removeReservedObject = removeReservedObjectQueue.Dequeue();
-            objectManagerList.TryGetValue(removeReservedObject.objectID.type, out objectManager);
-            objectManager.removeObject(removeReservedObject);
-            removeObject(removeReservedObject);
-        }
-    }
-
+    
     public void reserveRemoveObject(C4_Object removeObject)
     {
         removeReservedObjectQueue.Enqueue(removeObject);

@@ -100,6 +100,7 @@ GameObject:
   - 114: {fileID: 115797978}
   - 65: {fileID: 115797979}
   - 54: {fileID: 115797980}
+  - 114: {fileID: 115797981}
   m_Layer: 0
   m_Name: Missile
   m_TagString: Untagged
@@ -131,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afeaac19868de6e478241618f2eb9715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  power: 30
+  power: 100
   moveSpeed: 70
 --- !u!114 &115797977
 MonoBehaviour:
@@ -183,6 +184,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &115797981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 115797974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c0124579343fc84a8cf1a9a3ecdc372, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &247783259
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,6 +663,7 @@ MonoBehaviour:
   needGageStackToMove: 1
   needGageStackToShot: 2
   moveRange: 10
+  hp: 0
 --- !u!65 &680387834
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -959,6 +972,7 @@ MonoBehaviour:
   needGageStackToMove: 1
   needGageStackToShot: 2
   moveRange: 10
+  hp: 0
 --- !u!114 &1669099851
 MonoBehaviour:
   m_ObjectHideFlags: 0
