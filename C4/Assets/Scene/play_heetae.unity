@@ -98,6 +98,8 @@ GameObject:
   - 114: {fileID: 115797977}
   - 114: {fileID: 115797976}
   - 114: {fileID: 115797978}
+  - 65: {fileID: 115797979}
+  - 54: {fileID: 115797980}
   m_Layer: 0
   m_Name: Missile
   m_TagString: Untagged
@@ -154,6 +156,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c6856bf2b05daa488d4cd1cfbe0704c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &115797979
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 115797974}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 2.17000008}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &115797980
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 115797974}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &247783259
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +293,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 439331810}
   - 33: {fileID: 439331809}
-  - 136: {fileID: 439331808}
   - 23: {fileID: 439331807}
   m_Layer: 0
   m_Name: Capsule
@@ -297,19 +325,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!136 &439331808
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 439331806}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: .5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &439331809
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -420,7 +435,6 @@ GameObject:
   - 4: {fileID: 569126110}
   - 33: {fileID: 569126109}
   - 23: {fileID: 569126107}
-  - 65: {fileID: 569126111}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -473,18 +487,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 722548752}
   m_RootOrder: 0
---- !u!65 &569126111
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 569126106}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.00000012, y: 1.99999976, z: 1.00000012}
-  m_Center: {x: 5.96046448e-08, y: 0, z: -8.9406953e-08}
 --- !u!1 &639840737
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,6 +560,9 @@ GameObject:
   - 114: {fileID: 680387831}
   - 114: {fileID: 680387830}
   - 114: {fileID: 680387829}
+  - 114: {fileID: 680387836}
+  - 54: {fileID: 680387835}
+  - 65: {fileID: 680387834}
   m_Layer: 0
   m_Name: enemy
   m_TagString: Untagged
@@ -646,6 +651,44 @@ MonoBehaviour:
   needGageStackToMove: 1
   needGageStackToShot: 2
   moveRange: 10
+--- !u!65 &680387834
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 680387827}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2, z: 3.5}
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!54 &680387835
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 680387827}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &680387836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 680387827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9d1e39925fe04748b6646856e15f4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &722548751
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,6 +894,9 @@ GameObject:
   - 114: {fileID: 1669099849}
   - 114: {fileID: 1669099848}
   - 114: {fileID: 1669099851}
+  - 114: {fileID: 1669099852}
+  - 65: {fileID: 1669099854}
+  - 54: {fileID: 1669099853}
   m_Layer: 0
   m_Name: Boat
   m_TagString: Untagged
@@ -925,6 +971,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toMove: {x: 0, y: 0, z: 0}
+--- !u!114 &1669099852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1669099846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9d1e39925fe04748b6646856e15f4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &1669099853
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1669099846}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1669099854
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1669099846}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: -1.97000003, y: 1.42999995, z: 3.5}
+  m_Center: {x: 0, y: 1.01999998, z: 0}
 --- !u!1 &1681437524
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,7 +1102,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1888459814}
   - 33: {fileID: 1888459817}
-  - 136: {fileID: 1888459816}
   - 23: {fileID: 1888459815}
   m_Layer: 0
   m_Name: Capsule
@@ -1063,19 +1146,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!136 &1888459816
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1888459813}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: .5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1888459817
 MeshFilter:
   m_ObjectHideFlags: 0

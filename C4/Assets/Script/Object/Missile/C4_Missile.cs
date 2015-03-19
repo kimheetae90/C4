@@ -11,7 +11,7 @@ public class C4_Missile : C4_Object {
     void Start()
     {
         objectID.id = C4_ObjectManager.Instance.currentObjectCode++;
-        objectID.type = ObjectID.Type.Enemy;
+        objectID.type = ObjectID.Type.Missile;
         gameObject.SetActive(false);
         moveScript = GetComponent<C4_MissileMove>();
     }
