@@ -214,6 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3a6be0419362147999b1dbe0abef01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toMove: {x: 0, y: 0, z: 0}
 --- !u!1 &287786460
 GameObject:
   m_ObjectHideFlags: 0
@@ -1118,6 +1119,7 @@ MonoBehaviour:
   needGageStackToMove: 1
   needGageStackToShot: 2
   moveRange: 10
+  hp: 0
 --- !u!114 &1669099851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1129,6 +1131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29d6a95b6693f44ea7df4796114bf0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toMove: {x: 0, y: 0, z: 0}
 --- !u!114 &1669099852
 MonoBehaviour:
   m_ObjectHideFlags: 0
