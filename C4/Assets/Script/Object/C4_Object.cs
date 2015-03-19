@@ -15,4 +15,9 @@ public class C4_Object : MonoBehaviour {
     {
         return true;
     }
+
+    public bool isType(ObjectID.Type type)
+    {
+        return objectID.type == type;
+    }
 }

@@ -6,10 +6,15 @@ using System.IO;
 public class BehaviorImportTool : EditorWindow
 {
 	// Use this for initialization
-    public List<string> listXmlFile = new List<string>();
-	string[] listFilePath = {""};
+    public List<string> listGXmlFile = new List<string>();
+    public List<string> listFilteredXmlFile = new List<string>();
+
+	string[] listRawFilePath = {""};
+    string[] listFilteredFilePath = { "" };
+
     bool needUpdateRawDataPath = true;
-    int selectedIndex = 0;
+    int selectedRawFileIndex = 0;
+    int selectedFilterdFileIndex = 0;
 
     public static string basePathToLoad = Application.dataPath + "/Data/AI/Raw";
 	public static string basePathToSave = Application.dataPath + "/Data/AI/";
@@ -36,6 +41,7 @@ public class BehaviorImportTool : EditorWindow
         if (needUpdateRawDataPath)
         {
             reloadRawDataDirectory();
+            reloadFilteredDataDirectory();
             needUpdateRawDataPath = false;
         }
     }
@@ -47,46 +53,93 @@ public class BehaviorImportTool : EditorWindow
 
     private void reloadRawDataDirectory()
     {
-        listXmlFile.Clear();
+        listGXmlFile.Clear();
         var info = new DirectoryInfo(basePathToLoad);
         var fileInfo = info.GetFiles();
         foreach (FileInfo file in fileInfo)
         {
             if (file.Extension == ".xgml")
             {
-                listXmlFile.Add(file.FullName);
+                listGXmlFile.Add(file.FullName);
             }
         }
 
-		listFilePath = listXmlFile.ToArray();
+		listRawFilePath = listGXmlFile.ToArray();
+    }
+
+    private void reloadFilteredDataDirectory()
+    {
+        listFilteredXmlFile.Clear();
+        var info = new DirectoryInfo(basePathToSave);
+        var fileInfo = info.GetFiles();
+        foreach (FileInfo file in fileInfo)
+        {
+            if (file.Extension == ".xml")
+            {
+                listFilteredXmlFile.Add(file.FullName);
+            }
+        }
+
+        listFilteredFilePath = listFilteredXmlFile.ToArray();
     }
 
     void OnGUI()
     {
         showParserUI();
+        showTestUI();
     }
 
     void showParserUI()
     {
-        GUILayout.Label("GXML 파일을 로드해주세요", EditorStyles.boldLabel);
-		selectedIndex = EditorGUILayout.Popup(selectedIndex,listFilePath, EditorStyles.popup);
+        GUILayout.Label("GXML Import", EditorStyles.boldLabel);
+        GUILayout.Label("  GXML 파일을 로드해주세요", EditorStyles.boldLabel);
+        selectedRawFileIndex = EditorGUILayout.Popup(selectedRawFileIndex, listRawFilePath, EditorStyles.popup);
 
         if (GUILayout.Button("Load"))
         {
             procLoadBtn();
         }
-
-        if (GUILayout.Button("test"))
-        {
-            builder.buildBehaviorNode(Application.dataPath + "/Data/AI/test.xml");
-        }
     }
 
     void procLoadBtn()
     {
-        if (listXmlFile.Count > 0)
+        if (listGXmlFile.Count > 0)
         {
-			parseRawDataAndSaveFilteredData();
+            parseRawDataAndSaveFilteredData();
+        }
+        else
+        {
+            EditorUtility.DisplayDialog("파일 읽기 실패",
+                  "읽을 파일이 존재하지 않습니다.", "OK");
+        }
+    }
+
+    void showTestUI()
+    {
+        GUILayout.Label("TEST CASE", EditorStyles.boldLabel);
+        GUILayout.Label("  XML 파일을 로드해주세요", EditorStyles.boldLabel);
+        selectedFilterdFileIndex = EditorGUILayout.Popup(selectedFilterdFileIndex, listFilteredFilePath, EditorStyles.popup);
+
+        if (GUILayout.Button("Test"))
+        {
+            procTestBtn();
+        }
+    }
+
+    void procTestBtn()
+    {
+        if (listGXmlFile.Count > 0)
+        {
+            try
+            {
+                builder.buildBehaviorNode(listFilteredFilePath[selectedFilterdFileIndex]);
+            }
+            catch(BehaviorNodeException e)
+            {
+                EditorUtility.DisplayDialog("파일 읽기 실패",
+                                        e.Message, "OK");
+                return;
+            }
         }
         else
         {
@@ -121,9 +174,9 @@ public class BehaviorImportTool : EditorWindow
 
 	private void getTargetAndSavePath(out string targetPath, out string savePath)
 	{
-		if(selectedIndex < listXmlFile.Count && listXmlFile.Count != 0)
+		if(selectedRawFileIndex < listGXmlFile.Count && listGXmlFile.Count != 0)
 		{
-			targetPath = listXmlFile[selectedIndex];
+			targetPath = listGXmlFile[selectedRawFileIndex];
 			savePath = basePathToSave + Path.GetFileNameWithoutExtension(targetPath) + ".xml";
 		}
 		else
