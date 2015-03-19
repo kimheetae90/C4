@@ -7,8 +7,8 @@ public class BehaviorNodeFindObjectPrecondition : BehaviorNodeBasePrecondition
     GameObjectType type;
     float radious;
 
-    public BehaviorNodeFindObjectPrecondition(List<string> listParams)
-        : base(listParams)
+    public BehaviorNodeFindObjectPrecondition(List<string> _listParams)
+        : base(_listParams)
     {
         
         if(listParams.Count < 2)
@@ -22,12 +22,22 @@ public class BehaviorNodeFindObjectPrecondition : BehaviorNodeBasePrecondition
 
     override public bool traversalNode()
     {
-        //targetObject.GetComponent<
+        C4_FindObjectInRadiousCollision component = targetObject.GetComponent<C4_FindObjectInRadiousCollision>();
+
+        if (component == null) return false;
+
+        List<C4_Object> list = component.FindTargetObject(radious, type);
+
+        if (list != null && list.Count > 0)
+        {
+            return true;
+        }
+
         return false;
     }
 
     override public object Clone()
     {
-        return null;
+        return new BehaviorNodeFindObjectPrecondition(listParams);
     }
 }

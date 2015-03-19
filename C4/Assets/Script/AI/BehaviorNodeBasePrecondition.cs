@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class BehaviorNodeBasePrecondition : BehaviorNode
 {
-    List<string> listParams;
+    public List<string> listParams;
 
     public BehaviorNodeBasePrecondition(List<string> listParams)
         : base()
