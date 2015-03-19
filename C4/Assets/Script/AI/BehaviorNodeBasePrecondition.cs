@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class BehaviorNodeBasePrecondition : BehaviorNode
 {
-    string param;
+    List<string> listParams;
 
-    public BehaviorNodeBasePrecondition(GameObject targetObject, string param)
-        : base(targetObject)
+    public BehaviorNodeBasePrecondition(List<string> listParams)
+        : base()
     {
-        this.param = param;
+        this.listParams = listParams;
     }
 
     override public bool traversalNode()
@@ -18,6 +18,6 @@ public class BehaviorNodeBasePrecondition : BehaviorNode
 
     override public object Clone()
     {
-        return new BehaviorNodeBasePrecondition(targetObject,param);
+        return new BehaviorNodeBasePrecondition(listParams);
     }
 }

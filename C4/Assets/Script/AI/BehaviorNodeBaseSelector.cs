@@ -4,19 +4,18 @@ using System.Collections.Generic;
 public class BehaviorNodeBaseSelector : BehaviorNode
 {
     List<int> listProperlity;
-    string param;
+    List<string> listParams;
 
-    public BehaviorNodeBaseSelector(GameObject targetObject, string param)
-        : base(targetObject)
+    public BehaviorNodeBaseSelector(List<string> listParams)
     {
         listProperlity = new List<int>();
-        this.param = param;
-        buildProperbility(param);
+        this.listParams = listParams;
+        buildProperbility();
     }
 
     override public bool traversalNode()
     {
-        int count = listChild.Count;
+        int count = listChilds.Count;
 
         if (count <= 0 && count != listProperlity.Count)
         {
@@ -25,19 +24,17 @@ public class BehaviorNodeBaseSelector : BehaviorNode
 
         int r = Random.Range(0, count - 1);
 
-        return listChild[r].traversalNode();
+        return listChilds[r].traversalNode();
     }
 
     override public object Clone()
     {
-        return new BehaviorNodeBaseSelector(targetObject, param);
+        return new BehaviorNodeBaseSelector(listParams);
     }
 
-    private void buildProperbility(string param)
+    private void buildProperbility()
     {
-        string[] properlities = param.Split('@');
-
-        foreach(var properlity in properlities)
+        foreach (var properlity in listParams)
         {
             int iProperlity = 0;
             if (System.Int32.TryParse(properlity, out iProperlity))

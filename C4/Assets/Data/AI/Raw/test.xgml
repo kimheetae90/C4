@@ -8,7 +8,7 @@
 		<attribute key="directed" type="int">1</attribute>
 		<section name="node">
 			<attribute key="id" type="int">0</attribute>
-			<attribute key="label" type="String">@Selector</attribute>
+			<attribute key="label" type="String">BaseSelector@test</attribute>
 			<section name="graphics">
 				<attribute key="x" type="double">857.0</attribute>
 				<attribute key="y" type="double">245.0</attribute>
@@ -19,15 +19,15 @@
 				<attribute key="outline" type="String">#000000</attribute>
 			</section>
 			<section name="LabelGraphics">
-				<attribute key="text" type="String">@Selector</attribute>
+				<attribute key="text" type="String">BaseSelector@test</attribute>
 				<attribute key="fontSize" type="int">12</attribute>
 				<attribute key="fontName" type="String">Dialog</attribute>
-				<attribute key="model"/>
+				<attribute key="anchor" type="String">c</attribute>
 			</section>
 		</section>
 		<section name="node">
 			<attribute key="id" type="int">1</attribute>
-			<attribute key="label" type="String">@Sequence</attribute>
+			<attribute key="label" type="String">BaseSequence@test</attribute>
 			<section name="graphics">
 				<attribute key="x" type="double">718.5</attribute>
 				<attribute key="y" type="double">110.0</attribute>
@@ -38,15 +38,15 @@
 				<attribute key="outline" type="String">#000000</attribute>
 			</section>
 			<section name="LabelGraphics">
-				<attribute key="text" type="String">@Sequence</attribute>
+				<attribute key="text" type="String">BaseSequence@test</attribute>
 				<attribute key="fontSize" type="int">12</attribute>
 				<attribute key="fontName" type="String">Dialog</attribute>
-				<attribute key="model"/>
+				<attribute key="anchor" type="String">c</attribute>
 			</section>
 		</section>
 		<section name="node">
 			<attribute key="id" type="int">2</attribute>
-			<attribute key="label" type="String">@Precondition</attribute>
+			<attribute key="label" type="String">BasePrecondition@test</attribute>
 			<section name="graphics">
 				<attribute key="x" type="double">596.5</attribute>
 				<attribute key="y" type="double">251.5</attribute>
@@ -57,15 +57,15 @@
 				<attribute key="outline" type="String">#000000</attribute>
 			</section>
 			<section name="LabelGraphics">
-				<attribute key="text" type="String">@Precondition</attribute>
+				<attribute key="text" type="String">BasePrecondition@test</attribute>
 				<attribute key="fontSize" type="int">12</attribute>
 				<attribute key="fontName" type="String">Dialog</attribute>
-				<attribute key="model"/>
+				<attribute key="anchor" type="String">c</attribute>
 			</section>
 		</section>
 		<section name="node">
 			<attribute key="id" type="int">3</attribute>
-			<attribute key="label" type="String">@Sequence</attribute>
+			<attribute key="label" type="String">BaseSequence@test</attribute>
 			<section name="graphics">
 				<attribute key="x" type="double">755.0</attribute>
 				<attribute key="y" type="double">391.0</attribute>
@@ -76,15 +76,15 @@
 				<attribute key="outline" type="String">#000000</attribute>
 			</section>
 			<section name="LabelGraphics">
-				<attribute key="text" type="String">@Sequence</attribute>
+				<attribute key="text" type="String">BaseSequence@test</attribute>
 				<attribute key="fontSize" type="int">12</attribute>
 				<attribute key="fontName" type="String">Dialog</attribute>
-				<attribute key="model"/>
+				<attribute key="anchor" type="String">c</attribute>
 			</section>
 		</section>
 		<section name="node">
 			<attribute key="id" type="int">4</attribute>
-			<attribute key="label" type="String">@Action</attribute>
+			<attribute key="label" type="String">BaseAction@test</attribute>
 			<section name="graphics">
 				<attribute key="x" type="double">755.0</attribute>
 				<attribute key="y" type="double">525.5</attribute>
@@ -95,15 +95,15 @@
 				<attribute key="outline" type="String">#000000</attribute>
 			</section>
 			<section name="LabelGraphics">
-				<attribute key="text" type="String">@Action</attribute>
+				<attribute key="text" type="String">BaseAction@test</attribute>
 				<attribute key="fontSize" type="int">12</attribute>
 				<attribute key="fontName" type="String">Dialog</attribute>
-				<attribute key="model"/>
+				<attribute key="anchor" type="String">c</attribute>
 			</section>
 		</section>
 		<section name="node">
 			<attribute key="id" type="int">5</attribute>
-			<attribute key="label" type="String">@Precondition</attribute>
+			<attribute key="label" type="String">BasePrecondition@test</attribute>
 			<section name="graphics">
 				<attribute key="x" type="double">616.5</attribute>
 				<attribute key="y" type="double">525.5</attribute>
@@ -114,10 +114,10 @@
 				<attribute key="outline" type="String">#000000</attribute>
 			</section>
 			<section name="LabelGraphics">
-				<attribute key="text" type="String">@Precondition</attribute>
+				<attribute key="text" type="String">BasePrecondition@test</attribute>
 				<attribute key="fontSize" type="int">12</attribute>
 				<attribute key="fontName" type="String">Dialog</attribute>
-				<attribute key="model"/>
+				<attribute key="anchor" type="String">c</attribute>
 			</section>
 		</section>
 		<section name="edge">

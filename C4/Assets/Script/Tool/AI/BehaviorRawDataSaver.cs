@@ -77,10 +77,12 @@ public class BehaviorRawDataSaver {
 		XmlAttribute type = doc.CreateAttribute("type");
 		type.Value = data.type;
 
-		xmlNode.InnerText = data.param;
+        XmlAttribute value = doc.CreateAttribute("value");
+        value.Value = data.param;
 
 		xmlNode.Attributes.Append(id);
 		xmlNode.Attributes.Append(type);
+        xmlNode.Attributes.Append(value);
 
 		xmlParent.AppendChild(xmlNode);
 
