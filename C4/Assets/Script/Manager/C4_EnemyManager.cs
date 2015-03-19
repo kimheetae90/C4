@@ -81,10 +81,10 @@ public class C4_EnemyManager : MonoBehaviour
                 }
                 else
                 {
-                    enemySelectArrow.SetActive(true);
-                    selectArrow.setSelect(selectedBoat);
                     if (canActing)
                     {
+                        enemySelectArrow.SetActive(true);
+                        selectArrow.setSelect(selectedBoat);
                         isActing = true;
                         startBehave();
                     }
