@@ -11,22 +11,20 @@ public class C4_ArrowUI : MonoBehaviour {
     public bool showUI;
     [System.NonSerialized]
     public GameObject selectedBoat;
+    [System.NonSerialized]
+    public GameObject aimImage;
+
+
     // Use this for initialization
     void Start()
     {
         showUI = false;
         boatFeature = transform.GetComponent<C4_BoatFeature>();
+        aimImage = GameObject.Find("Aim");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void checkIsSelected()
     {
-        checkIsSelected();
-    }
-
-    void checkIsSelected()
-    {
-
         selectedBoat = C4_PlayManager.Instance.selectedBoat.gameObject;
         if (selectedBoat != null)
         {
@@ -36,14 +34,15 @@ public class C4_ArrowUI : MonoBehaviour {
         else
         {
             showUI = false;
-            hideAimUI();
         }
     }
 
-    void showAimUI(Vector3 clickPosition)
+    public void showAimUI(Vector3 clickPosition)
     {
+        checkIsSelected();
         if (showUI)
         {
+            aimImage.SetActive(true);
             float distance = Vector3.Distance(selectedBoat.transform.position, clickPosition);
             Vector3 aimDirection = (selectedBoat.transform.position - clickPosition).normalized;
             aimDirection.y = 0;
@@ -51,14 +50,16 @@ public class C4_ArrowUI : MonoBehaviour {
             aimUI.transform.position = selectedBoat.transform.position;
             aimUI.transform.rotation = Quaternion.LookRotation(-aimDirection);
             aimUI.transform.Rotate(Vector3.right, 90);
-            aimUI.transform.localScale = new Vector3(1, distance, 1);
-
-            aimUI.fillAmount = 1;
+            aimUI.transform.localScale = new Vector3(1, distance/2, 1);
+            
         }
+        else
+            hideAimUI();
+        
     }
 
-    void hideAimUI()
+    public void hideAimUI()
     {
-        aimUI.fillAmount = 0;
+        aimImage.SetActive(false);
     }
 }
