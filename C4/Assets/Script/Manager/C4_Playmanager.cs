@@ -52,6 +52,8 @@ public class C4_PlayManager : MonoBehaviour, C4_IntInitInstance{
     [System.NonSerialized]
     public GameObject selectedBoat;
     C4_Player character;
+    public GameObject playerSelectArrow;
+    public C4_SelectArrow selectArrow;
 
     public bool isAim;
 
@@ -61,6 +63,9 @@ public class C4_PlayManager : MonoBehaviour, C4_IntInitInstance{
         ourBoat.objectID.id = C4_ObjectManager.Instance.currentObjectCode++;
         ourBoat.objectID.type = ObjectID.Type.Player;
         C4_ObjectManager.Instance.addObjectToAll(ourBoat);
+        playerSelectArrow = GameObject.Find("PlayerSelectArrow");
+        selectArrow = FindObjectOfType(typeof(C4_SelectArrow)) as C4_SelectArrow;
+        
     }
 
 
@@ -95,6 +100,9 @@ public class C4_PlayManager : MonoBehaviour, C4_IntInitInstance{
     {
         selectedBoat = clickBoat;
         character = selectedBoat.GetComponent<C4_Player>();
+        playerSelectArrow.SetActive(true);
+        selectArrow.PlayerArrowMove();
+        
     }
 
     /* 선택 정보를 초기화 */
@@ -103,6 +111,8 @@ public class C4_PlayManager : MonoBehaviour, C4_IntInitInstance{
         isAim = false;
         character = null;
         selectedBoat = null;
+        
+        playerSelectArrow.SetActive(false);
     }
 
     /* InputManager로부터 전해받은 InputData를 분석하고 행동을 명령하는 함수 */
