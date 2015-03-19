@@ -24,7 +24,7 @@ public class C4_MoveUI : MonoBehaviour {
 
     void checkIsSelected()
     {
-        selectedBoat = C4_PlayManager.Instance.selectedBoat;
+        selectedBoat = C4_PlayManager.Instance.selectedBoat.gameObject;
 
         if (selectedBoat != null)
             showUI = true;

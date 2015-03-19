@@ -27,7 +27,7 @@ public class C4_ArrowUI : MonoBehaviour {
     void checkIsSelected()
     {
 
-        selectedBoat = C4_PlayManager.Instance.selectedBoat;
+        selectedBoat = C4_PlayManager.Instance.selectedBoat.gameObject;
         if (selectedBoat != null)
         {
             if (C4_PlayManager.Instance.isAim)

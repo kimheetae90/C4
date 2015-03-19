@@ -43,7 +43,7 @@ public class C4_EnemyManager : MonoBehaviour
 
     bool isSelected;
     int selectNum;
-    C4_Enemy selectedBoat;
+    public C4_Enemy selectedBoat;
     C4_StartAIBehave behavior;
 
     float tempValue;
@@ -51,6 +51,8 @@ public class C4_EnemyManager : MonoBehaviour
     public Action action;
     bool isActing;
     bool canActing;
+    public GameObject enemySelectArrow;
+    public C4_SelectArrow selectArrow;
 
     void Start()
     {
@@ -59,6 +61,8 @@ public class C4_EnemyManager : MonoBehaviour
         action = Action.NULL;
         isActing = false;
         canActing = false;
+        enemySelectArrow = GameObject.Find("EnemySelectArrow");
+        selectArrow = enemySelectArrow.GetComponent<C4_SelectArrow>();
     }
 
     void Update()
@@ -77,6 +81,8 @@ public class C4_EnemyManager : MonoBehaviour
                 }
                 else
                 {
+                    enemySelectArrow.SetActive(true);
+                    selectArrow.setSelect(selectedBoat);
                     if (canActing)
                     {
                         isActing = true;
@@ -131,11 +137,8 @@ public class C4_EnemyManager : MonoBehaviour
         behavior = null;
         isActing = false;
         canActing = false;
+        enemySelectArrow.SetActive(false);
         
-    }
-
-    public void showSelect()
-    { 
     }
 
     void chooseAction()
@@ -167,6 +170,7 @@ public class C4_EnemyManager : MonoBehaviour
         else
         {
             isSelected = false;
+            
         }
     }
 
