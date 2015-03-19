@@ -83,7 +83,6 @@ public class C4_EnemyManager : MonoBehaviour
                 {
                     if (canActing)
                     {
-                        enemySelectArrow.SetActive(true);
                         selectArrow.setSelect(selectedBoat);
                         isActing = true;
                         startBehave();
@@ -137,8 +136,7 @@ public class C4_EnemyManager : MonoBehaviour
         behavior = null;
         isActing = false;
         canActing = false;
-        enemySelectArrow.SetActive(false);
-        
+        selectArrow.resetSelect();       
     }
 
     void chooseAction()
@@ -156,6 +154,7 @@ public class C4_EnemyManager : MonoBehaviour
 
     void selectBoat()
     {
+        resetSelect();
         if (C4_ObjectManager.Instance.getSubObjectManager(GameObjectType.Enemy).objectList.Count > 0)
         {
             selectNum++;

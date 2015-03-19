@@ -100,7 +100,6 @@ public class C4_PlayManager : MonoBehaviour, C4_IntInitInstance{
     {
         selectedBoat = clickBoat.GetComponent<C4_Player>();
         character = selectedBoat.GetComponent<C4_Player>();
-        playerSelectArrow.SetActive(true);
         selectArrow.setSelect(selectedBoat);
         
     }
@@ -111,14 +110,12 @@ public class C4_PlayManager : MonoBehaviour, C4_IntInitInstance{
         isAim = false;
         character = null;
         selectedBoat = null;
-        
-        playerSelectArrow.SetActive(false);
+        selectArrow.resetSelect();
     }
 
     /* InputManager로부터 전해받은 InputData를 분석하고 행동을 명령하는 함수 */
     public void dispatchData(InputData inputData)
     {
-
         if (selectedBoat != null)
         {
             if (inputData.keyState == InputData.KeyState.Down)
