@@ -12,17 +12,4 @@ public class C4_MissileFeature : MonoBehaviour
 {
     public int power;
     public int moveSpeed;
-    [System.NonSerialized]
-    public C4_MissileMove moveScript;
-
-    void Start()
-    {
-        moveScript = transform.GetComponent<C4_MissileMove>();
-        gameObject.SetActive(false);
-    }
-
-    public void startMove(Vector3 toMove)
-    {
-        moveScript.startMove(toMove);
-    }
 }

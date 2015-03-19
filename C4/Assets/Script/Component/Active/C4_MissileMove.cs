@@ -17,19 +17,11 @@ public class C4_MissileMove : C4_Move
         missile = transform.gameObject;
     }
 
-    public void startMove(Vector3 click) // 진입하는 함수(Missile에서 호출)
+    public void startMove() // 진입하는 함수(Missile에서 호출)
     {
-        gameObject.SetActive(true);
-        toMove = click;
-        Invoke("setToMove", 0.03f);
-        Invoke("startCheckCoroutine", 0.03f);
-    }
-
-    void startCheckCoroutine()
-    {
+        setMoving();
         StartCoroutine("moveCheck");
     }
-
 
     IEnumerator moveCheck()
     {

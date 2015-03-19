@@ -42,7 +42,7 @@ public class C4_BoatMove : C4_Move {
         range = boatFeature.moveRange;
         firstpos = transform.position;
         toMove = click;
-        setToMove();
+        setMoving();
         boatFeature.gageDown(boatFeature.needGageStackToMove);
         StartCoroutine(distanceCheck());
         StartCoroutine(moveCheck());

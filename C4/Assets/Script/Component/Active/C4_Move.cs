@@ -11,7 +11,7 @@ using System.Collections;
 public class C4_Move : MonoBehaviour {
 
     protected float moveSpeed;
-    protected Vector3 toMove;
+    public Vector3 toMove;
 
     [System.NonSerialized]
     public bool isMove;
@@ -25,7 +25,7 @@ public class C4_Move : MonoBehaviour {
         isCoroutine = false;
 	}
 
-    public void setToMove()
+    public void setMoving()
     {
         isMove = true;
         if (!isCoroutine)
