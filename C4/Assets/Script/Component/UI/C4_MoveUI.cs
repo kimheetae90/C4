@@ -17,6 +17,9 @@ public class C4_MoveUI : MonoBehaviour {
         moveImage[1] = GameObject.Find("MoveRange2");
         moveImage[2] = GameObject.Find("MoveRange3");
         isSelect = false;
+        moveImage[0].SetActive(false);
+        moveImage[1].SetActive(false);
+        moveImage[2].SetActive(false);
     }
 
     void Update()
