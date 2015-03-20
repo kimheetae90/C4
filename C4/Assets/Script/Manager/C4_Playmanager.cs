@@ -106,14 +106,9 @@ public class C4_PlayManager : MonoBehaviour, C4_IntInitInstance{
     public void setBoatScript(GameObject clickBoat)
     {
         selectedBoat = clickBoat.GetComponent<C4_Player>();
-<<<<<<< HEAD
-        character = selectedBoat.GetComponent<C4_Player>();
-        selectArrow.setSelect(selectedBoat);
-=======
         selectedBoatFeature = clickBoat.GetComponent<C4_BoatFeature>();
         selectUIGameObject.SetActive(true);
         selectUI.setSelect(selectedBoat);
->>>>>>> UI/Faker
         
     }
 
@@ -122,18 +117,15 @@ public class C4_PlayManager : MonoBehaviour, C4_IntInitInstance{
     {
         isAim = false;
         selectedBoat = null;
-<<<<<<< HEAD
-        selectArrow.resetSelect();
-=======
         selectUIGameObject.SetActive(false);
         moveUI.hideMoveUI();
         aimUI.hideAimUI();
->>>>>>> UI/Faker
     }
 
     /* InputManager로부터 전해받은 InputData를 분석하고 행동을 명령하는 함수 */
     public void dispatchData(InputData inputData)
     {
+
         if (selectedBoat != null)
         {
             if (inputData.keyState == InputData.KeyState.Down)
