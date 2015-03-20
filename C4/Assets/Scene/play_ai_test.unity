@@ -518,6 +518,7 @@ GameObject:
   - 114: {fileID: 680387831}
   - 114: {fileID: 680387830}
   - 114: {fileID: 680387829}
+  - 114: {fileID: 680387834}
   m_Layer: 0
   m_Name: enemy
   m_TagString: Untagged
@@ -607,6 +608,17 @@ MonoBehaviour:
   needGageStackToShot: 2
   moveRange: 10
   hp: 0
+--- !u!114 &680387834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 680387827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19cf8a1374095a34f9b24da8f654ce4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &722548751
 GameObject:
   m_ObjectHideFlags: 0

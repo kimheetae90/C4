@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public static class BehaviorNodeActionFactory
+public class BehaviorNodeActionFactory : IBehaviorNodeFactory
 {
-    public static IBehaviorNode createNode(string className, List<string> listParam)
+    public IBehaviorNode createNode(string className, List<string> listParam)
     {
         return new BehaviorNodeBaseAction(listParam);
     }

@@ -26,14 +26,7 @@ public class BehaviorNodeFindObjectPrecondition : BehaviorNodeBasePrecondition
 
         if (component == null) return false;
 
-        List<C4_Object> list = component.FindTargetObject(radious, type);
-
-        if (list != null && list.Count > 0)
-        {
-            return true;
-        }
-
-        return false;
+        return component.FindObjectsInRadious(radious, type);
     }
 
     override public object Clone()

@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public static class BehaviorNodePreconditionFactory 
+public class BehaviorNodePreconditionFactory : IBehaviorNodeFactory
 {
-    public static IBehaviorNode createNode(string className, List<string> listParam)
+    public IBehaviorNode createNode(string className, List<string> listParam)
     {
         return new BehaviorNodeBasePrecondition(listParam);
     }

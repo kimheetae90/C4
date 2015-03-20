@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class BehaviorNodeBaseAction : BehaviorNode
 {
-    List<string> listParams;
+    protected List<string> listParams;
 
     public BehaviorNodeBaseAction(List<string> listParams)
         : base()

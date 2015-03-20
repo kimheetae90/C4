@@ -26,4 +26,11 @@ public class C4_BaseObjectManager : MonoBehaviour {
         objectList.Remove(removeObject);
         objectDictionary.Remove(removeObject.objectID);
     }
+
+    public C4_Object getObject(ObjectID objectID)
+    {
+        C4_Object ret = objectList.Find(obj => obj.objectID.id > objectID.id);
+
+        return ret;
+    }
 }
