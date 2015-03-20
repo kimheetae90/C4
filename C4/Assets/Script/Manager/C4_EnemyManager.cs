@@ -52,7 +52,7 @@ public class C4_EnemyManager : MonoBehaviour
     bool isActing;
     bool canActing;
     public GameObject enemySelectArrow;
-    public C4_SelectArrow selectArrow;
+    public C4_SelectUI selectArrow;
 
     void Start()
     {
@@ -62,7 +62,7 @@ public class C4_EnemyManager : MonoBehaviour
         isActing = false;
         canActing = false;
         enemySelectArrow = GameObject.Find("EnemySelectArrow");
-        selectArrow = enemySelectArrow.GetComponent<C4_SelectArrow>();
+        selectArrow = enemySelectArrow.GetComponent<C4_SelectUI>();
     }
 
     void Update()

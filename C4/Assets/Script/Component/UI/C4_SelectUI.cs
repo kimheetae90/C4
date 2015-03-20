@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class C4_SelectArrow : MonoBehaviour {
+public class C4_SelectUI : MonoBehaviour {
 
     public Canvas playerArrow;
     public C4_Character selectObject;
