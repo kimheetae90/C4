@@ -39,7 +39,6 @@ public class C4_StartAIBehave : MonoBehaviour {
             {
                 if (boatFeature.stackCount == 3)
                 {
-                    C4_EnemyManager.Instance.showSelect();
                     Invoke("moveToPlayer", 1f);
                 }
                 else
@@ -59,12 +58,10 @@ public class C4_StartAIBehave : MonoBehaviour {
                 attackPercent = Random.Range(0, 10);
                 if (attackPercent > attackOrMovePercent)
                 {
-                    C4_EnemyManager.Instance.showSelect();
                     Invoke("attackPlayer", 1f);
                 }
                 else
                 {
-                    C4_EnemyManager.Instance.showSelect();
                     Invoke("moveBesidePlayer", 1f);
                 }
             }

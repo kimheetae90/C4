@@ -70,7 +70,7 @@ public class C4_BoatMove : C4_Move {
     {
         yield return null;
         distance = Vector3.Distance(firstpos, transform.position);
-
+        Debug.Log(distance);
         if (distance >= range)
         {
             isOver = true;

@@ -48,11 +48,16 @@ public class C4_PlayManager : MonoBehaviour, C4_IntInitInstance{
         }
     }
 
-    public C4_Player ourBoat;
+    public C4_Player ourBoat; //시작 시 배 불러오는 부분(나중에 지울것)
     [System.NonSerialized]
-    public GameObject selectedBoat;
-    C4_Player character;
-
+    public C4_Player selectedBoat;
+    public GameObject selectUIGameObject;
+    public C4_SelectUI selectUI;
+    public GameObject moveUIGameObject;
+    public GameObject aimUIGameObject;
+    public C4_MoveUI moveUI;
+    public C4_AimUI aimUI;
+    public C4_BoatFeature selectedBoatFeature;
     public bool isAim;
 
     void Start()
@@ -61,6 +66,12 @@ public class C4_PlayManager : MonoBehaviour, C4_IntInitInstance{
         ourBoat.objectID.id = C4_ObjectManager.Instance.currentObjectCode++;
         ourBoat.objectID.type = GameObjectType.Player;
         C4_ObjectManager.Instance.addObjectToAll(ourBoat);
+        selectUIGameObject = GameObject.Find("PlayerSelectArrow");
+        moveUIGameObject = GameObject.Find("MoveRangeUI");
+        moveUI = moveUIGameObject.GetComponent<C4_MoveUI>();
+        selectUI = selectUIGameObject.GetComponent<C4_SelectUI>();
+        aimUIGameObject = GameObject.Find("AimUI");
+        aimUI = aimUIGameObject.GetComponent<C4_AimUI>();
     }
 
 
@@ -69,14 +80,15 @@ public class C4_PlayManager : MonoBehaviour, C4_IntInitInstance{
     {
         Vector3 aimDirection = (selectedBoat.transform.position - clickPosition).normalized;
         aimDirection.y = 0;
-        character.turn(clickPosition);
+        selectedBoat.turn(clickPosition);
+        aimUI.showAimUI(clickPosition);
     }
 
 
     /* 발포하고 상태를 초기화할 함수 */
     void orderShot(Vector3 shotDirection)
     {
-        character.shot(shotDirection);
+        selectedBoat.shot(shotDirection);
         activeDone();
     }
 
@@ -84,8 +96,8 @@ public class C4_PlayManager : MonoBehaviour, C4_IntInitInstance{
     /* 움직임을 명령할 함수 */
     void orderMove(Vector3 toMove)
     {
-        character.move(toMove);
-        character.turn(toMove);
+        selectedBoat.move(toMove);
+        selectedBoat.turn(toMove);
         activeDone();
     }
 
@@ -93,16 +105,21 @@ public class C4_PlayManager : MonoBehaviour, C4_IntInitInstance{
     /* 배를 선택하는 함수 */
     public void setBoatScript(GameObject clickBoat)
     {
-        selectedBoat = clickBoat;
-        character = selectedBoat.GetComponent<C4_Player>();
+        selectedBoat = clickBoat.GetComponent<C4_Player>();
+        selectedBoatFeature = clickBoat.GetComponent<C4_BoatFeature>();
+        selectUIGameObject.SetActive(true);
+        selectUI.setSelect(selectedBoat);
+        
     }
 
     /* 선택 정보를 초기화 */
     void activeDone()
     {
         isAim = false;
-        character = null;
         selectedBoat = null;
+        selectUIGameObject.SetActive(false);
+        moveUI.hideMoveUI();
+        aimUI.hideAimUI();
     }
 
     /* InputManager로부터 전해받은 InputData를 분석하고 행동을 명령하는 함수 */
@@ -126,6 +143,7 @@ public class C4_PlayManager : MonoBehaviour, C4_IntInitInstance{
                     if ((inputData.clickObjectID.type == GameObjectType.Player) && (inputData.clickObjectID.id != inputData.dragObjectID.id))
                     {
                         isAim = true;
+                        aimUI.selectBoat(selectedBoat);
                     }
                 }
             }
@@ -139,10 +157,14 @@ public class C4_PlayManager : MonoBehaviour, C4_IntInitInstance{
                 {
                     if (inputData.clickObjectID.type == GameObjectType.Water)
                     {
-                        if(inputData.clickPosition == inputData.dragPosition)
+                        if (inputData.clickPosition == inputData.dragPosition)
                         {
                             orderMove(inputData.clickPosition);
                         }
+                    }
+                    else
+                    {
+                        moveUI.selectBoat(selectedBoat);
                     }
                 }
             }

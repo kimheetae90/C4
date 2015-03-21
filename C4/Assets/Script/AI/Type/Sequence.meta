@@ -1,5 +1,13 @@
 fileFormatVersion: 2
-guid: 500eb2eb7ce664edca7461e1426e0728
+<<<<<<< HEAD
+<<<<<<< HEAD
+guid: 07f2f939c447880478db1a191482d0ec
+=======
+guid: 604d9824873c7bc41b1727f08d2da505
+>>>>>>> 4b76dc6ec495a180a6a9d382dbabcc4e84f3fc44
+=======
+guid: 07f2f939c447880478db1a191482d0ec
+>>>>>>> origin/gossi/SelectBoat
 folderAsset: yes
 timeCreated: 1426382242
 licenseType: Free

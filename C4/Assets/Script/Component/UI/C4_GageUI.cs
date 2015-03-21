@@ -20,7 +20,7 @@ public class C4_GageUI : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        boatFeature = transform.GetComponent<C4_BoatFeature>();
+        boatFeature = transform.GetComponentInParent<C4_BoatFeature>();
        // fullGage = boatFeature.fullGage;
         fullGage = boatFeature.oneGageStack * boatFeature.numOfStack;
         numOfStack = boatFeature.numOfStack;

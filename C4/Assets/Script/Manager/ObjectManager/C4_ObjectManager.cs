@@ -73,7 +73,6 @@ public class C4_ObjectManager : C4_BaseObjectManager, C4_IntInitInstance
     {
         while (removeReservedObjectQueue.Count > 0)
         {
-            Debug.Log(removeReservedObjectQueue.Count);
             removeReservedObject = removeReservedObjectQueue.Dequeue();
             Destroy(removeReservedObject.gameObject);
 
