@@ -3,6 +3,7 @@ using System.Collections;
 
 public enum GameObjectType 
 { 
+    Invalid,
     Player, 
     Enemy, 
     Missile, 
@@ -10,3 +11,15 @@ public enum GameObjectType
     UI, 
     Camera
 };
+
+
+class GameObjectDefine
+{
+    static GameObjectDefine()
+    {
+        INVALID_OBJECT_ID.id = -1;
+        INVALID_OBJECT_ID.type = GameObjectType.Invalid;
+    }
+
+    static public readonly ObjectID INVALID_OBJECT_ID;
+}

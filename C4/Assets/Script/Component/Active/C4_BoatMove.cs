@@ -46,9 +46,6 @@ public class C4_BoatMove : C4_Move {
         boatFeature.gageDown(boatFeature.needGageStackToMove);
         StartCoroutine(distanceCheck());
         StartCoroutine(moveCheck());
-        
-        
-        
     }
 
     IEnumerator moveCheck() {

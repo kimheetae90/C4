@@ -8,7 +8,7 @@
 		<attribute key="directed" type="int">1</attribute>
 		<section name="node">
 			<attribute key="id" type="int">0</attribute>
-			<attribute key="label" type="String">BaseSelector@test</attribute>
+			<attribute key="label" type="String">BehaviorNodeBaseSelector@1</attribute>
 			<section name="graphics">
 				<attribute key="x" type="double">857.0</attribute>
 				<attribute key="y" type="double">245.0</attribute>
@@ -19,7 +19,7 @@
 				<attribute key="outline" type="String">#000000</attribute>
 			</section>
 			<section name="LabelGraphics">
-				<attribute key="text" type="String">BaseSelector@test</attribute>
+				<attribute key="text" type="String">BehaviorNodeBaseSelector@1</attribute>
 				<attribute key="fontSize" type="int">12</attribute>
 				<attribute key="fontName" type="String">Dialog</attribute>
 				<attribute key="anchor" type="String">c</attribute>
@@ -27,7 +27,7 @@
 		</section>
 		<section name="node">
 			<attribute key="id" type="int">1</attribute>
-			<attribute key="label" type="String">BaseSequence@test</attribute>
+			<attribute key="label" type="String">BehaviorNodeBaseSequence</attribute>
 			<section name="graphics">
 				<attribute key="x" type="double">718.5</attribute>
 				<attribute key="y" type="double">110.0</attribute>
@@ -38,7 +38,7 @@
 				<attribute key="outline" type="String">#000000</attribute>
 			</section>
 			<section name="LabelGraphics">
-				<attribute key="text" type="String">BaseSequence@test</attribute>
+				<attribute key="text" type="String">BehaviorNodeBaseSequence</attribute>
 				<attribute key="fontSize" type="int">12</attribute>
 				<attribute key="fontName" type="String">Dialog</attribute>
 				<attribute key="anchor" type="String">c</attribute>
@@ -46,10 +46,10 @@
 		</section>
 		<section name="node">
 			<attribute key="id" type="int">2</attribute>
-			<attribute key="label" type="String">BasePrecondition@test</attribute>
+			<attribute key="label" type="String">BehaviorNodeFindObjectPrecondition@Player@600</attribute>
 			<section name="graphics">
 				<attribute key="x" type="double">596.5</attribute>
-				<attribute key="y" type="double">251.5</attribute>
+				<attribute key="y" type="double">250.5</attribute>
 				<attribute key="w" type="double">87.0</attribute>
 				<attribute key="h" type="double">81.0</attribute>
 				<attribute key="type" type="String">ellipse</attribute>
@@ -57,7 +57,7 @@
 				<attribute key="outline" type="String">#000000</attribute>
 			</section>
 			<section name="LabelGraphics">
-				<attribute key="text" type="String">BasePrecondition@test</attribute>
+				<attribute key="text" type="String">BehaviorNodeFindObjectPrecondition@Player@600</attribute>
 				<attribute key="fontSize" type="int">12</attribute>
 				<attribute key="fontName" type="String">Dialog</attribute>
 				<attribute key="anchor" type="String">c</attribute>
@@ -65,7 +65,7 @@
 		</section>
 		<section name="node">
 			<attribute key="id" type="int">3</attribute>
-			<attribute key="label" type="String">BaseSequence@test</attribute>
+			<attribute key="label" type="String">BehaviorNodeBaseSequence</attribute>
 			<section name="graphics">
 				<attribute key="x" type="double">755.0</attribute>
 				<attribute key="y" type="double">391.0</attribute>
@@ -76,7 +76,7 @@
 				<attribute key="outline" type="String">#000000</attribute>
 			</section>
 			<section name="LabelGraphics">
-				<attribute key="text" type="String">BaseSequence@test</attribute>
+				<attribute key="text" type="String">BehaviorNodeBaseSequence</attribute>
 				<attribute key="fontSize" type="int">12</attribute>
 				<attribute key="fontName" type="String">Dialog</attribute>
 				<attribute key="anchor" type="String">c</attribute>
@@ -84,9 +84,9 @@
 		</section>
 		<section name="node">
 			<attribute key="id" type="int">4</attribute>
-			<attribute key="label" type="String">BaseAction@test</attribute>
+			<attribute key="label" type="String">BehaviorNodeMoveToNearObjectAction@0</attribute>
 			<section name="graphics">
-				<attribute key="x" type="double">755.0</attribute>
+				<attribute key="x" type="double">883.0</attribute>
 				<attribute key="y" type="double">525.5</attribute>
 				<attribute key="w" type="double">87.0</attribute>
 				<attribute key="h" type="double">87.0</attribute>
@@ -95,7 +95,7 @@
 				<attribute key="outline" type="String">#000000</attribute>
 			</section>
 			<section name="LabelGraphics">
-				<attribute key="text" type="String">BaseAction@test</attribute>
+				<attribute key="text" type="String">BehaviorNodeMoveToNearObjectAction@0</attribute>
 				<attribute key="fontSize" type="int">12</attribute>
 				<attribute key="fontName" type="String">Dialog</attribute>
 				<attribute key="anchor" type="String">c</attribute>
@@ -103,9 +103,9 @@
 		</section>
 		<section name="node">
 			<attribute key="id" type="int">5</attribute>
-			<attribute key="label" type="String">BasePrecondition@test</attribute>
+			<attribute key="label" type="String">BehaviorNodeFindObjectPrecondition@Player@600</attribute>
 			<section name="graphics">
-				<attribute key="x" type="double">616.5</attribute>
+				<attribute key="x" type="double">596.5</attribute>
 				<attribute key="y" type="double">525.5</attribute>
 				<attribute key="w" type="double">87.0</attribute>
 				<attribute key="h" type="double">87.0</attribute>
@@ -114,7 +114,7 @@
 				<attribute key="outline" type="String">#000000</attribute>
 			</section>
 			<section name="LabelGraphics">
-				<attribute key="text" type="String">BasePrecondition@test</attribute>
+				<attribute key="text" type="String">BehaviorNodeFindObjectPrecondition@Player@600</attribute>
 				<attribute key="fontSize" type="int">12</attribute>
 				<attribute key="fontName" type="String">Dialog</attribute>
 				<attribute key="anchor" type="String">c</attribute>

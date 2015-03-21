@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class BehaviorNodeBasePrecondition : BehaviorNode
 {
-    List<string> listParams;
+    public List<string> listParams;
 
     public BehaviorNodeBasePrecondition(List<string> listParams)
         : base()
@@ -11,7 +11,7 @@ public class BehaviorNodeBasePrecondition : BehaviorNode
         this.listParams = listParams;
     }
 
-    override public bool traversalNode()
+    override public bool traversalNode(GameObject targetObjec)
     {
         throw new BehaviorNodeException("precondition 함수가 구현되어 있지 않습니다.");
     }

@@ -6,8 +6,7 @@ using System.Linq;
 
 public interface IBehaviorNode : ICloneable
 {
-    bool traversalNode();
+    bool traversalNode(GameObject targetObject);
     void setParents(IBehaviorNode node);
     void addChild(IBehaviorNode node);
-    void setTargetObject(GameObject obj);
 }

@@ -6,6 +6,19 @@ using System.Xml;
 
 public class BehaviorNodeFactory
 {
+    BehaviorNodeSequnceFactory sequnceFactory;
+    BehaviorNodePreconditionFactory preconditionFactory;
+    BehaviorNodeSelectorFactory selectorFactory;
+    BehaviorNodeActionFactory actionFactory;
+
+    public BehaviorNodeFactory()
+    {
+        sequnceFactory = new BehaviorNodeSequnceFactory();
+        preconditionFactory = new BehaviorNodePreconditionFactory();
+        selectorFactory = new BehaviorNodeSelectorFactory();
+        actionFactory = new BehaviorNodeActionFactory();
+    }
+
     public IBehaviorNode buildBehaviorNode(string targetpath)
     {
         XmlElement xmlRoot = loadXML(targetpath);
@@ -94,20 +107,20 @@ public class BehaviorNodeFactory
         {
             valList = list.GetRange(1, list.Count - 1);
         }
-        
+
         switch(type)
         {
             case "sequence":
-                ret = BehaviorNodeSequnceFactory.createNode(list[0], valList);
+                ret = sequnceFactory.createNode(list[0], valList);
                 break;
             case "precondition":
-                ret = BehaviorNodePreconditionFactory.createNode(list[0], valList);
+                ret = preconditionFactory.createNode(list[0], valList);
                 break;
             case "selector":
-                ret = BehaviorNodeSelectorFactory.createNode(list[0], valList);
+                ret = selectorFactory.createNode(list[0], valList);
                 break;
             case "action":
-                ret = BehaviorNodeActionFactory.createNode(list[0], valList);
+                ret = actionFactory.createNode(list[0], valList);
                 break;
         }
 

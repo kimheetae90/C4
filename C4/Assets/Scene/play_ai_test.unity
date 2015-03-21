@@ -190,7 +190,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 247783259}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -80, y: 0, z: 0}
+  m_LocalPosition: {x: -22.3999996, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -517,7 +517,8 @@ GameObject:
   - 114: {fileID: 680387832}
   - 114: {fileID: 680387831}
   - 114: {fileID: 680387830}
-  - 114: {fileID: 680387829}
+  - 114: {fileID: 680387834}
+  - 114: {fileID: 680387835}
   m_Layer: 0
   m_Name: enemy
   m_TagString: Untagged
@@ -532,26 +533,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 680387827}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -80, y: 0, z: 0}
+  m_LocalPosition: {x: -11.8999996, y: 0, z: 4.5999999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2117094546}
   m_Father: {fileID: 0}
   m_RootOrder: 2
---- !u!114 &680387829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 680387827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 725c8d6ddf6e6554ca1314574fa7e4d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  checkBound: 50
-  attackOrMovePercent: 5
-  attackSuccessOrFailPercent: 5
 --- !u!114 &680387830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -607,6 +594,29 @@ MonoBehaviour:
   needGageStackToShot: 2
   moveRange: 10
   hp: 0
+--- !u!114 &680387834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 680387827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19cf8a1374095a34f9b24da8f654ce4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &680387835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 680387827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b64ea1c0878569f4fa088b8c0af162fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviorFileName: Data/AI/test.xml
 --- !u!1 &722548751
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,6 +696,7 @@ GameObject:
   - 64: {fileID: 1023275521}
   - 23: {fileID: 1023275520}
   - 114: {fileID: 1023275523}
+  - 114: {fileID: 1023275524}
   m_Layer: 0
   m_Name: C4_Water
   m_TagString: Untagged
@@ -758,6 +769,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10ae4bab3d145d5488d2cbfd6dee6047, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1023275524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1023275518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13e055924365d02498f0220b163256ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1278703545
@@ -966,7 +988,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2055621429}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -80, y: 0, z: 0}
+  m_LocalPosition: {x: -9.30000019, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

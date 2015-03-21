@@ -1,10 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public static class BehaviorNodeSelectorFactory
+public class BehaviorNodeSelectorFactory : IBehaviorNodeFactory
 {
-    public static IBehaviorNode createNode(string className, List<string> listParam)
+    public IBehaviorNode createNode(string className, List<string> listParam)
     {
-        return new BehaviorNodeBaseSelector(listParam);
+        IBehaviorNode node = null;
+
+        switch (className)
+        {
+            case "BehaviorNodeBaseSelector":
+            default:
+                {
+                    node = new BehaviorNodeBaseSelector(listParam);
+                }
+                break;
+        }
+
+        return node;
     }
 }

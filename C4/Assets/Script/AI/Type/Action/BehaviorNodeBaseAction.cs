@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class BehaviorNodeBaseAction : BehaviorNode
 {
-    List<string> listParams;
+    protected List<string> listParams;
 
     public BehaviorNodeBaseAction(List<string> listParams)
         : base()
@@ -11,7 +11,7 @@ public class BehaviorNodeBaseAction : BehaviorNode
         this.listParams = listParams;
     }
 
-    override public bool traversalNode()
+    override public bool traversalNode(GameObject targetObject)
     {
         throw new BehaviorNodeException("Action 함수가 구현되어 있지 않습니다.");
     }

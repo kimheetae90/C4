@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <BehaviorTree>
-  <node id="1" type="sequence" value="BaseSequence@test">
-    <node id="2" type="precondition" value="BasePrecondition@test" />
-    <node id="0" type="selector" value="BaseSelector@test">
-      <node id="3" type="sequence" value="BaseSequence@test">
-        <node id="5" type="precondition" value="BasePrecondition@test" />
-        <node id="4" type="action" value="BaseAction@test" />
+  <node id="1" type="sequence" value="BehaviorNodeBaseSequence">
+    <node id="2" type="precondition" value="BehaviorNodeFindObjectPrecondition@Player@600" />
+    <node id="0" type="selector" value="BehaviorNodeBaseSelector@1">
+      <node id="3" type="sequence" value="BehaviorNodeBaseSequence">
+        <node id="5" type="precondition" value="BehaviorNodeFindObjectPrecondition@Player@600" />
+        <node id="4" type="action" value="BehaviorNodeMoveToNearObjectAction@0" />
       </node>
     </node>
   </node>

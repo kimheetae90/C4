@@ -9,13 +9,13 @@ public class BehaviorNodeBaseSequence : BehaviorNode
 
     }
 
-    override public bool traversalNode()
+    override public bool traversalNode(GameObject targetObjec)
     {
         bool bRet = true;
 
         foreach (var node in listChilds)
         {
-            if (node.traversalNode() == false)
+            if (node.traversalNode(targetObjec) == false)
             {
                 bRet = false;
                 break;
