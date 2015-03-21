@@ -140,6 +140,9 @@ public class BehaviorImportTool : EditorWindow
                                         e.Message, "OK");
                 return;
             }
+
+            EditorUtility.DisplayDialog("파싱 성공",
+                                        "파일을 올바르게 파싱했습니다.", "OK");
         }
         else
         {

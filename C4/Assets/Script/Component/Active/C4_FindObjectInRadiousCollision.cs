@@ -5,37 +5,41 @@ using System.Collections.Generic;
 
 public class C4_FindObjectInRadiousCollision : MonoBehaviour
 {
-    List<C4_Object> latestFindObject;
+    List<C4_Object> listLatestFindObjects;
 
-    void Start()
+
+    void Awake()
     {
-        latestFindObject = new List<C4_Object>();
+        listLatestFindObjects = new List<C4_Object>();
     }
 
     public bool FindObjectsInRadious(float radius, GameObjectType type)
     {
-        latestFindObject.Clear();
+        listLatestFindObjects.Clear();
 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
 
         for (int i = 0; i < hitColliders.Length; ++i)
         {
-            C4_Object obj = hitColliders[i].transform.parent.gameObject.GetComponent<C4_Object>();
+            if (hitColliders[i].transform.parent == null) continue;
+            if (hitColliders[i].transform.parent.parent == null) continue;
 
-            if (obj.isType(type))
+            C4_Object obj = hitColliders[i].transform.parent.parent.gameObject.GetComponent<C4_Object>();
+
+            if (obj != null && obj.isType(type))
             {
-                latestFindObject.Add(obj);
+                listLatestFindObjects.Add(obj);
             }
         }
 
         sortObj();
     
-        return latestFindObject.Count > 0 ? true : false;
+        return listLatestFindObjects.Count > 0 ? true : false;
     }
 
     void sortObj()
     {
-        latestFindObject.Sort(delegate(C4_Object t1, C4_Object t2)
+        listLatestFindObjects.Sort(delegate(C4_Object t1, C4_Object t2)
                 { 
                     return Vector3.Distance(t1.transform.position, transform.position).CompareTo(Vector3.Distance(t2.transform.position, transform.position));
                 }
@@ -44,14 +48,14 @@ public class C4_FindObjectInRadiousCollision : MonoBehaviour
 
     public List<C4_Object> getLatestFindObjects()
     {
-        return latestFindObject;
+        return listLatestFindObjects;
     }
 
     public C4_Object getNearestObject()
     {
-        if (latestFindObject.Count == 0) return null;
+        if (listLatestFindObjects.Count == 0) return null;
 
-        return latestFindObject[0];
+        return listLatestFindObjects[0];
     }
 }
 

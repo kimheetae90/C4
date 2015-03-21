@@ -120,7 +120,7 @@ public class C4_EnemyManager : MonoBehaviour
 
     public void startBehave()
     {
-        behavior.startBehave();
+      //  behavior.startBehave();
     }
 
     public void resetSelect()

@@ -5,6 +5,18 @@ public class BehaviorNodeSelectorFactory : IBehaviorNodeFactory
 {
     public IBehaviorNode createNode(string className, List<string> listParam)
     {
-        return new BehaviorNodeBaseSelector(listParam);
+        IBehaviorNode node = null;
+
+        switch (className)
+        {
+            case "BehaviorNodeBaseSelector":
+            default:
+                {
+                    node = new BehaviorNodeBaseSelector(listParam);
+                }
+                break;
+        }
+
+        return node;
     }
 }

@@ -17,7 +17,7 @@ public class BehaviorNodeMoveToNearObjectAction : BehaviorNodeBaseAction
         velocity = float.Parse(listParams[0]);
     }
 
-    override public bool traversalNode()
+    override public bool traversalNode(GameObject targetObject)
     {
         C4_Character charComponent = targetObject.GetComponent<C4_Character>();
         C4_BoatFeature boatFeature = targetObject.GetComponent<C4_BoatFeature>();
@@ -32,7 +32,11 @@ public class BehaviorNodeMoveToNearObjectAction : BehaviorNodeBaseAction
 
         if (obj == null) return false;
 
-        boatFeature.moveSpeed = (int)velocity;
+        if (velocity != 0)
+        {
+           boatFeature.moveSpeed = (int)velocity;
+        }
+            
         charComponent.move(obj.transform.position);
         
         return true;

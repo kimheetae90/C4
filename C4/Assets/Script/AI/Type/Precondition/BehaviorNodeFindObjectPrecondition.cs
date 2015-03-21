@@ -20,7 +20,7 @@ public class BehaviorNodeFindObjectPrecondition : BehaviorNodeBasePrecondition
         radious = float.Parse(listParams[1]);
     }
 
-    override public bool traversalNode()
+    override public bool traversalNode(GameObject targetObject)
     {
         C4_FindObjectInRadiousCollision component = targetObject.GetComponent<C4_FindObjectInRadiousCollision>();
 

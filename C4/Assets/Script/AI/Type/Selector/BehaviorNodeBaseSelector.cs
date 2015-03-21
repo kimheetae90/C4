@@ -13,7 +13,7 @@ public class BehaviorNodeBaseSelector : BehaviorNode
         buildProperbility();
     }
 
-    override public bool traversalNode()
+    override public bool traversalNode(GameObject targetObjec)
     {
         int count = listChilds.Count;
 
@@ -24,7 +24,7 @@ public class BehaviorNodeBaseSelector : BehaviorNode
 
         int r = Random.Range(0, count - 1);
 
-        return listChilds[r].traversalNode();
+        return listChilds[r].traversalNode(targetObjec);
     }
 
     override public object Clone()
