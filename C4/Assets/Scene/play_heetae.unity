@@ -251,7 +251,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 247783259}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -56.2000008, y: 0, z: -23.1000004}
+  m_LocalPosition: {x: -31.7000008, y: 0, z: -26.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -434,7 +434,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 529980681}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -80, y: 0, z: 0}
+  m_LocalPosition: {x: 9.30000019, y: 0, z: 18.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -643,6 +643,8 @@ GameObject:
   - 114: {fileID: 680387831}
   - 54: {fileID: 680387830}
   - 65: {fileID: 680387829}
+  - 114: {fileID: 680387838}
+  - 114: {fileID: 680387837}
   m_Layer: 0
   m_Name: enemy
   m_TagString: Untagged
@@ -779,6 +781,29 @@ MonoBehaviour:
   needGageStackToShot: 2
   moveRange: 10
   hp: 0
+--- !u!114 &680387837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 680387827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19cf8a1374095a34f9b24da8f654ce4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &680387838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 680387827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b64ea1c0878569f4fa088b8c0af162fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviorFileName: Data/AI/test.xml
 --- !u!1001 &779322901
 Prefab:
   m_ObjectHideFlags: 0
@@ -1191,7 +1216,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 461518, guid: e0343370ce4c942499c8136aaf6bb416, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -19.5
       objectReference: {fileID: 0}
     - target: {fileID: 461518, guid: e0343370ce4c942499c8136aaf6bb416, type: 2}
       propertyPath: m_LocalRotation.x
