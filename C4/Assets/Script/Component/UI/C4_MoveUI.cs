@@ -42,7 +42,7 @@ public class C4_MoveUI : MonoBehaviour {
         for (int i = 0; i < moveRangeUI.Length; i++)
         {
             moveRangeUI[i].transform.position = selectedBoat.transform.position;
-            moveRangeUI[i].transform.localScale = new Vector3(boatFeature.moveRange * (i + 1), (boatFeature.moveRange * (i + 1)), 1);
+            moveRangeUI[i].transform.localScale = new Vector3(boatFeature.moveRange * (i + 1)/2, (boatFeature.moveRange * (i + 1)/2), 1);
         }
 
         switch (boatFeature.stackCount)
