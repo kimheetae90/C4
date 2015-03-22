@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class C4_PlayManager : C4_SceneManager
-{
+public class C4_SceneManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

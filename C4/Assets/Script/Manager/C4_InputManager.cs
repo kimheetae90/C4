@@ -7,42 +7,8 @@ using System.Collections;
 ///  - input에 대한 Data를 수집하여 Camera와 Play Manager에게 전송한다
 /// </summary>
 
-public class C4_InputManager : MonoBehaviour, C4_IntInitInstance {
-
-    private static C4_InputManager _instance;
-    public static C4_InputManager Instance
-    {
-        get
-        {
-            if (!_instance)
-            {
-                _instance = GameObject.FindObjectOfType(typeof(C4_InputManager)) as C4_InputManager;
-                if (!_instance)
-                {
-                    GameObject container = new GameObject();
-                    container.name = "C4_InputManager";
-                    _instance = container.AddComponent(typeof(C4_InputManager)) as C4_InputManager;
-                }
-            }
-
-            return _instance;
-        }
-    }
-    
-    public void initInstance()
-    {
-        if (!_instance)
-        {
-            _instance = GameObject.FindObjectOfType(typeof(C4_InputManager)) as C4_InputManager;
-            if (!_instance)
-            {
-                GameObject container = new GameObject();
-                container.name = "C4_InputManager";
-                _instance = container.AddComponent(typeof(C4_InputManager)) as C4_InputManager;
-            }
-        }
-    }
-
+public class C4_InputManager : MonoBehaviour
+{
     InputData inputData;
     C4_Camera camObject;
 
@@ -66,7 +32,7 @@ public class C4_InputManager : MonoBehaviour, C4_IntInitInstance {
             }
             else
             {
-                C4_PlayManager.Instance.dispatchData(inputData);
+                C4_PlayerController.Instance.dispatchData(inputData);
             }
         }
 
@@ -78,7 +44,7 @@ public class C4_InputManager : MonoBehaviour, C4_IntInitInstance {
         if (isClick&&Input.GetMouseButtonUp(0))
         {
             onClickUp();
-            C4_PlayManager.Instance.dispatchData(inputData);
+            C4_PlayerController.Instance.dispatchData(inputData);
         }
     }
 
@@ -100,7 +66,7 @@ public class C4_InputManager : MonoBehaviour, C4_IntInitInstance {
 
         if (inputData.clickObjectID.type == GameObjectType.Player)
         {
-            C4_PlayManager.Instance.setBoatScript(hit.collider.transform.root.gameObject);
+            C4_PlayerController.Instance.setBoatScript(hit.collider.transform.root.gameObject);
         }
     }
 

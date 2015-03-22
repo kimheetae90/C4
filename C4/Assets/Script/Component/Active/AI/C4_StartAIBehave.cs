@@ -33,7 +33,7 @@ public class C4_StartAIBehave : MonoBehaviour {
     public void startBehave()
     {
         checkDistanceWithPlayer();
-        if (C4_EnemyManager.Instance.action == C4_EnemyManager.Action.Move)
+        if (C4_EnemyController.Instance.action == C4_EnemyController.Action.Move)
         {
             if (distanceWithPlayer > checkBound)
             {
@@ -43,12 +43,12 @@ public class C4_StartAIBehave : MonoBehaviour {
                 }
                 else
                 {
-                    C4_EnemyManager.Instance.resetSelect();
+                    C4_EnemyController.Instance.resetSelect();
                 }
             }
             else
             {
-                C4_EnemyManager.Instance.resetSelect();
+                C4_EnemyController.Instance.resetSelect();
             }
         }
         else
@@ -67,7 +67,7 @@ public class C4_StartAIBehave : MonoBehaviour {
             }
             else
             {
-                C4_EnemyManager.Instance.resetSelect();
+                C4_EnemyController.Instance.resetSelect();
             }
         }
     }
@@ -89,7 +89,7 @@ public class C4_StartAIBehave : MonoBehaviour {
         enemy.turn(toMove);
         toMove = 2 * transform.position - toMove;
         enemy.shot(toMove);
-        C4_EnemyManager.Instance.resetSelect();
+        C4_EnemyController.Instance.resetSelect();
     }
 
     void moveBesidePlayer()
@@ -118,7 +118,7 @@ public class C4_StartAIBehave : MonoBehaviour {
         toMove = (playerPositionVector * angleToPlayer + angleToPerpendicular * perpendicularAtPlayerVector).normalized * tempValue + transform.position;
         enemy.move(toMove);
         enemy.turn(toMove);
-        C4_EnemyManager.Instance.resetSelect();
+        C4_EnemyController.Instance.resetSelect();
     }
 
     void moveToPlayer()
@@ -126,7 +126,7 @@ public class C4_StartAIBehave : MonoBehaviour {
         toMove = (shortestDistancePlayer.transform.position - transform.position).normalized * boatFeature.moveRange * 3 + transform.position;
         enemy.turn(toMove);
         enemy.move(toMove);
-        C4_EnemyManager.Instance.resetSelect();
+        C4_EnemyController.Instance.resetSelect();
     }
 
     void checkDistanceWithPlayer()

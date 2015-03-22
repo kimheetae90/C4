@@ -2,43 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class C4_EnemyManager : MonoBehaviour
+public class C4_EnemyController : MonoBehaviour
 {
-
-    private static C4_EnemyManager _instance;
-    public static C4_EnemyManager Instance
-    {
-        get
-        {
-            if (!_instance)
-            {
-                _instance = GameObject.FindObjectOfType(typeof(C4_EnemyManager)) as C4_EnemyManager;
-                if (!_instance)
-                {
-                    GameObject container = new GameObject();
-                    container.name = "C4_EnemyManager";
-                    _instance = container.AddComponent(typeof(C4_EnemyManager)) as C4_EnemyManager;
-                }
-            }
-
-            return _instance;
-        }
-    }
-
-    public void initInstance()
-    {
-        if (!_instance)
-        {
-            _instance = GameObject.FindObjectOfType(typeof(C4_EnemyManager)) as C4_EnemyManager;
-            if (!_instance)
-            {
-                GameObject container = new GameObject();
-                container.name = "C4_EnemyManager";
-                _instance = container.AddComponent(typeof(C4_EnemyManager)) as C4_EnemyManager;
-            }
-        }
-    }
-
     public enum Action { NULL, Attack, Move };
 
     bool isSelected;
