@@ -8,8 +8,6 @@ public class C4_MoveUI : MonoBehaviour {
     [System.NonSerialized]
     public GameObject[] moveImage;
     bool isSelect;
-    C4_BoatFeature boatFeature;
-    C4_Player selectedBoat;
     void Start()
     {
         moveImage = new GameObject[3];
@@ -30,15 +28,16 @@ public class C4_MoveUI : MonoBehaviour {
         }
     }
 
-    public void selectBoat(C4_Player inputSelectedBoat)
+    public void selectBoat()
     {
         isSelect = true;
-        selectedBoat = inputSelectedBoat;
-        boatFeature = selectedBoat.GetComponent<C4_BoatFeature>();
     }
 
     public void showMoveUI()
     {
+        C4_Player selectedBoat = C4_ManagerMaster.Instance.sceneManager.getController(GameObjectType.Player).GetComponent<C4_PlayerController>().selectedBoat;
+        C4_BoatFeature boatFeature = selectedBoat.GetComponent<C4_BoatFeature>();
+
         for (int i = 0; i < moveRangeUI.Length; i++)
         {
             moveRangeUI[i].transform.position = selectedBoat.transform.position;

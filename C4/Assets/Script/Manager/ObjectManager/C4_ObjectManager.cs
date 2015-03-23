@@ -24,10 +24,10 @@ public class C4_ObjectManager : C4_BaseObjectManager
         removeReservedObjectQueue = new Queue<C4_Object>();
         objectManagerList = new Dictionary<GameObjectType, C4_BaseObjectManager>();
         currentObjectCode = 0;
-        C4_PlayerObjectManager.Instance.initInstance();
-        C4_EnemyObjectManager.Instance.initInstance();
-        objectManagerList.Add(GameObjectType.Player, C4_PlayerObjectManager.Instance);
-        objectManagerList.Add(GameObjectType.Enemy, C4_EnemyObjectManager.Instance);
+        C4_PlayerObjectManager playerObjectManager = GameObject.Find("PlayerObjectManager").GetComponent<C4_PlayerObjectManager>();
+        C4_EnemyObjectManager enemyObjectManager = GameObject.Find("EnemyObjectManager").GetComponent<C4_EnemyObjectManager>();
+        objectManagerList.Add(GameObjectType.Player, playerObjectManager);
+        objectManagerList.Add(GameObjectType.Enemy, enemyObjectManager);
     }
 
     void LateUpdate()

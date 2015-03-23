@@ -25,6 +25,7 @@ public class C4_BoatFeature : MonoBehaviour
 
     [System.NonSerialized]
     public int stackCount;
+    [System.NonSerialized]
     public int hp;
     [System.NonSerialized]
     public int gage;

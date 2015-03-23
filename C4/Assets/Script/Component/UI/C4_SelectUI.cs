@@ -4,7 +4,8 @@ using System.Collections;
 
 public class C4_SelectUI : MonoBehaviour {
 
-    public Canvas playerArrow;
+    public Canvas uiCanvas;
+    [System.NonSerialized]
     public C4_Character selectObject;
 
     public void setSelect(C4_Character boat)
@@ -14,7 +15,7 @@ public class C4_SelectUI : MonoBehaviour {
         Vector3 pos = selectObject.transform.position;
         pos.y += 6.5f;
         pos.z += 11;
-        playerArrow.transform.position = pos;
+        uiCanvas.transform.position = pos;
     }
 
     public void resetSelect()

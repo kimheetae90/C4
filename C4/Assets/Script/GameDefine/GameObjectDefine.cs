@@ -13,6 +13,13 @@ public enum GameObjectType
 };
 
 
+public enum EnemyAction
+{
+    NULL, 
+    Attack, 
+    Move 
+};
+
 class GameObjectDefine
 {
     static GameObjectDefine()

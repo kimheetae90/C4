@@ -2,31 +2,32 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class C4_EnemyController : MonoBehaviour
+public class C4_EnemyController : C4_Controller
 {
-    public enum Action { NULL, Attack, Move };
 
     bool isSelected;
     int selectNum;
+    [System.NonSerialized]
     public C4_Enemy selectedBoat;
     C4_StartAIBehave behavior;
 
     float tempValue;
     [System.NonSerialized]
-    public Action action;
+    public EnemyAction action;
     bool isActing;
     bool canActing;
     public GameObject enemySelectArrow;
+    [System.NonSerialized]
     public C4_SelectUI selectArrow;
 
     void Start()
     {
         isSelected = false;
         selectNum = 0;
-        action = Action.NULL;
+        action = EnemyAction.NULL;
         isActing = false;
         canActing = false;
-        enemySelectArrow = GameObject.Find("EnemySelectArrow");
+        enemySelectArrow = GameObject.Find("EnemySelectUI");
         selectArrow = enemySelectArrow.GetComponent<C4_SelectUI>();
     }
 
@@ -34,7 +35,7 @@ public class C4_EnemyController : MonoBehaviour
     {
         if (!isActing)
         {
-            if (action == Action.NULL)
+            if (action == EnemyAction.NULL)
             {
                 chooseAction();
             }
@@ -65,7 +66,7 @@ public class C4_EnemyController : MonoBehaviour
     {
         switch (action)
         {
-            case Action.Attack:
+            case EnemyAction.Attack:
                 if (selectedBoat.canShot)
                 {
                     canActing = true;
@@ -75,7 +76,7 @@ public class C4_EnemyController : MonoBehaviour
                     resetSelect();
                 }
                 break;
-            case Action.Move:
+            case EnemyAction.Move:
                 if (selectedBoat.canMove)
                 {
                     canActing = true;
@@ -95,7 +96,7 @@ public class C4_EnemyController : MonoBehaviour
 
     public void resetSelect()
     {   
-        action = Action.NULL;
+        action = EnemyAction.NULL;
         isSelected = false;
         selectedBoat = null;
         behavior = null;
@@ -109,25 +110,25 @@ public class C4_EnemyController : MonoBehaviour
         tempValue = Random.Range(0, 10);
         if (tempValue > 5)
         {
-            action = Action.Attack;
+            action = EnemyAction.Attack;
         }
         else
         {
-            action = Action.Move;
+            action = EnemyAction.Move;
         }
     }
 
     void selectBoat()
     {
         resetSelect();
-        if (C4_ObjectManager.Instance.getSubObjectManager(GameObjectType.Enemy).objectList.Count > 0)
+        if (C4_ManagerMaster.Instance.objectManager.getSubObjectManager(GameObjectType.Enemy).objectList.Count > 0)
         {
             selectNum++;
-            if (selectNum >= C4_ObjectManager.Instance.getSubObjectManager(GameObjectType.Enemy).objectList.Count)
+            if (selectNum >= C4_ManagerMaster.Instance.objectManager.getSubObjectManager(GameObjectType.Enemy).objectList.Count)
             {
                 selectNum = 0;
             }
-            selectedBoat = C4_ObjectManager.Instance.getSubObjectManager(GameObjectType.Enemy).objectList[selectNum].GetComponent<C4_Enemy>();
+            selectedBoat = C4_ManagerMaster.Instance.objectManager.getSubObjectManager(GameObjectType.Enemy).objectList[selectNum].GetComponent<C4_Enemy>();
             behavior = selectedBoat.GetComponent<C4_StartAIBehave>();
             isSelected = true;
         }

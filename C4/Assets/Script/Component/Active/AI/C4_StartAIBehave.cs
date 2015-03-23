@@ -33,7 +33,7 @@ public class C4_StartAIBehave : MonoBehaviour {
     public void startBehave()
     {
         checkDistanceWithPlayer();
-        if (C4_EnemyController.Instance.action == C4_EnemyController.Action.Move)
+        if (C4_ManagerMaster.Instance.sceneManager.getController(GameObjectType.Enemy).GetComponent<C4_EnemyController>().action == EnemyAction.Move)
         {
             if (distanceWithPlayer > checkBound)
             {
@@ -43,12 +43,12 @@ public class C4_StartAIBehave : MonoBehaviour {
                 }
                 else
                 {
-                    C4_EnemyController.Instance.resetSelect();
+                    C4_ManagerMaster.Instance.sceneManager.getController(GameObjectType.Enemy).GetComponent<C4_EnemyController>().resetSelect();
                 }
             }
             else
             {
-                C4_EnemyController.Instance.resetSelect();
+                C4_ManagerMaster.Instance.sceneManager.getController(GameObjectType.Enemy).GetComponent<C4_EnemyController>().resetSelect();
             }
         }
         else
@@ -67,7 +67,7 @@ public class C4_StartAIBehave : MonoBehaviour {
             }
             else
             {
-                C4_EnemyController.Instance.resetSelect();
+                C4_ManagerMaster.Instance.sceneManager.getController(GameObjectType.Enemy).GetComponent<C4_EnemyController>().resetSelect();
             }
         }
     }
@@ -89,7 +89,7 @@ public class C4_StartAIBehave : MonoBehaviour {
         enemy.turn(toMove);
         toMove = 2 * transform.position - toMove;
         enemy.shot(toMove);
-        C4_EnemyController.Instance.resetSelect();
+        C4_ManagerMaster.Instance.sceneManager.getController(GameObjectType.Enemy).GetComponent<C4_EnemyController>().resetSelect();
     }
 
     void moveBesidePlayer()
@@ -118,7 +118,7 @@ public class C4_StartAIBehave : MonoBehaviour {
         toMove = (playerPositionVector * angleToPlayer + angleToPerpendicular * perpendicularAtPlayerVector).normalized * tempValue + transform.position;
         enemy.move(toMove);
         enemy.turn(toMove);
-        C4_EnemyController.Instance.resetSelect();
+        C4_ManagerMaster.Instance.sceneManager.getController(GameObjectType.Enemy).GetComponent<C4_EnemyController>().resetSelect();
     }
 
     void moveToPlayer()
@@ -126,20 +126,20 @@ public class C4_StartAIBehave : MonoBehaviour {
         toMove = (shortestDistancePlayer.transform.position - transform.position).normalized * boatFeature.moveRange * 3 + transform.position;
         enemy.turn(toMove);
         enemy.move(toMove);
-        C4_EnemyController.Instance.resetSelect();
+        C4_ManagerMaster.Instance.sceneManager.getController(GameObjectType.Enemy).GetComponent<C4_EnemyController>().resetSelect();
     }
 
     void checkDistanceWithPlayer()
     {
-        shortestDistancePlayer = C4_ObjectManager.Instance.getSubObjectManager(GameObjectType.Player).objectList[0].GetComponent<C4_Player>();
+        shortestDistancePlayer = C4_ManagerMaster.Instance.objectManager.getSubObjectManager(GameObjectType.Player).objectList[0].GetComponent<C4_Player>();
         distanceWithPlayer = Vector3.Distance(shortestDistancePlayer.transform.position, transform.position);
-        for (int i = 0; i < C4_ObjectManager.Instance.getSubObjectManager(GameObjectType.Player).objectList.Count; i++)
+        for (int i = 0; i < C4_ManagerMaster.Instance.objectManager.getSubObjectManager(GameObjectType.Player).objectList.Count; i++)
         {
-            checkDistanceEachPlayer = Vector3.Distance(C4_ObjectManager.Instance.getSubObjectManager(GameObjectType.Player).objectList[i].transform.position, transform.position);
+            checkDistanceEachPlayer = Vector3.Distance(C4_ManagerMaster.Instance.objectManager.getSubObjectManager(GameObjectType.Player).objectList[i].transform.position, transform.position);
             if (distanceWithPlayer > checkDistanceEachPlayer)
             {
                 distanceWithPlayer = checkDistanceEachPlayer;
-                shortestDistancePlayer = C4_ObjectManager.Instance.getSubObjectManager(GameObjectType.Player).objectList[i].GetComponent<C4_Player>();
+                shortestDistancePlayer = C4_ManagerMaster.Instance.objectManager.getSubObjectManager(GameObjectType.Player).objectList[i].GetComponent<C4_Player>();
             }
         }
     }

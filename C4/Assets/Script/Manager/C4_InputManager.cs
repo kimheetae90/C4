@@ -19,6 +19,7 @@ public class C4_InputManager : MonoBehaviour
 	void Start () {
         isClick = false;
         camObject = Camera.main.transform.root.GetComponent<C4_Camera>();
+        C4_ManagerMaster.Instance.StartPlayScene();
 	}
 	
 	void Update () {
@@ -30,10 +31,6 @@ public class C4_InputManager : MonoBehaviour
             {
                 camObject.cameraMove(inputData);
             }
-            else
-            {
-                C4_PlayerController.Instance.dispatchData(inputData);
-            }
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -44,8 +41,9 @@ public class C4_InputManager : MonoBehaviour
         if (isClick&&Input.GetMouseButtonUp(0))
         {
             onClickUp();
-            C4_PlayerController.Instance.dispatchData(inputData);
         }
+
+        C4_ManagerMaster.Instance.sceneManager.sendInputData(inputData);
     }
 
 
@@ -66,7 +64,7 @@ public class C4_InputManager : MonoBehaviour
 
         if (inputData.clickObjectID.type == GameObjectType.Player)
         {
-            C4_PlayerController.Instance.setBoatScript(hit.collider.transform.root.gameObject);
+            C4_ManagerMaster.Instance.sceneManager.sendSelectGameObject(hit.collider.transform.root.gameObject);
         }
     }
 

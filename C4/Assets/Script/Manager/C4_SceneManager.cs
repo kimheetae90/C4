@@ -1,15 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class C4_SceneManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    protected List<C4_Controller> controllerList;
+    protected Dictionary<GameObjectType,C4_Controller> controllerDictionary;
+
+    public void Start()
+    {
+        controllerList = new List<C4_Controller>();
+        controllerDictionary = new Dictionary<GameObjectType, C4_Controller>();
+    }
+
+    public void sendInputData(InputData inputData)
+    {
+        foreach (C4_Controller controller in controllerList)
+        {
+            controller.dispatchData(inputData);
+        }
+    }
+
+    public void sendSelectGameObject(GameObject clickGameObject)
+    {
+        foreach (C4_Controller controller in controllerList)
+        {
+            controller.selectClickObject(clickGameObject);
+        }
+    }
+
+    public C4_Controller getController(GameObjectType type)
+    {
+        return controllerDictionary[type];
+    }
+
+    protected void addController(GameObjectType type, C4_Controller controller)
+    {
+        controllerList.Add(controller);
+        controllerDictionary.Add(type, controller);
+    }
 }
