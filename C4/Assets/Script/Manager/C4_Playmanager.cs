@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+//PlayManager
 public class C4_PlayManager : C4_SceneManager
 {
     public C4_PlayerController playerController;
