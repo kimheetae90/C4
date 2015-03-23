@@ -131,15 +131,15 @@ public class C4_StartAIBehave : MonoBehaviour {
 
     void checkDistanceWithPlayer()
     {
-        shortestDistancePlayer = C4_ManagerMaster.Instance.objectManager.getSubObjectManager(GameObjectType.Player).objectList[0].GetComponent<C4_Player>();
+        shortestDistancePlayer = C4_ManagerMaster.Instance.objectManager.getSubObjectManager(GameObjectType.Player).getObjectInList(0).GetComponent<C4_Player>();
         distanceWithPlayer = Vector3.Distance(shortestDistancePlayer.transform.position, transform.position);
-        for (int i = 0; i < C4_ManagerMaster.Instance.objectManager.getSubObjectManager(GameObjectType.Player).objectList.Count; i++)
+        for (int i = 0; i < C4_ManagerMaster.Instance.objectManager.getSubObjectManager(GameObjectType.Player).getObjectCount(); i++)
         {
-            checkDistanceEachPlayer = Vector3.Distance(C4_ManagerMaster.Instance.objectManager.getSubObjectManager(GameObjectType.Player).objectList[i].transform.position, transform.position);
+            checkDistanceEachPlayer = Vector3.Distance(C4_ManagerMaster.Instance.objectManager.getSubObjectManager(GameObjectType.Player).getObjectInList(i).transform.position, transform.position);
             if (distanceWithPlayer > checkDistanceEachPlayer)
             {
                 distanceWithPlayer = checkDistanceEachPlayer;
-                shortestDistancePlayer = C4_ManagerMaster.Instance.objectManager.getSubObjectManager(GameObjectType.Player).objectList[i].GetComponent<C4_Player>();
+                shortestDistancePlayer = C4_ManagerMaster.Instance.objectManager.getSubObjectManager(GameObjectType.Player).getObjectInList(i).GetComponent<C4_Player>();
             }
         }
     }

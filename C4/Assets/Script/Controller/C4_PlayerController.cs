@@ -26,8 +26,8 @@ public class C4_PlayerController : C4_Controller
     void Start()
     {
         ourBoat = FindObjectOfType(typeof(C4_Player)) as C4_Player;
-        ourBoat.objectID.id = C4_ManagerMaster.Instance.objectManager.currentObjectCode++;
-        ourBoat.objectID.type = GameObjectType.Player;
+        ourBoat.objectAttr.id = C4_ManagerMaster.Instance.objectManager.currentObjectCode++;
+        ourBoat.objectAttr.type = GameObjectType.Player;
         C4_ManagerMaster.Instance.objectManager.addObjectToAll(ourBoat);
         playerUIScript = playerUI.GetComponent<C4_PlayerUI>();
     }

@@ -13,7 +13,7 @@ public class C4_BoatCollision : MonoBehaviour {
         moveScript = GetComponent<C4_BoatMove>();
         character = GetComponent<C4_Character>();
 
-        switch(collisionObject.objectID.type)
+        switch(collisionObject.objectAttr.type)
         {
             case GameObjectType.Player:
             case GameObjectType.Enemy:

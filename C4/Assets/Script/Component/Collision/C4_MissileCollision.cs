@@ -10,7 +10,7 @@ public class C4_MissileCollision : MonoBehaviour {
     {
         collisionObject = other.GetComponent<C4_Object>();
         missileMove = GetComponent<C4_MissileMove>();
-        switch (collisionObject.objectID.type)
+        switch (collisionObject.objectAttr.type)
         {
             case GameObjectType.Player:
             case GameObjectType.Enemy:

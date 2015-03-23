@@ -24,7 +24,7 @@ public class C4_EnemyController : C4_Controller
     {
         isSelected = false;
         selectNum = 0;
-        action = EnemyAction.NULL;
+        action = EnemyAction.Invalid;
         isActing = false;
         canActing = false;
         enemySelectArrow = GameObject.Find("EnemySelectUI");
@@ -35,7 +35,7 @@ public class C4_EnemyController : C4_Controller
     {
         if (!isActing)
         {
-            if (action == EnemyAction.NULL)
+            if (action == EnemyAction.Invalid)
             {
                 chooseAction();
             }
@@ -91,12 +91,12 @@ public class C4_EnemyController : C4_Controller
 
     public void startBehave()
     {
-      //  behavior.startBehave();
+      behavior.startBehave();
     }
 
     public void resetSelect()
-    {   
-        action = EnemyAction.NULL;
+    {
+        action = EnemyAction.Invalid;
         isSelected = false;
         selectedBoat = null;
         behavior = null;
@@ -121,14 +121,14 @@ public class C4_EnemyController : C4_Controller
     void selectBoat()
     {
         resetSelect();
-        if (C4_ManagerMaster.Instance.objectManager.getSubObjectManager(GameObjectType.Enemy).objectList.Count > 0)
+        if (C4_ManagerMaster.Instance.objectManager.getSubObjectManager(GameObjectType.Enemy).getObjectCount() > 0)
         {
             selectNum++;
-            if (selectNum >= C4_ManagerMaster.Instance.objectManager.getSubObjectManager(GameObjectType.Enemy).objectList.Count)
+            if (selectNum >= C4_ManagerMaster.Instance.objectManager.getSubObjectManager(GameObjectType.Enemy).getObjectCount())
             {
                 selectNum = 0;
             }
-            selectedBoat = C4_ManagerMaster.Instance.objectManager.getSubObjectManager(GameObjectType.Enemy).objectList[selectNum].GetComponent<C4_Enemy>();
+            selectedBoat = C4_ManagerMaster.Instance.objectManager.getSubObjectManager(GameObjectType.Enemy).getObjectInList(selectNum).GetComponent<C4_Enemy>();
             behavior = selectedBoat.GetComponent<C4_StartAIBehave>();
             isSelected = true;
         }

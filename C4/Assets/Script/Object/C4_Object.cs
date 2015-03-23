@@ -9,15 +9,16 @@ using System.Collections;
 
 public class C4_Object : MonoBehaviour {
 
-    public ObjectID objectID;
+    public ObjectID objectAttr;
 
-    public bool isValid()
+    void Start()
     {
-        return true;
+        objectAttr.id = -1;
+        objectAttr.type = GameObjectType.Invalid;
     }
 
     public bool isType(GameObjectType type)
     {
-        return objectID.type == type;
+        return objectAttr.type == type;
     }
 }

@@ -8,8 +8,8 @@ public class C4_Camera : C4_Object {
 
     public void Start()
     {
-        objectID.id = C4_ManagerMaster.Instance.objectManager.currentObjectCode++;
-        objectID.type = GameObjectType.Camera;
+        objectAttr.id = C4_ManagerMaster.Instance.objectManager.currentObjectCode++;
+        objectAttr.type = GameObjectType.Camera;
     }
 
     public void cameraMove(InputData inputData)

@@ -18,9 +18,9 @@ public class C4_ObjectManager : C4_BaseObjectManager
 
     C4_BaseObjectManager objectManager;
     C4_Object removeReservedObject;
-    void Awake()
+    void Start()
     {
-        base.Awake();
+        base.Start();
         removeReservedObjectQueue = new Queue<C4_Object>();
         objectManagerList = new Dictionary<GameObjectType, C4_BaseObjectManager>();
         currentObjectCode = 0;
@@ -49,9 +49,9 @@ public class C4_ObjectManager : C4_BaseObjectManager
     public void addObjectToAll(C4_Object inputObject)
     {
         addObject(inputObject);
-        if (objectManagerList.ContainsKey(inputObject.objectID.type))
+        if (objectManagerList.ContainsKey(inputObject.objectAttr.type))
         {
-            objectManagerList.TryGetValue(inputObject.objectID.type, out objectManager);
+            objectManagerList.TryGetValue(inputObject.objectAttr.type, out objectManager);
             objectManager.addObject(inputObject);
         }
     }
@@ -60,7 +60,7 @@ public class C4_ObjectManager : C4_BaseObjectManager
     {
         removeReservedObjectQueue.Enqueue(_removeObject);
 
-        if (objectManagerList.TryGetValue(removeReservedObject.objectID.type, out objectManager))
+        if (objectManagerList.TryGetValue(removeReservedObject.objectAttr.type, out objectManager))
         {
             objectManager.removeObject(removeReservedObject);
             removeObject(removeReservedObject);
