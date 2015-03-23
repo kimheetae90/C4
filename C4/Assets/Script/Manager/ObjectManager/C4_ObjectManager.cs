@@ -18,7 +18,7 @@ public class C4_ObjectManager : C4_BaseObjectManager
 
     C4_BaseObjectManager objectManager;
     C4_Object removeReservedObject;
-    void Awake()
+    public void Awake()
     {
         base.Awake();
         removeReservedObjectQueue = new Queue<C4_Object>();

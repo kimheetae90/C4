@@ -21,15 +21,14 @@ public class C4_PlayerController : C4_Controller
     public C4_BoatFeature selectedBoatFeature;
     bool isAim;
     public GameObject playerUI;
-    C4_PlayerUI playerUIScript;
-
+    
     void Start()
     {
         ourBoat = FindObjectOfType(typeof(C4_Player)) as C4_Player;
         ourBoat.objectID.id = C4_ManagerMaster.Instance.objectManager.currentObjectCode++;
         ourBoat.objectID.type = GameObjectType.Player;
         C4_ManagerMaster.Instance.objectManager.addObjectToAll(ourBoat);
-        playerUIScript = playerUI.GetComponent<C4_PlayerUI>();
+       // playerUIScript = playerUI.GetComponent<C4_PlayerUI>();
     }
 
 
@@ -39,7 +38,7 @@ public class C4_PlayerController : C4_Controller
         Vector3 aimDirection = (selectedBoat.transform.position - clickPosition).normalized;
         aimDirection.y = 0;
         selectedBoat.turn(clickPosition);
-        playerUIScript.aiming(clickPosition);
+      //  playerUIScript.aiming(clickPosition);
     }
 
 
@@ -75,7 +74,7 @@ public class C4_PlayerController : C4_Controller
     {
         isAim = false;
         selectedBoat = null;
-        playerUIScript.activeDone();
+      //  playerUIScript.activeDone();
     }
 
     /* InputManager로부터 전해받은 InputData를 분석하고 행동을 명령하는 함수 */
@@ -98,7 +97,7 @@ public class C4_PlayerController : C4_Controller
                     if ((inputData.clickObjectID.type == GameObjectType.Player) && (inputData.clickObjectID.id != inputData.dragObjectID.id))
                     {
                         isAim = true;
-                        playerUIScript.startAim();
+              //          playerUIScript.startAim();
                     }
                 }
             }
@@ -119,7 +118,7 @@ public class C4_PlayerController : C4_Controller
                     }
                     else
                     {
-                        playerUIScript.select();
+                //        playerUIScript.select();
                     }
                 }
             }

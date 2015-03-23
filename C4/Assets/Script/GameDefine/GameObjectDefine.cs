@@ -1,23 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum GameObjectType 
-{ 
+public enum GameObjectType
+{
     Invalid,
-    Player, 
-    Enemy, 
-    Missile, 
+    Player,
+    Enemy,
+    Missile,
     Water,
-    UI, 
+    UI,
     Camera
 };
 
+public enum GameObjectInputType
+{
+    Invalid = 0x0000,
+    ClickAbleObject = 0x0001,
+    SelectAbleObject = 0x0001 << 1,
+}
 
 public enum EnemyAction
 {
-    NULL, 
-    Attack, 
-    Move 
+    Invalid,
+    Attack,
+    Move
 };
 
 class GameObjectDefine

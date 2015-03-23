@@ -7,7 +7,7 @@ public class C4_PlayManager : C4_SceneManager
     public C4_EnemyController enemyController;
 
 	// Use this for initialization
-    void Start()
+    public void Start()
     {
         base.Start();
         addController(GameObjectType.Player,playerController);
