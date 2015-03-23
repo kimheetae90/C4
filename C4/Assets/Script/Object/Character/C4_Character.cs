@@ -30,6 +30,12 @@ public abstract class C4_Character : C4_Object
     /* 배의 stack을 체크하여 움직일 수 있나, 발포할 수 있나를 확인 */
     void checkActiveAndStack()
     {
+        checkCanMove();
+        checkCanShot();
+    }
+
+    void checkCanMove()
+    {
         if (boatFeature.stackCount >= 1)
         {
             canMove = true;
@@ -38,7 +44,10 @@ public abstract class C4_Character : C4_Object
         {
             canMove = false;
         }
+    }
 
+    void checkCanShot()
+    {
         if (boatFeature.stackCount >= 2)
         {
             canShot = true;
