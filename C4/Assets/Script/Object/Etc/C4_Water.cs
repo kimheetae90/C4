@@ -8,7 +8,7 @@ public class C4_Water : C4_Object {
     void Start()
     {
         objectID.id = C4_ManagerMaster.Instance.objectManager.currentObjectCode++;
-        objectID.type = GameObjectType.Water;
+        objectID.type = GameObjectType.Ground;
         waterObject = transform.gameObject.GetComponent<C4_Water>();
         C4_ManagerMaster.Instance.objectManager.addObjectToAll(waterObject);
     }

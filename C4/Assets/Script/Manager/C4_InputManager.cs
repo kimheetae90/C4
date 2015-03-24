@@ -27,7 +27,7 @@ public class C4_InputManager : MonoBehaviour
         if (isClick)
         {
             onClick();
-            if (inputData.clickObjectID.type == GameObjectType.Water)
+            if (inputData.clickObjectID.type == GameObjectType.Ground)
             {
                 camObject.cameraMove(inputData);
             }

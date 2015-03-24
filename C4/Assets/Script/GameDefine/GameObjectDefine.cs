@@ -7,7 +7,7 @@ public enum GameObjectType
     Player,
     Enemy,
     Missile,
-    Water,
+    Ground,
     UI,
     Camera
 };

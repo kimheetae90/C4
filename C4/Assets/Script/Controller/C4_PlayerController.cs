@@ -22,13 +22,23 @@ public class C4_PlayerController : C4_Controller
     bool isAim;
     public GameObject playerUI;
 
+    enum ePlayerControllerActionState
+    {
+        None,
+        StartAim,
+        Aming,
+        Shot,
+        Move,
+        Select,
+    }
+
     void Start()
     {
         ourBoat = FindObjectOfType(typeof(C4_Player)) as C4_Player;
         ourBoat.objectID.id = C4_ManagerMaster.Instance.objectManager.currentObjectCode++;
         ourBoat.objectID.type = GameObjectType.Player;
         C4_ManagerMaster.Instance.objectManager.addObjectToAll(ourBoat);
-       // playerUIScript = playerUI.GetComponent<C4_PlayerUI>();
+        // playerUIScript = playerUI.GetComponent<C4_PlayerUI>();
     }
 
 
@@ -38,7 +48,7 @@ public class C4_PlayerController : C4_Controller
         Vector3 aimDirection = (selectedBoat.transform.position - clickPosition).normalized;
         aimDirection.y = 0;
         selectedBoat.turn(clickPosition);
-      //  playerUIScript.aiming(clickPosition);
+        //  playerUIScript.aiming(clickPosition);
     }
 
 
@@ -66,7 +76,7 @@ public class C4_PlayerController : C4_Controller
         selectedBoat = clickGameObject.GetComponent<C4_Player>();
         selectedBoatFeature = clickGameObject.GetComponent<C4_BoatFeature>();
         playerUI.transform.position = clickGameObject.transform.position;
-        
+
     }
 
     /* 선택 정보를 초기화 */
@@ -74,54 +84,109 @@ public class C4_PlayerController : C4_Controller
     {
         isAim = false;
         selectedBoat = null;
-      //  playerUIScript.activeDone();
+        //  playerUIScript.activeDone();
     }
 
     /* InputManager로부터 전해받은 InputData를 분석하고 행동을 명령하는 함수 */
     override public void dispatchData(InputData inputData)
     {
-        if (selectedBoat != null)
+        if (selectedBoat == null) return;
+
+        ePlayerControllerActionState action = ePlayerControllerActionState.None;
+        computeActionState(ref inputData, out action);
+        ProcState(action, ref inputData);
+        updateAimState(ref inputData);
+    }
+
+    private void computeActionState(ref InputData inputData, out ePlayerControllerActionState action)
+    {
+        if (inputData.keyState == InputData.KeyState.Down)
         {
-            if (inputData.keyState == InputData.KeyState.Down)
-            {
-                if (isAim)
-                {
-                    if (inputData.clickObjectID.id == inputData.dragObjectID.id)
-                    {
-                        isAim = false;
-                    }
-                    aiming(inputData.dragPosition);
-                }
-                else
-                {
-                    if ((inputData.clickObjectID.type == GameObjectType.Player) && (inputData.clickObjectID.id != inputData.dragObjectID.id))
-                    {
-                        isAim = true;
-              //          playerUIScript.startAim();
-                    }
-                }
-            }
-            else
-            {
-                if (isAim)
-                {
-                    orderShot(inputData.dragPosition);
-                }
-                else
-                {
-                    if (inputData.clickObjectID.type == GameObjectType.Water)
-                    {
-                        if (inputData.clickPosition == inputData.dragPosition)
-                        {
-                            orderMove(inputData.clickPosition);
-                        }
-                    }
-                    else
-                    {
-                //        playerUIScript.select();
-                    }
-                }
-            }
+            computeKeyDownState(ref inputData, out action);
+        }
+        else
+        {
+            computeKeyUpState(ref inputData, out action);
+        }
+    }
+
+    private void computeKeyDownState(ref InputData inputData, out ePlayerControllerActionState action)
+    {
+        bool isClickObjAndDragObj = inputData.clickObjectID.id == inputData.dragObjectID.id ? true : false;
+        bool isSelectObjectTypePlayer = inputData.clickObjectID.type == GameObjectType.Player ? true : false;
+
+        if (isAim)
+        {
+            action = ePlayerControllerActionState.Aming;
+        }
+        else if (isAim == false && isSelectObjectTypePlayer && isClickObjAndDragObj == false)
+        {
+            action = ePlayerControllerActionState.StartAim;
+        }
+        else 
+        {
+            action = ePlayerControllerActionState.None;
+        }
+    }
+
+    private void updateAimState(ref InputData inputData)
+    {
+        bool isEqualClickObjAndDragObj = inputData.clickObjectID.id == inputData.dragObjectID.id ? true : false;
+        bool isSelectObjectTypePlayer = inputData.clickObjectID.type == GameObjectType.Player ? true : false;
+
+        if (isEqualClickObjAndDragObj)
+        {
+            isAim = false;
+        }
+        else if (isEqualClickObjAndDragObj == false && isSelectObjectTypePlayer)
+        {
+            isAim = true;
+        }
+    }
+
+    private void computeKeyUpState(ref InputData inputData, out ePlayerControllerActionState action)
+    {
+        bool isSelectObjectTypeGround = inputData.clickObjectID.type == GameObjectType.Ground ? true : false;
+
+        if (isAim)
+        {
+            action = ePlayerControllerActionState.Shot;
+        }
+        else if (isAim == false && isSelectObjectTypeGround)
+        {
+            action = ePlayerControllerActionState.Move;
+        }
+        else if (isAim == false)
+        {
+            action = ePlayerControllerActionState.Select;
+        }
+        else
+        {
+            action = ePlayerControllerActionState.None;
+        }
+    }
+
+    private void ProcState(ePlayerControllerActionState action, ref InputData inputData)
+    {
+        switch (action)
+        {
+            case ePlayerControllerActionState.None:
+                break;
+            case ePlayerControllerActionState.Aming:
+                aiming(inputData.dragPosition);
+                break;
+            case ePlayerControllerActionState.Move:
+                orderMove(inputData.clickPosition);
+                break;
+            case ePlayerControllerActionState.Select:
+                //playerUIScript.select();
+                break;
+            case ePlayerControllerActionState.StartAim:
+                //playerUIScript.startAim();
+                break;
+            case ePlayerControllerActionState.Shot:
+                orderShot(inputData.dragPosition);
+                break;
         }
     }
 }
