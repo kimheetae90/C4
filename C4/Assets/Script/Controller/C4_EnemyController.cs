@@ -24,7 +24,7 @@ public class C4_EnemyController : C4_Controller
     {
         isSelected = false;
         selectNum = 0;
-        action = EnemyAction.NULL;
+        action = EnemyAction.Invalid;
         isActing = false;
         canActing = false;
         enemySelectArrow = GameObject.Find("EnemySelectUI");
@@ -35,7 +35,7 @@ public class C4_EnemyController : C4_Controller
     {
         if (!isActing)
         {
-            if (action == EnemyAction.NULL)
+            if (action == EnemyAction.Invalid)
             {
                 chooseAction();
             }
@@ -95,8 +95,8 @@ public class C4_EnemyController : C4_Controller
     }
 
     public void resetSelect()
-    {   
-        action = EnemyAction.NULL;
+    {
+        action = EnemyAction.Invalid;
         isSelected = false;
         selectedBoat = null;
         behavior = null;

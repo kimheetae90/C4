@@ -21,7 +21,7 @@ public class C4_PlayerController : C4_Controller
     public C4_BoatFeature selectedBoatFeature;
     bool isAim;
     public GameObject playerUI;
-    
+
     void Start()
     {
         ourBoat = FindObjectOfType(typeof(C4_Player)) as C4_Player;

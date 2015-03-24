@@ -43,7 +43,7 @@ public class C4_InputManager : MonoBehaviour
             onClickUp();
         }
 
-        C4_ManagerMaster.Instance.sceneManager.sendInputData(inputData);
+        C4_ManagerMaster.Instance.sceneMode.sendInputData(inputData);
     }
 
 
@@ -64,7 +64,7 @@ public class C4_InputManager : MonoBehaviour
 
         if (inputData.clickObjectID.type == GameObjectType.Player)
         {
-            C4_ManagerMaster.Instance.sceneManager.sendSelectGameObject(hit.collider.transform.root.gameObject);
+            C4_ManagerMaster.Instance.sceneMode.sendSelectGameObject(hit.collider.transform.root.gameObject);
         }
     }
 

@@ -18,7 +18,7 @@ public class C4_ObjectManager : C4_BaseObjectManager
 
     C4_BaseObjectManager objectManager;
     C4_Object removeReservedObject;
-    public void Awake()
+    public override void Awake()
     {
         base.Awake();
         removeReservedObjectQueue = new Queue<C4_Object>();
@@ -60,10 +60,10 @@ public class C4_ObjectManager : C4_BaseObjectManager
     {
         removeReservedObjectQueue.Enqueue(_removeObject);
 
-        if (objectManagerList.TryGetValue(removeReservedObject.objectID.type, out objectManager))
+        if (objectManagerList.TryGetValue(_removeObject.objectID.type, out objectManager))
         {
-            objectManager.removeObject(removeReservedObject);
-            removeObject(removeReservedObject);
+            objectManager.removeObject(_removeObject);
+            removeObject(_removeObject);
         }
     }
 
