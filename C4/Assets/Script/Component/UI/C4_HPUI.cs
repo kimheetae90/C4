@@ -18,34 +18,9 @@ public class C4_HPUI : MonoBehaviour
 
     // Update is called once per frame
 
-    public void HPChange(int dottime)
+    void Update()
     {
-        if (dottime > 1)
-        {
-            StartCoroutine(DotHPCheck(dottime));
-        }
-        else
-        {
-            imgHPbar.fillAmount = (float)boatFeature.hp / boatFeature.fullHP;
-        }
-
-    }
-
-    IEnumerator DotHPCheck(int dottime)
-    {
-
-
         imgHPbar.fillAmount = (float)boatFeature.hp / boatFeature.fullHP;
-        dottime--;
-        if (dottime > 0)
-        {
-            yield return new WaitForSeconds(1.0f);
-            StartCoroutine(DotHPCheck(dottime));
-
-        }
-        else
-        {
-            StopCoroutine(DotHPCheck(dottime));
-        }
     }
+
 }
