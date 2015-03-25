@@ -15,7 +15,7 @@ public class C4_AimUI : MonoBehaviour {
     public void showAimUI(Vector3 clickPosition)
     {
         aimImage.SetActive(true);
-        C4_Player selectedBoat = C4_ManagerMaster.Instance.sceneManager.getController(GameObjectType.Player).GetComponent<C4_PlayerController>().selectedBoat;
+        C4_Player selectedBoat = C4_ManagerMaster.Instance.sceneMode.getController(GameObjectType.Player).GetComponent<C4_PlayerController>().selectedBoat;
         float distance = Vector3.Distance(selectedBoat.transform.position, clickPosition);
         Vector3 aimDirection = (selectedBoat.transform.position - clickPosition).normalized;
         aimDirection.y = 0;

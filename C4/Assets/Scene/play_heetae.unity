@@ -287,7 +287,8 @@ Prefab:
       propertyPath: enemyController
       value: 
       objectReference: {fileID: 12758853}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11438220, guid: f45f0ccc22844a84593ed00428fdeacf, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f45f0ccc22844a84593ed00428fdeacf, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &378827157
@@ -801,6 +802,23 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 139746, guid: 83cd402f7ac365545ad2ec4b84605bf3, type: 2}
   m_PrefabInternal: {fileID: 1251808733}
+--- !u!1 &1426802893
+GameObject:
+  m_PrefabParentObject: {fileID: 135078, guid: f45f0ccc22844a84593ed00428fdeacf, type: 2}
+  m_PrefabInternal: {fileID: 335797723}
+--- !u!114 &1426802894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1426802893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ded0e8dff86413549b6886471e5ab1c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 661504620}
+  enemyController: {fileID: 12758853}
 --- !u!1001 &1465897433
 Prefab:
   m_ObjectHideFlags: 0

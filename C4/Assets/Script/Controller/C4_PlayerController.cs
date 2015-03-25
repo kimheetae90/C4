@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 /// <summary>
 ///  선택한 배를 플레이 하는 것을 관리하는 Manager
@@ -18,32 +19,41 @@ public class C4_PlayerController : C4_Controller
     [System.NonSerialized]
     public C4_Player selectedBoat;
     [System.NonSerialized]
-    public C4_BoatFeature selectedBoatFeature;
-    bool isAim;
-    public GameObject playerUI;
-    C4_PlayerUI playerUIScript;
-
-    void Start()
+    bool isAiming;
+    
+    enum ePlayerControllerActionState
     {
+        None,
+        StartAim,
+        Aming,
+        Shot,
+        Move,
+        Select,
+    }
+
+    public override void Start()
+    {
+        base.Start();
+
         ourBoat = FindObjectOfType(typeof(C4_Player)) as C4_Player;
         ourBoat.objectAttr.id = C4_ManagerMaster.Instance.objectManager.currentObjectCode++;
         ourBoat.objectAttr.type = GameObjectType.Player;
         C4_ManagerMaster.Instance.objectManager.addObjectToAll(ourBoat);
-        playerUIScript = playerUI.GetComponent<C4_PlayerUI>();
     }
 
 
-    /* 조준하고 있는 방향으로 회전하고 UI를 출력할 함수 */
+/*
+    / * 조준하고 있는 방향으로 회전하고 UI를 출력할 함수 * /
     void aiming(Vector3 clickPosition)
     {
         Vector3 aimDirection = (selectedBoat.transform.position - clickPosition).normalized;
         aimDirection.y = 0;
         selectedBoat.turn(clickPosition);
-        playerUIScript.aiming(clickPosition);
+        //  playerUIScript.aiming(clickPosition);
     }
 
 
-    /* 발포하고 상태를 초기화할 함수 */
+    / * 발포하고 상태를 초기화할 함수 * /
     void orderShot(Vector3 shotDirection)
     {
         selectedBoat.shot(shotDirection);
@@ -51,13 +61,13 @@ public class C4_PlayerController : C4_Controller
     }
 
 
-    /* 움직임을 명령할 함수 */
+    / * 움직임을 명령할 함수 * /
     void orderMove(Vector3 toMove)
     {
         selectedBoat.move(toMove);
         selectedBoat.turn(toMove);
         activeDone();
-    }
+    }*/
 
 
     /* 배를 선택하는 함수 */
@@ -65,64 +75,122 @@ public class C4_PlayerController : C4_Controller
     override public void selectClickObject(GameObject clickGameObject)
     {
         selectedBoat = clickGameObject.GetComponent<C4_Player>();
-        selectedBoatFeature = clickGameObject.GetComponent<C4_BoatFeature>();
-        playerUI.transform.position = clickGameObject.transform.position;
-        
+        //playerUI.transform.position = clickGameObject.transform.position;
+
+        addListener(selectedBoat);
     }
 
     /* 선택 정보를 초기화 */
     void activeDone()
     {
-        isAim = false;
+        isAiming = false;
+        notifyEvent("ActiveDone");
+        removeListener(selectedBoat);
         selectedBoat = null;
-        playerUIScript.activeDone();
     }
 
     /* InputManager로부터 전해받은 InputData를 분석하고 행동을 명령하는 함수 */
     override public void dispatchData(InputData inputData)
     {
-        if (selectedBoat != null)
+        if (selectedBoat == null) return;
+
+        ePlayerControllerActionState action = ePlayerControllerActionState.None;
+        computeActionState(ref inputData, out action);
+        ProcState(action, ref inputData);
+        updateAimState(ref inputData);
+    }
+
+    private void computeActionState(ref InputData inputData, out ePlayerControllerActionState action)
+    {
+        if (inputData.keyState == InputData.KeyState.Down)
         {
-            if (inputData.keyState == InputData.KeyState.Down)
-            {
-                if (isAim)
-                {
-                    if (inputData.clickObjectID.id == inputData.dragObjectID.id)
-                    {
-                        isAim = false;
-                    }
-                    aiming(inputData.dragPosition);
-                }
-                else
-                {
-                    if ((inputData.clickObjectID.type == GameObjectType.Player) && (inputData.clickObjectID.id != inputData.dragObjectID.id))
-                    {
-                        isAim = true;
-                        playerUIScript.startAim();
-                    }
-                }
-            }
-            else
-            {
-                if (isAim)
-                {
-                    orderShot(inputData.dragPosition);
-                }
-                else
-                {
-                    if (inputData.clickObjectID.type == GameObjectType.Water)
-                    {
-                        if (inputData.clickPosition == inputData.dragPosition)
-                        {
-                            orderMove(inputData.clickPosition);
-                        }
-                    }
-                    else
-                    {
-                        playerUIScript.select();
-                    }
-                }
-            }
+            computeKeyDownState(ref inputData, out action);
+        }
+        else
+        {
+            computeKeyUpState(ref inputData, out action);
+        }
+    }
+
+    private void computeKeyDownState(ref InputData inputData, out ePlayerControllerActionState action)
+    {
+        bool isClickObjAndDragObj = inputData.clickObjectID.id == inputData.dragObjectID.id ? true : false;
+        bool isSelectObjectTypePlayer = inputData.clickObjectID.type == GameObjectType.Player ? true : false;
+
+        if (isAiming)
+        {
+            action = ePlayerControllerActionState.Aming;
+        }
+        else if (isAiming == false && isSelectObjectTypePlayer && isClickObjAndDragObj == false)
+        {
+            action = ePlayerControllerActionState.StartAim;
+        }
+        else 
+        {
+            action = ePlayerControllerActionState.None;
+        }
+    }
+
+    private void computeKeyUpState(ref InputData inputData, out ePlayerControllerActionState action)
+    {
+        bool isSelectObjectTypeGround = inputData.clickObjectID.type == GameObjectType.Ground ? true : false;
+
+        if (isAiming)
+        {
+            action = ePlayerControllerActionState.Shot;
+        }
+        else if (isAiming == false && isSelectObjectTypeGround)
+        {
+            action = ePlayerControllerActionState.Move;
+        }
+        else if (isAiming == false && selectedBoat != null)
+        {
+            action = ePlayerControllerActionState.Select;
+        }
+        else
+        {
+            action = ePlayerControllerActionState.None;
+        }
+    }
+
+    private void updateAimState(ref InputData inputData)
+    {
+        bool isEqualClickObjAndDragObj = inputData.clickObjectID.id == inputData.dragObjectID.id ? true : false;
+        bool isSelectObjectTypePlayer = inputData.clickObjectID.type == GameObjectType.Player ? true : false;
+
+        if (isEqualClickObjAndDragObj)
+        {
+            isAiming = false;
+        }
+        else if (isEqualClickObjAndDragObj == false && isSelectObjectTypePlayer)
+        {
+            isAiming = true;
+        }
+    }
+
+    private void ProcState(ePlayerControllerActionState action, ref InputData inputData)
+    {
+        switch (action)
+        {
+            case ePlayerControllerActionState.None:
+                break;
+            case ePlayerControllerActionState.Aming:
+                notifyEvent("Aming", inputData.dragPosition);
+                break;
+            case ePlayerControllerActionState.Move:
+                notifyEvent("Move", inputData.clickPosition);
+                activeDone();
+                break;
+            case ePlayerControllerActionState.Select:
+                notifyEvent("Select",selectedBoat.transform.position);
+                break;
+            case ePlayerControllerActionState.StartAim:
+                notifyEvent("StartAim");
+                break;
+            case ePlayerControllerActionState.Shot:
+                notifyEvent("Shot", inputData.dragPosition);
+                activeDone();
+                break;
         }
     }
 }

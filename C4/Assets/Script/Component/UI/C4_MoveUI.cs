@@ -35,7 +35,7 @@ public class C4_MoveUI : MonoBehaviour {
 
     public void showMoveUI()
     {
-        C4_Player selectedBoat = C4_ManagerMaster.Instance.sceneManager.getController(GameObjectType.Player).GetComponent<C4_PlayerController>().selectedBoat;
+        C4_Player selectedBoat = C4_ManagerMaster.Instance.sceneMode.getController(GameObjectType.Player).GetComponent<C4_PlayerController>().selectedBoat;
         C4_BoatFeature boatFeature = selectedBoat.GetComponent<C4_BoatFeature>();
 
         for (int i = 0; i < moveRangeUI.Length; i++)

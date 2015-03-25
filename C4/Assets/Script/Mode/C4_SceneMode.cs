@@ -2,12 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class C4_SceneManager : MonoBehaviour {
+public class C4_SceneMode : MonoBehaviour {
 
     protected List<C4_Controller> controllerList;
     protected Dictionary<GameObjectType,C4_Controller> controllerDictionary;
 
-    public void Start()
+    public virtual void Start()
     {
         controllerList = new List<C4_Controller>();
         controllerDictionary = new Dictionary<GameObjectType, C4_Controller>();

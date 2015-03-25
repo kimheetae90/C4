@@ -7,16 +7,9 @@ public enum GameObjectType
     Player,
     Enemy,
     Missile,
-    Water,
+    Ground,
     UI,
     Camera
-};
-
-
-public enum KeyState
-{
-    Down,
-    Up
 };
 
 public enum GameObjectInputType
@@ -24,7 +17,14 @@ public enum GameObjectInputType
     Invalid = 0x0000,
     ClickAbleObject = 0x0001,
     SelectAbleObject = 0x0001 << 1,
-}
+};
+
+public enum KeyState
+{
+    Down,
+    Up
+};
+
 
 public enum EnemyAction
 {

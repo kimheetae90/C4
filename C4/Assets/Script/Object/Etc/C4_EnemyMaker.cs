@@ -14,7 +14,6 @@ public class C4_EnemyMaker : MonoBehaviour {
         InvokeRepeating("makeEnemy", 0f, regenerationTime);
 	}
 
-
     void makeEnemy()
     {
         initObject = Instantiate(enemyGameObejct, transform.position, transform.rotation) as GameObject;

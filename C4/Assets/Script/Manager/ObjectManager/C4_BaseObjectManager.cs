@@ -9,7 +9,7 @@ public class C4_BaseObjectManager : MonoBehaviour {
     [System.NonSerialized]
     private Dictionary<ObjectID, C4_Object> objectDictionary;
 
-    protected void Start()
+    public virtual void Awake()
     {
         objectList = new List<C4_Object>();
         objectDictionary = new Dictionary<ObjectID, C4_Object>();
