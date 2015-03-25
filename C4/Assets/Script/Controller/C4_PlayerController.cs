@@ -35,6 +35,18 @@ public class C4_PlayerController : C4_Controller
         base.Start();
     }
 
+
+/*
+    / * 조준하고 있는 방향으로 회전하고 UI를 출력할 함수 * /
+    void aiming(Vector3 clickPosition)
+    {
+        Vector3 aimDirection = (selectedBoat.transform.position - clickPosition).normalized;
+        aimDirection.y = 0;
+        selectedBoat.turn(clickPosition);
+        //  playerUIScript.aiming(clickPosition);
+>>>>>>> refactoring
+    }
+
     override public void selectClickObject(GameObject clickGameObject)
     {
         selectedBoat = clickGameObject.GetComponent<C4_Player>();

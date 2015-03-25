@@ -54,8 +54,8 @@ public class C4_InputManager : MonoBehaviour
 
         Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity);
         clickObject = hit.collider.transform.root.gameObject.GetComponent<C4_Object>();
-        inputData.clickObjectID = clickObject.objectID;
-        inputData.dragObjectID = clickObject.objectID;
+        inputData.clickObjectID = clickObject.objectAttr;
+        inputData.dragObjectID = clickObject.objectAttr;
         inputData.clickPosition = hit.point;
         inputData.dragPosition = hit.point;
         inputData.clickPosition.y = 0;
@@ -77,7 +77,7 @@ public class C4_InputManager : MonoBehaviour
         clickObject = hit.collider.transform.root.gameObject.GetComponent<C4_Object>();
         inputData.dragPosition = hit.point;
         inputData.dragPosition.y = 0;
-        inputData.dragObjectID = clickObject.objectID;
+        inputData.dragObjectID = clickObject.objectAttr;
     }
 
 
