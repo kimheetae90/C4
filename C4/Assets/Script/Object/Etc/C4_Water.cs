@@ -3,14 +3,10 @@ using System.Collections;
 
 public class C4_Water : C4_Object {
 
-    C4_Object waterObject;
-
     void Start()
     {
-        objectID.id = C4_ManagerMaster.Instance.objectManager.currentObjectCode++;
-        objectID.type = GameObjectType.Ground;
-        waterObject = transform.gameObject.GetComponent<C4_Water>();
-        C4_ManagerMaster.Instance.objectManager.addObjectToAll(waterObject);
+        C4_Object me = this;
+        C4_ManagerMaster.Instance.objectManager.registerObjectToAll(ref me, GameObjectType.Ground);
     }
 
 }

@@ -5,10 +5,6 @@ public class C4_EnemyMaker : MonoBehaviour {
 
     public GameObject enemyGameObejct;
     public float regenerationTime;
-    int objectID;
-    GameObject initObject;
-
-    C4_Object enemy;
 	// Use this for initialization
 	void Start () {
         InvokeRepeating("makeEnemy", 0f, regenerationTime);
@@ -17,10 +13,8 @@ public class C4_EnemyMaker : MonoBehaviour {
 
     void makeEnemy()
     {
-        initObject = Instantiate(enemyGameObejct, transform.position, transform.rotation) as GameObject;
-        enemy = initObject.GetComponent<C4_Object>();
-        enemy.objectID.id = C4_ManagerMaster.Instance.objectManager.currentObjectCode++;
-        enemy.objectID.type = GameObjectType.Enemy;
-        C4_ManagerMaster.Instance.objectManager.addObjectToAll(enemy);
+        GameObject initObject = Instantiate(enemyGameObejct, transform.position, transform.rotation) as GameObject;
+        C4_Object enemy = initObject.GetComponent<C4_Object>();
+        C4_ManagerMaster.Instance.objectManager.registerObjectToAll(ref enemy, GameObjectType.Enemy);
     }
 }

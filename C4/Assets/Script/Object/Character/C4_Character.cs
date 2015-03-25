@@ -14,7 +14,7 @@ public abstract class C4_Character : C4_Object
     protected C4_Turn turnComponent;
     protected C4_IntShot shotComponent;
 
-    public void Start()
+    public virtual void Start()
     {
         moveComponent = GetComponent<C4_BoatMove>();
         turnComponent = GetComponentInChildren<C4_Turn>();

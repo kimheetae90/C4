@@ -15,7 +15,6 @@ using System.Collections.Generic;
 
 public class C4_PlayerController : C4_Controller
 {
-    public C4_Player ourBoat; //시작 시 배 불러오는 부분(나중에 지울것)
     [System.NonSerialized]
     public C4_Player selectedBoat;
     [System.NonSerialized]
@@ -34,49 +33,11 @@ public class C4_PlayerController : C4_Controller
     public override void Start()
     {
         base.Start();
-
-        ourBoat = FindObjectOfType(typeof(C4_Player)) as C4_Player;
-        ourBoat.objectID.id = C4_ManagerMaster.Instance.objectManager.currentObjectCode++;
-        ourBoat.objectID.type = GameObjectType.Player;
-        C4_ManagerMaster.Instance.objectManager.addObjectToAll(ourBoat);
     }
-
-
-/*
-    / * 조준하고 있는 방향으로 회전하고 UI를 출력할 함수 * /
-    void aiming(Vector3 clickPosition)
-    {
-        Vector3 aimDirection = (selectedBoat.transform.position - clickPosition).normalized;
-        aimDirection.y = 0;
-        selectedBoat.turn(clickPosition);
-        //  playerUIScript.aiming(clickPosition);
-    }
-
-
-    / * 발포하고 상태를 초기화할 함수 * /
-    void orderShot(Vector3 shotDirection)
-    {
-        selectedBoat.shot(shotDirection);
-        activeDone();
-    }
-
-
-    / * 움직임을 명령할 함수 * /
-    void orderMove(Vector3 toMove)
-    {
-        selectedBoat.move(toMove);
-        selectedBoat.turn(toMove);
-        activeDone();
-    }*/
-
-
-    /* 배를 선택하는 함수 */
 
     override public void selectClickObject(GameObject clickGameObject)
     {
         selectedBoat = clickGameObject.GetComponent<C4_Player>();
-        //playerUI.transform.position = clickGameObject.transform.position;
-
         addListener(selectedBoat);
     }
 
@@ -114,14 +75,14 @@ public class C4_PlayerController : C4_Controller
 
     private void computeKeyDownState(ref InputData inputData, out ePlayerControllerActionState action)
     {
-        bool isClickObjAndDragObj = inputData.clickObjectID.id == inputData.dragObjectID.id ? true : false;
+        bool isEqaulClickObjAndDragObj = inputData.clickObjectID.id == inputData.dragObjectID.id ? true : false;
         bool isSelectObjectTypePlayer = inputData.clickObjectID.type == GameObjectType.Player ? true : false;
 
         if (isAiming)
         {
             action = ePlayerControllerActionState.Aming;
         }
-        else if (isAiming == false && isSelectObjectTypePlayer && isClickObjAndDragObj == false)
+        else if (isAiming == false && isSelectObjectTypePlayer && isEqaulClickObjAndDragObj == false)
         {
             action = ePlayerControllerActionState.StartAim;
         }

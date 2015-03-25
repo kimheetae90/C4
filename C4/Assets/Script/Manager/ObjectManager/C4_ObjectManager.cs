@@ -5,16 +5,16 @@ using System.Collections.Generic;
 public class C4_ObjectManager : C4_BaseObjectManager
 {
     [System.NonSerialized]
-    public Queue<C4_Object> removeReservedObjectQueue;
+    private Queue<C4_Object> removeReservedObjectQueue;
 
     [System.NonSerialized]
-    public int currentObjectCode;
+    private int currentObjectCode;
 
     [System.NonSerialized]
-    public Queue<int> deletedObjectCode;
+    private Queue<int> deletedObjectCode;
 
     [System.NonSerialized]
-    public Dictionary<GameObjectType, C4_BaseObjectManager> objectManagerList;
+    private Dictionary<GameObjectType, C4_BaseObjectManager> objectManagerList;
 
     C4_BaseObjectManager objectManager;
     C4_Object removeReservedObject;
@@ -41,13 +41,14 @@ public class C4_ObjectManager : C4_BaseObjectManager
         {
             removeReservedObject = removeReservedObjectQueue.Dequeue();
             Destroy(removeReservedObject.gameObject);
-
-            
         }
     }
 
-    public void addObjectToAll(C4_Object inputObject)
+    public void registerObjectToAll(ref C4_Object inputObject,GameObjectType type)
     {
+        inputObject.objectID.id = C4_ManagerMaster.Instance.objectManager.currentObjectCode++;
+        inputObject.objectID.type = GameObjectType.Player;
+
         addObject(inputObject);
         if (objectManagerList.ContainsKey(inputObject.objectID.type))
         {

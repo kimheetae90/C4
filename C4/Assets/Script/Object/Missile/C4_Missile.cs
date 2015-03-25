@@ -10,10 +10,11 @@ public class C4_Missile : C4_Object {
 
     void Start()
     {
-        objectID.id = C4_ManagerMaster.Instance.objectManager.currentObjectCode++;
-        objectID.type = GameObjectType.Missile;
         gameObject.SetActive(false);
         moveScript = GetComponent<C4_MissileMove>();
+
+        C4_Object obj = this;
+        C4_ManagerMaster.Instance.objectManager.registerObjectToAll(ref obj, GameObjectType.Missile);
     }
 
     public void startMove(Vector3 click)
