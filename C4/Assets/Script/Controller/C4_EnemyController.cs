@@ -20,7 +20,7 @@ public class C4_EnemyController : C4_Controller
     [System.NonSerialized]
     public C4_SelectUI selectArrow;
 
-    void Start()
+    public override void Start()
     {
         isSelected = false;
         selectNum = 0;
