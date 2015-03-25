@@ -69,7 +69,7 @@ public abstract class C4_Character : C4_Object
     {
         if (canMove)
         {
-            moveComponent.startMove(toMove);
+            moveComponent.setMoving(toMove);
         }
     }
 

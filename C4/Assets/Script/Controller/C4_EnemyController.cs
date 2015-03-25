@@ -16,9 +16,6 @@ public class C4_EnemyController : C4_Controller
     public EnemyAction action;
     bool isActing;
     bool canActing;
-    public GameObject enemySelectArrow;
-    [System.NonSerialized]
-    public C4_SelectUI selectArrow;
 
     public override void Start()
     {
@@ -27,8 +24,6 @@ public class C4_EnemyController : C4_Controller
         action = EnemyAction.Invalid;
         isActing = false;
         canActing = false;
-        enemySelectArrow = GameObject.Find("EnemySelectUI");
-        selectArrow = enemySelectArrow.GetComponent<C4_SelectUI>();
     }
 
     void Update()
@@ -49,7 +44,7 @@ public class C4_EnemyController : C4_Controller
                 {
                     if (canActing)
                     {
-                        selectArrow.setSelect(selectedBoat);
+                        //original here
                         isActing = true;
                         startBehave();
                     }
@@ -102,7 +97,7 @@ public class C4_EnemyController : C4_Controller
         behavior = null;
         isActing = false;
         canActing = false;
-        selectArrow.resetSelect();       
+        //원래여기
     }
 
     void chooseAction()

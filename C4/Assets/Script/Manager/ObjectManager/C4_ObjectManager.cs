@@ -47,8 +47,8 @@ public class C4_ObjectManager : C4_BaseObjectManager
 
     public void registerObjectToAll(ref C4_Object inputObject,GameObjectType type)
     {
-        inputObject.objectID.id = C4_ManagerMaster.Instance.objectManager.currentObjectCode++;
-        inputObject.objectID.type = GameObjectType.Player;
+        inputObject.objectAttr.id = C4_ManagerMaster.Instance.objectManager.currentObjectCode++;
+        inputObject.objectAttr.type = GameObjectType.Player;
 
         addObject(inputObject);
         if (objectManagerList.ContainsKey(inputObject.objectAttr.type))
