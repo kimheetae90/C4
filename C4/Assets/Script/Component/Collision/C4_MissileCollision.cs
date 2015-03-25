@@ -4,12 +4,12 @@ using System.Collections;
 public class C4_MissileCollision : MonoBehaviour {
 
     C4_Object collisionObject;
-    C4_MissileMove missileMove;
+    C4_StraightMove missileMove;
 
     void OnTriggerEnter(Collider other)
     {
         collisionObject = other.GetComponent<C4_Object>();
-        missileMove = GetComponent<C4_MissileMove>();
+        missileMove = GetComponent<C4_StraightMove>();
         switch (collisionObject.objectAttr.type)
         {
             case GameObjectType.Player:

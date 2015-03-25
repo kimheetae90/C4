@@ -3,15 +3,14 @@ using System.Collections;
 
 /// <summary>
 ///  움직이는 기능의 스크립트
-///  setToMove : 움직일 지점을 선택하고 코루틴을 시작한다.
 ///  move : 움직이는 코루틴, 목표지점에 다다를때까지 계속 움직이며 목표지점에 다다르면 코루틴이 종료된다.
 ///  움직임의 상태는 isMove로 체크한다.
 /// </summary>
 
-public class C4_Move : MonoBehaviour {
+public class C4_StraightMove : MonoBehaviour {
 
     protected float moveSpeed;
-    public Vector3 toMove;
+    private Vector3 toMove;
 
     [System.NonSerialized]
     public bool isMove;
@@ -25,8 +24,14 @@ public class C4_Move : MonoBehaviour {
         isCoroutine = false;
 	}
 
-    public void setMoving()
+    public void setToMove(Vector3 inputToMove)
     {
+        toMove = inputToMove;
+    }
+
+    public void setMoving(Vector3 inputToMove)
+    {
+        setToMove(inputToMove);
         isMove = true;
         if (!isCoroutine)
         {
@@ -34,7 +39,21 @@ public class C4_Move : MonoBehaviour {
             isCoroutine = true;
         }
     }
-    
+
+    void moveToTarget()
+    {
+
+        transform.Translate((toMove - transform.position).normalized * moveSpeed * Time.deltaTime);
+        StartCoroutine(move());
+    }
+
+    void stopMoveToTarget()
+    {
+        isMove = false;
+        isCoroutine = false;
+        StopCoroutine(move());
+    }
+
     IEnumerator move()
     {
         yield return null;
@@ -43,20 +62,16 @@ public class C4_Move : MonoBehaviour {
             float distance = Vector3.Distance(toMove, transform.position);
             if (distance > moveSpeed*0.02f)
             {
-                transform.Translate((toMove - transform.position).normalized * moveSpeed * Time.deltaTime);
-                StartCoroutine("move");
+                moveToTarget();
             }
             else
             {
-                isMove = false;
-                isCoroutine = false;
-                StopCoroutine("move");
+                stopMoveToTarget();
             }
         }
         else
         {
-            isCoroutine = false;
-            StopCoroutine("move");
+            stopMoveToTarget();
         }
     }
 }
