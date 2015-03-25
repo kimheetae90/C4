@@ -490,6 +490,10 @@ Prefab:
       propertyPath: enemyController
       value: 
       objectReference: {fileID: 12758853}
+    - target: {fileID: 135078, guid: f45f0ccc22844a84593ed00428fdeacf, type: 2}
+      propertyPath: m_Name
+      value: PlayMode
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11438220, guid: f45f0ccc22844a84593ed00428fdeacf, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f45f0ccc22844a84593ed00428fdeacf, type: 2}
@@ -851,6 +855,7 @@ GameObject:
   - 54: {fileID: 847883392}
   - 65: {fileID: 847883391}
   - 114: {fileID: 847883397}
+  - 114: {fileID: 847883394}
   m_Layer: 0
   m_Name: Boat
   m_TagString: Untagged
@@ -911,6 +916,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9d1e39925fe04748b6646856e15f4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &847883394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 847883389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69d14668699dbf7488929d0401f29fe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &847883395
@@ -1297,6 +1313,17 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 139746, guid: 83cd402f7ac365545ad2ec4b84605bf3, type: 2}
   m_PrefabInternal: {fileID: 1251808733}
+--- !u!114 &1251808743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1251808734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69d14668699dbf7488929d0401f29fe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1251808744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1325,7 +1352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 661504620}
   enemyController: {fileID: 12758853}
-  playerUI: {fileID: 0}
+  playerUI: {fileID: 1852620104}
 --- !u!1 &1464569751
 GameObject:
   m_ObjectHideFlags: 0
@@ -1768,6 +1795,12 @@ Canvas:
 GameObject:
   m_PrefabParentObject: {fileID: 149854, guid: 9e9063d48a1171243934707ad443405f, type: 2}
   m_PrefabInternal: {fileID: 1852620097}
+--- !u!114 &1852620104
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11435340, guid: 9e9063d48a1171243934707ad443405f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1852620097}
+  m_Script: {fileID: 11500000, guid: 6c957c4f43ca4444aa75c9dfb15dc087, type: 3}
 --- !u!114 &2007267396
 MonoBehaviour:
   m_ObjectHideFlags: 0

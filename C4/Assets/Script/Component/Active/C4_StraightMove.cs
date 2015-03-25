@@ -7,15 +7,8 @@ using System.Collections;
 ///  움직임의 상태는 isMove로 체크한다.
 /// </summary>
 
-public class C4_StraightMove : MonoBehaviour {
-
-    protected float moveSpeed;
-    private Vector3 toMove;
-
-    [System.NonSerialized]
-    public bool isMove;
-    bool isCoroutine;
-
+public class C4_StraightMove : C4_Move
+{
 	// Use this for initialization
     void Start()
     {
@@ -24,25 +17,8 @@ public class C4_StraightMove : MonoBehaviour {
         isCoroutine = false;
 	}
 
-    public void setToMove(Vector3 inputToMove)
-    {
-        toMove = inputToMove;
-    }
-
-    public void setMoving(Vector3 inputToMove)
-    {
-        setToMove(inputToMove);
-        isMove = true;
-        if (!isCoroutine)
-        {
-            StartCoroutine(move());
-            isCoroutine = true;
-        }
-    }
-
     void moveToTarget()
     {
-
         transform.Translate((toMove - transform.position).normalized * moveSpeed * Time.deltaTime);
         StartCoroutine(move());
     }
@@ -54,7 +30,7 @@ public class C4_StraightMove : MonoBehaviour {
         StopCoroutine(move());
     }
 
-    IEnumerator move()
+    protected override IEnumerator move()
     {
         yield return null;
         if (isMove)

@@ -36,20 +36,17 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
             case "ActiveDone":
                 {
                     activeDone();
-                    Debug.Log("UI ActiveDone");
                 }
                 break;
             case "StartAim":
                 {
                     startAim();
-                    Debug.Log("UI StartAim");
                 }
                 break;
             case "Aming":
                 {
                     Vector3 pos = (Vector3)p[0];
                     aiming(pos);
-                    Debug.Log("UI Aming");
                 }
                 break;
             case "Select":
@@ -57,7 +54,6 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
                     Vector3 pos = (Vector3)p[0];
                     transform.position = pos;
                     select();
-                    Debug.Log("UI Select");
                 }
                 break;
         }

@@ -12,6 +12,7 @@ public abstract class C4_Character : C4_Object
     protected C4_BoatFeature boatFeature;
     protected C4_StraightMove moveComponent;
     protected C4_Turn turnComponent;
+    protected C4_DistanceCheck distCheckComponent;
     protected C4_IntShot shotComponent;
 
     public virtual void Start()
@@ -19,6 +20,7 @@ public abstract class C4_Character : C4_Object
         moveComponent = GetComponent<C4_StraightMove>();
         turnComponent = GetComponentInChildren<C4_Turn>();
         shotComponent = GetComponent<C4_IntShot>();
+        distCheckComponent = GetComponent<C4_DistanceCheck>();
         boatFeature = GetComponent<C4_BoatFeature>();
     }
 
@@ -69,6 +71,7 @@ public abstract class C4_Character : C4_Object
     {
         if (canMove)
         {
+            distCheckComponent.distCheck();
             moveComponent.setMoving(toMove);
         }
     }

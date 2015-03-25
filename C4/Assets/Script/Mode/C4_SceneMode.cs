@@ -13,7 +13,7 @@ public class C4_SceneMode : MonoBehaviour {
         controllerDictionary = new Dictionary<GameObjectType, C4_Controller>();
     }
 
-    public void sendInputData(InputData inputData)
+    public void sendInputDataToController(InputData inputData)
     {
         foreach (C4_Controller controller in controllerList)
         {
@@ -21,7 +21,7 @@ public class C4_SceneMode : MonoBehaviour {
         }
     }
 
-    public void sendSelectGameObject(GameObject clickGameObject)
+    public void sendSelectedGameObjectToController(GameObject clickGameObject)
     {
         foreach (C4_Controller controller in controllerList)
         {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class C4_Water : C4_Object {
+public class C4_Ground : C4_Object {
 
     void Start()
     {

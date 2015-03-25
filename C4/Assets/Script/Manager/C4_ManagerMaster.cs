@@ -34,6 +34,6 @@ public class C4_ManagerMaster : MonoBehaviour {
     {
         inputManager = GameObject.Find("InputManager").GetComponent<C4_InputManager>();
         objectManager = GameObject.Find("ObjectManager").GetComponent<C4_ObjectManager>();
-        sceneMode = GameObject.Find("PlayManager").GetComponent<C4_SceneMode>();
+        sceneMode = GameObject.Find("PlayMode").GetComponent<C4_SceneMode>();
     }
 }

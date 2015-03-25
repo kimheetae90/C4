@@ -21,15 +21,12 @@ public class C4_DistanceCheck : MonoBehaviour
         move = GetComponent<C4_StraightMove>();
     }
 
-    public void DistCheck()
+    public void distCheck()
     {
         range = boatFeature.moveRange;
         firstpos = transform.position;
         StartCoroutine(distanceCheck());
-
     }
-
-
 
     IEnumerator distanceCheck()
     {

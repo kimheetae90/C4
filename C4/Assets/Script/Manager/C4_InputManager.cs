@@ -23,7 +23,6 @@ public class C4_InputManager : MonoBehaviour
 	}
 	
 	void Update () {
-
         if (isClick)
         {
             onClick();
@@ -43,11 +42,10 @@ public class C4_InputManager : MonoBehaviour
             onClickUp();
         }
 
-        C4_ManagerMaster.Instance.sceneMode.sendInputData(inputData);
+        C4_ManagerMaster.Instance.sceneMode.sendInputDataToController(inputData);
     }
 
 
-    /* 버튼을 눌렀을 때의 Data 처리 */
     void onClickDown()
     {
         isClick = true;
@@ -64,13 +62,11 @@ public class C4_InputManager : MonoBehaviour
 
         if (inputData.clickObjectID.type == GameObjectType.Player)
         {
-            C4_ManagerMaster.Instance.sceneMode.sendSelectGameObject(hit.collider.transform.root.gameObject);
+            C4_ManagerMaster.Instance.sceneMode.sendSelectedGameObjectToController(hit.collider.transform.root.gameObject);
         }
     }
 
 
-
-    /* 계속 클릭했을 때(드래그)의 Data 처리 */
     void onClick()
     {
         Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity);
@@ -80,9 +76,6 @@ public class C4_InputManager : MonoBehaviour
         inputData.dragObjectID = clickObject.objectAttr;
     }
 
-
-
-    /* 버튼을 올렸을 때의 Data 처리 */
     void onClickUp()
     {
         inputData.keyState = InputData.KeyState.Up;
