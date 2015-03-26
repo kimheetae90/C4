@@ -14,7 +14,7 @@ public class C4_EnemyMaker : MonoBehaviour {
     {
         GameObject initObject = Instantiate(enemyGameObejct, transform.position, transform.rotation) as GameObject;
         C4_Object enemy = initObject.GetComponent<C4_Object>();
-        C4_ManagerMaster.Instance.objectManager.registerObjectToAll(ref enemy, GameObjectType.Enemy);
+        C4_ManagerMaster.Instance.objectManager.registerObjectToAll(ref enemy, GameObjectType.Enemy, GameObjectInputType.Invalid);
 
     }
 }

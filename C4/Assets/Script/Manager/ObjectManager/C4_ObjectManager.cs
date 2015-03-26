@@ -45,10 +45,11 @@ public class C4_ObjectManager : C4_BaseObjectManager
         }
     }
 
-    public void registerObjectToAll(ref C4_Object inputObject,GameObjectType type)
+    public void registerObjectToAll(ref C4_Object inputObject,GameObjectType type, GameObjectInputType inputType)
     {
         inputObject.objectAttr.id = currentObjectCode++;
         inputObject.objectAttr.type = type;
+        inputObject.objectAttr.setBits(inputType);
 
         addObject(inputObject);
         if (objectManagerList.ContainsKey(inputObject.objectAttr.type))

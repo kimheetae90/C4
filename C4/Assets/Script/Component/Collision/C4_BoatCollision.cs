@@ -3,15 +3,11 @@ using System.Collections;
 
 public class C4_BoatCollision : MonoBehaviour {
 
-    C4_Object collisionObject;
-    C4_StraightMove moveScript;
-    C4_Character character;
-
     void OnTriggerEnter(Collider other)
     {
-        collisionObject = other.GetComponent<C4_Object>();
-        moveScript = GetComponent<C4_StraightMove>();
-        character = GetComponent<C4_Character>();
+        C4_Object collisionObject = other.GetComponent<C4_Object>();
+        C4_StraightMove moveScript = GetComponent<C4_StraightMove>();
+        C4_Character character = GetComponent<C4_Character>();
 
         switch(collisionObject.objectAttr.type)
         {
