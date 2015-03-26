@@ -23,6 +23,7 @@ public class C4_DistanceCheck : MonoBehaviour
 
     public void distCheck()
     {
+        boatFeature.gageDown(boatFeature.needGageStackToMove);
         range = boatFeature.moveRange;
         firstpos = transform.position;
         StartCoroutine(distanceCheck());
