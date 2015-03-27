@@ -48,6 +48,8 @@ public class C4_MoveUI : MonoBehaviour
     public void selectBoat()
     {
         isSelect = true;
+        selectedBoat = C4_ManagerMaster.Instance.sceneMode.getController(GameObjectType.Player).GetComponent<C4_PlayerController>().selectedBoat;
+        boatFeature = selectedBoat.GetComponent<C4_BoatFeature>();
     }
 
     public void showMoveUI()
@@ -55,7 +57,6 @@ public class C4_MoveUI : MonoBehaviour
         stackCount = boatFeature.stackCount;
         moveRange = boatFeature.moveRange;
 
-        moveRangeUI.transform.position = selectedBoat.transform.position;
         moveRangeUI.transform.localScale = new Vector3((moveRange), (moveRange), 1);
 
 
