@@ -2,24 +2,39 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class C4_MoveUI : MonoBehaviour {
+public class C4_MoveUI : MonoBehaviour
+{
 
-    public Image[] moveRangeUI;
+    public Image moveRangeUI;
     [System.NonSerialized]
-    public GameObject[] moveImage;
+    public GameObject moveImage;
     bool isSelect;
     C4_BoatFeature boatFeature;
     C4_Player selectedBoat;
+    int stackCount;
+    int moveRange;
+
+    Texture2D firstTexture;
+    Texture2D secondTexture;
+    Texture2D thirdTexture;
+
+    Sprite firstSprite;
+    Sprite secondSprite;
+    Sprite thirdSprite;
+
     void Start()
     {
-        moveImage = new GameObject[3];
-        moveImage[0] = GameObject.Find("MoveRange1");
-        moveImage[1] = GameObject.Find("MoveRange2");
-        moveImage[2] = GameObject.Find("MoveRange3");
+        moveImage = GameObject.Find("MoveRange");
         isSelect = false;
-        moveImage[0].SetActive(false);
-        moveImage[1].SetActive(false);
-        moveImage[2].SetActive(false);
+        moveImage.SetActive(false);
+
+        firstTexture = (Texture2D)Resources.LoadAssetAtPath("Assets/Texture/moveUI_first.png", typeof(Texture2D));
+        secondTexture = (Texture2D)Resources.LoadAssetAtPath("Assets/Texture/moveUI_second.png", typeof(Texture2D));
+        thirdTexture = (Texture2D)Resources.LoadAssetAtPath("Assets/Texture/moveUI_third.png", typeof(Texture2D));
+
+        firstSprite = Sprite.Create(firstTexture, new Rect(0, 0, firstTexture.width, firstTexture.height), new Vector2(0.5f, 0.5f));
+        secondSprite = Sprite.Create(secondTexture, new Rect(0, 0, secondTexture.width, secondTexture.height), new Vector2(0.5f, 0.5f));
+        thirdSprite = Sprite.Create(thirdTexture, new Rect(0, 0, thirdTexture.width, thirdTexture.height), new Vector2(0.5f, 0.5f));
     }
 
     void Update()
@@ -39,33 +54,29 @@ public class C4_MoveUI : MonoBehaviour {
 
     public void showMoveUI()
     {
-        for (int i = 0; i < moveRangeUI.Length; i++)
-        {
-            moveRangeUI[i].transform.position = selectedBoat.transform.position;
-            moveRangeUI[i].transform.localScale = new Vector3(boatFeature.moveRange * (i + 1)/2, (boatFeature.moveRange * (i + 1)/2), 1);
-        }
+        stackCount = boatFeature.stackCount;
+        moveRange = boatFeature.moveRange;
 
-        switch (boatFeature.stackCount)
+        moveRangeUI.transform.position = selectedBoat.transform.position;
+        moveRangeUI.transform.localScale = new Vector3((moveRange), (moveRange), 1);
+
+        switch (stackCount)
         {
             case 0:
-                moveImage[0].SetActive(false);
-                moveImage[1].SetActive(false);
-                moveImage[2].SetActive(false);
+                moveRangeUI.sprite = null;
+                moveImage.SetActive(false);
                 break;
             case 1:
-                moveImage[0].SetActive(true);
-                moveImage[1].SetActive(false);
-                moveImage[2].SetActive(false);
+                moveRangeUI.sprite = firstSprite;
+                moveImage.SetActive(true);
                 break;
             case 2:
-                moveImage[0].SetActive(true);
-                moveImage[1].SetActive(true);
-                moveImage[2].SetActive(false);
+                moveRangeUI.sprite = secondSprite;
+                moveImage.SetActive(true);
                 break;
             case 3:
-                moveImage[0].SetActive(true);
-                moveImage[1].SetActive(true);
-                moveImage[2].SetActive(true);
+                moveRangeUI.sprite = thirdSprite;
+                moveImage.SetActive(true);
                 break;
         }
     }
@@ -73,8 +84,6 @@ public class C4_MoveUI : MonoBehaviour {
     public void hideMoveUI()
     {
         isSelect = false;
-        moveImage[0].SetActive(false);
-        moveImage[1].SetActive(false);
-        moveImage[2].SetActive(false);
+        moveImage.SetActive(false);
     }
 }
