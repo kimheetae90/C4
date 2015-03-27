@@ -36,6 +36,11 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
        // selectUI.gameObject.SetActive(false);
     }
 
+    public void moveToSelectedPlayer()
+    {
+        transform.position = C4_ManagerMaster.Instance.sceneMode.getController(GameObjectType.Player).GetComponent<C4_PlayerController>().selectedBoat.transform.position;
+    }
+
     public void onEvent(string message, params object[] p)
     {
         switch (message)
@@ -61,6 +66,7 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
                     Vector3 pos = (Vector3)p[0];
                     transform.position = pos;
                     select();
+                    moveToSelectedPlayer();
                 }
                 break;
         }

@@ -26,7 +26,6 @@ public class C4_MoveUI : MonoBehaviour
         moveRangeUI = GetComponentInChildren<Image>();
         moveImage = moveRangeUI.gameObject;
         isSelect = false;
-        moveImage.SetActive(false);
 
         firstTexture = (Texture2D)Resources.LoadAssetAtPath("Assets/Texture/moveUI_first.png", typeof(Texture2D));
         secondTexture = (Texture2D)Resources.LoadAssetAtPath("Assets/Texture/moveUI_second.png", typeof(Texture2D));

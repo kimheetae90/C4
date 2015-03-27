@@ -17,7 +17,6 @@ public class C4_ObjectManager : C4_BaseObjectManager
     private Dictionary<GameObjectType, C4_BaseObjectManager> objectManagerList;
 
     C4_BaseObjectManager objectManager;
-    C4_Object removeReservedObject;
 
     public override void Awake()
     {
@@ -40,7 +39,7 @@ public class C4_ObjectManager : C4_BaseObjectManager
     {
         while (removeReservedObjectQueue.Count > 0)
         {
-            removeReservedObject = removeReservedObjectQueue.Dequeue();
+            C4_Object removeReservedObject = removeReservedObjectQueue.Dequeue();
             Destroy(removeReservedObject.gameObject);
         }
     }
@@ -63,7 +62,7 @@ public class C4_ObjectManager : C4_BaseObjectManager
     {
         removeReservedObjectQueue.Enqueue(_removeObject);
 
-        if (objectManagerList.TryGetValue(removeReservedObject.objectAttr.type, out objectManager))
+        if (objectManagerList.TryGetValue(_removeObject.objectAttr.type, out objectManager))
         {
             objectManager.removeObject(_removeObject);
             removeObject(_removeObject);

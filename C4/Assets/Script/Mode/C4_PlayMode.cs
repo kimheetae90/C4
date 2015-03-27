@@ -13,7 +13,6 @@ public class C4_PlayMode : C4_SceneMode
         base.Start();
         addController(GameObjectType.Player,playerController);
         addController(GameObjectType.Enemy, enemyController);
-
         addPlayerControllerListener();
 	}
 

@@ -11,7 +11,6 @@ public class C4_AimUI : MonoBehaviour {
     {
         aimUI = GetComponentInChildren<Image>();
         aimImage = aimUI.gameObject;
-        aimImage.SetActive(false);
     }
 
     public void showAimUI(Vector3 clickPosition)
