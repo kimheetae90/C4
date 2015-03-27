@@ -7,7 +7,7 @@ public class C4_Enemy : C4_Character {
     {
         if (boatFeature.hp < 0)
         {
-            C4_ObjectManager.Instance.reserveRemoveObject(GetComponent<C4_Object>());
+            C4_ManagerMaster.Instance.objectManager.reserveRemoveObject(GetComponent<C4_Object>());
             return true;
         }
         else return false;

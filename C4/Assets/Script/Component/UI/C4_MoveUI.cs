@@ -45,11 +45,9 @@ public class C4_MoveUI : MonoBehaviour
         }
     }
 
-    public void selectBoat(C4_Player inputSelectedBoat)
+    public void selectBoat()
     {
         isSelect = true;
-        selectedBoat = inputSelectedBoat;
-        boatFeature = selectedBoat.GetComponent<C4_BoatFeature>();
     }
 
     public void showMoveUI()
@@ -59,6 +57,7 @@ public class C4_MoveUI : MonoBehaviour
 
         moveRangeUI.transform.position = selectedBoat.transform.position;
         moveRangeUI.transform.localScale = new Vector3((moveRange), (moveRange), 1);
+
 
         switch (stackCount)
         {

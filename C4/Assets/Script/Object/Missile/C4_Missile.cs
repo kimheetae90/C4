@@ -4,16 +4,17 @@ using System.Collections;
 public class C4_Missile : C4_Object {
 
     [System.NonSerialized]
-    public C4_MissileMove moveScript;
+    public C4_StraightMove moveScript;
 
     Vector3 toMove;
 
     void Start()
     {
-        objectID.id = C4_ObjectManager.Instance.currentObjectCode++;
-        objectID.type = GameObjectType.Missile;
         gameObject.SetActive(false);
-        moveScript = GetComponent<C4_MissileMove>();
+        moveScript = GetComponent<C4_StraightMove>();
+
+        C4_Object obj = this;
+        C4_ManagerMaster.Instance.objectManager.registerObjectToAll(ref obj, GameObjectType.Missile);
     }
 
     public void startMove(Vector3 click)
@@ -24,7 +25,6 @@ public class C4_Missile : C4_Object {
 
     void startMoveScript()
     {
-        moveScript.toMove = toMove;
-        moveScript.startMove();
+        moveScript.setMoving(toMove);
     }
 }

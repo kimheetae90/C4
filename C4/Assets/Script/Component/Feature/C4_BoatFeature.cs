@@ -19,12 +19,10 @@ public class C4_BoatFeature : MonoBehaviour
     public int needGageStackToMove;
     public int needGageStackToShot;
     public int moveRange;
-
-   
-  
-
+    
     [System.NonSerialized]
     public int stackCount;
+    [System.NonSerialized]
     public int hp;
     [System.NonSerialized]
     public int gage;
@@ -37,25 +35,20 @@ public class C4_BoatFeature : MonoBehaviour
         hp = fullHP;
         fullGage = numOfStack * oneGageStack;
         stackCount = 0;
+        GetComponent<C4_Move>().setMoveSpeed(moveSpeed);
     }
 
     void Update()
     {
         gageUp();
         stackCount = gage / oneGageStack;
-
-       
-        
     }   
 
-    /* 행동을 하였을 때 gageStack만큼 gage를 감소시키는 함수 */
     public void gageDown(int gageStack)
     {
         gage -= gageStack*oneGageStack;
     }
 
-
-    /* 지속적으로 gage를 올려주면서 이동가능여부, 발포가능여부를 체크 */
     void gageUp()
     {
         if (gage < fullGage)

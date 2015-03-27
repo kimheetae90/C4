@@ -120,6 +120,7 @@ GameObject:
   - 114: {fileID: 11474286}
   - 54: {fileID: 5484282}
   - 65: {fileID: 6567648}
+  - 114: {fileID: 11485490}
   m_Layer: 0
   m_Name: Boat
   m_TagString: Untagged
@@ -167,7 +168,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180798}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -19.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 471372}
@@ -389,7 +390,6 @@ MonoBehaviour:
   needGageStackToMove: 1
   needGageStackToShot: 2
   moveRange: 10
-  hp: 0
 --- !u!114 &11446550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -467,6 +467,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toMove: {x: 0, y: 0, z: 0}
+--- !u!114 &11485490
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10a10b853dd8bf24d9261cbab33fcdb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11487910
 MonoBehaviour:
   m_ObjectHideFlags: 1

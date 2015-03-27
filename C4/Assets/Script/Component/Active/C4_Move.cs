@@ -1,32 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-/// <summary>
-///  움직이는 기능의 스크립트
-///  setToMove : 움직일 지점을 선택하고 코루틴을 시작한다.
-///  move : 움직이는 코루틴, 목표지점에 다다를때까지 계속 움직이며 목표지점에 다다르면 코루틴이 종료된다.
-///  움직임의 상태는 isMove로 체크한다.
-/// </summary>
-
 public class C4_Move : MonoBehaviour {
 
     protected float moveSpeed;
-    public Vector3 toMove;
+    protected Vector3 toMove;
+    protected bool isCoroutine;
 
     [System.NonSerialized]
     public bool isMove;
-    bool isCoroutine;
 
-	// Use this for initialization
-    void Start()
+    public void setMoveSpeed(float inputMoveSpeed)
     {
-        toMove = transform.position;
-        isMove = false;
-        isCoroutine = false;
-	}
+        moveSpeed = inputMoveSpeed;
+    }
 
-    public void setMoving()
+    public void setToMove(Vector3 inputToMove)
     {
+        toMove = inputToMove;
+    }
+
+    public void setMoving(Vector3 inputToMove)
+    {
+        setToMove(inputToMove);
         isMove = true;
         if (!isCoroutine)
         {
@@ -34,29 +30,9 @@ public class C4_Move : MonoBehaviour {
             isCoroutine = true;
         }
     }
-    
-    IEnumerator move()
+
+    protected virtual IEnumerator move() 
     {
         yield return null;
-        if (isMove)
-        {
-            float distance = Vector3.Distance(toMove, transform.position);
-            if (distance > moveSpeed*0.02f)
-            {
-                transform.Translate((toMove - transform.position).normalized * moveSpeed * Time.deltaTime);
-                StartCoroutine("move");
-            }
-            else
-            {
-                isMove = false;
-                isCoroutine = false;
-                StopCoroutine("move");
-            }
-        }
-        else
-        {
-            isCoroutine = false;
-            StopCoroutine("move");
-        }
     }
 }

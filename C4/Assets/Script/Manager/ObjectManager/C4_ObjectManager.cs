@@ -2,66 +2,33 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class C4_ObjectManager : C4_BaseObjectManager, C4_IntInitInstance
+public class C4_ObjectManager : C4_BaseObjectManager
 {
-    private static C4_ObjectManager _instance;
-    public static C4_ObjectManager Instance
-    {
-        get
-        {
-            if (!_instance)
-            {
-                _instance = GameObject.FindObjectOfType(typeof(C4_ObjectManager)) as C4_ObjectManager;
-                if (!_instance)
-                {
-                    GameObject container = new GameObject();
-                    container.name = "C4_ObjectManager";
-                    _instance = container.AddComponent(typeof(C4_ObjectManager)) as C4_ObjectManager;
-                }
-            }
-
-            return _instance;
-        }
-    }
-
-    public void initInstance()
-    {
-        if (!_instance)
-        {
-            _instance = GameObject.FindObjectOfType(typeof(C4_ObjectManager)) as C4_ObjectManager;
-            if (!_instance)
-            {
-                GameObject container = new GameObject();
-                container.name = "C4_ObjectManager";
-                _instance = container.AddComponent(typeof(C4_ObjectManager)) as C4_ObjectManager;
-            }
-        }
-    }
+    [System.NonSerialized]
+    private Queue<C4_Object> removeReservedObjectQueue;
 
     [System.NonSerialized]
-    public Queue<C4_Object> removeReservedObjectQueue;
+    private int currentObjectCode;
 
     [System.NonSerialized]
-    public int currentObjectCode;
+    private Queue<int> deletedObjectCode;
 
     [System.NonSerialized]
-    public Queue<int> deletedObjectCode;
-
-    [System.NonSerialized]
-    public Dictionary<GameObjectType, C4_BaseObjectManager> objectManagerList;
+    private Dictionary<GameObjectType, C4_BaseObjectManager> objectManagerList;
 
     C4_BaseObjectManager objectManager;
     C4_Object removeReservedObject;
-    void Awake()
+
+    public override void Awake()
     {
         base.Awake();
         removeReservedObjectQueue = new Queue<C4_Object>();
         objectManagerList = new Dictionary<GameObjectType, C4_BaseObjectManager>();
         currentObjectCode = 0;
-        C4_PlayerObjectManager.Instance.initInstance();
-        C4_EnemyObjectManager.Instance.initInstance();
-        objectManagerList.Add(GameObjectType.Player, C4_PlayerObjectManager.Instance);
-        objectManagerList.Add(GameObjectType.Enemy, C4_EnemyObjectManager.Instance);
+        C4_PlayerObjectManager playerObjectManager = GameObject.Find("PlayerObjectManager").GetComponent<C4_PlayerObjectManager>();
+        C4_EnemyObjectManager enemyObjectManager = GameObject.Find("EnemyObjectManager").GetComponent<C4_EnemyObjectManager>();
+        objectManagerList.Add(GameObjectType.Player, playerObjectManager);
+        objectManagerList.Add(GameObjectType.Enemy, enemyObjectManager);
     }
 
     void LateUpdate()
@@ -75,17 +42,18 @@ public class C4_ObjectManager : C4_BaseObjectManager, C4_IntInitInstance
         {
             removeReservedObject = removeReservedObjectQueue.Dequeue();
             Destroy(removeReservedObject.gameObject);
-
-            
         }
     }
 
-    public void addObjectToAll(C4_Object inputObject)
+    public void registerObjectToAll(ref C4_Object inputObject,GameObjectType type)
     {
+        inputObject.objectAttr.id = currentObjectCode++;
+        inputObject.objectAttr.type = type;
+
         addObject(inputObject);
-        if (objectManagerList.ContainsKey(inputObject.objectID.type))
+        if (objectManagerList.ContainsKey(inputObject.objectAttr.type))
         {
-            objectManagerList.TryGetValue(inputObject.objectID.type, out objectManager);
+            objectManagerList.TryGetValue(inputObject.objectAttr.type, out objectManager);
             objectManager.addObject(inputObject);
         }
     }
@@ -94,10 +62,10 @@ public class C4_ObjectManager : C4_BaseObjectManager, C4_IntInitInstance
     {
         removeReservedObjectQueue.Enqueue(_removeObject);
 
-        if (objectManagerList.TryGetValue(removeReservedObject.objectID.type, out objectManager))
+        if (objectManagerList.TryGetValue(removeReservedObject.objectAttr.type, out objectManager))
         {
-            objectManager.removeObject(removeReservedObject);
-            removeObject(removeReservedObject);
+            objectManager.removeObject(_removeObject);
+            removeObject(_removeObject);
         }
     }
 
