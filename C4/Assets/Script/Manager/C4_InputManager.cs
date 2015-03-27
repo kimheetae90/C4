@@ -26,7 +26,7 @@ public class C4_InputManager : MonoBehaviour
         if (isClick)
         {
             onClick();
-            if (inputData.clickObjectID.type == GameObjectType.Ground)
+            if (clickObject.objectAttr.isInputTypeTrue(GameObjectInputType.CameraMoveAbleObject))
             {
                 camObject.cameraMove(inputData);
             }
@@ -60,7 +60,7 @@ public class C4_InputManager : MonoBehaviour
         inputData.dragPosition.y = 0;
         inputData.keyState = InputData.KeyState.Down;
 
-        if (inputData.clickObjectID.type == GameObjectType.Player)
+        if(clickObject.objectAttr.isInputTypeTrue(GameObjectInputType.SelectAbleObject))
         {
             C4_ManagerMaster.Instance.sceneMode.sendSelectedGameObjectToController(hit.collider.transform.root.gameObject);
         }
@@ -70,10 +70,10 @@ public class C4_InputManager : MonoBehaviour
     void onClick()
     {
         Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity);
-        clickObject = hit.collider.transform.root.gameObject.GetComponent<C4_Object>();
+        C4_Object dragObject = hit.collider.transform.root.gameObject.GetComponent<C4_Object>();
         inputData.dragPosition = hit.point;
         inputData.dragPosition.y = 0;
-        inputData.dragObjectID = clickObject.objectAttr;
+        inputData.dragObjectID = dragObject.objectAttr;
     }
 
     void onClickUp()

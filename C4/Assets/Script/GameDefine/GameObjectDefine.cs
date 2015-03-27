@@ -17,6 +17,7 @@ public enum GameObjectInputType
     Invalid = 0x0000,
     ClickAbleObject = 0x0001,
     SelectAbleObject = 0x0001 << 1,
+    CameraMoveAbleObject = 0x0001 << 2,
 };
 
 public enum KeyState

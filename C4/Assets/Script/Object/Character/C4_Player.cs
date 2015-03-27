@@ -8,7 +8,7 @@ public class C4_Player : C4_Character , C4_IControllerListener {
     {
         base.Start();
         C4_Object obj = this;
-        C4_ManagerMaster.Instance.objectManager.registerObjectToAll(ref obj,GameObjectType.Player);
+        C4_ManagerMaster.Instance.objectManager.registerObjectToAll(ref obj,GameObjectType.Player, GameObjectInputType.SelectAbleObject|GameObjectInputType.ClickAbleObject);
     }
 
     protected override bool checkHP()

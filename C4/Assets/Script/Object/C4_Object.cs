@@ -15,6 +15,7 @@ public class C4_Object : MonoBehaviour {
     {
         objectAttr.id = -1;
         objectAttr.type = GameObjectType.Invalid;
+        objectAttr.setBits(GameObjectInputType.Invalid);
     }
 
     public bool isType(GameObjectType type)
