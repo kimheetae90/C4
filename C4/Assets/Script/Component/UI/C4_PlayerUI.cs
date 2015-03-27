@@ -3,9 +3,16 @@ using System.Collections;
 
 public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
 {
-    public C4_AimUI aimUI;
-    public C4_MoveUI moveUI;
-    public C4_SelectUI selectUI;
+    C4_AimUI aimUI;
+    C4_MoveUI moveUI;
+    C4_SelectUI selectUI;
+
+    void Start()
+    {
+        aimUI = GetComponent<C4_AimUI>();
+        moveUI = GetComponent<C4_MoveUI>();
+        selectUI = GetComponent<C4_SelectUI>();
+    }
 
     public void aiming(Vector3 clickPosition)
     {

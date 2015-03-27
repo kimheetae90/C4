@@ -5,9 +5,8 @@ using System.Collections;
 public class C4_MoveUI : MonoBehaviour
 {
 
-    public Image moveRangeUI;
-    [System.NonSerialized]
-    public GameObject moveImage;
+    Image moveRangeUI;
+    GameObject moveImage;
     bool isSelect;
     C4_BoatFeature boatFeature;
     C4_Player selectedBoat;
@@ -24,7 +23,8 @@ public class C4_MoveUI : MonoBehaviour
 
     void Start()
     {
-        moveImage = GameObject.Find("MoveRange");
+        moveRangeUI = GetComponentInChildren<Image>();
+        moveImage = moveRangeUI.gameObject;
         isSelect = false;
         moveImage.SetActive(false);
 

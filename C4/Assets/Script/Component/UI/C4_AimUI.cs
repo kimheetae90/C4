@@ -4,11 +4,13 @@ using System.Collections;
 
 public class C4_AimUI : MonoBehaviour {
 
-    public Image aimUI;
-    public GameObject aimImage;
+    Image aimUI;
+    GameObject aimImage;
 
     void Start()
     {
+        aimUI = GetComponentInChildren<Image>();
+        aimImage = aimUI.gameObject;
         aimImage.SetActive(false);
     }
 
