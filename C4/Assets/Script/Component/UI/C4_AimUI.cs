@@ -4,31 +4,31 @@ using System.Collections;
 
 public class C4_AimUI : MonoBehaviour {
 
-    Image aimUI;
-    GameObject aimImage;
+    public Image aimUIImage;
+    GameObject aimUIGameObejct;
 
     void Start()
     {
-        aimUI = GetComponentInChildren<Image>();
-        aimImage = aimUI.gameObject;
+        aimUIGameObejct = aimUIImage.gameObject;
+        aimUIGameObejct.SetActive(false);
     }
 
-    public void showAimUI(Vector3 clickPosition)
+    public void showUI(Vector3 clickPosition)
     {
-        aimImage.SetActive(true);
+        aimUIGameObejct.SetActive(true);
         C4_Player selectedBoat = C4_ManagerMaster.Instance.sceneMode.getController(GameObjectType.Player).GetComponent<C4_PlayerController>().selectedBoat;
         float distance = Vector3.Distance(selectedBoat.transform.position, clickPosition);
         Vector3 aimDirection = (selectedBoat.transform.position - clickPosition).normalized;
         aimDirection.y = 0;
 
-        aimUI.transform.position = selectedBoat.transform.position;
-        aimUI.transform.rotation = Quaternion.LookRotation(-aimDirection);
-        aimUI.transform.Rotate(Vector3.right, 90);
-        aimUI.transform.localScale = new Vector3(1, distance / 2, 1);
+        aimUIImage.transform.position = selectedBoat.transform.position;
+        aimUIImage.transform.rotation = Quaternion.LookRotation(-aimDirection);
+        aimUIImage.transform.Rotate(Vector3.right, 90);
+        aimUIImage.transform.localScale = new Vector3(1, distance / 2, 1);
     }
 
-    public void hideAimUI()
+    public void hideUI()
     {
-        aimImage.SetActive(false);
+        aimUIGameObejct.SetActive(false);
     }
 }

@@ -116,11 +116,10 @@ GameObject:
   - 114: {fileID: 11435658}
   - 114: {fileID: 11421702}
   - 114: {fileID: 11404498}
-  - 114: {fileID: 11485170}
   - 114: {fileID: 11474286}
   - 54: {fileID: 5484282}
-  - 65: {fileID: 6567648}
   - 114: {fileID: 11485490}
+  - 114: {fileID: 11437812}
   m_Layer: 0
   m_Name: Boat
   m_TagString: Untagged
@@ -137,6 +136,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 471372}
   - 114: {fileID: 11416962}
+  - 65: {fileID: 6526238}
   m_Layer: 0
   m_Name: BoatTurn
   m_TagString: Untagged
@@ -168,7 +168,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180798}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -19.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 471372}
@@ -246,18 +246,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &6567648
+--- !u!65 &6526238
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 180798}
+  m_GameObject: {fileID: 192060}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: -1.97000003, y: 1.42999995, z: 3.5}
-  m_Center: {x: 0, y: 1.01999998, z: 0}
+  m_Size: {x: 1, y: 1, z: 2.17000008}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &11404498
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -381,7 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 671a6f61f820c024dbb0c17d6732a311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missile: {fileID: 0}
+  missile: {fileID: 138578, guid: f9b054c588ca6874989347740bef11a5, type: 2}
   numOfStack: 3
   fullHP: 300
   oneGageStack: 100
@@ -390,6 +390,17 @@ MonoBehaviour:
   needGageStackToMove: 1
   needGageStackToShot: 2
   moveRange: 10
+--- !u!114 &11437812
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69d14668699dbf7488929d0401f29fe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11446550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -455,18 +466,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imgHPbar: {fileID: 11451234}
---- !u!114 &11485170
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 180798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e29d6a95b6693f44ea7df4796114bf0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  toMove: {x: 0, y: 0, z: 0}
 --- !u!114 &11485490
 MonoBehaviour:
   m_ObjectHideFlags: 1

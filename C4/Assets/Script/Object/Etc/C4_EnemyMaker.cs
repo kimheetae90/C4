@@ -12,8 +12,13 @@ public class C4_EnemyMaker : MonoBehaviour {
 
     void makeEnemy()
     {
-        GameObject initObject = Instantiate(enemyGameObejct, transform.position, transform.rotation) as GameObject;
-        C4_Object enemy = initObject.GetComponent<C4_Object>();
+        GameObject initEnemyGameObject = Instantiate(enemyGameObejct, transform.position, transform.rotation) as GameObject;
+        Vector3 missileInitPosition = new Vector3(transform.position.x, transform.position.y - 20, transform.position.z);
+        GameObject initMissileGameObject = Instantiate(enemyGameObejct.GetComponent<C4_BoatFeature>().missile, missileInitPosition, transform.rotation) as GameObject;
+        C4_Object enemy = initEnemyGameObject.GetComponent<C4_Object>();
+        C4_Object missile = initMissileGameObject.GetComponent<C4_Object>();
+        enemy.GetComponent<C4_BoatFeature>().missile = initMissileGameObject;
+        C4_ManagerMaster.Instance.objectManager.registerObjectToAll(ref missile, GameObjectType.Missile, GameObjectInputType.Invalid);
         C4_ManagerMaster.Instance.objectManager.registerObjectToAll(ref enemy, GameObjectType.Enemy, GameObjectInputType.Invalid);
 
     }

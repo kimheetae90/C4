@@ -8,8 +8,8 @@ public class C4_MissileCollision : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        collisionObject = other.GetComponent<C4_Object>();
-        missileMove = GetComponent<C4_StraightMove>();
+        collisionObject = other.GetComponentInParent<C4_Object>();
+        missileMove = GetComponentInParent<C4_StraightMove>();
         switch (collisionObject.objectAttr.type)
         {
             case GameObjectType.Player:

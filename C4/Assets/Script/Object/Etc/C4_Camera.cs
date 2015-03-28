@@ -6,8 +6,9 @@ using System.Collections;
 /// </summary>
 public class C4_Camera : C4_Object {
 
-    public void Start()
+    protected override void Start()
     {
+        base.Start();
         C4_Object obj = this;
         C4_ManagerMaster.Instance.objectManager.registerObjectToAll(ref obj,GameObjectType.Camera, GameObjectInputType.Invalid);
     }

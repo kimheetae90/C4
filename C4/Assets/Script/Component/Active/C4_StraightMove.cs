@@ -36,7 +36,7 @@ public class C4_StraightMove : C4_Move
         if (isMove)
         {
             float distance = Vector3.Distance(toMove, transform.position);
-            if (distance > moveSpeed*0.02f)
+            if (distance > moveSpeed * 0.02f)
             {
                 moveToTarget();
             }

@@ -11,7 +11,7 @@ public class C4_Object : MonoBehaviour {
 
     public ObjectID objectAttr;
 
-    void Start()
+    protected virtual void Start()
     {
         objectAttr.id = -1;
         objectAttr.type = GameObjectType.Invalid;

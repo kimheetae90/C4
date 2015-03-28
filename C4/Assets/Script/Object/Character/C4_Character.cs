@@ -15,7 +15,7 @@ public abstract class C4_Character : C4_Object
     protected C4_DistanceCheck distCheckComponent;
     protected C4_IntShot shotComponent;
 
-    public virtual void Start()
+    protected override void Start()
     {
         moveComponent = GetComponent<C4_StraightMove>();
         turnComponent = GetComponentInChildren<C4_Turn>();

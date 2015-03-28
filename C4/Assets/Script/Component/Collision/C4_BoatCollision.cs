@@ -5,9 +5,9 @@ public class C4_BoatCollision : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        C4_Object collisionObject = other.GetComponent<C4_Object>();
-        C4_StraightMove moveScript = GetComponent<C4_StraightMove>();
-        C4_Character character = GetComponent<C4_Character>();
+        C4_Object collisionObject = other.GetComponentInParent<C4_Object>();
+        C4_StraightMove moveScript = GetComponentInParent<C4_StraightMove>();
+        C4_Character character = GetComponentInParent<C4_Character>();
 
         switch(collisionObject.objectAttr.type)
         {

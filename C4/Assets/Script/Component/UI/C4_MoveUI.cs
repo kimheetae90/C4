@@ -4,9 +4,8 @@ using System.Collections;
 
 public class C4_MoveUI : MonoBehaviour
 {
-
-    Image moveRangeUI;
-    GameObject moveImage;
+    public Image moveUIImage;
+    GameObject moveUIGameObejct;
     bool isSelect;
     C4_BoatFeature boatFeature;
     C4_Player selectedBoat;
@@ -23,9 +22,9 @@ public class C4_MoveUI : MonoBehaviour
 
     void Start()
     {
-        moveRangeUI = GetComponentInChildren<Image>();
-        moveImage = moveRangeUI.gameObject;
+        moveUIGameObejct = moveUIImage.gameObject;
         isSelect = false;
+        moveUIGameObejct.SetActive(false);
 
         firstTexture = (Texture2D)Resources.LoadAssetAtPath("Assets/Texture/moveUI_first.png", typeof(Texture2D));
         secondTexture = (Texture2D)Resources.LoadAssetAtPath("Assets/Texture/moveUI_second.png", typeof(Texture2D));
@@ -40,7 +39,7 @@ public class C4_MoveUI : MonoBehaviour
     {
         if (isSelect)
         {
-            showMoveUI();
+            showUI();
         }
     }
 
@@ -51,38 +50,35 @@ public class C4_MoveUI : MonoBehaviour
         boatFeature = selectedBoat.GetComponent<C4_BoatFeature>();
     }
 
-    public void showMoveUI()
+    public void showUI()
     {
+        moveUIGameObejct.SetActive(true);
         stackCount = boatFeature.stackCount;
         moveRange = boatFeature.moveRange;
-
-        moveRangeUI.transform.localScale = new Vector3((moveRange), (moveRange), 1);
-
+        moveUIImage.transform.localScale = new Vector3((moveRange), (moveRange), 1);
 
         switch (stackCount)
         {
             case 0:
-                moveRangeUI.sprite = null;
-                moveImage.SetActive(false);
+                moveUIImage.sprite = null;
+                moveUIImage.transform.localScale = new Vector3(0, 0, 1);
                 break;
             case 1:
-                moveRangeUI.sprite = firstSprite;
-                moveImage.SetActive(true);
+                moveUIImage.sprite = firstSprite;
                 break;
             case 2:
-                moveRangeUI.sprite = secondSprite;
-                moveImage.SetActive(true);
+                moveUIImage.sprite = secondSprite;
                 break;
             case 3:
-                moveRangeUI.sprite = thirdSprite;
-                moveImage.SetActive(true);
+                moveUIImage.sprite = thirdSprite;
                 break;
         }
     }
 
-    public void hideMoveUI()
+    public void hideUI()
     {
         isSelect = false;
-        moveImage.SetActive(false);
+        moveUIGameObejct.SetActive(false);
+        moveUIImage.transform.localScale = new Vector3(0, 0, 1);
     }
 }

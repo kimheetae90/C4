@@ -19,7 +19,6 @@ public class C4_InputManager : MonoBehaviour
 	void Start () {
         isClick = false;
         camObject = Camera.main.transform.root.GetComponent<C4_Camera>();
-        C4_ManagerMaster.Instance.StartPlayScene();
 	}
 	
 	void Update () {
@@ -59,7 +58,6 @@ public class C4_InputManager : MonoBehaviour
         inputData.clickPosition.y = 0;
         inputData.dragPosition.y = 0;
         inputData.keyState = InputData.KeyState.Down;
-
         if(clickObject.objectAttr.isInputTypeTrue(GameObjectInputType.SelectAbleObject))
         {
             C4_ManagerMaster.Instance.sceneMode.sendSelectedGameObjectToController(hit.collider.transform.root.gameObject);

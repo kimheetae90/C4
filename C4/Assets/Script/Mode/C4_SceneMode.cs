@@ -11,6 +11,8 @@ public class C4_SceneMode : MonoBehaviour {
     {
         controllerList = new List<C4_Controller>();
         controllerDictionary = new Dictionary<GameObjectType, C4_Controller>();
+
+
     }
 
     public void sendInputDataToController(InputData inputData)

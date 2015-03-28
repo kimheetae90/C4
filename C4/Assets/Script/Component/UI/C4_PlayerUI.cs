@@ -16,24 +16,26 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
 
     public void aiming(Vector3 clickPosition)
     {
-        aimUI.showAimUI(clickPosition);
+        aimUI.showUI(clickPosition);
     }
 
     public void startAim()
     {
-        moveUI.gameObject.SetActive(false);
+        moveUI.hideUI();
     }
 
     public void select()
     {
         moveUI.selectBoat();
+        selectUI.showUI();
+        aimUI.hideUI();
     }
 
     public void activeDone()
     {
-       // aimUI.gameObject.SetActive(false);
-       // moveUI.gameObject.SetActive(false);
-       // selectUI.gameObject.SetActive(false);
+        aimUI.hideUI();
+        moveUI.hideUI();
+        selectUI.hideUI();
     }
 
     public void moveToSelectedPlayer()
