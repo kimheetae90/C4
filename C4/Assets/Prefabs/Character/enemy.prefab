@@ -316,7 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 671a6f61f820c024dbb0c17d6732a311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missile: {fileID: 138578, guid: f9b054c588ca6874989347740bef11a5, type: 2}
+  missile: {fileID: 138578, guid: dc820ae75cdcbb64b8bbac350bd336c1, type: 2}
   numOfStack: 3
   fullHP: 300
   oneGageStack: 100
