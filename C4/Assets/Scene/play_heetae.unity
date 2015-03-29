@@ -834,21 +834,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11477788, guid: 000218507c1b55e4c9fd4a429fe82dbe, type: 2}
-      propertyPath: uiCanvas
-      value: 
-      objectReference: {fileID: 1465897435}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 000218507c1b55e4c9fd4a429fe82dbe, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1465897434
 GameObject:
   m_PrefabParentObject: {fileID: 140632, guid: 000218507c1b55e4c9fd4a429fe82dbe, type: 2}
-  m_PrefabInternal: {fileID: 1465897433}
---- !u!223 &1465897435
-Canvas:
-  m_PrefabParentObject: {fileID: 22347100, guid: 000218507c1b55e4c9fd4a429fe82dbe,
-    type: 2}
   m_PrefabInternal: {fileID: 1465897433}
 --- !u!1 &1511529347
 GameObject:

@@ -30,10 +30,14 @@ public class C4_ManagerMaster : MonoBehaviour {
     [System.NonSerialized]
     public C4_SceneMode sceneMode;
 
-    public void StartPlayScene()
+    public void Awake()
     {
         inputManager = GameObject.Find("InputManager").GetComponent<C4_InputManager>();
         objectManager = GameObject.Find("ObjectManager").GetComponent<C4_ObjectManager>();
+    }
+
+    public void StartPlayScene()
+    {
         sceneMode = GameObject.Find("PlayMode").GetComponent<C4_SceneMode>();
     }
 }
