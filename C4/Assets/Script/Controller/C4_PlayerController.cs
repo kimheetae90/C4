@@ -19,13 +19,13 @@ public class C4_PlayerController : C4_Controller
     public C4_Player selectedBoat;
     [System.NonSerialized]
     bool isAiming;
-    
+
     enum ePlayerControllerActionState
     {
         None,
-	    StartAim,
-		EndAmi,
-		Aming,
+        StartAim,
+        EndAmi,
+        Aming,
         Shot,
         Move,
         Select,
@@ -59,46 +59,46 @@ public class C4_PlayerController : C4_Controller
 
     private void computeActionState(ref InputData inputData, out ePlayerControllerActionState action)
     {
-		action = ePlayerControllerActionState.None;
+        action = ePlayerControllerActionState.None;
 
-        if (inputData.keyState == KeyState.Down) 
-		{
-			computeKeyDownState (ref inputData, out action);
-		} 
-		else if (inputData.keyState == KeyState.Up) 
-		{
-			computeKeyUpState (ref inputData, out action);
-		} 
-		else if (inputData.keyState == KeyState.Drag)
-		{
-			computeKeyDragState(ref inputData, out action);
-		}
+        if (inputData.keyState == KeyState.Down)
+        {
+            computeKeyDownState(ref inputData, out action);
+        }
+        else if (inputData.keyState == KeyState.Up)
+        {
+            computeKeyUpState(ref inputData, out action);
+        }
+        else if (inputData.keyState == KeyState.Drag)
+        {
+            computeKeyDragState(ref inputData, out action);
+        }
     }
 
     private void computeKeyDownState(ref InputData inputData, out ePlayerControllerActionState action)
     {
         bool isEqaulClickObjAndDragObj = inputData.clickObjectID.id == inputData.dragObjectID.id ? true : false;
-        bool isSelectObjectTypePlayer = inputData.clickObjectID.type == GameObjectType.Player ? true : false;
+        bool isSelectObjectTypePlayer = inputData.clickObjectID.isInputTypeTrue(GameObjectInputType.ClickAbleObject);
 
-		if (isAiming == false && isSelectObjectTypePlayer && isEqaulClickObjAndDragObj == true)
-		{
-			action = ePlayerControllerActionState.Select;
-		}
-        else 
+        if (isAiming == false && isSelectObjectTypePlayer && isEqaulClickObjAndDragObj == true)
         {
-			action = ePlayerControllerActionState.None;
+            action = ePlayerControllerActionState.Select;
+        }
+        else
+        {
+            action = ePlayerControllerActionState.None;
         }
     }
 
     private void computeKeyUpState(ref InputData inputData, out ePlayerControllerActionState action)
     {
-		action = ePlayerControllerActionState.None;
+        action = ePlayerControllerActionState.None;
 
-        bool isSelectObjectTypeGround = inputData.clickObjectID.type == GameObjectType.Ground ? true : false;
+        bool isSelectObjectTypeGround = inputData.clickObjectID.isInputTypeTrue(GameObjectInputType.CameraMoveAbleObject);
 
-		if (isAiming && selectedBoat != null)
-		{
-			action = ePlayerControllerActionState.Shot;
+        if (isAiming && selectedBoat != null)
+        {
+            action = ePlayerControllerActionState.Shot;
         }
         else if (isAiming == false && isSelectObjectTypeGround && selectedBoat != null)
         {
@@ -106,49 +106,51 @@ public class C4_PlayerController : C4_Controller
         }
     }
 
-	private void computeKeyDragState(ref InputData inputData, out ePlayerControllerActionState action)
-	{
-		bool isEqaulClickObjAndDragObj = inputData.clickObjectID.id == inputData.dragObjectID.id ? true : false;
+    private void computeKeyDragState(ref InputData inputData, out ePlayerControllerActionState action)
+    {
+        bool isEqaulClickObjAndDragObj = inputData.clickObjectID.id == inputData.dragObjectID.id ? true : false;
+        bool isSelectClickableObject = inputData.clickObjectID.isInputTypeTrue(GameObjectInputType.ClickAbleObject);
 
-		if (isAiming == false && inputData.clickObjectID.isInputTypeTrue(GameObjectInputType.ClickAbleObject) && isEqaulClickObjAndDragObj == false)
-		{
-			Debug.Log("startami");
-			action = ePlayerControllerActionState.StartAim;
-		}
-		else if(inputData.clickObjectID.isInputTypeTrue(GameObjectInputType.ClickAbleObject) && selectedBoat != null) {
-			action = ePlayerControllerActionState.Aming;
-		}
-		else {
-			action = ePlayerControllerActionState.EndAmi;
-		}
-	}
-	
+        if (isAiming == false && isSelectClickableObject && isEqaulClickObjAndDragObj == false)
+        {
+            action = ePlayerControllerActionState.StartAim;
+        }
+        else if (isSelectClickableObject && selectedBoat != null)
+        {
+            action = ePlayerControllerActionState.Aming;
+        }
+        else
+        {
+            action = ePlayerControllerActionState.None;
+        }
+    }
+
     private void ProcState(ePlayerControllerActionState action, ref InputData inputData)
     {
         switch (action)
         {
             case ePlayerControllerActionState.None:
-				break;
+                break;
             case ePlayerControllerActionState.Aming:
-			    notifyEvent("Aming", inputData.dragPosition);
-				break;
+                notifyEvent("Aming", inputData.dragPosition);
+                break;
             case ePlayerControllerActionState.Move:
                 notifyEvent("Move", inputData.clickPosition);
-				activeDone();
-				break;
-		case ePlayerControllerActionState.Select:
-				activeDone();
-				selectClickObject(C4_ManagerMaster.Instance.objectManager.getObject(inputData.clickObjectID).gameObject);
-				notifyEvent("Select",selectedBoat.transform.position);
+                activeDone();
+                break;
+            case ePlayerControllerActionState.Select:
+                activeDone();
+                selectClickObject(C4_ManagerMaster.Instance.objectManager.getObject(inputData.clickObjectID).gameObject);
+                notifyEvent("Select", selectedBoat.gameObject.transform);
                 break;
             case ePlayerControllerActionState.StartAim:
-				isAiming = true;
-				notifyEvent("StartAim");
-				break;
+                isAiming = true;
+                notifyEvent("StartAim");
+                break;
             case ePlayerControllerActionState.Shot:
                 notifyEvent("Shot", inputData.dragPosition);
                 activeDone();
                 break;
-	  }
+        }
     }
 }

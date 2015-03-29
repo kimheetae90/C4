@@ -36,11 +36,7 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
         aimUI.hideUI();
         moveUI.hideUI();
         selectUI.hideUI();
-    }
-
-    public void moveToSelectedPlayer()
-    {
-       // transform.position = C4_ManagerMaster.Instance.sceneMode.getController(GameObjectType.Player).GetComponent<C4_PlayerController>().selectedBoat.transform.position;
+        transform.SetParent(null);
     }
 
     public void onEvent(string message, params object[] p)
@@ -65,10 +61,9 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
                 break;
             case "Select":
                 {
-                    Vector3 pos = (Vector3)p[0];
-                    transform.position = pos;
+                    transform.SetParent((Transform)p[0],false);
+                    transform.localPosition = new Vector3(0, 0, 0);
                     select();
-                    moveToSelectedPlayer();
                 }
                 break;
         }
