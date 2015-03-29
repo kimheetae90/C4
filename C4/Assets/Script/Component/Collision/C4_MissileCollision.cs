@@ -14,7 +14,7 @@ public class C4_MissileCollision : MonoBehaviour {
         {
             case GameObjectType.Player:
             case GameObjectType.Enemy:
-                missileMove.isMove = false;
+                missileMove.stopMoveToTarget();
                 break;
         }
     }

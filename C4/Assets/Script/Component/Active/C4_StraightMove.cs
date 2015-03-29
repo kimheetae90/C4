@@ -23,7 +23,7 @@ public class C4_StraightMove : C4_Move
         StartCoroutine("move");
     }
 
-    void stopMoveToTarget()
+    public void stopMoveToTarget()
     {
         isMove = false;
         isCoroutine = false;
@@ -32,6 +32,7 @@ public class C4_StraightMove : C4_Move
 
     protected override IEnumerator move()
     {
+        Debug.Log("fuck");
         yield return null;
         if (isMove)
         {

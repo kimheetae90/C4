@@ -42,7 +42,7 @@ public class C4_DistanceCheck : MonoBehaviour
             }
             else
             {
-                move.isMove = false;
+                move.stopMoveToTarget();
                 StopCoroutine("distanceCheck");
             }
 
