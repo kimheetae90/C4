@@ -15,6 +15,12 @@ public class C4_BaseObjectManager : MonoBehaviour {
         objectDictionary = new Dictionary<ObjectID, C4_Object>();
     }
 
+    public void clearListAndDictionary()
+    {
+        objectList.Clear();
+        objectDictionary.Clear();
+    }
+
     public void addObject(C4_Object inputObject)
     {
         objectList.Add(inputObject);

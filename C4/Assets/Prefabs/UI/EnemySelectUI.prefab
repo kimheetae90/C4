@@ -133,8 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13944504a6ff7a64583bd296183d1b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerArrow: {fileID: 22347100}
-  selectObject: {fileID: 0}
+  selectUIImage: {fileID: 11414586}
 --- !u!222 &22241726
 CanvasRenderer:
   m_ObjectHideFlags: 1

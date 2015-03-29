@@ -4,35 +4,29 @@ using System.Collections.Generic;
 
 public class C4_ObjectManager : C4_BaseObjectManager
 {
-    [System.NonSerialized]
-    private Queue<C4_Object> removeReservedObjectQueue;
-
-    [System.NonSerialized]
-    private int currentObjectCode;
-
-    [System.NonSerialized]
-    private Queue<int> deletedObjectCode;
-
-    [System.NonSerialized]
-    private Dictionary<GameObjectType, C4_BaseObjectManager> objectManagerList;
-
+    Queue<C4_Object> removeReservedObjectQueue;
+    int currentObjectCode;
+    Queue<int> deletedObjectCode;
+    Dictionary<GameObjectType, C4_BaseObjectManager> objectManagerDictionary;
     C4_BaseObjectManager objectManager;
 
     public override void Awake()
     {
         base.Awake();
         removeReservedObjectQueue = new Queue<C4_Object>();
-        objectManagerList = new Dictionary<GameObjectType, C4_BaseObjectManager>();
+        deletedObjectCode = new Queue<int>();
+        objectManagerDictionary = new Dictionary<GameObjectType, C4_BaseObjectManager>();
         currentObjectCode = 0;
-        C4_PlayerObjectManager playerObjectManager = GameObject.Find("PlayerObjectManager").GetComponent<C4_PlayerObjectManager>();
-        C4_EnemyObjectManager enemyObjectManager = GameObject.Find("EnemyObjectManager").GetComponent<C4_EnemyObjectManager>();
-        objectManagerList.Add(GameObjectType.Player, playerObjectManager);
-        objectManagerList.Add(GameObjectType.Enemy, enemyObjectManager);
     }
 
     void LateUpdate()
     {
         clearRemoveReservedObjectQueue();
+    }
+
+    public void addSubObjectManager(GameObjectType _type, C4_BaseObjectManager _subObjectManager)
+    {
+        objectManagerDictionary.Add(_type, _subObjectManager);
     }
 
     void clearRemoveReservedObjectQueue()
@@ -44,6 +38,14 @@ public class C4_ObjectManager : C4_BaseObjectManager
         }
     }
 
+    public void resetAllObjectData()
+    {
+        clearListAndDictionary();
+        currentObjectCode = 0;
+        deletedObjectCode.Clear();
+        objectManagerDictionary.Clear();
+    }
+
     public void registerObjectToAll(ref C4_Object inputObject,GameObjectType type, GameObjectInputType inputType)
     {
         inputObject.objectAttr.id = currentObjectCode++;
@@ -51,9 +53,9 @@ public class C4_ObjectManager : C4_BaseObjectManager
         inputObject.objectAttr.setBits(inputType);
 
         addObject(inputObject);
-        if (objectManagerList.ContainsKey(inputObject.objectAttr.type))
+        if (objectManagerDictionary.ContainsKey(inputObject.objectAttr.type))
         {
-            objectManagerList.TryGetValue(inputObject.objectAttr.type, out objectManager);
+            objectManagerDictionary.TryGetValue(inputObject.objectAttr.type, out objectManager);
             objectManager.addObject(inputObject);
         }
     }
@@ -62,7 +64,7 @@ public class C4_ObjectManager : C4_BaseObjectManager
     {
         removeReservedObjectQueue.Enqueue(_removeObject);
 
-        if (objectManagerList.TryGetValue(_removeObject.objectAttr.type, out objectManager))
+        if (objectManagerDictionary.TryGetValue(_removeObject.objectAttr.type, out objectManager))
         {
             objectManager.removeObject(_removeObject);
             removeObject(_removeObject);
@@ -71,7 +73,7 @@ public class C4_ObjectManager : C4_BaseObjectManager
 
     public C4_BaseObjectManager getSubObjectManager(GameObjectType type)
     {
-        objectManagerList.TryGetValue(type, out objectManager);
+        objectManagerDictionary.TryGetValue(type, out objectManager);
         return objectManager;
     }
 }

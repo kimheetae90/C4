@@ -26,7 +26,7 @@ public class C4_Move : MonoBehaviour {
         isMove = true;
         if (!isCoroutine)
         {
-            StartCoroutine(move());
+            StartCoroutine("move");
             isCoroutine = true;
         }
     }
