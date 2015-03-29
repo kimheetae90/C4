@@ -25,9 +25,9 @@ public class C4_PlayMode : C4_SceneMode
         GameObject initMissileGameObject = Instantiate(playerBoatGameObject.GetComponent<C4_BoatFeature>().missile, missileInitPosition, transform.rotation) as GameObject;
         C4_Object player = initPlayerGameObject.GetComponent<C4_Object>();
         C4_Object missile = initMissileGameObject.GetComponent<C4_Object>();
-        player.GetComponent<C4_BoatFeature>().missile = initMissileGameObject;
         C4_ManagerMaster.Instance.objectManager.registerObjectToAll(ref missile, GameObjectType.Missile, GameObjectInputType.Invalid);
         C4_ManagerMaster.Instance.objectManager.registerObjectToAll(ref player, GameObjectType.Player, GameObjectInputType.SelectAbleObject | GameObjectInputType.ClickAbleObject);
+        player.GetComponent<C4_BoatFeature>().missile = missile.gameObject;
         addController(GameObjectType.Player,playerController);
         addController(GameObjectType.Enemy, enemyController);
         addPlayerControllerListener();
