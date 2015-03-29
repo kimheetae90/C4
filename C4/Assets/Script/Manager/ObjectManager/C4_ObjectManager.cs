@@ -8,7 +8,6 @@ public class C4_ObjectManager : C4_BaseObjectManager
     int currentObjectCode;
     Queue<int> deletedObjectCode;
     Dictionary<GameObjectType, C4_BaseObjectManager> objectManagerDictionary;
-    C4_BaseObjectManager objectManager;
 
     public override void Awake()
     {
@@ -55,6 +54,7 @@ public class C4_ObjectManager : C4_BaseObjectManager
         addObject(inputObject);
         if (objectManagerDictionary.ContainsKey(inputObject.objectAttr.type))
         {
+            C4_BaseObjectManager objectManager;
             objectManagerDictionary.TryGetValue(inputObject.objectAttr.type, out objectManager);
             objectManager.addObject(inputObject);
         }
@@ -64,6 +64,7 @@ public class C4_ObjectManager : C4_BaseObjectManager
     {
         removeReservedObjectQueue.Enqueue(_removeObject);
 
+        C4_BaseObjectManager objectManager;
         if (objectManagerDictionary.TryGetValue(_removeObject.objectAttr.type, out objectManager))
         {
             objectManager.removeObject(_removeObject);
@@ -73,6 +74,7 @@ public class C4_ObjectManager : C4_BaseObjectManager
 
     public C4_BaseObjectManager getSubObjectManager(GameObjectType type)
     {
+        C4_BaseObjectManager objectManager;
         objectManagerDictionary.TryGetValue(type, out objectManager);
         return objectManager;
     }

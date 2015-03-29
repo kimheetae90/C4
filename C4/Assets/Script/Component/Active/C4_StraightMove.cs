@@ -19,7 +19,8 @@ public class C4_StraightMove : C4_Move
 
     void moveToTarget()
     {
-        transform.Translate((toMove - transform.position).normalized * moveSpeed * Time.deltaTime);
+        transform.Translate(new Vector3(toMove.x - transform.position.x , 0 , toMove.z - transform.position.z).normalized * moveSpeed * Time.deltaTime);
+        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         StartCoroutine("move");
     }
 

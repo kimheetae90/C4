@@ -7,7 +7,6 @@ public abstract class C4_Character : C4_Object
     public bool canMove;
     [System.NonSerialized]
     public bool canShot;
-    [System.NonSerialized]
     
     protected C4_BoatFeature boatFeature;
     protected C4_StraightMove moveComponent;
@@ -87,7 +86,6 @@ public abstract class C4_Character : C4_Object
 
     public bool damaged(int damage)
     {
-        Debug.Log("sipal");
         boatFeature.hp -= damage;
         return checkHP();
     }

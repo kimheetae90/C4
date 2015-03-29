@@ -19,7 +19,9 @@ public class C4_StraightShot : MonoBehaviour, C4_IntShot {
 
     public void startShot(Vector3 click)
     {
-        missileGameObejct.transform.position = transform.position + (transform.position - click).normalized * (transform.localScale.z + missileGameObejct.transform.localScale.z + 1);
+        Vector3 missilePos = transform.position + (transform.position - click).normalized * (transform.localScale.z + missileGameObejct.transform.localScale.z + 1);
+        missilePos.y = 0;
+        missileGameObejct.transform.position = missilePos;
         shotDirection = (transform.position - click).normalized;
         missileToMove = 4 * transform.position - 3 * click;
         shotDirection.y = 0;

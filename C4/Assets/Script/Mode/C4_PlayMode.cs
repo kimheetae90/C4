@@ -25,11 +25,11 @@ public class C4_PlayMode : C4_SceneMode
         GameObject initPlayerGameObject = Instantiate(playerBoatGameObject, transform.position, transform.rotation) as GameObject;
         Vector3 missileInitPosition = new Vector3(transform.position.x, transform.position.y - 20, transform.position.z);
         GameObject initMissileGameObject = Instantiate(playerBoatGameObject.GetComponent<C4_BoatFeature>().missile, missileInitPosition, transform.rotation) as GameObject;
+        initPlayerGameObject.GetComponent<C4_BoatFeature>().missile = initMissileGameObject;
         C4_Object player = initPlayerGameObject.GetComponent<C4_Object>();
         C4_Object missile = initMissileGameObject.GetComponent<C4_Object>();
         C4_ManagerMaster.Instance.objectManager.registerObjectToAll(ref missile, GameObjectType.Missile, GameObjectInputType.Invalid);
         C4_ManagerMaster.Instance.objectManager.registerObjectToAll(ref player, GameObjectType.Player, GameObjectInputType.SelectAbleObject | GameObjectInputType.ClickAbleObject);
-        player.GetComponent<C4_BoatFeature>().missile = missile.gameObject;
         addController(GameObjectType.Player,playerController);
         addController(GameObjectType.Enemy, enemyController);
 		addController (GameObjectType.Camera, cameraController);
@@ -41,8 +41,10 @@ public class C4_PlayMode : C4_SceneMode
         C4_ObjectManager objectManager = C4_ManagerMaster.Instance.objectManager;
         C4_PlayerObjectManager playerObjectManager = GameObject.Find("PlayerObjectManager").GetComponent<C4_PlayerObjectManager>();
         C4_EnemyObjectManager enemyObjectManager = GameObject.Find("EnemyObjectManager").GetComponent<C4_EnemyObjectManager>();
+        C4_MissileObjectManager missileObjectManager = GameObject.Find("MissileObjectManager").GetComponent<C4_MissileObjectManager>();
         objectManager.addSubObjectManager(GameObjectType.Player, playerObjectManager);
         objectManager.addSubObjectManager(GameObjectType.Enemy, enemyObjectManager);
+        objectManager.addSubObjectManager(GameObjectType.Missile, missileObjectManager);
     }
 
     private void addPlayerControllerListener()
