@@ -8,8 +8,6 @@ using System.Collections;
 
 public struct InputData
 {
-    public enum KeyState { Down, Up };
-
     //좌표 정보
     public Vector3 clickPosition;
     public Vector3 dragPosition;
@@ -20,4 +18,15 @@ public struct InputData
 
     //클릭,드래그 상태
     public KeyState keyState;
+	public KeyState preKeyState;
+	
+	public void clear()
+	{
+		clickPosition = Vector3.zero;
+		dragPosition = Vector3.zero;
+		clickObjectID = GameObjectDefine.INVALID_OBJECT_ID;
+		dragObjectID = GameObjectDefine.INVALID_OBJECT_ID;
+		keyState = KeyState.Up;
+		preKeyState = KeyState.Up;
+	}
 }

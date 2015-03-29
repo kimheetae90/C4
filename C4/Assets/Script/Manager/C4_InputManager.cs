@@ -10,45 +10,67 @@ using System.Collections;
 public class C4_InputManager : MonoBehaviour
 {
     InputData inputData;
-    C4_Camera camObject;
-
-    bool isClick;
-    RaycastHit hit;
+	RaycastHit hit;
     C4_Object clickObject;
 
-	void Start () {
-        isClick = false;
-        camObject = Camera.main.transform.root.GetComponent<C4_Camera>();
+	void Start ()
+	{
+		inputData = new InputData ();
 	}
 	
-	void Update () {
-        if (isClick)
-        {
-            onClick();
-            if (clickObject.objectAttr.isInputTypeTrue(GameObjectInputType.CameraMoveAbleObject))
-            {
-                camObject.cameraMove(inputData);
-            }
-        }
+	void Update () 
+	{
+		inputData.preKeyState = inputData.keyState;
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            onClickDown();
-        }
+		if (Input.GetMouseButtonDown (0)) 
+		{
+			inputData.keyState = KeyState.Down;
+		} 
+	 
+		if (Input.GetMouseButtonUp (0)) 
+		{
+			inputData.keyState = KeyState.Up;
+		} 
 
-        if (isClick&&Input.GetMouseButtonUp(0))
-        {
-            onClickUp();
-        }
+		if (inputData.keyState == inputData.preKeyState && inputData.keyState == KeyState.Down) 
+		{
+			inputData.keyState = KeyState.Drag;
+		} 
+		else if(inputData.keyState == inputData.preKeyState && inputData.keyState == KeyState.Up)
+		{
+			inputData.keyState = KeyState.Sleep;
+		}
 
-        C4_ManagerMaster.Instance.sceneMode.sendInputDataToController(inputData);
+		//Action
+		if (inputData.keyState != inputData.preKeyState) 
+		{
+			switch(inputData.keyState)
+			{
+			case KeyState.Up:
+				setupClickUp();
+				C4_ManagerMaster.Instance.sceneMode.sendInputDataToController(inputData);
+				break;
+			case KeyState.Down:
+				setupClickDown();
+				C4_ManagerMaster.Instance.sceneMode.sendInputDataToController(inputData);
+				break;
+			}
+		}
+		//Continuos
+		else if (inputData.keyState == inputData.preKeyState) 
+		{
+			switch(inputData.keyState)
+			{
+			case KeyState.Drag:
+				setupDrag();
+				C4_ManagerMaster.Instance.sceneMode.sendInputDataToController(inputData);
+				break;
+			}
+		}
     }
-
-
-    void onClickDown()
+	
+	void setupClickDown()
     {
-        isClick = true;
-
         Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity);
         clickObject = hit.collider.transform.root.gameObject.GetComponent<C4_Object>();
         inputData.clickObjectID = clickObject.objectAttr;
@@ -57,15 +79,9 @@ public class C4_InputManager : MonoBehaviour
         inputData.dragPosition = hit.point;
         inputData.clickPosition.y = 0;
         inputData.dragPosition.y = 0;
-        inputData.keyState = InputData.KeyState.Down;
-        if(clickObject.objectAttr.isInputTypeTrue(GameObjectInputType.SelectAbleObject))
-        {
-            C4_ManagerMaster.Instance.sceneMode.sendSelectedGameObjectToController(hit.collider.transform.root.gameObject);
-        }
     }
-
-
-    void onClick()
+	
+	void setupDrag()
     {
         Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity);
         C4_Object dragObject = hit.collider.transform.root.gameObject.GetComponent<C4_Object>();
@@ -74,9 +90,7 @@ public class C4_InputManager : MonoBehaviour
         inputData.dragObjectID = dragObject.objectAttr;
     }
 
-    void onClickUp()
+	void setupClickUp()
     {
-        inputData.keyState = InputData.KeyState.Up;
-        isClick = false;
     }
 }

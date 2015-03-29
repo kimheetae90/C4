@@ -22,8 +22,10 @@ public enum GameObjectInputType
 
 public enum KeyState
 {
-    Down,
-    Up
+	Sleep,
+	Down,
+    Up,
+	Drag,
 };
 
 

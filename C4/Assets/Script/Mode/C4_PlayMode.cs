@@ -5,6 +5,8 @@ public class C4_PlayMode : C4_SceneMode
 {
     public C4_PlayerController playerController;
     public C4_EnemyController enemyController;
+	public C4_CameraController cameraController;
+
     public C4_PlayerUI playerUI;
     public GameObject playerBoatGameObject;   //나중에 게임오브젝트로부터 받을 것(List이어야함)
 
@@ -28,6 +30,7 @@ public class C4_PlayMode : C4_SceneMode
         C4_ManagerMaster.Instance.objectManager.registerObjectToAll(ref player, GameObjectType.Player, GameObjectInputType.SelectAbleObject | GameObjectInputType.ClickAbleObject);
         addController(GameObjectType.Player,playerController);
         addController(GameObjectType.Enemy, enemyController);
+		addController (GameObjectType.Camera, cameraController);
         addPlayerControllerListener();
 	}
 

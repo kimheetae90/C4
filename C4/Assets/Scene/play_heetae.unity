@@ -793,6 +793,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 661504620}
   enemyController: {fileID: 12758853}
+  cameraController: {fileID: 1769572096}
   playerUI: {fileID: 2095715591}
   playerBoatGameObject: {fileID: 180798, guid: e0343370ce4c942499c8136aaf6bb416, type: 2}
 --- !u!1001 &1465897433
@@ -838,6 +839,10 @@ Prefab:
       propertyPath: uiCanvas
       value: 
       objectReference: {fileID: 1465897435}
+    - target: {fileID: 11477788, guid: 000218507c1b55e4c9fd4a429fe82dbe, type: 2}
+      propertyPath: selectUIImage
+      value: 
+      objectReference: {fileID: 380865681}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 000218507c1b55e4c9fd4a429fe82dbe, type: 2}
   m_IsPrefabParent: 0
@@ -974,6 +979,45 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
+--- !u!1 &1769572095
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1769572097}
+  - 114: {fileID: 1769572096}
+  m_Layer: 0
+  m_Name: CameraController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1769572096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1769572095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeb95cebcf84a415b86b54ae0fb10834, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1769572097
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1769572095}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -259, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
 --- !u!114 &1852620099
 MonoBehaviour:
   m_ObjectHideFlags: 0

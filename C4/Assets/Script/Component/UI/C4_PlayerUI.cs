@@ -40,7 +40,7 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
 
     public void moveToSelectedPlayer()
     {
-        transform.position = C4_ManagerMaster.Instance.sceneMode.getController(GameObjectType.Player).GetComponent<C4_PlayerController>().selectedBoat.transform.position;
+       // transform.position = C4_ManagerMaster.Instance.sceneMode.getController(GameObjectType.Player).GetComponent<C4_PlayerController>().selectedBoat.transform.position;
     }
 
     public void onEvent(string message, params object[] p)
