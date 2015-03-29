@@ -26,7 +26,7 @@ public class C4_DistanceCheck : MonoBehaviour
         boatFeature.gageDown(boatFeature.needGageStackToMove);
         range = boatFeature.moveRange;
         firstpos = transform.position;
-        StartCoroutine(distanceCheck());
+        StartCoroutine("distanceCheck");
     }
 
     IEnumerator distanceCheck()
@@ -43,7 +43,7 @@ public class C4_DistanceCheck : MonoBehaviour
             else
             {
                 move.isMove = false;
-                StopCoroutine(distanceCheck());
+                StopCoroutine("distanceCheck");
             }
 
         }
@@ -55,11 +55,11 @@ public class C4_DistanceCheck : MonoBehaviour
 
         if (move.isMove)
         {
-            StartCoroutine(distanceCheck());
+            StartCoroutine("distanceCheck");
         }
         else
         {
-            StopCoroutine(distanceCheck());
+            StopCoroutine("distanceCheck");
         }
 
     }

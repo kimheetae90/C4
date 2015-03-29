@@ -20,14 +20,14 @@ public class C4_StraightMove : C4_Move
     void moveToTarget()
     {
         transform.Translate((toMove - transform.position).normalized * moveSpeed * Time.deltaTime);
-        StartCoroutine(move());
+        StartCoroutine("move");
     }
 
     void stopMoveToTarget()
     {
         isMove = false;
         isCoroutine = false;
-        StopCoroutine(move());
+        StopCoroutine("move");
     }
 
     protected override IEnumerator move()

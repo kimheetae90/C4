@@ -5,12 +5,12 @@ public class C4_MovingCheckAndSetActive : MonoBehaviour {
 
     public void startChecking()
     {
-        StartCoroutine(checkMoving());
+        StartCoroutine("checkMoving");
     }
 
     public void stopChecking()
     {
-        StopCoroutine(checkMoving());
+        StopCoroutine("checkMoving");
         gameObject.SetActive(false);
     }
 
