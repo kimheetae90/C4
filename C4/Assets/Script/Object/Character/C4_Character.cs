@@ -87,6 +87,7 @@ public abstract class C4_Character : C4_Object
 
     public bool damaged(int damage)
     {
+        Debug.Log("sipal");
         boatFeature.hp -= damage;
         return checkHP();
     }

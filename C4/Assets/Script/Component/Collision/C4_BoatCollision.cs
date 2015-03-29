@@ -8,12 +8,11 @@ public class C4_BoatCollision : MonoBehaviour {
         C4_Object collisionObject = other.GetComponentInParent<C4_Object>();
         C4_StraightMove moveScript = GetComponentInParent<C4_StraightMove>();
         C4_Character character = GetComponentInParent<C4_Character>();
-
         switch(collisionObject.objectAttr.type)
         {
             case GameObjectType.Player:
             case GameObjectType.Enemy:
-                moveScript.isMove = false;
+                moveScript.stopMoveToTarget();
                 break;
             case GameObjectType.Missile:
                 C4_MissileFeature missileFeature = collisionObject.GetComponent<C4_MissileFeature>();

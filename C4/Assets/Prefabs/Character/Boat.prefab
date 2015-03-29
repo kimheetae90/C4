@@ -117,9 +117,9 @@ GameObject:
   - 114: {fileID: 11421702}
   - 114: {fileID: 11404498}
   - 114: {fileID: 11474286}
-  - 54: {fileID: 5484282}
   - 114: {fileID: 11485490}
   - 114: {fileID: 11437812}
+  - 54: {fileID: 5411710}
   m_Layer: 0
   m_Name: Boat
   m_TagString: Untagged
@@ -138,7 +138,7 @@ GameObject:
   - 114: {fileID: 11416962}
   - 65: {fileID: 6526238}
   m_Layer: 0
-  m_Name: BoatTurn
+  m_Name: BoatFBX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -231,7 +231,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 162174}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &5484282
+--- !u!54 &5411710
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -256,8 +256,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 2.17000008}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.97000003, y: 1.98000002, z: 3.88000011}
+  m_Center: {x: 0, y: 1.01999998, z: 0}
 --- !u!114 &11404498
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -385,7 +385,7 @@ MonoBehaviour:
   numOfStack: 3
   fullHP: 300
   oneGageStack: 100
-  moveSpeed: 30
+  moveSpeed: 50
   power: 30
   needGageStackToMove: 1
   needGageStackToShot: 2
