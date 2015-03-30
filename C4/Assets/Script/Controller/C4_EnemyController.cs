@@ -17,8 +17,10 @@ public class C4_EnemyController : C4_Controller
     bool isActing;
     bool canActing;
 
-    public override void Start()
+    public override void Awake()
     {
+        base.Awake();
+
         isSelected = false;
         selectNum = 0;
         action = EnemyAction.Invalid;

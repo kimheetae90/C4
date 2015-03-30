@@ -5,7 +5,7 @@ public class C4_Controller : MonoBehaviour {
 
     public List<C4_IControllerListener> listeners;
 
-    public virtual void Start()
+    public virtual void Awake()
     {
         listeners = new List<C4_IControllerListener>();
     }

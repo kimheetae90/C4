@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
 using System.Collections.Generic;
 using System.IO;
+
 
 public class BehaviorImportTool : EditorWindow
 {
@@ -188,3 +190,4 @@ public class BehaviorImportTool : EditorWindow
 		}
 	}
 }
+#endif

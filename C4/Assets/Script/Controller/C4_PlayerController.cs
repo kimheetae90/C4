@@ -31,9 +31,9 @@ public class C4_PlayerController : C4_Controller
         Select,
     }
 
-    public override void Start()
+    public override void Awake()
     {
-        base.Start();
+        base.Awake();
     }
 
     override public void selectClickObject(GameObject clickGameObject)

@@ -3,8 +3,6 @@ using System.Collections;
 
 public class C4_CameraController : C4_Controller 
 {
-	C4_Camera camObject;
-
 	enum eCameraControllerActionState
 	{
 		None,
@@ -13,18 +11,13 @@ public class C4_CameraController : C4_Controller
 		ZoomOut,
 	}
 
-	public override void Start()
-	{
-		base.Start();
-
-		camObject = Camera.main.transform.root.GetComponent<C4_Camera>();
-	}
+    public override void Awake()
+    {
+        base.Awake();
+    }
 	
 	override public void dispatchData(InputData inputData)
 	{
-		if (camObject == null)
-			return;
-
 		eCameraControllerActionState action = eCameraControllerActionState.None;
 		computeActionState(ref inputData, out action);
 		ProcState(action, ref inputData);
@@ -73,7 +66,7 @@ public class C4_CameraController : C4_Controller
 		case eCameraControllerActionState.None:
 			break;
 		case eCameraControllerActionState.Move:
-			camObject.cameraMove(inputData);
+            notifyEvent("Move", inputData);
 			break;
 		case eCameraControllerActionState.ZoomIn:
 			break;

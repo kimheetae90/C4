@@ -26,9 +26,15 @@ public class C4_MoveUI : MonoBehaviour
         isSelect = false;
         moveUIGameObejct.SetActive(false);
 
+        #if UNITY_EDITOR
         firstTexture = (Texture2D)Resources.LoadAssetAtPath("Assets/Texture/moveUI_first.png", typeof(Texture2D));
         secondTexture = (Texture2D)Resources.LoadAssetAtPath("Assets/Texture/moveUI_second.png", typeof(Texture2D));
         thirdTexture = (Texture2D)Resources.LoadAssetAtPath("Assets/Texture/moveUI_third.png", typeof(Texture2D));
+        #else
+        firstTexture = (Texture2D)Resources.Load("Assets/Texture/moveUI_first.png", typeof(Texture2D));
+        secondTexture = (Texture2D)Resources.Load("Assets/Texture/moveUI_second.png", typeof(Texture2D));
+        thirdTexture = (Texture2D)Resources.Load("Assets/Texture/moveUI_third.png", typeof(Texture2D));
+        #endif
 
         firstSprite = Sprite.Create(firstTexture, new Rect(0, 0, firstTexture.width, firstTexture.height), new Vector2(0.5f, 0.5f));
         secondSprite = Sprite.Create(secondTexture, new Rect(0, 0, secondTexture.width, secondTexture.height), new Vector2(0.5f, 0.5f));

@@ -30,6 +30,7 @@ public class C4_PlayMode : C4_SceneMode
         addController(GameObjectType.Enemy, enemyController);
 		addController (GameObjectType.Camera, cameraController);
         addPlayerControllerListener();
+        addCameraControllerListener();
 	}
 
     void addPlaySceneManager()
@@ -48,6 +49,16 @@ public class C4_PlayMode : C4_SceneMode
         if (playerUI != null && playerController != null)
         {
             playerController.addListener(playerUI as C4_IControllerListener);
+        }
+    }
+
+    private void addCameraControllerListener()
+    {
+        C4_Camera camObject = Camera.main.transform.root.GetComponent<C4_Camera>();
+
+        if (camObject != null)
+        {
+            cameraController.addListener(camObject as C4_IControllerListener);
         }
     }
 }
