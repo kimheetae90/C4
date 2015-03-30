@@ -3,13 +3,19 @@ using System.Collections;
 
 public class C4_Player : C4_Character , C4_IControllerListener {
 
-    protected override bool checkHP()
+    protected override void Start()
     {
-        if (boatFeature.hp < 0)
+        base.Start();
+        C4_Object player = GetComponent<C4_Object>();
+        C4_ManagerMaster.Instance.objectManager.registerObjectToAll(ref player, GameObjectType.Player, GameObjectInputType.SelectAbleObject | GameObjectInputType.ClickAbleObject);
+    }
+
+    protected override void checkHP()
+    {
+        if (boatFeature.hp <= 0)
         {
-            return true;
+            gameObject.SetActive(false);
         }
-        else return false;
     }
 
     public void onEvent(string message, params object[] p)

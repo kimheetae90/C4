@@ -16,6 +16,7 @@ public abstract class C4_Character : C4_Object
 
     protected override void Start()
     {
+        base.Start();
         moveComponent = GetComponent<C4_StraightMove>();
         turnComponent = GetComponentInChildren<C4_Turn>();
         shotComponent = GetComponent<C4_IntShot>();
@@ -84,11 +85,11 @@ public abstract class C4_Character : C4_Object
     }
 
 
-    public bool damaged(int damage)
+    public void damaged(int damage)
     {
         boatFeature.hp -= damage;
-        return checkHP();
+        checkHP();
     }
 
-    protected abstract bool checkHP();
+    protected abstract void checkHP();
 }
