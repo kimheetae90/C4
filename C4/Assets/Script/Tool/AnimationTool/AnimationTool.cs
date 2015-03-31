@@ -17,7 +17,7 @@ public class AnimationTool : EditorWindow
     int selectedFBXFileIndex = 0;
     string[] listFBXFilePath = { "" };
 
-    public static string basePathToLoad = Application.dataPath + "/Data/AI/Raw";
+    public static string basePathToLoad = Application.dataPath + "/Resources/Fbx";
 
     [MenuItem("Window/Animation/Animation Event Tool")]
     public static void showWindow()
@@ -84,6 +84,27 @@ public class AnimationTool : EditorWindow
         if (listFBXFile.Count > 0)
         {
             EditorApplication.NewScene();
+            //EditorApplication.OpenSceneAdditive(strScenePath);
+            /*string strScenePath = "";
+            if (strScenePath == null || !strScenePath.Contains(".unity"))
+            {
+                EditorUtility.DisplayDialog("Select Scene", "You Must Select a Scene!", "Ok");
+                EditorApplication.Beep();
+                return;
+            } 
+*/
+
+          //  GameObject.findobject
+
+/*
+            if (assetPath.EndsWith("_model.fbx"))
+            {
+                string prefabPath = assetPath.Replace("_model.fbx", ".prefab");
+                Object prefab = EditorUtility.CreateEmptyPrefab(prefabPath);
+                // prefab.AddGameObject(gameObject); ?
+            }
+            */
+            EditorApplication.isPlaying = true;
             isOpenEditSceen = true;
         }
         else
