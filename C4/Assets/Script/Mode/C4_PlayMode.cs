@@ -22,16 +22,25 @@ public class C4_PlayMode : C4_SceneMode
         C4_ManagerMaster.Instance.objectManager.resetAllObjectData();
         addPlaySceneManager();
 
-        GameObject initPlayerGameObject = Instantiate(playerBoatGameObject, transform.position, transform.rotation) as GameObject;
-        Vector3 missileInitPosition = new Vector3(transform.position.x, transform.position.y - 20, transform.position.z);
-        GameObject initMissileGameObject = Instantiate(initPlayerGameObject.GetComponent<C4_BoatFeature>().missile, missileInitPosition, transform.rotation) as GameObject;
-        initPlayerGameObject.GetComponent<C4_BoatFeature>().missile = initMissileGameObject;
+        Vector3 initPos = transform.position;
+        initPos.z -= 15;
+        instantiatePlayer(playerBoatGameObject, initPos, transform.rotation);
+        initPos.z += 15;
+        instantiatePlayer(playerBoatGameObject, initPos, transform.rotation);
         addController(GameObjectType.Player,playerController);
         addController(GameObjectType.Enemy, enemyController);
 		addController (GameObjectType.Camera, cameraController);
         addPlayerControllerListener();
         addCameraControllerListener();
 	}
+
+    void instantiatePlayer(GameObject playerGameObject, Vector3 pos, Quaternion angle)
+    {
+        GameObject initPlayerGameObject = Instantiate(playerGameObject, pos, angle) as GameObject;
+        Vector3 missileInitPosition = new Vector3(transform.position.x, transform.position.y - 20, transform.position.z);
+        GameObject initMissileGameObject = Instantiate(initPlayerGameObject.GetComponent<C4_BoatFeature>().missile, missileInitPosition, transform.rotation) as GameObject;
+        initPlayerGameObject.GetComponent<C4_BoatFeature>().missile = initMissileGameObject;
+    }
 
     void addPlaySceneManager()
     {

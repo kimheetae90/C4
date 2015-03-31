@@ -25,7 +25,7 @@ public class C4_BoatFeature : MonoBehaviour
     [System.NonSerialized]
     public int hp;
     [System.NonSerialized]
-    public int gage;
+    public float gage;
     [System.NonSerialized]
     public int fullGage;
     
@@ -41,7 +41,7 @@ public class C4_BoatFeature : MonoBehaviour
     void Update()
     {
         gageUp();
-        stackCount = gage / oneGageStack;
+        stackCount = (int)gage / oneGageStack;
     }   
 
     public void gageDown(int gageStack)
@@ -53,7 +53,7 @@ public class C4_BoatFeature : MonoBehaviour
     {
         if (gage < fullGage)
         {
-            gage++;
+            gage += Time.deltaTime * 50;
         }
 
     }
