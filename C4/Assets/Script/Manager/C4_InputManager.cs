@@ -58,11 +58,11 @@ public class C4_InputManager : MonoBehaviour
             {
                 case KeyState.Up:
                     setupClickUp();
-                    C4_ManagerMaster.Instance.sceneMode.sendInputDataToController(inputData);
+                    C4_GameManager.Instance.sceneMode.sendInputDataToController(inputData);
                     break;
                 case KeyState.Down:
                     setupClickDown();
-                    C4_ManagerMaster.Instance.sceneMode.sendInputDataToController(inputData);
+                    C4_GameManager.Instance.sceneMode.sendInputDataToController(inputData);
                     break;
             }
         }
@@ -73,7 +73,7 @@ public class C4_InputManager : MonoBehaviour
             {
                 case KeyState.Drag:
                     setupDrag();
-                    C4_ManagerMaster.Instance.sceneMode.sendInputDataToController(inputData);
+                    C4_GameManager.Instance.sceneMode.sendInputDataToController(inputData);
                     break;
             }
         }

@@ -4,7 +4,7 @@ using System.Collections;
 public enum GameObjectType
 {
     Invalid,
-    Player,
+    Ally,
     Enemy,
     Missile,
     Ground,

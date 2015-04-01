@@ -1,21 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class C4_ManagerMaster : MonoBehaviour {
+public class C4_GameManager : MonoBehaviour {
 
-    private static C4_ManagerMaster _instance;
-    public static C4_ManagerMaster Instance
+    private static C4_GameManager _instance;
+    public static C4_GameManager Instance
     {
         get
         {
             if (!_instance)
             {
-                _instance = GameObject.FindObjectOfType(typeof(C4_ManagerMaster)) as C4_ManagerMaster;
+                _instance = GameObject.FindObjectOfType(typeof(C4_GameManager)) as C4_GameManager;
                 if (!_instance)
                 {
                     GameObject container = new GameObject();
-                    container.name = "C4_ManagerMaster";
-                    _instance = container.AddComponent(typeof(C4_ManagerMaster)) as C4_ManagerMaster;
+                    container.name = "C4_GameManager";
+                    _instance = container.AddComponent(typeof(C4_GameManager)) as C4_GameManager;
                 }
             }
 

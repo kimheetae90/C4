@@ -8,13 +8,13 @@ public class C4_GageUI : MonoBehaviour {
     
     public Image imgGageYellow;
     [System.NonSerialized]
-    public C4_BoatFeature boatFeature;
+    public C4_UnitFeature boatFeature;
 
    
 	// Use this for initialization
 	void Start () {
 
-        boatFeature = transform.GetComponentInParent<C4_BoatFeature>();
+        boatFeature = transform.GetComponentInParent<C4_UnitFeature>();
   
 	}
 	

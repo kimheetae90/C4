@@ -9,7 +9,7 @@ public class C4_MissileCollision : MonoBehaviour {
         C4_StraightMove missileMove = GetComponentInParent<C4_StraightMove>();
         switch (collisionObject.objectAttr.type)
         {
-            case GameObjectType.Player:
+            case GameObjectType.Ally:
             case GameObjectType.Enemy:
                 missileMove.stopMoveToTarget();
                 break;

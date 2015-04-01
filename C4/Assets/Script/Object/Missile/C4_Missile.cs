@@ -10,7 +10,7 @@ public class C4_Missile : C4_SubObject
     {
         base.Start();
         C4_Object missile = GetComponent<C4_Object>();
-        C4_ManagerMaster.Instance.objectManager.registerObjectToAll(ref missile, GameObjectType.Missile, GameObjectInputType.Invalid);
+        C4_GameManager.Instance.objectManager.registerObjectToAll(ref missile, GameObjectType.Missile, GameObjectInputType.Invalid);
         gameObject.SetActive(false);
     }
 

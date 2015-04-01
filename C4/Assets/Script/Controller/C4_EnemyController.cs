@@ -8,7 +8,7 @@ public class C4_EnemyController : C4_Controller
     bool isSelected;
     int selectNum;
     [System.NonSerialized]
-    public C4_Enemy selectedBoat;
+    public C4_Enemy selectedEnemyUnit;
     C4_StartAIBehave behavior;
 
     float tempValue;
@@ -64,7 +64,7 @@ public class C4_EnemyController : C4_Controller
         switch (action)
         {
             case EnemyAction.Attack:
-                if (selectedBoat.canShot)
+                if (selectedEnemyUnit.canShot)
                 {
                     canActing = true;
                 }
@@ -74,7 +74,7 @@ public class C4_EnemyController : C4_Controller
                 }
                 break;
             case EnemyAction.Move:
-                if (selectedBoat.canMove)
+                if (selectedEnemyUnit.canMove)
                 {
                     canActing = true;
                 }
@@ -95,7 +95,7 @@ public class C4_EnemyController : C4_Controller
     {
         action = EnemyAction.Invalid;
         isSelected = false;
-        selectedBoat = null;
+        selectedEnemyUnit = null;
         behavior = null;
         isActing = false;
         canActing = false;
@@ -118,15 +118,15 @@ public class C4_EnemyController : C4_Controller
     void selectBoat()
     {
         resetSelect();
-        if (C4_ManagerMaster.Instance.objectManager.getSubObjectManager(GameObjectType.Enemy).getObjectCount() > 0)
+        if (C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Enemy).getObjectCount() > 0)
         {
             selectNum++;
-            if (selectNum >= C4_ManagerMaster.Instance.objectManager.getSubObjectManager(GameObjectType.Enemy).getObjectCount())
+            if (selectNum >= C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Enemy).getObjectCount())
             {
                 selectNum = 0;
             }
-            selectedBoat = C4_ManagerMaster.Instance.objectManager.getSubObjectManager(GameObjectType.Enemy).getObjectInList(selectNum).GetComponent<C4_Enemy>();
-            behavior = selectedBoat.GetComponent<C4_StartAIBehave>();
+            selectedEnemyUnit = C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Enemy).getObjectInList(selectNum).GetComponent<C4_Enemy>();
+            behavior = selectedEnemyUnit.GetComponent<C4_StartAIBehave>();
             isSelected = true;
         }
         else

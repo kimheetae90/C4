@@ -8,16 +8,16 @@ public class C4_StartAIBehave : MonoBehaviour {
     public int attackSuccessOrFailPercent;
     int attackPercent;
     int successAttackPercent;
-    C4_Player shortestDistancePlayer;
-    double distanceWithPlayer;
-    double checkDistanceEachPlayer;
-    C4_BoatFeature boatFeature;
+    C4_Ally shortestDistanceAlly;
+    double distanceWithAlly;
+    double checkDistanceEachAlly;
+    C4_UnitFeature unitFeature;
     C4_Enemy enemy;
 
     Vector3 toMove;
-    Vector3 perpendicularAtPlayerVector;
-    Vector3 playerPositionVector;
-    float angleToPlayer;
+    Vector3 perpendicularAtAllyVector;
+    Vector3 allyPositionVector;
+    float angleToAlly;
     float angleToPerpendicular;
     float tempValue;
 
@@ -25,35 +25,35 @@ public class C4_StartAIBehave : MonoBehaviour {
     {
         attackPercent = 0;
         successAttackPercent = 0;
-        distanceWithPlayer = 0;
-        boatFeature = GetComponent<C4_BoatFeature>();
+        distanceWithAlly = 0;
+        unitFeature = GetComponent<C4_UnitFeature>();
         enemy = GetComponent<C4_Enemy>();
     }
 
     public void startBehave()
     {
         checkDistanceWithPlayer();
-        if (C4_ManagerMaster.Instance.sceneMode.getController(GameObjectType.Enemy).GetComponent<C4_EnemyController>().action == EnemyAction.Move)
+        if (C4_GameManager.Instance.sceneMode.getController(GameObjectType.Enemy).GetComponent<C4_EnemyController>().action == EnemyAction.Move)
         {
-            if (distanceWithPlayer > checkBound)
+            if (distanceWithAlly > checkBound)
             {
-                if (boatFeature.stackCount == 3)
+                if (unitFeature.stackCount == 3)
                 {
                     Invoke("moveToPlayer", 1f);
                 }
                 else
                 {
-                    C4_ManagerMaster.Instance.sceneMode.getController(GameObjectType.Enemy).GetComponent<C4_EnemyController>().resetSelect();
+                    C4_GameManager.Instance.sceneMode.getController(GameObjectType.Enemy).GetComponent<C4_EnemyController>().resetSelect();
                 }
             }
             else
             {
-                C4_ManagerMaster.Instance.sceneMode.getController(GameObjectType.Enemy).GetComponent<C4_EnemyController>().resetSelect();
+                C4_GameManager.Instance.sceneMode.getController(GameObjectType.Enemy).GetComponent<C4_EnemyController>().resetSelect();
             }
         }
         else
         {
-            if (distanceWithPlayer < checkBound)
+            if (distanceWithAlly < checkBound)
             {
                 attackPercent = Random.Range(0, 10);
                 if (attackPercent > attackOrMovePercent)
@@ -67,7 +67,7 @@ public class C4_StartAIBehave : MonoBehaviour {
             }
             else
             {
-                C4_ManagerMaster.Instance.sceneMode.getController(GameObjectType.Enemy).GetComponent<C4_EnemyController>().resetSelect();
+                C4_GameManager.Instance.sceneMode.getController(GameObjectType.Enemy).GetComponent<C4_EnemyController>().resetSelect();
             }
         }
     }
@@ -77,25 +77,25 @@ public class C4_StartAIBehave : MonoBehaviour {
         successAttackPercent = Random.Range(0, 10);
         if (successAttackPercent > attackSuccessOrFailPercent)
         {
-            toMove = shortestDistancePlayer.transform.position;
+            toMove = shortestDistanceAlly.transform.position;
         }
         else
         {
-            perpendicularAtPlayerVector = (new Vector3(playerPositionVector.z, 0, -playerPositionVector.x) - transform.position).normalized;
+            perpendicularAtAllyVector = (new Vector3(allyPositionVector.z, 0, -allyPositionVector.x) - transform.position).normalized;
             tempValue = Random.Range(-5, 5);
-            toMove = shortestDistancePlayer.transform.position + perpendicularAtPlayerVector * tempValue;
+            toMove = shortestDistanceAlly.transform.position + perpendicularAtAllyVector * tempValue;
         }
 
         enemy.turn(toMove);
         toMove = 2 * transform.position - toMove;
         enemy.shot(toMove);
-        C4_ManagerMaster.Instance.sceneMode.getController(GameObjectType.Enemy).GetComponent<C4_EnemyController>().resetSelect();
+        C4_GameManager.Instance.sceneMode.getController(GameObjectType.Enemy).GetComponent<C4_EnemyController>().resetSelect();
     }
 
     void moveBesidePlayer()
     {
-        playerPositionVector = (shortestDistancePlayer.transform.position - transform.position).normalized;
-        perpendicularAtPlayerVector = (new Vector3(playerPositionVector.z, 0, -playerPositionVector.x) - transform.position).normalized;
+        allyPositionVector = (shortestDistanceAlly.transform.position - transform.position).normalized;
+        perpendicularAtAllyVector = (new Vector3(allyPositionVector.z, 0, -allyPositionVector.x) - transform.position).normalized;
         tempValue = Random.Range(0,2);
         if(tempValue >1)
         {
@@ -108,38 +108,38 @@ public class C4_StartAIBehave : MonoBehaviour {
         tempValue = Random.Range(0,2);
         if(tempValue>1)
         {
-            angleToPlayer = Random.Range(0, 2);
+            angleToAlly = Random.Range(0, 2);
         }
         else
         {
-            angleToPlayer = Random.Range(-2,0);
+            angleToAlly = Random.Range(-2,0);
         }
-        tempValue = Random.Range(boatFeature.moveRange / 2,boatFeature.moveRange * 2 + boatFeature.moveRange / 2);
-        toMove = (playerPositionVector * angleToPlayer + angleToPerpendicular * perpendicularAtPlayerVector).normalized * tempValue + transform.position;
+        tempValue = Random.Range(unitFeature.moveRange / 2,unitFeature.moveRange * 2 + unitFeature.moveRange / 2);
+        toMove = (allyPositionVector * angleToAlly + angleToPerpendicular * perpendicularAtAllyVector).normalized * tempValue + transform.position;
         enemy.move(toMove);
         enemy.turn(toMove);
-        C4_ManagerMaster.Instance.sceneMode.getController(GameObjectType.Enemy).GetComponent<C4_EnemyController>().resetSelect();
+        C4_GameManager.Instance.sceneMode.getController(GameObjectType.Enemy).GetComponent<C4_EnemyController>().resetSelect();
     }
 
     void moveToPlayer()
     {
-        toMove = (shortestDistancePlayer.transform.position - transform.position).normalized * boatFeature.moveRange * 3 + transform.position;
+        toMove = (shortestDistanceAlly.transform.position - transform.position).normalized * unitFeature.moveRange * 3 + transform.position;
         enemy.turn(toMove);
         enemy.move(toMove);
-        C4_ManagerMaster.Instance.sceneMode.getController(GameObjectType.Enemy).GetComponent<C4_EnemyController>().resetSelect();
+        C4_GameManager.Instance.sceneMode.getController(GameObjectType.Enemy).GetComponent<C4_EnemyController>().resetSelect();
     }
 
     void checkDistanceWithPlayer()
     {
-        shortestDistancePlayer = C4_ManagerMaster.Instance.objectManager.getSubObjectManager(GameObjectType.Player).getObjectInList(0).GetComponent<C4_Player>();
-        distanceWithPlayer = Vector3.Distance(shortestDistancePlayer.transform.position, transform.position);
-        for (int i = 0; i < C4_ManagerMaster.Instance.objectManager.getSubObjectManager(GameObjectType.Player).getObjectCount(); i++)
+        shortestDistanceAlly = C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Ally).getObjectInList(0).GetComponent<C4_Ally>();
+        distanceWithAlly = Vector3.Distance(shortestDistanceAlly.transform.position, transform.position);
+        for (int i = 0; i < C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Ally).getObjectCount(); i++)
         {
-            checkDistanceEachPlayer = Vector3.Distance(C4_ManagerMaster.Instance.objectManager.getSubObjectManager(GameObjectType.Player).getObjectInList(i).transform.position, transform.position);
-            if (distanceWithPlayer > checkDistanceEachPlayer)
+            checkDistanceEachAlly = Vector3.Distance(C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Ally).getObjectInList(i).transform.position, transform.position);
+            if (distanceWithAlly > checkDistanceEachAlly)
             {
-                distanceWithPlayer = checkDistanceEachPlayer;
-                shortestDistancePlayer = C4_ManagerMaster.Instance.objectManager.getSubObjectManager(GameObjectType.Player).getObjectInList(i).GetComponent<C4_Player>();
+                distanceWithAlly = checkDistanceEachAlly;
+                shortestDistanceAlly = C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Ally).getObjectInList(i).GetComponent<C4_Ally>();
             }
         }
     }

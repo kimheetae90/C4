@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class C4_Character : C4_Object
+public abstract class C4_Unit : C4_Object
 {
     [System.NonSerialized]
     public bool canMove;
     [System.NonSerialized]
     public bool canShot;
     
-    protected C4_BoatFeature boatFeature;
+    protected C4_UnitFeature unitFeature;
     protected C4_StraightMove moveComponent;
     protected C4_Turn turnComponent;
     protected C4_DistanceCheck distCheckComponent;
@@ -21,7 +21,7 @@ public abstract class C4_Character : C4_Object
         turnComponent = GetComponentInChildren<C4_Turn>();
         shotComponent = GetComponent<C4_IntShot>();
         distCheckComponent = GetComponent<C4_DistanceCheck>();
-        boatFeature = GetComponent<C4_BoatFeature>();
+        unitFeature = GetComponent<C4_UnitFeature>();
     }
 
     void Update()
@@ -37,7 +37,7 @@ public abstract class C4_Character : C4_Object
 
     void checkCanMove()
     {
-        if (boatFeature.stackCount >= 1)
+        if (unitFeature.stackCount >= 1)
         {
             canMove = true;
         }
@@ -49,7 +49,7 @@ public abstract class C4_Character : C4_Object
 
     void checkCanShot()
     {
-        if (boatFeature.stackCount >= 2)
+        if (unitFeature.stackCount >= 2)
         {
             canShot = true;
         }
@@ -87,7 +87,7 @@ public abstract class C4_Character : C4_Object
 
     public void damaged(int damage)
     {
-        boatFeature.hp -= damage;
+        unitFeature.hp -= damage;
         checkHP();
     }
 

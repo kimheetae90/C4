@@ -11,7 +11,7 @@ public class C4_Camera : C4_Object, C4_IControllerListener
     {
         base.Start();
         C4_Object obj = this;
-        C4_ManagerMaster.Instance.objectManager.registerObjectToAll(ref obj, GameObjectType.Camera, GameObjectInputType.Invalid);
+        C4_GameManager.Instance.objectManager.registerObjectToAll(ref obj, GameObjectType.Camera, GameObjectInputType.Invalid);
     }
 
     public void cameraMove(InputData inputData)

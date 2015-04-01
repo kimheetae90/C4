@@ -7,8 +7,8 @@ public class C4_MoveUI : MonoBehaviour
     public Image moveUIImage;
     GameObject moveUIGameObejct;
     bool isSelect;
-    C4_BoatFeature boatFeature;
-    C4_Player selectedBoat;
+    C4_UnitFeature unitFeature;
+    C4_Ally selectedBoat;
     int stackCount;
     int moveRange;
 
@@ -53,15 +53,15 @@ public class C4_MoveUI : MonoBehaviour
     public void selectBoat()
     {
         isSelect = true;
-        selectedBoat = C4_ManagerMaster.Instance.sceneMode.getController(GameObjectType.Player).GetComponent<C4_PlayerController>().selectedBoat;
-        boatFeature = selectedBoat.GetComponent<C4_BoatFeature>();
+        selectedBoat = C4_GameManager.Instance.sceneMode.getController(GameObjectType.Ally).GetComponent<C4_AllyController>().selectedAllyUnit;
+        unitFeature = selectedBoat.GetComponent<C4_UnitFeature>();
     }
 
     public void showUI()
     {
         moveUIGameObejct.SetActive(true);
-        stackCount = boatFeature.stackCount;
-        moveRange = boatFeature.moveRange;
+        stackCount = unitFeature.stackCount;
+        moveRange = unitFeature.moveRange;
         moveUIImage.transform.localScale = new Vector3((moveRange), (moveRange), 1);
 
         switch (stackCount)

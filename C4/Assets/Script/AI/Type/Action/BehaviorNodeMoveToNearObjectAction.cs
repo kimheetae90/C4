@@ -19,8 +19,8 @@ public class BehaviorNodeMoveToNearObjectAction : BehaviorNodeBaseAction
 
     override public bool traversalNode(GameObject targetObject)
     {
-        C4_Character charComponent = targetObject.GetComponent<C4_Character>();
-        C4_BoatFeature boatFeature = targetObject.GetComponent<C4_BoatFeature>();
+        C4_Unit charComponent = targetObject.GetComponent<C4_Unit>();
+        C4_UnitFeature boatFeature = targetObject.GetComponent<C4_UnitFeature>();
         C4_FindObjectInRadiousCollision findComponent = targetObject.GetComponent<C4_FindObjectInRadiousCollision>();
 
         if (charComponent == null || findComponent == null || boatFeature == null)

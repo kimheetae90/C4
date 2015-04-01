@@ -4,20 +4,20 @@ using System.Collections.Generic;
 
 public class C4_SceneMode : MonoBehaviour {
 
-    protected List<C4_Controller> controllerList;
-    protected Dictionary<GameObjectType,C4_Controller> controllerDictionary;
+    protected List<C4_Controller> ListController;
+    protected Dictionary<GameObjectType,C4_Controller> DicController;
 
     public virtual void Start()
     {
-        controllerList = new List<C4_Controller>();
-        controllerDictionary = new Dictionary<GameObjectType, C4_Controller>();
+        ListController = new List<C4_Controller>();
+        DicController = new Dictionary<GameObjectType, C4_Controller>();
 
 
     }
 
     public void sendInputDataToController(InputData inputData)
     {
-        foreach (C4_Controller controller in controllerList)
+        foreach (C4_Controller controller in ListController)
         {
             controller.dispatchData(inputData);
         }
@@ -25,7 +25,7 @@ public class C4_SceneMode : MonoBehaviour {
 
     public void sendSelectedGameObjectToController(GameObject clickGameObject)
     {
-        foreach (C4_Controller controller in controllerList)
+        foreach (C4_Controller controller in ListController)
         {
             controller.selectClickObject(clickGameObject);
         }
@@ -33,12 +33,12 @@ public class C4_SceneMode : MonoBehaviour {
 
     public C4_Controller getController(GameObjectType type)
     {
-        return controllerDictionary[type];
+        return DicController[type];
     }
 
     protected void addController(GameObjectType type, C4_Controller controller)
     {
-        controllerList.Add(controller);
-        controllerDictionary.Add(type, controller);
+        ListController.Add(controller);
+        DicController.Add(type, controller);
     }
 }

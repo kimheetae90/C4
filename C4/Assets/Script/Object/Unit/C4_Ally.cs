@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class C4_Player : C4_Character , C4_IControllerListener {
+public class C4_Ally : C4_Unit , C4_IControllerListener {
 
     protected override void Start()
     {
         base.Start();
-        C4_Object player = GetComponent<C4_Object>();
-        C4_ManagerMaster.Instance.objectManager.registerObjectToAll(ref player, GameObjectType.Player, GameObjectInputType.SelectAbleObject | GameObjectInputType.ClickAbleObject);
+        C4_Object ally = GetComponent<C4_Object>();
+        C4_GameManager.Instance.objectManager.registerObjectToAll(ref ally, GameObjectType.Ally, GameObjectInputType.SelectAbleObject | GameObjectInputType.ClickAbleObject);
     }
 
     protected override void checkHP()
     {
-        if (boatFeature.hp <= 0)
+        if (unitFeature.hp <= 0)
         {
             gameObject.SetActive(false);
         }

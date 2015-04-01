@@ -13,10 +13,10 @@ using System.Collections.Generic;
 ///  dispatchData : 전달받은 Data 분석
 /// </summary>
 
-public class C4_PlayerController : C4_Controller
+public class C4_AllyController : C4_Controller
 {
     [System.NonSerialized]
-    public C4_Player selectedBoat;
+    public C4_Ally selectedAllyUnit;
     [System.NonSerialized]
     bool isAiming;
 
@@ -38,16 +38,16 @@ public class C4_PlayerController : C4_Controller
 
     override public void selectClickObject(GameObject clickGameObject)
     {
-        selectedBoat = clickGameObject.GetComponent<C4_Player>();
-        addListener(selectedBoat);
+        selectedAllyUnit = clickGameObject.GetComponent<C4_Ally>();
+        addListener(selectedAllyUnit);
     }
 
     void activeDone()
     {
         isAiming = false;
         notifyEvent("ActiveDone");
-        removeListener(selectedBoat);
-        selectedBoat = null;
+        removeListener(selectedAllyUnit);
+        selectedAllyUnit = null;
     }
 
     override public void dispatchData(InputData inputData)
@@ -96,11 +96,11 @@ public class C4_PlayerController : C4_Controller
 
         bool isSelectObjectTypeGround = inputData.clickObjectID.isInputTypeTrue(GameObjectInputType.CameraMoveAbleObject);
 
-        if (isAiming && selectedBoat != null)
+        if (isAiming && selectedAllyUnit != null)
         {
             action = ePlayerControllerActionState.Shot;
         }
-        else if (isAiming == false && isSelectObjectTypeGround && selectedBoat != null)
+        else if (isAiming == false && isSelectObjectTypeGround && selectedAllyUnit != null)
         {
             action = ePlayerControllerActionState.Move;
         }
@@ -115,7 +115,7 @@ public class C4_PlayerController : C4_Controller
         {
             action = ePlayerControllerActionState.StartAim;
         }
-        else if (isSelectClickableObject && selectedBoat != null)
+        else if (isSelectClickableObject && selectedAllyUnit != null)
         {
             action = ePlayerControllerActionState.Aming;
         }
@@ -140,8 +140,8 @@ public class C4_PlayerController : C4_Controller
                 break;
             case ePlayerControllerActionState.Select:
                 activeDone();
-                selectClickObject(C4_ManagerMaster.Instance.objectManager.getObject(inputData.clickObjectID).gameObject);
-                notifyEvent("Select", selectedBoat.gameObject.transform);
+                selectClickObject(C4_GameManager.Instance.objectManager.getObject(inputData.clickObjectID).gameObject);
+                notifyEvent("Select", selectedAllyUnit.gameObject.transform);
                 break;
             case ePlayerControllerActionState.StartAim:
                 isAiming = true;

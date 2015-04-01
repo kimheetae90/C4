@@ -29,7 +29,7 @@ public class C4_AIManager : MonoBehaviour
             if (!_instance)
             {
                 GameObject container = new GameObject();
-                container.name = "C4_EnemyManager";
+                container.name = "C4_AIManager";
                 _instance = container.AddComponent(typeof(C4_AIManager)) as C4_AIManager;
             }
         }

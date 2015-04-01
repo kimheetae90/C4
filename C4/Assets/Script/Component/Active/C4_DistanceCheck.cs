@@ -5,7 +5,7 @@ public class C4_DistanceCheck : MonoBehaviour
 {
 
     // Use this for initialization
-    C4_BoatFeature boatFeature;
+    C4_UnitFeature unitFeature;
     C4_StraightMove move;
     float distance;
     int range;
@@ -17,14 +17,14 @@ public class C4_DistanceCheck : MonoBehaviour
     void Start()
     {
         isOver = false;
-        boatFeature = transform.GetComponent<C4_BoatFeature>();
+        unitFeature = transform.GetComponent<C4_UnitFeature>();
         move = GetComponent<C4_StraightMove>();
     }
 
     public void distCheck()
     {
-        boatFeature.gageDown(boatFeature.needGageStackToMove);
-        range = boatFeature.moveRange;
+        unitFeature.gageDown(unitFeature.needGageStackToMove);
+        range = unitFeature.moveRange;
         firstpos = transform.position;
         StartCoroutine("distanceCheck");
     }
@@ -35,10 +35,10 @@ public class C4_DistanceCheck : MonoBehaviour
         distance = Vector3.Distance(firstpos, transform.position);
         if (distance >= range)
         {
-            if (boatFeature.stackCount > 0)
+            if (unitFeature.stackCount > 0)
             {
                 isOver = true;
-                range += boatFeature.moveRange;
+                range += unitFeature.moveRange;
             }
             else
             {
@@ -49,7 +49,7 @@ public class C4_DistanceCheck : MonoBehaviour
         }
         if (isOver)
         {
-            boatFeature.gageDown(boatFeature.needGageStackToMove);
+            unitFeature.gageDown(unitFeature.needGageStackToMove);
             isOver = false;
         }
 

@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cfd2fe0d4df16f449f048bb40e1b95f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyGameObejct: {fileID: 139746, guid: 83cd402f7ac365545ad2ec4b84605bf3, type: 2}
+  enemyUnitGameObject: {fileID: 139746, guid: 83cd402f7ac365545ad2ec4b84605bf3, type: 2}
   regenerationTime: 60
 --- !u!4 &247783261
 Transform:
@@ -278,6 +278,14 @@ Prefab:
       propertyPath: playerUI
       value: 
       objectReference: {fileID: 2095715591}
+    - target: {fileID: 11477398, guid: f45f0ccc22844a84593ed00428fdeacf, type: 2}
+      propertyPath: allyController
+      value: 
+      objectReference: {fileID: 661504620}
+    - target: {fileID: 11477398, guid: f45f0ccc22844a84593ed00428fdeacf, type: 2}
+      propertyPath: allyUnitGameObject
+      value: 
+      objectReference: {fileID: 149832, guid: 94bcbab776bd11746892995b0aaa2536, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f45f0ccc22844a84593ed00428fdeacf, type: 2}
   m_IsPrefabParent: 0
@@ -398,7 +406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cfd2fe0d4df16f449f048bb40e1b95f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyGameObejct: {fileID: 139746, guid: 83cd402f7ac365545ad2ec4b84605bf3, type: 2}
+  enemyUnitGameObject: {fileID: 139746, guid: 83cd402f7ac365545ad2ec4b84605bf3, type: 2}
   regenerationTime: 60
 --- !u!4 &529980683
 Transform:
@@ -646,6 +654,10 @@ Prefab:
     - target: {fileID: 485946, guid: 516af8c5b82e79642bfe4f8494a01dad, type: 2}
       propertyPath: m_RootOrder
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 173942, guid: 516af8c5b82e79642bfe4f8494a01dad, type: 2}
+      propertyPath: m_Name
+      value: AllyController
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 516af8c5b82e79642bfe4f8494a01dad, type: 2}
