@@ -12,6 +12,10 @@ public struct InputData
     public Vector3 clickPosition;
     public Vector3 dragPosition;
 
+    //화면 좌표 정보
+    public Vector2 clickDevicePosition;
+    public Vector2 dragDevicePosition;
+
     //클릭한 대상에 대한 정보
     public ObjectID clickObjectID;
     public ObjectID dragObjectID;
@@ -28,5 +32,6 @@ public struct InputData
 		dragObjectID = GameObjectDefine.INVALID_OBJECT_ID;
 		keyState = KeyState.Up;
 		preKeyState = KeyState.Up;
+        isCameraMove = false;
 	}
 }

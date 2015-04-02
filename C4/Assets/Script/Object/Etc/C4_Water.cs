@@ -8,7 +8,7 @@ public class C4_Water : C4_Ground
     {
         base.Start();
         C4_Object me = this;
-        C4_GameManager.Instance.objectManager.registerObjectToAll(ref me, GameObjectType.Ground, GameObjectInputType.CameraMoveAbleObject);
+        C4_GameManager.Instance.objectManager.registerObjectToAll(ref me, GameObjectType.Ground, GameObjectInputType.CameraMoveAbleObject | GameObjectInputType.ToMoveAbleObject);
     }
 
 }

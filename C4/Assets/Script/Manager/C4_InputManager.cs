@@ -12,6 +12,7 @@ public class C4_InputManager : MonoBehaviour
     InputData inputData;
     RaycastHit hit;
     C4_Object clickObject;
+    
 
     void Start()
     {
@@ -28,6 +29,7 @@ public class C4_InputManager : MonoBehaviour
     private void updateKeyState()
     {
         inputData.preKeyState = inputData.keyState;
+        inputData.isCameraMove = false;
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -85,6 +87,7 @@ public class C4_InputManager : MonoBehaviour
         clickObject = hit.collider.transform.root.gameObject.GetComponent<C4_Object>();
         inputData.clickObjectID = clickObject.objectAttr;
         inputData.dragObjectID = clickObject.objectAttr;
+        inputData.clickDevicePosition = Input.mousePosition;
         inputData.clickPosition = hit.point;
         inputData.dragPosition = hit.point;
         inputData.clickPosition.y = 0;
@@ -97,6 +100,7 @@ public class C4_InputManager : MonoBehaviour
         C4_Object dragObject = hit.collider.transform.root.gameObject.GetComponent<C4_Object>();
         inputData.dragPosition = hit.point;
         inputData.dragPosition.y = 0;
+        inputData.dragDevicePosition = Input.mousePosition;
         inputData.dragObjectID = dragObject.objectAttr;
     }
 

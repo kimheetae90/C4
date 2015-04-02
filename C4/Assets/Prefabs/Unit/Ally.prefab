@@ -1,5 +1,22 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &106028
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 451200}
+  - 135: {fileID: 13550032}
+  - 54: {fileID: 5473370}
+  m_Layer: 8
+  m_Name: PickCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &122806
 GameObject:
   m_ObjectHideFlags: 1
@@ -81,6 +98,8 @@ GameObject:
   - 4: {fileID: 430700}
   - 114: {fileID: 11446250}
   - 65: {fileID: 6563146}
+  - 114: {fileID: 11483098}
+  - 54: {fileID: 5453188}
   m_Layer: 0
   m_Name: AllyFBX
   m_TagString: Untagged
@@ -116,10 +135,8 @@ GameObject:
   - 114: {fileID: 11448878}
   - 114: {fileID: 11488186}
   - 114: {fileID: 11473818}
-  - 114: {fileID: 11481174}
   - 114: {fileID: 11483612}
   - 114: {fileID: 11443398}
-  - 54: {fileID: 5415292}
   m_Layer: 0
   m_Name: Ally
   m_TagString: Untagged
@@ -173,6 +190,7 @@ Transform:
   m_Children:
   - {fileID: 430700}
   - {fileID: 22486158}
+  - {fileID: 451200}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &430700
@@ -188,6 +206,18 @@ Transform:
   - {fileID: 458512}
   m_Father: {fileID: 412632}
   m_RootOrder: 0
+--- !u!4 &451200
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106028}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 412632}
+  m_RootOrder: 2
 --- !u!4 &458512
 Transform:
   m_ObjectHideFlags: 1
@@ -231,12 +261,27 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 143732}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &5415292
+--- !u!54 &5453188
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 149832}
+  m_GameObject: {fileID: 143952}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &5473370
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106028}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -424,17 +469,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imgGageWhite: {fileID: 11423172}
   imgGageYellow: {fileID: 11432494}
---- !u!114 &11481174
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 149832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9d1e39925fe04748b6646856e15f4e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11482380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -456,6 +490,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11483098
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9d1e39925fe04748b6646856e15f4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11483612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -511,6 +556,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!135 &13550032
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106028}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!222 &22201516
 CanvasRenderer:
   m_ObjectHideFlags: 1

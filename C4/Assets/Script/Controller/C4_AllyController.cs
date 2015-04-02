@@ -15,10 +15,12 @@ using System.Collections.Generic;
 
 public class C4_AllyController : C4_Controller
 {
+
     [System.NonSerialized]
     public C4_Ally selectedAllyUnit;
-    [System.NonSerialized]
     bool isAiming;
+    const float cameraMoveCheckArea = 5f;
+
 
     enum ePlayerControllerActionState
     {
@@ -38,7 +40,7 @@ public class C4_AllyController : C4_Controller
 
     override public void selectClickObject(GameObject clickGameObject)
     {
-        selectedAllyUnit = clickGameObject.GetComponent<C4_Ally>();
+        selectedAllyUnit = clickGameObject.GetComponentInParent<C4_Ally>();
         addListener(selectedAllyUnit);
     }
 
@@ -94,13 +96,13 @@ public class C4_AllyController : C4_Controller
     {
         action = ePlayerControllerActionState.None;
 
-        bool isSelectObjectTypeGround = inputData.clickObjectID.isInputTypeTrue(GameObjectInputType.CameraMoveAbleObject);
+        bool isSelectObjectTypeGround = inputData.clickObjectID.isInputTypeTrue(GameObjectInputType.ToMoveAbleObject);
 
         if (isAiming && selectedAllyUnit != null)
         {
             action = ePlayerControllerActionState.Shot;
         }
-        else if (isAiming == false && isSelectObjectTypeGround && selectedAllyUnit != null)
+        else if (isAiming == false && isSelectObjectTypeGround && selectedAllyUnit != null && Vector2.Distance(inputData.clickDevicePosition, inputData.dragDevicePosition) < cameraMoveCheckArea)
         {
             action = ePlayerControllerActionState.Move;
         }
@@ -114,6 +116,10 @@ public class C4_AllyController : C4_Controller
         if (isAiming == false && isSelectClickableObject && isEqaulClickObjAndDragObj == false)
         {
             action = ePlayerControllerActionState.StartAim;
+        }
+        else if (isEqaulClickObjAndDragObj && isAiming)
+        {
+            action = ePlayerControllerActionState.Select;
         }
         else if (isSelectClickableObject && selectedAllyUnit != null)
         {

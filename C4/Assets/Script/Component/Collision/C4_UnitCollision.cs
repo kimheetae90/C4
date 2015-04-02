@@ -5,6 +5,11 @@ public class C4_UnitCollision : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.layer == 8)
+        {
+            return;
+        }
+
         C4_Object collisionObject = other.GetComponentInParent<C4_Object>();
         C4_StraightMove moveScript = GetComponentInParent<C4_StraightMove>();
         C4_Unit unit = GetComponentInParent<C4_Unit>();
