@@ -18,8 +18,8 @@ public class BehaviorImportTool : EditorWindow
     int selectedRawFileIndex = 0;
     int selectedFilterdFileIndex = 0;
 
-    public static string basePathToLoad = Application.dataPath + "/Data/AI/Raw";
-	public static string basePathToSave = Application.dataPath + "/Data/AI/";
+    public static string basePathToLoad = Application.dataPath + "/Resources/Data/AI/Raw";
+    public static string basePathToSave = Application.dataPath + "/Resources/Data/AI/";
    
     BehaviorRawDataParser parser = new BehaviorRawDataParser();
 	BehaviorRawDataSaver saver = new BehaviorRawDataSaver();

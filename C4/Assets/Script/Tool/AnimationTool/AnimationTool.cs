@@ -50,7 +50,8 @@ public class AnimationTool : EditorWindow
         {
             if (file.Extension == ".fbx")
             {
-                listFBXFile.Add(file.FullName);
+               
+                listFBXFile.Add(file.Name);
             }
         }
 
@@ -104,7 +105,8 @@ public class AnimationTool : EditorWindow
                 // prefab.AddGameObject(gameObject); ?
             }
             */
-            EditorApplication.isPlaying = true;
+            UnityEngine.Object pPrefab = Resources.LoadAssetAtPath("Fbx/" + listFBXFile[selectedFBXFileIndex]);
+            var myPrefab = Instantiate(pPrefab, new Vector3(0, 0, 0), Quaternion.identity);
             isOpenEditSceen = true;
         }
         else
