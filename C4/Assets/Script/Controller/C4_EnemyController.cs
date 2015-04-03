@@ -88,7 +88,7 @@ public class C4_EnemyController : C4_Controller
 
     public void startBehave()
     {
-      behavior.startBehave();
+     // behavior.startBehave();
     }
 
     public void resetSelect()

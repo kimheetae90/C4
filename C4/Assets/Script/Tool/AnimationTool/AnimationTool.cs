@@ -105,8 +105,9 @@ public class AnimationTool : EditorWindow
                 // prefab.AddGameObject(gameObject); ?
             }
             */
-            UnityEngine.Object pPrefab = Resources.LoadAssetAtPath("Fbx/" + listFBXFile[selectedFBXFileIndex]);
+            UnityEngine.Object pPrefab = Resources.LoadAssetAtPath("Assets/Resources/Fbx/" + listFBXFile[selectedFBXFileIndex],typeof(GameObject));
             var myPrefab = Instantiate(pPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+			EditorApplication.isPlaying = true;
             isOpenEditSceen = true;
         }
         else
