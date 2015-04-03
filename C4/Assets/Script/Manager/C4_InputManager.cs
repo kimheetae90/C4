@@ -29,7 +29,6 @@ public class C4_InputManager : MonoBehaviour
     private void updateKeyState()
     {
         inputData.preKeyState = inputData.keyState;
-        inputData.isCameraMove = false;
 
         if (Input.GetMouseButtonDown(0))
         {

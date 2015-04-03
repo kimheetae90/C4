@@ -25,8 +25,6 @@ public class C4_PlayMode : C4_SceneMode
         Vector3 initPos = transform.position;
         initPos.z -= 15;
         instantiatePlayer(allyUnitGameObject, initPos, transform.rotation);
-        initPos.z += 15;
-        instantiatePlayer(allyUnitGameObject, initPos, transform.rotation);
         addController(GameObjectType.Ally,allyController);
         addController(GameObjectType.Enemy, enemyController);
 		addController (GameObjectType.Camera, cameraController);
