@@ -253,8 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkBound: 50
-  attackOrMovePercent: 5
-  attackSuccessOrFailPercent: 5
+  attackOrMovePercent: 50
 --- !u!114 &11418854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -348,7 +347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd20d339a379e8d45ae75d4d5965c1ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imgHPbar: {fileID: 11496208}
+  hpUIImage: {fileID: 11496208}
 --- !u!114 &11451990
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -382,7 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 376f58a8ed2a49b428cacb6f35ef6baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imgGageWhite: {fileID: 11418854}
+  gageUIImage: {fileID: 11418854}
 --- !u!114 &11476972
 MonoBehaviour:
   m_ObjectHideFlags: 1

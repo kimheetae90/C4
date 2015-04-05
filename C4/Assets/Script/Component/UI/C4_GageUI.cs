@@ -4,7 +4,7 @@ using System.Collections;
 
 public class C4_GageUI : MonoBehaviour {
 
-    public Image imgGageWhite;
+    public Image gageUIImage;
     C4_UnitFeature unitFeature;
 
    
@@ -15,6 +15,6 @@ public class C4_GageUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        imgGageWhite.fillAmount = (float)unitFeature.gage / unitFeature.fullGage;
+        gageUIImage.fillAmount = (float)unitFeature.gage / unitFeature.fullGage;
 	}
 }

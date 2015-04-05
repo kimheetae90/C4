@@ -22,10 +22,10 @@ public abstract class C4_Unit : C4_Object
 
     void Update()
     {
-        checkActiveAndStack();
+        checkActive();
     }
 
-    void checkActiveAndStack()
+    protected virtual void checkActive()
     {
         if (unitFeature.gage >= unitFeature.fullGage)
         {
@@ -70,5 +70,11 @@ public abstract class C4_Unit : C4_Object
         checkHP();
     }
 
-    protected abstract void checkHP();
+    protected virtual void checkHP()
+    {
+        if (unitFeature.hp <= 0)
+        {
+            C4_GameManager.Instance.objectManager.reserveRemoveObject(GetComponent<C4_Object>());
+        }
+    }
 }

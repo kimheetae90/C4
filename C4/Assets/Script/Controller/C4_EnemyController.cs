@@ -4,136 +4,40 @@ using System.Collections.Generic;
 
 public class C4_EnemyController : C4_Controller
 {
-
-    bool isSelected;
-    int selectNum;
-    [System.NonSerialized]
-    public C4_Enemy selectedEnemyUnit;
-    C4_StartAIBehave behavior;
-
-    float tempValue;
-    [System.NonSerialized]
-    public EnemyAction action;
+    Queue<C4_Enemy> QueFullGageEnemy;
+    C4_Enemy selectedEnemyUnit;
     bool isActing;
-    bool canActing;
 
     public override void Awake()
     {
         base.Awake();
-
-        isSelected = false;
-        selectNum = 0;
-        action = EnemyAction.Invalid;
         isActing = false;
-        canActing = false;
+        QueFullGageEnemy = new Queue<C4_Enemy>();
     }
 
     void Update()
     {
-        if (!isActing)
+        if (!isActing && QueFullGageEnemy.Count > 0)
         {
-            if (action == EnemyAction.Invalid)
-            {
-                chooseAction();
-            }
-            else
-            {
-                if (!isSelected)
-                {
-                    selectBoat();
-                }
-                else
-                {
-                    if (canActing)
-                    {
-                        //original here
-                        isActing = true;
-                        startBehave();
-                    }
-                    else
-                    {
-                        checkCanAct();
-                    }
-                }
-            }
+            selectedEnemyUnit = QueFullGageEnemy.Dequeue();
+            startBehave();
         }
     }
 
-    void checkCanAct()
+    void resetSelect()
     {
-        switch (action)
-        {
-            case EnemyAction.Attack:
-                if (selectedEnemyUnit.canActive)
-                {
-                    canActing = true;
-                }
-                else
-                {
-                    resetSelect();
-                }
-                break;
-            case EnemyAction.Move:
-                if (selectedEnemyUnit.canActive)
-                {
-                    canActing = true;
-                }
-                else
-                {
-                    resetSelect();
-                }
-                break;
-        }
-    }
-
-    public void startBehave()
-    {
-      behavior.startBehave();
-    }
-
-    public void resetSelect()
-    {
-        action = EnemyAction.Invalid;
-        isSelected = false;
-        selectedEnemyUnit = null;
-        behavior = null;
         isActing = false;
-        canActing = false;
-        //원래여기
     }
 
-    void chooseAction()
+    void startBehave()
     {
-        tempValue = Random.Range(0, 10);
-        if (tempValue > 5)
-        {
-            action = EnemyAction.Attack;
-        }
-        else
-        {
-            action = EnemyAction.Move;
-        }
+        isActing = true;
+        C4_StartAIBehave behavior = selectedEnemyUnit.GetComponent<C4_StartAIBehave>();
+        behavior.startBehave();
     }
 
-    void selectBoat()
+    public void addFullGageEnemy(C4_Enemy enemyObject)
     {
-        resetSelect();
-        if (C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Enemy).getObjectCount() > 0)
-        {
-            selectNum++;
-            if (selectNum >= C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Enemy).getObjectCount())
-            {
-                selectNum = 0;
-            }
-            selectedEnemyUnit = C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Enemy).getObjectInList(selectNum).GetComponent<C4_Enemy>();
-            behavior = selectedEnemyUnit.GetComponent<C4_StartAIBehave>();
-            isSelected = true;
-        }
-        else
-        {
-            isSelected = false;
-            
-        }
+        QueFullGageEnemy.Enqueue(enemyObject);
     }
-
 }

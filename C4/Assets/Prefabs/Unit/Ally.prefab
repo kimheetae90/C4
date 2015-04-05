@@ -415,7 +415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 376f58a8ed2a49b428cacb6f35ef6baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imgGageWhite: {fileID: 11432494}
+  gageUIImage: {fileID: 11432494}
 --- !u!114 &11482380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -481,7 +481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd20d339a379e8d45ae75d4d5965c1ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imgHPbar: {fileID: 11496830}
+  hpUIImage: {fileID: 11496830}
 --- !u!114 &11496830
 MonoBehaviour:
   m_ObjectHideFlags: 1

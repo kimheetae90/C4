@@ -4,9 +4,7 @@ using System.Collections;
 
 public class C4_HPUI : MonoBehaviour
 {
-
-
-    public Image imgHPbar;
+    public Image hpUIImage;
     [System.NonSerialized]
     public C4_UnitFeature unitFeature;
 
@@ -20,7 +18,7 @@ public class C4_HPUI : MonoBehaviour
 
     void Update()
     {
-        imgHPbar.fillAmount = (float)unitFeature.hp / unitFeature.fullHP;
+        hpUIImage.fillAmount = (float)unitFeature.hp / unitFeature.fullHP;
     }
 
 }

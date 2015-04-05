@@ -11,27 +11,20 @@ public class C4_MoveUI : MonoBehaviour
     C4_Ally selectedBoat;
     int moveRange;
 
-    Texture2D thirdTexture;
-
-    Sprite thirdSprite;
-
     void Start()
     {
         moveUIGameObejct = moveUIImage.gameObject;
         isSelect = false;
         moveUIGameObejct.SetActive(false);
 
+        //#if UNITY_EDITOR
+        //thirdTexture = (Texture2D)Resources.LoadAssetAtPath("Assets/Resources/Texture/moveUI_third.png", typeof(Texture2D));
+        //#else
+        //thirdTexture = (Texture2D)Resources.Load("Texture/moveUI_third", typeof(Texture2D));
+        //#endif
 
-        #if UNITY_EDITOR
-        thirdTexture = (Texture2D)Resources.LoadAssetAtPath("Assets/Resources/Texture/moveUI_third.png", typeof(Texture2D));
-        #else
-        firstTexture = (Texture2D)Resources.Load("Texture/moveUI_first", typeof(Texture2D));
-        secondTexture = (Texture2D)Resources.Load("Texture/moveUI_second", typeof(Texture2D));
-        thirdTexture = (Texture2D)Resources.Load("Texture/moveUI_third", typeof(Texture2D));
-        #endif
-
-        thirdSprite = Sprite.Create(thirdTexture, new Rect(0, 0, thirdTexture.width, thirdTexture.height), new Vector2(0.5f, 0.5f));
-        moveUIImage.sprite = thirdSprite;
+        //thirdSprite = Sprite.Create(thirdTexture, new Rect(0, 0, thirdTexture.width, thirdTexture.height), new Vector2(0.5f, 0.5f));
+        //moveUIImage.sprite = thirdSprite;
     }
 
     void Update()
