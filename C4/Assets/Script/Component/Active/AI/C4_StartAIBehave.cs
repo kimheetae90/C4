@@ -37,7 +37,7 @@ public class C4_StartAIBehave : MonoBehaviour {
         {
             if (distanceWithAlly > checkBound)
             {
-                if (unitFeature.stackCount == 3)
+                if (enemy.canActive)
                 {
                     Invoke("moveToPlayer", 1f);
                 }

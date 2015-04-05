@@ -32,6 +32,5 @@ public struct InputData
 		dragObjectID = GameObjectDefine.INVALID_OBJECT_ID;
 		keyState = KeyState.Up;
 		preKeyState = KeyState.Up;
-        isCameraMove = false;
 	}
 }

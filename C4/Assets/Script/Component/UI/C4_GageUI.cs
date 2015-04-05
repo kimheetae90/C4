@@ -3,26 +3,18 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class C4_GageUI : MonoBehaviour {
-    
+
     public Image imgGageWhite;
-    
-    public Image imgGageYellow;
-    [System.NonSerialized]
-    public C4_UnitFeature boatFeature;
+    C4_UnitFeature unitFeature;
 
    
 	// Use this for initialization
 	void Start () {
-
-        boatFeature = transform.GetComponentInParent<C4_UnitFeature>();
-  
+        unitFeature = transform.GetComponentInParent<C4_UnitFeature>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
-
-        imgGageWhite.fillAmount = (float)boatFeature.gage / boatFeature.fullGage;
-        imgGageYellow.fillAmount = (float)boatFeature.stackCount / boatFeature.numOfStack;
+        imgGageWhite.fillAmount = (float)unitFeature.gage / unitFeature.fullGage;
 	}
 }

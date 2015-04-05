@@ -64,7 +64,7 @@ public class C4_EnemyController : C4_Controller
         switch (action)
         {
             case EnemyAction.Attack:
-                if (selectedEnemyUnit.canShot)
+                if (selectedEnemyUnit.canActive)
                 {
                     canActing = true;
                 }
@@ -74,7 +74,7 @@ public class C4_EnemyController : C4_Controller
                 }
                 break;
             case EnemyAction.Move:
-                if (selectedEnemyUnit.canMove)
+                if (selectedEnemyUnit.canActive)
                 {
                     canActing = true;
                 }

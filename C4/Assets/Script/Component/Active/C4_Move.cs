@@ -20,7 +20,7 @@ public class C4_Move : MonoBehaviour {
         toMove = inputToMove;
     }
 
-    public void setMoving(Vector3 inputToMove)
+    public void startMove(Vector3 inputToMove)
     {
         setToMove(inputToMove);
         isMove = true;
