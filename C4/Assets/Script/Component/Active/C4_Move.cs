@@ -20,15 +20,20 @@ public class C4_Move : MonoBehaviour {
         toMove = inputToMove;
     }
 
-    public void startMove(Vector3 inputToMove)
+    public void setMoving()
     {
-        setToMove(inputToMove);
         isMove = true;
         if (!isCoroutine)
         {
             StartCoroutine("move");
             isCoroutine = true;
         }
+    }
+
+    public void startMove(Vector3 inputToMove)
+    {
+        setToMove(inputToMove);
+        setMoving();
     }
 
     protected virtual IEnumerator move() 
