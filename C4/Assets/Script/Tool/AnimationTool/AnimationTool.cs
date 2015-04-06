@@ -9,87 +9,133 @@ using System.IO;
 //저장
 public class AnimationTool : EditorWindow
 {
-    // Use this for initialization
-    public List<string> listFBXFile = new List<string>();
+    
+    enum eAnimationFileType
+    {
+        eAnimationFileType_FBX,
+        eAnimationFileType_Controller,
+        eAnimationFileType_Count,
+    }
 
-    bool needUpdateFBXDataPath = true;
-    int selectedFBXFileIndex = 0;
-    string[] listFBXFilePath = { "" };
-
+    AssetsSelectFilesInfo fbxFiles = new AssetsSelectFilesInfo();
+    AssetsSelectFilesInfo controllerFiles = new AssetsSelectFilesInfo();
+   
     public static string basePathToLoad = Application.dataPath + "/Resources/Fbx";
 
     [MenuItem("Window/Animation/Animation Event Tool")]
     public static void showWindow()
     {
         var window = EditorWindow.GetWindow(typeof(AnimationTool));
-        window.position = new Rect(200, 200, 200 , 200);
+
+        window.position = new Rect(200, 200, 200, 200);
     }
-	
+
     void Update()
     {
         reloadProcess();
-		
-		updateCamera();
+
+        updateCamera();
     }
 
     void reloadProcess()
     {
-        if (needUpdateFBXDataPath)
+        if (fbxFiles.bNeedUpdate)
         {
             reloadFBXDirectory();
-            needUpdateFBXDataPath = false;
+            fbxFiles.bNeedUpdate = false;
+        }
+
+        if (controllerFiles.bNeedUpdate)
+        {
+            reloadAnimController();
+            controllerFiles.bNeedUpdate = false;
         }
     }
-	
-	void updateCamera ()
-	{
-		if (EditorApplication.isPlaying && SceneView.currentDrawingSceneView != null) {
-			Camera.main.transform.position = SceneView.currentDrawingSceneView.camera.transform.position;
-			Camera.main.transform.LookAt (SceneView.currentDrawingSceneView.pivot);
-		}
-	}
-	
+
+    void updateCamera()
+    {
+        if (EditorApplication.isPlaying && SceneView.currentDrawingSceneView != null)
+        {
+            Camera.main.transform.position = SceneView.currentDrawingSceneView.camera.transform.position;
+            Camera.main.transform.LookAt(SceneView.currentDrawingSceneView.pivot);
+        }
+    }
+
     void reloadFBXDirectory()
     {
-        listFBXFile.Clear();
-        
-		PathUtility.DirSearch(basePathToLoad, ".fbx",ref listFBXFile);
+        fbxFiles.listFilePaths.Clear();
 
-        listFBXFilePath = listFBXFile.ToArray();
+        PathUtility.DirSearch(basePathToLoad, ".fbx", ref fbxFiles.listFilePaths);
+
+        fbxFiles.strArrayFilePaths = fbxFiles.listFilePaths.ToArray();
+    }
+
+    void reloadAnimController()
+    {
+        controllerFiles.listFilePaths.Clear();
+        
+        PathUtility.DirSearch(basePathToLoad, ".controller", ref controllerFiles.listFilePaths);
+
+        controllerFiles.strArrayFilePaths = controllerFiles.listFilePaths.ToArray();
     }
 
     void OnProjectChange()
     {
-        needUpdateFBXDataPath = true;
+        setDirty();
+
     }
 
-
+    void setDirty()
+    {
+        controllerFiles.bNeedUpdate = true;
+        fbxFiles.bNeedUpdate = true;
+    }
 
     void OnGUI()
     {
         GUILayout.Label("Select FBX File", EditorStyles.boldLabel);
-        selectedFBXFileIndex = EditorGUILayout.Popup(selectedFBXFileIndex, listFBXFilePath, EditorStyles.popup);
 
-        if (GUILayout.Button("Select"))
+        fbxFiles.selectedFileIndex = EditorGUILayout.Popup(fbxFiles.selectedFileIndex, fbxFiles.strArrayFilePaths, EditorStyles.popup);
+
+        if (fbxFiles.selectedFileIndex >= 0 && fbxFiles.isValidIndex())
         {
-            procLoadBtn();
+            GUILayout.Label("Select AnimationController", EditorStyles.boldLabel);
+
+            controllerFiles.selectedFileIndex = EditorGUILayout.Popup(controllerFiles.selectedFileIndex, controllerFiles.strArrayFilePaths, EditorStyles.popup);
+
+            if (GUILayout.Button("Select") && controllerFiles.isValidIndex())
+            {
+                procLoadBtn();
+            }
+        }
+
+        if (GUILayout.Button("Reload"))
+        {
+            setDirty();
         }
     }
 
     void procLoadBtn()
     {
-        if (listFBXFile.Count > 0)
+        if (fbxFiles.listFilePaths.Count > 0 && controllerFiles.listFilePaths.Count > 0)
         {
             EditorApplication.NewScene();
-			UnityEngine.Object pPrefab = Resources.LoadAssetAtPath(listFBXFile[selectedFBXFileIndex],typeof(GameObject));
 
-			GameObject fbx = Instantiate(pPrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+            UnityEngine.Object prefab = Resources.LoadAssetAtPath(fbxFiles.listFilePaths[fbxFiles.selectedFileIndex], typeof(GameObject));
+            RuntimeAnimatorController controller = Resources.LoadAssetAtPath(controllerFiles.listFilePaths[controllerFiles.selectedFileIndex], typeof(RuntimeAnimatorController)) as RuntimeAnimatorController;
 
-			fbx.AddComponent(typeof(AnimationEventEditor));
+            GameObject fbx = Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
 
-			Camera.main.nearClipPlane = 0.1f;
+            Animator anim = fbx.GetComponent<Animator>();
 
-			EditorApplication.isPlaying = true;
+            fbx.AddComponent(typeof(AnimationEventEditor));
+            fbx.AddComponent(typeof(Animation));
+
+            anim.runtimeAnimatorController = controller;
+
+            Camera.main.nearClipPlane = 0.1f;
+
+            EditorApplication.isPlaying = true;
         }
         else
         {

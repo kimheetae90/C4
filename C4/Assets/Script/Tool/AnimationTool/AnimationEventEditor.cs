@@ -1,41 +1,144 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.Collections;
- 
-public class AnimationEventEditor : MonoBehaviour {
 
-	public bool doWindow0 = true;
-	Animator anim;
+public class AnimationEventEditor : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
+    public bool AnimaitonClips = true;
+    Animator animator;
+    Animation anim;
 
-	 	anim = GetComponent<Animator>();
+    Vector2 clipListWindowScrollPosition;
+    Vector2 clipWindowScrollPosition;
 
-		if (anim == null) {
-			throw new ToolException("Doesn't have Animator Component");
-		}
-	}
+    int currentClipIndex;
+    int currentEventIndex;
+    float scrollPos;
+    bool isPause = false;
 
-	// Update is called once per frame
-	void Update () {
-		AnimatorClipInfo[] infos = anim.GetCurrentAnimatorClipInfo (0);
+    // Use this for initialization
+    void Start()
+    {
+        currentClipIndex = -1;
+        currentEventIndex = -1;
 
-		foreach (var info in infos) {
-			Debug.Log(info.clip.name);
-		}
+        animator = GetComponent<Animator>();
+        anim = GetComponent<Animation>();
+        
+        if (animator == null)
+        {
+            throw new ToolException("Doesn't have Animator Component");
+        }
+    }
 
-	}
+    // Update is called once per frame
+    void Update()
+    {
 
-	void OnGUI() {
 
-		doWindow0 = GUI.Toggle(new Rect(10, 10, 100, 20), doWindow0, "Window 0");
+    }
 
-		if (doWindow0)
-			GUI.Window(0, new Rect(110, 10, 200, 60), DoWindow0, "Basic Window");
-	}
+    void OnGUI()
+    {
 
-	void DoWindow0(int windowID) {
-		GUI.Button(new Rect(10, 30, 80, 20), "Click Me!");
-	}
+        AnimaitonClips = GUI.Toggle(new Rect(10, 10, 100, 20), AnimaitonClips, "AnimationClips");
+
+        if (AnimaitonClips)
+            GUI.Window(0, new Rect(10, 30, 200, 130), AnimationClipListWindow, "AnimationClips Window");
+
+
+        if (currentClipIndex >= 0 && AnimaitonClips)
+        {
+            GUI.Window(1, new Rect(220, 30, 200, 130), AnimationClipPropertyWindow, "Animation Events");
+        }
+
+        if(currentClipIndex >= 0)
+        {
+            GUI.Window(2, new Rect(Screen.width / 4, Screen.height / 5 * 4, Screen.width / 2, 80), AnimationPlayBarWindow, "");
+        }
+    }
+
+    void AnimationClipListWindow(int windowID)
+    {
+        AnimatorClipInfo[] infos = animator.GetCurrentAnimatorClipInfo(0);
+
+        clipListWindowScrollPosition = GUILayout.BeginScrollView(clipListWindowScrollPosition, GUILayout.Width(200), GUILayout.Height(100));
+
+
+        for (int i = 0; i < infos.Length; ++i)
+        {
+            if (GUILayout.Button(infos[i].clip.name, GUILayout.Width(160)))
+            {
+                if (currentClipIndex == i)
+                {
+                    currentClipIndex = -1;
+                   // anim.RemoveClip(infos[i].clip.name);
+                }
+                else
+                {
+                    currentClipIndex = i;
+                   // anim.AddClip(infos[i].clip, infos[i].clip.name);
+                }
+            }
+        }
+
+        GUILayout.EndScrollView();
+    }
+
+    void AnimationClipPropertyWindow(int windowID)
+    {
+        AnimatorClipInfo info = animator.GetCurrentAnimatorClipInfo(0)[currentClipIndex];
+
+        clipWindowScrollPosition = GUILayout.BeginScrollView(clipWindowScrollPosition, GUILayout.Width(200), GUILayout.Height(80));
+
+        for(int i = 0; i < info.clip.events.Length ; ++i)
+        {
+            if (GUILayout.Button(info.clip.events[i].stringParameter, GUILayout.Width(160)))
+            {
+                //excute
+            }
+        }
+
+        GUILayout.EndScrollView();
+
+
+        if (GUILayout.Button("Add"))
+        {
+
+        }
+    }
+
+    void AnimationPlayBarWindow(int windowID)
+    {
+        AnimatorClipInfo info = animator.GetCurrentAnimatorClipInfo(0)[currentClipIndex];
+
+        AnimatorStateInfo i = animator.GetCurrentAnimatorStateInfo(0);
+
+        float temp = GUILayout.HorizontalSlider(i.normalizedTime, 0.0F, 1);
+
+        if (temp != i.normalizedTime)
+        {
+            animator.Play(info.clip.name, -1, temp);
+            animator.speed = 0;
+        }
+
+        GUILayout.BeginHorizontal("");
+        if(GUILayout.Button("▶"))
+        {
+            if (animator.speed == 0)
+            {
+                animator.speed = 1;
+            }
+            else
+            {
+                animator.Play(info.clip.name, -1, 0);
+            }            
+        }
+        if (GUILayout.Button("||"))
+        {
+            animator.speed = 0;
+        }
+        GUILayout.EndHorizontal();
+    }
 }
