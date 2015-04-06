@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using System;
 using System.Collections;
 
 public class AnimationEventEditor : MonoBehaviour
@@ -45,7 +46,7 @@ public class AnimationEventEditor : MonoBehaviour
         AnimaitonClips = GUI.Toggle(new Rect(10, 10, 100, 20), AnimaitonClips, "AnimationClips");
 
         if (AnimaitonClips)
-            GUI.Window(0, new Rect(10, 30, 200, 130), AnimationClipListWindow, "AnimationClips Window");
+            GUI.Window(0, new Rect(10, 30, 200, 130), AnimationClipListWindow, "AnimationClips");
 
 
         if (currentClipIndex >= 0 && AnimaitonClips)
@@ -72,7 +73,7 @@ public class AnimationEventEditor : MonoBehaviour
             {
                 if (currentClipIndex == i)
                 {
-                    currentClipIndex = -1;
+                   // currentClipIndex = -1;
                    // anim.RemoveClip(infos[i].clip.name);
                 }
                 else
@@ -92,21 +93,17 @@ public class AnimationEventEditor : MonoBehaviour
 
         clipWindowScrollPosition = GUILayout.BeginScrollView(clipWindowScrollPosition, GUILayout.Width(200), GUILayout.Height(80));
 
+/*
         for(int i = 0; i < info.clip.events.Length ; ++i)
         {
-            if (GUILayout.Button(info.clip.events[i].stringParameter, GUILayout.Width(160)))
+            //if (GUILayout.Button(info.clip.events[i].stringParameter, GUILayout.Width(160)))
             {
                 //excute
             }
-        }
+        }*/
 
         GUILayout.EndScrollView();
 
-
-        if (GUILayout.Button("Add"))
-        {
-
-        }
     }
 
     void AnimationPlayBarWindow(int windowID)
@@ -115,7 +112,21 @@ public class AnimationEventEditor : MonoBehaviour
 
         AnimatorStateInfo i = animator.GetCurrentAnimatorStateInfo(0);
 
-        float temp = GUILayout.HorizontalSlider(i.normalizedTime, 0.0F, 1);
+        GUILayout.BeginHorizontal("");
+
+        float t = (i.normalizedTime * i.length);
+
+        if(t > i.length)
+        {
+            t = i.length;
+        }
+
+        string curtime = String.Format("{0:n2}", t);
+        GUILayout.Label(curtime);
+        float temp = GUILayout.HorizontalSlider(i.normalizedTime, 0.0F, 1, GUILayout.Width(Screen.width / 3), GUILayout.Height(5));
+        string length = String.Format("{0:n2}", i.length);
+        GUILayout.Label(length);
+        GUILayout.EndHorizontal();
 
         if (temp != i.normalizedTime)
         {

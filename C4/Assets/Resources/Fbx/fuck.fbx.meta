@@ -90,7 +90,106 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 160
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: .314024389
+        functionName: NewEvent1
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask:
+      - path: 
+        weight: 1
+      - path: g_model
+        weight: 1
+      - path: g_model/monster
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/hip
+        weight: 1
+      - path: root/hip/l_leg
+        weight: 1
+      - path: root/hip/l_leg/l_knee
+        weight: 1
+      - path: root/hip/l_leg/l_knee/l_foot
+        weight: 1
+      - path: root/hip/l_leg/l_knee/l_foot/l_heel
+        weight: 1
+      - path: root/hip/l_leg/l_knee/l_foot/l_toe
+        weight: 1
+      - path: root/hip/r_leg
+        weight: 1
+      - path: root/hip/r_leg/r_knee
+        weight: 1
+      - path: root/hip/r_leg/r_knee/r_foot
+        weight: 1
+      - path: root/hip/r_leg/r_knee/r_foot/r_heel
+        weight: 1
+      - path: root/hip/r_leg/r_knee/r_foot/r_toe
+        weight: 1
+      - path: root/waist
+        weight: 1
+      - path: root/waist/middle
+        weight: 1
+      - path: root/waist/middle/chest
+        weight: 1
+      - path: root/waist/middle/chest/l_sholder
+        weight: 1
+      - path: root/waist/middle/chest/l_sholder/l_arm
+        weight: 1
+      - path: root/waist/middle/chest/l_sholder/l_arm/l_elbow
+        weight: 1
+      - path: root/waist/middle/chest/l_sholder/l_arm/l_elbow/l_hand
+        weight: 1
+      - path: root/waist/middle/chest/l_sholder/l_arm/l_elbow/l_hand/l_finger
+        weight: 1
+      - path: root/waist/middle/chest/l_sholder/l_arm/l_elbow/l_hand/l_thumb
+        weight: 1
+      - path: root/waist/middle/chest/neck
+        weight: 1
+      - path: root/waist/middle/chest/neck/head
+        weight: 1
+      - path: root/waist/middle/chest/neck/head/head_end
+        weight: 1
+      - path: root/waist/middle/chest/r_sholder
+        weight: 1
+      - path: root/waist/middle/chest/r_sholder/r_arm
+        weight: 1
+      - path: root/waist/middle/chest/r_sholder/r_arm/r_elbow
+        weight: 1
+      - path: root/waist/middle/chest/r_sholder/r_arm/r_elbow/r_hand
+        weight: 1
+      - path: root/waist/middle/chest/r_sholder/r_arm/r_elbow/r_hand/r_finger
+        weight: 1
+      - path: root/waist/middle/chest/r_sholder/r_arm/r_elbow/r_hand/r_thumb
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
