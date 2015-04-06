@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class C4_Move : MonoBehaviour {
+public abstract class C4_Move : MonoBehaviour {
 
     protected float moveSpeed;
     protected Vector3 toMove;
@@ -29,6 +29,10 @@ public class C4_Move : MonoBehaviour {
             isCoroutine = true;
         }
     }
+
+    protected abstract void moveToTarget();
+
+    public abstract void stopMoveToTarget();
 
     public void startMove(Vector3 inputToMove)
     {

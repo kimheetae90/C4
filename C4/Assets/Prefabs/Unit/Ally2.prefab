@@ -137,7 +137,7 @@ GameObject:
   - 114: {fileID: 11473818}
   - 114: {fileID: 11483612}
   m_Layer: 0
-  m_Name: Ally
+  m_Name: Ally2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -298,7 +298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 4e86445cba3f5db448ee5b2d36e2b2bb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 57f658bc94b0c1e4a9382fe85c463499, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -365,7 +365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 671a6f61f820c024dbb0c17d6732a311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missile: {fileID: 138578, guid: dc820ae75cdcbb64b8bbac350bd336c1, type: 2}
+  missile: {fileID: 107212, guid: 9792ba9469350c848b0d386230bb40c7, type: 2}
   fullHP: 300
   moveSpeed: 50
   power: 30

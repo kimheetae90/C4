@@ -17,14 +17,14 @@ public class C4_StraightMove : C4_Move
         isCoroutine = false;
 	}
 
-    void moveToTarget()
+    protected override void moveToTarget()
     {
         transform.Translate(new Vector3(toMove.x - transform.position.x , 0 , toMove.z - transform.position.z).normalized * moveSpeed * Time.deltaTime);
         transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         StartCoroutine("move");
     }
 
-    public void stopMoveToTarget()
+    public override void stopMoveToTarget()
     {
         isMove = false;
         isCoroutine = false;

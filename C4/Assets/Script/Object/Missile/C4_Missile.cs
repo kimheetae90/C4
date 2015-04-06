@@ -3,12 +3,13 @@ using System.Collections;
 
 public class C4_Missile : C4_SubObject
 {
-    public C4_StraightMove moveScript;
+    C4_Move moveScript;
     Vector3 toMove;
 
     protected override void Start()
     {
         base.Start();
+        moveScript = GetComponent<C4_Move>();
         C4_Object missile = GetComponent<C4_Object>();
         C4_GameManager.Instance.objectManager.registerObjectToAll(ref missile, GameObjectType.Missile, GameObjectInputType.Invalid);
         gameObject.SetActive(false);

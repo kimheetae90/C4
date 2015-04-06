@@ -29,7 +29,7 @@ public class C4_ParabolicMove2 : C4_Move
 
     }
 
-    void moveToTarget()
+    protected override void moveToTarget()
     {
         if (isfirst)
         {
@@ -56,7 +56,7 @@ public class C4_ParabolicMove2 : C4_Move
         StartCoroutine("move");
     }
 
-    public void stopMoveToTarget()
+    public override void stopMoveToTarget()
     {
 
         isMove = false;

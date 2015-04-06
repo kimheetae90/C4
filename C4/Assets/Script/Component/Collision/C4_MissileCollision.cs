@@ -11,7 +11,7 @@ public class C4_MissileCollision : MonoBehaviour {
         }
 
         C4_Object collisionObject = other.GetComponentInParent<C4_Object>();
-        C4_StraightMove missileMove = GetComponentInParent<C4_StraightMove>();
+        C4_Move missileMove = GetComponentInParent<C4_Move>();
         switch (collisionObject.objectAttr.type)
         {
             case GameObjectType.Ally:

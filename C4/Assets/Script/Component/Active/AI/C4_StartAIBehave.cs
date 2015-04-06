@@ -51,21 +51,6 @@ public class C4_StartAIBehave : MonoBehaviour {
         return action;
     }
 
-    void checkDistanceWithPlayer()
-    {
-        shortestDistanceAlly = C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Ally).getObjectInList(0).GetComponent<C4_Ally>();
-        distanceWithAlly = Vector3.Distance(shortestDistanceAlly.transform.position, transform.position);
-        for (int i = 0; i < C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Ally).getObjectCount(); i++)
-        {
-            double checkDistanceEachAlly = Vector3.Distance(C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Ally).getObjectInList(i).transform.position, transform.position);
-            if (distanceWithAlly > checkDistanceEachAlly)
-            {
-                distanceWithAlly = checkDistanceEachAlly;
-                shortestDistanceAlly = C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Ally).getObjectInList(i).GetComponent<C4_Ally>();
-            }
-        }
-    }
-
     void startAction(EnemyAction action)
     {
         switch (action)
@@ -84,6 +69,22 @@ public class C4_StartAIBehave : MonoBehaviour {
         }
     }
 
+    void checkDistanceWithPlayer()
+    {
+        shortestDistanceAlly = C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Ally).getObjectInList(0).GetComponent<C4_Ally>();
+        distanceWithAlly = Vector3.Distance(shortestDistanceAlly.transform.position, transform.position);
+        for (int i = 0; i < C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Ally).getObjectCount(); i++)
+        {
+            double checkDistanceEachAlly = Vector3.Distance(C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Ally).getObjectInList(i).transform.position, transform.position);
+            if (distanceWithAlly > checkDistanceEachAlly)
+            {
+                distanceWithAlly = checkDistanceEachAlly;
+                shortestDistanceAlly = C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Ally).getObjectInList(i).GetComponent<C4_Ally>();
+            }
+        }
+    }
+
+
     void sendCompleteMessageToController()
     {
         C4_EnemyController enemyController = C4_GameManager.Instance.sceneMode.getController(GameObjectType.Enemy).GetComponent<C4_EnemyController>();
@@ -92,9 +93,10 @@ public class C4_StartAIBehave : MonoBehaviour {
 
     void attackPlayer()
     {
-        Vector3 toMove = shortestDistanceAlly.transform.position;
-        enemy.turn(toMove);
-        enemy.shot(toMove);
+        Vector3 click = 2 * transform.position - shortestDistanceAlly.transform.position;
+
+        enemy.turn(click);
+        enemy.shot(click);
         sendCompleteMessageToController();
     }
 
@@ -108,7 +110,8 @@ public class C4_StartAIBehave : MonoBehaviour {
         {
             perpendicularValue = 2;
         }
-        Vector3 toMove = new Vector3(directionValue * allyPositionVector.x + perpendicularValue * perpendicularAtAllyVector.x , 0 , directionValue * allyPositionVector.z + perpendicularValue * perpendicularAtAllyVector.z);
+        float tempValue = Random.Range(shortestDistanceAlly.GetComponent<C4_UnitFeature>().moveRange/2, shortestDistanceAlly.GetComponent<C4_UnitFeature>().moveRange);
+        Vector3 toMove = new Vector3(directionValue * allyPositionVector.x + perpendicularValue * perpendicularAtAllyVector.x , 0 , directionValue * allyPositionVector.z + perpendicularValue * perpendicularAtAllyVector.z) * tempValue + transform.position;
         enemy.move(toMove);
         enemy.turn(toMove);
         sendCompleteMessageToController();

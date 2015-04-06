@@ -8,7 +8,8 @@ public class C4_PlayMode : C4_SceneMode
 	public C4_CameraController cameraController;
 
     public C4_PlayerUI playerUI;
-    public GameObject allyUnitGameObject;   //나중에 게임오브젝트로부터 받을 것(List이어야함)
+    public GameObject allyUnitGameObject1;   //나중에 게임오브젝트로부터 받을 것(List이어야함)
+    public GameObject allyUnitGameObject2;   //나중에 게임오브젝트로부터 받을 것(List이어야함)
 
     void Awake()
     {
@@ -24,7 +25,9 @@ public class C4_PlayMode : C4_SceneMode
 
         Vector3 initPos = transform.position;
         initPos.z -= 15;
-        instantiatePlayer(allyUnitGameObject, initPos, transform.rotation);
+        instantiatePlayer(allyUnitGameObject1, initPos, transform.rotation);
+        initPos.z += 15;
+        instantiatePlayer(allyUnitGameObject2, initPos, transform.rotation);
         addController(GameObjectType.Ally,allyController);
         addController(GameObjectType.Enemy, enemyController);
 		addController (GameObjectType.Camera, cameraController);

@@ -48,7 +48,7 @@ GameObject:
   - 114: {fileID: 11439084}
   - 114: {fileID: 11483134}
   m_Layer: 0
-  m_Name: Missile
+  m_Name: Missile_straight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -172,7 +172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c6856bf2b05daa488d4cd1cfbe0704c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveScript: {fileID: 11439084}
 --- !u!114 &11472720
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -186,6 +185,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   power: 100
   moveSpeed: 120
+  shotAngle: 0
+  splashRange: 0
 --- !u!114 &11483134
 MonoBehaviour:
   m_ObjectHideFlags: 1
