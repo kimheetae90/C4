@@ -136,6 +136,7 @@ GameObject:
   - 114: {fileID: 11488186}
   - 114: {fileID: 11473818}
   - 114: {fileID: 11483612}
+  - 114: {fileID: 11405336}
   m_Layer: 0
   m_Name: Ally1
   m_TagString: Untagged
@@ -285,6 +286,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.70000005, y: 2.26999998, z: 4.19000006}
   m_Center: {x: 0, y: 1.01999998, z: 0}
+--- !u!114 &11405336
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cffc987a34556a46845121328c2cdb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11432494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -369,7 +381,7 @@ MonoBehaviour:
   fullHP: 300
   moveSpeed: 50
   power: 30
-  moveRange: 10
+  moveRange: 30
   fullGage: 300
   gage: 0
 --- !u!114 &11473818
