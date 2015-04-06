@@ -92,7 +92,6 @@ public class C4_StartAIBehave : MonoBehaviour {
 
     void attackPlayer()
     {
-        int successAttackPercent = Random.Range(0, 10);
         Vector3 toMove = shortestDistanceAlly.transform.position;
         enemy.turn(toMove);
         enemy.shot(toMove);
