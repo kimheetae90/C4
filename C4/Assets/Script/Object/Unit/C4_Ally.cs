@@ -10,14 +10,6 @@ public class C4_Ally : C4_Unit , C4_IControllerListener {
         C4_GameManager.Instance.objectManager.registerObjectToAll(ref ally, GameObjectType.Ally, GameObjectInputType.SelectAbleObject | GameObjectInputType.ClickAbleObject);
     }
 
-    protected override void checkHP()
-    {
-        if (unitFeature.hp <= 0)
-        {
-            gameObject.SetActive(false);
-        }
-    }
-
     public void onEvent(string message, params object[] p)
     {
         switch(message)

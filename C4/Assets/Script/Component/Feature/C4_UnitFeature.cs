@@ -11,42 +11,32 @@ using System.Collections;
 public class C4_UnitFeature : MonoBehaviour
 {
     public GameObject missile;
-    public int numOfStack;
     public int fullHP;
-    public int oneGageStack;
     public int moveSpeed;
     public int power;
-    public int needGageStackToMove;
-    public int needGageStackToShot;
     public int moveRange;
+    public int fullGage;
     
     [System.NonSerialized]
-    public int stackCount;
-    [System.NonSerialized]
     public int hp;
-    [System.NonSerialized]
+    
     public float gage;
-    [System.NonSerialized]
-    public int fullGage;
     
     void Start()
     {
         gage = 0;
         hp = fullHP;
-        fullGage = numOfStack * oneGageStack;
-        stackCount = 0;
         GetComponent<C4_Move>().setMoveSpeed(moveSpeed);
     }
 
     void Update()
     {
         gageUp();
-        stackCount = (int)gage / oneGageStack;
     }   
 
-    public void gageDown(int gageStack)
+    public void activeDone()
     {
-        gage -= gageStack*oneGageStack;
+        gage = 0;
     }
 
     void gageUp()
@@ -55,6 +45,5 @@ public class C4_UnitFeature : MonoBehaviour
         {
             gage += Time.deltaTime * 50;
         }
-
     }
 }

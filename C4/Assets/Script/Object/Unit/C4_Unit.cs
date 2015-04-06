@@ -4,14 +4,11 @@ using System.Collections;
 public abstract class C4_Unit : C4_Object
 {
     [System.NonSerialized]
-    public bool canMove;
-    [System.NonSerialized]
-    public bool canShot;
+    public bool canActive;
     
     protected C4_UnitFeature unitFeature;
     protected C4_StraightMove moveComponent;
     protected C4_Turn turnComponent;
-    protected C4_DistanceCheck distCheckComponent;
     protected C4_IntShot shotComponent;
 
     protected override void Start()
@@ -20,65 +17,47 @@ public abstract class C4_Unit : C4_Object
         moveComponent = GetComponent<C4_StraightMove>();
         turnComponent = GetComponentInChildren<C4_Turn>();
         shotComponent = GetComponent<C4_IntShot>();
-        distCheckComponent = GetComponent<C4_DistanceCheck>();
         unitFeature = GetComponent<C4_UnitFeature>();
     }
 
     void Update()
     {
-        checkActiveAndStack();
+        checkActive();
     }
 
-    void checkActiveAndStack()
+    protected virtual void checkActive()
     {
-        checkCanMove();
-        checkCanShot();
-    }
-
-    void checkCanMove()
-    {
-        if (unitFeature.stackCount >= 1)
+        if (unitFeature.gage >= unitFeature.fullGage)
         {
-            canMove = true;
+            canActive = true;
         }
         else
         {
-            canMove = false;
-        }
-    }
-
-    void checkCanShot()
-    {
-        if (unitFeature.stackCount >= 2)
-        {
-            canShot = true;
-        }
-        else
-        {
-            canShot = false;
+            canActive = false;
         }
     }
 
     public void shot(Vector3 click)
     {
-        if (canShot)
+        if (canActive)
         {
+            unitFeature.activeDone();
             shotComponent.startShot(click);
         }
     }
 
     public void move(Vector3 toMove)
     {
-        if (canMove)
+        if (canActive)
         {
-            distCheckComponent.distCheck();
-            moveComponent.setMoving(toMove);
+            unitFeature.activeDone();
+            moveComponent.startMove(toMove);
         }
     }
 
     public void turn(Vector3 toMove)
     {
-        if (canMove)
+        if (canActive)
         {
             turnComponent.setToTurn(toMove);
         }
@@ -91,5 +70,11 @@ public abstract class C4_Unit : C4_Object
         checkHP();
     }
 
-    protected abstract void checkHP();
+    protected virtual void checkHP()
+    {
+        if (unitFeature.hp <= 0)
+        {
+            C4_GameManager.Instance.objectManager.reserveRemoveObject(GetComponent<C4_Object>());
+        }
+    }
 }

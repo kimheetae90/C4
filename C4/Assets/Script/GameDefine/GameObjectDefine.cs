@@ -29,14 +29,6 @@ public enum KeyState
 	Drag,
 };
 
-
-public enum EnemyAction
-{
-    Invalid,
-    Attack,
-    Move
-};
-
 class GameObjectDefine
 {
     static GameObjectDefine()

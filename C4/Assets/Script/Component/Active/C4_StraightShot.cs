@@ -28,6 +28,5 @@ public class C4_StraightShot : MonoBehaviour, C4_IntShot {
         missileToMove.y = 0;
         missileGameObejct.transform.GetChild(0).transform.gameObject.transform.rotation = Quaternion.LookRotation(shotDirection);
         missile.startMove(missileToMove);
-        unitFeature.gageDown(unitFeature.needGageStackToShot);
     }
 }

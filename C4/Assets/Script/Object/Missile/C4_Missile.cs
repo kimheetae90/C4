@@ -24,6 +24,6 @@ public class C4_Missile : C4_SubObject
     void startMoveScript()
     {
         GetComponent<C4_MovingCheckAndSetActive>().startChecking();
-        moveScript.setMoving(toMove);
+        moveScript.startMove(toMove);
     }
 }
