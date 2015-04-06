@@ -13,7 +13,6 @@ public class AnimationTool : EditorWindow
     public List<string> listFBXFile = new List<string>();
 
     bool needUpdateFBXDataPath = true;
-    bool isOpenEditSceen = false;
     int selectedFBXFileIndex = 0;
     string[] listFBXFilePath = { "" };
 
@@ -22,14 +21,15 @@ public class AnimationTool : EditorWindow
     [MenuItem("Window/Animation/Animation Event Tool")]
     public static void showWindow()
     {
-        //Show existing window instance. If one doesn't exist, make one.
         var window = EditorWindow.GetWindow(typeof(AnimationTool));
         window.position = new Rect(200, 200, 200 , 200);
     }
-
+	
     void Update()
     {
         reloadProcess();
+		
+		updateCamera();
     }
 
     void reloadProcess()
@@ -40,20 +40,20 @@ public class AnimationTool : EditorWindow
             needUpdateFBXDataPath = false;
         }
     }
-
-    private void reloadFBXDirectory()
+	
+	void updateCamera ()
+	{
+		if (EditorApplication.isPlaying && SceneView.currentDrawingSceneView != null) {
+			Camera.main.transform.position = SceneView.currentDrawingSceneView.camera.transform.position;
+			Camera.main.transform.LookAt (SceneView.currentDrawingSceneView.pivot);
+		}
+	}
+	
+    void reloadFBXDirectory()
     {
         listFBXFile.Clear();
-        var info = new DirectoryInfo(basePathToLoad);
-        var fileInfo = info.GetFiles();
-        foreach (FileInfo file in fileInfo)
-        {
-            if (file.Extension == ".fbx")
-            {
-               
-                listFBXFile.Add(file.Name);
-            }
-        }
+        
+		PathUtility.DirSearch(basePathToLoad, ".fbx",ref listFBXFile);
 
         listFBXFilePath = listFBXFile.ToArray();
     }
@@ -63,20 +63,16 @@ public class AnimationTool : EditorWindow
         needUpdateFBXDataPath = true;
     }
 
+
+
     void OnGUI()
     {
-        GUILayout.Label("Import", EditorStyles.boldLabel);
         GUILayout.Label("Select FBX File", EditorStyles.boldLabel);
         selectedFBXFileIndex = EditorGUILayout.Popup(selectedFBXFileIndex, listFBXFilePath, EditorStyles.popup);
 
         if (GUILayout.Button("Select"))
         {
             procLoadBtn();
-        }
-
-        if (GUILayout.Button("Save"))
-        {
-            isOpenEditSceen = false;
         }
     }
 
@@ -85,30 +81,15 @@ public class AnimationTool : EditorWindow
         if (listFBXFile.Count > 0)
         {
             EditorApplication.NewScene();
-            //EditorApplication.OpenSceneAdditive(strScenePath);
-            /*string strScenePath = "";
-            if (strScenePath == null || !strScenePath.Contains(".unity"))
-            {
-                EditorUtility.DisplayDialog("Select Scene", "You Must Select a Scene!", "Ok");
-                EditorApplication.Beep();
-                return;
-            } 
-*/
+			UnityEngine.Object pPrefab = Resources.LoadAssetAtPath(listFBXFile[selectedFBXFileIndex],typeof(GameObject));
 
-          //  GameObject.findobject
+			GameObject fbx = Instantiate(pPrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
 
-/*
-            if (assetPath.EndsWith("_model.fbx"))
-            {
-                string prefabPath = assetPath.Replace("_model.fbx", ".prefab");
-                Object prefab = EditorUtility.CreateEmptyPrefab(prefabPath);
-                // prefab.AddGameObject(gameObject); ?
-            }
-            */
-            UnityEngine.Object pPrefab = Resources.LoadAssetAtPath("Assets/Resources/Fbx/" + listFBXFile[selectedFBXFileIndex],typeof(GameObject));
-            var myPrefab = Instantiate(pPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+			fbx.AddComponent(typeof(AnimationEventEditor));
+
+			Camera.main.nearClipPlane = 0.1f;
+
 			EditorApplication.isPlaying = true;
-            isOpenEditSceen = true;
         }
         else
         {
