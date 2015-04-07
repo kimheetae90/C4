@@ -69,6 +69,7 @@ GameObject:
   - 114: {fileID: 11425876}
   - 114: {fileID: 11451990}
   - 54: {fileID: 5423394}
+  - 114: {fileID: 11444098}
   m_Layer: 0
   m_Name: enemy
   m_TagString: Untagged
@@ -319,12 +320,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missile: {fileID: 138578, guid: dc820ae75cdcbb64b8bbac350bd336c1, type: 2}
+  attackRange: 0
   fullHP: 300
   moveSpeed: 50
-  power: 30
   moveRange: 30
-  fullGage: 300
-  gage: 0
+  gageChargingSpeed: 2
+  rageFullGage: 0
+  regeConsumeSpeed: 0
+  rageGageChargeInAttack: 0
+  rageGageChargeInDamage: 0
 --- !u!114 &11435902
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -348,6 +352,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpUIImage: {fileID: 11496208}
+--- !u!114 &11444098
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cffc987a34556a46845121328c2cdb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11451990
 MonoBehaviour:
   m_ObjectHideFlags: 1

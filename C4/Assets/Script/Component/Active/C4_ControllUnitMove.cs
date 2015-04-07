@@ -48,7 +48,7 @@ public class C4_ControllUnitMove : MonoBehaviour {
     IEnumerator checkGageAndControllMove()
     {
         yield return null;
-        
+
         moveLength = Vector3.Distance(transform.position, startPosition);
 
         if(moveScript.isMove)
@@ -60,11 +60,11 @@ public class C4_ControllUnitMove : MonoBehaviour {
         }
         else
         {
-            if (moveLength < unitFeature.moveRange)
+            if (Vector3.Distance(transform.position, moveScript.toMove) < unitFeature.moveSpeed * 0.02f)
             {
                 stopCompletely();
             }
-            else if(unit.canActive)
+            else if (unit.canActive)
             {
                 startMoveToNextPosition();
             }

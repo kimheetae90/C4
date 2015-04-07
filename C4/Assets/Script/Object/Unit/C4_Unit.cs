@@ -10,10 +10,12 @@ public abstract class C4_Unit : C4_Object
     protected C4_StraightMove moveComponent;
     protected C4_Turn turnComponent;
     protected C4_IntShot shotComponent;
+    protected C4_ControllUnitMove moveControlComponent;
 
     protected override void Start()
     {
         base.Start();
+        moveControlComponent = GetComponent<C4_ControllUnitMove>();
         moveComponent = GetComponent<C4_StraightMove>();
         turnComponent = GetComponentInChildren<C4_Turn>();
         shotComponent = GetComponent<C4_IntShot>();
@@ -48,6 +50,8 @@ public abstract class C4_Unit : C4_Object
 
     public void move(Vector3 toMove)
     {
+        moveControlComponent.startCheckGageAndControlMove();
+        moveComponent.toMove = toMove;
         if (canActive)
         {
             unitFeature.activeDone();

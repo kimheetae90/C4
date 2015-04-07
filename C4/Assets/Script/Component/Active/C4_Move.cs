@@ -3,8 +3,8 @@ using System.Collections;
 
 public abstract class C4_Move : MonoBehaviour {
 
+    public Vector3 toMove;
     protected float moveSpeed;
-    protected Vector3 toMove;
     protected bool isCoroutine;
 
     [System.NonSerialized]
@@ -13,11 +13,6 @@ public abstract class C4_Move : MonoBehaviour {
     public void setMoveSpeed(float inputMoveSpeed)
     {
         moveSpeed = inputMoveSpeed;
-    }
-
-    public void setToMove(Vector3 inputToMove)
-    {
-        toMove = inputToMove;
     }
 
     public void setMoving()
@@ -36,7 +31,7 @@ public abstract class C4_Move : MonoBehaviour {
 
     public void startMove(Vector3 inputToMove)
     {
-        setToMove(inputToMove);
+        toMove = inputToMove;
         setMoving();
     }
 

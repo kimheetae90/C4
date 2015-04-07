@@ -10,17 +10,26 @@ using System.Collections;
 
 public class C4_UnitFeature : MonoBehaviour
 {
+
     public GameObject missile;
+    public int attackRange;
     public int fullHP;
     public int moveSpeed;
-    public int power;
     public int moveRange;
-    public int fullGage;
-    
+    public int gageChargingSpeed;
+    public int rageFullGage;
+    public int regeConsumeSpeed;
+    public int rageGageChargeInAttack;
+    public int rageGageChargeInDamage;
+
+    public readonly int fullGage = 300;
+
     [System.NonSerialized]
     public int hp;
-    
+    [System.NonSerialized]
     public float gage;
+    [System.NonSerialized]
+    public int rageGage;
     
     void Start()
     {
@@ -43,7 +52,7 @@ public class C4_UnitFeature : MonoBehaviour
     {
         if (gage < fullGage)
         {
-            gage += Time.deltaTime * 50;
+            gage += Time.deltaTime * gageChargingSpeed * 30;
         }
     }
 }

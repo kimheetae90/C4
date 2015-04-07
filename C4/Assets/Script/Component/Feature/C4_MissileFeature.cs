@@ -12,8 +12,6 @@ public class C4_MissileFeature : MonoBehaviour
 {
     public int power;
     public float moveSpeed;
-    public int shotAngle;
-    public float splashRange;
 
     void Start()
     {

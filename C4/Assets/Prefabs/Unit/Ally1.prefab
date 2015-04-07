@@ -378,12 +378,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missile: {fileID: 138578, guid: dc820ae75cdcbb64b8bbac350bd336c1, type: 2}
+  attackRange: 0
   fullHP: 300
   moveSpeed: 50
-  power: 30
   moveRange: 30
-  fullGage: 300
-  gage: 0
+  gageChargingSpeed: 2
+  rageFullGage: 0
+  regeConsumeSpeed: 0
+  rageGageChargeInAttack: 0
+  rageGageChargeInDamage: 0
 --- !u!114 &11473818
 MonoBehaviour:
   m_ObjectHideFlags: 1
