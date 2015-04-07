@@ -2,30 +2,52 @@
 using UnityEditor;
 using System;
 using System.Collections;
+using System.Collections.Generic;
+
 
 public class AnimationEventEditor : MonoBehaviour
 {
+    GUIContent[] comboBoxList;
+    private ComboBox comboBoxControl;// = new ComboBox();
+    private GUIStyle listStyle = new GUIStyle();
 
     public bool AnimaitonClips = true;
     Animator animator;
-    Animation anim;
-
+    
     Vector2 clipListWindowScrollPosition;
     Vector2 clipWindowScrollPosition;
+    Vector2 animEventScrollPosition;
 
     int currentClipIndex;
     int currentEventIndex;
-    float scrollPos;
-    bool isPause = false;
 
+    
+    float scrollPos;
+    float curAnimTime;
+    
     // Use this for initialization
     void Start()
     {
+        comboBoxList = new GUIContent[3];
+        
+        comboBoxList[0] = new GUIContent("CreateParticle");
+        comboBoxList[1] = new GUIContent("EventMessage"); 
+        comboBoxList[2] = new GUIContent("CreateCollistion");
+        
+        listStyle.normal.textColor = Color.white;
+        listStyle.onHover.background =
+        listStyle.hover.background = new Texture2D(2, 2);
+        listStyle.padding.left =
+        listStyle.padding.right =
+        listStyle.padding.top =
+        listStyle.padding.bottom = 4;
+
+        comboBoxControl = new ComboBox(new Rect(0, 10, 100, 20), comboBoxList[0], comboBoxList, "button", "box", listStyle);
+
         currentClipIndex = -1;
         currentEventIndex = -1;
 
         animator = GetComponent<Animator>();
-        anim = GetComponent<Animation>();
         
         if (animator == null)
         {
@@ -58,6 +80,11 @@ public class AnimationEventEditor : MonoBehaviour
         {
             GUI.Window(2, new Rect(Screen.width / 4, Screen.height / 5 * 4, Screen.width / 2, 80), AnimationPlayBarWindow, "");
         }
+
+        if (currentEventIndex >= 0 && currentClipIndex >= 0 && AnimaitonClips)
+        {
+            GUI.Window(3, new Rect(430, 30, 200, Screen.height / 6 * 4), AnimationEventWindow, "Animation Event");
+        }
     }
 
     void AnimationClipListWindow(int windowID)
@@ -73,13 +100,11 @@ public class AnimationEventEditor : MonoBehaviour
             {
                 if (currentClipIndex == i)
                 {
-                   // currentClipIndex = -1;
-                   // anim.RemoveClip(infos[i].clip.name);
+                    currentClipIndex = -1;
                 }
                 else
                 {
                     currentClipIndex = i;
-                   // anim.AddClip(infos[i].clip, infos[i].clip.name);
                 }
             }
         }
@@ -93,17 +118,32 @@ public class AnimationEventEditor : MonoBehaviour
 
         clipWindowScrollPosition = GUILayout.BeginScrollView(clipWindowScrollPosition, GUILayout.Width(200), GUILayout.Height(80));
 
-/*
-        for(int i = 0; i < info.clip.events.Length ; ++i)
+        AnimationEvent[] events =  AnimationUtility.GetAnimationEvents(info.clip);
+
+        for (int i = 0; i < events.Length; ++i)
         {
-            //if (GUILayout.Button(info.clip.events[i].stringParameter, GUILayout.Width(160)))
+            if (GUILayout.Button(events[i].functionName, GUILayout.Width(160)))
             {
-                //excute
+                currentEventIndex = i;
             }
-        }*/
+        }
 
         GUILayout.EndScrollView();
 
+        if (GUILayout.Button("Add", GUILayout.Width(160)))
+        {
+            var throwObjectEvent = new AnimationEvent();
+
+            throwObjectEvent.functionName = "NewEvent";
+
+            throwObjectEvent.time = curAnimTime;
+
+            info.clip.AddEvent(throwObjectEvent);
+
+            AnimationUtility.SetAnimationEvents(info.clip, AnimationUtility.GetAnimationEvents(info.clip));
+        }
+
+        
     }
 
     void AnimationPlayBarWindow(int windowID)
@@ -123,14 +163,14 @@ public class AnimationEventEditor : MonoBehaviour
 
         string curtime = String.Format("{0:n2}", t);
         GUILayout.Label(curtime);
-        float temp = GUILayout.HorizontalSlider(i.normalizedTime, 0.0F, 1, GUILayout.Width(Screen.width / 3), GUILayout.Height(5));
+        curAnimTime = GUILayout.HorizontalSlider(i.normalizedTime, 0.0F, 1, GUILayout.Width(Screen.width / 3), GUILayout.Height(5));
         string length = String.Format("{0:n2}", i.length);
         GUILayout.Label(length);
         GUILayout.EndHorizontal();
 
-        if (temp != i.normalizedTime)
+        if (curAnimTime != i.normalizedTime)
         {
-            animator.Play(info.clip.name, -1, temp);
+            animator.Play(info.clip.name, -1, curAnimTime);
             animator.speed = 0;
         }
 
@@ -151,5 +191,33 @@ public class AnimationEventEditor : MonoBehaviour
             animator.speed = 0;
         }
         GUILayout.EndHorizontal();
+    }
+
+    void AnimationEventWindow(int windowID)
+    {
+        AnimatorClipInfo info = animator.GetCurrentAnimatorClipInfo(0)[currentClipIndex];
+        
+        List<AnimationEvent> list = new List<AnimationEvent>(AnimationUtility.GetAnimationEvents(info.clip));
+
+        AnimationEvent animEvent = list[currentEventIndex];
+
+        animEventScrollPosition = GUILayout.BeginScrollView(animEventScrollPosition, GUILayout.Width(200), GUILayout.Height(80));
+
+        // 함수 이름
+        // 발생 시간
+        // 생성 프리팹 // 본 // 옵셋 //
+
+        comboBoxControl.Show();
+        
+        GUILayout.EndScrollView();
+        
+        if (GUILayout.Button("Remove", GUILayout.Width(160)))
+        {
+            list.Remove(animEvent);
+
+            AnimationUtility.SetAnimationEvents(info.clip, list.ToArray());
+
+            currentEventIndex = -1;
+        }
     }
 }
