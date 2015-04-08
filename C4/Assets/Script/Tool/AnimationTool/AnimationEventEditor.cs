@@ -7,10 +7,15 @@ using System.Collections.Generic;
 
 public class AnimationEventEditor : MonoBehaviour
 {
-    GUIContent[] comboBoxList;
-    private ComboBox comboBoxControl;// = new ComboBox();
+    GUIContent[] cbEventList;
+    private ComboBox cbEventTypeControl = new ComboBox();
     private GUIStyle listStyle = new GUIStyle();
 
+
+    GUIContent[] cbChildList;
+    private ComboBox cbChildControl = new ComboBox();
+    List<GameObject> childs;
+    
     public bool AnimaitonClips = true;
     Animator animator;
     
@@ -28,11 +33,10 @@ public class AnimationEventEditor : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        comboBoxList = new GUIContent[3];
+        cbEventList = new GUIContent[2];
         
-        comboBoxList[0] = new GUIContent("CreateParticle");
-        comboBoxList[1] = new GUIContent("EventMessage"); 
-        comboBoxList[2] = new GUIContent("CreateCollistion");
+        cbEventList[0] = new GUIContent("CreateParticle");
+        cbEventList[1] = new GUIContent("EventMessage"); 
         
         listStyle.normal.textColor = Color.white;
         listStyle.onHover.background =
@@ -42,7 +46,7 @@ public class AnimationEventEditor : MonoBehaviour
         listStyle.padding.top =
         listStyle.padding.bottom = 4;
 
-        comboBoxControl = new ComboBox(new Rect(0, 10, 100, 20), comboBoxList[0], comboBoxList, "button", "box", listStyle);
+        //cbEventTypeControl = new ComboBox(new Rect(50, 5, 100, 20), cbEventList[0], cbEventList, "button", "box", listStyle);
 
         currentClipIndex = -1;
         currentEventIndex = -1;
@@ -53,6 +57,28 @@ public class AnimationEventEditor : MonoBehaviour
         {
             throw new ToolException("Doesn't have Animator Component");
         }
+
+        childs = new List<GameObject>();
+        Transform t  =  this.transform.FindChild("root");
+
+        if(t == null)
+        {
+            throw new ToolException("Doesn't have root bone");
+        }
+
+        childs.Add(t.gameObject);
+
+
+        Utils.IterateChildrenUtil.IterateChildren(t.gameObject, delegate(GameObject go) { childs.Add(go); }, true);
+
+        cbChildList = new GUIContent[childs.Count];
+
+        for(int i = 0 ; i < childs.Count ; ++i)
+        {
+            cbChildList[i] = new GUIContent(childs[i].name);
+        }
+
+      //  cbChildControl = new ComboBox(new Rect(50, 80, 100, 20), cbChildList[0], cbChildList, "button", "box", listStyle);
     }
 
     // Update is called once per frame
@@ -134,7 +160,7 @@ public class AnimationEventEditor : MonoBehaviour
         {
             var throwObjectEvent = new AnimationEvent();
 
-            throwObjectEvent.functionName = "NewEvent";
+            throwObjectEvent.functionName = "EventMessage";
 
             throwObjectEvent.time = curAnimTime;
 
@@ -201,14 +227,46 @@ public class AnimationEventEditor : MonoBehaviour
 
         AnimationEvent animEvent = list[currentEventIndex];
 
-        animEventScrollPosition = GUILayout.BeginScrollView(animEventScrollPosition, GUILayout.Width(200), GUILayout.Height(80));
+        animEventScrollPosition = GUILayout.BeginScrollView(animEventScrollPosition, GUILayout.Width(200), GUILayout.Height(Screen.height / 6 * 3));
 
-        // 함수 이름
         // 발생 시간
         // 생성 프리팹 // 본 // 옵셋 //
+        GUILayout.BeginHorizontal("");
+        GUILayout.Label("type : ");
+        int selectedEventIndex = cbEventTypeControl.GetSelectedItemIndex();
+        selectedEventIndex = cbEventTypeControl.List(
+      new Rect(50, 5, 100, 20), cbEventList[selectedEventIndex].text, cbEventList, listStyle);
+          
+        GUILayout.EndHorizontal();
 
-        comboBoxControl.Show();
-        
+        GUILayout.BeginHorizontal("");
+        GUILayout.Label("time : ");
+        string stringToEdit = animEvent.time.ToString();
+        stringToEdit = GUI.TextField(new Rect(50, 35, 200, 20), stringToEdit, 25);
+        GUILayout.EndHorizontal();
+
+        GUILayout.BeginHorizontal("");
+        GUILayout.Label("attachBone : ");
+        int selectedBoneIndex = cbChildControl.GetSelectedItemIndex();
+        selectedBoneIndex = cbChildControl.List(
+        new Rect(50, 80, 100, 20), cbChildList[selectedBoneIndex].text, cbChildList, listStyle);
+        GUILayout.EndHorizontal();
+
+
+        if(animEvent.functionName != cbEventList[selectedEventIndex].text)
+        {
+            animEvent.functionName = cbEventList[selectedEventIndex].text;
+            AnimationUtility.SetAnimationEvents(info.clip, list.ToArray());
+        }
+
+        if (animEvent.time.ToString() != stringToEdit)
+        {
+            animEvent.time = Convert.ToSingle(stringToEdit);
+            AnimationUtility.SetAnimationEvents(info.clip, list.ToArray());
+        }
+
+        Selection.activeGameObject = childs[selectedBoneIndex];
+
         GUILayout.EndScrollView();
         
         if (GUILayout.Button("Remove", GUILayout.Width(160)))
