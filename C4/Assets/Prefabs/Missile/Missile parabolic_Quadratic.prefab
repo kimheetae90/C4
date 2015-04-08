@@ -163,8 +163,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   power: 100
   moveSpeed: 120
-  shotAngle: 0
-  splashRange: 0
 --- !u!114 &11416352
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -187,7 +185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c6856bf2b05daa488d4cd1cfbe0704c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveScript: {fileID: 0}
 --- !u!114 &11460330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -199,6 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5a98ae9d4c0503488a951de2caac537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toMove: {x: 0, y: 0, z: 0}
 --- !u!114 &11490476
 MonoBehaviour:
   m_ObjectHideFlags: 1
