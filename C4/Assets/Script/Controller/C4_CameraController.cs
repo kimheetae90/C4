@@ -6,6 +6,7 @@ public class C4_CameraController : C4_Controller
 	enum eCameraControllerActionState
 	{
 		None,
+        Focus,
 		Move,
 		ZoomIn,
 		ZoomOut,
@@ -47,6 +48,11 @@ public class C4_CameraController : C4_Controller
 	private void computeKeyUpState(ref InputData inputData, out eCameraControllerActionState action)
 	{
 		action = eCameraControllerActionState.None;
+
+        if (inputData.clickObjectID.type == GameObjectType.Ally)
+        {
+            action = eCameraControllerActionState.Focus;
+        }
 	}
 
 	private void computeKeyDragState(ref InputData inputData, out eCameraControllerActionState action)
@@ -55,23 +61,26 @@ public class C4_CameraController : C4_Controller
 
 		if(inputData.clickObjectID.isInputTypeTrue (GameObjectInputType.CameraMoveAbleObject)) 
 		{
-			action = eCameraControllerActionState.Move;
-		}
-	}
+            action = eCameraControllerActionState.Move;
+        }
+    }
 
-	private void ProcState(eCameraControllerActionState action, ref InputData inputData)
-	{
-		switch (action)
-		{
-		case eCameraControllerActionState.None:
-			break;
-		case eCameraControllerActionState.Move:
-            notifyEvent("Move", inputData);
-			break;
-		case eCameraControllerActionState.ZoomIn:
-			break;
-		case eCameraControllerActionState.ZoomOut:
-			break;
+    private void ProcState(eCameraControllerActionState action, ref InputData inputData)
+    {
+        switch (action)
+        {
+            case eCameraControllerActionState.None:
+                break;
+            case eCameraControllerActionState.Move:
+                notifyEvent("Move", inputData);
+                break;
+            case eCameraControllerActionState.Focus:
+                notifyEvent("Focus", inputData);
+                break;
+            case eCameraControllerActionState.ZoomIn:
+                break;
+            case eCameraControllerActionState.ZoomOut:
+                break;
 		}
 	}
 }
