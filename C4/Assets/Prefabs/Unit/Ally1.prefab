@@ -310,7 +310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 57f658bc94b0c1e4a9382fe85c463499, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4e86445cba3f5db448ee5b2d36e2b2bb, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -474,6 +474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10a10b853dd8bf24d9261cbab33fcdb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toMove: {x: 0, y: 0, z: 0}
 --- !u!114 &11488186
 MonoBehaviour:
   m_ObjectHideFlags: 1
