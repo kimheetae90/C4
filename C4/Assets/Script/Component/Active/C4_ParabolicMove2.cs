@@ -73,7 +73,7 @@ public class C4_ParabolicMove2 : C4_Move
         if (isMove)
         {
 
-            count += 1 / Vector3.Distance(toMove, firstPos);
+            count += (moveSpeed * 0.015f) / Vector3.Distance(toMove, firstPos);
             //count += 0.01f;
             //float distance = Vector3.Distance(toMove, transform.position);
             if (count < 1)
