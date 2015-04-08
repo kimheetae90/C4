@@ -102,7 +102,7 @@ public class C4_ParabolicMove2 : C4_Move
         float x = t.x;
         float z = t.z;
 
-        float y = -0.02f * ((x - first.x) * (x - last.x) + (z - first.x) * (z - last.z));
+        float y = -0.02f * ((x - first.x) * (x - last.x) + (z - first.z) * (z - last.z));
 
         p = new Vector3(x, y, z);
 
