@@ -48,11 +48,6 @@ public class C4_CameraController : C4_Controller
 	private void computeKeyUpState(ref InputData inputData, out eCameraControllerActionState action)
 	{
 		action = eCameraControllerActionState.None;
-
-        if (inputData.clickObjectID.type == GameObjectType.Ally && inputData.dragObjectID.type == GameObjectType.Ally && inputData.clickObjectID.id == inputData.dragObjectID.id)
-        {
-            action = eCameraControllerActionState.Focus;
-        }
 	}
 
 	private void computeKeyDragState(ref InputData inputData, out eCameraControllerActionState action)
