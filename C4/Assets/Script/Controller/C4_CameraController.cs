@@ -49,7 +49,7 @@ public class C4_CameraController : C4_Controller
 	{
 		action = eCameraControllerActionState.None;
 
-        if (inputData.clickObjectID.type == GameObjectType.Ally)
+        if (inputData.clickObjectID.type == GameObjectType.Ally && inputData.dragObjectID.type == GameObjectType.Ally && inputData.clickObjectID.id == inputData.dragObjectID.id)
         {
             action = eCameraControllerActionState.Focus;
         }
