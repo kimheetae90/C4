@@ -32,7 +32,7 @@ public class C4_PlayMode : C4_SceneMode
 
         foreach (GameObject allyGameObject in ListAllyGameObject)
         {
-            instantiatePlayer(allyUnitGameObject1, initPos, transform.rotation);
+            instantiatePlayer(allyGameObject, initPos, transform.rotation);
             initPos.z += 20;
         }
 
