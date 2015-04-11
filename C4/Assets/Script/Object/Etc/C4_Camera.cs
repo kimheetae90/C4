@@ -21,11 +21,7 @@ public abstract class C4_Camera : C4_Object, C4_IControllerListener
         StopCoroutine("moveToSomeObjectCoroutine");
         transform.Translate(inputData.clickPosition - inputData.dragPosition);
     }
-
-    protected abstract void moveToSomeObject(InputData inputData);
-
-    protected abstract IEnumerator moveToSomeObjectCoroutine();
-
+    
     public void onEvent(string message, params object[] p)
     {
         switch (message)
@@ -34,12 +30,6 @@ public abstract class C4_Camera : C4_Object, C4_IControllerListener
                 {
                     InputData data = (InputData)p[0];
                     cameraMove(data);
-                }
-                break;
-            case "Focus":
-                {
-                    InputData data = (InputData)p[0];
-                    moveToSomeObject(data);
                 }
                 break;
         }

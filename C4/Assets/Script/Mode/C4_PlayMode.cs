@@ -16,14 +16,6 @@ public class C4_PlayMode : C4_SceneMode
     void Awake()
     {
         C4_GameManager.Instance.StartPlayScene();
-    }
-
-    public override void Start()
-    {
-        base.Start();
-     
-        C4_GameManager.Instance.objectManager.resetAllObjectData();
-        addPlaySceneManager();
 
         ListAllyGameObject.Add(allyUnitGameObject1);
         ListAllyGameObject.Add(allyUnitGameObject2);
@@ -35,7 +27,14 @@ public class C4_PlayMode : C4_SceneMode
             instantiatePlayer(allyGameObject, initPos, transform.rotation);
             initPos.z += 20;
         }
+    }
 
+    public override void Start()
+    {
+        base.Start();
+     
+        C4_GameManager.Instance.objectManager.resetAllObjectData();
+        addSubObjectManagers();
         addController(GameObjectType.Ally,allyController);
         addController(GameObjectType.Enemy, enemyController);
 		addController (GameObjectType.Camera, cameraController);
@@ -51,7 +50,7 @@ public class C4_PlayMode : C4_SceneMode
         initPlayerGameObject.GetComponent<C4_UnitFeature>().missile = initMissileGameObject;
     }
 
-    void addPlaySceneManager()
+    void addSubObjectManagers()
     {
         C4_ObjectManager objectManager = C4_GameManager.Instance.objectManager;
         C4_AllyObjectManager playerObjectManager = GameObject.Find("PlayerObjectManager").GetComponent<C4_AllyObjectManager>();

@@ -18,7 +18,7 @@ public enum GameObjectInputType
     ClickAbleObject = 0x0001,
     SelectAbleObject = 0x0001 << 1,
     CameraMoveAbleObject = 0x0001 << 2,
-    ToMoveAbleObject = 0x0001 << 3,
+    ToMoveAbleObject = 0x0001 << 3
 };
 
 public enum KeyState
@@ -26,7 +26,7 @@ public enum KeyState
 	Sleep,
 	Down,
     Up,
-	Drag,
+	Drag
 };
 
 class GameObjectDefine

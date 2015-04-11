@@ -903,6 +903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 299592fc95a367946b05334cb0babe19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraZoom: 1e0000003c00000078000000
 --- !u!1001 &1539309169
 Prefab:
   m_ObjectHideFlags: 0
@@ -1090,7 +1091,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 50
+  orthographic size: 60
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

@@ -10,6 +10,7 @@ public class C4_CameraController : C4_Controller
 		Move,
 		ZoomIn,
 		ZoomOut,
+        DepthChange
 	}
 
     public override void Awake()
@@ -23,7 +24,7 @@ public class C4_CameraController : C4_Controller
 		computeActionState(ref inputData, out action);
 		ProcState(action, ref inputData);
 	}
-
+    
 	private void computeActionState(ref InputData inputData, out eCameraControllerActionState action)
 	{
 		if (inputData.keyState == KeyState.Down)
@@ -68,9 +69,6 @@ public class C4_CameraController : C4_Controller
                 break;
             case eCameraControllerActionState.Move:
                 notifyEvent("Move", inputData);
-                break;
-            case eCameraControllerActionState.Focus:
-                notifyEvent("Focus", inputData);
                 break;
             case eCameraControllerActionState.ZoomIn:
                 break;
