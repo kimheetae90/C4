@@ -16,7 +16,14 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
 
     public void aiming(Vector3 clickPosition)
     {
-        aimUI.showUI(clickPosition);
+        if (C4_GameManager.Instance.sceneMode.GetComponent<C4_PlayMode> ().allyController.selectedAllyUnit != null) 
+		{
+			aimUI.showUI (clickPosition);
+		} 
+		else 
+		{
+			activeDone();
+		}
     }
 
     public void startAim()
@@ -25,14 +32,21 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
     }
 
     public void select()
-    {
-        moveUI.selectBoat();
-        selectUI.showUI();
-        aimUI.hideUI();
+	{
+		if (C4_GameManager.Instance.sceneMode.GetComponent<C4_PlayMode> ().allyController.selectedAllyUnit != null) 
+		{
+			moveUI.selectBoat ();
+			selectUI.showUI ();
+			aimUI.hideUI ();
+		} 
+		else 
+		{
+			activeDone();
+		}
     }
 
     public void activeDone()
-    {
+	{
         aimUI.hideUI();
         moveUI.hideUI();
         selectUI.hideUI();

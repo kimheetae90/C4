@@ -6,12 +6,14 @@ public class C4_PlaySceneCamera : C4_Camera
     public int[] cameraZoom;
     int toCameraZoom;
 
+<<<<<<< HEAD
     
 
+=======
+>>>>>>> new
     protected override void Start()
     {
         toCameraZoom = 1;
-        moveSpeed = 0;
     }
 
     public void cameraZoomInOneLevel()

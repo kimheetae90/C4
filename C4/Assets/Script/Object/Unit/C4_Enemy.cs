@@ -13,6 +13,14 @@ public class C4_Enemy : C4_Unit {
         C4_GameManager.Instance.objectManager.registerObjectToAll(ref enemy, GameObjectType.Enemy, GameObjectInputType.Invalid);
     }
 
+	protected override void checkHP()
+	{
+		if (unitFeature.hp <= 0)
+		{
+			C4_GameManager.Instance.objectManager.reserveRemoveObject(GetComponent<C4_Object>());
+		}
+	}
+
     protected override void checkActive()
     {
         base.checkActive();

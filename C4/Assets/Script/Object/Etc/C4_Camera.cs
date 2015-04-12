@@ -13,6 +13,7 @@ public abstract class C4_Camera : C4_Object, C4_IControllerListener
     {
         base.Start();
         C4_Object obj = this;
+		moveSpeed = 0;
         C4_GameManager.Instance.objectManager.registerObjectToAll(ref obj, GameObjectType.Camera, GameObjectInputType.Invalid);
     }
 
