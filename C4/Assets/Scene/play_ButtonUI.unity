@@ -87,7 +87,7 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &12758853 stripped
+--- !u!114 &12758853
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11426250, guid: 409c411f98103354d8349226a9dc7014,
     type: 2}
@@ -450,7 +450,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b793c563b1cadd94d8c90de4cd4d6d93, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &380865681 stripped
+--- !u!114 &380865681
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11411974, guid: 9e9063d48a1171243934707ad443405f,
     type: 2}
@@ -599,7 +599,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
---- !u!114 &661504620 stripped
+--- !u!114 &661504620
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11453246, guid: 516af8c5b82e79642bfe4f8494a01dad,
     type: 2}
@@ -1121,7 +1121,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 000218507c1b55e4c9fd4a429fe82dbe, type: 2}
   m_IsPrefabParent: 0
---- !u!223 &1465897435 stripped
+--- !u!223 &1465897435
 Canvas:
   m_PrefabParentObject: {fileID: 22347100, guid: 000218507c1b55e4c9fd4a429fe82dbe,
     type: 2}
@@ -1569,7 +1569,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1857824012}
-        m_MethodName: selectAlly1
+        m_MethodName: selectAlly2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1712,7 +1712,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!114 &1769572096 stripped
+--- !u!114 &1769572096
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11415200, guid: 1640f07f9b0666740aef6722e2f2916b,
     type: 2}
@@ -1930,6 +1930,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1857824012}
+        m_MethodName: selectAlly1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1511529349}
         m_MethodName: moveToSomeObject
         m_Mode: 1
@@ -1971,7 +1983,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2085306361}
---- !u!114 &2095715591 stripped
+--- !u!114 &2095715591
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11413162, guid: 9e9063d48a1171243934707ad443405f,
     type: 2}
