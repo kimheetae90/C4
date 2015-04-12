@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 725c8d6ddf6e6554ca1314574fa7e4d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkBound: 80
+  checkBound: 70
   attackOrMovePercent: 50
 --- !u!114 &11418854
 MonoBehaviour:
