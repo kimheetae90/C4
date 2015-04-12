@@ -377,6 +377,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 192084, guid: b793c563b1cadd94d8c90de4cd4d6d93, type: 2}
+      propertyPath: m_Name
+      value: AllyObjectManager
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b793c563b1cadd94d8c90de4cd4d6d93, type: 2}
   m_IsPrefabParent: 0

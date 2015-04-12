@@ -15,11 +15,10 @@ public class C4_PlayMode : C4_SceneMode
 
     void Awake()
     {
-        C4_GameManager.Instance.StartPlayScene();
-
+		C4_GameManager.Instance.StartPlayScene();
+		addSubObjectManagers();
         ListAllyGameObject.Add(allyUnitGameObject1);
         ListAllyGameObject.Add(allyUnitGameObject2);
-
         Vector3 initPos = transform.position;
 
         foreach (GameObject allyGameObject in ListAllyGameObject)
@@ -31,15 +30,12 @@ public class C4_PlayMode : C4_SceneMode
 
     public override void Start()
     {
-        base.Start();
-     
-        C4_GameManager.Instance.objectManager.resetAllObjectData();
-        addSubObjectManagers();
-        addController(GameObjectType.Ally,allyController);
-        addController(GameObjectType.Enemy, enemyController);
+		base.Start();
+		addController(GameObjectType.Ally,allyController);
+		addController(GameObjectType.Enemy, enemyController);
 		addController (GameObjectType.Camera, cameraController);
-        addPlayerControllerListener();
-        addCameraControllerListener();
+		addPlayerControllerListener();
+		addCameraControllerListener();
 	}
 
     void instantiatePlayer(GameObject playerGameObject, Vector3 pos, Quaternion angle)
@@ -53,10 +49,10 @@ public class C4_PlayMode : C4_SceneMode
     void addSubObjectManagers()
     {
         C4_ObjectManager objectManager = C4_GameManager.Instance.objectManager;
-        C4_AllyObjectManager playerObjectManager = GameObject.Find("PlayerObjectManager").GetComponent<C4_AllyObjectManager>();
+        C4_AllyObjectManager allyObjectManager = GameObject.Find("AllyObjectManager").GetComponent<C4_AllyObjectManager>();
         C4_EnemyObjectManager enemyObjectManager = GameObject.Find("EnemyObjectManager").GetComponent<C4_EnemyObjectManager>();
         C4_MissileObjectManager missileObjectManager = GameObject.Find("MissileObjectManager").GetComponent<C4_MissileObjectManager>();
-        objectManager.addSubObjectManager(GameObjectType.Ally, playerObjectManager);
+        objectManager.addSubObjectManager(GameObjectType.Ally, allyObjectManager);
         objectManager.addSubObjectManager(GameObjectType.Enemy, enemyObjectManager);
         objectManager.addSubObjectManager(GameObjectType.Missile, missileObjectManager);
     }

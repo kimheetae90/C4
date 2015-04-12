@@ -8,7 +8,16 @@ public class C4_Ally : C4_Unit , C4_IControllerListener {
         base.Start();
         C4_Object ally = GetComponent<C4_Object>();
         C4_GameManager.Instance.objectManager.registerObjectToAll(ref ally, GameObjectType.Ally, GameObjectInputType.SelectAbleObject | GameObjectInputType.ClickAbleObject);
-    }
+    } 	
+
+	protected override void checkHP()
+	{
+		if (unitFeature.hp <= 0)
+		{
+			C4_GameManager.Instance.objectManager.reserveRemoveObject(GetComponent<C4_Object>());
+			C4_GameManager.Instance.sceneMode.GetComponent<C4_PlayMode> ().playerUI.activeDone ();
+		}
+	}
 
     public void onEvent(string message, params object[] p)
     {
