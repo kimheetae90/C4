@@ -43,7 +43,7 @@ public class ComboBox
                 {
                     if (isClickedComboButton)
                     {
-                        // done = true;
+                         done = true;
                     }
                 }
                 break;
@@ -73,7 +73,9 @@ public class ComboBox
             float items_height = listStyle.CalcHeight(listContent[0], 1.0f) * (listContent.Length + 5);
             Rect listRect = new Rect(rect.x, rect.y + listStyle.CalcHeight(listContent[0], 1.0f), rect.width, items_height);
 
-            scrollViewVector = GUI.BeginScrollView(new Rect(rect.x, rect.y + rect.height, rect.width * 1.4f, 200), scrollViewVector,
+			float scrollViewHeight = listContent.Length * 10 > 50 ? 50 : listContent.Length * 15;
+
+			scrollViewVector = GUI.BeginScrollView(new Rect(rect.x, rect.y + rect.height, rect.width * 1.18f, scrollViewHeight), scrollViewVector,
                                                     new Rect(rect.x, rect.y, rect.width, items_height + rect.height), false, false);
 
             GUI.Box(new Rect(rect.x, rect.y, rect.width, items_height + rect.height), "", boxStyle);
@@ -81,9 +83,10 @@ public class ComboBox
             int newSelectedItemIndex = GUI.SelectionGrid(listRect, selectedItemIndex, listContent, 1, listStyle);
             if (newSelectedItemIndex != selectedItemIndex)
             {
-                selectedItemIndex = newSelectedItemIndex;
                 done = true;
             }
+
+			selectedItemIndex = newSelectedItemIndex;
 
             GUI.EndScrollView();
         }
