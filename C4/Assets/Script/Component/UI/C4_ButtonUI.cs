@@ -25,6 +25,7 @@ public class C4_ButtonUI : MonoBehaviour
         //playmode = GameObject.Find("PlayMode").GetComponent<C4_PlayMode>();
         List = C4_GameManager.Instance.sceneMode.GetComponentInChildren<C4_PlayMode>().ListAllyGameObject;
         
+        
 
         btlist.Add(char1);
         btlist.Add(char2);
@@ -66,5 +67,9 @@ public class C4_ButtonUI : MonoBehaviour
     public void selectAlly2()
     {
         C4_GameManager.Instance.sceneMode.GetComponentInChildren<C4_PlayMode>().allyController.selectClickObject(List[1]);
+    }
+    public void done()
+    {
+        C4_GameManager.Instance.sceneMode.GetComponentInChildren<C4_PlayMode>().allyController.activeDone();
     }
 }
