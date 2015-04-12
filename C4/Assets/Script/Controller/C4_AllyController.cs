@@ -44,7 +44,7 @@ public class C4_AllyController : C4_Controller
         addListener(selectedAllyUnit);
     }
 
-    void activeDone()
+    public void activeDone()
     {
         isAiming = false;
         notifyEvent("ActiveDone");

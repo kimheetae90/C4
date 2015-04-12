@@ -6,7 +6,7 @@ using System.Collections;
 /// </summary>
 public abstract class C4_Camera : C4_Object, C4_IControllerListener
 {
-    protected double moveSpeed;
+    protected float moveSpeed;
     protected Vector3 toMove;
 
     protected override void Start()
