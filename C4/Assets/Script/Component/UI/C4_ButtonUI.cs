@@ -6,8 +6,8 @@ using System.Collections.Generic;
 public class C4_ButtonUI : MonoBehaviour
 {
 
-    public Button char1;
-    public Button char2;
+    public Button CharacterButton;
+    //public Button char2;
     //public Button char3;
     //public Button char4;
       
@@ -16,19 +16,32 @@ public class C4_ButtonUI : MonoBehaviour
     public List<Button> btlist;
     public int count;
 
+    public Canvas buttonuicanvas;
 
 
     // Use this for initialization
     void Start()
     {
 
+        buttonuicanvas = this.GetComponentInChildren<Canvas>();
+        //buttonuicanvas.transform.SetParent(gameobject);
         //playmode = GameObject.Find("PlayMode").GetComponent<C4_PlayMode>();
         AllyList = C4_GameManager.Instance.sceneMode.GetComponentInChildren<C4_PlayMode>().ListAllyGameObject;
-        
-        
 
-        btlist.Add(char1);
-        btlist.Add(char2);
+
+
+        //btlist.Add(char1);
+        //btlist.Add(char2);
+        btlist.Add(Instantiate(CharacterButton));
+        btlist.Add(Instantiate(CharacterButton));
+        btlist[0].transform.SetParent(buttonuicanvas.transform);
+        btlist[1].transform.SetParent(buttonuicanvas.transform);
+        
+        //btlist[0].GetComponent<C4_ButtonClick>().myCharacter = AllyList[0];
+        //btlist[1].GetComponent<C4_ButtonClick>().myCharacter = AllyList[1];
+        btlist[0].GetComponent<C4_ButtonClick>().myCharacter = C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Ally).getObjectInList(0).gameObject;
+        btlist[1].GetComponent<C4_ButtonClick>().myCharacter = C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Ally).getObjectInList(1).gameObject;
+        Debug.Log(btlist[0].GetComponent<C4_ButtonClick>().myCharacter.ToString());
         //btlist.Add(char3);
         //btlist.Add(char4);
         //char1.transform.Translate(0, 70, 0);

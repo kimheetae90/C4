@@ -27,6 +27,8 @@ public struct InputData
 	public Vector2 multiClickPosition1;
 	public Vector2 multiClickPosition2;
 
+    public float multiTapDistance;
+
 	public void clear()
 	{
 		clickPosition = Vector3.zero;
