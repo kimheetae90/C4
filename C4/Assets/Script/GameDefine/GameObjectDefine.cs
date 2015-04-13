@@ -27,7 +27,7 @@ public enum KeyState
 	Down,
     Up,
 	Drag,
-	MultiTap,
+	MultiTaping,
 	MultiTapStart
 };
 
