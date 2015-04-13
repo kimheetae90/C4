@@ -12,11 +12,12 @@ public class C4_InputManager : MonoBehaviour
     InputData inputData;
     RaycastHit hit;
     C4_Object clickObject;
-    
+	float startMultiTapDictance;
 
     void Start()
     {
         inputData = new InputData();
+		startMultiTapDictance = 0;
     }
 
     void Update()
@@ -32,7 +33,14 @@ public class C4_InputManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            inputData.keyState = KeyState.Down;
+			if(Input.touchCount >= 2)
+			{
+				inputData.keyState = KeyState.MultiTapStart;
+			}
+			else
+			{
+            	inputData.keyState = KeyState.Down;
+			}
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -40,14 +48,18 @@ public class C4_InputManager : MonoBehaviour
             inputData.keyState = KeyState.Up;
         }
 
-        if (inputData.keyState == inputData.preKeyState && inputData.keyState == KeyState.Down)
-        {
-            inputData.keyState = KeyState.Drag;
-        }
-        else if (inputData.keyState == inputData.preKeyState && inputData.keyState == KeyState.Up)
-        {
-            inputData.keyState = KeyState.Sleep;
-        }
+        if (inputData.keyState == inputData.preKeyState && inputData.keyState == KeyState.Down) 
+		{
+			inputData.keyState = KeyState.Drag;
+		} 
+		else if (inputData.keyState == inputData.preKeyState && inputData.keyState == KeyState.Up) 
+		{
+			inputData.keyState = KeyState.Sleep;
+		} 
+		else if (inputData.keyState == inputData.preKeyState && inputData.keyState == KeyState.MultiTapStart) 
+		{
+			inputData.keyState = KeyState.MultiTaping;
+		}
     }
 
     private void procKeyState()
@@ -65,6 +77,10 @@ public class C4_InputManager : MonoBehaviour
                     setupClickDown();
                     C4_GameManager.Instance.sceneMode.sendInputDataToController(inputData);
                     break;
+				case KeyState.MultiTapStart:
+					setupMultiTapStart();
+					C4_GameManager.Instance.sceneMode.sendInputDataToController(inputData);
+					break;
             }
         }
         //Continuos
@@ -76,9 +92,23 @@ public class C4_InputManager : MonoBehaviour
                     setupDrag();
                     C4_GameManager.Instance.sceneMode.sendInputDataToController(inputData);
                     break;
+				case KeyState.MultiTaping:
+					setupMultiTaping();
+					C4_GameManager.Instance.sceneMode.sendInputDataToController(inputData);
+					break;
             }
         }
     }
+
+	void setupMultiTapStart()
+	{
+		startMultiTapDictance = Vector2.Distance (Input.touches [0].position, Input.touches [1].position);
+	}
+
+	void setupMultiTaping()
+	{
+		inputData.multiTapDistance = Vector2.Distance (Input.touches [0].position, Input.touches [1].position) - startMultiTapDictance;
+	}
 
     void setupClickDown()
     {
@@ -105,5 +135,7 @@ public class C4_InputManager : MonoBehaviour
 
     void setupClickUp()
     {
+		startMultiTapDictance = 0;
+		inputData.multiTapDistance = 0;
     }
 }

@@ -24,6 +24,9 @@ public struct InputData
     public KeyState keyState;
 	public KeyState preKeyState;
 	
+	public Vector2 multiClickPosition1;
+	public Vector2 multiClickPosition2;
+
 	public void clear()
 	{
 		clickPosition = Vector3.zero;
