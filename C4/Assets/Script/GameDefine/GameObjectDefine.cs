@@ -26,7 +26,9 @@ public enum KeyState
 	Sleep,
 	Down,
     Up,
-	Drag
+	Drag,
+	MultiTap,
+	MultiTapStart
 };
 
 class GameObjectDefine
