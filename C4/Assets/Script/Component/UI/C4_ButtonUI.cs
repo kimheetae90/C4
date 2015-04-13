@@ -30,7 +30,7 @@ public class C4_ButtonUI : MonoBehaviour
         {
             btlist.Add(Instantiate(CharacterButton));
             btlist[i].transform.SetParent(buttonuicanvas.transform);
-            //btlist[i].GetComponent<C4_ButtonClick>().myCharacter = C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Ally).getObjectInList(i).gameObject;
+            btlist[i].GetComponent<C4_ButtonClick>().myCharacter = C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Ally).getObjectInList(i).gameObject;
         }
 
        
