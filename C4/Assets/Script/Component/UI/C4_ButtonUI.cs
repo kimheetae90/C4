@@ -21,7 +21,7 @@ public class C4_ButtonUI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        
         buttonuicanvas = this.GetComponentInChildren<Canvas>();
         AllyList = C4_GameManager.Instance.sceneMode.GetComponentInChildren<C4_PlayMode>().ListAllyGameObject;
 
@@ -30,7 +30,7 @@ public class C4_ButtonUI : MonoBehaviour
         {
             btlist.Add(Instantiate(CharacterButton));
             btlist[i].transform.SetParent(buttonuicanvas.transform);
-            btlist[i].GetComponent<C4_ButtonClick>().myCharacter = C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Ally).getObjectInList(i).gameObject;
+            //btlist[i].GetComponent<C4_ButtonClick>().myCharacter = C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Ally).getObjectInList(i).gameObject;
         }
 
        
@@ -45,20 +45,28 @@ public class C4_ButtonUI : MonoBehaviour
    
     void allocate()
     {
-        int num = AllyList.Count / 2;
-        if (AllyList.Count % 2 == 0)
+        int num = (AllyList.Count) / 2;
+
+        if ((AllyList.Count) % 2 == 0)
         {
+            if(num%2==0)
+            num++;
             for (int i = 0; i < AllyList.Count; i++)
             {
                 
+                btlist[i].transform.localPosition = new Vector3(-490, 0, 0);
+               
                 btlist[i].transform.Translate(0, 35 * num, 0);
-                num -= 2;
+                
+                num -=2;
+                
             }
         }
         else
         {
             for (int i = 0; i < AllyList.Count; i++)
             {
+                btlist[i].transform.localPosition = new Vector3(-490, 0, 0);
                 btlist[i].transform.Translate(0, 70 * num, 0);
                 num--;
             }
@@ -68,8 +76,6 @@ public class C4_ButtonUI : MonoBehaviour
     
     public void done()
     {
-        
-        
         C4_GameManager.Instance.sceneMode.GetComponentInChildren<C4_PlayMode>().allyController.activeDone();
     }
    
