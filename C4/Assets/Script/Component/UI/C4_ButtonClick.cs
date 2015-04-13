@@ -23,7 +23,8 @@ public class C4_ButtonClick : MonoBehaviour {
 
     public void movetoselect()
     {
-        Camera.main.gameObject.GetComponent<C4_PlaySceneCamera>().moveToSomeObject();
+        Camera.main.GetComponentInParent<C4_PlaySceneCamera>().moveToSomeObject();
+        //Camera.main.gameObject.GetComponent<C4_PlaySceneCamera>().moveToSomeObject();
         //C4_GameManager.Instance.GetComponentInChildren<C4_PlaySceneCamera>().moveToSomeObject();
     }
 }

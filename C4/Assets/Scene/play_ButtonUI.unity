@@ -1410,94 +1410,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
---- !u!1 &1627948655
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 121854, guid: 46d00ed944bb94623a051de570be4c14, type: 2}
-  m_PrefabInternal: {fileID: 987770557}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1627948656}
-  - 20: {fileID: 1627948660}
-  - 92: {fileID: 1627948659}
-  - 124: {fileID: 1627948658}
-  - 81: {fileID: 1627948657}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1627948656
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 477950, guid: 46d00ed944bb94623a051de570be4c14, type: 2}
-  m_PrefabInternal: {fileID: 987770557}
-  m_GameObject: {fileID: 1627948655}
-  m_LocalRotation: {x: .57357651, y: 0, z: 0, w: .819151998}
-  m_LocalPosition: {x: 0, y: 255.399994, z: -96.1999969}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1945337114}
-  m_RootOrder: 0
---- !u!81 &1627948657
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 8120796, guid: 46d00ed944bb94623a051de570be4c14,
-    type: 2}
-  m_PrefabInternal: {fileID: 987770557}
-  m_GameObject: {fileID: 1627948655}
-  m_Enabled: 1
---- !u!124 &1627948658
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 12479014, guid: 46d00ed944bb94623a051de570be4c14,
-    type: 2}
-  m_PrefabInternal: {fileID: 987770557}
-  m_GameObject: {fileID: 1627948655}
-  m_Enabled: 1
---- !u!92 &1627948659
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 9201280, guid: 46d00ed944bb94623a051de570be4c14,
-    type: 2}
-  m_PrefabInternal: {fileID: 987770557}
-  m_GameObject: {fileID: 1627948655}
-  m_Enabled: 1
---- !u!20 &1627948660
-Camera:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 2026784, guid: 46d00ed944bb94623a051de570be4c14,
-    type: 2}
-  m_PrefabInternal: {fileID: 987770557}
-  m_GameObject: {fileID: 1627948655}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: .300000012
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 1
-  orthographic size: 60
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_HDR: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: .0219999999
 --- !u!1 &1738364852
 GameObject:
   m_ObjectHideFlags: 0
@@ -1768,50 +1680,13 @@ MonoBehaviour:
   CharacterButton: {fileID: 11448706, guid: 9fe8b80652f93784f92f2154c7b8bbf6, type: 2}
   AllyList: []
   btlist: []
-  count: 0
   buttonuicanvas: {fileID: 0}
---- !u!1 &1945337112
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 186504, guid: 46d00ed944bb94623a051de570be4c14, type: 2}
-  m_PrefabInternal: {fileID: 987770557}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1945337114}
-  - 114: {fileID: 1945337113}
-  m_Layer: 0
-  m_Name: Camera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!114 &1945337113
 MonoBehaviour:
-  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11493868, guid: 46d00ed944bb94623a051de570be4c14,
     type: 2}
   m_PrefabInternal: {fileID: 987770557}
-  m_GameObject: {fileID: 1945337112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 299592fc95a367946b05334cb0babe19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraZoom: 1e0000003c00000078000000
---- !u!4 &1945337114
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 434114, guid: 46d00ed944bb94623a051de570be4c14, type: 2}
-  m_PrefabInternal: {fileID: 987770557}
-  m_GameObject: {fileID: 1945337112}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1627948656}
-  m_Father: {fileID: 0}
-  m_RootOrder: 18
 --- !u!1 &2085306361
 GameObject:
   m_ObjectHideFlags: 0

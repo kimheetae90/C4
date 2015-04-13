@@ -30,7 +30,7 @@ GameObject:
   - 114: {fileID: 11448706}
   - 114: {fileID: 11403858}
   m_Layer: 0
-  m_Name: CharacterButton
+  m_Name: Characterbutton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
