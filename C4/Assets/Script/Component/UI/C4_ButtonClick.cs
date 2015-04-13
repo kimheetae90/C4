@@ -4,7 +4,7 @@ using System.Collections;
 public class C4_ButtonClick : MonoBehaviour {
 
 
-    GameObject myCharacter;
+    public GameObject myCharacter;
 	// Use this for initialization
 	void Start () {
 	
@@ -23,6 +23,8 @@ public class C4_ButtonClick : MonoBehaviour {
 
     public void movetoselect()
     {
-        C4_GameManager.Instance.GetComponentInChildren<C4_PlaySceneCamera>().moveToSomeObject();
+        Camera.main.GetComponentInParent<C4_PlaySceneCamera>().moveToSomeObject();
+        //Camera.main.gameObject.GetComponent<C4_PlaySceneCamera>().moveToSomeObject();
+        //C4_GameManager.Instance.GetComponentInChildren<C4_PlaySceneCamera>().moveToSomeObject();
     }
 }
