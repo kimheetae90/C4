@@ -61,6 +61,11 @@ public class C4_PlaySceneCamera : C4_Camera
         }
     }
 
+	protected override void zooming(InputData data)
+	{
+		Camera.main.orthographicSize += data.multiTapDistance/100f;
+	}
+
     public void moveToSomeObject()
     {
         toMove = C4_GameManager.Instance.sceneMode.getController(GameObjectType.Ally).GetComponent<C4_AllyController>().selectedAllyUnit.transform.position;

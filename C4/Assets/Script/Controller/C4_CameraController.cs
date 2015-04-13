@@ -8,8 +8,7 @@ public class C4_CameraController : C4_Controller
 		None,
         Focus,
 		Move,
-		ZoomIn,
-		ZoomOut,
+		Zooming,
         DepthChange
 	}
 
@@ -34,6 +33,10 @@ public class C4_CameraController : C4_Controller
 		else if(inputData.keyState == KeyState.Drag)
 		{
 			computeKeyDragState(ref inputData, out action);
+		}
+		else if(inputData.keyState == KeyState.MultiTap)
+		{
+			computeKeyMultiTapState(ref inputData, out action);
 		}
 		else
 		{
@@ -60,6 +63,11 @@ public class C4_CameraController : C4_Controller
             action = eCameraControllerActionState.Move;
         }
     }
+	
+	private void computeKeyMultiTapState(ref InputData inputData, out eCameraControllerActionState action)
+	{
+		action = eCameraControllerActionState.Zooming;
+	}
 
     private void ProcState(eCameraControllerActionState action, ref InputData inputData)
     {
@@ -70,9 +78,8 @@ public class C4_CameraController : C4_Controller
             case eCameraControllerActionState.Move:
                 notifyEvent("Move", inputData);
                 break;
-            case eCameraControllerActionState.ZoomIn:
-                break;
-            case eCameraControllerActionState.ZoomOut:
+		case eCameraControllerActionState.Zooming:
+				notifyEvent("Zooming", inputData);
                 break;
 		}
 	}

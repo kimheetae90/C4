@@ -37,8 +37,8 @@ public class C4_GameManager : MonoBehaviour {
     }
 
     public void StartPlayScene()
-    {
-        sceneMode = GameObject.Find("PlayMode").GetComponent<C4_SceneMode>();
+	{
 		objectManager.resetAllObjectData ();
+        sceneMode = GameObject.Find("PlayMode").GetComponent<C4_SceneMode>();
     }
 }

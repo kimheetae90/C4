@@ -23,6 +23,10 @@ public abstract class C4_Camera : C4_Object, C4_IControllerListener
         transform.Translate(inputData.clickPosition - inputData.dragPosition);
     }
     
+	protected virtual void zooming(InputData data)
+	{
+	}
+
     public void onEvent(string message, params object[] p)
     {
         switch (message)
@@ -33,6 +37,12 @@ public abstract class C4_Camera : C4_Object, C4_IControllerListener
                     cameraMove(data);
                 }
                 break;
+		case "Zooming":
+				{
+					InputData data = (InputData)p[0];
+					zooming (data);
+				}
+				break;
         }
     }
 }

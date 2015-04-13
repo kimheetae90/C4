@@ -27,8 +27,7 @@ public enum KeyState
 	Down,
     Up,
 	Drag,
-	MultiTaping,
-	MultiTapStart
+	MultiTap
 };
 
 class GameObjectDefine

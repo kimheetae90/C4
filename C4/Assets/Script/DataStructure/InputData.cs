@@ -23,9 +23,6 @@ public struct InputData
     //클릭,드래그 상태
     public KeyState keyState;
 	public KeyState preKeyState;
-	
-	public Vector2 multiClickPosition1;
-	public Vector2 multiClickPosition2;
 
 	public float multiTapDistance;
 

@@ -8,31 +8,25 @@ public class C4_ButtonUI : MonoBehaviour
 
     public Button CharacterButton;
       
-
     List<GameObject> AllyList;
     List<Button> btlist;
     
     Canvas buttonuicanvas;
 
-
     // Use this for initialization
-    void Start()
+    public void initButtonUI()
     {
-        
         buttonuicanvas = this.GetComponentInChildren<Canvas>();
         AllyList = C4_GameManager.Instance.sceneMode.GetComponentInChildren<C4_PlayMode>().ListAllyGameObject;
         btlist = new List<Button>();
-
+		Debug.Log(C4_GameManager.Instance.objectManager.getObjectCount());
         for (int i = 0; i < AllyList.Count; i++)
         {
             btlist.Add(Instantiate(CharacterButton));
             btlist[i].transform.SetParent(buttonuicanvas.transform);
             btlist[i].GetComponent<C4_AllyButton>().myCharacter = C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Ally).getObjectInList(i).gameObject;
         }
-
-       
         allocate();
-
 
     }
 

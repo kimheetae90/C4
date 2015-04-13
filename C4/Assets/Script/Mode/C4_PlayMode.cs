@@ -13,6 +13,8 @@ public class C4_PlayMode : C4_SceneMode
     public GameObject allyUnitGameObject1;   //나중에 게임오브젝트로부터 받을 것(List이어야함)
     public GameObject allyUnitGameObject2;   //나중에 게임오브젝트로부터 받을 것(List이어야함)
 
+	public C4_ButtonUI buttonUI;
+
     void Awake()
     {
 		C4_GameManager.Instance.StartPlayScene();
@@ -26,6 +28,7 @@ public class C4_PlayMode : C4_SceneMode
             instantiatePlayer(allyGameObject, initPos, transform.rotation);
             initPos.z += 20;
         }
+		buttonUI.initButtonUI ();
     }
 
     public override void Start()
