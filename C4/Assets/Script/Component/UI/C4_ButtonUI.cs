@@ -12,7 +12,7 @@ public class C4_ButtonUI : MonoBehaviour
     //public Button char4;
       
 
-    public List<GameObject> List;
+    public List<GameObject> AllyList;
     public List<Button> btlist;
     public int count;
 
@@ -23,7 +23,7 @@ public class C4_ButtonUI : MonoBehaviour
     {
 
         //playmode = GameObject.Find("PlayMode").GetComponent<C4_PlayMode>();
-        List = C4_GameManager.Instance.sceneMode.GetComponentInChildren<C4_PlayMode>().ListAllyGameObject;
+        AllyList = C4_GameManager.Instance.sceneMode.GetComponentInChildren<C4_PlayMode>().ListAllyGameObject;
         
         
 
@@ -41,10 +41,10 @@ public class C4_ButtonUI : MonoBehaviour
    
     void allocate()
     {
-        int num = List.Count / 2;
-        if (List.Count % 2 == 0)
+        int num = AllyList.Count / 2;
+        if (AllyList.Count % 2 == 0)
         {
-            for (int i = 0; i < List.Count; i++)
+            for (int i = 0; i < AllyList.Count; i++)
             {
                 btlist[i].transform.Translate(0, 35 * num, 0);
                 num -= 2;
@@ -52,7 +52,7 @@ public class C4_ButtonUI : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < List.Count; i++)
+            for (int i = 0; i < AllyList.Count; i++)
             {
                 btlist[i].transform.Translate(0, 70 * num, 0);
                 num--;
@@ -74,5 +74,11 @@ public class C4_ButtonUI : MonoBehaviour
         
         
         C4_GameManager.Instance.sceneMode.GetComponentInChildren<C4_PlayMode>().allyController.activeDone();
+    }
+    public void movetoselect()
+    {
+        //C4_GameManager.Instance.GetComponentInChildren<C4_PlaySceneCamera>().moveToSomeObject();
+        //Camera.main.GetComponent<C4_PlaySceneCamera>().moveToSomeObject();
+        Camera.main.gameObject.GetComponent<C4_PlaySceneCamera>().moveToSomeObject();
     }
 }
