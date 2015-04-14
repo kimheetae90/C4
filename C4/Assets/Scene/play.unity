@@ -87,7 +87,7 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &12758853
+--- !u!114 &12758853 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11426250, guid: 409c411f98103354d8349226a9dc7014,
     type: 2}
@@ -166,7 +166,7 @@ Transform:
   m_LocalScale: {x: 30, y: 1, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
 --- !u!114 &181645094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,7 +384,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b793c563b1cadd94d8c90de4cd4d6d93, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &380865681
+--- !u!114 &380865681 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11411974, guid: 9e9063d48a1171243934707ad443405f,
     type: 2}
@@ -624,7 +624,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
---- !u!114 &661504620
+--- !u!114 &661504620 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11453246, guid: 516af8c5b82e79642bfe4f8494a01dad,
     type: 2}
@@ -1447,7 +1447,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 000218507c1b55e4c9fd4a429fe82dbe, type: 2}
   m_IsPrefabParent: 0
---- !u!223 &1465897435
+--- !u!223 &1465897435 stripped
 Canvas:
   m_PrefabParentObject: {fileID: 22347100, guid: 000218507c1b55e4c9fd4a429fe82dbe,
     type: 2}
@@ -1758,7 +1758,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1694299716}
---- !u!114 &1769572096
+--- !u!114 &1769572096 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11415200, guid: 1640f07f9b0666740aef6722e2f2916b,
     type: 2}
@@ -1855,7 +1855,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!114 &2095715591
+--- !u!114 &2095715591 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11413162, guid: 9e9063d48a1171243934707ad443405f,
     type: 2}
