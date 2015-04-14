@@ -3,9 +3,9 @@ using System.Collections;
 
 public class C4_Ally : C4_Unit , C4_IControllerListener {
     
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
         C4_Object ally = GetComponent<C4_Object>();
         C4_GameManager.Instance.objectManager.registerObjectToAll(ref ally, GameObjectType.Ally, GameObjectInputType.SelectAbleObject | GameObjectInputType.ClickAbleObject);
     } 	

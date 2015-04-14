@@ -5,9 +5,9 @@ public class C4_Enemy : C4_Unit {
 
     bool sendGageFullMessageToController;
 
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
         sendGageFullMessageToController = false;
         C4_Object enemy = GetComponent<C4_Object>();
         C4_GameManager.Instance.objectManager.registerObjectToAll(ref enemy, GameObjectType.Enemy, GameObjectInputType.Invalid);

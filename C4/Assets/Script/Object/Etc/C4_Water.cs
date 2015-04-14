@@ -4,9 +4,9 @@ using System.Collections;
 public class C4_Water : C4_Ground
 {
 
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
         C4_Object me = this;
         C4_GameManager.Instance.objectManager.registerObjectToAll(ref me, GameObjectType.Ground, GameObjectInputType.CameraMoveAbleObject | GameObjectInputType.ToMoveAbleObject);
     }

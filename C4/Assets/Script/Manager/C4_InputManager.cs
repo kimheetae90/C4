@@ -12,11 +12,14 @@ public class C4_InputManager : MonoBehaviour
     InputData inputData;
     RaycastHit hit;
     C4_Object clickObject;
-    
+	float startMultiTapDictance;
+	bool isMultiTap;
 
     void Start()
     {
         inputData = new InputData();
+		startMultiTapDictance = 0;
+		isMultiTap = false;
     }
 
     void Update()
@@ -40,14 +43,24 @@ public class C4_InputManager : MonoBehaviour
             inputData.keyState = KeyState.Up;
         }
 
-        if (inputData.keyState == inputData.preKeyState && inputData.keyState == KeyState.Down)
-        {
-            inputData.keyState = KeyState.Drag;
-        }
-        else if (inputData.keyState == inputData.preKeyState && inputData.keyState == KeyState.Up)
-        {
-            inputData.keyState = KeyState.Sleep;
-        }
+		if (Input.touchCount >= 2) 
+		{
+			inputData.keyState = KeyState.MultiTap;
+			if(isMultiTap == false)
+			{
+				startMultiTapDictance = Vector2.Distance(Input.touches[0].position,Input.touches[1].position);
+				isMultiTap = true;
+			}
+		}
+
+        if (inputData.keyState == inputData.preKeyState && inputData.keyState == KeyState.Down) 
+		{
+			inputData.keyState = KeyState.Drag;
+		} 
+		else if (inputData.keyState == inputData.preKeyState && inputData.keyState == KeyState.Up) 
+		{
+			inputData.keyState = KeyState.Sleep;
+		}
     }
 
     private void procKeyState()
@@ -76,9 +89,19 @@ public class C4_InputManager : MonoBehaviour
                     setupDrag();
                     C4_GameManager.Instance.sceneMode.sendInputDataToController(inputData);
                     break;
-            }
+				case KeyState.MultiTap:
+					setupMultiTap();
+					C4_GameManager.Instance.sceneMode.sendInputDataToController(inputData);
+					break;
+			}
         }
     }
+
+	void setupMultiTap()
+	{
+		inputData.multiTapDistance = Vector2.Distance (Input.touches [0].position, Input.touches [1].position) - startMultiTapDictance;
+		startMultiTapDictance = inputData.multiTapDistance;
+	}
 
     void setupClickDown()
     {
@@ -105,5 +128,11 @@ public class C4_InputManager : MonoBehaviour
 
     void setupClickUp()
     {
+		if (isMultiTap) 
+		{
+			startMultiTapDictance = 0;
+			inputData.multiTapDistance = 0;
+			isMultiTap = false;
+		}
     }
 }

@@ -13,29 +13,34 @@ public class C4_PlayMode : C4_SceneMode
     public GameObject allyUnitGameObject1;   //나중에 게임오브젝트로부터 받을 것(List이어야함)
     public GameObject allyUnitGameObject2;   //나중에 게임오브젝트로부터 받을 것(List이어야함)
 
+	public C4_ButtonUI buttonUI;
+
     void Awake()
     {
 		C4_GameManager.Instance.StartPlayScene();
-		addSubObjectManagers();
-        ListAllyGameObject.Add(allyUnitGameObject1);
-        ListAllyGameObject.Add(allyUnitGameObject2);
-        Vector3 initPos = transform.position;
-
-        foreach (GameObject allyGameObject in ListAllyGameObject)
-        {
-            instantiatePlayer(allyGameObject, initPos, transform.rotation);
-            initPos.z += 20;
-        }
     }
 
     public override void Start()
     {
 		base.Start();
+		addSubObjectManagers();
+		
+		ListAllyGameObject.Add(allyUnitGameObject1);
+		ListAllyGameObject.Add(allyUnitGameObject2);
+		Vector3 initPos = transform.position;
+		
+		foreach (GameObject allyGameObject in ListAllyGameObject)
+		{
+			instantiatePlayer(allyGameObject, initPos, transform.rotation);
+			initPos.z += 20;
+		}
+		
 		addController(GameObjectType.Ally,allyController);
 		addController(GameObjectType.Enemy, enemyController);
 		addController (GameObjectType.Camera, cameraController);
 		addPlayerControllerListener();
 		addCameraControllerListener();
+		buttonUI.initButtonUI ();
 	}
 
     void instantiatePlayer(GameObject playerGameObject, Vector3 pos, Quaternion angle)
