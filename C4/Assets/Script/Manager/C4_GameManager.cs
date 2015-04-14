@@ -23,22 +23,17 @@ public class C4_GameManager : MonoBehaviour {
         }
     }   
 
-    [System.NonSerialized]
-    public C4_InputManager inputManager;
+	[System.NonSerialized]
+	public C4_InputManager inputManager;
     [System.NonSerialized]
     public C4_ObjectManager objectManager;
     [System.NonSerialized]
     public C4_SceneMode sceneMode;
 
-    public void Awake()
-    {
-        inputManager = GameObject.Find("InputManager").GetComponent<C4_InputManager>();
-        objectManager = GameObject.Find("ObjectManager").GetComponent<C4_ObjectManager>();
-    }
-
     public void StartPlayScene()
 	{
-		objectManager.resetAllObjectData ();
+		objectManager = GameObject.Find("InputManager").GetComponent<C4_ObjectManager>();
+		objectManager = GameObject.Find("ObjectManager").GetComponent<C4_ObjectManager>();
         sceneMode = GameObject.Find("PlayMode").GetComponent<C4_SceneMode>();
     }
 }

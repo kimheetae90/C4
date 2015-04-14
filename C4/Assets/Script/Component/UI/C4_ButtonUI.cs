@@ -19,7 +19,6 @@ public class C4_ButtonUI : MonoBehaviour
         buttonuicanvas = this.GetComponentInChildren<Canvas>();
         AllyList = C4_GameManager.Instance.sceneMode.GetComponentInChildren<C4_PlayMode>().ListAllyGameObject;
         btlist = new List<Button>();
-		Debug.Log(C4_GameManager.Instance.objectManager.getObjectCount());
         for (int i = 0; i < AllyList.Count; i++)
         {
             btlist.Add(Instantiate(CharacterButton));
@@ -42,7 +41,6 @@ public class C4_ButtonUI : MonoBehaviour
             num++;
             for (int i = 0; i < AllyList.Count; i++)
             {
-                
                 btlist[i].transform.localPosition = new Vector3(-490, 0, 0);
                
                 btlist[i].transform.Translate(0, 35 * num, 0);

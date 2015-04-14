@@ -6,9 +6,9 @@ public class C4_Missile : C4_SubObject
     C4_Move moveScript;
     Vector3 toMove;
 
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
         moveScript = GetComponent<C4_Move>();
         C4_Object missile = GetComponent<C4_Object>();
         C4_GameManager.Instance.objectManager.registerObjectToAll(ref missile, GameObjectType.Missile, GameObjectInputType.Invalid);

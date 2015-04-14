@@ -12,9 +12,9 @@ public abstract class C4_Unit : C4_Object
     protected C4_IntShot shotComponent;
     protected C4_ControllUnitMove moveControlComponent;
 
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
         moveControlComponent = GetComponent<C4_ControllUnitMove>();
         moveComponent = GetComponent<C4_StraightMove>();
         turnComponent = GetComponentInChildren<C4_Turn>();

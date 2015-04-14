@@ -6,8 +6,9 @@ public class C4_PlaySceneCamera : C4_Camera
     public int[] cameraZoom;
     int toCameraZoom;
 
-    protected override void Start()
+    protected override void Awake()
     {
+		base.Awake ();
         toCameraZoom = 1;
     }
 

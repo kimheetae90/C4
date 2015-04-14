@@ -18,27 +18,29 @@ public class C4_PlayMode : C4_SceneMode
     void Awake()
     {
 		C4_GameManager.Instance.StartPlayScene();
-		addSubObjectManagers();
-        ListAllyGameObject.Add(allyUnitGameObject1);
-        ListAllyGameObject.Add(allyUnitGameObject2);
-        Vector3 initPos = transform.position;
-
-        foreach (GameObject allyGameObject in ListAllyGameObject)
-        {
-            instantiatePlayer(allyGameObject, initPos, transform.rotation);
-            initPos.z += 20;
-        }
-		buttonUI.initButtonUI ();
     }
 
     public override void Start()
     {
 		base.Start();
+		addSubObjectManagers();
+		
+		ListAllyGameObject.Add(allyUnitGameObject1);
+		ListAllyGameObject.Add(allyUnitGameObject2);
+		Vector3 initPos = transform.position;
+		
+		foreach (GameObject allyGameObject in ListAllyGameObject)
+		{
+			instantiatePlayer(allyGameObject, initPos, transform.rotation);
+			initPos.z += 20;
+		}
+		
 		addController(GameObjectType.Ally,allyController);
 		addController(GameObjectType.Enemy, enemyController);
 		addController (GameObjectType.Camera, cameraController);
 		addPlayerControllerListener();
 		addCameraControllerListener();
+		buttonUI.initButtonUI ();
 	}
 
     void instantiatePlayer(GameObject playerGameObject, Vector3 pos, Quaternion angle)
