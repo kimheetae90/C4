@@ -64,7 +64,7 @@ public class C4_PlaySceneCamera : C4_Camera
 
 	protected override void zooming(InputData data)
 	{
-		Camera.main.orthographicSize += data.multiTapDistance/100f;
+		Camera.main.orthographicSize -= (data.multiTapDistance - data.preMultiTapDistance)/50;
 	}
 
     public void moveToSomeObject()

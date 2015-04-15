@@ -23,7 +23,8 @@ public struct InputData
     //클릭,드래그 상태
     public KeyState keyState;
 	public KeyState preKeyState;
-
+	
+	public float preMultiTapDistance;
 	public float multiTapDistance;
 
 	public void clear()
