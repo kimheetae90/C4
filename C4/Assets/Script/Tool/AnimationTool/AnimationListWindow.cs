@@ -31,6 +31,15 @@ public class AnimationListWindow : BaseAnimationWindow , IAnimationPropertyListe
 		if (property.Animator == null)
 			return;
 
+        if (parentWindow != null && parentWindow.bShow)
+        {
+            marginX = parentWindow.x + parentWindow.width + 5 + parentWindow.marginX;
+        }
+        else
+        {
+            marginX = 0;
+        }
+
 		int curX = x + marginX;
 		int curY = y + marginY;
 

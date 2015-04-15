@@ -1,37 +1,36 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AnimationEventEditor2 : BaseAnimationWindow {
+public class AnimationEventEditor2 : BaseAnimationWindow
+{
+    override public void Awake()
+    {
 
-	AnimationEditorProperty property;
+        base.Awake();
 
-	override public void Awake() {
+        property = new AnimationEditorProperty();
 
-		base.Awake();
+        AnimationListWindow animationListWindow = transform.gameObject.AddComponent<AnimationListWindow>();
+        AnimationEventListWindow animationEventListWindow = transform.gameObject.AddComponent<AnimationEventListWindow>();
+        AnimationEventPropertyWindow animationEventPropertyWindow = transform.gameObject.AddComponent<AnimationEventPropertyWindow>();
+        AnimationPlayerWindow animationPlayerWindow = transform.gameObject.AddComponent<AnimationPlayerWindow>();
 
-		property = new AnimationEditorProperty();
-	
-		AnimationListWindow animationListWindow = transform.gameObject.AddComponent<AnimationListWindow> ();
-		AnimationEventListWindow animationEventListWindow = transform.gameObject.AddComponent<AnimationEventListWindow> ();
-		AnimationEventPropertyWindow animationEventPropertyWindow = transform.gameObject.AddComponent<AnimationEventPropertyWindow> ();
-		AnimationPlayerWindow animationPlayerWindow = transform.gameObject.AddComponent<AnimationPlayerWindow> ();
+        animationListWindow.parentWindow = this;
+        animationEventListWindow.parentWindow = animationListWindow;
+        animationEventPropertyWindow.parentWindow = animationEventListWindow;
+        animationPlayerWindow.parentWindow = animationListWindow;
 
-		animationListWindow.parentWindow = this;
-		animationEventListWindow.parentWindow = animationListWindow;
-		animationEventPropertyWindow.parentWindow = animationEventListWindow;
-		animationPlayerWindow.parentWindow = animationListWindow;
+        property.AddPropertyListener(animationListWindow);
+        property.AddPropertyListener(animationEventListWindow);
+        property.AddPropertyListener(animationEventPropertyWindow);
+        property.AddPropertyListener(animationPlayerWindow);
 
-		property.AddPropertyListener (animationListWindow);
-		property.AddPropertyListener (animationEventListWindow);
-		property.AddPropertyListener (animationEventPropertyWindow);
-		property.AddPropertyListener (animationPlayerWindow);
+        Animator animator = GetComponent<Animator>();
+        property.Animator = animator;
+    }
 
-		Animator animator = GetComponent<Animator> ();
-		property.Animator = animator;
-	}
+    void OnGUI()
+    {
 
-	void OnGUI()
-	{
-
-	}
+    }
 }

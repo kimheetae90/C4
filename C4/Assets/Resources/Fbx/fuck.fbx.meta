@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 37cec564752146a49b15d2c30220ae72
-timeCreated: 1427815164
+timeCreated: 1429111017
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -113,7 +113,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: .784905553
+        functionName: EventMessage
+        data: '@@(1.000, 1.000, 1.000)@False@'
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
