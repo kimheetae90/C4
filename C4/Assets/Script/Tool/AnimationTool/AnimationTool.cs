@@ -128,7 +128,7 @@ public class AnimationTool : EditorWindow
 
             Animator anim = fbx.GetComponent<Animator>();
 
-            fbx.AddComponent(typeof(AnimationEventEditor2));
+            fbx.AddComponent(typeof(AnimationEventEditor));
             fbx.AddComponent(typeof(CustomAnimationEvent));
             
             anim.runtimeAnimatorController = controller;

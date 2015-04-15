@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
-
 public class CustomAnimationEvent : MonoBehaviour
 {
     // Use this for initialization
@@ -17,20 +15,23 @@ public class CustomAnimationEvent : MonoBehaviour
 
     }
 
-    void CreateParticle(string param)
+    virtual void CreateParticle(string param)
     {
 
     }
 
-    void EventMessage(string param)
+    virtual void EventMessage(string param)
     {
 
     }
 
-    void PlaySound(string param)
+    virtual void PlaySound(string param)
     {
 
     }
 
+    virtual void CreateColision(string param)
+    {
 
+    }
 }

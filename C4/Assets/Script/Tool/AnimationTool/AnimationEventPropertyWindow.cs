@@ -81,10 +81,11 @@ public class AnimationEventPropertyWindow : BaseAnimationWindow, IAnimationPrope
         bEditScale = false;
         bEditMsg = false;
 
-        cbEventType = new GUIContent[3];
+        cbEventType = new GUIContent[4];
         cbEventType[0] = new GUIContent("CreateParticle");
         cbEventType[1] = new GUIContent("EventMessage");
         cbEventType[2] = new GUIContent("PlaySound");
+        cbEventType[3] = new GUIContent("CreateColision");
     }
 
     void OnGUI()
