@@ -9,7 +9,7 @@ public enum GameObjectType
     Missile,
     Ground,
     UI,
-    Camera
+	Cam
 };
 
 public enum GameObjectInputType

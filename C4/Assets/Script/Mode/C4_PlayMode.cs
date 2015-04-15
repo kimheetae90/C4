@@ -37,7 +37,7 @@ public class C4_PlayMode : C4_SceneMode
 		
 		addController(GameObjectType.Ally,allyController);
 		addController(GameObjectType.Enemy, enemyController);
-		addController (GameObjectType.Camera, cameraController);
+		addController (GameObjectType.Cam, cameraController);
 		addPlayerControllerListener();
 		addCameraControllerListener();
 		buttonUI.initButtonUI ();

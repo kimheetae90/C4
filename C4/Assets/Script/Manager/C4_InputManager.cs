@@ -33,23 +33,30 @@ public class C4_InputManager : MonoBehaviour
     {
         inputData.preKeyState = inputData.keyState;
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            inputData.keyState = KeyState.Down;
-        }
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            inputData.keyState = KeyState.Up;
-        }
-
-		if (Input.touchCount >= 2) 
+        if (Input.touchCount >= 2) 
 		{
 			inputData.keyState = KeyState.MultiTap;
-			if(isMultiTap == false)
+			if (isMultiTap == false) 
 			{
-				startMultiTapDictance = Vector2.Distance(Input.touches[0].position,Input.touches[1].position);
+				startMultiTapDictance = Vector2.Distance (Input.touches [0].position, Input.touches [1].position);
 				isMultiTap = true;
+			}
+		} 
+		else 
+		{
+			if (Input.GetMouseButtonDown(0))
+			{
+				inputData.keyState = KeyState.Down;
+			}
+			
+			if (Input.GetMouseButtonUp(0))
+			{
+				inputData.keyState = KeyState.Up;
+			}
+			if(inputData.keyState == KeyState.MultiTap)
+			{
+				inputData.keyState = KeyState.Up;
+				isMultiTap = false;
 			}
 		}
 

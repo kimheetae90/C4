@@ -4,7 +4,7 @@ using System.Collections;
 /// <summary>
 ///  카메라
 /// </summary>
-public abstract class C4_Camera : MonoBehaviour, C4_IControllerListener
+public abstract class C4_Camera : C4_Object, C4_IControllerListener
 {
     protected float moveSpeed;
     protected Vector3 toMove;
@@ -12,6 +12,8 @@ public abstract class C4_Camera : MonoBehaviour, C4_IControllerListener
     protected virtual void Awake()
     {
 		moveSpeed = 0;
+		C4_Object me = this;
+		C4_GameManager.Instance.objectManager.registerObjectToAll(ref me, GameObjectType.Cam , GameObjectInputType.Invalid);
     }
 
     void cameraMove(InputData inputData)
