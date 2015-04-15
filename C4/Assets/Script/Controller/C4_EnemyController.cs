@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class C4_EnemyController : C4_Controller
 {
     Queue<C4_Enemy> QueFullGageEnemy;
-    C4_Enemy selectedEnemyUnit;
+    public C4_Enemy selectedEnemyUnit;
     bool isActing;
 
     public override void Awake()

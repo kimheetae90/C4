@@ -20,7 +20,7 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
 		{
 			aimUI.showUI (clickPosition);
 		} 
-		else 
+		else
 		{
 			activeDone();
 		}
