@@ -83,7 +83,6 @@ GameObject:
   - 222: {fileID: 22209732}
   - 114: {fileID: 11415074}
   - 114: {fileID: 11480758}
-  - 114: {fileID: 11421964}
   m_Layer: 0
   m_Name: AutomoveCancleButton
   m_TagString: Untagged
@@ -327,17 +326,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11421964
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 133664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d435657b6be252448a51a70d2057098, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11432494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -370,6 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cee157fcf0cbb84fb2b5ed3bee22f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cancelbt: {fileID: 11480758}
 --- !u!114 &11436218
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -533,7 +522,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11454516}
         m_MethodName: stopCompletely
         m_Mode: 1
         m_Arguments:
@@ -545,8 +534,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 11421964}
-        m_MethodName: hideButton
+      - m_Target: {fileID: 11433774}
+        m_MethodName: hideUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

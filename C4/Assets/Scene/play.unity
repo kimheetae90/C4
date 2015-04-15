@@ -295,7 +295,7 @@ Prefab:
     - target: {fileID: 11477398, guid: f45f0ccc22844a84593ed00428fdeacf, type: 2}
       propertyPath: allyUnitGameObject1
       value: 
-      objectReference: {fileID: 149832, guid: 94bcbab776bd11746892995b0aaa2536, type: 2}
+      objectReference: {fileID: 103564, guid: 94bcbab776bd11746892995b0aaa2536, type: 2}
     - target: {fileID: 11477398, guid: f45f0ccc22844a84593ed00428fdeacf, type: 2}
       propertyPath: allyUnitGameObject2
       value: 
@@ -1098,7 +1098,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1539309169}
   m_Script: {fileID: 11500000, guid: eeb95cebcf84a415b86b54ae0fb10834, type: 3}
-
 --- !u!114 &2095715591 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11413162, guid: 9e9063d48a1171243934707ad443405f,

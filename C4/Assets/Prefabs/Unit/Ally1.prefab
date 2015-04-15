@@ -65,7 +65,6 @@ GameObject:
   - 222: {fileID: 22283654}
   - 114: {fileID: 11430204}
   - 114: {fileID: 11453852}
-  - 114: {fileID: 11456364}
   m_Layer: 0
   m_Name: AutomoveCancleButton
   m_TagString: Untagged
@@ -409,6 +408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cee157fcf0cbb84fb2b5ed3bee22f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cancelbt: {fileID: 11453852}
 --- !u!114 &11430204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -567,8 +567,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 11456364}
-        m_MethodName: hideButton
+      - m_Target: {fileID: 11425044}
+        m_MethodName: hideUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -581,17 +581,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &11456364
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d435657b6be252448a51a70d2057098, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11460462
 MonoBehaviour:
   m_ObjectHideFlags: 1

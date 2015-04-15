@@ -36,7 +36,7 @@ public class C4_AutomoveCancleUI : MonoBehaviour {
     {
         yield return null;
 
-        
+
         if (Vector3.Distance(moveScript.toMove, unit.transform.position) < unitFeature.moveSpeed * 0.02f)
         {
             hideUI();

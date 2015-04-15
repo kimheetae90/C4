@@ -142,7 +142,6 @@ public class C4_AllyController : C4_Controller
                 break;
             case ePlayerControllerActionState.Move:
                 notifyEvent("Move", inputData.clickPosition);
-                selectedAllyUnit.gameObject.GetComponentInChildren<C4_AutomoveCancleUI>().startAutomoveCancleUI();
                 activeDone();
                 break;
             case ePlayerControllerActionState.Select:
