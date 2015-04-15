@@ -32,10 +32,10 @@ public class C4_Ally : C4_Unit , C4_IControllerListener {
                 break;
             case "Move":
                 {
-                    gameObject.GetComponentInChildren<C4_AutomoveCancleUI>().startAutomoveCancleUI();
                     Vector3 pos = (Vector3)p[0];
                     move(pos);
-                    turn(pos);
+					turn(pos);
+					gameObject.GetComponentInChildren<C4_AutomoveCancleUI>().startAutomoveCancleUI();
                 }
                 break;
             case "Shot":
