@@ -17,6 +17,7 @@ public class C4_StartAIBehave : MonoBehaviour {
     C4_UnitFeature unitFeature;
 	C4_EnemyAttackUI enemyAttackUI;
 	C4_Enemy enemy;
+	Vector3 allyPoint;
 
     void Start()
     {
@@ -96,20 +97,20 @@ public class C4_StartAIBehave : MonoBehaviour {
 
     void attackPlayer()
     {
-        Vector3 click = 2 * transform.position - shortestDistanceAlly.transform.position;
 		sendCompleteMessageToController();
 
-        enemy.turn(click);
-        enemy.shot(click);
-
+        enemy.turn(allyPoint);
+		enemy.shot(allyPoint);
+		
 		enemyAttackUI.hideUI ();
     }
 
 	void showAttackDirection()
 	{
+
 		if (unitFeature.gage >= unitFeature.fullGage) {
-			Vector3 click = 2 * transform.position - shortestDistanceAlly.transform.position;
-			enemyAttackUI.showUI (click);
+			allyPoint = 2 * transform.position - shortestDistanceAlly.transform.position;
+			enemyAttackUI.showUI ();
 		}
 	}
 

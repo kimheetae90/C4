@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkBound: 70
-  attackOrMovePercent: 40
+  attackOrMovePercent: 30
 --- !u!114 &11418854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -695,16 +695,16 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 121264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -4.76837158e-07}
+  m_LocalPosition: {x: 0, y: 0, z: -2.38418579e-07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22472360}
   m_RootOrder: 4
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -3.79999924}
+  m_AnchoredPosition: {x: 0, y: -2.99999952}
   m_SizeDelta: {x: 0, y: 2}
-  m_Pivot: {x: .5, y: .100000001}
+  m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
