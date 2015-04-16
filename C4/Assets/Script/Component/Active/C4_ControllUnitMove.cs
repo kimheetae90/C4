@@ -29,7 +29,7 @@ public class C4_ControllUnitMove : MonoBehaviour {
         moveScript.stopMoveToTarget();
     }
 
-    void stopCompletely()
+    public void stopCompletely()
     {
         stopBriefly();
         moveLength = 0;

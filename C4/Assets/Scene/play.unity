@@ -295,7 +295,7 @@ Prefab:
     - target: {fileID: 11477398, guid: f45f0ccc22844a84593ed00428fdeacf, type: 2}
       propertyPath: allyUnitGameObject1
       value: 
-      objectReference: {fileID: 149832, guid: 94bcbab776bd11746892995b0aaa2536, type: 2}
+      objectReference: {fileID: 103564, guid: 94bcbab776bd11746892995b0aaa2536, type: 2}
     - target: {fileID: 11477398, guid: f45f0ccc22844a84593ed00428fdeacf, type: 2}
       propertyPath: allyUnitGameObject2
       value: 
