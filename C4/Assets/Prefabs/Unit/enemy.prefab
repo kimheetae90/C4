@@ -47,6 +47,7 @@ GameObject:
   - 114: {fileID: 11476972}
   - 114: {fileID: 11469394}
   - 114: {fileID: 11439128}
+  - 114: {fileID: 11405744}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -88,7 +89,6 @@ GameObject:
   - 54: {fileID: 5423394}
   - 114: {fileID: 11483702}
   - 114: {fileID: 11459164}
-  - 114: {fileID: 11464938}
   m_Layer: 0
   m_Name: enemy
   m_TagString: Untagged
@@ -261,6 +261,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.72000003, y: 2.5999999, z: 4.19999981}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &11405744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed5f7bbc758cb4cd1a517efd90fcb80c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackUIImage: {fileID: 11479072}
 --- !u!114 &11406298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -272,8 +284,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 725c8d6ddf6e6554ca1314574fa7e4d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkBound: 70
-  attackOrMovePercent: 30
+  checkBound: 40
+  attackOrMovePercent: 20
 --- !u!114 &11418854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -394,18 +406,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cffc987a34556a46845121328c2cdb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11464938
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 139746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed5f7bbc758cb4cd1a517efd90fcb80c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackUIImage: {fileID: 11479072}
 --- !u!114 &11467148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -695,15 +695,15 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 121264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2.38418579e-07}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22472360}
   m_RootOrder: 4
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -2.99999952}
-  m_SizeDelta: {x: 0, y: 2}
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: 5}
+  m_SizeDelta: {x: 5, y: 5}
   m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000
 Prefab:

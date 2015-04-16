@@ -23,7 +23,7 @@ public class C4_StartAIBehave : MonoBehaviour {
     {
         unitFeature = GetComponent<C4_UnitFeature>();
         enemy = GetComponent<C4_Enemy>();
-		enemyAttackUI = GetComponent<C4_EnemyAttackUI> ();
+		enemyAttackUI = GetComponentInChildren<C4_EnemyAttackUI> ();
     }
 
     public void startBehave()
