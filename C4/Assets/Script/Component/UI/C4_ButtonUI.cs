@@ -46,7 +46,7 @@ public class C4_ButtonUI : MonoBehaviour
             for (int i = 0; i < Allynum; i++)
             {
 
-                btlist[i].transform.localPosition = new Vector3(-buttonuicanvas.pixelRect.width * 0.56f, 0, 0);
+                btlist[i].transform.localPosition = new Vector3(-buttonuicanvas.pixelRect.width * 0.44f, 0, 0);
                 btlist[i].transform.Translate(0, 35 * num, 0);
                 num -= 2;
 
@@ -56,7 +56,7 @@ public class C4_ButtonUI : MonoBehaviour
         {
             for (int i = 0; i < Allynum; i++)
             {
-                btlist[i].transform.localPosition = new Vector3(-buttonuicanvas.pixelRect.width * 0.56f, 0, 0);
+                btlist[i].transform.localPosition = new Vector3(-buttonuicanvas.pixelRect.width * 0.44f, 0, 0);
                 btlist[i].transform.Translate(0, 70 * num, 0);
                 num--;
             }

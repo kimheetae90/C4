@@ -5,11 +5,16 @@ public class C4_PlaySceneCamera : C4_Camera
 {
     public int[] cameraZoom;
     int toCameraZoom;
+	
+	bool isBackCameraMaxSizeCoroutin;
+	bool isBackCameraMinSizeCoroutin;
 
     protected override void Awake()
     {
 		base.Awake ();
-        toCameraZoom = 1;
+		toCameraZoom = 1;
+		isBackCameraMaxSizeCoroutin = false;
+		isBackCameraMinSizeCoroutin = false;
     }
 
     public void cameraZoomInOneLevel()
@@ -64,7 +69,58 @@ public class C4_PlaySceneCamera : C4_Camera
 
 	protected override void zooming(InputData data)
 	{
-		Camera.main.orthographicSize += data.multiTapDistance/100f;
+		if (Camera.main.orthographicSize < cameraZoom [cameraZoom.Length - 1] + 5 && Camera.main.orthographicSize > cameraZoom [0] - 5) 
+		{
+			Camera.main.orthographicSize -= (data.multiTapDistance - data.preMultiTapDistance) / 30;
+		}
+		else if (Camera.main.orthographicSize > cameraZoom [cameraZoom.Length - 1])
+		{
+			if(!isBackCameraMaxSizeCoroutin)
+			{
+				isBackCameraMaxSizeCoroutin = true;
+				StartCoroutine("backCameraSizeToMax");
+			}
+		}
+		else if(Camera.main.orthographicSize < cameraZoom [0]) 
+		{
+			if(!isBackCameraMinSizeCoroutin)
+			{
+				isBackCameraMinSizeCoroutin = true;
+				StartCoroutine("backCameraSizeToMin");
+			}
+		}
+	}
+
+	IEnumerator backCameraSizeToMax()
+	{
+		yield return null;
+
+		if (Camera.main.orthographicSize > cameraZoom [cameraZoom.Length - 1]) 
+		{
+			Camera.main.orthographicSize -= 1f;
+			StartCoroutine("backCameraSizeToMax");
+		}
+		else
+		{
+			isBackCameraMaxSizeCoroutin = false;
+			StopCoroutine("backCameraSizeToMax");
+		}
+	}
+
+	IEnumerator backCameraSizeToMin()
+	{
+		yield return null;
+
+		if (Camera.main.orthographicSize < cameraZoom [0]) 
+		{
+			Camera.main.orthographicSize += 1f;
+			StartCoroutine("backCameraSizeToMin");
+		}
+		else 
+		{
+			isBackCameraMinSizeCoroutin = false;
+			StopCoroutine("backCameraSizeToMin");
+		}
 	}
 
     public void moveToSomeObject()
