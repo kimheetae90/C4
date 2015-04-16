@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 37cec564752146a49b15d2c30220ae72
-timeCreated: 1429111333
+timeCreated: 1429186644
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -114,7 +114,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: .226415053
+      - time: .344150901
         functionName: CreateColision
         data: waist@/data/fbx/test.prefap@(1.000, 1.000, 1.000)@False@test
         objectReferenceParameter: {instanceID: 0}

@@ -22,8 +22,7 @@ public class AnimationEventPropertyWindow : BaseAnimationWindow, IAnimationPrope
     bool bEditEventType;
     int curEventTypeIndex = 0;
 
-  
-
+ 
     bool bEditEventTime;
     string editEventTime;
 

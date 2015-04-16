@@ -15,22 +15,22 @@ public class CustomAnimationEvent : MonoBehaviour
 
     }
 
-    virtual void CreateParticle(string param)
+    protected virtual void CreateParticle(string param)
     {
 
     }
 
-    virtual void EventMessage(string param)
+    protected virtual void EventMessage(string param)
     {
 
     }
 
-    virtual void PlaySound(string param)
+    protected virtual void PlaySound(string param)
     {
 
     }
 
-    virtual void CreateColision(string param)
+    protected virtual void CreateColision(string param)
     {
 
     }
