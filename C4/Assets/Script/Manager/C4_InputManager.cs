@@ -12,12 +12,10 @@ public class C4_InputManager : MonoBehaviour
     InputData inputData;
     RaycastHit hit;
     C4_Object clickObject;
-	float startMultiTapDictance;
 
     void Start()
     {
         inputData = new InputData();
-		startMultiTapDictance = 0;
     }
 
     void Update()
@@ -126,7 +124,7 @@ public class C4_InputManager : MonoBehaviour
 
     void setupClickUp()
     {
-		startMultiTapDictance = 0;
 		inputData.multiTapDistance = 0;
+		inputData.preMultiTapDistance = 0;
     }
 }

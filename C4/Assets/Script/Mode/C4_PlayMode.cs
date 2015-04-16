@@ -12,7 +12,7 @@ public class C4_PlayMode : C4_SceneMode
     public List<GameObject> ListAllyGameObject;
     public GameObject allyUnitGameObject1;   //나중에 게임오브젝트로부터 받을 것(List이어야함)
     public GameObject allyUnitGameObject2;   //나중에 게임오브젝트로부터 받을 것(List이어야함)
-
+	public C4_EnemyAttackUI enemyAttackUI;
 	public C4_ButtonUI buttonUI;
 
     void Awake()

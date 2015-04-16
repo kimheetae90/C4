@@ -15,12 +15,15 @@ public class C4_StartAIBehave : MonoBehaviour {
     double distanceWithAlly;
     C4_Ally shortestDistanceAlly;
     C4_UnitFeature unitFeature;
-    C4_Enemy enemy;
+	C4_EnemyAttackUI enemyAttackUI;
+	C4_Enemy enemy;
+	Vector3 allyPoint;
 
     void Start()
     {
         unitFeature = GetComponent<C4_UnitFeature>();
         enemy = GetComponent<C4_Enemy>();
+		enemyAttackUI = GetComponentInChildren<C4_EnemyAttackUI> ();
     }
 
     public void startBehave()
@@ -64,7 +67,8 @@ public class C4_StartAIBehave : MonoBehaviour {
                 break;
 
             case EnemyAction.AttackSuccess:
-                Invoke("attackPlayer", 1f);
+				showAttackDirection();
+                Invoke("attackPlayer", 1.5f);
                 break;
         }
     }
@@ -93,12 +97,23 @@ public class C4_StartAIBehave : MonoBehaviour {
 
     void attackPlayer()
     {
-        Vector3 click = 2 * transform.position - shortestDistanceAlly.transform.position;
+		sendCompleteMessageToController();
 
-        enemy.turn(click);
-        enemy.shot(click);
-        sendCompleteMessageToController();
+        enemy.turn(allyPoint);
+		enemy.shot(allyPoint);
+		
+		enemyAttackUI.hideUI ();
     }
+
+	void showAttackDirection()
+	{
+
+		if (unitFeature.gage >= unitFeature.fullGage) {
+			allyPoint = 2 * transform.position - shortestDistanceAlly.transform.position;
+			enemyAttackUI.showUI ();
+		}
+	}
+
 
     void avoid()
     {
