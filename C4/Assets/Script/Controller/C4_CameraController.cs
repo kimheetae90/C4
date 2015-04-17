@@ -74,6 +74,7 @@ public class C4_CameraController : C4_Controller
         switch (action)
         {
             case eCameraControllerActionState.None:
+				notifyEvent("None",inputData);
                 break;
             case eCameraControllerActionState.Move:
                 notifyEvent("Move", inputData);

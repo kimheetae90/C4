@@ -38,6 +38,10 @@ public class C4_InputManager : MonoBehaviour
 				inputData.preMultiTapDistance = inputData.multiTapDistance;
 				inputData.keyState = KeyState.MultiTap;
 			}
+			else if(Input.GetTouch(1).phase == TouchPhase.Ended)
+			{
+				inputData.keyState = KeyState.Up;
+			}
 		} 
 		else 
 		{
