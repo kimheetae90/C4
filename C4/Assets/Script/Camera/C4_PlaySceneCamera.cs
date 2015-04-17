@@ -73,7 +73,11 @@ public class C4_PlaySceneCamera : C4_Camera
 		{
 			Camera.main.orthographicSize -= (data.multiTapDistance - data.preMultiTapDistance) / 30;
 		}
-		else if (Camera.main.orthographicSize > cameraZoom [cameraZoom.Length - 1])
+	}
+
+	protected override void returnToFixedZoomSize()
+	{
+		if (Camera.main.orthographicSize > cameraZoom [cameraZoom.Length - 1])
 		{
 			if(!isBackCameraMaxSizeCoroutin)
 			{
