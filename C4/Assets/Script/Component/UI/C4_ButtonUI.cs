@@ -23,7 +23,7 @@ public class C4_ButtonUI : MonoBehaviour
         for (int i = 0; i < Allynum; i++)
         {
             btlist.Add(Instantiate(CharacterButton));
-            btlist[i].transform.SetParent(buttonuicanvas.transform);
+            btlist[i].transform.SetParent(buttonuicanvas.transform,false);
             btlist[i].GetComponent<C4_AllyButton>().myCharacter = C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Ally).getObjectInList(i).gameObject;
         }
         allocate();
@@ -42,8 +42,6 @@ public class C4_ButtonUI : MonoBehaviour
                 num++;
             for (int i = 0; i < Allynum; i++)
             {
-
-                btlist[i].transform.localPosition = new Vector3(-buttonuicanvas.pixelRect.width * 0.56f, 0, 0);
                 btlist[i].transform.Translate(0, 35 * num, 0);
                 num -= 2;
 
@@ -53,7 +51,6 @@ public class C4_ButtonUI : MonoBehaviour
         {
             for (int i = 0; i < Allynum; i++)
             {
-                btlist[i].transform.localPosition = new Vector3(-buttonuicanvas.pixelRect.width * 0.56f, 0, 0);
                 btlist[i].transform.Translate(0, 70 * num, 0);
                 num--;
             }

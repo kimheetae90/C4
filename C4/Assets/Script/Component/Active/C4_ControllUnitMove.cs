@@ -33,6 +33,7 @@ public class C4_ControllUnitMove : MonoBehaviour {
     {
         stopBriefly();
         moveLength = 0;
+		moveScript.toMove = transform.position;
         startPosition = transform.position;
         StopCoroutine("checkGageAndControllMove");
     }
