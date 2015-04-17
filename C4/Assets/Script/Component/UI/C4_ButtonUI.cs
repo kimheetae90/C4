@@ -29,6 +29,7 @@ public class C4_ButtonUI : MonoBehaviour
             btlist[i].GetComponent<C4_AllyButton>().myCharacter = C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Ally).getObjectInList(i).gameObject;
         }
         ButtonHeight = btlist[0].image.rectTransform.rect.height;
+        Debug.Log(ButtonHeight);
 
         allocate();
 
@@ -46,7 +47,7 @@ public class C4_ButtonUI : MonoBehaviour
                 num++;
             for (int i = 0; i < Allynum; i++)
             {
-                btlist[i].transform.Translate(0, ButtonHeight*0.6f * num, 0);
+                btlist[i].transform.Translate(0, ButtonHeight * num, 0);
                 num -= 2;
 
             }
@@ -55,7 +56,7 @@ public class C4_ButtonUI : MonoBehaviour
         {
             for (int i = 0; i < Allynum; i++)
             {
-                btlist[i].transform.Translate(0, ButtonHeight*1.2f * num, 0);
+                btlist[i].transform.Translate(0, ButtonHeight * num, 0);
                 num--;
             }
         }
