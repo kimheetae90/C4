@@ -17,16 +17,19 @@ public class CustomAnimationEventUtil
 {
     static public CustomAnimationEventParam buildParam(AnimationEvent animEvent)
     {
-        CustomAnimationEventParam param = new CustomAnimationEventParam();
+        return buildParam(animEvent.stringParameter);
+    }
 
-        string strParam = animEvent.stringParameter;
+    static public CustomAnimationEventParam buildParam(string strParam)
+    {
+        CustomAnimationEventParam param = new CustomAnimationEventParam();
 
         string[] strParams = strParam.Split('@');
 
         for (int i = 0; i < strParams.Length; ++i)
         {
             eCustomEventUtilParamType type = (eCustomEventUtilParamType)i;
-            switch(type)
+            switch (type)
             {
                 case eCustomEventUtilParamType.eCustomEventUtilParamType_BONE:
                     param.boneName = strParams[i];
@@ -41,11 +44,10 @@ public class CustomAnimationEventUtil
                     param.followBone = Convert.ToBoolean(strParams[i]);
                     break;
                 case eCustomEventUtilParamType.eCustomEventUtilParamType_MSG:
-                    param.msg = strParams[i];                    
+                    param.msg = strParams[i];
                     break;
             }
         }
-
         return param;
     }
 

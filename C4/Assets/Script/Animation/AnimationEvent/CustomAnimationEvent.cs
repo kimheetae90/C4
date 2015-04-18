@@ -1,12 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class CustomAnimationEvent : MonoBehaviour
 {
     // Use this for initialization
+    Dictionary<string, Transform> dicBones;
+
     void Start()
     {
+        dicBones = new Dictionary<string, Transform>();
+        Transform t = this.transform.FindChild("root");
+        if (t == null)
+        {
+            Debug.LogError("Bone Object Not Found");
+        }
+        dicBones.Add(t.name, t);
 
+        Utils.IterateChildrenUtil.IterateChildren(t.gameObject, delegate(GameObject go) { dicBones.Add(go.name, go.transform); }, true);
     }
 
     // Update is called once per frame
@@ -15,22 +26,51 @@ public class CustomAnimationEvent : MonoBehaviour
 
     }
 
-    protected virtual void CreateParticle(string param)
+    protected virtual void CreateParticle(string strParam)
+    {
+        CustomAnimationEventParam eventParam = CustomAnimationEventUtil.buildParam(strParam);
+
+        GameObject ps = null;
+
+        if (eventParam.res == "") return;
+
+        GameObject o = (GameObject)Resources.Load(eventParam.res, typeof(GameObject));
+
+        ps = Instantiate(o, this.transform.position, Quaternion.identity) as GameObject;
+
+        Transform bone = dicBones[eventParam.boneName];
+
+        if (bone != null)
+        {
+            if(eventParam.followBone)
+            {
+                ps.transform.position = bone.position;
+
+                ParticleWrapper pw = ps.GetComponent<ParticleWrapper>();
+       
+                if(pw)
+                {
+                    pw.setFollowObject(bone);
+                }
+            }
+            else
+            {
+                ps.transform.position = bone.position;
+            }
+        }
+    }
+
+    protected virtual void EventMessage(string strParam)
     {
 
     }
 
-    protected virtual void EventMessage(string param)
+    protected virtual void PlaySound(string strParam)
     {
 
     }
 
-    protected virtual void PlaySound(string param)
-    {
-
-    }
-
-    protected virtual void CreateColision(string param)
+    protected virtual void CreateColision(string strParam)
     {
 
     }

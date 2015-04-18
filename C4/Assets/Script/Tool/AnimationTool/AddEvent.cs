@@ -184,6 +184,12 @@ public class AddEvent {
 			{
 				AnimationEvent[] sourceAnimEvents = AnimationUtility.GetAnimationEvents(sourceAnimClip);
 
+                //¡§±‘»≠
+                foreach (var animEvent in sourceAnimEvents)
+                {
+                    animEvent.time = animEvent.time / sourceAnimClip.length;
+                }
+                   
 				clipInfoProperties.SetEvents(sourceAnimEvents);
 				serializedObject.ApplyModifiedProperties();
 				AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(targetAnimClip));

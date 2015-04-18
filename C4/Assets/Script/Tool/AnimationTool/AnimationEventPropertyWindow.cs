@@ -180,8 +180,9 @@ public class AnimationEventPropertyWindow : BaseAnimationWindow, IAnimationPrope
     {
         if (GUILayout.Button("Save", GUILayout.Width(width / 5 * 4)))
         {
-            AnimEvent.time = AnimEvent.time / AnimClipInfo.clip.length;
+                 
             AnimEvent.stringParameter = CustomAnimationEventUtil.buildString(animParam);
+
             AnimationUtility.SetAnimationEvents(AnimClipInfo.clip, AnimEventList.ToArray());
             AddEvent.DoAddEventImportedClip(AnimClipInfo.clip, AnimClipInfo.clip);
             bShow = false;
@@ -458,6 +459,7 @@ public class AnimationEventPropertyWindow : BaseAnimationWindow, IAnimationPrope
     {
         Bones.Clear();
         Transform t = this.transform.FindChild("root");
+
         if (t == null)
         {
             throw new ToolException("Doesn't have root bone");
