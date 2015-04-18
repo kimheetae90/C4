@@ -4,12 +4,12 @@ using System.Collections;
 public enum GameObjectType
 {
     Invalid,
-    Player,
+    Ally,
     Enemy,
     Missile,
     Ground,
     UI,
-    Camera
+	Cam
 };
 
 public enum GameObjectInputType
@@ -18,6 +18,7 @@ public enum GameObjectInputType
     ClickAbleObject = 0x0001,
     SelectAbleObject = 0x0001 << 1,
     CameraMoveAbleObject = 0x0001 << 2,
+    ToMoveAbleObject = 0x0001 << 3
 };
 
 public enum KeyState
@@ -26,14 +27,7 @@ public enum KeyState
 	Down,
     Up,
 	Drag,
-};
-
-
-public enum EnemyAction
-{
-    Invalid,
-    Attack,
-    Move
+	MultiTap
 };
 
 class GameObjectDefine

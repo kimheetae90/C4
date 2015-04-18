@@ -3,7 +3,7 @@ using System.Collections;
 
 public class C4_StraightShot : MonoBehaviour, C4_IntShot {
 
-    C4_BoatFeature boatFeature;
+    C4_UnitFeature unitFeature;
     C4_Missile missile;
     GameObject missileGameObejct;
 
@@ -12,8 +12,8 @@ public class C4_StraightShot : MonoBehaviour, C4_IntShot {
 
 	// Use this for initialization
 	void Start () {
-        boatFeature = GetComponent<C4_BoatFeature>();
-        missileGameObejct = boatFeature.missile;
+        unitFeature = GetComponent<C4_UnitFeature>();
+        missileGameObejct = unitFeature.missile;
         missile = missileGameObejct.GetComponent<C4_Missile>();
 	}
 
@@ -28,6 +28,5 @@ public class C4_StraightShot : MonoBehaviour, C4_IntShot {
         missileToMove.y = 0;
         missileGameObejct.transform.GetChild(0).transform.gameObject.transform.rotation = Quaternion.LookRotation(shotDirection);
         missile.startMove(missileToMove);
-        boatFeature.gageDown(boatFeature.needGageStackToShot);
     }
 }

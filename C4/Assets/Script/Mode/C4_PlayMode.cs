@@ -1,63 +1,72 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 //PlayManager
 public class C4_PlayMode : C4_SceneMode
 {
-    public C4_PlayerController playerController;
+    public C4_AllyController allyController;
     public C4_EnemyController enemyController;
 	public C4_CameraController cameraController;
 
     public C4_PlayerUI playerUI;
-    public GameObject playerBoatGameObject;   //나중에 게임오브젝트로부터 받을 것(List이어야함)
+    public List<GameObject> ListAllyGameObject;
+    public GameObject allyUnitGameObject1;   //나중에 게임오브젝트로부터 받을 것(List이어야함)
+    public GameObject allyUnitGameObject2;   //나중에 게임오브젝트로부터 받을 것(List이어야함)
+	public C4_EnemyAttackUI enemyAttackUI;
+	public C4_ButtonUI buttonUI;
 
     void Awake()
     {
-        C4_ManagerMaster.Instance.StartPlayScene();
+		C4_GameManager.Instance.StartPlayScene();
     }
 
     public override void Start()
     {
-        base.Start();
-     
-        C4_ManagerMaster.Instance.objectManager.resetAllObjectData();
-        addPlaySceneManager();
-
-        Vector3 initPos = transform.position;
-        initPos.z -= 15;
-        instantiatePlayer(playerBoatGameObject, initPos, transform.rotation);
-        initPos.z += 15;
-        instantiatePlayer(playerBoatGameObject, initPos, transform.rotation);
-        addController(GameObjectType.Player,playerController);
-        addController(GameObjectType.Enemy, enemyController);
-		addController (GameObjectType.Camera, cameraController);
-        addPlayerControllerListener();
-        addCameraControllerListener();
+		base.Start();
+		addSubObjectManagers();
+		
+		ListAllyGameObject.Add(allyUnitGameObject1);
+		ListAllyGameObject.Add(allyUnitGameObject2);
+		Vector3 initPos = transform.position;
+		
+		foreach (GameObject allyGameObject in ListAllyGameObject)
+		{
+			instantiatePlayer(allyGameObject, initPos, transform.rotation);
+			initPos.z += 20;
+		}
+		
+		addController(GameObjectType.Ally,allyController);
+		addController(GameObjectType.Enemy, enemyController);
+		addController (GameObjectType.Cam, cameraController);
+		addPlayerControllerListener();
+		addCameraControllerListener();
+		buttonUI.initButtonUI ();
 	}
 
     void instantiatePlayer(GameObject playerGameObject, Vector3 pos, Quaternion angle)
     {
         GameObject initPlayerGameObject = Instantiate(playerGameObject, pos, angle) as GameObject;
         Vector3 missileInitPosition = new Vector3(transform.position.x, transform.position.y - 20, transform.position.z);
-        GameObject initMissileGameObject = Instantiate(initPlayerGameObject.GetComponent<C4_BoatFeature>().missile, missileInitPosition, transform.rotation) as GameObject;
-        initPlayerGameObject.GetComponent<C4_BoatFeature>().missile = initMissileGameObject;
+        GameObject initMissileGameObject = Instantiate(initPlayerGameObject.GetComponent<C4_UnitFeature>().missile, missileInitPosition, transform.rotation) as GameObject;
+        initPlayerGameObject.GetComponent<C4_UnitFeature>().missile = initMissileGameObject;
     }
 
-    void addPlaySceneManager()
+    void addSubObjectManagers()
     {
-        C4_ObjectManager objectManager = C4_ManagerMaster.Instance.objectManager;
-        C4_PlayerObjectManager playerObjectManager = GameObject.Find("PlayerObjectManager").GetComponent<C4_PlayerObjectManager>();
+        C4_ObjectManager objectManager = C4_GameManager.Instance.objectManager;
+        C4_AllyObjectManager allyObjectManager = GameObject.Find("AllyObjectManager").GetComponent<C4_AllyObjectManager>();
         C4_EnemyObjectManager enemyObjectManager = GameObject.Find("EnemyObjectManager").GetComponent<C4_EnemyObjectManager>();
         C4_MissileObjectManager missileObjectManager = GameObject.Find("MissileObjectManager").GetComponent<C4_MissileObjectManager>();
-        objectManager.addSubObjectManager(GameObjectType.Player, playerObjectManager);
+        objectManager.addSubObjectManager(GameObjectType.Ally, allyObjectManager);
         objectManager.addSubObjectManager(GameObjectType.Enemy, enemyObjectManager);
         objectManager.addSubObjectManager(GameObjectType.Missile, missileObjectManager);
     }
 
     private void addPlayerControllerListener()
     {
-        if (playerUI != null && playerController != null)
+        if (playerUI != null && allyController != null)
         {
-            playerController.addListener(playerUI as C4_IControllerListener);
+            allyController.addListener(playerUI as C4_IControllerListener);
         }
     }
 

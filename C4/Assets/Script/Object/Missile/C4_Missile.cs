@@ -3,14 +3,15 @@ using System.Collections;
 
 public class C4_Missile : C4_SubObject
 {
-    public C4_StraightMove moveScript;
+    C4_Move moveScript;
     Vector3 toMove;
 
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
+        moveScript = GetComponent<C4_Move>();
         C4_Object missile = GetComponent<C4_Object>();
-        C4_ManagerMaster.Instance.objectManager.registerObjectToAll(ref missile, GameObjectType.Missile, GameObjectInputType.Invalid);
+        C4_GameManager.Instance.objectManager.registerObjectToAll(ref missile, GameObjectType.Missile, GameObjectInputType.Invalid);
         gameObject.SetActive(false);
     }
 
@@ -24,6 +25,6 @@ public class C4_Missile : C4_SubObject
     void startMoveScript()
     {
         GetComponent<C4_MovingCheckAndSetActive>().startChecking();
-        moveScript.setMoving(toMove);
+        moveScript.startMove(toMove);
     }
 }

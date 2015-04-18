@@ -11,7 +11,7 @@ using System.Collections;
 public class C4_MissileFeature : MonoBehaviour
 {
     public int power;
-    public int moveSpeed;
+    public float moveSpeed;
 
     void Start()
     {

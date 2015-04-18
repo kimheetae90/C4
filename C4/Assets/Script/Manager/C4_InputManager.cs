@@ -28,25 +28,40 @@ public class C4_InputManager : MonoBehaviour
     private void updateKeyState()
     {
         inputData.preKeyState = inputData.keyState;
+		inputData.preMultiTapDistance = inputData.multiTapDistance;
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            inputData.keyState = KeyState.Down;
-        }
+		if (Input.touchCount >= 2) 
+		{
+			if(Input.GetTouch(1).phase == TouchPhase.Began)
+			{
+				inputData.multiTapDistance = Vector2.Distance(Input.touches[0].position,Input.touches[1].position);
+				inputData.preMultiTapDistance = inputData.multiTapDistance;
+				inputData.keyState = KeyState.MultiTap;
+			}
+			else if(Input.GetTouch(1).phase == TouchPhase.Ended)
+			{
+				inputData.keyState = KeyState.Up;
+			}
+		} 
+		else 
+		{
+			if (Input.GetMouseButtonDown(0)) {
+				inputData.keyState = KeyState.Down;
+			}
+			if (Input.GetMouseButtonUp(0)) {
+				inputData.keyState = KeyState.Up;
+			}
+		}
 
-        if (Input.GetMouseButtonUp(0))
-        {
-            inputData.keyState = KeyState.Up;
-        }
-
-        if (inputData.keyState == inputData.preKeyState && inputData.keyState == KeyState.Down)
-        {
-            inputData.keyState = KeyState.Drag;
-        }
-        else if (inputData.keyState == inputData.preKeyState && inputData.keyState == KeyState.Up)
-        {
-            inputData.keyState = KeyState.Sleep;
-        }
+     
+		if (inputData.keyState == inputData.preKeyState && inputData.keyState == KeyState.Down) 
+		{
+			inputData.keyState = KeyState.Drag;
+		} 
+		else if (inputData.keyState == inputData.preKeyState && inputData.keyState == KeyState.Up) 
+		{
+			inputData.keyState = KeyState.Sleep;
+		}
     }
 
     private void procKeyState()
@@ -58,11 +73,11 @@ public class C4_InputManager : MonoBehaviour
             {
                 case KeyState.Up:
                     setupClickUp();
-                    C4_ManagerMaster.Instance.sceneMode.sendInputDataToController(inputData);
+                    C4_GameManager.Instance.sceneMode.sendInputDataToController(inputData);
                     break;
                 case KeyState.Down:
                     setupClickDown();
-                    C4_ManagerMaster.Instance.sceneMode.sendInputDataToController(inputData);
+                    C4_GameManager.Instance.sceneMode.sendInputDataToController(inputData);
                     break;
             }
         }
@@ -73,11 +88,20 @@ public class C4_InputManager : MonoBehaviour
             {
                 case KeyState.Drag:
                     setupDrag();
-                    C4_ManagerMaster.Instance.sceneMode.sendInputDataToController(inputData);
+                    C4_GameManager.Instance.sceneMode.sendInputDataToController(inputData);
                     break;
-            }
+				case KeyState.MultiTap:
+					setupMultiTap();
+					C4_GameManager.Instance.sceneMode.sendInputDataToController(inputData);
+					break;
+			}
         }
     }
+
+	void setupMultiTap()
+	{
+		inputData.multiTapDistance = Vector2.Distance (Input.touches [0].position, Input.touches [1].position);
+	}
 
     void setupClickDown()
     {
@@ -85,6 +109,7 @@ public class C4_InputManager : MonoBehaviour
         clickObject = hit.collider.transform.root.gameObject.GetComponent<C4_Object>();
         inputData.clickObjectID = clickObject.objectAttr;
         inputData.dragObjectID = clickObject.objectAttr;
+        inputData.clickDevicePosition = Input.mousePosition;
         inputData.clickPosition = hit.point;
         inputData.dragPosition = hit.point;
         inputData.clickPosition.y = 0;
@@ -97,10 +122,13 @@ public class C4_InputManager : MonoBehaviour
         C4_Object dragObject = hit.collider.transform.root.gameObject.GetComponent<C4_Object>();
         inputData.dragPosition = hit.point;
         inputData.dragPosition.y = 0;
+        inputData.dragDevicePosition = Input.mousePosition;
         inputData.dragObjectID = dragObject.objectAttr;
     }
 
     void setupClickUp()
     {
+		inputData.multiTapDistance = 0;
+		inputData.preMultiTapDistance = 0;
     }
 }

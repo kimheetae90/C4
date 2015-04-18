@@ -5,11 +5,16 @@ public class C4_MissileCollision : MonoBehaviour {
     
     void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.layer == 8)
+        {
+            return;
+        }
+
         C4_Object collisionObject = other.GetComponentInParent<C4_Object>();
-        C4_StraightMove missileMove = GetComponentInParent<C4_StraightMove>();
+        C4_Move missileMove = GetComponentInParent<C4_Move>();
         switch (collisionObject.objectAttr.type)
         {
-            case GameObjectType.Player:
+            case GameObjectType.Ally:
             case GameObjectType.Enemy:
                 missileMove.stopMoveToTarget();
                 break;

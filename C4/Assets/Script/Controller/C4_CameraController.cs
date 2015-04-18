@@ -6,9 +6,10 @@ public class C4_CameraController : C4_Controller
 	enum eCameraControllerActionState
 	{
 		None,
+        Focus,
 		Move,
-		ZoomIn,
-		ZoomOut,
+		Zooming,
+        DepthChange
 	}
 
     public override void Awake()
@@ -22,7 +23,7 @@ public class C4_CameraController : C4_Controller
 		computeActionState(ref inputData, out action);
 		ProcState(action, ref inputData);
 	}
-
+    
 	private void computeActionState(ref InputData inputData, out eCameraControllerActionState action)
 	{
 		if (inputData.keyState == KeyState.Down)
@@ -32,6 +33,10 @@ public class C4_CameraController : C4_Controller
 		else if(inputData.keyState == KeyState.Drag)
 		{
 			computeKeyDragState(ref inputData, out action);
+		}
+		else if(inputData.keyState == KeyState.MultiTap)
+		{
+			computeKeyMultiTapState(ref inputData, out action);
 		}
 		else
 		{
@@ -55,23 +60,28 @@ public class C4_CameraController : C4_Controller
 
 		if(inputData.clickObjectID.isInputTypeTrue (GameObjectInputType.CameraMoveAbleObject)) 
 		{
-			action = eCameraControllerActionState.Move;
-		}
+            action = eCameraControllerActionState.Move;
+        }
+    }
+	
+	private void computeKeyMultiTapState(ref InputData inputData, out eCameraControllerActionState action)
+	{
+		action = eCameraControllerActionState.Zooming;
 	}
 
-	private void ProcState(eCameraControllerActionState action, ref InputData inputData)
-	{
-		switch (action)
-		{
-		case eCameraControllerActionState.None:
-			break;
-		case eCameraControllerActionState.Move:
-            notifyEvent("Move", inputData);
-			break;
-		case eCameraControllerActionState.ZoomIn:
-			break;
-		case eCameraControllerActionState.ZoomOut:
-			break;
+    private void ProcState(eCameraControllerActionState action, ref InputData inputData)
+    {
+        switch (action)
+        {
+            case eCameraControllerActionState.None:
+				notifyEvent("None",inputData);
+                break;
+            case eCameraControllerActionState.Move:
+                notifyEvent("Move", inputData);
+                break;
+		case eCameraControllerActionState.Zooming:
+				notifyEvent("Zooming", inputData);
+                break;
 		}
 	}
 }

@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class C4_Move : MonoBehaviour {
+public abstract class C4_Move : MonoBehaviour {
 
+    public Vector3 toMove;
     protected float moveSpeed;
-    protected Vector3 toMove;
     protected bool isCoroutine;
 
     [System.NonSerialized]
@@ -15,20 +15,24 @@ public class C4_Move : MonoBehaviour {
         moveSpeed = inputMoveSpeed;
     }
 
-    public void setToMove(Vector3 inputToMove)
+    public void setMoving()
     {
-        toMove = inputToMove;
-    }
-
-    public void setMoving(Vector3 inputToMove)
-    {
-        setToMove(inputToMove);
         isMove = true;
         if (!isCoroutine)
         {
             StartCoroutine("move");
             isCoroutine = true;
         }
+    }
+
+    protected abstract void moveToTarget();
+
+    public abstract void stopMoveToTarget();
+
+    public void startMove(Vector3 inputToMove)
+    {
+        toMove = inputToMove;
+        setMoving();
     }
 
     protected virtual IEnumerator move() 
