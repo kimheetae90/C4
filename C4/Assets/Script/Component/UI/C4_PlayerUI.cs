@@ -34,9 +34,11 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
 
         switch (C4_GameManager.Instance.sceneMode.getController(GameObjectType.Ally).GetComponent<C4_AllyController>().selectedAllyUnit.GetComponent<C4_UnitFeature>().missile.GetComponent<C4_MissileFeature>().type)
         {
-            case 1: targetbarUI.showUI(clickPosition);
+            case 1: 
+				targetbarUI.showUI(clickPosition);
                 break;
-            case 2: targetspotUI.showUI(clickPosition);
+            case 2: 
+				targetspotUI.showUI(clickPosition);
                 break;
         }
     }
@@ -86,25 +88,14 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
                 break;
             case "Aming":
                 {
-<<<<<<< HEAD
-                    Vector3 pos = (Vector3)p[0];
-                    aiming(pos);
-                    
-                }
-                break;
-            case "Select":
-                {
-                    transform.SetParent((Transform)p[0],false);
-=======
 					Vector3 pos = (Vector3)p[0];
 					C4_Ally allyUnit = (C4_Ally)p[1];
 					aiming(pos , allyUnit);
 				}
-			break;
-		case "Select":
-		{
-			transform.SetParent((Transform)p[0],false);
->>>>>>> master
+				break;
+			case "Select":
+				{
+					transform.SetParent((Transform)p[0],false);
                     transform.localPosition = new Vector3(0, 0, 0);
                     select();
                 }

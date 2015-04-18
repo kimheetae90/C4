@@ -1081,6 +1081,16 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1539309169}
   m_Script: {fileID: 11500000, guid: eeb95cebcf84a415b86b54ae0fb10834, type: 3}
+--- !u!1 &1918328017 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 112394, guid: 9e9063d48a1171243934707ad443405f, type: 2}
+  m_PrefabInternal: {fileID: 705179901}
+--- !u!222 &1918328020
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1918328017}
 --- !u!114 &2095715591 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11413162, guid: 9e9063d48a1171243934707ad443405f,
