@@ -18,8 +18,8 @@ public class BehaviorImportTool : EditorWindow
     int selectedRawFileIndex = 0;
     int selectedFilterdFileIndex = 0;
 
-    public static string basePathToLoad = Application.dataPath + "/Data/AI/Raw";
-	public static string basePathToSave = Application.dataPath + "/Data/AI/";
+	public static string basePathToLoad = Application.dataPath + "/Resources/Data/AI/Raw";
+	public static string basePathToSave = Application.dataPath + "/Resources/Data/AI/";
    
     BehaviorRawDataParser parser = new BehaviorRawDataParser();
 	BehaviorRawDataSaver saver = new BehaviorRawDataSaver();
@@ -164,7 +164,7 @@ public class BehaviorImportTool : EditorWindow
 			parser.parseRawBehaviorData(targetPath);
 			saver.saveFileterdData(savePath,parser.getParsedRawNodeData(),parser.getParsedRawEdgeData());
 		}
-		catch(BehaviorRawDataParseException e)
+		catch(ToolException e)
 		{
 			EditorUtility.DisplayDialog("파일 읽기 실패",
 			                            e.Message, "OK");
@@ -186,7 +186,7 @@ public class BehaviorImportTool : EditorWindow
 		}
 		else
 		{
-			throw new BehaviorRawDataParseException("Parse Path is Invalid");
+			throw new ToolException("Parse Path is Invalid");
 		}
 	}
 }

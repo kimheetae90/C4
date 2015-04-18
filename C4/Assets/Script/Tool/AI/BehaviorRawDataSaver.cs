@@ -47,7 +47,7 @@ public class BehaviorRawDataSaver {
 
 		if(root == null)
 		{
-			throw new BehaviorRawDataParseException("RawData is not TreeStruct");
+			throw new ToolException("RawData is not TreeStruct");
 		}
 	}
 
