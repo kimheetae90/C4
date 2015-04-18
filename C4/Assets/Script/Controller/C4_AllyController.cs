@@ -138,7 +138,7 @@ public class C4_AllyController : C4_Controller
             case ePlayerControllerActionState.None:
                 break;
             case ePlayerControllerActionState.Aming:
-                notifyEvent("Aming", inputData.dragPosition);
+                notifyEvent("Aming", inputData.dragPosition, selectedAllyUnit);
                 break;
             case ePlayerControllerActionState.Move:
                 notifyEvent("Move", inputData.clickPosition);
