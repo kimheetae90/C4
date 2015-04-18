@@ -28,6 +28,14 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
 		{
 			activeDone();
 		}
+
+        switch (C4_GameManager.Instance.sceneMode.getController(GameObjectType.Ally).GetComponent<C4_AllyController>().selectedAllyUnit.GetComponent<C4_UnitFeature>().missile.GetComponent<C4_MissileFeature>().type)
+        {
+            case 1: targetbarUI.showUI(clickPosition);
+                break;
+            case 2: targetspotUI.showUI(clickPosition);
+                break;
+        }
     }
 
     public void startAim()
@@ -77,19 +85,6 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
                 {
                     Vector3 pos = (Vector3)p[0];
                     aiming(pos);
-                    
-                    switch (C4_GameManager.Instance.sceneMode.getController(GameObjectType.Ally).GetComponent<C4_AllyController>().selectedAllyUnit.GetComponent<C4_UnitFeature>().missile.GetComponent<C4_MissileFeature>().type)
-                    {
-                        case 1: targetbarUI.showUI(pos);
-                            break;
-                        case 2: targetspotUI.showUI(pos);
-                            break;
-                    }
-                    //if(C4_GameManager.Instance.sceneMode.getController(GameObjectType.Ally).GetComponent<C4_AllyController>().selectedAllyUnit.GetComponent<C4_UnitFeature>().missile.GetComponent<C4_StraightMove>())
-                    //    targetbarUI.showUI(pos);
-                    
-                    //else
-                    //    targetspotUI.showUI(pos);
                     
                 }
                 break;
