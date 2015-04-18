@@ -179,7 +179,7 @@ public class BehaviorRawDataParser
 			break;
 		default:
 			{
-				throw new BehaviorRawDataParseException("Invalid Node Type : "+text);
+				throw new ToolException("Invalid Node Type : "+text);
 			}
 		}
 		return ret;
