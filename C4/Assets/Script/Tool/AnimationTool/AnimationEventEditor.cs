@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+#if UNITY_EDITOR
 using System.Collections;
 
 public class AnimationEventEditor : BaseAnimationWindow
@@ -34,3 +35,4 @@ public class AnimationEventEditor : BaseAnimationWindow
 
     }
 }
+#endif

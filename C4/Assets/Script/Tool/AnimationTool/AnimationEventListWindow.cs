@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
 using System.Collections;
 
@@ -104,3 +105,4 @@ public class AnimationEventListWindow : BaseAnimationWindow, IAnimationPropertyL
         AddEvent.DoAddEventImportedClip(info.clip, info.clip);
     }
 }
+#endif

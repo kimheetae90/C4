@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+#if UNITY_EDITOR
 using System;
 using System.Collections;
 
@@ -101,3 +102,4 @@ public class AnimationPlayerWindow : BaseAnimationWindow, IAnimationPropertyList
         }
 	}
 }
+#endif

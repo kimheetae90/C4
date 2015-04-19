@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
 
 using System;
@@ -476,3 +477,4 @@ public class AnimationEventPropertyWindow : BaseAnimationWindow, IAnimationPrope
         }
     }
 }
+#endif

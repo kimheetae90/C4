@@ -3,8 +3,6 @@ using System.Collections;
 
 public class ParticleWrapper : MonoBehaviour {
     
-    ParticleSystem particleSystem;
-	// Use this for initialization
     public float fLifeTime = 0.0f;
 
     Transform followObject;
@@ -16,7 +14,6 @@ public class ParticleWrapper : MonoBehaviour {
         followObject = null;
         bFollowObject = false;
         followObject = null;
-        particleSystem = GetComponent<ParticleSystem>();
         thisTransForm = this.transform;
         Destroy(gameObject, fLifeTime);
     }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+#if UNITY_EDITOR
 using System.Collections;
 
 public class AnimationListWindow : BaseAnimationWindow , IAnimationPropertyListener {
@@ -79,3 +80,4 @@ public class AnimationListWindow : BaseAnimationWindow , IAnimationPropertyListe
 		}
 	}
 }
+#endif
