@@ -66,7 +66,7 @@ public class BehaviorRawDataSaver {
 		doc.Save(savePath);
 
 		string filename = Path.GetFileName(savePath);
-		AssetDatabase.ImportAsset("Assets/Data/AI/" + filename);
+		AssetDatabase.ImportAsset("Assets/Resources/Data/AI/" + filename);
 	}
 
 	void addXmlNode(XmlDocument doc, XmlNode xmlParent, BehaviorRawNodeData data)

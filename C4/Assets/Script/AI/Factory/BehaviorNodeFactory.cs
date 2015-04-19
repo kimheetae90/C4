@@ -40,12 +40,11 @@ public class BehaviorNodeFactory
         return root;
     }
 
-    //래퍼만들자
     XmlElement loadXML(string targetpath)
     {
-        var sr = new StreamReader(targetpath);
+		TextAsset odczytaj = Resources.Load(targetpath) as TextAsset;
         XmlDocument xmldoc = new XmlDocument();
-        xmldoc.Load(sr);
+		xmldoc.LoadXml(odczytaj.text);
         XmlElement root = xmldoc.DocumentElement;
         return root;
     }
