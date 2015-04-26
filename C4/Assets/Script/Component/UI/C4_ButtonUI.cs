@@ -28,17 +28,18 @@ public class C4_ButtonUI : MonoBehaviour
             btlist[i].transform.SetParent(buttonuicanvas.transform,false);
             btlist[i].GetComponent<C4_AllyButton>().myCharacter = C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Ally).getObjectInList(i).gameObject;
         }
-        ButtonHeight = btlist[0].image.rectTransform.rect.height;
+        ButtonHeight = btlist[0].image.rectTransform.rect.height * btlist[0].transform.localScale.y;
         Debug.Log(ButtonHeight);
 
         allocate();
-
+        
     }
-
+    
     // Update is called once per frame
 
     void allocate()
     {
+        GUI.Button(new Rect(50, 50, 50, 50), ButtonHeight.ToString());
         int num = (Allynum) / 2;
 
         if ((Allynum) % 2 == 0)
