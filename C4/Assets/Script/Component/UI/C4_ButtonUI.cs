@@ -36,10 +36,10 @@ public class C4_ButtonUI : MonoBehaviour
     }
     
     // Update is called once per frame
-
+   
     void allocate()
     {
-        GUI.Button(new Rect(50, 50, 50, 50), ButtonHeight.ToString());
+        
         int num = (Allynum) / 2;
 
         if ((Allynum) % 2 == 0)
@@ -48,7 +48,8 @@ public class C4_ButtonUI : MonoBehaviour
                 num++;
             for (int i = 0; i < Allynum; i++)
             {
-                btlist[i].transform.Translate(0, ButtonHeight * num, 0);
+                btlist[i].transform.Translate(0,Screen.height*num*0.08f, 0);
+                //btlist[i].transform.Translate(0, ButtonHeight*0.6f * num, 0);
                 num -= 2;
 
             }
@@ -57,7 +58,7 @@ public class C4_ButtonUI : MonoBehaviour
         {
             for (int i = 0; i < Allynum; i++)
             {
-                btlist[i].transform.Translate(0, ButtonHeight * num, 0);
+                btlist[i].transform.Translate(0, ButtonHeight*0.6f * num, 0);
                 num--;
             }
         }
