@@ -58,7 +58,7 @@ public class C4_ButtonUI : MonoBehaviour
         {
             for (int i = 0; i < Allynum; i++)
             {
-                btlist[i].transform.Translate(0, ButtonHeight*0.6f * num, 0);
+                btlist[i].transform.Translate(0, Screen.height * num * 0.16f, 0);
                 num--;
             }
         }
