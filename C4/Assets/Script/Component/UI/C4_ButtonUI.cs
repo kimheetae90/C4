@@ -12,6 +12,8 @@ public class C4_ButtonUI : MonoBehaviour
 
     Canvas buttonuicanvas;
 
+    float ButtonHeight;
+
     int Allynum;
     // Use this for initialization
     public void initButtonUI()
@@ -26,14 +28,18 @@ public class C4_ButtonUI : MonoBehaviour
             btlist[i].transform.SetParent(buttonuicanvas.transform,false);
             btlist[i].GetComponent<C4_AllyButton>().myCharacter = C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Ally).getObjectInList(i).gameObject;
         }
+        ButtonHeight = btlist[0].image.rectTransform.rect.height * btlist[0].transform.localScale.y;
+        Debug.Log(ButtonHeight);
+
         allocate();
-
+        
     }
-
+    
     // Update is called once per frame
-
+   
     void allocate()
     {
+        
         int num = (Allynum) / 2;
 
         if ((Allynum) % 2 == 0)
@@ -42,7 +48,8 @@ public class C4_ButtonUI : MonoBehaviour
                 num++;
             for (int i = 0; i < Allynum; i++)
             {
-                btlist[i].transform.Translate(0, 35 * num, 0);
+                btlist[i].transform.Translate(0,Screen.height*num*0.08f, 0);
+                //btlist[i].transform.Translate(0, ButtonHeight*0.6f * num, 0);
                 num -= 2;
 
             }
@@ -51,7 +58,7 @@ public class C4_ButtonUI : MonoBehaviour
         {
             for (int i = 0; i < Allynum; i++)
             {
-                btlist[i].transform.Translate(0, 70 * num, 0);
+                btlist[i].transform.Translate(0, Screen.height * num * 0.16f, 0);
                 num--;
             }
         }
