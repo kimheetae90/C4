@@ -11,7 +11,6 @@ public class C4_InputManager : MonoBehaviour
 {
     InputData inputData;
     RaycastHit hit;
-    C4_Object clickObject;
 
     void Start()
     {
@@ -106,14 +105,17 @@ public class C4_InputManager : MonoBehaviour
     void setupClickDown()
     {
         Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity);
-        clickObject = hit.collider.transform.root.gameObject.GetComponent<C4_Object>();
-        inputData.clickObjectID = clickObject.objectAttr;
-        inputData.dragObjectID = clickObject.objectAttr;
-        inputData.clickDevicePosition = Input.mousePosition;
-        inputData.clickPosition = hit.point;
-        inputData.dragPosition = hit.point;
-        inputData.clickPosition.y = 0;
-        inputData.dragPosition.y = 0;
+        C4_Object clickObject = hit.collider.transform.root.gameObject.GetComponent<C4_Object>();
+		if (clickObject != null) 
+		{
+			inputData.clickObjectID = clickObject.objectAttr;
+			inputData.dragObjectID = clickObject.objectAttr;
+			inputData.clickDevicePosition = Input.mousePosition;
+			inputData.clickPosition = hit.point;
+			inputData.dragPosition = hit.point;
+			inputData.clickPosition.y = 0;
+			inputData.dragPosition.y = 0;
+		}
     }
 
     void setupDrag()
