@@ -163,6 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   power: 100
   moveSpeed: 120
+  type: 2
 --- !u!114 &11416352
 MonoBehaviour:
   m_ObjectHideFlags: 1

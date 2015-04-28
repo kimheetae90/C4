@@ -47,7 +47,7 @@ public class BehaviorRawDataSaver {
 
 		if(root == null)
 		{
-			throw new BehaviorRawDataParseException("RawData is not TreeStruct");
+			throw new ToolException("RawData is not TreeStruct");
 		}
 	}
 
@@ -66,7 +66,7 @@ public class BehaviorRawDataSaver {
 		doc.Save(savePath);
 
 		string filename = Path.GetFileName(savePath);
-		AssetDatabase.ImportAsset("Assets/Data/AI/" + filename);
+		AssetDatabase.ImportAsset("Assets/Resources/Data/AI/" + filename);
 	}
 
 	void addXmlNode(XmlDocument doc, XmlNode xmlParent, BehaviorRawNodeData data)

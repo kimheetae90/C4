@@ -161,6 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10a10b853dd8bf24d9261cbab33fcdb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toMove: {x: 0, y: 0, z: 0}
 --- !u!114 &11453000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -185,8 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   power: 100
   moveSpeed: 120
-  shotAngle: 0
-  splashRange: 0
+  type: 1
 --- !u!114 &11483134
 MonoBehaviour:
   m_ObjectHideFlags: 1

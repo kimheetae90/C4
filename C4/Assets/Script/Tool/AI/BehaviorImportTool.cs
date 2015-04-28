@@ -7,19 +7,11 @@ using System.IO;
 
 public class BehaviorImportTool : EditorWindow
 {
-	// Use this for initialization
-    public List<string> listGXmlFile = new List<string>();
-    public List<string> listFilteredXmlFile = new List<string>();
+	AssetsSelectFilesInfo gxmls = new AssetsSelectFilesInfo();
+	AssetsSelectFilesInfo filteredXmls = new AssetsSelectFilesInfo();
 
-	string[] listRawFilePath = {""};
-    string[] listFilteredFilePath = { "" };
-
-    bool needUpdateRawDataPath = true;
-    int selectedRawFileIndex = 0;
-    int selectedFilterdFileIndex = 0;
-
-    public static string basePathToLoad = Application.dataPath + "/Data/AI/Raw";
-	public static string basePathToSave = Application.dataPath + "/Data/AI/";
+	public static string basePathToLoad = Application.dataPath + "/Resources/Data/AI/Raw/";
+	public static string basePathToSave = Application.dataPath + "/Resources/Data/AI/";
    
     BehaviorRawDataParser parser = new BehaviorRawDataParser();
 	BehaviorRawDataSaver saver = new BehaviorRawDataSaver();
@@ -40,49 +32,39 @@ public class BehaviorImportTool : EditorWindow
 
     void reloadProcess()
     {
-        if (needUpdateRawDataPath)
-        {
-            reloadRawDataDirectory();
-            reloadFilteredDataDirectory();
-            needUpdateRawDataPath = false;
-        }
+		if (gxmls.bNeedUpdate) {
+			reloadRawDataDirectory();
+			gxmls.bNeedUpdate = false;
+		}
+
+		if (filteredXmls.bNeedUpdate) {
+			reloadFilteredDataDirectory();
+			filteredXmls.bNeedUpdate = false;
+		}
     }
 
     void OnProjectChange()
     {
-        needUpdateRawDataPath = true;
+		gxmls.bNeedUpdate = true;
+		filteredXmls.bNeedUpdate = true;
     }
 
     private void reloadRawDataDirectory()
     {
-        listGXmlFile.Clear();
-        var info = new DirectoryInfo(basePathToLoad);
-        var fileInfo = info.GetFiles();
-        foreach (FileInfo file in fileInfo)
-        {
-            if (file.Extension == ".xgml")
-            {
-                listGXmlFile.Add(file.FullName);
-            }
-        }
+        gxmls.listFilePaths.Clear();
 
-		listRawFilePath = listGXmlFile.ToArray();
+		PathUtility.DirSearch(basePathToLoad, ".xgml", ref gxmls.listFilePaths);
+
+		gxmls.strArrayFilePaths = gxmls.listFilePaths.ToArray();
     }
 
     private void reloadFilteredDataDirectory()
     {
-        listFilteredXmlFile.Clear();
-        var info = new DirectoryInfo(basePathToSave);
-        var fileInfo = info.GetFiles();
-        foreach (FileInfo file in fileInfo)
-        {
-            if (file.Extension == ".xml")
-            {
-                listFilteredXmlFile.Add(file.FullName);
-            }
-        }
-
-        listFilteredFilePath = listFilteredXmlFile.ToArray();
+		filteredXmls.listFilePaths.Clear();
+		
+		PathUtility.DirSearch(basePathToSave, ".xml", ref filteredXmls.listFilePaths);
+		
+		filteredXmls.strArrayFilePaths = filteredXmls.listFilePaths.ToArray();
     }
 
     void OnGUI()
@@ -95,7 +77,8 @@ public class BehaviorImportTool : EditorWindow
     {
         GUILayout.Label("GXML Import", EditorStyles.boldLabel);
         GUILayout.Label("  GXML 파일을 로드해주세요", EditorStyles.boldLabel);
-        selectedRawFileIndex = EditorGUILayout.Popup(selectedRawFileIndex, listRawFilePath, EditorStyles.popup);
+
+		gxmls.selectedFileIndex = EditorGUILayout.Popup(gxmls.selectedFileIndex, gxmls.strArrayFilePaths, EditorStyles.popup);
 
         if (GUILayout.Button("Load"))
         {
@@ -105,7 +88,7 @@ public class BehaviorImportTool : EditorWindow
 
     void procLoadBtn()
     {
-        if (listGXmlFile.Count > 0)
+		if (gxmls.listFilePaths.Count > 0)
         {
             parseRawDataAndSaveFilteredData();
         }
@@ -120,7 +103,7 @@ public class BehaviorImportTool : EditorWindow
     {
         GUILayout.Label("TEST CASE", EditorStyles.boldLabel);
         GUILayout.Label("  XML 파일을 로드해주세요", EditorStyles.boldLabel);
-        selectedFilterdFileIndex = EditorGUILayout.Popup(selectedFilterdFileIndex, listFilteredFilePath, EditorStyles.popup);
+		filteredXmls.selectedFileIndex = EditorGUILayout.Popup(filteredXmls.selectedFileIndex, filteredXmls.strArrayFilePaths, EditorStyles.popup);
 
         if (GUILayout.Button("Test"))
         {
@@ -130,11 +113,13 @@ public class BehaviorImportTool : EditorWindow
 
     void procTestBtn()
     {
-        if (listGXmlFile.Count > 0)
+        if (filteredXmls.listFilePaths.Count > 0)
         {
             try
             {
-                builder.buildBehaviorNode(listFilteredFilePath[selectedFilterdFileIndex]);
+				string path = filteredXmls.listFilePaths[filteredXmls.selectedFileIndex].Replace("Assets/Resources/","");
+				path = path.Replace(".xml","");
+				builder.buildBehaviorNode(path);
             }
             catch(BehaviorNodeException e)
             {
@@ -164,7 +149,7 @@ public class BehaviorImportTool : EditorWindow
 			parser.parseRawBehaviorData(targetPath);
 			saver.saveFileterdData(savePath,parser.getParsedRawNodeData(),parser.getParsedRawEdgeData());
 		}
-		catch(BehaviorRawDataParseException e)
+		catch(ToolException e)
 		{
 			EditorUtility.DisplayDialog("파일 읽기 실패",
 			                            e.Message, "OK");
@@ -179,14 +164,14 @@ public class BehaviorImportTool : EditorWindow
 
 	private void getTargetAndSavePath(out string targetPath, out string savePath)
 	{
-		if(selectedRawFileIndex < listGXmlFile.Count && listGXmlFile.Count != 0)
+		if(gxmls.selectedFileIndex < gxmls.listFilePaths.Count && gxmls.listFilePaths.Count != 0)
 		{
-			targetPath = listGXmlFile[selectedRawFileIndex];
+			targetPath = gxmls.listFilePaths[gxmls.selectedFileIndex];
 			savePath = basePathToSave + Path.GetFileNameWithoutExtension(targetPath) + ".xml";
 		}
 		else
 		{
-			throw new BehaviorRawDataParseException("Parse Path is Invalid");
+			throw new ToolException("Parse Path is Invalid");
 		}
 	}
 }

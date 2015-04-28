@@ -12,7 +12,7 @@ public class C4_MissileFeature : MonoBehaviour
 {
     public int power;
     public float moveSpeed;
-
+    public int type;
     void Start()
     {
         GetComponent<C4_Move>().setMoveSpeed(moveSpeed);
