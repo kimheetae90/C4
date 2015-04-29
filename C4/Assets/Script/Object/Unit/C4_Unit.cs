@@ -39,12 +39,12 @@ public abstract class C4_Unit : C4_Object
 		}
 	}
 	
-	public void shot(Vector3 click)
+	public void shot(Vector3 targetPos)
 	{
 		if (canActive)
 		{
 			unitFeature.activeDone();
-			shotComponent.startShot(click);
+			shotComponent.startShot(targetPos);
 		}
 	}
 	

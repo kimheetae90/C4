@@ -13,7 +13,7 @@ public abstract class C4_TargetUI : MonoBehaviour {
 	
 	// Update is called once per frame
 
-    public abstract void showUI(Vector3 clickPosition);
+    public abstract void showUI(Vector3 targetPos);
     
     public void hideUI()
     {

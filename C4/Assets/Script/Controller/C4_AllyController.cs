@@ -44,6 +44,21 @@ public class C4_AllyController : C4_Controller
         addListener(selectedAllyUnit);
     }
 
+	public Vector3 calcMissileTargetPoint(Vector3 clickPosition)
+	{
+		float maxAttackRange = selectedAllyUnit.GetComponent<C4_UnitFeature> ().attackRange;
+
+		Vector3 direction = (selectedAllyUnit.transform.position - clickPosition).normalized;
+		float value = Vector3.Distance (selectedAllyUnit.transform.position,clickPosition);
+		if (maxAttackRange <= value) 
+		{
+			value = maxAttackRange;
+		}
+		value *= 4f;
+		Vector3 targetPos = selectedAllyUnit.transform.position + value * direction;
+		return targetPos;
+	}
+
     public void activeDone()
     {
         isAiming = false;
@@ -138,7 +153,7 @@ public class C4_AllyController : C4_Controller
             case ePlayerControllerActionState.None:
                 break;
             case ePlayerControllerActionState.Aming:
-                notifyEvent("Aming", inputData.dragPosition, selectedAllyUnit);
+                notifyEvent("Aming", inputData.dragPosition, selectedAllyUnit, calcMissileTargetPoint(inputData.dragPosition));
                 break;
             case ePlayerControllerActionState.Move:
                 notifyEvent("Move", inputData.clickPosition);
@@ -154,7 +169,7 @@ public class C4_AllyController : C4_Controller
                 notifyEvent("StartAim");
                 break;
             case ePlayerControllerActionState.Shot:
-                notifyEvent("Shot", inputData.dragPosition);
+                notifyEvent("Shot", calcMissileTargetPoint(inputData.dragPosition));
                 activeDone();
                 break;
         }

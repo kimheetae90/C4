@@ -13,7 +13,8 @@ public class C4_UnitCollision : MonoBehaviour {
 		C4_Object collisionObject = other.GetComponentInParent<C4_Object>();
 		C4_ControllUnitMove controllUnitMove = GetComponentInParent<C4_ControllUnitMove>();
 		C4_Unit unit = GetComponentInParent<C4_Unit>();
-		
+
+
 		switch(collisionObject.objectAttr.type)
 		{
 		case GameObjectType.Ally:

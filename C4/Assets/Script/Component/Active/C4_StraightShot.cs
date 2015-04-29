@@ -17,16 +17,14 @@ public class C4_StraightShot : MonoBehaviour, C4_IntShot {
         missile = missileGameObejct.GetComponent<C4_Missile>();
 	}
 
-    public void startShot(Vector3 click)
+    public void startShot(Vector3 targetPos)
     {
-        Vector3 missilePos = transform.position + (transform.position - click).normalized * (transform.localScale.z + missileGameObejct.transform.GetChild(0).GetChild(0).localScale.z + 1);
-        missilePos.y = 0;
-        missileGameObejct.transform.position = missilePos;
-        shotDirection = (transform.position - click).normalized;
-        missileToMove = 4 * transform.position - 3 * click;
-        shotDirection.y = 0;
-        missileToMove.y = 0;
-        missileGameObejct.transform.GetChild(0).transform.gameObject.transform.rotation = Quaternion.LookRotation(shotDirection);
-        missile.startMove(missileToMove);
+		Vector3 missilePos = transform.position + (targetPos - transform.position).normalized * (transform.localScale.z + missileGameObejct.transform.GetChild(0).GetChild(0).localScale.z + 1);
+		missilePos.y = 0;
+		missileGameObejct.transform.position = missilePos;
+		shotDirection = (transform.position - targetPos).normalized;
+		missileGameObejct.transform.GetChild(0).transform.gameObject.transform.rotation = Quaternion.LookRotation(shotDirection);
+		missile.startMove (targetPos);
+
     }
 }
