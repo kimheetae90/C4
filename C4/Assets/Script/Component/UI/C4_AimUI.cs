@@ -27,16 +27,17 @@ public class C4_AimUI : MonoBehaviour {
 		
 		
 		float distance = Vector3.Distance(selectedBoat.transform.position, clickPosition);
-		if (distance >= maxAttackRange)
+		if (distance >= maxAttackRange) 
+		{
 			distance = maxAttackRange;
+		}
 		
 		Vector3 aimDirection = (selectedBoat.transform.position - clickPosition).normalized;
 		aimDirection.y = 0;
-		
-		aimUIImage.transform.position = selectedBoat.transform.position;
-		aimUIImage.transform.rotation = Quaternion.LookRotation(-aimDirection);
+
+		aimUIImage.transform.rotation = Quaternion.LookRotation(aimDirection);
 		aimUIImage.transform.Rotate(Vector3.right, 90);
-		aimUIImage.transform.localScale = new Vector3(1, distance / 2, 1);
+		aimUIImage.transform.localScale = new Vector3(1, distance, 1);
 	}
 	
 	public void showCannotActiveUI(Vector3 clickPosition, float maxAttackRange)
@@ -50,11 +51,10 @@ public class C4_AimUI : MonoBehaviour {
 		
 		Vector3 aimDirection = (selectedBoat.transform.position - clickPosition).normalized;
 		aimDirection.y = 0;
-		
-		cannotActiveAimUIImage.transform.position = selectedBoat.transform.position;
-		cannotActiveAimUIImage.transform.rotation = Quaternion.LookRotation(-aimDirection);
+
+		cannotActiveAimUIImage.transform.rotation = Quaternion.LookRotation(aimDirection);
 		cannotActiveAimUIImage.transform.Rotate(Vector3.right, 90);
-		cannotActiveAimUIImage.transform.localScale = new Vector3(1, distance / 2, 1);
+		cannotActiveAimUIImage.transform.localScale = new Vector3(1, distance, 1);
 	}
 	public void hideUI()
 	{

@@ -2,5 +2,5 @@
 using System.Collections;
 
 public interface C4_IntShot{
-    void startShot(Vector3 click);
+    void startShot(Vector3 targetPos);
 }

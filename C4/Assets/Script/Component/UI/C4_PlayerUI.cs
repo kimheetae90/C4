@@ -18,29 +18,39 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
 		targetbarUI = GetComponent<C4_TargetBarUI>();
 	}
 	
-	public void aiming(Vector3 clickPosition, C4_Ally allyUnit)
+	public void aiming(Vector3 clickPosition, C4_Ally allyUnit, Vector3 targetPos)
 	{
+		
+		float maxAttackRange = allyUnit.GetComponent<C4_UnitFeature>().attackRange;
+
 		if (C4_GameManager.Instance.sceneMode.GetComponent<C4_PlayMode> ().allyController.selectedAllyUnit != null) 
 		{
-			float maxAttackRange = allyUnit.GetComponent<C4_UnitFeature>().attackRange;
-			
 			if(allyUnit.canActive)
+			{
 				aimUI.showUI (clickPosition, maxAttackRange);
+			}
 			else
+			{
 				aimUI.showCannotActiveUI (clickPosition, maxAttackRange);
+			}
 		}
 		else
 		{
 			activeDone();
 		}
+		showTargetUI (targetPos);
+	}
+
+	public void showTargetUI(Vector3 targetPos)
+	{
 		
 		switch (C4_GameManager.Instance.sceneMode.getController(GameObjectType.Ally).GetComponent<C4_AllyController>().selectedAllyUnit.GetComponent<C4_UnitFeature>().missile.GetComponent<C4_MissileFeature>().type)
 		{
 		case 1: 
-			targetbarUI.showUI(clickPosition);
+			targetbarUI.showUI(targetPos);
 			break;
 		case 2: 
-			targetspotUI.showUI(clickPosition);
+			targetspotUI.showUI(targetPos);
 			break;
 		}
 	}
@@ -57,6 +67,8 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
 			moveUI.selectBoat ();
 			selectUI.showUI ();
 			aimUI.hideUI ();
+			targetbarUI.hideUI();
+			targetspotUI.hideUI();
 		} 
 		else 
 		{
@@ -92,7 +104,8 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
 		{
 			Vector3 pos = (Vector3)p[0];
 			C4_Ally allyUnit = (C4_Ally)p[1];
-			aiming(pos , allyUnit);
+			Vector3 targetPos = (Vector3)p[2];
+			aiming(pos , allyUnit, targetPos);
 		}
 			break;
 		case "Select":

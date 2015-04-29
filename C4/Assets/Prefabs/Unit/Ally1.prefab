@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missile: {fileID: 138578, guid: dc820ae75cdcbb64b8bbac350bd336c1, type: 2}
-  attackRange: 0
+  attackRange: 15
   fullHP: 300
   moveSpeed: 50
   moveRange: 30
