@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 /// <summary>
 ///  Input에 대한 것을 처리하는 Manager
@@ -70,9 +71,12 @@ public class C4_InputManager : MonoBehaviour
         {
             switch (inputData.keyState)
             {
-                case KeyState.Up:
-                    setupClickUp();
-                    C4_GameManager.Instance.sceneMode.sendInputDataToController(inputData);
+			case KeyState.Up:
+				if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+				{
+					setupClickUp();
+					C4_GameManager.Instance.sceneMode.sendInputDataToController(inputData);
+				}
                     break;
                 case KeyState.Down:
                     setupClickDown();

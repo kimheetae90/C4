@@ -103,12 +103,12 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
 			activeDone();
 		}
 			break;
-		case "StartAim":
+		case "AimStart":
 		{
 			startAim();
 		}
 			break;
-		case "Aming":
+		case "Aim":
 		{
 			Vector3 pos = (Vector3)p[0];
 			C4_Ally allyUnit = (C4_Ally)p[1];

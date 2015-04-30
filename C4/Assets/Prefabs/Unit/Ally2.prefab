@@ -139,6 +139,7 @@ GameObject:
   - 114: {fileID: 11473818}
   - 114: {fileID: 11483612}
   - 114: {fileID: 11454516}
+  - 114: {fileID: 11494190}
   m_Layer: 0
   m_Name: Ally2
   m_TagString: Untagged
@@ -601,6 +602,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4983002403269a14dad823a3e55d1220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11494190
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b59e86cebdb94499f92fb0707367239d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11496120

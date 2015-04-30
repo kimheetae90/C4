@@ -5,7 +5,7 @@ public abstract class C4_Unit : C4_Object
 {
 	[System.NonSerialized]
 	public bool canActive;
-	
+
 	protected C4_UnitFeature unitFeature;
 	protected C4_StraightMove moveComponent;
 	protected C4_Turn turnComponent;
@@ -77,6 +77,7 @@ public abstract class C4_Unit : C4_Object
 	{
 		unitFeature.hp -= damage;
 		checkHP();
+		GetComponent<C4_AnimControl> ().damaged ();
 	}
 	
 	protected abstract void checkHP();
