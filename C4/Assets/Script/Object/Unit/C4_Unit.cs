@@ -69,10 +69,7 @@ public abstract class C4_Unit : C4_Object
 	
 	public void turn(Vector3 toMove)
 	{
-		if (canActive)
-		{
-			turnComponent.setToTurn(toMove);
-		}
+		turnComponent.setToTurn(toMove);
 	}
 	
 	

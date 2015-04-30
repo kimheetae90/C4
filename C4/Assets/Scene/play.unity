@@ -253,6 +253,14 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: -9.60626721e-07
       objectReference: {fileID: 0}
+    - target: {fileID: 471116, guid: 9e9063d48a1171243934707ad443405f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -.49000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 471116, guid: 9e9063d48a1171243934707ad443405f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 3.06999993
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e9063d48a1171243934707ad443405f, type: 2}
   m_IsPrefabParent: 0
@@ -373,7 +381,7 @@ Prefab:
     - target: {fileID: 11477398, guid: f45f0ccc22844a84593ed00428fdeacf, type: 2}
       propertyPath: allyUnitGameObject1
       value: 
-      objectReference: {fileID: 103564, guid: 94bcbab776bd11746892995b0aaa2536, type: 2}
+      objectReference: {fileID: 183416, guid: 6c2877b7290fa4593bfd5b02f6e3c1c6, type: 2}
     - target: {fileID: 11477398, guid: f45f0ccc22844a84593ed00428fdeacf, type: 2}
       propertyPath: allyUnitGameObject2
       value: 
@@ -836,7 +844,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 484402, guid: 607673f54b716f148b5e512e37cf0361, type: 2}
       propertyPath: m_RootOrder
-      value: 18
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 11421632, guid: 607673f54b716f148b5e512e37cf0361, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
