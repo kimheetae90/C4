@@ -75,7 +75,15 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
 			activeDone();
 		}
 	}
-	
+
+	public void aimCancle()
+	{
+		moveUI.showUI ();
+		aimUI.hideUI ();
+		targetbarUI.hideUI();
+		targetspotUI.hideUI();
+	}
+
 	public void activeDone()
 	{
 		aimUI.hideUI();
@@ -113,6 +121,11 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
 			transform.SetParent((Transform)p[0],false);
 			transform.localPosition = new Vector3(0, 0, 0);
 			select();
+		}
+			break;
+		case "AimCancle":
+		{
+			aimCancle();
 		}
 			break;
 		}
