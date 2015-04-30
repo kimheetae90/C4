@@ -385,7 +385,7 @@ Prefab:
     - target: {fileID: 11477398, guid: f45f0ccc22844a84593ed00428fdeacf, type: 2}
       propertyPath: allyUnitGameObject2
       value: 
-      objectReference: {fileID: 149832, guid: 5581a8e5b4c0dda43b46a12a00cbc736, type: 2}
+      objectReference: {fileID: 183416, guid: 6c2877b7290fa4593bfd5b02f6e3c1c6, type: 2}
     - target: {fileID: 11477398, guid: f45f0ccc22844a84593ed00428fdeacf, type: 2}
       propertyPath: buttonUI
       value: 
