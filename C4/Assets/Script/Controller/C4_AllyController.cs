@@ -18,6 +18,7 @@ public class C4_AllyController : C4_Controller
 
     [System.NonSerialized]
     public C4_Ally selectedAllyUnit;
+	C4_AnimControl animController;
     bool isAiming;
     const float cameraMoveCheckArea = 5f;
 
@@ -40,8 +41,12 @@ public class C4_AllyController : C4_Controller
 
     override public void selectClickObject(GameObject clickGameObject)
     {
+		activeDone ();
         selectedAllyUnit = clickGameObject.GetComponentInParent<C4_Ally>();
+		animController = clickGameObject.GetComponentInParent<C4_AnimControl> ();
         addListener(selectedAllyUnit);
+		addListener (animController);
+		notifyEvent("Select", selectedAllyUnit.gameObject.transform);
     }
 
 	public Vector3 calcMissileTargetPoint(Vector3 clickPosition)
@@ -64,6 +69,7 @@ public class C4_AllyController : C4_Controller
         isAiming = false;
         notifyEvent("ActiveDone");
         removeListener(selectedAllyUnit);
+		removeListener (animController);
         selectedAllyUnit = null;
     }
 
@@ -153,20 +159,18 @@ public class C4_AllyController : C4_Controller
             case ePlayerControllerActionState.None:
                 break;
             case ePlayerControllerActionState.Aming:
-                notifyEvent("Aming", inputData.dragPosition, selectedAllyUnit, calcMissileTargetPoint(inputData.dragPosition));
+                notifyEvent("Aim", inputData.dragPosition, selectedAllyUnit, calcMissileTargetPoint(inputData.dragPosition));
                 break;
             case ePlayerControllerActionState.Move:
                 notifyEvent("Move", inputData.clickPosition);
                 activeDone();
                 break;
             case ePlayerControllerActionState.Select:
-                activeDone();
                 selectClickObject(C4_GameManager.Instance.objectManager.getObject(inputData.clickObjectID).gameObject);
-                notifyEvent("Select", selectedAllyUnit.gameObject.transform);
                 break;
             case ePlayerControllerActionState.StartAim:
                 isAiming = true;
-                notifyEvent("StartAim");
+                notifyEvent("AimStart");
                 break;
             case ePlayerControllerActionState.Shot:
                 notifyEvent("Shot", calcMissileTargetPoint(inputData.dragPosition));

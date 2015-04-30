@@ -29,8 +29,6 @@ public class C4_ButtonUI : MonoBehaviour
             btlist[i].GetComponent<C4_AllyButton>().myCharacter = C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Ally).getObjectInList(i).gameObject;
         }
         ButtonHeight = btlist[0].image.rectTransform.rect.height * btlist[0].transform.localScale.y;
-        Debug.Log(ButtonHeight);
-
         allocate();
         
     }

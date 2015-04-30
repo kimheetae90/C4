@@ -454,9 +454,10 @@ GameObject:
   - 4: {fileID: 419662}
   - 114: {fileID: 11412958}
   - 114: {fileID: 11487900}
-  - 114: {fileID: 11445750}
   - 114: {fileID: 11469312}
   - 114: {fileID: 11469196}
+  - 114: {fileID: 11435088}
+  - 114: {fileID: 11460664}
   m_Layer: 0
   m_Name: Whale
   m_TagString: Untagged
@@ -1126,7 +1127,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11445750
+--- !u!114 &11435088
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1134,7 +1135,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 183416}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f9ae75136ac5a24c9a83a843c79a40f, type: 3}
+  m_Script: {fileID: 11500000, guid: 8318caa06ef844485ad1486b79c0ae4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11447700
@@ -1296,6 +1297,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11460664
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b59e86cebdb94499f92fb0707367239d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11466552
 MonoBehaviour:
   m_ObjectHideFlags: 1

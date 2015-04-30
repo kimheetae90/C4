@@ -9,7 +9,7 @@ public class C4_Ally : C4_Unit , C4_IControllerListener {
         C4_Object ally = GetComponent<C4_Object>();
         C4_GameManager.Instance.objectManager.registerObjectToAll(ref ally, GameObjectType.Ally, GameObjectInputType.SelectAbleObject | GameObjectInputType.ClickAbleObject);
     } 	
-
+	
 	protected override void checkHP()
 	{
 		if (unitFeature.hp <= 0)
@@ -24,12 +24,12 @@ public class C4_Ally : C4_Unit , C4_IControllerListener {
     {
         switch(message)
         {
-            case "Aming":
+            case "Aim":
                 {
 					Vector3 pos = (Vector3)p[0];
 					C4_ControllUnitMove controllUnitMove = GetComponentInParent<C4_ControllUnitMove>();
 					controllUnitMove.stopCompletely();
-                    turn(-pos);
+					turn(-pos);
                 }
                 break;
             case "Move":
