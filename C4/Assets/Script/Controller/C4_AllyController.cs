@@ -26,7 +26,7 @@ public class C4_AllyController : C4_Controller
     {
         None,
         StartAim,
-        EndAmi,
+        AimCancle,
         Aming,
         Shot,
         Move,
@@ -134,9 +134,9 @@ public class C4_AllyController : C4_Controller
         }
         else if (isEqaulClickObjAndDragObj && isAiming)
         {
-            action = ePlayerControllerActionState.Select;
+            action = ePlayerControllerActionState.AimCancle;
         }
-        else if (isSelectClickableObject && selectedAllyUnit != null)
+        else if (isAiming && isSelectClickableObject && selectedAllyUnit != null)
         {
             action = ePlayerControllerActionState.Aming;
         }
@@ -172,6 +172,10 @@ public class C4_AllyController : C4_Controller
                 notifyEvent("Shot", calcMissileTargetPoint(inputData.dragPosition));
                 activeDone();
                 break;
+			case ePlayerControllerActionState.AimCancle:
+				isAiming = false;
+				notifyEvent("AimCancle");
+				break;
         }
     }
 }
