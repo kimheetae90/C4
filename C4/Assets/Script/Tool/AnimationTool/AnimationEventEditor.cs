@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
 #if UNITY_EDITOR
 using System.Collections;
+using UnityEditor;
 
 public class AnimationEventEditor : BaseAnimationWindow
 {
+
+	public string assetPath;
+
     override public void Awake()
     {
 
         base.Awake();
-
         property = new AnimationEditorProperty();
 
         AnimationListWindow animationListWindow = transform.gameObject.AddComponent<AnimationListWindow>();
@@ -28,6 +31,10 @@ public class AnimationEventEditor : BaseAnimationWindow
 
         Animator animator = GetComponent<Animator>();
         property.Animator = animator;
+
+		AnimationClip[] clips = AnimationUtility.GetAnimationClips (gameObject);
+
+		property.Infos = clips;
     }
 
     void OnGUI()

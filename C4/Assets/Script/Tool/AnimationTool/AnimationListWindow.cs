@@ -2,6 +2,8 @@
 #if UNITY_EDITOR
 using System.Collections;
 
+using System.Collections.Generic;
+
 public class AnimationListWindow : BaseAnimationWindow , IAnimationPropertyListener {
 
 	// Use this for initialization
@@ -44,24 +46,27 @@ public class AnimationListWindow : BaseAnimationWindow , IAnimationPropertyListe
 		int curX = x + marginX;
 		int curY = y + marginY;
 
-		GUI.Window(0, new Rect(curX, curY, width, height), onAnimationEventWindow, "Animation List");
+		GUI.Window(0, new Rect(curX, curY, width, height), onAnimationListWindow, "Animation List");
 
 	}
 
-	void onAnimationEventWindow(int windowID)
+	void onAnimationListWindow(int windowID)
 	{
-		AnimatorClipInfo[] infos = property.Animator.GetCurrentAnimatorClipInfo(0);
-		
 		scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(width), GUILayout.Height(height));
 		
-		for (int i = 0; i < infos.Length; ++i)
+		for (int i = 0; i < property.Infos.Length; ++i)
 		{
-			if (GUILayout.Button(infos[i].clip.name, GUILayout.Width(width/5*4)))
+			if (GUILayout.Button(property.Infos[i].name, GUILayout.Width(width/5*4)))
 			{
-				if (i == property.CurrentSelectClipIndex) {
+				/*if (i == property.CurrentSelectClipIndex) {
+					property.CurrentselectAnimationEvent = -1;
 					property.CurrentSelectClipIndex = -1;
+					property.CurrentClip = null;
 				}
-				else {
+				else */
+				{
+					property.CurrentselectAnimationEvent = -1;
+					property.CurrentClip = property.Infos[i];
 					property.CurrentSelectClipIndex = i;
 				}
 			}

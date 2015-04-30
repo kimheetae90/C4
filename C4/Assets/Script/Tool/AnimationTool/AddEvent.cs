@@ -177,7 +177,7 @@ public class AddEvent {
 
 		if (!clipAnimations.isArray)
 			return;
-
+	
 		for (int i = 0; i < clipAnimations.arraySize; i++)
 		{
 			AnimationClipInfoProperties clipInfoProperties = new AnimationClipInfoProperties(clipAnimations.GetArrayElementAtIndex(i));

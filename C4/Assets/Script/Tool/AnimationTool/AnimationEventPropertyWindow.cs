@@ -44,7 +44,7 @@ public class AnimationEventPropertyWindow : BaseAnimationWindow, IAnimationPrope
     int editEventTypeWidth;
     int editEventTypeHeight;
 
-    AnimatorClipInfo AnimClipInfo;
+    AnimationClip AnimClip;
     List<AnimationEvent> AnimEventList = new List<AnimationEvent>();
     AnimationEvent AnimEvent;
     CustomAnimationEventParam animParam;
@@ -184,8 +184,8 @@ public class AnimationEventPropertyWindow : BaseAnimationWindow, IAnimationPrope
                  
             AnimEvent.stringParameter = CustomAnimationEventUtil.buildString(animParam);
 
-            AnimationUtility.SetAnimationEvents(AnimClipInfo.clip, AnimEventList.ToArray());
-            AddEvent.DoAddEventImportedClip(AnimClipInfo.clip, AnimClipInfo.clip);
+            AnimationUtility.SetAnimationEvents(AnimClip, AnimEventList.ToArray());
+            AddEvent.DoAddEventImportedClip(AnimClip, AnimClip);
             bShow = false;
         }
     }
@@ -195,8 +195,8 @@ public class AnimationEventPropertyWindow : BaseAnimationWindow, IAnimationPrope
         if (GUILayout.Button("Remove", GUILayout.Width(width / 5 * 4)))
         {
             AnimEventList.Remove(AnimEvent);
-            AnimationUtility.SetAnimationEvents(AnimClipInfo.clip, AnimEventList.ToArray());
-            AddEvent.DoAddEventImportedClip(AnimClipInfo.clip, AnimClipInfo.clip);
+            AnimationUtility.SetAnimationEvents(AnimClip, AnimEventList.ToArray());
+            AddEvent.DoAddEventImportedClip(AnimClip, AnimClip);
             clear();
         }
     }
@@ -315,7 +315,7 @@ public class AnimationEventPropertyWindow : BaseAnimationWindow, IAnimationPrope
 
             bEditEventType = false;
 
-            AnimationUtility.SetAnimationEvents(AnimClipInfo.clip, AnimEventList.ToArray());
+            AnimationUtility.SetAnimationEvents(AnimClip, AnimEventList.ToArray());
         }
     }
 
@@ -331,7 +331,7 @@ public class AnimationEventPropertyWindow : BaseAnimationWindow, IAnimationPrope
 
             bEditEventTime = false;
 
-            AnimationUtility.SetAnimationEvents(AnimClipInfo.clip, AnimEventList.ToArray());
+            AnimationUtility.SetAnimationEvents(AnimClip, AnimEventList.ToArray());
         }
     }
 
@@ -431,8 +431,8 @@ public class AnimationEventPropertyWindow : BaseAnimationWindow, IAnimationPrope
         }
         else
         {
-            AnimClipInfo = property.Animator.GetCurrentAnimatorClipInfo(0)[property.CurrentSelectClipIndex];
-            AnimEventList = new List<AnimationEvent>(AnimationUtility.GetAnimationEvents(AnimClipInfo.clip));
+			AnimClip = property.CurrentClip;
+            AnimEventList = new List<AnimationEvent>(AnimationUtility.GetAnimationEvents(AnimClip));
         }
 
         if (property.CurrentselectAnimationEvent == -1)

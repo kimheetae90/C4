@@ -28,7 +28,6 @@ public class AnimationEventListWindow : BaseAnimationWindow, IAnimationPropertyL
         if (property.Animator == null)
             return;
 
-
         if (parentWindow != null && parentWindow.bShow)
         {
             marginX = parentWindow.x + parentWindow.width + 5 + parentWindow.marginX;
@@ -46,9 +45,9 @@ public class AnimationEventListWindow : BaseAnimationWindow, IAnimationPropertyL
 
     void onAnimationEventListWindow(int windowID)
     {
-        AnimatorClipInfo info = property.Animator.GetCurrentAnimatorClipInfo(0)[property.CurrentSelectClipIndex];
+		AnimationClip info = property.CurrentClip;
 
-        AnimationEvent[] events = AnimationUtility.GetAnimationEvents(info.clip);
+        AnimationEvent[] events = AnimationUtility.GetAnimationEvents(info);
 
         scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(width), GUILayout.Height(height / 4 * 3));
 
@@ -59,10 +58,12 @@ public class AnimationEventListWindow : BaseAnimationWindow, IAnimationPropertyL
                 if (i == property.CurrentselectAnimationEvent)
                 {
                     property.CurrentselectAnimationEvent = -1;
+					property.CurrentEvent = null;
                 }
                 else
                 {
                     property.CurrentselectAnimationEvent = i;
+					property.CurrentEvent = events[i];
                 }
             }
         }
@@ -78,31 +79,19 @@ public class AnimationEventListWindow : BaseAnimationWindow, IAnimationPropertyL
 
     public void onUpdateProperty(AnimationEditorProperty property)
     {
-        this.property = property;
+		this.property = property;
 
-        if (this.property.Animator == null)
-        {
-            bShow = false;
-        }
-
-        if (property.CurrentSelectClipIndex == -1)
-        {
-            bShow = false;
-        }
-        else
-        {
-            bShow = true;
-        }
+		bShow = property.CurrentClip != null ? true : false; 
     }
 
-    void createNewEvent(AnimatorClipInfo info)
+    void createNewEvent(AnimationClip info)
     {
         var newEvent = new AnimationEvent();
         newEvent.functionName = "EventMessage";
         newEvent.time = property.CurrentAnimationTime; 
-        info.clip.AddEvent(newEvent);
+		info.AddEvent(newEvent);
 
-        AddEvent.DoAddEventImportedClip(info.clip, info.clip);
+        AddEvent.DoAddEventImportedClip(info, info);
     }
 }
 #endif

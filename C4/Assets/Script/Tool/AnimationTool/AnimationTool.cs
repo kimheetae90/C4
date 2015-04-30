@@ -129,8 +129,9 @@ public class AnimationTool : EditorWindow
             Animator anim = fbx.GetComponent<Animator>();
 
             fbx.AddComponent(typeof(AnimationEventEditor));
+
             fbx.AddComponent(typeof(CustomAnimationEvent));
-            
+
             anim.runtimeAnimatorController = controller;
 
             Camera.main.nearClipPlane = 0.1f;

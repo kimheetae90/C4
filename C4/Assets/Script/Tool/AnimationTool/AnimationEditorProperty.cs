@@ -4,6 +4,41 @@ using System.Collections.Generic;
 
 public class AnimationEditorProperty
 {
+	AnimationClip[] infos;
+
+	public AnimationClip[] Infos {
+		get {
+			return infos;
+		}
+		set {
+			infos = value;
+			NotiyChangeProperty();
+		}
+	}
+
+	AnimationClip currentClip;
+
+	public AnimationClip CurrentClip {
+		get {
+			return currentClip;
+		}
+		set {
+			currentClip = value;
+			NotiyChangeProperty();
+		}
+	}
+
+	AnimationEvent currentEvent;
+
+	public AnimationEvent CurrentEvent {
+		get {
+			return currentEvent;
+		}
+		set {
+			currentEvent = value;
+			NotiyChangeProperty();
+		}
+	}
 
     int currentSelectClipIndex;
 
@@ -87,5 +122,4 @@ public class AnimationEditorProperty
     {
         listenerList.Add(listener);
     }
-
 }

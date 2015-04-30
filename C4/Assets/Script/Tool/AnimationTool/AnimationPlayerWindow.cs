@@ -2,6 +2,7 @@
 #if UNITY_EDITOR
 using System;
 using System.Collections;
+using UnityEditor;
 
 public class AnimationPlayerWindow : BaseAnimationWindow, IAnimationPropertyListener {
 
@@ -17,7 +18,7 @@ public class AnimationPlayerWindow : BaseAnimationWindow, IAnimationPropertyList
         x = Screen.width / 4;
         y = Screen.height / 5 * 4;
         width = Screen.width / 2;
-        height = 80;
+        height = 100;
        
         bShow = true;
 	}
@@ -31,31 +32,48 @@ public class AnimationPlayerWindow : BaseAnimationWindow, IAnimationPropertyList
             return;
 
         x = Screen.width / 4;
-        y = Screen.height / 5 * 4;
+        y = Screen.height / 7 * 5;
         width = Screen.width / 2;
 
-        GUI.Window(7, new Rect(x, y, width, height), onAnimationPlayer, "Animation Player Bar");
+        GUI.Window(7, new Rect(x, y, width, height), onAnimationPlayer, "Animation Play Bar");
     }
 
     void onAnimationPlayer(int windowID)
     {
+		
+
         stateInfo = property.Animator.GetCurrentAnimatorStateInfo(0);
 
-        float time = (stateInfo.normalizedTime * stateInfo.length) > stateInfo.length ? stateInfo.length : (stateInfo.normalizedTime * stateInfo.length);
+
+		AnimationClip clip = property.CurrentClip;
+
+		if (stateInfo.IsName (property.CurrentClip.name))
+		{
+			GUILayout.Label(property.CurrentClip.name);
+		}
+		else
+		{
+			GUILayout.Label("any state");
+			//property.Animator.Play(clip.name, -1, 0);
+		}
+
+
+
+		float time = stateInfo.normalizedTime;
 
         string curtime = String.Format("{0:n2}", time);
 
-        string length = String.Format("{0:n2}", stateInfo.length);
-
+		string length = String.Format("{0:n2}",stateInfo.length);
+					
         GUILayout.BeginHorizontal("");
         GUILayout.Label(curtime);
-        curAnimTime = GUILayout.HorizontalSlider(stateInfo.normalizedTime, 0.0F, 1, GUILayout.Width(Screen.width / 3), GUILayout.Height(5));
+		curAnimTime = GUILayout.HorizontalSlider(time, 0.0F, 1, GUILayout.Width(Screen.width / 3), GUILayout.Height(5));
         GUILayout.Label(length);
         GUILayout.EndHorizontal();
 
         if (curAnimTime != stateInfo.normalizedTime)
         {
-            property.Animator.Play(AnimClipInfo.clip.name, -1, curAnimTime);
+			property.Animator.Play(clip.name, -1, curAnimTime);
             property.Animator.speed = 0;
         }
 
@@ -68,7 +86,7 @@ public class AnimationPlayerWindow : BaseAnimationWindow, IAnimationPropertyList
             }
             else
             {
-                property.Animator.Play(AnimClipInfo.clip.name, -1, 0);
+				property.Animator.Play(clip.name, -1, 0);
             }
         }
         if (GUILayout.Button("||"))
@@ -95,8 +113,10 @@ public class AnimationPlayerWindow : BaseAnimationWindow, IAnimationPropertyList
         }
         else
         {
-            AnimClipInfo = property.Animator.GetCurrentAnimatorClipInfo(0)[property.CurrentSelectClipIndex];
             stateInfo = property.Animator.GetCurrentAnimatorStateInfo(0);
+			//property.Animator.CrossFade(property.CurrentClip.name,0.0f);
+			property.Animator.Play(property.CurrentClip.name);
+
             curAnimTime = 0;
             bShow = true;
         }
