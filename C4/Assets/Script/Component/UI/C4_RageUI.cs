@@ -58,8 +58,7 @@ public class C4_RageUI : MonoBehaviour
         unitFeature.rageGage -= unitFeature.regeConsumeSpeed;
         if (unitFeature.rageGage <= 0)
         {
-            unitFeature.rageGage = 0;
-            unitFeature.israge = false;
+            rageEnd();
         }
     }
     public void rageEnd()

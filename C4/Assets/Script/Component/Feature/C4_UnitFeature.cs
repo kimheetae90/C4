@@ -60,4 +60,75 @@ public class C4_UnitFeature : MonoBehaviour
             gage += Time.deltaTime * gageChargingSpeed * 30;
         }
     }
+
+    public void rageUpAtt()
+    {
+
+        if (israge == false)
+        {
+
+            rageGage += rageGageChargeInAttack;
+
+            if (rageGage >= rageFullGage)
+            {
+
+                rageGage = rageFullGage;
+                israge = true;
+                StartCoroutine("ragemode");
+
+            }
+            GetComponentInChildren<C4_RageUI>().rageChanged();
+            
+        }
+    }
+    public void rageUpDmg()
+    {
+        if (israge == false)
+        {
+            rageGage += rageGageChargeInDamage;
+            if (rageGage >= rageFullGage)
+            {
+                rageGage = rageFullGage;
+                israge = true;
+                StartCoroutine("ragemode");
+            }
+            GetComponentInChildren<C4_RageUI>().rageChanged();
+        }
+    }
+    public void rageDown()
+    {
+        rageGage -= regeConsumeSpeed;
+        if (rageGage <= 0)
+        {
+            rageEnd();
+        }
+    }
+    public void rageEnd()
+    {
+        rageGage = 0;
+        israge = false;
+        GetComponentInChildren<C4_RageUI>().rageChanged();
+        StopCoroutine("ragemode");
+    }
+    IEnumerator ragemode()
+    {
+        yield return null;
+
+        rageDown();
+        GetComponentInChildren<C4_RageUI>().rageChanged();
+
+        if (rageGage <= 0)
+        {
+            rageEnd();
+        }
+        if (israge == true)
+        {
+            StartCoroutine("ragemode");
+        }
+        else
+        {
+            StopCoroutine("ragemode");
+        }
+
+    }
 }
