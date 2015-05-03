@@ -65,4 +65,15 @@ public class C4_ButtonUI : MonoBehaviour
         C4_GameManager.Instance.sceneMode.GetComponentInChildren<C4_PlayMode>().allyController.activeDone();
     }
 
+    public void unactive(GameObject input)
+    {
+        for (int i = 0; i < Allynum; i++)
+        {
+            if (btlist[i].GetComponent<C4_AllyButton>().myCharacter == input)
+            {
+                btlist[i].interactable = false;
+            }
+        }
+    }
+
 }

@@ -17,6 +17,7 @@ public class C4_Ally : C4_Unit , C4_IControllerListener {
 			C4_GameManager.Instance.objectManager.reserveRemoveObject(GetComponent<C4_Object>());
 			C4_GameManager.Instance.sceneMode.GetComponent<C4_PlayMode> ().playerUI.activeDone ();
 			C4_GameManager.Instance.sceneMode.GetComponent<C4_PlayMode>().allyController.activeDone();
+            FindObjectOfType<C4_ButtonUI>().unactive(this.gameObject);
 		}
 	}
 
