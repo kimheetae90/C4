@@ -4,11 +4,11 @@ using System.Collections;
 
 public abstract class C4_TargetUI : MonoBehaviour {
 
-    public Image targetUIImage;
+    public GameObject targetUIImage;
 	// Use this for initialization
     void Start()
     {
-        targetUIImage.gameObject.SetActive(false);
+        targetUIImage.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -17,6 +17,6 @@ public abstract class C4_TargetUI : MonoBehaviour {
     
     public void hideUI()
     {
-        targetUIImage.gameObject.SetActive(false);
+        targetUIImage.SetActive(false);
     }
 }

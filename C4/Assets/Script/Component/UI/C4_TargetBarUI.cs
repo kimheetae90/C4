@@ -6,13 +6,14 @@ public class C4_TargetBarUI : C4_TargetUI
 {
     public override void showUI(Vector3 targetPos)
     {
-        targetUIImage.gameObject.SetActive(true);
+        targetUIImage.SetActive(true);
         float distance = Vector3.Distance(transform.position, targetPos);
 		Vector3 direction = targetPos - transform.position;
 
-        targetUIImage.gameObject.transform.rotation = Quaternion.LookRotation(direction);
-        targetUIImage.gameObject.transform.Rotate(Vector3.right, 90);
-        targetUIImage.gameObject.transform.localScale = new Vector3(1, distance / targetUIImage.rectTransform.rect.height, 1);
+        targetUIImage.transform.rotation = Quaternion.LookRotation(direction);
+        targetUIImage.transform.Rotate(Vector3.right, 90);
+        targetUIImage.transform.GetChild(0).localPosition = new Vector3(0, distance*0.52f, 0);
+        targetUIImage.transform.GetChild(0).localScale = new Vector3(15, distance*0.28f, 1);
     }
 
 }

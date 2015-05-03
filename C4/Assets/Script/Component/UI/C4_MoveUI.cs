@@ -4,8 +4,8 @@ using System.Collections;
 
 public class C4_MoveUI : MonoBehaviour
 {
-    public Image moveUIImage;
-    GameObject moveUIGameObejct;
+    
+    public GameObject moveUIGameObejct;
     bool isSelect;
     C4_UnitFeature unitFeature;
     C4_Ally selectedBoat;
@@ -14,7 +14,7 @@ public class C4_MoveUI : MonoBehaviour
 
     void Start()
     {
-        moveUIGameObejct = moveUIImage.gameObject;
+        
         isSelect = false;
         moveUIGameObejct.SetActive(false);
 
@@ -47,13 +47,13 @@ public class C4_MoveUI : MonoBehaviour
     {
         moveUIGameObejct.SetActive(true);
         moveRange = unitFeature.moveRange;
-        moveUIImage.transform.localScale = new Vector3((moveRange), (moveRange), 1);
+        moveUIGameObejct.transform.localScale = new Vector3((moveRange), 1, (moveRange));
     }
 
     public void hideUI()
     {
         isSelect = false;
         moveUIGameObejct.SetActive(false);
-        moveUIImage.transform.localScale = new Vector3(0, 0, 1);
+        moveUIGameObejct.transform.localScale = new Vector3(0, 0, 1);
     }
 }
