@@ -4,18 +4,15 @@ using System.Collections;
 
 public class C4_AimUI : MonoBehaviour {
 	
-	public Image aimUIImage;
-	GameObject aimUIGameObject;
 	
-	public Image cannotActiveAimUIImage;
-	GameObject cannotActiveAimUIGameObject;
+	public GameObject aimUIGameObject;
+	
+	public GameObject cannotActiveAimUIGameObject;
 	
 	void Start()
 	{
-		aimUIGameObject = aimUIImage.gameObject;
-		aimUIGameObject.SetActive(false);
 		
-		cannotActiveAimUIGameObject = cannotActiveAimUIImage.gameObject;
+		aimUIGameObject.SetActive(false);
 		cannotActiveAimUIGameObject.SetActive(false);
 	}
 	
@@ -35,9 +32,9 @@ public class C4_AimUI : MonoBehaviour {
 		Vector3 aimDirection = (selectedBoat.transform.position - clickPosition).normalized;
 		aimDirection.y = 0;
 
-		aimUIImage.transform.rotation = Quaternion.LookRotation(aimDirection);
-		aimUIImage.transform.Rotate(Vector3.right, 90);
-		aimUIImage.transform.localScale = new Vector3(1, distance, 1);
+        aimUIGameObject.transform.rotation = Quaternion.LookRotation(aimDirection);
+        //aimUIGameObject.transform.Rotate(Vector3.right, 90);
+        aimUIGameObject.transform.localScale = new Vector3(1, 1, distance*0.1f);
 	}
 	
 	public void showCannotActiveUI(Vector3 clickPosition, float maxAttackRange)
@@ -52,9 +49,9 @@ public class C4_AimUI : MonoBehaviour {
 		Vector3 aimDirection = (selectedBoat.transform.position - clickPosition).normalized;
 		aimDirection.y = 0;
 
-		cannotActiveAimUIImage.transform.rotation = Quaternion.LookRotation(aimDirection);
-		cannotActiveAimUIImage.transform.Rotate(Vector3.right, 90);
-		cannotActiveAimUIImage.transform.localScale = new Vector3(1, distance, 1);
+        cannotActiveAimUIGameObject.transform.rotation = Quaternion.LookRotation(aimDirection);
+        //cannotActiveAimUIGameObject.transform.Rotate(Vector3.right, 90);
+        cannotActiveAimUIGameObject.transform.localScale = new Vector3(1, 1, distance*0.1f);
 	}
 	public void hideUI()
 	{

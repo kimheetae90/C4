@@ -93,6 +93,48 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 814290339}
   m_Script: {fileID: 11500000, guid: 52c93bff2eff30f4d831f1c872a2c286, type: 3}
+--- !u!1001 &160084926
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 487908, guid: 9e9063d48a1171243934707ad443405f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 487908, guid: 9e9063d48a1171243934707ad443405f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 487908, guid: 9e9063d48a1171243934707ad443405f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 487908, guid: 9e9063d48a1171243934707ad443405f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 487908, guid: 9e9063d48a1171243934707ad443405f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 487908, guid: 9e9063d48a1171243934707ad443405f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 487908, guid: 9e9063d48a1171243934707ad443405f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 487908, guid: 9e9063d48a1171243934707ad443405f, type: 2}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 9e9063d48a1171243934707ad443405f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &181645089
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,48 +899,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bc22bebdcac14a740886426e1f62ee67, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &1074167889
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 487908, guid: 9e9063d48a1171243934707ad443405f, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 487908, guid: 9e9063d48a1171243934707ad443405f, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 487908, guid: 9e9063d48a1171243934707ad443405f, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 487908, guid: 9e9063d48a1171243934707ad443405f, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 487908, guid: 9e9063d48a1171243934707ad443405f, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 487908, guid: 9e9063d48a1171243934707ad443405f, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 487908, guid: 9e9063d48a1171243934707ad443405f, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 487908, guid: 9e9063d48a1171243934707ad443405f, type: 2}
-      propertyPath: m_RootOrder
-      value: 16
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 9e9063d48a1171243934707ad443405f, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &1148824902
 Prefab:
   m_ObjectHideFlags: 0
@@ -1066,7 +1066,7 @@ MonoBehaviour:
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11413162, guid: 9e9063d48a1171243934707ad443405f,
     type: 2}
-  m_PrefabInternal: {fileID: 1074167889}
+  m_PrefabInternal: {fileID: 160084926}
   m_Script: {fileID: 11500000, guid: 6c957c4f43ca4444aa75c9dfb15dc087, type: 3}
 --- !u!114 &2139950584 stripped
 MonoBehaviour:

@@ -1064,7 +1064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 671a6f61f820c024dbb0c17d6732a311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missile: {fileID: 138578, guid: dc820ae75cdcbb64b8bbac350bd336c1, type: 2}
+  missile: {fileID: 164402, guid: 912546bd7d8814744aebc8030ab55240, type: 2}
   attackRange: 15
   fullHP: 300
   moveSpeed: 50
