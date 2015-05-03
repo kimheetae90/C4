@@ -44,7 +44,7 @@ public class C4_RageUI : MonoBehaviour
             {
                 unitFeature.rageGage = unitFeature.rageFullGage;
                 unitFeature.israge = true;
-               
+                StartCoroutine("ragemode");
             }
             rageChanged();
         }
