@@ -8,7 +8,8 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
 	C4_SelectUI selectUI;
 	C4_TargetSpotUI targetspotUI;
 	C4_TargetBarUI targetbarUI;
-	
+    C4_AimLimitUI aimlimitUI;
+
 	void Start()
 	{
 		aimUI = GetComponent<C4_AimUI>();
@@ -16,6 +17,7 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
 		selectUI = GetComponent<C4_SelectUI>();
 		targetspotUI = GetComponent<C4_TargetSpotUI>();
 		targetbarUI = GetComponent<C4_TargetBarUI>();
+        aimlimitUI = GetComponent<C4_AimLimitUI>();
 	}
 	
 	public void aiming(Vector3 clickPosition, C4_Ally allyUnit, Vector3 targetPos)
@@ -39,6 +41,7 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
 			activeDone();
 		}
 		showTargetUI (targetPos);
+        aimlimitUI.showUI(maxAttackRange);
 	}
 
 	public void showTargetUI(Vector3 targetPos)
@@ -69,6 +72,7 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
 			aimUI.hideUI ();
 			targetbarUI.hideUI();
 			targetspotUI.hideUI();
+            aimlimitUI.hideUI();
 		} 
 		else 
 		{
@@ -82,6 +86,7 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
 		aimUI.hideUI ();
 		targetbarUI.hideUI();
 		targetspotUI.hideUI();
+        aimlimitUI.hideUI();
 	}
 
 	public void activeDone()
@@ -91,6 +96,7 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
 		selectUI.hideUI();
 		targetspotUI.hideUI();
 		targetbarUI.hideUI();
+        aimlimitUI.hideUI();
 		transform.SetParent(null);
 	}
 	
