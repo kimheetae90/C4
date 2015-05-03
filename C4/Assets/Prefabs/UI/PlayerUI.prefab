@@ -111,7 +111,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 464556}
-  - 95: {fileID: 9551116}
+  - 95: {fileID: 9564242}
   m_Layer: 5
   m_Name: Select
   m_TagString: Untagged
@@ -361,7 +361,7 @@ Transform:
   - {fileID: 490634}
   m_Father: {fileID: 487908}
   m_RootOrder: 0
---- !u!95 &9551116
+--- !u!95 &9564242
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -370,7 +370,7 @@ Animator:
   m_GameObject: {fileID: 155646}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1fa5b0993a0d1614b8e666b6cd17eb3e, type: 2}
+  m_Controller: {fileID: 9100000, guid: a687e2eb9a5104d49b71e1269d1cf69b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
