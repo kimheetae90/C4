@@ -467,7 +467,7 @@ public class AnimationEventPropertyWindow : BaseAnimationWindow, IAnimationPrope
         }
         Bones.Add(t.gameObject);
 
-        Utils.IterateChildrenUtil.IterateChildren(t.gameObject, delegate(GameObject go) { Bones.Add(go); }, true);
+		Utils.IterateChildrenUtil.IterateChildren(t.gameObject, delegate(GameObject go) { Bones.Add(go); return true; }, true);
 
         cbBoneNames = new GUIContent[Bones.Count];
 

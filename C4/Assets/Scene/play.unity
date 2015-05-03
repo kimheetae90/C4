@@ -87,7 +87,7 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &12758853 stripped
+--- !u!114 &12758853
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11426250, guid: 409c411f98103354d8349226a9dc7014,
     type: 2}
@@ -305,7 +305,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
---- !u!114 &268263721 stripped
+--- !u!114 &268263721
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11401712, guid: 607673f54b716f148b5e512e37cf0361,
     type: 2}
@@ -381,11 +381,11 @@ Prefab:
     - target: {fileID: 11477398, guid: f45f0ccc22844a84593ed00428fdeacf, type: 2}
       propertyPath: allyUnitGameObject1
       value: 
-      objectReference: {fileID: 183416, guid: 6c2877b7290fa4593bfd5b02f6e3c1c6, type: 2}
+      objectReference: {fileID: 153394, guid: 790a5a54d01d9430890fdd2874f67760, type: 2}
     - target: {fileID: 11477398, guid: f45f0ccc22844a84593ed00428fdeacf, type: 2}
       propertyPath: allyUnitGameObject2
       value: 
-      objectReference: {fileID: 183416, guid: 6c2877b7290fa4593bfd5b02f6e3c1c6, type: 2}
+      objectReference: {fileID: 153394, guid: 790a5a54d01d9430890fdd2874f67760, type: 2}
     - target: {fileID: 11477398, guid: f45f0ccc22844a84593ed00428fdeacf, type: 2}
       propertyPath: buttonUI
       value: 
@@ -480,7 +480,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b793c563b1cadd94d8c90de4cd4d6d93, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &380865681 stripped
+--- !u!114 &380865681
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11411974, guid: 9e9063d48a1171243934707ad443405f,
     type: 2}
@@ -671,7 +671,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
---- !u!114 &661504620 stripped
+--- !u!114 &661504620
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11453246, guid: 516af8c5b82e79642bfe4f8494a01dad,
     type: 2}
@@ -1004,7 +1004,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 000218507c1b55e4c9fd4a429fe82dbe, type: 2}
   m_IsPrefabParent: 0
---- !u!223 &1465897435 stripped
+--- !u!223 &1465897435
 Canvas:
   m_PrefabParentObject: {fileID: 22347100, guid: 000218507c1b55e4c9fd4a429fe82dbe,
     type: 2}
@@ -1124,19 +1124,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
---- !u!114 &1769572096 stripped
+--- !u!114 &1769572096
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11415200, guid: 1640f07f9b0666740aef6722e2f2916b,
     type: 2}
   m_PrefabInternal: {fileID: 1539309169}
   m_Script: {fileID: 11500000, guid: eeb95cebcf84a415b86b54ae0fb10834, type: 3}
---- !u!114 &2095715591 stripped
+--- !u!114 &2095715591
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11413162, guid: 9e9063d48a1171243934707ad443405f,
     type: 2}
   m_PrefabInternal: {fileID: 189293677}
   m_Script: {fileID: 11500000, guid: 6c957c4f43ca4444aa75c9dfb15dc087, type: 3}
---- !u!114 &2139950584 stripped
+--- !u!114 &2139950584
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11493868, guid: 46d00ed944bb94623a051de570be4c14,
     type: 2}

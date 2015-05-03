@@ -10,14 +10,29 @@ public class CustomAnimationEvent : MonoBehaviour
     void Start()
     {
         dicBones = new Dictionary<string, Transform>();
-        Transform t = this.transform.FindChild("root");
+
+		Transform t = null;
+
+		Utils.IterateChildrenUtil.IterateChildren(this.gameObject, delegate(GameObject go) { 
+		
+			if(go.name == "root")
+			{
+				t = go.transform;
+				return false;
+			}
+
+			return true;
+
+		}, true);
+
         if (t == null)
         {
             Debug.LogError("Bone Object Not Found");
         }
+
         dicBones.Add(t.name, t);
 
-        Utils.IterateChildrenUtil.IterateChildren(t.gameObject, delegate(GameObject go) { dicBones.Add(go.name, go.transform); }, true);
+		Utils.IterateChildrenUtil.IterateChildren(t.gameObject, delegate(GameObject go) { dicBones.Add(go.name, go.transform); return true;}, true);
     }
 
     // Update is called once per frame
