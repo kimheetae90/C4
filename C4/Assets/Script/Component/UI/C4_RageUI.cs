@@ -52,10 +52,6 @@ public class C4_RageUI : MonoBehaviour
     public void rageChanged()
     {
         rageUIImage.fillAmount = (float)unitFeature.rageGage / unitFeature.rageFullGage;
-        
-        
-
-
     }
     public void rageDown()
     {
@@ -79,6 +75,11 @@ public class C4_RageUI : MonoBehaviour
 
         rageDown();
         rageChanged();
+
+        if (unitFeature.rageGage <= 0)
+        {
+            rageEnd();
+        }
         if (unitFeature.israge == true)
         {
             StartCoroutine("ragemode");
