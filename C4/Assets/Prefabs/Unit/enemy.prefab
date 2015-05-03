@@ -65,6 +65,7 @@ GameObject:
   - 114: {fileID: 11469394}
   - 114: {fileID: 11439128}
   - 114: {fileID: 11405744}
+  - 114: {fileID: 11489104}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -360,6 +361,7 @@ MonoBehaviour:
   regeConsumeSpeed: 0
   rageGageChargeInAttack: 0
   rageGageChargeInDamage: 0
+  rageGage: 0
 --- !u!114 &11435902
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -435,7 +437,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130270}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -498,6 +500,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19cf8a1374095a34f9b24da8f654ce4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11489104
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bab9c482dd413340a841c4502b8f529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rageUIImage: {fileID: 11496208}
+  unitFeature: {fileID: 11425952}
 --- !u!114 &11489714
 MonoBehaviour:
   m_ObjectHideFlags: 1

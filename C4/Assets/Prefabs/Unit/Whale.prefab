@@ -1085,10 +1085,10 @@ MonoBehaviour:
   moveRange: 30
   gageChargingSpeed: 2
   rageFullGage: 100
-  regeConsumeSpeed: 10
-  rageGageChargeInAttack: 10
+  regeConsumeSpeed: 1
+  rageGageChargeInAttack: 30
   rageGageChargeInDamage: 10
-  rageGage: 100
+  rageGage: 10
 --- !u!114 &11415234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1139,7 +1139,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: .100000001
   m_FillClockwise: 1
   m_FillOrigin: 0
 --- !u!114 &11435088
@@ -1269,7 +1269,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195064}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 

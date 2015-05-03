@@ -187,7 +187,6 @@ MonoBehaviour:
   power: 100
   moveSpeed: 120
   type: 1
-  Unit: {fileID: 11435088, guid: 6c2877b7290fa4593bfd5b02f6e3c1c6, type: 2}
 --- !u!114 &11483134
 MonoBehaviour:
   m_ObjectHideFlags: 1

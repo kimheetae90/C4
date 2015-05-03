@@ -12,23 +12,24 @@ public class C4_RageUI : MonoBehaviour
     {
         unitFeature = transform.GetComponentInParent<C4_UnitFeature>();
         rageUIImage.fillAmount = 0;
-        Debug.Log("rage now " + unitFeature.rageGage);
     }
 
     // Update is called once per frame
    
     public void rageUpAtt()
     {
-        
+
         if (unitFeature.israge == false)
         {
+            
             unitFeature.rageGage += unitFeature.rageGageChargeInAttack;
+            
             if (unitFeature.rageGage >= unitFeature.rageFullGage)
             {
-                Debug.Log("full!!");
+                
                 unitFeature.rageGage = unitFeature.rageFullGage;
                 unitFeature.israge = true;
-                //StartCoroutine("ragemode");
+                StartCoroutine("ragemode");
 
             }
             rageChanged();
@@ -43,7 +44,7 @@ public class C4_RageUI : MonoBehaviour
             {
                 unitFeature.rageGage = unitFeature.rageFullGage;
                 unitFeature.israge = true;
-                //StartCoroutine("ragemode");
+               
             }
             rageChanged();
         }
@@ -52,8 +53,7 @@ public class C4_RageUI : MonoBehaviour
     {
         rageUIImage.fillAmount = (float)unitFeature.rageGage / unitFeature.rageFullGage;
         
-        Debug.Log("rage now "+unitFeature.rageGage);
-        Debug.Log("fill " + rageUIImage.fillAmount);
+        
 
 
     }
