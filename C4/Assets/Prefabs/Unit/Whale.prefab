@@ -554,6 +554,7 @@ GameObject:
   - 114: {fileID: 11457556}
   - 114: {fileID: 11450492}
   - 114: {fileID: 11449160}
+  - 114: {fileID: 11406160}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -1053,6 +1054,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11406160
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bab9c482dd413340a841c4502b8f529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rageUIImage: {fileID: 11421598}
+  unitFeature: {fileID: 11412958}
 --- !u!114 &11412958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1070,10 +1084,11 @@ MonoBehaviour:
   moveSpeed: 50
   moveRange: 30
   gageChargingSpeed: 2
-  rageFullGage: 0
-  regeConsumeSpeed: 0
-  rageGageChargeInAttack: 0
-  rageGageChargeInDamage: 0
+  rageFullGage: 100
+  regeConsumeSpeed: 10
+  rageGageChargeInAttack: 10
+  rageGageChargeInDamage: 10
+  rageGage: 100
 --- !u!114 &11415234
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -21,20 +21,24 @@ public class C4_UnitFeature : MonoBehaviour
     public int regeConsumeSpeed;
     public int rageGageChargeInAttack;
     public int rageGageChargeInDamage;
-
+    public int rageGage;
     public readonly int fullGage = 300;
 
+    [System.NonSerialized]
+    public bool israge;
     [System.NonSerialized]
     public int hp;
     [System.NonSerialized]
     public float gage;
-    [System.NonSerialized]
-    public int rageGage;
+    
+    
     
     void Start()
     {
         gage = 0;
         hp = fullHP;
+        rageGage = 0;
+        israge = false;
         GetComponent<C4_Move>().setMoveSpeed(moveSpeed);
     }
 
