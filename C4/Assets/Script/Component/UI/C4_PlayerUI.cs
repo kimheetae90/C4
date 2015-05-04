@@ -55,6 +55,9 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
 		case 2: 
 			targetspotUI.showUI(targetPos);
 			break;
+        case 3:
+            targetbarUI.showUI(targetPos);
+            break;
 		}
 	}
 	
