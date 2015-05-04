@@ -40,7 +40,7 @@ public class C4_UnitFeature : MonoBehaviour
         rageGage = 0;
         israge = false;
         GetComponent<C4_Move>().setMoveSpeed(moveSpeed);
-        missile.transform.SetParent(this.gameObject.transform);
+       
     }
 
     void Update()

@@ -28,7 +28,7 @@ public class C4_UnitCollision : MonoBehaviour {
 			break;
 		case GameObjectType.Missile:
                 C4_MissileFeature missileFeature = collisionObject.GetComponent<C4_MissileFeature>();
-                missileFeature.transform.GetComponentInParent<C4_UnitFeature>().transform.GetChild(1).GetComponent<C4_RageUI>().rageUpAtt();
+                missileFeature.GetComponent<C4_MissileFeature>().unit.transform.GetChild(1).GetComponent<C4_RageUI>().rageUpAtt();
                 unit.damaged(missileFeature.power);
 			break;
 		}

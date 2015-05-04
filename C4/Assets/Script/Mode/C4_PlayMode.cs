@@ -49,6 +49,7 @@ public class C4_PlayMode : C4_SceneMode
         Vector3 missileInitPosition = new Vector3(transform.position.x, transform.position.y - 20, transform.position.z);
         GameObject initMissileGameObject = Instantiate(initPlayerGameObject.GetComponent<C4_UnitFeature>().missile, missileInitPosition, transform.rotation) as GameObject;
         initPlayerGameObject.GetComponent<C4_UnitFeature>().missile = initMissileGameObject;
+        initMissileGameObject.GetComponent<C4_MissileFeature>().unit = initPlayerGameObject;
     }
 
     void addSubObjectManagers()
