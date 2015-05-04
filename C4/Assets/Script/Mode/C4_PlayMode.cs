@@ -25,8 +25,8 @@ public class C4_PlayMode : C4_SceneMode
 		base.Start();
 		addSubObjectManagers();
 		
-		ListAllyGameObject.Add(allyUnitGameObject1);
-		ListAllyGameObject.Add(allyUnitGameObject2);
+		ListAllyGameObject.Add(allyUnitGameObject1);   //나중에 게임오브젝트로부터 받을 것(List이어야함)
+		ListAllyGameObject.Add(allyUnitGameObject2);   //나중에 게임오브젝트로부터 받을 것(List이어야함)
 		Vector3 initPos = transform.position;
 		
 		foreach (GameObject allyGameObject in ListAllyGameObject)
