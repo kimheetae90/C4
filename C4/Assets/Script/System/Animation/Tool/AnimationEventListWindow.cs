@@ -47,9 +47,11 @@ public class AnimationEventListWindow : BaseAnimationWindow, IAnimationPropertyL
     {
 		AnimationClip info = property.CurrentClip;
 
+        GUILayout.Label(info.name + " : " + info.length, GUILayout.Width(width));
+
         AnimationEvent[] events = AnimationUtility.GetAnimationEvents(info);
 
-        scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(width), GUILayout.Height(height / 4 * 3));
+        scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(width), GUILayout.Height(height / 5 * 3));
 
         for (int i = 0; i < events.Length; ++i)
         {
@@ -87,8 +89,8 @@ public class AnimationEventListWindow : BaseAnimationWindow, IAnimationPropertyL
     void createNewEvent(AnimationClip info)
     {
         var newEvent = new AnimationEvent();
-        newEvent.functionName = "EventMessage";
-        newEvent.time = property.CurrentAnimationTime; 
+        newEvent.functionName = AnimEventParamFactory.getEventList()[0];
+        newEvent.time = 0; 
 		info.AddEvent(newEvent);
 
         AddEvent.DoAddEventImportedClip(info, info);

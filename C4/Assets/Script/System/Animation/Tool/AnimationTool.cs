@@ -9,14 +9,6 @@ using System.IO;
 //저장
 public class AnimationTool : EditorWindow
 {
-    
-    enum eAnimationFileType
-    {
-        eAnimationFileType_FBX,
-        eAnimationFileType_Controller,
-        eAnimationFileType_Count,
-    }
-
     AssetsSelectFilesInfo fbxFiles = new AssetsSelectFilesInfo();
     AssetsSelectFilesInfo controllerFiles = new AssetsSelectFilesInfo();
    
