@@ -50,6 +50,7 @@ public class C4_GameManager : MonoBehaviour {
 
     public void StartPlayScene()
 	{
+		LoadingScene ();
         sceneMode = GameObject.Find("PlayMode").GetComponent<C4_SceneMode>();
     }
 }
