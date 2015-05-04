@@ -4,7 +4,7 @@ using System.Collections;
 /// <summary>
 ///  카메라
 /// </summary>
-public abstract class C4_Camera : C4_Object, C4_IControllerListener
+public class C4_Camera : C4_Object, C4_IControllerListener
 {
     protected float moveSpeed;
     protected Vector3 toMove;
@@ -23,9 +23,9 @@ public abstract class C4_Camera : C4_Object, C4_IControllerListener
         transform.Translate(inputData.clickPosition - inputData.dragPosition);
     }
     
-	protected abstract void zooming (InputData data);
+	protected virtual void zooming (InputData data) {}
 
-	protected abstract void returnToFixedZoomSize ();
+	protected virtual void returnToFixedZoomSize () {}
 
     public void onEvent(string message, params object[] p)
     {
