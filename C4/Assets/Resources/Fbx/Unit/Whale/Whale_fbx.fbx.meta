@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: da23a32999e2040159ba6235bc19373b
-timeCreated: 1430757794
+timeCreated: 1430758865
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -537,28 +537,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0
-        functionName: CreateParticle
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: .229564607
-        functionName: CreateParticle
-        data: '{"boneName":"missile_end","resName":"Particle/exampleExplosion/exampleExplosionEffect","followBone":false,"offset":{},"scale":{}}'
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: .22956495
-        functionName: ChangeMaterial
-        data: '{"materialName":"Particle/exampleExplosion/sprite_toonExplosion_a","changeObjectName":"polySurface1"}'
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask:
       - path: 
         weight: 1
