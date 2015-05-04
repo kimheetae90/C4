@@ -91,7 +91,7 @@ public class CustomAnimationEvent : MonoBehaviour
 
     IEnumerator ScaleAnimation(AnimEventChangeScale param, Transform changeObject)
     {
-        while (dicChildObject[param.boneName].localScale != param.toScale)
+        while (changeObject.localScale != param.toScale)
         {
             if(param.changeTime == 0.0f)
             {
