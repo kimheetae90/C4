@@ -30,7 +30,8 @@ public class C4_Ally : C4_Unit , C4_IControllerListener {
 					Vector3 pos = (Vector3)p[0];
 					C4_ControllUnitMove controllUnitMove = GetComponentInParent<C4_ControllUnitMove>();
 					controllUnitMove.stopCompletely();
-					turn(-pos);
+                    Vector3 dist = transform.position - pos;
+					turn((pos+2*dist));
                 }
                 break;
             case "Move":
