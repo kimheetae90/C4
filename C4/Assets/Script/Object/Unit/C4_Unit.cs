@@ -78,6 +78,7 @@ public abstract class C4_Unit : C4_Object
 		unitFeature.hp -= damage;
 		checkHP();
 		GetComponent<C4_AnimControl> ().damaged ();
+        transform.GetChild(1).GetComponent<C4_RageUI>().rageUpDmg();
 	}
 	
 	protected abstract void checkHP();

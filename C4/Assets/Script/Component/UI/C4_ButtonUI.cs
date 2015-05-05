@@ -11,7 +11,6 @@ public class C4_ButtonUI : MonoBehaviour
     List<Button> btlist;
 
     Canvas buttonuicanvas;
-	
     int Allynum;
     // Use this for initialization
     public void initButtonUI()
@@ -26,6 +25,7 @@ public class C4_ButtonUI : MonoBehaviour
             btlist[i].transform.SetParent(buttonuicanvas.transform,false);
             btlist[i].GetComponent<C4_AllyButton>().myCharacter = C4_GameManager.Instance.objectManager.getSubObjectManager(GameObjectType.Ally).getObjectInList(i).gameObject;
         }
+
         allocate();
         
     }
@@ -62,6 +62,17 @@ public class C4_ButtonUI : MonoBehaviour
     public void done()
     {
         C4_GameManager.Instance.sceneMode.GetComponentInChildren<C4_PlayMode>().allyController.activeDone();
+    }
+
+    public void unactive(GameObject input)
+    {
+        for (int i = 0; i < Allynum; i++)
+        {
+            if (btlist[i].GetComponent<C4_AllyButton>().myCharacter == input)
+            {
+                btlist[i].interactable = false;
+            }
+        }
     }
 
 }

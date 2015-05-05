@@ -4,12 +4,12 @@ using System.Collections;
 
 public class C4_SelectUI : MonoBehaviour {
 
-    public Image selectUIImage;
-    GameObject selectUIGameObject;
+   
+    public GameObject selectUIGameObject;
 
     void Start()
     {
-        selectUIGameObject = selectUIImage.gameObject;
+        
         selectUIGameObject.SetActive(false);
     }
 
