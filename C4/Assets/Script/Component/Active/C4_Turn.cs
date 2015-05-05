@@ -20,7 +20,8 @@ public class C4_Turn : MonoBehaviour {
 	
     public void setToTurn(Vector3 click)
 	{
-		toTurn = Quaternion.LookRotation((click - transform.position).normalized);
+        
+		toTurn = Quaternion.LookRotation((click + transform.position).normalized);
 		toTurn.x = 0;
 		toTurn.z = 0;
         StartCoroutine(turn());

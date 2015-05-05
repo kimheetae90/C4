@@ -12,7 +12,6 @@ public class C4_PlayMode : C4_SceneMode
     public List<GameObject> ListAllyGameObject;
     public GameObject allyUnitGameObject1;   //나중에 게임오브젝트로부터 받을 것(List이어야함)
     public GameObject allyUnitGameObject2;   //나중에 게임오브젝트로부터 받을 것(List이어야함)
-	public C4_EnemyAttackUI enemyAttackUI;
 	public C4_ButtonUI buttonUI;
 
     void Awake()
@@ -47,8 +46,12 @@ public class C4_PlayMode : C4_SceneMode
     {
         GameObject initPlayerGameObject = Instantiate(playerGameObject, pos, angle) as GameObject;
         Vector3 missileInitPosition = new Vector3(transform.position.x, transform.position.y - 20, transform.position.z);
-        GameObject initMissileGameObject = Instantiate(initPlayerGameObject.GetComponent<C4_UnitFeature>().missile, missileInitPosition, transform.rotation) as GameObject;
-        initPlayerGameObject.GetComponent<C4_UnitFeature>().missile = initMissileGameObject;
+        if (initPlayerGameObject.GetComponent<C4_UnitFeature>().missile != null)
+        {
+            GameObject initMissileGameObject = Instantiate(initPlayerGameObject.GetComponent<C4_UnitFeature>().missile, missileInitPosition, transform.rotation) as GameObject;
+            initPlayerGameObject.GetComponent<C4_UnitFeature>().missile = initMissileGameObject;
+            initMissileGameObject.GetComponent<C4_MissileFeature>().unit = initPlayerGameObject;
+        }
     }
 
     void addSubObjectManagers()

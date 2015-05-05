@@ -27,8 +27,8 @@ public class C4_UnitCollision : MonoBehaviour {
 			                                                        + (collisionObject.transform.position - unit.transform.position).normalized * 8);
 			break;
 		case GameObjectType.Missile:
-			C4_MissileFeature missileFeature = collisionObject.GetComponent<C4_MissileFeature>();
-			unit.damaged(missileFeature.power);
+                C4_MissileFeature missileFeature = collisionObject.GetComponent<C4_MissileFeature>();
+                unit.damaged(missileFeature.power);
 			break;
 		}
 	}
