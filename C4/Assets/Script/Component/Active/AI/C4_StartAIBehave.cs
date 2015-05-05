@@ -109,7 +109,7 @@ public class C4_StartAIBehave : MonoBehaviour {
 	{
 
 		if (unitFeature.gage >= unitFeature.fullGage) {
-			allyPoint = 2 * transform.position - shortestDistanceAlly.transform.position;
+			allyPoint = shortestDistanceAlly.transform.position;
 			enemyAttackUI.showUI ();
 		}
 	}
