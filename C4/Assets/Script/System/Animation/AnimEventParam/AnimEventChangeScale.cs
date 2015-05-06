@@ -75,6 +75,10 @@ public class AnimEventChangeScale : AnimEventParamBase
         };
         BoneControl.valueSetter = delegate(int i) { boneName = listBoneNames[i]; };
         BoneControl.setContentList(listBoneNames);
+        if(listBoneNames.Count > 0)
+        {
+            BoneControl.valueSetter(0);
+        }
         AddControl(BoneControl);
 
         ParamControlPrimitive<float> TimeControl = new ParamControlPrimitive<float>("ChangeTime");

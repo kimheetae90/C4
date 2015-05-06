@@ -47,8 +47,24 @@ public class CustomAnimationEvent : MonoBehaviour
             {
                 ps.transform.position = bone.position;
             }
+
+            StartCoroutine(PlayParticle(param, ps));
         }
     }
+
+    IEnumerator PlayParticle(AnimEventParamCreateParticle param, GameObject ps)
+    {
+        while(param.elapsedTime < param.lifetime)
+        {
+            ps.transform.position = dicChildObject[param.boneName].position;
+            param.elapsedTime += Time.deltaTime;
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+
+        Destroy(ps);
+
+        yield return null;
+    }    
 
     protected virtual void ChangeMaterial(string strParam)
     {
