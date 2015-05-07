@@ -16,7 +16,7 @@ public class AnimationEventPropertyWindow : BaseAnimationWindow, IAnimationPrope
     AnimationClip AnimClip;
     List<AnimationEvent> AnimEventList = new List<AnimationEvent>();
     
-    AnimEventParamBase animParmBase;
+    AnimEventParamBase animParmBase = new AnimEventParamBase();
 
     ParamControlList<string> typeControl;
 
@@ -37,10 +37,12 @@ public class AnimationEventPropertyWindow : BaseAnimationWindow, IAnimationPrope
         typeControl = new ParamControlList<string>("type");
         typeControl.valueGetter = delegate() { return AnimEventParamFactory.getEventList().FindIndex(a => a == animParmBase.RefAnimEvent.functionName); };
         typeControl.valueSetter = delegate(int i)
-        { 
-            animParmBase.RefAnimEvent.functionName = AnimEventParamFactory.getEventList()[i];
+        {
+            if (animParmBase.RefAnimEvent == null || animParmBase.RefAnimEvent == null) return;
 
             animParmBase = AnimEventParamFactory.CreateParam(animParmBase.RefAnimEvent.functionName, animParmBase.RefAnimEvent, this.gameObject);
+
+            animParmBase.RefAnimEvent.functionName = AnimEventParamFactory.getEventList()[i];
         };
         typeControl.setContentList(AnimEventParamFactory.getEventList());
     }

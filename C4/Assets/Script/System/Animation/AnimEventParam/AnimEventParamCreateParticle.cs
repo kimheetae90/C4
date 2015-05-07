@@ -119,15 +119,33 @@ public class AnimEventParamCreateParticle : AnimEventParamBase
     private void buildBones()
     {
         listBoneNames.Clear();
-        Transform t = RefGameObject.transform.FindChild("root");
 
-        if (t == null)
+
+        Transform root = null;
+
+        Utils.IterateChildrenUtil.IterateChildren(RefGameObject, delegate(GameObject go)
         {
-            throw new ToolException("Doesn't have root bone");
-        }
-        listBoneNames.Add(t.gameObject.name);
+            Transform t = go.transform.FindChild("root");
 
-        Utils.IterateChildrenUtil.IterateChildren(t.gameObject, delegate(GameObject go) {listBoneNames.Add(go.name); return true; }, true);
+            if (t != null)
+            {
+                root = t;
+
+                listBoneNames.Add(t.gameObject.name);
+
+                return false;
+            }
+
+          
+            return true; 
+        
+        }, true);
+
+
+        if (root != null)
+        {
+            Utils.IterateChildrenUtil.IterateChildren(root.gameObject, delegate(GameObject go) { listBoneNames.Add(go.name); return true; }, true);
+        }
     }
 
 #endif
