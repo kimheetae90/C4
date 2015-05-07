@@ -100,16 +100,23 @@ public class AnimEventChangeScale : AnimEventParamBase
 
     private void buildBones()
     {
-        Transform t = RefGameObject.transform.FindChild("root");
+        listBoneNames.Clear();
 
-        if (t == null)
+        SkinnedMeshRenderer renderer = RefGameObject.GetComponentInChildren<SkinnedMeshRenderer>();
+
+        Transform root = null;
+
+        if (renderer != null)
         {
-            throw new ToolException("Doesn't have root bone");
+            root = renderer.rootBone;
+
         }
 
-        listBoneNames.Add(t.gameObject.name);
-
-        Utils.IterateChildrenUtil.IterateChildren(t.gameObject, delegate(GameObject go) { listBoneNames.Add(go.name); return true; }, true);
+        if (root != null)
+        {
+            listBoneNames.Add(root.gameObject.name);
+            Utils.IterateChildrenUtil.IterateChildren(root.gameObject, delegate(GameObject go) { listBoneNames.Add(go.name); return true; }, true);
+        }
     }
 
 }

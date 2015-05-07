@@ -32,21 +32,7 @@ public class CustomAnimationEvent : MonoBehaviour
 
         if (bone != null)
         {
-            if (param.followBone)
-            {
-                ps.transform.position = bone.position;
-
-                ParticleWrapper pw = ps.GetComponent<ParticleWrapper>();
-       
-                if(pw)
-                {
-                    pw.setFollowObject(bone);
-                }
-            }
-            else
-            {
-                ps.transform.position = bone.position;
-            }
+            ps.transform.position = bone.position;
 
             StartCoroutine(PlayParticle(param, ps));
         }
@@ -104,6 +90,29 @@ public class CustomAnimationEvent : MonoBehaviour
             StartCoroutine(ScaleAnimation(param,changeObject));
         }
     }
+
+    protected virtual void ChangeTexture(string strParam)
+    {
+        AnimEventChangeTexture param = new AnimEventChangeTexture();
+
+        param.Deseralize(strParam);
+
+        if (param.textureName == "") return;
+
+        Texture tex = Resources.Load(param.textureName, typeof(Texture)) as Texture;
+
+        Transform changeObject = dicChildObject[param.changeObjectName];
+
+        if (tex != null && changeObject != null)
+        {
+            SkinnedMeshRenderer renderer = changeObject.GetComponent<SkinnedMeshRenderer>();
+
+            if (renderer == null) return;
+
+            renderer.material.SetTexture(param.nameId,tex);
+        }
+    }
+
 
     IEnumerator ScaleAnimation(AnimEventChangeScale param, Transform changeObject)
     {

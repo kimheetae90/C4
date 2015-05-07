@@ -84,7 +84,7 @@ public class AnimEventParamCreateParticle : AnimEventParamBase
 
         BoneControl.valueSetter = delegate(int i) { boneName = listBoneNames[i]; };
         BoneControl.setContentList(listBoneNames);
-        if(listBoneNames.Count > 0)
+        if (listBoneNames.Count > 0)
         {
             BoneControl.valueSetter(0);
         }
@@ -120,30 +120,19 @@ public class AnimEventParamCreateParticle : AnimEventParamBase
     {
         listBoneNames.Clear();
 
+        SkinnedMeshRenderer renderer = RefGameObject.GetComponentInChildren<SkinnedMeshRenderer>();
 
         Transform root = null;
 
-        Utils.IterateChildrenUtil.IterateChildren(RefGameObject, delegate(GameObject go)
+        if (renderer != null)
         {
-            Transform t = go.transform.FindChild("root");
-
-            if (t != null)
-            {
-                root = t;
-
-                listBoneNames.Add(t.gameObject.name);
-
-                return false;
-            }
-
-          
-            return true; 
-        
-        }, true);
-
+            root = renderer.rootBone;
+           
+        }
 
         if (root != null)
         {
+            listBoneNames.Add(root.gameObject.name);
             Utils.IterateChildrenUtil.IterateChildren(root.gameObject, delegate(GameObject go) { listBoneNames.Add(go.name); return true; }, true);
         }
     }
