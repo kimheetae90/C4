@@ -54,7 +54,7 @@ public class AnimEventChangeTexture : AnimEventParamBase
         nameId = (int)j.GetField("nameId").n;
     }
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     public override void InitParamControl()
     {
         base.InitParamControl();
@@ -79,7 +79,7 @@ public class AnimEventChangeTexture : AnimEventParamBase
         textureControl.valueSetter = delegate(string str) { textureName = str; };
         AddControl(textureControl);
 
-        ParamControlPrimitive<int> nameIdControl = new ParamControlPrimitive<int>("texture");
+		ParamControlPrimitive<int> nameIdControl = new ParamControlPrimitive<int>("nameId");
         nameIdControl.valueGetter = delegate() { return nameId; };
         nameIdControl.valueSetter = delegate(int i) { nameId = i; };
         AddControl(nameIdControl);

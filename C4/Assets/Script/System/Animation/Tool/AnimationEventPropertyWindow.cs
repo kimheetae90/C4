@@ -38,9 +38,9 @@ public class AnimationEventPropertyWindow : BaseAnimationWindow, IAnimationPrope
         typeControl.valueGetter = delegate() { return AnimEventParamFactory.getEventList().FindIndex(a => a == animParmBase.RefAnimEvent.functionName); };
         typeControl.valueSetter = delegate(int i)
         {
-            if (animParmBase.RefAnimEvent == null || animParmBase.RefAnimEvent == null) return;
+            if (animParmBase.RefAnimEvent == null || animParmBase.RefGameObject == null) return;
 
-            animParmBase = AnimEventParamFactory.CreateParam(animParmBase.RefAnimEvent.functionName, animParmBase.RefAnimEvent, this.gameObject);
+			animParmBase = AnimEventParamFactory.CreateParam(AnimEventParamFactory.getEventList()[i], animParmBase.RefAnimEvent, this.gameObject);
 
             animParmBase.RefAnimEvent.functionName = AnimEventParamFactory.getEventList()[i];
         };
@@ -161,6 +161,8 @@ public class AnimationEventPropertyWindow : BaseAnimationWindow, IAnimationPrope
             AnimationEvent AnimEvent = AnimEventList[property.CurrentselectAnimationEvent];
             animParmBase = AnimEventParamFactory.CreateParam(AnimEvent.functionName, AnimEvent,this.gameObject);
             animParmBase.Deseralize(AnimEvent.stringParameter);
+
+			typeControl.valueSetter(typeControl.valueGetter());
 
         }
     }
