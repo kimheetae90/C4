@@ -43,6 +43,8 @@ public class AnimationEventPropertyWindow : BaseAnimationWindow, IAnimationPrope
 			animParmBase = AnimEventParamFactory.CreateParam(AnimEventParamFactory.getEventList()[i], animParmBase.RefAnimEvent, this.gameObject);
 
             animParmBase.RefAnimEvent.functionName = AnimEventParamFactory.getEventList()[i];
+		
+			animParmBase.Deseralize(animParmBase.RefAnimEvent.stringParameter);
         };
         typeControl.setContentList(AnimEventParamFactory.getEventList());
     }
