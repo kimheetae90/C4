@@ -45,9 +45,26 @@ public abstract class C4_Unit : C4_Object
 		{
 			unitFeature.activeDone();
 			shotComponent.startShot(targetPos);
+			if(isType(GameObjectType.Enemy))
+				checkAvoid (targetPos);
 		}
 	}
-	
+
+	public void checkAvoid(Vector3 targetPos)
+	{
+		GameObject colObject = transform.Find ("avoidCheckCollider").gameObject;
+		colObject.SetActive (true);
+		
+		BoxCollider col = colObject.GetComponent<BoxCollider>();
+		Vector3 colDirection = (targetPos - this.transform.position).normalized;
+		colDirection.y = 0;
+		
+		float distance = Vector3.Distance (this.transform.position, targetPos);
+		col.size = new Vector3(1,1,distance);
+		col.center = new Vector3(col.size.x, col.size.y+1, col.size.z/2.0f);
+		col.transform.rotation = Quaternion.LookRotation(colDirection);
+	}
+
 	public void move(Vector3 toMove)
 	{
 		moveControlComponent.startCheckGageAndControlMove();
@@ -65,6 +82,7 @@ public abstract class C4_Unit : C4_Object
 		moveComponent.toMove = toMove;
 		unitFeature.activeDone();
 		moveComponent.startMove(toMove);
+		Debug.Log ("collsion move");
 	}
 	
 	public void turn(Vector3 toMove)
