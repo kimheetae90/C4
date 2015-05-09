@@ -11,14 +11,10 @@ public class C4_UnitCollision : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		//Debug.Log ("other is " + other);
 
 		if (other.gameObject.layer == 9){
-			//Debug.Log("layer is " + other.gameObject.layer);
-			Debug.Log("OnTriggerEnter");
 			canAvoid = true;
 			return;
-			//other.gameObject.SendMessage("")
 		}
 		if (other.gameObject.layer == 8)
 		{
@@ -51,7 +47,6 @@ public class C4_UnitCollision : MonoBehaviour {
 	void OnTriggerExit(Collider other){
 		if(canAvoid){
 			if (other.gameObject.layer == 9){
-				Debug.Log ("OnTriggerExit");
 				//reward
 				canAvoid = false;
 				return;

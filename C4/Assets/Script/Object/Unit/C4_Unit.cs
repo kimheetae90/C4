@@ -82,7 +82,6 @@ public abstract class C4_Unit : C4_Object
 		moveComponent.toMove = toMove;
 		unitFeature.activeDone();
 		moveComponent.startMove(toMove);
-		Debug.Log ("collsion move");
 	}
 	
 	public void turn(Vector3 toMove)

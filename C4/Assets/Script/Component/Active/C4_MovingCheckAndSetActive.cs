@@ -11,8 +11,6 @@ public class C4_MovingCheckAndSetActive : MonoBehaviour {
     public void stopChecking()
     {
         StopCoroutine("checkMoving");
-		Debug.Log (gameObject);
-		Debug.Log (gameObject.GetComponent<C4_MissileFeature>().unit);
 		gameObject.SetActive(false);
 		try{
 			  gameObject.GetComponent<C4_MissileFeature> ().unit.gameObject.
