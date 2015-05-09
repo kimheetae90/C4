@@ -12,6 +12,11 @@ public enum GameObjectType
 	Cam
 };
 
+public enum StatusAilmentType
+{
+    Stun,
+};
+
 public enum GameObjectInputType
 {
     Invalid = 0x0000,
