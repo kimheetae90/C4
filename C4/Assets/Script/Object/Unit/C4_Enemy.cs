@@ -5,6 +5,12 @@ public class C4_Enemy : C4_Unit {
 
     bool sendGageFullMessageToController;
 
+    public bool SendGageFullMessageToController
+    {
+        get { return sendGageFullMessageToController; }
+        set { sendGageFullMessageToController = value; }
+    }
+
     protected override void Awake()
     {
         base.Awake();

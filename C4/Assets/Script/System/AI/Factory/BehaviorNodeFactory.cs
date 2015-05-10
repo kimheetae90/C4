@@ -40,14 +40,44 @@ public class BehaviorNodeFactory
         return root;
     }
 
+	public IBehaviorNode buildBehaviorNode(TextAsset assetFile)
+	{
+		XmlElement xmlRoot = loadXML(assetFile);
+		
+		if(xmlRoot == null)
+		{
+			throw new BehaviorNodeException("Root node is Not Exist");
+		}
+		
+		XmlNodeList nodes = xmlRoot.ChildNodes;
+		
+		if(nodes.Count > 1)
+		{
+			throw new BehaviorNodeException("Root node is over One");
+		}
+		
+		IBehaviorNode root = startTraversalXmlNode(xmlRoot.ChildNodes[0]);
+		
+		return root;
+	}
+
+
     XmlElement loadXML(string targetpath)
     {
-		TextAsset odczytaj = Resources.Load(targetpath) as TextAsset;
-        XmlDocument xmldoc = new XmlDocument();
-		xmldoc.LoadXml(odczytaj.text);
-        XmlElement root = xmldoc.DocumentElement;
-        return root;
+		var sr = new StreamReader(targetpath);
+		XmlDocument xmldoc = new XmlDocument();
+		xmldoc.Load(sr);
+		XmlElement root = xmldoc.DocumentElement;
+		return root;
     }
+
+	XmlElement loadXML(TextAsset assetFile)
+	{
+		XmlDocument xmldoc = new XmlDocument();
+		xmldoc.LoadXml(assetFile.text);
+		XmlElement root = xmldoc.DocumentElement;
+		return root;
+	}
 
     IBehaviorNode startTraversalXmlNode(XmlNode xmlParent)
     {

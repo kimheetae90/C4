@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="xgml">
+	<attribute key="Creator" type="String">yFiles</attribute>
+	<attribute key="Version" type="String">2.11</attribute>
+	<section name="graph">
+		<attribute key="hierarchic" type="int">1</attribute>
+		<attribute key="label" type="String"></attribute>
+		<attribute key="directed" type="int">1</attribute>
+		<section name="node">
+			<attribute key="id" type="int">0</attribute>
+			<attribute key="label" type="String">BehaviorNodeBaseSequence</attribute>
+			<section name="graphics">
+				<attribute key="x" type="double">3245.569403712027</attribute>
+				<attribute key="y" type="double">-1072.7320116034377</attribute>
+				<attribute key="w" type="double">101.58203125</attribute>
+				<attribute key="h" type="double">101.58203125</attribute>
+				<attribute key="type" type="String">rectangle</attribute>
+				<attribute key="fill" type="String">#FFCC00</attribute>
+				<attribute key="outline" type="String">#000000</attribute>
+			</section>
+			<section name="LabelGraphics">
+				<attribute key="text" type="String">BehaviorNodeBaseSequence</attribute>
+				<attribute key="fontSize" type="int">12</attribute>
+				<attribute key="fontName" type="String">Dialog</attribute>
+				<attribute key="anchor" type="String">c</attribute>
+			</section>
+		</section>
+		<section name="node">
+			<attribute key="id" type="int">1</attribute>
+			<attribute key="label" type="String">BehaviorNodeFindCloseObjectInAttackRange@Ally</attribute>
+			<section name="graphics">
+				<attribute key="x" type="double">2775.4322906145226</attribute>
+				<attribute key="y" type="double">-911.5183790375157</attribute>
+				<attribute key="w" type="double">100.09765624999997</attribute>
+				<attribute key="h" type="double">100.09765624999997</attribute>
+				<attribute key="type" type="String">ellipse</attribute>
+				<attribute key="fill" type="String">#FFCC00</attribute>
+				<attribute key="outline" type="String">#000000</attribute>
+			</section>
+			<section name="LabelGraphics">
+				<attribute key="text" type="String">BehaviorNodeFindCloseObjectInAttackRange@Ally</attribute>
+				<attribute key="fontSize" type="int">12</attribute>
+				<attribute key="fontName" type="String">Dialog</attribute>
+				<attribute key="anchor" type="String">c</attribute>
+			</section>
+		</section>
+		<section name="node">
+			<attribute key="id" type="int">2</attribute>
+			<attribute key="label" type="String">BehaviorNodeMoveToNearObjectAction@100</attribute>
+			<section name="graphics">
+				<attribute key="x" type="double">3550.520664997431</attribute>
+				<attribute key="y" type="double">-896.7683790375163</attribute>
+				<attribute key="w" type="double">99.84686822066124</attribute>
+				<attribute key="h" type="double">99.84686822066124</attribute>
+				<attribute key="type" type="String">parallelogram</attribute>
+				<attribute key="fill" type="String">#FFCC00</attribute>
+				<attribute key="outline" type="String">#000000</attribute>
+			</section>
+			<section name="LabelGraphics">
+				<attribute key="text" type="String">BehaviorNodeMoveToNearObjectAction@100</attribute>
+				<attribute key="fontSize" type="int">12</attribute>
+				<attribute key="fontName" type="String">Dialog</attribute>
+				<attribute key="anchor" type="String">c</attribute>
+			</section>
+		</section>
+		<section name="node">
+			<attribute key="id" type="int">3</attribute>
+			<attribute key="label" type="String">BehaviorNodeBaseSelector@5@5</attribute>
+			<section name="graphics">
+				<attribute key="x" type="double">3391.270664997431</attribute>
+				<attribute key="y" type="double">-488.04959421392766</attribute>
+				<attribute key="w" type="double">97.0529934918348</attribute>
+				<attribute key="h" type="double">97.0529934918348</attribute>
+				<attribute key="type" type="String">diamond</attribute>
+				<attribute key="fill" type="String">#FFCC00</attribute>
+				<attribute key="outline" type="String">#000000</attribute>
+			</section>
+			<section name="LabelGraphics">
+				<attribute key="text" type="String">BehaviorNodeBaseSelector@5@5</attribute>
+				<attribute key="fontSize" type="int">12</attribute>
+				<attribute key="fontName" type="String">Dialog</attribute>
+				<attribute key="anchor" type="String">c</attribute>
+			</section>
+		</section>
+		<section name="node">
+			<attribute key="id" type="int">4</attribute>
+			<attribute key="label" type="String">BehaviorNodeAttackCloseObject</attribute>
+			<section name="graphics">
+				<attribute key="x" type="double">3466.123727633018</attribute>
+				<attribute key="y" type="double">-329.7554089439416</attribute>
+				<attribute key="w" type="double">99.84686822066124</attribute>
+				<attribute key="h" type="double">99.84686822066124</attribute>
+				<attribute key="type" type="String">parallelogram</attribute>
+				<attribute key="fill" type="String">#FFCC00</attribute>
+				<attribute key="outline" type="String">#000000</attribute>
+			</section>
+			<section name="LabelGraphics">
+				<attribute key="text" type="String">BehaviorNodeAttackCloseObject</attribute>
+				<attribute key="fontSize" type="int">12</attribute>
+				<attribute key="fontName" type="String">Dialog</attribute>
+				<attribute key="anchor" type="String">c</attribute>
+			</section>
+		</section>
+		<section name="node">
+			<attribute key="id" type="int">5</attribute>
+			<attribute key="label" type="String">BehaviorNodeMissAttackCloseObject</attribute>
+			<section name="graphics">
+				<attribute key="x" type="double">3647.2537589693425</attribute>
+				<attribute key="y" type="double">-391.5258074377191</attribute>
+				<attribute key="w" type="double">99.84686822066124</attribute>
+				<attribute key="h" type="double">99.84686822066124</attribute>
+				<attribute key="type" type="String">parallelogram</attribute>
+				<attribute key="fill" type="String">#FFCC00</attribute>
+				<attribute key="outline" type="String">#000000</attribute>
+			</section>
+			<section name="LabelGraphics">
+				<attribute key="text" type="String">BehaviorNodeMissAttackCloseObject</attribute>
+				<attribute key="fontSize" type="int">12</attribute>
+				<attribute key="fontName" type="String">Dialog</attribute>
+				<attribute key="anchor" type="String">c</attribute>
+			</section>
+		</section>
+		<section name="node">
+			<attribute key="id" type="int">6</attribute>
+			<attribute key="label" type="String">BehaviorNodeFollowChildSequence</attribute>
+			<section name="graphics">
+				<attribute key="x" type="double">2927.749021859284</attribute>
+				<attribute key="y" type="double">-1063.505038831875</attribute>
+				<attribute key="w" type="double">101.58203125</attribute>
+				<attribute key="h" type="double">101.58203125</attribute>
+				<attribute key="type" type="String">rectangle</attribute>
+				<attribute key="fill" type="String">#FFCC00</attribute>
+				<attribute key="outline" type="String">#000000</attribute>
+			</section>
+			<section name="LabelGraphics">
+				<attribute key="text" type="String">BehaviorNodeFollowChildSequence</attribute>
+				<attribute key="fontSize" type="int">12</attribute>
+				<attribute key="fontName" type="String">Dialog</attribute>
+				<attribute key="anchor" type="String">c</attribute>
+			</section>
+		</section>
+		<section name="node">
+			<attribute key="id" type="int">7</attribute>
+			<attribute key="label" type="String">BehaviorNodeIfElseSequence</attribute>
+			<section name="graphics">
+				<attribute key="x" type="double">3062.097791799054</attribute>
+				<attribute key="y" type="double">-841.5183790375158</attribute>
+				<attribute key="w" type="double">101.58203125</attribute>
+				<attribute key="h" type="double">101.58203125</attribute>
+				<attribute key="type" type="String">rectangle</attribute>
+				<attribute key="fill" type="String">#FFCC00</attribute>
+				<attribute key="outline" type="String">#000000</attribute>
+			</section>
+			<section name="LabelGraphics">
+				<attribute key="text" type="String">BehaviorNodeIfElseSequence</attribute>
+				<attribute key="fontSize" type="int">12</attribute>
+				<attribute key="fontName" type="String">Dialog</attribute>
+				<attribute key="anchor" type="String">c</attribute>
+			</section>
+		</section>
+		<section name="node">
+			<attribute key="id" type="int">8</attribute>
+			<attribute key="label" type="String">BehaviorNodeFollowChildSequence</attribute>
+			<section name="graphics">
+				<attribute key="x" type="double">2814.541015625</attribute>
+				<attribute key="y" type="double">-669.0777737000317</attribute>
+				<attribute key="w" type="double">101.58203125</attribute>
+				<attribute key="h" type="double">101.58203125</attribute>
+				<attribute key="type" type="String">rectangle</attribute>
+				<attribute key="fill" type="String">#FFCC00</attribute>
+				<attribute key="outline" type="String">#000000</attribute>
+			</section>
+			<section name="LabelGraphics">
+				<attribute key="text" type="String">BehaviorNodeFollowChildSequence</attribute>
+				<attribute key="fontSize" type="int">12</attribute>
+				<attribute key="fontName" type="String">Dialog</attribute>
+				<attribute key="anchor" type="String">c</attribute>
+			</section>
+		</section>
+		<section name="node">
+			<attribute key="id" type="int">9</attribute>
+			<attribute key="label" type="String">BehaviorNodeFollowChildSequence</attribute>
+			<section name="graphics">
+				<attribute key="x" type="double">3035.010307821216</attribute>
+				<attribute key="y" type="double">-628.4293362000316</attribute>
+				<attribute key="w" type="double">101.58203125</attribute>
+				<attribute key="h" type="double">101.58203125</attribute>
+				<attribute key="type" type="String">rectangle</attribute>
+				<attribute key="fill" type="String">#FFCC00</attribute>
+				<attribute key="outline" type="String">#000000</attribute>
+			</section>
+			<section name="LabelGraphics">
+				<attribute key="text" type="String">BehaviorNodeFollowChildSequence</attribute>
+				<attribute key="fontSize" type="int">12</attribute>
+				<attribute key="fontName" type="String">Dialog</attribute>
+				<attribute key="anchor" type="String">c</attribute>
+			</section>
+		</section>
+		<section name="node">
+			<attribute key="id" type="int">10</attribute>
+			<attribute key="label" type="String">BehaviorNodeIsThereAllyBetweenTargetAndMe@Enemy</attribute>
+			<section name="graphics">
+				<attribute key="x" type="double">2544.0305968540442</attribute>
+				<attribute key="y" type="double">-459.9371487000318</attribute>
+				<attribute key="w" type="double">100.09765624999997</attribute>
+				<attribute key="h" type="double">100.09765624999997</attribute>
+				<attribute key="type" type="String">ellipse</attribute>
+				<attribute key="fill" type="String">#FFCC00</attribute>
+				<attribute key="outline" type="String">#000000</attribute>
+			</section>
+			<section name="LabelGraphics">
+				<attribute key="text" type="String">BehaviorNodeIsThereAllyBetweenTargetAndMe@Enemy</attribute>
+				<attribute key="fontSize" type="int">12</attribute>
+				<attribute key="fontName" type="String">Dialog</attribute>
+				<attribute key="anchor" type="String">c</attribute>
+			</section>
+		</section>
+		<section name="node">
+			<attribute key="id" type="int">11</attribute>
+			<attribute key="label" type="String">BehaviorNodeMoveForAvoid@1</attribute>
+			<section name="graphics">
+				<attribute key="x" type="double">2760.205984089375</attribute>
+				<attribute key="y" type="double">-435.01176146470107</attribute>
+				<attribute key="w" type="double">99.84686822066124</attribute>
+				<attribute key="h" type="double">99.84686822066124</attribute>
+				<attribute key="type" type="String">parallelogram</attribute>
+				<attribute key="fill" type="String">#FFCC00</attribute>
+				<attribute key="outline" type="String">#000000</attribute>
+			</section>
+			<section name="LabelGraphics">
+				<attribute key="text" type="String">BehaviorNodeMoveForAvoid@1</attribute>
+				<attribute key="fontSize" type="int">12</attribute>
+				<attribute key="fontName" type="String">Dialog</attribute>
+				<attribute key="anchor" type="String">c</attribute>
+			</section>
+		</section>
+		<section name="node">
+			<attribute key="id" type="int">12</attribute>
+			<attribute key="label" type="String">BehaviorNodeCheckSelectedEnemyIsAimMe</attribute>
+			<section name="graphics">
+				<attribute key="x" type="double">3007.5197645450444</attribute>
+				<attribute key="y" type="double">-435.01176146470107</attribute>
+				<attribute key="w" type="double">100.09765624999997</attribute>
+				<attribute key="h" type="double">100.09765624999997</attribute>
+				<attribute key="type" type="String">ellipse</attribute>
+				<attribute key="fill" type="String">#FFCC00</attribute>
+				<attribute key="outline" type="String">#000000</attribute>
+			</section>
+			<section name="LabelGraphics">
+				<attribute key="text" type="String">BehaviorNodeCheckSelectedEnemyIsAimMe</attribute>
+				<attribute key="fontSize" type="int">12</attribute>
+				<attribute key="fontName" type="String">Dialog</attribute>
+				<attribute key="anchor" type="String">c</attribute>
+			</section>
+		</section>
+		<section name="node">
+			<attribute key="id" type="int">13</attribute>
+			<attribute key="label" type="String">BehaviorNodeFindObjectPrecondition@Ally@600</attribute>
+			<section name="graphics">
+				<attribute key="x" type="double">3359.8157531040447</attribute>
+				<attribute key="y" type="double">-841.5183790375158</attribute>
+				<attribute key="w" type="double">100.09765624999997</attribute>
+				<attribute key="h" type="double">100.09765624999997</attribute>
+				<attribute key="type" type="String">ellipse</attribute>
+				<attribute key="fill" type="String">#FFCC00</attribute>
+				<attribute key="outline" type="String">#000000</attribute>
+			</section>
+			<section name="LabelGraphics">
+				<attribute key="text" type="String">BehaviorNodeFindObjectPrecondition@Ally@600</attribute>
+				<attribute key="fontSize" type="int">12</attribute>
+				<attribute key="fontName" type="String">Dialog</attribute>
+				<attribute key="anchor" type="String">c</attribute>
+			</section>
+		</section>
+		<section name="node">
+			<attribute key="id" type="int">14</attribute>
+			<attribute key="label" type="String">BehaviorNodeIfElseSequence</attribute>
+			<section name="graphics">
+				<attribute key="x" type="double">3089.3477917990544</attribute>
+				<attribute key="y" type="double">-1235.2550388318753</attribute>
+				<attribute key="w" type="double">101.58203125</attribute>
+				<attribute key="h" type="double">101.58203125</attribute>
+				<attribute key="type" type="String">rectangle</attribute>
+				<attribute key="fill" type="String">#FFCC00</attribute>
+				<attribute key="outline" type="String">#000000</attribute>
+			</section>
+			<section name="LabelGraphics">
+				<attribute key="text" type="String">BehaviorNodeIfElseSequence</attribute>
+				<attribute key="fontSize" type="int">12</attribute>
+				<attribute key="fontName" type="String">Dialog</attribute>
+				<attribute key="anchor" type="String">c</attribute>
+			</section>
+		</section>
+		<section name="node">
+			<attribute key="id" type="int">15</attribute>
+			<attribute key="label" type="String">BehaviorNodeBaseSelector@5@5</attribute>
+			<section name="graphics">
+				<attribute key="x" type="double">3157.014833248945</attribute>
+				<attribute key="y" type="double">-505.3618238291142</attribute>
+				<attribute key="w" type="double">97.0529934918348</attribute>
+				<attribute key="h" type="double">97.0529934918348</attribute>
+				<attribute key="type" type="String">diamond</attribute>
+				<attribute key="fill" type="String">#FFCC00</attribute>
+				<attribute key="outline" type="String">#000000</attribute>
+			</section>
+			<section name="LabelGraphics">
+				<attribute key="text" type="String">BehaviorNodeBaseSelector@5@5</attribute>
+				<attribute key="fontSize" type="int">12</attribute>
+				<attribute key="fontName" type="String">Dialog</attribute>
+				<attribute key="anchor" type="String">c</attribute>
+			</section>
+		</section>
+		<section name="node">
+			<attribute key="id" type="int">16</attribute>
+			<attribute key="label" type="String">BehaviorNodeFollowChildSequence</attribute>
+			<section name="graphics">
+				<attribute key="x" type="double">3170.9243400747055</attribute>
+				<attribute key="y" type="double">-348.175499605278</attribute>
+				<attribute key="w" type="double">101.58203125</attribute>
+				<attribute key="h" type="double">101.58203125</attribute>
+				<attribute key="type" type="String">rectangle</attribute>
+				<attribute key="fill" type="String">#FFCC00</attribute>
+				<attribute key="outline" type="String">#000000</attribute>
+			</section>
+			<section name="LabelGraphics">
+				<attribute key="text" type="String">BehaviorNodeFollowChildSequence</attribute>
+				<attribute key="fontSize" type="int">12</attribute>
+				<attribute key="fontName" type="String">Dialog</attribute>
+				<attribute key="anchor" type="String">c</attribute>
+			</section>
+		</section>
+		<section name="node">
+			<attribute key="id" type="int">17</attribute>
+			<attribute key="label" type="String">BehaviorNodeCheckEnemyStateIsShoot</attribute>
+			<section name="graphics">
+				<attribute key="x" type="double">3081.713914524411</attribute>
+				<attribute key="y" type="double">-194.11556519394162</attribute>
+				<attribute key="w" type="double">100.09765624999997</attribute>
+				<attribute key="h" type="double">100.09765624999997</attribute>
+				<attribute key="type" type="String">ellipse</attribute>
+				<attribute key="fill" type="String">#FFCC00</attribute>
+				<attribute key="outline" type="String">#000000</attribute>
+			</section>
+			<section name="LabelGraphics">
+				<attribute key="text" type="String">BehaviorNodeCheckEnemyStateIsShoot</attribute>
+				<attribute key="fontSize" type="int">12</attribute>
+				<attribute key="fontName" type="String">Dialog</attribute>
+				<attribute key="anchor" type="String">c</attribute>
+			</section>
+		</section>
+		<section name="node">
+			<attribute key="id" type="int">18</attribute>
+			<attribute key="label" type="String">BehaviorNodeMoveForAvoid@1</attribute>
+			<section name="graphics">
+				<attribute key="x" type="double">3297.4240211557058</attribute>
+				<attribute key="y" type="double">-194.11556519394162</attribute>
+				<attribute key="w" type="double">99.84686822066124</attribute>
+				<attribute key="h" type="double">99.84686822066124</attribute>
+				<attribute key="type" type="String">parallelogram</attribute>
+				<attribute key="fill" type="String">#FFCC00</attribute>
+				<attribute key="outline" type="String">#000000</attribute>
+			</section>
+			<section name="LabelGraphics">
+				<attribute key="text" type="String">BehaviorNodeMoveForAvoid@1</attribute>
+				<attribute key="fontSize" type="int">12</attribute>
+				<attribute key="fontName" type="String">Dialog</attribute>
+				<attribute key="anchor" type="String">c</attribute>
+			</section>
+		</section>
+		<section name="edge">
+			<attribute key="source" type="int">0</attribute>
+			<attribute key="target" type="int">2</attribute>
+			<section name="graphics">
+				<attribute key="fill" type="String">#000000</attribute>
+				<attribute key="targetArrow" type="String">standard</attribute>
+			</section>
+		</section>
+		<section name="edge">
+			<attribute key="source" type="int">3</attribute>
+			<attribute key="target" type="int">4</attribute>
+			<section name="graphics">
+				<attribute key="fill" type="String">#000000</attribute>
+				<attribute key="targetArrow" type="String">standard</attribute>
+			</section>
+		</section>
+		<section name="edge">
+			<attribute key="source" type="int">3</attribute>
+			<attribute key="target" type="int">5</attribute>
+			<section name="graphics">
+				<attribute key="fill" type="String">#000000</attribute>
+				<attribute key="targetArrow" type="String">standard</attribute>
+			</section>
+		</section>
+		<section name="edge">
+			<attribute key="source" type="int">6</attribute>
+			<attribute key="target" type="int">1</attribute>
+			<section name="graphics">
+				<attribute key="fill" type="String">#000000</attribute>
+				<attribute key="targetArrow" type="String">standard</attribute>
+			</section>
+		</section>
+		<section name="edge">
+			<attribute key="source" type="int">6</attribute>
+			<attribute key="target" type="int">7</attribute>
+			<section name="graphics">
+				<attribute key="fill" type="String">#000000</attribute>
+				<attribute key="targetArrow" type="String">standard</attribute>
+			</section>
+		</section>
+		<section name="edge">
+			<attribute key="source" type="int">7</attribute>
+			<attribute key="target" type="int">9</attribute>
+			<section name="graphics">
+				<attribute key="fill" type="String">#000000</attribute>
+				<attribute key="targetArrow" type="String">standard</attribute>
+			</section>
+		</section>
+		<section name="edge">
+			<attribute key="source" type="int">7</attribute>
+			<attribute key="target" type="int">8</attribute>
+			<section name="graphics">
+				<attribute key="fill" type="String">#000000</attribute>
+				<attribute key="targetArrow" type="String">standard</attribute>
+			</section>
+		</section>
+		<section name="edge">
+			<attribute key="source" type="int">8</attribute>
+			<attribute key="target" type="int">10</attribute>
+			<section name="graphics">
+				<attribute key="fill" type="String">#000000</attribute>
+				<attribute key="targetArrow" type="String">standard</attribute>
+			</section>
+		</section>
+		<section name="edge">
+			<attribute key="source" type="int">8</attribute>
+			<attribute key="target" type="int">11</attribute>
+			<section name="graphics">
+				<attribute key="fill" type="String">#000000</attribute>
+				<attribute key="targetArrow" type="String">standard</attribute>
+			</section>
+		</section>
+		<section name="edge">
+			<attribute key="source" type="int">9</attribute>
+			<attribute key="target" type="int">12</attribute>
+			<section name="graphics">
+				<attribute key="fill" type="String">#000000</attribute>
+				<attribute key="targetArrow" type="String">standard</attribute>
+			</section>
+		</section>
+		<section name="edge">
+			<attribute key="source" type="int">0</attribute>
+			<attribute key="target" type="int">13</attribute>
+			<section name="graphics">
+				<attribute key="fill" type="String">#000000</attribute>
+				<attribute key="targetArrow" type="String">standard</attribute>
+			</section>
+		</section>
+		<section name="edge">
+			<attribute key="source" type="int">14</attribute>
+			<attribute key="target" type="int">6</attribute>
+			<section name="graphics">
+				<attribute key="fill" type="String">#000000</attribute>
+				<attribute key="targetArrow" type="String">standard</attribute>
+			</section>
+		</section>
+		<section name="edge">
+			<attribute key="source" type="int">14</attribute>
+			<attribute key="target" type="int">0</attribute>
+			<section name="graphics">
+				<attribute key="fill" type="String">#000000</attribute>
+				<attribute key="targetArrow" type="String">standard</attribute>
+			</section>
+		</section>
+		<section name="edge">
+			<attribute key="source" type="int">9</attribute>
+			<attribute key="target" type="int">15</attribute>
+			<section name="graphics">
+				<attribute key="fill" type="String">#000000</attribute>
+				<attribute key="targetArrow" type="String">standard</attribute>
+			</section>
+		</section>
+		<section name="edge">
+			<attribute key="source" type="int">15</attribute>
+			<attribute key="target" type="int">16</attribute>
+			<section name="graphics">
+				<attribute key="fill" type="String">#000000</attribute>
+				<attribute key="targetArrow" type="String">standard</attribute>
+			</section>
+		</section>
+		<section name="edge">
+			<attribute key="source" type="int">16</attribute>
+			<attribute key="target" type="int">17</attribute>
+			<section name="graphics">
+				<attribute key="fill" type="String">#000000</attribute>
+				<attribute key="targetArrow" type="String">standard</attribute>
+			</section>
+		</section>
+		<section name="edge">
+			<attribute key="source" type="int">16</attribute>
+			<attribute key="target" type="int">18</attribute>
+			<section name="graphics">
+				<attribute key="fill" type="String">#000000</attribute>
+				<attribute key="targetArrow" type="String">standard</attribute>
+			</section>
+		</section>
+		<section name="edge">
+			<attribute key="source" type="int">15</attribute>
+			<attribute key="target" type="int">3</attribute>
+			<section name="graphics">
+				<attribute key="fill" type="String">#000000</attribute>
+				<attribute key="targetArrow" type="String">standard</attribute>
+			</section>
+		</section>
+		<section name="edge">
+			<attribute key="source" type="int">7</attribute>
+			<attribute key="target" type="int">3</attribute>
+			<section name="graphics">
+				<attribute key="fill" type="String">#000000</attribute>
+				<attribute key="targetArrow" type="String">standard</attribute>
+			</section>
+		</section>
+	</section>
+</section>

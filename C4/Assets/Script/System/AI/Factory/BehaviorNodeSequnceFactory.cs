@@ -9,6 +9,16 @@ public class BehaviorNodeSequnceFactory : IBehaviorNodeFactory
 
         switch (className)
         {
+            case "BehaviorNodeFollowChildSequence":
+                {
+                    node = new BehaviorNodeFollowChildSequence();
+                }
+                break;
+            case "BehaviorNodeIfElseSequence":
+                {
+                    node = new BehaviorNodeIfElseSequence();
+                }
+                break;
             case "BehaviorNodeBaseSequence":
             default:
                 {

@@ -6,12 +6,10 @@ public class CustomAnimationEvent : MonoBehaviour
 {
     // Use this for initialization
     Dictionary<string, Transform> dicChildObject;
-    Transform myTransform;
 
     void Awake()
     {
         dicChildObject = new Dictionary<string, Transform>();
-        myTransform = this.transform;
         Utils.IterateChildrenUtil.IterateChildren(this.gameObject, delegate(GameObject go) { dicChildObject.Add(go.name, go.transform); return true; }, true);
     }
 

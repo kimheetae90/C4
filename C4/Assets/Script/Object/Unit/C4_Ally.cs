@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
 public class C4_Ally : C4_Unit , C4_IControllerListener {
-    
+
+    Vector3 currentAimPos;
+    DateTime shotTime;
+
     protected override void Awake()
     {
         base.Awake();
@@ -23,6 +27,8 @@ public class C4_Ally : C4_Unit , C4_IControllerListener {
 
     public void onEvent(string message, params object[] p)
     {
+        clearInputValuesByEvent();
+
         switch(message)
         {
             case "Aim":
@@ -57,6 +63,8 @@ public class C4_Ally : C4_Unit , C4_IControllerListener {
         {
             controllUnitMove.stopCompletely();
         }
+
+        currentAimPos = pos;
     }
 
     private void doMove(params object[] p)
@@ -77,5 +85,21 @@ public class C4_Ally : C4_Unit , C4_IControllerListener {
     {
         Vector3 pos = (Vector3)p[0];
         shot(pos);
+        shotTime = DateTime.Now;
+    }
+
+    private void clearInputValuesByEvent()
+    {
+        currentAimPos = Vector3.zero;
+    }
+
+    public Vector3 getCurrentAimPos()
+    {
+        return currentAimPos;
+    }
+
+    public DateTime getLastShotTime()
+    {
+        return shotTime;
     }
 }
