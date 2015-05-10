@@ -27,26 +27,55 @@ public class C4_Ally : C4_Unit , C4_IControllerListener {
         {
             case "Aim":
                 {
-					Vector3 pos = (Vector3)p[0];
-					C4_ControllUnitMove controllUnitMove = GetComponentInParent<C4_ControllUnitMove>();
-					controllUnitMove.stopCompletely();
-					turn(-pos);
+                    doAim(p);
+
                 }
                 break;
             case "Move":
                 {
-                    Vector3 pos = (Vector3)p[0];
-                    move(pos);
-					turn(pos);
-					gameObject.GetComponentInChildren<C4_AutomoveCancleUI>().startAutomoveCancleUI();
+                    doMove(p);
+
                 }
                 break;
             case "Shot":
                 {
-                    Vector3 pos = (Vector3)p[0];
-                    shot(pos);
+                    doShot(p);
+
                 }
                 break;
         }
+    }
+
+    private void doAim(params object[] p)
+    {
+        Vector3 pos = (Vector3)p[0];
+        turn(-pos);
+
+        C4_ControllUnitMove controllUnitMove = GetComponentInParent<C4_ControllUnitMove>();
+
+        if (controllUnitMove != null)
+        {
+            controllUnitMove.stopCompletely();
+        }
+    }
+
+    private void doMove(params object[] p)
+    {
+        Vector3 pos = (Vector3)p[0];
+        move(pos);
+        turn(pos);
+
+        C4_AutomoveCancleUI Automove = gameObject.GetComponentInChildren<C4_AutomoveCancleUI>();
+
+        if (Automove != null)
+        {
+            Automove.startAutomoveCancleUI();
+        }
+    }
+
+    private void doShot(params object[] p)
+    {
+        Vector3 pos = (Vector3)p[0];
+        shot(pos);
     }
 }

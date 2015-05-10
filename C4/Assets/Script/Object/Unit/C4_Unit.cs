@@ -20,6 +20,8 @@ public abstract class C4_Unit : C4_Object
 		turnComponent = GetComponentInChildren<C4_Turn>();
 		shotComponent = GetComponent<C4_IntShot>();
 		unitFeature = GetComponent<C4_UnitFeature>();
+
+        setupAnimationEvent();
 	}
 	
 	void Update()
@@ -77,9 +79,20 @@ public abstract class C4_Unit : C4_Object
 	{
 		unitFeature.hp -= damage;
 		checkHP();
-		GetComponent<C4_AnimControl> ().damaged ();
-        transform.GetChild(1).GetComponent<C4_RageUI>().rageUpDmg();
+        //수정바람
+		//GetComponent<C4_AnimControl> ().damaged ();
+        //transform.GetChild(1).GetComponent<C4_RageUI>().rageUpDmg();
 	}
 	
 	protected abstract void checkHP();
+
+    private void setupAnimationEvent()
+    {
+        Animator animator = GetComponentInChildren<Animator>();
+
+        if (animator != null)
+        {
+            animator.transform.gameObject.AddComponent<CustomAnimationEvent>();
+        }
+    }
 }
