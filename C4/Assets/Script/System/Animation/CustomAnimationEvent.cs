@@ -40,7 +40,11 @@ public class CustomAnimationEvent : MonoBehaviour
     {
         while(param.elapsedTime < param.lifetime)
         {
-            ps.transform.position = dicChildObject[param.boneName].position;
+            if(param.followBone)
+            {
+                ps.transform.position = dicChildObject[param.boneName].position;
+            }
+          
             param.elapsedTime += Time.deltaTime;
             yield return new WaitForSeconds(Time.deltaTime);
         }
