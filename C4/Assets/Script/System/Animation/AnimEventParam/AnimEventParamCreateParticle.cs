@@ -11,7 +11,8 @@ public class AnimEventParamCreateParticle : AnimEventParamBase
     public bool followBone;
     public Vector3 offset;
     public Vector3 scale;
-
+    public float lifetime;
+    public float elapsedTime;
 #if UNITY_EDITOR
     List<string> listBoneNames;
 #endif
@@ -39,6 +40,8 @@ public class AnimEventParamCreateParticle : AnimEventParamBase
         boneName = "";
         offset = Vector3.zero;
         scale = Vector3.zero;
+        elapsedTime = 0.0f;
+        lifetime = 0.0f;
     }
 
     public override string Serialize()
@@ -47,6 +50,7 @@ public class AnimEventParamCreateParticle : AnimEventParamBase
         j.AddField("boneName", boneName);
         j.AddField("resName", resName);
         j.AddField("followBone", followBone);
+        j.AddField("lifetime", lifetime);
         j.AddField("offset", JSONTemplates.FromVector3(offset));
         j.AddField("scale", JSONTemplates.FromVector3(scale));
         return j.Print(false);
@@ -60,6 +64,7 @@ public class AnimEventParamCreateParticle : AnimEventParamBase
         boneName = j.GetField("boneName").str;
         resName = j.GetField("resName").str;
         followBone = j.GetField("followBone").b;
+        lifetime = j.GetField("lifetime").f;
         offset = JSONTemplates.ToVector3(j.GetField("offset"));
         scale = JSONTemplates.ToVector3(j.GetField("scale"));
     }
@@ -76,14 +81,24 @@ public class AnimEventParamCreateParticle : AnimEventParamBase
             index = index == -1 ? 0 : index;
             return index;
         };
+
         BoneControl.valueSetter = delegate(int i) { boneName = listBoneNames[i]; };
         BoneControl.setContentList(listBoneNames);
+        if (listBoneNames.Count > 0)
+        {
+            BoneControl.valueSetter(0);
+        }
         AddControl(BoneControl);
 
         ParamControlPrimitive<bool> followBoneControl = new ParamControlPrimitive<bool>("followBone");
         followBoneControl.valueGetter = delegate() { return followBone; };
         followBoneControl.valueSetter = delegate(bool b) { followBone = b; };
         AddControl(followBoneControl);
+
+        ParamControlPrimitive<float> lifeTimeControl = new ParamControlPrimitive<float>("lifeTime");
+        lifeTimeControl.valueGetter = delegate() { return lifetime; };
+        lifeTimeControl.valueSetter = delegate(float f) { lifetime = f; };
+        AddControl(lifeTimeControl);
 
         ParamControlPrimitive<string> resControl = new ParamControlPrimitive<string>("res");
         resControl.valueGetter = delegate() { return resName; };
@@ -104,15 +119,22 @@ public class AnimEventParamCreateParticle : AnimEventParamBase
     private void buildBones()
     {
         listBoneNames.Clear();
-        Transform t = RefGameObject.transform.FindChild("root");
 
-        if (t == null)
+        SkinnedMeshRenderer renderer = RefGameObject.GetComponentInChildren<SkinnedMeshRenderer>();
+
+        Transform root = null;
+
+        if (renderer != null)
         {
-            throw new ToolException("Doesn't have root bone");
+            root = renderer.rootBone;
+           
         }
-        listBoneNames.Add(t.gameObject.name);
 
-        Utils.IterateChildrenUtil.IterateChildren(t.gameObject, delegate(GameObject go) {listBoneNames.Add(go.name); return true; }, true);
+        if (root != null)
+        {
+            listBoneNames.Add(root.gameObject.name);
+            Utils.IterateChildrenUtil.IterateChildren(root.gameObject, delegate(GameObject go) { listBoneNames.Add(go.name); return true; }, true);
+        }
     }
 
 #endif

@@ -58,13 +58,12 @@ public class AnimationPlayerWindow : BaseAnimationWindow, IAnimationPropertyList
 		}
 
 
-
 		float time = stateInfo.normalizedTime;
 
-        string curtime = String.Format("{0:n2}", time);
+        string length = String.Format("{0:n2}", stateInfo.length);
 
-		string length = String.Format("{0:n2}",stateInfo.length);
-					
+        string curtime = String.Format("{0:n2}", time * stateInfo.length);
+			
         GUILayout.BeginHorizontal("");
         GUILayout.Label(curtime);
 		curAnimTime = GUILayout.HorizontalSlider(time, 0.0F, 1, GUILayout.Width(Screen.width / 3), GUILayout.Height(5));

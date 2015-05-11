@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<BehaviorTree>
+  <node id="14" type="sequence" value="BehaviorNodeIfElseSequence">
+    <node id="6" type="sequence" value="BehaviorNodeFollowChildSequence">
+      <node id="1" type="precondition" value="BehaviorNodeFindCloseObjectInAttackRange@Ally" />
+      <node id="7" type="sequence" value="BehaviorNodeIfElseSequence">
+        <node id="8" type="sequence" value="BehaviorNodeFollowChildSequence">
+          <node id="10" type="precondition" value="BehaviorNodeIsThereAllyBetweenTargetAndMe@Enemy" />
+          <node id="11" type="action" value="BehaviorNodeMoveForAvoid@1" />
+        </node>
+        <node id="9" type="sequence" value="BehaviorNodeFollowChildSequence">
+          <node id="12" type="precondition" value="BehaviorNodeCheckSelectedEnemyIsAimMe" />
+          <node id="15" type="selector" value="BehaviorNodeBaseSelector@5@5">
+            <node id="16" type="sequence" value="BehaviorNodeFollowChildSequence">
+              <node id="17" type="precondition" value="BehaviorNodeCheckEnemyStateIsShoot" />
+              <node id="18" type="action" value="BehaviorNodeMoveForAvoid@1" />
+            </node>
+            <node id="3" type="selector" value="BehaviorNodeBaseSelector@5@5">
+              <node id="4" type="action" value="BehaviorNodeAttackCloseObject" />
+              <node id="5" type="action" value="BehaviorNodeMissAttackCloseObject" />
+            </node>
+          </node>
+        </node>
+        <node id="3" type="selector" value="BehaviorNodeBaseSelector@5@5">
+          <node id="4" type="action" value="BehaviorNodeAttackCloseObject" />
+          <node id="5" type="action" value="BehaviorNodeMissAttackCloseObject" />
+        </node>
+      </node>
+    </node>
+    <node id="0" type="sequence" value="BehaviorNodeBaseSequence">
+      <node id="13" type="precondition" value="BehaviorNodeFindObjectPrecondition@Ally@600" />
+      <node id="2" type="action" value="BehaviorNodeMoveToNearObjectAction@100" />
+    </node>
+  </node>
+</BehaviorTree>

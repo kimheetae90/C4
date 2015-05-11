@@ -15,6 +15,7 @@ public class AnimEventParamFactory
         animEventList.Add("CreateParticle");
         animEventList.Add("ChangeMaterial");
         animEventList.Add("ChangeScale");
+		animEventList.Add("ChangeTexture");
     }
 
     public static AnimEventParamBase CreateParam(string eventName,AnimationEvent animEvent,GameObject gameObject)
@@ -38,6 +39,11 @@ public class AnimEventParamFactory
                     animEventParam = new AnimEventChangeScale(animEvent, gameObject);
                 }
                 break;
+			case "ChangeTexture":
+				{
+					animEventParam = new AnimEventChangeTexture(animEvent, gameObject);
+				}
+			break;
         }
 
         return animEventParam;

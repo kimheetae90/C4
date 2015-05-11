@@ -10,6 +10,8 @@ public class C4_AIManager : MonoBehaviour
     [System.NonSerialized]
     public Dictionary<string, IBehaviorNode> DicNodes;
 
+    public bool ShowAILog;
+
     private static C4_AIManager _instance;
 
     public static C4_AIManager Instance
@@ -39,6 +41,7 @@ public class C4_AIManager : MonoBehaviour
     {
         factory = new BehaviorNodeFactory();
         DicNodes = new Dictionary<string, IBehaviorNode>();
+        ShowAILog = false;
     }
 
     public IBehaviorNode LoadBehaviorNode(string behaviorFileName,GameObject targetObject)
@@ -53,6 +56,18 @@ public class C4_AIManager : MonoBehaviour
         return node;
     }
 
+	public IBehaviorNode LoadBehaviorNode(TextAsset behaviorFile,GameObject targetObject)
+	{
+		IBehaviorNode node = null;
+		
+		if(DicNodes.TryGetValue(behaviorFile.name,out node) == false)
+		{
+			node = createBehaviorNode(behaviorFile);
+		}
+		
+		return node;
+	}
+
     private IBehaviorNode createBehaviorNode(string behaviorFileName)
     {
        string targetPath = Application.dataPath + "/" + behaviorFileName;
@@ -63,10 +78,24 @@ public class C4_AIManager : MonoBehaviour
        {
            throw new BehaviorNodeException("Invalid File Path..");
        }
-
+	   DicNodes.Remove (behaviorFileName);
        DicNodes.Add(behaviorFileName, node);
 
        return node;
     }
+
+	private IBehaviorNode createBehaviorNode(TextAsset behaviorFile)
+	{
+		IBehaviorNode node = factory.buildBehaviorNode(behaviorFile);
+		
+		if(node == null)
+		{
+			throw new BehaviorNodeException("Invalid File Path..");
+		}
+		DicNodes.Remove (behaviorFile.name);
+		DicNodes.Add(behaviorFile.name, node);
+		
+		return node;
+	}
 
 }

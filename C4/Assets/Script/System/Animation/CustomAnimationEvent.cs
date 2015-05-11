@@ -6,12 +6,10 @@ public class CustomAnimationEvent : MonoBehaviour
 {
     // Use this for initialization
     Dictionary<string, Transform> dicChildObject;
-    Transform myTransform;
 
     void Awake()
     {
         dicChildObject = new Dictionary<string, Transform>();
-        myTransform = this.transform;
         Utils.IterateChildrenUtil.IterateChildren(this.gameObject, delegate(GameObject go) { dicChildObject.Add(go.name, go.transform); return true; }, true);
     }
 
@@ -32,23 +30,25 @@ public class CustomAnimationEvent : MonoBehaviour
 
         if (bone != null)
         {
-            if (param.followBone)
-            {
-                ps.transform.position = bone.position;
+            ps.transform.position = bone.position;
 
-                ParticleWrapper pw = ps.GetComponent<ParticleWrapper>();
-       
-                if(pw)
-                {
-                    pw.setFollowObject(bone);
-                }
-            }
-            else
-            {
-                ps.transform.position = bone.position;
-            }
+            StartCoroutine(PlayParticle(param, ps));
         }
     }
+
+    IEnumerator PlayParticle(AnimEventParamCreateParticle param, GameObject ps)
+    {
+        while(param.elapsedTime < param.lifetime)
+        {
+            ps.transform.position = dicChildObject[param.boneName].position;
+            param.elapsedTime += Time.deltaTime;
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+
+        Destroy(ps);
+
+        yield return null;
+    }    
 
     protected virtual void ChangeMaterial(string strParam)
     {
@@ -88,6 +88,29 @@ public class CustomAnimationEvent : MonoBehaviour
             StartCoroutine(ScaleAnimation(param,changeObject));
         }
     }
+
+    protected virtual void ChangeTexture(string strParam)
+    {
+        AnimEventChangeTexture param = new AnimEventChangeTexture();
+
+        param.Deseralize(strParam);
+
+        if (param.textureName == "") return;
+
+        Texture tex = Resources.Load(param.textureName, typeof(Texture)) as Texture;
+
+        Transform changeObject = dicChildObject[param.changeObjectName];
+
+        if (tex != null && changeObject != null)
+        {
+            SkinnedMeshRenderer renderer = changeObject.GetComponent<SkinnedMeshRenderer>();
+
+            if (renderer == null) return;
+
+            renderer.material.SetTexture(param.nameId,tex);
+        }
+    }
+
 
     IEnumerator ScaleAnimation(AnimEventChangeScale param, Transform changeObject)
     {

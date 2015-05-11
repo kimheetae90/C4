@@ -117,9 +117,9 @@ public class BehaviorImportTool : EditorWindow
         {
             try
             {
-				string path = filteredXmls.listFilePaths[filteredXmls.selectedFileIndex].Replace("Assets/Resources/","");
-				path = path.Replace(".xml","");
-				builder.buildBehaviorNode(path);
+				//string path = filteredXmls.listFilePaths[filteredXmls.selectedFileIndex].Replace("Assets/Resources/","");
+				//path = path.Replace(".xml","");
+				builder.buildBehaviorNode(filteredXmls.listFilePaths[filteredXmls.selectedFileIndex]);
             }
             catch(BehaviorNodeException e)
             {

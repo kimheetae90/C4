@@ -12,13 +12,21 @@ public class C4_HPUI : MonoBehaviour
     void Start()
     {
         unitFeature = transform.GetComponentInParent<C4_UnitFeature>();
+
+        if(unitFeature == null)
+        {
+            unitFeature = transform.GetComponentInChildren<C4_UnitFeature>();
+        }
     }
 
     // Update is called once per frame
 
     void Update()
     {
-        hpUIImage.fillAmount = (float)unitFeature.hp / unitFeature.fullHP;
+        if(unitFeature != null)
+        {
+            hpUIImage.fillAmount = (float)unitFeature.hp / unitFeature.fullHP;
+        }
     }
 
 }

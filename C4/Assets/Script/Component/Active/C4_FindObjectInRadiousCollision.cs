@@ -21,12 +21,8 @@ public class C4_FindObjectInRadiousCollision : MonoBehaviour
 
         for (int i = 0; i < hitColliders.Length; ++i)
         {
-/*
-            if (hitColliders[i].transform.parent == null) continue;
-            if (hitColliders[i].transform.parent.parent == null) continue;
-*/
 
-            C4_Object obj = hitColliders[i].transform.gameObject.GetComponent<C4_Object>();
+            C4_Object obj = hitColliders[i].transform.gameObject.GetComponentInParent<C4_Object>();
 
             if (obj != null && obj.isType(type))
             {

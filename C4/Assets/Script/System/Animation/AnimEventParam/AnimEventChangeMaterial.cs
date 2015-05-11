@@ -65,6 +65,10 @@ public class AnimEventChangeMaterial : AnimEventParamBase
         };
         rendererControl.valueSetter = delegate(int i) { changeObjectName = listRendererNames[i]; };
         rendererControl.setContentList(listRendererNames);
+        if(listRendererNames.Count > 0)
+        {
+            rendererControl.valueSetter(0);
+        }
         AddControl(rendererControl);
 
         ParamControlPrimitive<string> materialControl = new ParamControlPrimitive<string>("material");
