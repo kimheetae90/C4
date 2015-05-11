@@ -33,8 +33,16 @@ public class C4_Ally : C4_Unit , C4_IControllerListener {
         {
             case "Aim":
                 {
+//<<<<<<< HEAD
+//					Vector3 pos = (Vector3)p[0];
+//					C4_ControllUnitMove controllUnitMove = GetComponentInParent<C4_ControllUnitMove>();
+//					controllUnitMove.stopCompletely();
+//                    Vector3 dist = transform.position - pos;
+//					turn((pos+2*dist));
+//=======
                     doAim(p);
 
+//>>>>>>> master
                 }
                 break;
             case "Move":
@@ -55,16 +63,15 @@ public class C4_Ally : C4_Unit , C4_IControllerListener {
     private void doAim(params object[] p)
     {
         Vector3 pos = (Vector3)p[0];
-        turn(-pos);
-
         C4_ControllUnitMove controllUnitMove = GetComponentInParent<C4_ControllUnitMove>();
-
         if (controllUnitMove != null)
         {
             controllUnitMove.stopCompletely();
         }
+		Vector3 dist = transform.position - pos;
+		turn((pos+2*dist));
 
-        currentAimPos = pos;
+        currentAimPos = (pos+2*dist);
     }
 
     private void doMove(params object[] p)
