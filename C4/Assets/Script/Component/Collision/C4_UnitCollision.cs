@@ -2,14 +2,25 @@
 using System.Collections;
 
 public class C4_UnitCollision : MonoBehaviour {
-	
+
+	bool canAvoid;
+
+	void start(){
+		canAvoid = false;
+	}
+
 	void OnTriggerEnter(Collider other)
 	{
+
+		if (other.gameObject.layer == 9){
+			canAvoid = true;
+			return;
+		}
 		if (other.gameObject.layer == 8)
 		{
 			return;
 		}
-		
+
 		C4_Object collisionObject = other.GetComponentInParent<C4_Object>();
 		C4_ControllUnitMove controllUnitMove = GetComponentInParent<C4_ControllUnitMove>();
 		C4_Unit unit = GetComponentInParent<C4_Unit>();
@@ -32,5 +43,18 @@ public class C4_UnitCollision : MonoBehaviour {
 			break;
 		}
 	}
-	
+
+	void OnTriggerExit(Collider other){
+		if(canAvoid){
+			if (other.gameObject.layer == 9){
+				//reward
+				canAvoid = false;
+				return;
+			}
+		}
+	}
+
+	void reward(){
+
+	}
 }
