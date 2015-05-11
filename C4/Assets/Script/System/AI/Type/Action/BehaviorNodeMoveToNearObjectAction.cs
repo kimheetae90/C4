@@ -38,9 +38,13 @@ public class BehaviorNodeMoveToNearObjectAction : BehaviorNodeBaseAction
         {
            unitFeature.moveSpeed = (int)velocity;
         }
-            
-        unitComponent.move(obj.transform.position);
-        
+
+       Vector3 dir = obj.transform.position - targetObject.transform.position;
+
+       dir.Normalize();
+
+       unitComponent.move(targetObject.transform.position + dir * unitFeature.moveRange);
+
         return true;
     }
 

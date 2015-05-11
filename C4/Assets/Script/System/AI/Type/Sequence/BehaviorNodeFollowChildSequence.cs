@@ -15,17 +15,17 @@ public class BehaviorNodeFollowChildSequence : BehaviorNode
 	override public bool traversalNode(GameObject targetObjec)
 	{
 		bool bRet = true;
-		foreach (var node in listChilds)
-		{
-			bool tempRet = node.traversalNode(targetObjec);
+        for (int i = 0; i < listChilds.Count; ++i)
+        {
+            bool tempRet = listChilds[i].traversalNode(targetObjec);
 
             if (C4_AIManager.Instance.ShowAILog)
             {
-                Debug.Log(node.GetType().ToString() + " " + bRet);
+                Debug.Log(listChilds[i].GetType().ToString() + " " + bRet);
             }
-			
-			bRet = bRet && tempRet;
-		}
+
+            bRet = bRet && tempRet;
+        }
 
 		return bRet;
 	}

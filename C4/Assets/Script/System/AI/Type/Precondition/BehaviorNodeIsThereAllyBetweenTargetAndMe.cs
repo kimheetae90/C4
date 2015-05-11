@@ -6,7 +6,7 @@ using System.Collections.Generic;
 /// </summary>
 public class BehaviorNodeIsThereAllyBetweenTargetAndMe : BehaviorNodeBasePrecondition
 {
-	GameObjectType type;
+	//GameObjectType type;
 	
 	public BehaviorNodeIsThereAllyBetweenTargetAndMe(List<string> _listParams)
 		: base(_listParams)
@@ -16,7 +16,7 @@ public class BehaviorNodeIsThereAllyBetweenTargetAndMe : BehaviorNodeBasePrecond
 			throw new BehaviorNodeException("BehaviorNodeIsThereAllyBetweenTargetAndMe 파라미터의 개수가 맞지 않습니다.");
 		}
 
-		type = (GameObjectType)Enum.Parse(typeof(GameObjectType), listParams[0]);
+		//type = (GameObjectType)Enum.Parse(typeof(GameObjectType), listParams[0]);
 	}
 	
 	override public bool traversalNode(GameObject targetObject)

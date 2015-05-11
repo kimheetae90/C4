@@ -23,18 +23,10 @@ public class BehaviorNodeIfElseSequence : BehaviorNode
             {
                 Debug.Log(listChilds[i].GetType().ToString() + " " + bRet);
             }
-			
-			if (bRet == false)
-			{
-                if(i+1 < listChilds.Count)
-                {
-                    listChilds[i + 1].traversalNode(targetObjec);
-                }
-			}
-            else
+
+            if(bRet == true)
             {
-                //조건이 충족되었으면 옆 노드는 실행하지 않는다.
-                ++i;
+                break;
             }
 		}
 		
