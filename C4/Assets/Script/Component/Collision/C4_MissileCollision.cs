@@ -17,7 +17,8 @@ public class C4_MissileCollision : MonoBehaviour {
             case GameObjectType.Ally:
             case GameObjectType.Enemy:
                 missileMove.stopMoveToTarget();
-                GetComponentInParent<C4_MissileFeature>().unit.transform.GetChild(1).GetComponent<C4_RageUI>().rageUpAtt();
+                //수정바람    
+            //GetComponentInParent<C4_MissileFeature>().unit.transform.GetChild(1).GetComponent<C4_RageUI>().rageUpAtt();
                 break;
         }
     }

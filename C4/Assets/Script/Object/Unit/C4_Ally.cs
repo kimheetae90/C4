@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
 public class C4_Ally : C4_Unit , C4_IControllerListener {
-    
+
+    Vector3 currentAimPos;
+    DateTime shotTime;
+
     protected override void Awake()
     {
         base.Awake();
@@ -23,30 +27,86 @@ public class C4_Ally : C4_Unit , C4_IControllerListener {
 
     public void onEvent(string message, params object[] p)
     {
+        clearInputValuesByEvent();
+
         switch(message)
         {
             case "Aim":
                 {
-					Vector3 pos = (Vector3)p[0];
-					C4_ControllUnitMove controllUnitMove = GetComponentInParent<C4_ControllUnitMove>();
-					controllUnitMove.stopCompletely();
-					turn(-pos);
+//<<<<<<< HEAD
+//					Vector3 pos = (Vector3)p[0];
+//					C4_ControllUnitMove controllUnitMove = GetComponentInParent<C4_ControllUnitMove>();
+//					controllUnitMove.stopCompletely();
+//                    Vector3 dist = transform.position - pos;
+//					turn((pos+2*dist));
+//=======
+                    doAim(p);
+
+//>>>>>>> master
                 }
                 break;
             case "Move":
                 {
-                    Vector3 pos = (Vector3)p[0];
-                    move(pos);
-					turn(pos);
-					gameObject.GetComponentInChildren<C4_AutomoveCancleUI>().startAutomoveCancleUI();
+                    doMove(p);
+
                 }
                 break;
             case "Shot":
                 {
-                    Vector3 pos = (Vector3)p[0];
-                    shot(pos);
+                    doShot(p);
+
                 }
                 break;
         }
+    }
+
+    private void doAim(params object[] p)
+    {
+        Vector3 pos = (Vector3)p[0];
+        C4_ControllUnitMove controllUnitMove = GetComponentInParent<C4_ControllUnitMove>();
+        if (controllUnitMove != null)
+        {
+            controllUnitMove.stopCompletely();
+        }
+		Vector3 dist = transform.position - pos;
+		turn((pos+2*dist));
+
+        currentAimPos = (pos+2*dist);
+    }
+
+    private void doMove(params object[] p)
+    {
+        Vector3 pos = (Vector3)p[0];
+        move(pos);
+        turn(pos);
+
+        C4_AutomoveCancleUI Automove = gameObject.GetComponentInChildren<C4_AutomoveCancleUI>();
+
+        if (Automove != null)
+        {
+            Automove.startAutomoveCancleUI();
+        }
+    }
+
+    private void doShot(params object[] p)
+    {
+        Vector3 pos = (Vector3)p[0];
+        shot(pos);
+        shotTime = DateTime.Now;
+    }
+
+    private void clearInputValuesByEvent()
+    {
+        currentAimPos = Vector3.zero;
+    }
+
+    public Vector3 getCurrentAimPos()
+    {
+        return currentAimPos;
+    }
+
+    public DateTime getLastShotTime()
+    {
+        return shotTime;
     }
 }

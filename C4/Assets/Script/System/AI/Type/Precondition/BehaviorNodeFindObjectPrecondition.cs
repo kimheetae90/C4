@@ -2,6 +2,9 @@
 using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// 입력한 타입의 객체를 입력한 반경 내로 찾는 노드
+/// </summary>
 public class BehaviorNodeFindObjectPrecondition : BehaviorNodeBasePrecondition 
 {
     GameObjectType type;
@@ -11,7 +14,7 @@ public class BehaviorNodeFindObjectPrecondition : BehaviorNodeBasePrecondition
         : base(_listParams)
     {
         
-        if(listParams.Count < 2)
+        if(listParams.Count != 2)
         {
             throw new BehaviorNodeException("BehaviorNodeFindObjectPrecondition 파라미터의 개수가 맞지 않습니다.");
         }
@@ -22,7 +25,7 @@ public class BehaviorNodeFindObjectPrecondition : BehaviorNodeBasePrecondition
 
     override public bool traversalNode(GameObject targetObject)
     {
-        C4_FindObjectInRadiousCollision component = targetObject.GetComponent<C4_FindObjectInRadiousCollision>();
+        C4_FindObjectInRadiousCollision component = targetObject.GetComponentInChildren<C4_FindObjectInRadiousCollision>();
 
         if (component == null) return false;
 

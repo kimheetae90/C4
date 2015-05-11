@@ -14,12 +14,36 @@ public class BehaviorNodeActionFactory : IBehaviorNodeFactory
                     node = new BehaviorNodeMoveToNearObjectAction(listParam);
                 }
                 break;
+            case "BehaviorNodeAttackObject":
+                {
+                    node = new BehaviorNodeAttackObject(listParam);
+                }
+                break;
+            case "BehaviorNodeMissAttackObject":
+                {
+                    node = new BehaviorNodeMissAttackObject(listParam);
+                }
+                break;
+            case "BehaviorNodeMoveForAvoid":
+                {
+                    node = new BehaviorNodeMoveForAvoid(listParam);
+                }
+                break;
+			case "BehaviorNodeAttackCloseObject":
+				{
+					node = new BehaviorNodeAttackCloseObject(listParam);
+				}
+				break;
+			case "BehaviorNodeMissAttackCloseObject":
+				{
+					node = new BehaviorNodeMissAttackCloseObject(listParam);
+				}
+				break;
             case "BehaviorNodeBaseAction":
             default:
                 {
-                    node = new BehaviorNodeBaseAction(listParam);
-                }
-                break;
+					throw new BehaviorNodeException(className + " is not exist");
+				}
         }
 
         return node;

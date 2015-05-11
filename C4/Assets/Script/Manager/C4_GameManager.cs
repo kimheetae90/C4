@@ -32,8 +32,17 @@ public class C4_GameManager : MonoBehaviour {
 	[System.NonSerialized]
 	public SelectedAlly selectedAlly;
 
+
+    private bool isPlaying;
+    
+    public bool IsPlaying
+    {
+        get { return isPlaying; }
+    }
+
 	void Awake()
 	{
+        isPlaying = false;
 		StartPlayScene ();
 	}
 
@@ -52,5 +61,6 @@ public class C4_GameManager : MonoBehaviour {
 	{
 		LoadingScene ();
         sceneMode = GameObject.Find("PlayMode").GetComponent<C4_SceneMode>();
+        isPlaying = true;
     }
 }

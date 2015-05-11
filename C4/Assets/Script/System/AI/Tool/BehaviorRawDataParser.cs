@@ -136,7 +136,7 @@ public class BehaviorRawDataParser
             case "label":
                 {
 					string value = node.InnerText;
-					data.param = value;
+					data.param = value.Replace("\n",String.Empty);
 			    }
                 break;
             case "type":

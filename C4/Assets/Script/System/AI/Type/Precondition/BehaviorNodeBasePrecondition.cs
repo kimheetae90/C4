@@ -13,6 +13,7 @@ public class BehaviorNodeBasePrecondition : BehaviorNode
 
     override public bool traversalNode(GameObject targetObjec)
     {
+
         throw new BehaviorNodeException("precondition 함수가 구현되어 있지 않습니다.");
     }
 
