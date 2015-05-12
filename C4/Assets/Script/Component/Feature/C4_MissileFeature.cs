@@ -14,6 +14,8 @@ public class C4_MissileFeature : MonoBehaviour
     public float moveSpeed;
     public int type;
     public GameObject unit;
+	public Vector3 startPosition;
+
     void Start()
     {
         GetComponent<C4_Move>().setMoveSpeed(moveSpeed);

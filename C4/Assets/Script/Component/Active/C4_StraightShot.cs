@@ -6,6 +6,7 @@ public class C4_StraightShot : MonoBehaviour, C4_IntShot {
     C4_UnitFeature unitFeature;
     C4_Missile missile;
     GameObject missileGameObejct;
+	C4_MissileFeature missileFeature;
 
     Vector3 shotDirection;
     Vector3 missileToMove;
@@ -15,13 +16,12 @@ public class C4_StraightShot : MonoBehaviour, C4_IntShot {
         unitFeature = GetComponent<C4_UnitFeature>();
         missileGameObejct = unitFeature.missile;
         missile = missileGameObejct.GetComponent<C4_Missile>();
+		missileFeature = missileGameObejct.GetComponent<C4_MissileFeature> ();
 	}
 
     public void startShot(Vector3 targetPos)
     {
-		Vector3 missilePos = transform.position + (targetPos - transform.position).normalized * (transform.localScale.z + missileGameObejct.transform.GetChild(0).GetChild(0).localScale.z + 1);
-		missilePos.y = 0;
-		missileGameObejct.transform.position = missilePos;
+		missileGameObejct.transform.position = missileFeature.startPosition;
 		shotDirection = (transform.position - targetPos).normalized;
 		missileGameObejct.transform.GetChild(0).transform.gameObject.transform.rotation = Quaternion.LookRotation(shotDirection);
 		missile.startMove (targetPos);

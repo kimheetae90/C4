@@ -35,7 +35,6 @@ public class C4_ParabolicMove : C4_Move
         {
             isfirst = false;
             firstPos = transform.position;
-
         }
 
         //Debug.Log(count);
