@@ -3,11 +3,11 @@ using System.Collections;
 
 public class C4_DashAttack : MonoBehaviour, C4_IntShot
 {
-
     C4_UnitFeature unitFeature;
     C4_StraightMove move;
     C4_Missile missile;
     GameObject missileGameObejct;
+	C4_MissileFeature missileFeature;
 
     Vector3 shotDirection;
     Vector3 missileToMove;
@@ -19,13 +19,12 @@ public class C4_DashAttack : MonoBehaviour, C4_IntShot
         move = GetComponent<C4_StraightMove>();
         missileGameObejct = unitFeature.missile;
         missile = missileGameObejct.GetComponent<C4_Missile>();
+		missileFeature = missile.GetComponent<C4_MissileFeature> ();
        
     }
-
     public void startShot(Vector3 targetPos)
-    {
-        Vector3 missilePos = transform.position + (targetPos - transform.position).normalized * (transform.localScale.z + missileGameObejct.transform.GetChild(0).localScale.z + 1);
-        missileGameObejct.transform.position = missilePos;
+	{
+		missileGameObejct.transform.position = missileFeature.startPosition.position;
         move.startMove(targetPos);
         missile.startMove(targetPos);
         unitFeature.activeDone();

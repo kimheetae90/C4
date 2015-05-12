@@ -11,7 +11,10 @@ public abstract class C4_Unit : C4_Object
 	protected C4_Turn turnComponent;
 	protected C4_IntShot shotComponent;
 	protected C4_ControllUnitMove moveControlComponent;
-	
+
+	[System.NonSerialized]
+	public Vector3 aimPosition;
+
 	protected override void Awake()
 	{
 		base.Awake();

@@ -51,6 +51,7 @@ public class C4_PlayMode : C4_SceneMode
             GameObject initMissileGameObject = Instantiate(initPlayerGameObject.GetComponent<C4_UnitFeature>().missile, missileInitPosition, transform.rotation) as GameObject;
             initPlayerGameObject.GetComponent<C4_UnitFeature>().missile = initMissileGameObject;
             initMissileGameObject.GetComponent<C4_MissileFeature>().unit = initPlayerGameObject;
+			initMissileGameObject.GetComponent<C4_MissileFeature>().startPosition = initPlayerGameObject.gameObject.transform.Find("FBX/MissileStartPosition").transform;
         }
     }
 

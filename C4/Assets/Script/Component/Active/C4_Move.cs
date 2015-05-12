@@ -6,7 +6,6 @@ public abstract class C4_Move : MonoBehaviour {
     public Vector3 toMove;
     protected float moveSpeed;
     protected bool isCoroutine;
-
     [System.NonSerialized]
     public bool isMove;
 

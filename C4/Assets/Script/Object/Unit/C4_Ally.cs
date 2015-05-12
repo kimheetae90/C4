@@ -33,16 +33,7 @@ public class C4_Ally : C4_Unit , C4_IControllerListener {
         {
             case "Aim":
                 {
-//<<<<<<< HEAD
-//					Vector3 pos = (Vector3)p[0];
-//					C4_ControllUnitMove controllUnitMove = GetComponentInParent<C4_ControllUnitMove>();
-//					controllUnitMove.stopCompletely();
-//                    Vector3 dist = transform.position - pos;
-//					turn((pos+2*dist));
-//=======
-                    doAim(p);
-
-//>>>>>>> master
+					doAim(p);
                 }
                 break;
             case "Move":
@@ -53,7 +44,7 @@ public class C4_Ally : C4_Unit , C4_IControllerListener {
                 break;
             case "Shot":
                 {
-                    doShot(p);
+                    doShot();
 
                 }
                 break;
@@ -73,6 +64,7 @@ public class C4_Ally : C4_Unit , C4_IControllerListener {
     private void doAim(params object[] p)
     {
         Vector3 pos = (Vector3)p[0];
+		aimPosition = (Vector3)p [2];
         C4_ControllUnitMove controllUnitMove = GetComponentInParent<C4_ControllUnitMove>();
         if (controllUnitMove != null)
         {
@@ -98,10 +90,9 @@ public class C4_Ally : C4_Unit , C4_IControllerListener {
         }
     }
 
-    private void doShot(params object[] p)
+    private void doShot()
     {
-        Vector3 pos = (Vector3)p[0];
-        shot(pos);
+        shot(aimPosition);
         shotTime = DateTime.Now;
     }
 
