@@ -112,4 +112,9 @@ public abstract class C4_Unit : C4_Object
             animator.transform.gameObject.AddComponent<CustomAnimationEvent>();
         }
     }
+
+    public virtual void onUserEvent(AnimEventUserMsg msg)
+    {
+
+    }
 }

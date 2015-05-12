@@ -6,11 +6,13 @@ public class CustomAnimationEvent : MonoBehaviour
 {
     // Use this for initialization
     Dictionary<string, Transform> dicChildObject;
+    C4_Unit owner;
 
     void Awake()
     {
         dicChildObject = new Dictionary<string, Transform>();
         Utils.IterateChildrenUtil.IterateChildren(this.gameObject, delegate(GameObject go) { dicChildObject.Add(go.name, go.transform); return true; }, true);
+        owner = GetComponentInParent<C4_Unit>();
     }
 
     protected virtual void CreateParticle(string strParam)
@@ -112,6 +114,18 @@ public class CustomAnimationEvent : MonoBehaviour
             if (renderer == null) return;
 
             renderer.material.SetTexture(param.nameId,tex);
+        }
+    }
+
+    protected virtual void UserMsg(string strParam)
+    {
+        AnimEventUserMsg param = new AnimEventUserMsg();
+
+        param.Deseralize(strParam);
+
+        if(owner != null)
+        {
+            owner.onUserEvent(param);
         }
     }
 
