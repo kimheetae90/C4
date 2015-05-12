@@ -15,6 +15,7 @@ public class C4_EnemyAttackUI : MonoBehaviour {
 	
 	public void showUI()
 	{
+		Invoke ("hideUI", 1f);
 		attackUIGameObejct.SetActive(true);
 	}
 	

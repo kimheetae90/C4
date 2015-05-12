@@ -82,7 +82,7 @@ public abstract class C4_Unit : C4_Object
 	{
 		moveControlComponent.startCheckGageAndControlMove();
 		moveComponent.toMove = toMove;
-		unitFeature.activeDone();
+		unitFeature.StopUpdate (1.5f);
 		moveComponent.startMove(toMove);
 	}
 	

@@ -39,14 +39,28 @@ public class C4_UnitFeature : MonoBehaviour
         hp = fullHP;
         rageGage = 0;
         israge = false;
-        GetComponent<C4_Move>().setMoveSpeed(moveSpeed);
-       
+		GetComponent<C4_Move>().setMoveSpeed(moveSpeed);
+		StartUpdate ();
     }
 
-    void Update()
+    IEnumerator Update()
     {
-        gageUp();
+		yield return null;
+        
+		gageUp();
+		StartUpdate ();
     }   
+
+	void StartUpdate()
+	{
+		StartCoroutine ("Update");
+	}
+
+	public void StopUpdate(float stopTime)
+	{
+		StopCoroutine ("Update");
+		Invoke ("StartUpdate", stopTime);
+	}
 
     public void activeDone()
     {
