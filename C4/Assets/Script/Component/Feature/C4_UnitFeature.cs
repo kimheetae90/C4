@@ -43,7 +43,7 @@ public class C4_UnitFeature : MonoBehaviour
 		StartUpdate ();
     }
 
-    IEnumerator Update()
+    IEnumerator UpdateFeature()
     {
 		yield return null;
         
@@ -53,12 +53,12 @@ public class C4_UnitFeature : MonoBehaviour
 
 	void StartUpdate()
 	{
-		StartCoroutine ("Update");
+		StartCoroutine ("UpdateFeature");
 	}
 
 	public void StopUpdate(float stopTime)
 	{
-		StopCoroutine ("Update");
+		StopCoroutine ("UpdateFeature");
 		Invoke ("StartUpdate", stopTime);
 	}
 
