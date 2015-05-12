@@ -36,7 +36,14 @@ public class BehaviorNodeAttackObject : BehaviorNodeBaseAction
         if (objectsInFireRange.Count == 0) return true;
 
         unitComponent.shot(objectsInFireRange[0].transform.position);
-		
+
+        C4_EnemyAttackUI ui = targetObject.GetComponent<C4_EnemyAttackUI>();
+
+        if (ui != null)
+        {
+            ui.showUI();
+        }
+
 		return true;
 	}
 	

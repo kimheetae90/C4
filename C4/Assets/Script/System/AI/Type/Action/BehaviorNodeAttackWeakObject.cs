@@ -32,7 +32,14 @@ public class BehaviorNodeAttackWeakObject : BehaviorNodeBaseAction
 		if (obj == null) return false;
 		
 		unitComponent.shot (obj.transform.position);
-		
+
+        C4_EnemyAttackUI ui = targetObject.GetComponent<C4_EnemyAttackUI>();
+
+        if (ui != null)
+        {
+            ui.showUI();
+        }
+
 		return true;
 	}
 	

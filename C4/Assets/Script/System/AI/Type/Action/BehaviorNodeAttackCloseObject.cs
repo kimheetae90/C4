@@ -34,8 +34,17 @@ public class BehaviorNodeAttackCloseObject : BehaviorNodeBaseAction
 			return false;
 		}
 		targetVector = (obj.transform.position);
-		unitComponent.turn (targetVector);
-		unitComponent.shot (targetVector);
+
+        unitComponent.turn (targetVector);
+		
+        unitComponent.shot (targetVector);
+
+        C4_EnemyAttackUI ui = targetObject.GetComponentInChildren<C4_EnemyAttackUI>();
+
+        if(ui != null)
+        {
+            ui.showUI();
+        }
 		
 		return true;
 	}
