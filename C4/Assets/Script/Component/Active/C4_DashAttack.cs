@@ -24,7 +24,7 @@ public class C4_DashAttack : MonoBehaviour, C4_IntShot
     }
     public void startShot(Vector3 targetPos)
 	{
-		missileGameObejct.transform.position = missileFeature.startPosition;
+		missileGameObejct.transform.position = missileFeature.startPosition.position;
         move.startMove(targetPos);
         missile.startMove(targetPos);
         unitFeature.activeDone();

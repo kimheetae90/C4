@@ -21,7 +21,7 @@ public class C4_StraightShot : MonoBehaviour, C4_IntShot {
 
     public void startShot(Vector3 targetPos)
     {
-		missileGameObejct.transform.position = missileFeature.startPosition;
+		missileGameObejct.transform.position = missileFeature.startPosition.position;
 		shotDirection = (transform.position - targetPos).normalized;
 		missileGameObejct.transform.GetChild(0).transform.gameObject.transform.rotation = Quaternion.LookRotation(shotDirection);
 		missile.startMove (targetPos);

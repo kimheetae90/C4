@@ -113,7 +113,7 @@ ModelImporter:
     13700020: upWing_geo
   materials:
     importMaterials: 1
-    materialName: 0
+    materialName: 1
     materialSearch: 1
   animations:
     legacyGenerateAnimations: 4

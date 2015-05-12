@@ -19,7 +19,7 @@ public class C4_EnemyMaker : MonoBehaviour {
 			GameObject initMissileGameObject = Instantiate(initEnemyGameObject.GetComponent<C4_UnitFeature>().missile, missileInitPosition, transform.rotation) as GameObject;
 			initEnemyGameObject.GetComponent<C4_UnitFeature>().missile = initMissileGameObject;
 			initMissileGameObject.GetComponent<C4_MissileFeature>().unit = initEnemyGameObject;
-			initMissileGameObject.GetComponent<C4_MissileFeature>().startPosition = initEnemyGameObject.transform.FindChild("MissileStartPosition").transform.position;
+			initMissileGameObject.GetComponent<C4_MissileFeature>().startPosition = initEnemyGameObject.transform.Find("FBX/MissileStartPosition").transform;
 		}
     }
 }

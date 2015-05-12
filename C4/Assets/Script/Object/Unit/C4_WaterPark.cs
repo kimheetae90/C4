@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class C4_Whale : C4_Ally {
+public class C4_WaterPark : C4_Ally {
 }
