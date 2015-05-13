@@ -71,11 +71,11 @@ public class C4_BehaviorActionFunc : MonoBehaviour
 
         if(len > mUnitFeature.moveRange)
         {
-            toMove = targetObject.transform.position + dir * mUnitFeature.moveRange;
+            toMove = mTransform.position + dir * (mUnitFeature.moveRange);
         }
         else
         {
-            toMove = targetObject.transform.position + dir * (len - mUnitFeature.attackRange);
+            toMove = mTransform.position + dir * (len - mUnitFeature.attackRange);
         }
 
         mUnit.move(toMove);
