@@ -3,12 +3,15 @@ using System.Collections.Generic;
 
 public class BehaviorNodeBaseAction : BehaviorNode
 {
+
     protected List<string> listParams;
 
     public BehaviorNodeBaseAction(List<string> listParams)
         : base()
     {
         this.listParams = listParams;
+
+
     }
 
     override public bool traversalNode(GameObject targetObject)

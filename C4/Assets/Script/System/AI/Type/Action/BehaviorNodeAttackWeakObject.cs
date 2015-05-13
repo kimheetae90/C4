@@ -4,7 +4,8 @@ using System.Collections.Generic;
 //not yet
 public class BehaviorNodeAttackWeakObject : BehaviorNodeBaseAction
 {
-	
+    float shotDelayTime = 1.5f;
+
 	public BehaviorNodeAttackWeakObject(List<string> listParams)
 		: base(listParams)
 	{
@@ -16,32 +17,55 @@ public class BehaviorNodeAttackWeakObject : BehaviorNodeBaseAction
 	
 	override public bool traversalNode(GameObject targetObject)
 	{
-		Debug.Log ("attack weak object");
+        BehaviorComponent behaviorComponent = targetObject.GetComponent<BehaviorComponent>();
 
-		C4_Unit unitComponent = targetObject.GetComponent<C4_Unit>();
-		C4_UnitFeature unitFeature = targetObject.GetComponent<C4_UnitFeature>();
-		C4_FindObjectInRadiousCollision findComponent = targetObject.GetComponent<C4_FindObjectInRadiousCollision>();
-		
-		if (unitComponent == null || unitFeature == null || findComponent == null)
-		{
-			throw new BehaviorNodeException("BehaviorNodeAttackWeakObject AI Target에 해당 컴퍼넌트가 없습니다.");
-		}
-		
-		C4_Object obj = findComponent.getNearestObject();
-		
-		if (obj == null) return false;
-		
-		unitComponent.shot (obj.transform.position);
+        C4_BehaviorActionFunc actionFunc = targetObject.GetComponent<C4_BehaviorActionFunc>();
 
-        C4_EnemyAttackUI ui = targetObject.GetComponent<C4_EnemyAttackUI>();
-
-        if (ui != null)
+        if (behaviorComponent == null || actionFunc == null)
         {
-            ui.showUI();
+            throw new BehaviorNodeException("BehaviorNodeAttackObject AI Target에 해당 컴퍼넌트가 없습니다.");
         }
 
-		return true;
+        List<C4_Object> list = behaviorComponent.cachedStruct.objectsInFireRange;
+
+        if (list.Count == 0)
+        {
+            Debug.Log("nearest object is null");
+            return false;
+        }
+
+        C4_Object minObject = list[0];
+        int minHP = getHP(list[0]);
+
+        for (int i = 1; i < list.Count; ++i)
+        {
+            int curHP = getHP(list[i]);
+
+            if (curHP != -1 && minHP > curHP)
+            {
+                minHP = curHP;
+                minObject = list[i];
+            }
+        }
+
+        Vector3 targetVector = (minObject.transform.position);
+
+        actionFunc.AttackTargetPos(targetVector);
+
+        return true;
 	}
+
+    private int getHP(C4_Object obj)
+    {
+        C4_UnitFeature feature = obj.GetComponent<C4_UnitFeature>();
+
+        if (feature != null)
+        {
+            return feature.hp;
+        }
+
+        return -1;
+    }
 	
 	override public object Clone()
 	{

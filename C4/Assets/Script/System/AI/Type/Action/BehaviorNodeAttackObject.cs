@@ -17,34 +17,28 @@ public class BehaviorNodeAttackObject : BehaviorNodeBaseAction
 	
 	override public bool traversalNode(GameObject targetObject)
 	{
-		//Debug.Log ("attack object");
-		C4_Unit unitComponent = targetObject.GetComponent<C4_Unit>();
-
-        C4_UnitFeature unitFeature = targetObject.GetComponent<C4_UnitFeature>();
-		
-		if (unitComponent == null || unitFeature == null)
-		{
-			throw new BehaviorNodeException("BehaviorNodeAttackObject AI Target에 해당 컴퍼넌트가 없습니다.");
-		}
-
         BehaviorComponent behaviorComponent = targetObject.GetComponent<BehaviorComponent>();
 
-        if (behaviorComponent == null) throw new BehaviorNodeException("BehaviorNodeCheckSelectedEnemyIsAimMe AI Target에 BehaviorComponent 컴퍼넌트가 없습니다.");
+        C4_BehaviorActionFunc actionFunc = targetObject.GetComponent<C4_BehaviorActionFunc>();
 
-        List<C4_Object> objectsInFireRange = behaviorComponent.cachedStruct.objectsInFireRange;
-
-        if (objectsInFireRange.Count == 0) return true;
-
-        unitComponent.shot(objectsInFireRange[0].transform.position);
-
-        C4_EnemyAttackUI ui = targetObject.GetComponent<C4_EnemyAttackUI>();
-
-        if (ui != null)
+        if (behaviorComponent == null || actionFunc == null)
         {
-            ui.showUI();
+            throw new BehaviorNodeException("BehaviorNodeAttackObject AI Target에 해당 컴퍼넌트가 없습니다.");
         }
 
-		return true;
+        C4_Object obj = behaviorComponent.cachedStruct.getNearestObject();
+
+        if (obj == null)
+        {
+            Debug.Log("nearest object is null");
+            return false;
+        }
+
+        Vector3 targetVector = (obj.transform.position);
+
+        actionFunc.AttackTargetPos(targetVector);
+
+        return true;
 	}
 	
 	override public object Clone()

@@ -34,6 +34,8 @@ public class BehaviorComponent : MonoBehaviour
         {
             Debug.LogError(e.Message);
         }
+
+        gameObject.AddComponent<C4_BehaviorActionFunc>();
     }
 
     private void clearCachedStruct()
@@ -43,16 +45,6 @@ public class BehaviorComponent : MonoBehaviour
         cachedStruct.checkedSelectedObject = null;
 
     }
-
-//    // Update is called once per frame
-//    void Update()
-//    {
-//        if (node != null)
-//        {
-//            node.traversalNode(this.gameObject);
-//        }
-//
-//    }
 
 	public void traversalNode()
 	{

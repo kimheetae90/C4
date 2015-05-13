@@ -23,16 +23,16 @@ public class BehaviorNodeMoveForAvoid : BehaviorNodeBaseAction
 	
 	override public bool traversalNode(GameObject targetObject)
 	{
-		C4_Enemy charComponent = targetObject.GetComponent<C4_Enemy>();
-
-        C4_UnitFeature unitFeature = targetObject.GetComponent<C4_UnitFeature>();
-        
         BehaviorComponent behaviorComponent = targetObject.GetComponent<BehaviorComponent>();
 
-		if (charComponent == null || behaviorComponent == null || unitFeature == null)
-		{
-			throw new BehaviorNodeException("BehaviorNodeMoveForAvoid AI Target에 해당 컴퍼넌트가 없습니다.");
-		}
+        C4_BehaviorActionFunc actionFunc = targetObject.GetComponent<C4_BehaviorActionFunc>();
+
+        C4_UnitFeature unitFeature = targetObject.GetComponent<C4_UnitFeature>();
+
+        if (behaviorComponent == null || actionFunc == null || unitFeature == null)
+        {
+            throw new BehaviorNodeException("BehaviorNodeMoveForAvoid AI Target에 해당 컴퍼넌트가 없습니다.");
+        }
 
         C4_Ally obj = behaviorComponent.cachedStruct.checkedSelectedObject;
 
@@ -43,13 +43,13 @@ public class BehaviorNodeMoveForAvoid : BehaviorNodeBaseAction
 
         direction.Normalize();
 
-        Vector3 moveDirection = Vector3.Cross(direction, targetObject.transform.forward);
+        Vector3 moveDirection = Vector3.Cross(direction, Vector3.up);
 
         moveDirection.Normalize();
 
-        moveDirection *= (int)(unitFeature.moveRange * range);
-		
-		charComponent.move(obj.transform.position + moveDirection);
+        Vector3 targetPos = moveDirection * (int)(unitFeature.moveRange * range);
+
+        actionFunc.MoveTo(targetPos);
 		
 		return true;
 	}

@@ -19,31 +19,25 @@ public class BehaviorNodeMoveToNearObjectAction : BehaviorNodeBaseAction
 
     override public bool traversalNode(GameObject targetObject)
     {
-        C4_Unit unitComponent = targetObject.GetComponent<C4_Unit>();
-        C4_UnitFeature unitFeature = targetObject.GetComponent<C4_UnitFeature>();
-		C4_FindObjectInRadiousCollision findComponent = targetObject.GetComponent<C4_FindObjectInRadiousCollision>();
+        BehaviorComponent behaviorComponent = targetObject.GetComponent<BehaviorComponent>();
 
-		if (unitComponent == null || findComponent == null || unitFeature == null)
+        C4_BehaviorActionFunc actionFunc = targetObject.GetComponent<C4_BehaviorActionFunc>();
+
+        C4_UnitFeature unitFeature = targetObject.GetComponent<C4_UnitFeature>();
+
+        if (behaviorComponent == null || actionFunc == null || unitFeature == null)
         {
-			if(unitComponent == null) Debug.Log ("unitComponent is null");
-			if(findComponent == null) Debug.Log ("findComponent is null");
-			if(unitFeature == null) Debug.Log ("unitFeature is null");
             throw new BehaviorNodeException("BehaviorNodeMoveToNearObjectAction AI Target에 해당 컴퍼넌트가 없습니다.");
         }
-        C4_Object obj = findComponent.getNearestObject();
 
-        if (obj == null) return false;
+        C4_Object obj = behaviorComponent.cachedStruct.getNearestObject();
 
-        if (velocity != 0)
+        if (obj == null)
         {
-           unitFeature.moveSpeed = (int)velocity;
+            return false;
         }
 
-       Vector3 dir = obj.transform.position - targetObject.transform.position;
-
-       dir.Normalize();
-
-       unitComponent.move(targetObject.transform.position + dir * unitFeature.moveRange);
+        actionFunc.MoveTo(obj);
 
         return true;
     }
