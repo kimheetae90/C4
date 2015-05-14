@@ -60,12 +60,13 @@ public class AnimEventUserMsg : AnimEventParamBase
         if (param == "") return;
 
         JSONObject j = new JSONObject(param);
-        title = j.GetField("title").str;
-        floatVal = j.GetField("floatVal").f;
-        intVal = (int)j.GetField("intVal").n;
-        str = j.GetField("str").str;
-        boneName = j.GetField("boneName").str;
-        vec3 = JSONTemplates.ToVector3(j.GetField("vec3"));
+
+        title = JSONSafeGetter.getString("title",j);
+        floatVal = JSONSafeGetter.getFloat("floatVal",j);
+        intVal = JSONSafeGetter.getInt("intVal",j);
+        str = JSONSafeGetter.getString("str", j);
+        boneName = JSONSafeGetter.getString("boneName", j);
+        vec3 = JSONSafeGetter.getVector3("vec3", j);
     }
 
 #if UNITY_EDITOR

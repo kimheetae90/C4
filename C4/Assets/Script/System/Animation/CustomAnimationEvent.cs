@@ -20,21 +20,31 @@ public class CustomAnimationEvent : MonoBehaviour
         AnimEventParamCreateParticle param = new AnimEventParamCreateParticle();
         param.Deseralize(strParam);
         
-        GameObject ps = null;
+        GameObject psObj = null;
 
         if (param.resName == "") return;
 
         GameObject o = (GameObject)Resources.Load(param.resName, typeof(GameObject));
 
-        ps = Instantiate(o, this.transform.position, Quaternion.identity) as GameObject;
+        psObj = Instantiate(o, this.transform.position, Quaternion.identity) as GameObject;
+
+        if (psObj == null) return;
 
         Transform bone = dicChildObject[param.boneName];
 
+        ParticleSystem ps = psObj.GetComponent<ParticleSystem>();
+
+        if (ps == null) return;
+
+        ps.startSize = param.scale;
+
         if (bone != null)
         {
-            ps.transform.position = bone.position;
+            psObj.transform.position = bone.position;
 
-            StartCoroutine(PlayParticle(param, ps));
+            psObj.transform.position += param.offset;
+
+            StartCoroutine(PlayParticle(param, psObj));
         }
     }
 
@@ -45,6 +55,8 @@ public class CustomAnimationEvent : MonoBehaviour
             if(param.followBone)
             {
                 ps.transform.position = dicChildObject[param.boneName].position;
+
+                ps.transform.position += param.offset;
             }
           
             param.elapsedTime += Time.deltaTime;

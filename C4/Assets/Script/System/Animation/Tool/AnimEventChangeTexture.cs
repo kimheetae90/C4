@@ -49,9 +49,9 @@ public class AnimEventChangeTexture : AnimEventParamBase
         if (param == "") return;
 
         JSONObject j = new JSONObject(param);
-        textureName = j.GetField("textureName").str;
-        changeObjectName = j.GetField("changeObjectName").str;
-        nameId = (int)j.GetField("nameId").n;
+        textureName = JSONSafeGetter.getString("textureName",j);
+        changeObjectName = JSONSafeGetter.getString("changeObjectName",j);
+        nameId = JSONSafeGetter.getInt("nameId",j);
     }
 
 #if UNITY_EDITOR

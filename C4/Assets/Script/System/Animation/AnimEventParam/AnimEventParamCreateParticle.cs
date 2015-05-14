@@ -10,7 +10,7 @@ public class AnimEventParamCreateParticle : AnimEventParamBase
     public string resName;
     public bool followBone;
     public Vector3 offset;
-    public Vector3 scale;
+    public float scale;
     public float lifetime;
     public float elapsedTime;
 #if UNITY_EDITOR
@@ -39,7 +39,7 @@ public class AnimEventParamCreateParticle : AnimEventParamBase
         resName = "";
         boneName = "";
         offset = Vector3.zero;
-        scale = Vector3.zero;
+        scale = 1.0f;
         elapsedTime = 0.0f;
         lifetime = 0.0f;
     }
@@ -52,7 +52,7 @@ public class AnimEventParamCreateParticle : AnimEventParamBase
         j.AddField("followBone", followBone);
         j.AddField("lifetime", lifetime);
         j.AddField("offset", JSONTemplates.FromVector3(offset));
-        j.AddField("scale", JSONTemplates.FromVector3(scale));
+        j.AddField("scale", scale);
         return j.Print(false);
     }
 
@@ -61,12 +61,15 @@ public class AnimEventParamCreateParticle : AnimEventParamBase
         if (param == "") return;
 
         JSONObject j = new JSONObject(param);
-        boneName = j.GetField("boneName").str;
-        resName = j.GetField("resName").str;
-        followBone = j.GetField("followBone").b;
-        lifetime = j.GetField("lifetime").f;
-        offset = JSONTemplates.ToVector3(j.GetField("offset"));
-        scale = JSONTemplates.ToVector3(j.GetField("scale"));
+
+        if (j == null) clear();
+
+        boneName = JSONSafeGetter.getString("boneName", j);
+        resName = JSONSafeGetter.getString("resName", j);
+        followBone = JSONSafeGetter.getBool("followBone", j);
+        lifetime = JSONSafeGetter.getFloat("lifetime", j);
+        offset = JSONSafeGetter.getVector3("offset", j);
+        scale = JSONSafeGetter.getFloat("scale", j);
     }
 
 #if UNITY_EDITOR
@@ -105,9 +108,9 @@ public class AnimEventParamCreateParticle : AnimEventParamBase
         resControl.valueSetter = delegate(string str) { resName = str; };
         AddControl(resControl);
 
-        ParamControlVector3 sizeControl = new ParamControlVector3("size");
+        ParamControlPrimitive<float> sizeControl = new ParamControlPrimitive<float>("size");
         sizeControl.valueGetter = delegate() { return scale; };
-        sizeControl.valueSetter = delegate(Vector3 val) { scale = val; };
+        sizeControl.valueSetter = delegate(float val) { scale = val; };
         AddControl(sizeControl);
 
         ParamControlVector3 offsetControl = new ParamControlVector3("offset");

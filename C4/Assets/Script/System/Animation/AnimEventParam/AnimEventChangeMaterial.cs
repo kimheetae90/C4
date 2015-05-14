@@ -47,8 +47,8 @@ public class AnimEventChangeMaterial : AnimEventParamBase
         if (param == "") return;
 
         JSONObject j = new JSONObject(param);
-        materialName = j.GetField("materialName").str;
-        changeObjectName = j.GetField("changeObjectName").str;
+        materialName = JSONSafeGetter.getString("materialName", j);
+        changeObjectName = JSONSafeGetter.getString("changeObjectName", j);
     }
 
 #if UNITY_EDITOR
