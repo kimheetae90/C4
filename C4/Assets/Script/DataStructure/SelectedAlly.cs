@@ -5,11 +5,11 @@ using System.Collections.Generic;
 public struct SelectedAlly{
 
 	int maxNumOfAlly;
-	List<C4_Ally> selectedAllyList;
+	List<GameObject> selectedAllyList;
 
 	void Start()
 	{
-		selectedAllyList = new List<C4_Ally> ();
+		selectedAllyList = new List<GameObject> ();
 	}
 
 	public void refreshAllyList()
@@ -17,20 +17,29 @@ public struct SelectedAlly{
 		selectedAllyList.Clear ();
 	}
 
-	public bool addSelectedAlly(C4_Ally selectedAllyObject)
+	public bool addSelectedAlly(GameObject selectedAllyObject)
 	{
 		if (selectedAllyList.Count < maxNumOfAlly) 
 		{
-			selectedAllyList.Add (selectedAllyObject);
-			return true;
+			if(selectedAllyList.Contains(selectedAllyObject))
+			{
+				Debug.Log("Already Exist");
+				return false;
+			}
+			else
+			{
+				selectedAllyList.Add (selectedAllyObject);
+				return true;
+			}
 		}
 		else 
 		{
+			Debug.Log("List Full");
 			return false;
 		}
 	}
 
-	public bool removeSelectedAlly(C4_Ally selectedAllyObject)
+	public bool removeSelectedAlly(GameObject selectedAllyObject)
 	{
 		return selectedAllyList.Remove (selectedAllyObject);
 	}

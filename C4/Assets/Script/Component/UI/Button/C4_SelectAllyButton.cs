@@ -3,7 +3,7 @@ using System.Collections;
 
 public class C4_SelectAllyButton : MonoBehaviour {
 
-	public C4_Ally ally;
+	public GameObject ally;
 	public bool isSelected;
 
 	void Start()

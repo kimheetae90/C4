@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class C4_SelectAllyMode : C4_SceneMode {
 
 	void Awake () {
-		C4_GameManager.Instance.StartPlayScene();
+		C4_GameManager.Instance.StartSelectAllyScene();
 	}
 
 	public override void Start()
