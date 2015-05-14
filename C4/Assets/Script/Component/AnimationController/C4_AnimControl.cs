@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class C4_AnimControl : MonoBehaviour, C4_IControllerListener {
+public class C4_AnimControl : MonoBehaviour, C4_IControllerListener{
 
 	Animator anim;
-	C4_Ally ally;
+	C4_Unit ally;
 	C4_Move moveScript;
 
 	void Start()
@@ -35,10 +35,22 @@ public class C4_AnimControl : MonoBehaviour, C4_IControllerListener {
 	{
 		yield return null;
 
-		if(!moveScript.isMove)
+		if (moveScript.isMove) 
 		{
-			anim.SetBool("Move",false);
-			StopCoroutine("checkMoving");
+			anim.SetBool ("Move", true);
+			StartCoroutine("checkMoving");
+		}
+		else
+		{
+			anim.SetBool ("Move", false);
+			if(moveScript.toMove == transform.position)
+			{
+				StopCoroutine ("checkMoving");
+			}
+			else
+			{
+				StartCoroutine("checkMoving");
+			}
 		}
 	}
 
