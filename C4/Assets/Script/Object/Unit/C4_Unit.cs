@@ -101,7 +101,7 @@ public abstract class C4_Unit : C4_Object
 		checkHP();
         //수정바람
 		//GetComponent<C4_AnimControl> ().damaged ();
-        //transform.GetChild(1).GetComponent<C4_RageUI>().rageUpDmg();
+        transform.GetComponent<C4_UnitFeature>().rageUpDmg();
 	}
 	
 	protected abstract void checkHP();

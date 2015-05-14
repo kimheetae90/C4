@@ -16,77 +16,10 @@ public class C4_RageUI : MonoBehaviour
 
     // Update is called once per frame
    
-    public void rageUpAtt()
-    {
-
-        if (unitFeature.israge == false)
-        {
-            
-            unitFeature.rageGage += unitFeature.rageGageChargeInAttack;
-            
-            if (unitFeature.rageGage >= unitFeature.rageFullGage)
-            {
-                
-                unitFeature.rageGage = unitFeature.rageFullGage;
-                unitFeature.israge = true;
-                StartCoroutine("ragemode");
-
-            }
-            rageChanged();
-        }
-    }
-    public void rageUpDmg()
-    {
-        if (unitFeature.israge == false)
-        {
-            unitFeature.rageGage += unitFeature.rageGageChargeInDamage;
-            if (unitFeature.rageGage >= unitFeature.rageFullGage)
-            {
-                unitFeature.rageGage = unitFeature.rageFullGage;
-                unitFeature.israge = true;
-                StartCoroutine("ragemode");
-            }
-            rageChanged();
-        }
-    }
+    
     public void rageChanged()
     {
         rageUIImage.fillAmount = (float)unitFeature.rageGage / unitFeature.rageFullGage;
     }
-    public void rageDown()
-    {
-        unitFeature.rageGage -= unitFeature.regeConsumeSpeed;
-        if (unitFeature.rageGage <= 0)
-        {
-            rageEnd();
-        }
-    }
-    public void rageEnd()
-    {
-        unitFeature.rageGage = 0;
-        unitFeature.israge = false;
-        rageChanged();
-        StopCoroutine("ragemode");
-    }
-    IEnumerator ragemode()
-    {
-        yield return null;
-
-        rageDown();
-        rageChanged();
-
-        if (unitFeature.rageGage <= 0)
-        {
-            rageEnd();
-        }
-        if (unitFeature.israge == true)
-        {
-            StartCoroutine("ragemode");
-        }
-        else
-        {
-            StopCoroutine("ragemode");
-        }
-
-    }
+   
 }

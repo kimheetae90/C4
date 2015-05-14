@@ -15,6 +15,7 @@ public enum GameObjectType
 public enum StatusAilmentType
 {
     Stun,
+    KnockBack,
 };
 
 public enum GameObjectInputType

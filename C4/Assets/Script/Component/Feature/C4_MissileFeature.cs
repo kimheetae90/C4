@@ -15,6 +15,7 @@ public class C4_MissileFeature : MonoBehaviour
     public int type;
     public GameObject unit;
 	public Transform startPosition;
+    public float misslerange;
 
     void Start()
     {

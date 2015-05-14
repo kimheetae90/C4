@@ -9,17 +9,47 @@ public class C4_MissileCollision : MonoBehaviour {
         {
             return;
         }
-
+        C4_MissileFeature missleFeature = GetComponentInParent<C4_MissileFeature>();
         C4_Object collisionObject = other.GetComponentInParent<C4_Object>();
         C4_Move missileMove = GetComponentInParent<C4_Move>();
         switch (collisionObject.objectAttr.type)
         {
+            case GameObjectType.Ground: 
+                if (missleFeature.type == 4)
+                {
+                    C4_MissleColliderCollision collider = transform.GetComponentInParent<C4_MissileFeature>().transform.GetChild(1).transform.GetComponent<C4_MissleColliderCollision>();
+                    if (collider != null)
+                    {
+                        collider.transform.localScale = new Vector3(missleFeature.misslerange, missleFeature.misslerange, missleFeature.misslerange);
+                        collider.gameObject.SetActive(true);
+                    }
+                } 
+                break;
             case GameObjectType.Ally:
             case GameObjectType.Enemy:
-                missileMove.stopMoveToTarget();
-                //수정바람    
-            //GetComponentInParent<C4_MissileFeature>().unit.transform.GetChild(1).GetComponent<C4_RageUI>().rageUpAtt();
-                break;
+                if (missleFeature.type == 4)
+                {
+                    C4_MissleColliderCollision collider = transform.GetComponentInParent<C4_MissileFeature>().transform.GetChild(1).transform.GetComponent<C4_MissleColliderCollision>();
+                    if (collider != null)
+                    {
+                        collider.transform.localScale = new Vector3(missleFeature.misslerange, missleFeature.misslerange, missleFeature.misslerange);
+                        collider.gameObject.SetActive(true);
+                    }
+                }
+                else
+                {
+                    missileMove.stopMoveToTarget();
+                    //수정바람   
+
+                    C4_UnitFeature unit = GetComponentInParent<C4_MissileFeature>().unit.GetComponent<C4_UnitFeature>();
+                    if (unit != null)
+                    {
+                        unit.rageUpAtt();
+
+                    }
+                }
+                
+               break;
         }
     }
 

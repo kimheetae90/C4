@@ -56,11 +56,13 @@ public class C4_ListenStatusAilment : MonoBehaviour {
 
     IEnumerator execute()
     {
-        
-
         for (int i = listeners.Count; i >0; i--)
         {
-            listeners[i-1].execute(this.gameObject);
+            if (listeners[i - 1].GetType().ToString() == "Stun")
+            {
+                listeners[i - 1].execute(this.gameObject);
+            }
+            
             
             if (listeners[i-1].time <= 0)
             {

@@ -46,14 +46,16 @@ public class C4_PlayerUI : MonoBehaviour, C4_IControllerListener
 
 	public void showTargetUI(Vector3 targetPos)
 	{
-		
-		switch (C4_GameManager.Instance.sceneMode.getController(GameObjectType.Ally).GetComponent<C4_AllyController>().selectedAllyUnit.GetComponent<C4_UnitFeature>().missile.GetComponent<C4_MissileFeature>().type)
+		C4_MissileFeature missle = C4_GameManager.Instance.sceneMode.getController(GameObjectType.Ally).GetComponent<C4_AllyController>().selectedAllyUnit.GetComponent<C4_UnitFeature>().missile.GetComponent<C4_MissileFeature>();
+		switch (missle.type)
 		{
 		case 1: 
 			targetbarUI.showUI(targetPos);
 			break;
 		case 2: 
+        case 4:
 			targetspotUI.showUI(targetPos);
+            transform.GetChild(2).transform.GetChild(0).transform.localScale = new Vector3(missle.misslerange/2, missle.misslerange/2, missle.misslerange/2);
 			break;
         case 3:
             targetbarUI.showUI(targetPos);

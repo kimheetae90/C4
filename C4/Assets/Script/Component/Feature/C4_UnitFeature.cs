@@ -127,7 +127,7 @@ public class C4_UnitFeature : MonoBehaviour
     IEnumerator ragemode()
     {
         yield return null;
-
+        //Debug.Log(israge);
         rageDown();
         GetComponentInChildren<C4_RageUI>().rageChanged();
 
