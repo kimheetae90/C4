@@ -43,7 +43,6 @@ public class C4_GameManager : MonoBehaviour {
 	void Awake()
 	{
         isPlaying = false;
-		StartPlayScene ();
 	}
 
 	public void LoadingScene()
