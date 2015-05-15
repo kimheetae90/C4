@@ -7,8 +7,18 @@ public struct SelectedAlly{
 	int maxNumOfAlly;
 	List<GameObject> selectedAllyList;
 
-	void Start()
+	public void printSelectedAllylist()
 	{
+		Debug.Log (selectedAllyList.Count);
+		for (int i=0; i<selectedAllyList.Count; i++) 
+		{
+			Debug.Log(selectedAllyList[i].name);
+		}
+	}
+
+	public SelectedAlly(int num)
+	{
+		maxNumOfAlly = num;
 		selectedAllyList = new List<GameObject> ();
 	}
 
