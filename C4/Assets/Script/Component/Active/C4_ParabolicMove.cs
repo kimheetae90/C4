@@ -59,13 +59,20 @@ public class C4_ParabolicMove : C4_Move
 
     public override void stopMoveToTarget()
     {
-        Debug.Log(transform.GetComponentInChildren<C4_MissleColliderCollision>().gameObject);
-        if (transform.GetComponentInChildren<C4_MissleColliderCollision>().gameObject != null)
+        C4_MissleColliderCollision collider = transform.GetChild(1).transform.GetComponent<C4_MissleColliderCollision>();
+        
+        if (collider != null)
         {
-            
+            if (collider.isActiveAndEnabled == false)
+            {
+                collider.gameObject.SetActive(true);
+            }
             transform.GetComponentInChildren<C4_MissleColliderCollision>().isfirst = true;
+            transform.GetComponentInChildren<C4_WaterParkMissleCollision>().isfirst = true;
             transform.GetComponentInChildren<C4_MissleColliderCollision>().gameObject.SetActive(false);
+            
         }
+
         isMove = false;
         isCoroutine = false;
         StopCoroutine("move");
@@ -83,7 +90,7 @@ public class C4_ParabolicMove : C4_Move
             count += (moveSpeed * 0.015f) / Vector3.Distance(toMove, firstPos);
             //count += 0.01f;
             //float distance = Vector3.Distance(toMove, transform.position);
-            if (count < 1.5)
+            if (count < 2)
             {
                 moveToTarget();
             }

@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class C4_BreakerMissleCollision : MonoBehaviour {
+public class C4_BreakerMissleCollision : C4_MissileCollision
+{
 
     public float stuntime;
 	stAilment statusAilment;
@@ -10,6 +11,7 @@ public class C4_BreakerMissleCollision : MonoBehaviour {
     {
             stAilment stun = new Stun();
 			statusAilment = stun;
+            power = GetComponentInParent<C4_MissileFeature>().power;
 	}
 
 	void OnTriggerEnter(Collider other)
@@ -23,7 +25,7 @@ public class C4_BreakerMissleCollision : MonoBehaviour {
         statusAilment.time = stuntime;
         listen.AddtoList(statusAilment);
 
-        C4_MissileFeature missleFeature = GetComponentInParent<C4_MissileFeature>();
+        
         C4_Object collisionObject = other.GetComponentInParent<C4_Object>();
         C4_Move missileMove = GetComponentInParent<C4_Move>();
         switch (collisionObject.objectAttr.type)
@@ -37,7 +39,7 @@ public class C4_BreakerMissleCollision : MonoBehaviour {
                     C4_UnitFeature unit = GetComponentInParent<C4_MissileFeature>().unit.GetComponent<C4_UnitFeature>();
                     if (unit != null)
                     {
-                        unit.rageUpAtt();
+                        unit.rageUp(unit.GetComponent<C4_UnitFeature>().rageGageChargeInAttack);
 
                     }
                break;

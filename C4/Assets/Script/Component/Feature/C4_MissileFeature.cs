@@ -11,6 +11,7 @@ using System.Collections;
 public class C4_MissileFeature : MonoBehaviour
 {
     public int power;
+    public int splashpower;
     public float moveSpeed;
     public int type;
     public GameObject unit;

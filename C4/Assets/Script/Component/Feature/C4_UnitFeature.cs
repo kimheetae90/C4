@@ -24,17 +24,18 @@ public class C4_UnitFeature : MonoBehaviour
     public int rageGage;
     public readonly int fullGage = 300;
 
-    [System.NonSerialized]
+    //[System.NonSerialized]
     public bool israge;
     [System.NonSerialized]
     public int hp;
     [System.NonSerialized]
     public float gage;
-    
-    
+
+    C4_Unit type;
     
     void Start()
     {
+        type = transform.GetComponent<C4_Unit>();
         gage = 0;
         hp = fullHP;
         rageGage = 0;
@@ -75,28 +76,10 @@ public class C4_UnitFeature : MonoBehaviour
         }
     }
 
-    public void rageUpAtt()
+    
+    public void rageUp(int gagecharge)
     {
-
-        if (israge == false)
-        {
-
-            rageGage += rageGageChargeInAttack;
-
-            if (rageGage >= rageFullGage)
-            {
-
-                rageGage = rageFullGage;
-                israge = true;
-                StartCoroutine("ragemode");
-
-            }
-            GetComponentInChildren<C4_RageUI>().rageChanged();
-            
-        }
-    }
-    public void rageUpDmg()
-    {
+       
         if (israge == false)
         {
             rageGage += rageGageChargeInDamage;
@@ -104,6 +87,7 @@ public class C4_UnitFeature : MonoBehaviour
             {
                 rageGage = rageFullGage;
                 israge = true;
+                modechange();
                 StartCoroutine("ragemode");
             }
             GetComponentInChildren<C4_RageUI>().rageChanged();
@@ -111,30 +95,32 @@ public class C4_UnitFeature : MonoBehaviour
     }
     public void rageDown()
     {
+        Debug.Log(type.GetType().ToString() + israge);
         rageGage -= regeConsumeSpeed;
         if (rageGage <= 0)
         {
-            rageEnd();
+            israge = false;
         }
     }
     public void rageEnd()
     {
         rageGage = 0;
         israge = false;
+        modechange();
         GetComponentInChildren<C4_RageUI>().rageChanged();
         StopCoroutine("ragemode");
     }
     IEnumerator ragemode()
     {
+
         yield return null;
-        //Debug.Log(israge);
         rageDown();
         GetComponentInChildren<C4_RageUI>().rageChanged();
-
-        if (rageGage <= 0)
+        if (israge==false)
         {
             rageEnd();
         }
+        
         if (israge == true)
         {
             StartCoroutine("ragemode");
@@ -143,6 +129,40 @@ public class C4_UnitFeature : MonoBehaviour
         {
             StopCoroutine("ragemode");
         }
+        
 
+    }
+    public void modechange()
+    {
+        C4_Unit type = transform.GetComponent<C4_Unit>();
+        
+        if (israge)
+        {
+
+            switch (type.GetType().ToString())
+            {
+                case "C4_WaterPark":
+                    missile.GetComponent<C4_MissileFeature>().misslerange *= 2;
+                    break;
+                case "C4_Breaker": 
+                    attackRange *=2;
+                    missile.GetComponent<C4_MissileFeature>().power *= 2;
+                    break;
+            }
+        }
+        else
+        {
+
+            switch (type.GetType().ToString())
+            {
+                case "C4_WaterPark": 
+                    missile.GetComponent<C4_MissileFeature>().misslerange /= 2;
+                    break;
+                case "C4_Breaker": 
+                    attackRange /= 2;
+                    missile.GetComponent<C4_MissileFeature>().power /= 2;
+                    break;
+            }
+        }
     }
 }

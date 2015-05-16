@@ -12,9 +12,10 @@ public class C4_MovingCheckAndSetActive : MonoBehaviour {
     {
         StopCoroutine("checkMoving");
 		gameObject.SetActive(false);
-		try{
+		try{  
 			  gameObject.GetComponent<C4_MissileFeature> ().unit.gameObject.
 			  transform.Find ("avoidCheckCollider").gameObject.SetActive (false);
+               
 		} catch (UnityException e){
 				Debug.Log ("is not enemy");
 		}

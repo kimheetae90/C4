@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class C4_MissileCollision : MonoBehaviour {
-    
+    public int power;
+    /*
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == 8)
@@ -44,7 +45,7 @@ public class C4_MissileCollision : MonoBehaviour {
                     C4_UnitFeature unit = GetComponentInParent<C4_MissileFeature>().unit.GetComponent<C4_UnitFeature>();
                     if (unit != null)
                     {
-                        unit.rageUpAtt();
+                        unit.rageUp(unit.GetComponent<C4_UnitFeature>().rageGageChargeInAttack);
 
                     }
                 }
@@ -52,5 +53,6 @@ public class C4_MissileCollision : MonoBehaviour {
                break;
         }
     }
+      */
 
 }

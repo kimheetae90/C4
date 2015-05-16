@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class C4_StraightMissleCollision : MonoBehaviour {
-  
+public class C4_StraightMissleCollision : C4_MissileCollision
+{
+    void Start()
+    {
+        power = GetComponentInParent<C4_MissileFeature>().power;
+    }
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == 8)
         {
             return;
         }
-        C4_MissileFeature missleFeature = GetComponentInParent<C4_MissileFeature>();
         C4_Object collisionObject = other.GetComponentInParent<C4_Object>();
         C4_Move missileMove = GetComponentInParent<C4_Move>();
         switch (collisionObject.objectAttr.type)
@@ -22,7 +25,7 @@ public class C4_StraightMissleCollision : MonoBehaviour {
                     C4_UnitFeature unit = GetComponentInParent<C4_MissileFeature>().unit.GetComponent<C4_UnitFeature>();
                     if (unit != null)
                     {
-                        unit.rageUpAtt();
+                        unit.rageUp(unit.GetComponent<C4_UnitFeature>().rageGageChargeInAttack);
 
                     }
                break;
