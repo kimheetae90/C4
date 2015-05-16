@@ -52,7 +52,7 @@ public class AnimationListWindow : BaseAnimationWindow , IAnimationPropertyListe
 
 	void onAnimationListWindow(int windowID)
 	{
-		scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(width), GUILayout.Height(height));
+		scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(width), GUILayout.Height(height / 6 * 5));
 		
 		for (int i = 0; i < property.Infos.Length; ++i)
 		{

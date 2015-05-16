@@ -43,7 +43,15 @@ public class C4_GameManager : MonoBehaviour {
 	void Awake()
 	{
         isPlaying = false;
-		StartPlayScene ();
+		selectedAlly = new SelectedAlly(2);
+	}
+
+	void Update()
+	{
+		if (Input.GetKeyDown (KeyCode.Space)) 
+		{
+			selectedAlly.printSelectedAllylist();
+		}
 	}
 
 	public void LoadingScene()

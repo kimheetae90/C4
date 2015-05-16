@@ -56,10 +56,10 @@ public class AnimEventChangeScale : AnimEventParamBase
         if (param == "") return;
 
         JSONObject j = new JSONObject(param);
-        boneName = j.GetField("boneName").str;
-        changeTime = j.GetField("changeTime").f;
-        toScale = JSONTemplates.ToVector3(j.GetField("toScale"));
-        fromScale = JSONTemplates.ToVector3(j.GetField("fromScale"));
+        boneName = JSONSafeGetter.getString("boneName",j);
+        changeTime = JSONSafeGetter.getFloat("changeTime",j);
+        toScale = JSONSafeGetter.getVector3("toScale",j);
+        fromScale = JSONSafeGetter.getVector3("fromScale",j);
     }
 
     public override void InitParamControl()

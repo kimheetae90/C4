@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class C4_SelectAllyMode : C4_SceneMode {
 
 	void Awake () {
-		C4_GameManager.Instance.StartPlayScene();
+		C4_GameManager.Instance.StartSelectAllyScene();
 	}
 
 	public override void Start()
@@ -16,7 +17,7 @@ public class C4_SelectAllyMode : C4_SceneMode {
 	{
 		if (selectAllyButton.isSelected) 
 		{
-			cancelSelectedAlly(selectAllyButton);
+			cancleSelectedAlly(selectAllyButton);
 		}
 		else 
 		{
@@ -24,13 +25,14 @@ public class C4_SelectAllyMode : C4_SceneMode {
 		}
 	}
 
-	public void cancelSelectedAlly(C4_SelectAllyButton selectAllyButton)
+	public void cancleSelectedAlly(C4_SelectAllyButton selectAllyButton)
 	{
 		if (C4_GameManager.Instance.selectedAlly.removeSelectedAlly (selectAllyButton.ally)) 
 		{
 			selectAllyButton.isSelected = false;
 			//Button Image Change
 			//Show Model
+			Debug.Log("cancle SelectedAlly");
 		}
 		else 
 		{
@@ -45,6 +47,7 @@ public class C4_SelectAllyMode : C4_SceneMode {
 			selectAllyButton.isSelected = true;
 			//Button Image Change
 			//Hide Model
+			Debug.Log("add SelectedAlly");
 		}
 		else 
 		{

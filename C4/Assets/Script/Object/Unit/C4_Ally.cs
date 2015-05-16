@@ -42,12 +42,6 @@ public class C4_Ally : C4_Unit , C4_IControllerListener {
 
                 }
                 break;
-            case "Shot":
-                {
-                    doShot();
-
-                }
-                break;
         }
     }
 
@@ -56,7 +50,7 @@ public class C4_Ally : C4_Unit , C4_IControllerListener {
         switch(msg.title)
         {
             case "Shot":
-                Debug.Log("Shot");
+				doShot ();
                 break;
         }
     }

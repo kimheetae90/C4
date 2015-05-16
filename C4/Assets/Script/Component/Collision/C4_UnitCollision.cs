@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class C4_UnitCollision : MonoBehaviour {
+public class C4_UnitCollision : MonoBehaviour{
 
 	bool canAvoid;
 
