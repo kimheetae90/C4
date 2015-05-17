@@ -13,6 +13,8 @@ public class C4_PlayMode : C4_SceneMode
     public GameObject allyUnitGameObject1;   //나중에 게임오브젝트로부터 받을 것(List이어야함)
     public GameObject allyUnitGameObject2;   //나중에 게임오브젝트로부터 받을 것(List이어야함)
 	public C4_ButtonUI buttonUI;
+	public GameObject Minimap;
+	GameObject minimapAllyUnit;
 
     void Awake()
     {
@@ -45,6 +47,12 @@ public class C4_PlayMode : C4_SceneMode
     void instantiatePlayer(GameObject playerGameObject, Vector3 pos, Quaternion angle)
     {
         GameObject initPlayerGameObject = Instantiate(playerGameObject, pos, angle) as GameObject;
+
+		minimapAllyUnit = Minimap.GetComponent<C4_MinimapUI> ().AllyUnitUI; // 나중에 미니맵에 여러가지 텍스쳐 만들면 상황에 맞게 바꿀수 있음
+		GameObject initMinimapAllyUnit = Instantiate(minimapAllyUnit) as GameObject;
+		initMinimapAllyUnit.transform.parent = GameObject.Find ("MinimapUnit").transform;
+		initMinimapAllyUnit.GetComponent<C4_MinimapUnit> ().myBoat = initPlayerGameObject;
+
         Vector3 missileInitPosition = new Vector3(transform.position.x, transform.position.y - 20, transform.position.z);
         if (initPlayerGameObject.GetComponent<C4_UnitFeature>().missile != null)
         {
