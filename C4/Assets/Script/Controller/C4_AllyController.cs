@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -18,7 +18,7 @@ public class C4_AllyController : C4_Controller
 
     [System.NonSerialized]
     public C4_Ally selectedAllyUnit;
-	C4_AnimControl animController;
+	C4_AllyAnimControl animController;
     bool isAiming;
     const float cameraMoveCheckArea = 5f;
 
@@ -43,7 +43,7 @@ public class C4_AllyController : C4_Controller
     {
 		activeDone ();
         selectedAllyUnit = clickGameObject.GetComponentInParent<C4_Ally>();
-		animController = clickGameObject.GetComponentInParent<C4_AnimControl> ();
+		animController = clickGameObject.GetComponentInParent<C4_AllyAnimControl> ();
         addListener(selectedAllyUnit);
 		addListener (animController);
 		notifyEvent("Select", selectedAllyUnit.gameObject.transform);

@@ -15,6 +15,8 @@ public class C4_BehaviorActionFunc : MonoBehaviour
 
     C4_EnemyAttackUI attackUI;
 
+	C4_EnemyAnimControl animControl;
+
     void Start()
     {
         moveDelayTime = 1f;
@@ -28,6 +30,9 @@ public class C4_BehaviorActionFunc : MonoBehaviour
         mUnitFeature = GetComponent<C4_UnitFeature>();
 
         attackUI = GetComponentInChildren<C4_EnemyAttackUI>();
+
+		animControl = GetComponent<C4_EnemyAnimControl> ();
+
     }
 
     public void MoveTo(Vector3 pos)
@@ -44,7 +49,7 @@ public class C4_BehaviorActionFunc : MonoBehaviour
         mUnit.move(pos);
 
         mUnit.turn(pos);
-
+		animControl.move ();
         yield return null;
     }
 
@@ -105,7 +110,7 @@ public class C4_BehaviorActionFunc : MonoBehaviour
 
         mUnit.turn(toAttack);
 
-        mUnit.shot(toAttack);
+		animControl.shot ();
 
         yield return null;
     }

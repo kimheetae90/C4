@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 986acc64e92e7e346956a33f2239d7cc
-timeCreated: 1431875484
+timeCreated: 1431936955
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -427,7 +427,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: .485333294
+        functionName: UserMsg
+        data: '{"title":"Shot","boneName":"","floatVal":0,"intVal":0,"str":"","vec3":{}}'
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1

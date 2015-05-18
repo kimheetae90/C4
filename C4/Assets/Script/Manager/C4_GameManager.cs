@@ -14,7 +14,7 @@ public class C4_GameManager : MonoBehaviour {
                 if (!_instance)
                 {
                     GameObject container = new GameObject();
-                    container.name = "C4_GameManager";
+					container.name = "C4_GameManager";
                     _instance = container.AddComponent(typeof(C4_GameManager)) as C4_GameManager;
                 }
             }
@@ -44,6 +44,7 @@ public class C4_GameManager : MonoBehaviour {
 	{
         isPlaying = false;
 		selectedAlly = new SelectedAlly(2);
+		LoadingScene ();
 	}
 
 	void Update()

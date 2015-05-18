@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class C4_Enemy : C4_Unit {
 
-    bool sendGageFullMessageToController;
+	bool sendGageFullMessageToController;
+	Vector3 currentAimPos;
+
 
     public bool SendGageFullMessageToController
     {
@@ -25,6 +28,22 @@ public class C4_Enemy : C4_Unit {
 		{
 			C4_GameManager.Instance.objectManager.reserveRemoveObject(GetComponent<C4_Object>());
 		}
+	}
+
+	public override void onUserEvent(AnimEventUserMsg msg) 
+    {
+        switch(msg.title)
+        {
+            case "Shot":
+				doShot ();
+                break;
+        }
+    }
+
+	public void doShot()
+	{
+		currentAimPos = GetComponent<BehaviorComponent> ().cachedStruct.objectsInFireRange[0].transform.position;
+		shot (currentAimPos);
 	}
 
     protected override void checkActive()
