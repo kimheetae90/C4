@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: da23a32999e2040159ba6235bc19373b
-timeCreated: 1431603561
+timeCreated: 1431869629
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -545,9 +545,16 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: .229565173
+      - time: .229564995
         functionName: UserMsg
         data: '{"title":"Shot","boneName":"","floatVal":0,"intVal":0,"str":"","vec3":{}}'
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: .250434637
+        functionName: CreateParticle
+        data: '{"boneName":"missile_end","resName":"Particle/exampleExplosion/exampleExplosionEffect","followBone":false,"lifetime":1,"offset":{},"scale":4}'
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
@@ -633,7 +640,35 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: .102127656
+        functionName: ChangeScale
+        data: '{"boneName":"missile_neck","changeTime":0.9,"toScale":{"x":0.8,"y":0.8,"z":0.8},"fromScale":{"x":1,"y":1,"z":1}}'
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: .102127656
+        functionName: ChangeScale
+        data: '{"boneName":"root","changeTime":0.9,"toScale":{"x":0.7,"y":0.7,"z":0.7},"fromScale":{"x":1,"y":1,"z":1}}'
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: .730212629
+        functionName: ChangeScale
+        data: '{"boneName":"root","changeTime":0.15,"toScale":{"x":1.5,"y":1.5,"z":1.5},"fromScale":{"x":0.7,"y":0.7,"z":0.7}}'
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: .730212688
+        functionName: ChangeScale
+        data: '{"boneName":"missile_neck","changeTime":0.15,"toScale":{"x":1.5,"y":1.5,"z":1.5},"fromScale":{"x":0.8,"y":0.8,"z":0.8}}'
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -1132,7 +1167,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: .156521931
+        functionName: CreateParticle
+        data: '{"boneName":"missile_end","resName":"Particle/exampleExplosion/exampleExplosionEffect","followBone":false,"lifetime":1,"offset":{"y":4},"scale":7}'
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -1214,7 +1256,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: .124137871
+        functionName: ChangeScale
+        data: '{"boneName":"missile_neck","changeTime":1.1,"toScale":{"x":1,"y":1,"z":1},"fromScale":{"x":1.5,"y":1.5,"z":1.5}}'
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: .124137744
+        functionName: ChangeScale
+        data: '{"boneName":"root","changeTime":1,"toScale":{"x":1,"y":1,"z":1},"fromScale":{"x":1.5,"y":1.5,"z":1.5}}'
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1

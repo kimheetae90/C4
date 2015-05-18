@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ecae1f0d49cc741089426f015f3e30cd
-timeCreated: 1431603712
+timeCreated: 1431870372
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -452,7 +452,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: .654545605
+        functionName: ChangeScale
+        data: '{"boneName":"upperWing_root","changeTime":0.15,"toScale":{"x":1.5,"y":1.5,"z":1.5},"fromScale":{"x":1,"y":1,"z":1}}'
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -641,7 +648,21 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: .248571455
+      - time: .428571492
+        functionName: ChangeScale
+        data: '{"boneName":"upperWing_root","changeTime":0.1,"toScale":{"x":1,"y":1,"z":1},"fromScale":{"x":1.7,"y":1.5,"z":1.5}}'
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: .128571481
+        functionName: ChangeScale
+        data: '{"boneName":"upperWing_root","changeTime":0.15,"toScale":{"x":1.7,"y":1.5,"z":1.5},"fromScale":{"x":1.5,"y":1.5,"z":1.5}}'
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: .24857156
         functionName: UserMsg
         data: '{"title":"Shot","boneName":"","floatVal":0,"intVal":0,"str":"","vec3":{}}'
         objectReferenceParameter: {instanceID: 0}
@@ -741,7 +762,63 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: .663829684
+        functionName: ChangeScale
+        data: '{"boneName":"bottomWing_neck","changeTime":0.25,"toScale":{"x":1.1,"y":1.1,"z":1.1},"fromScale":{"x":0.7,"y":0.7,"z":0.7}}'
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: .0765956119
+        functionName: ChangeScale
+        data: '{"boneName":"root","changeTime":0.95,"toScale":{"x":0.7,"y":0.7,"z":0.7},"fromScale":{"x":1,"y":1,"z":1}}'
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: .0765956417
+        functionName: ChangeScale
+        data: '{"boneName":"horn_neck","changeTime":0.95,"toScale":{"x":0.7,"y":0.7,"z":0.7},"fromScale":{"x":1,"y":1,"z":1}}'
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: .0765956715
+        functionName: ChangeScale
+        data: '{"boneName":"upperWing_root","changeTime":0.95,"toScale":{"x":0.7,"y":0.7,"z":0.7},"fromScale":{"x":1,"y":1,"z":1}}'
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: .0765957013
+        functionName: ChangeScale
+        data: '{"boneName":"bottomWing_neck","changeTime":0.95,"toScale":{"x":0.7,"y":0.7,"z":0.7},"fromScale":{"x":1,"y":1,"z":1}}'
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: .66382879
+        functionName: ChangeScale
+        data: '{"boneName":"root","changeTime":0.15,"toScale":{"x":1.5,"y":1.5,"z":1.5},"fromScale":{"x":0.7,"y":0.7,"z":0.7}}'
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: .663829029
+        functionName: ChangeScale
+        data: '{"boneName":"horn_neck","changeTime":0.25,"toScale":{"x":1.5,"y":1.2,"z":1.2},"fromScale":{"x":0.7,"y":0.7,"z":0.7}}'
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: .663829267
+        functionName: ChangeScale
+        data: '{"boneName":"upperWing_root","changeTime":0.25,"toScale":{"x":1.7,"y":1.7,"z":1.7},"fromScale":{"x":0.7,"y":0.7,"z":0.7}}'
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -1117,7 +1194,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: .654544592
+        functionName: ChangeScale
+        data: '{"boneName":"upperWing_root","changeTime":0.15,"toScale":{"x":1.5,"y":1.5,"z":1.5},"fromScale":{"x":1,"y":1,"z":1}}'
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -1305,7 +1389,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: .521738768
+        functionName: ChangeScale
+        data: '{"boneName":"upperWing_root","changeTime":0.1,"toScale":{"x":1,"y":1,"z":1},"fromScale":{"x":1.7,"y":1.5,"z":1.5}}'
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: .15652144
+        functionName: ChangeScale
+        data: '{"boneName":"upperWing_root","changeTime":0.15,"toScale":{"x":1.7,"y":1.5,"z":1.5},"fromScale":{"x":1.5,"y":1.5,"z":1.5}}'
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -1399,7 +1497,35 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: .124137871
+        functionName: ChangeScale
+        data: '{"boneName":"bottomWing_neck","changeTime":1,"toScale":{"x":1,"y":1,"z":1},"fromScale":{"x":1.1,"y":1.1,"z":1.1}}'
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: .124137498
+        functionName: ChangeScale
+        data: '{"boneName":"root","changeTime":1,"toScale":{"x":1,"y":1,"z":1},"fromScale":{"x":1.5,"y":1.5,"z":1.5}}'
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: .124137625
+        functionName: ChangeScale
+        data: '{"boneName":"horn_neck","changeTime":1.1,"toScale":{"x":1,"y":1,"z":1},"fromScale":{"x":1.5,"y":1.2,"z":1.2}}'
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: .124137744
+        functionName: ChangeScale
+        data: '{"boneName":"upperWing_root","changeTime":1,"toScale":{"x":1,"y":1,"z":1},"fromScale":{"x":1.7,"y":1.7,"z":1.7}}'
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
