@@ -5,8 +5,6 @@ using System.Collections.Generic;
 public class C4_Enemy : C4_Unit {
 
 	bool sendGageFullMessageToController;
-	Vector3 currentAimPos;
-
 
     public bool SendGageFullMessageToController
     {
@@ -42,8 +40,11 @@ public class C4_Enemy : C4_Unit {
 
 	public void doShot()
 	{
-		currentAimPos = GetComponent<BehaviorComponent> ().cachedStruct.objectsInFireRange[0].transform.position;
-		shot (currentAimPos);
+		aimPosition = GetComponent<BehaviorComponent> ().cachedStruct.objectsInFireRange[0].transform.position;
+		if (aimPosition != null)
+		{
+			shot (aimPosition);
+		}
 	}
 
     protected override void checkActive()

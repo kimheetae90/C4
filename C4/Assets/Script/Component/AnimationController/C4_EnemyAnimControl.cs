@@ -51,7 +51,6 @@ public class C4_EnemyAnimControl : MonoBehaviour {
 		if (ally.canActive) 
 		{
 			anim.SetTrigger ("Shot");
-			anim.SetBool ("Aim", false);
 		}
 	}
 	

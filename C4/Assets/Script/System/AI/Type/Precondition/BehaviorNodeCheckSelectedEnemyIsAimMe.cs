@@ -26,27 +26,27 @@ public class BehaviorNodeCheckSelectedEnemyIsAimMe : BehaviorNodeBasePreconditio
 
         if (behaviorComponent == null) throw new BehaviorNodeException("BehaviorNodeCheckSelectedEnemyIsAimMe AI Target에 BehaviorComponent 컴퍼넌트가 없습니다.");
         
-        Vector3 pos = selectedUnit.getCurrentAimPos();
+        //Vector3 pos = selectedUnit.getCurrentAimPos();
 
-        Vector3 aimDirection = selectedUnit.transform.position - pos;
+        //Vector3 aimDirection = selectedUnit.transform.position - pos;
         
-        aimDirection.Normalize();
+        //aimDirection.Normalize();
         
         Vector3 targetDirection = targetObject.transform.position - selectedUnit.transform.position;
         
         targetDirection.Normalize();
 
-        float dot = Vector3.Dot(aimDirection, targetDirection);
+        //float dot = Vector3.Dot(aimDirection, targetDirection);
 
-        if (dot > Mathf.Cos(45 * 180 / Mathf.PI) && dot > Mathf.Cos(90 * 180 / Mathf.PI))
-        {
-            behaviorComponent.cachedStruct.SetAimingSelectedObject(selectedUnit);
-            return true;
-        }
-        else
-        {
-            behaviorComponent.cachedStruct.ClearAimingSelectedObject();
-        }
+//        if (dot > Mathf.Cos(45 * 180 / Mathf.PI) && dot > Mathf.Cos(90 * 180 / Mathf.PI))
+//        {
+//            behaviorComponent.cachedStruct.SetAimingSelectedObject(selectedUnit);
+//            return true;
+//        }
+//        else
+//        {
+//            behaviorComponent.cachedStruct.ClearAimingSelectedObject();
+//        }
 
 
 		return false;

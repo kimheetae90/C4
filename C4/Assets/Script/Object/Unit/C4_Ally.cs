@@ -4,7 +4,6 @@ using System.Collections;
 
 public class C4_Ally : C4_Unit , C4_IControllerListener {
 
-    Vector3 currentAimPos;
     DateTime shotTime;
 
     protected override void Awake()
@@ -27,8 +26,6 @@ public class C4_Ally : C4_Unit , C4_IControllerListener {
 
     public void onEvent(string message, params object[] p)
     {
-        clearInputValuesByEvent();
-
         switch(message)
         {
             case "Aim":
@@ -65,9 +62,8 @@ public class C4_Ally : C4_Unit , C4_IControllerListener {
             controllUnitMove.stopCompletely();
         }
 		Vector3 dist = transform.position - pos;
-		turn((pos+2*dist));
+		turn(aimPosition);
 
-        currentAimPos = (pos+2*dist);
     }
 
     private void doMove(params object[] p)
@@ -88,16 +84,6 @@ public class C4_Ally : C4_Unit , C4_IControllerListener {
     {
         shot(aimPosition);
         shotTime = DateTime.Now;
-    }
-
-    private void clearInputValuesByEvent()
-    {
-        currentAimPos = Vector3.zero;
-    }
-
-    public Vector3 getCurrentAimPos()
-    {
-        return currentAimPos;
     }
 
     public DateTime getLastShotTime()
