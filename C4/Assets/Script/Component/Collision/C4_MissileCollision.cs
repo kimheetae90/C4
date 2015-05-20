@@ -3,6 +3,7 @@ using System.Collections;
 
 public class C4_MissileCollision : MonoBehaviour {
     public int power;
+    public int randomdamagerange;
     /*
     void OnTriggerEnter(Collider other)
     {

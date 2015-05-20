@@ -95,7 +95,6 @@ public class C4_UnitFeature : MonoBehaviour
     }
     public void rageDown()
     {
-        Debug.Log(type.GetType().ToString() + israge);
         rageGage -= regeConsumeSpeed;
         if (rageGage <= 0)
         {

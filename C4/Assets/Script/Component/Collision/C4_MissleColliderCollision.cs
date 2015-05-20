@@ -20,6 +20,7 @@ public class C4_MissleColliderCollision : C4_MissileCollision
         stAilment stun = new Stun();
         statusAilment = stun;
         power = transform.GetComponentInParent<C4_MissileFeature>().splashpower;
+        randomdamagerange = GetComponentInParent<C4_MissileFeature>().randomdamagerange;
 	}
     
     void OnTriggerEnter(Collider other)
