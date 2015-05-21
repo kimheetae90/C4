@@ -9,7 +9,6 @@ public class C4_WaterParkMissleCollision : C4_MissileCollision
     void Start()
     {
         power = GetComponentInParent<C4_MissileFeature>().power;
-        randomdamagerange = GetComponentInParent<C4_MissileFeature>().randomdamagerange;
     }
     void OnTriggerEnter(Collider other)
     {

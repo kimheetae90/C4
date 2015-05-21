@@ -6,7 +6,6 @@ public class C4_StraightMissleCollision : C4_MissileCollision
     void Start()
     {
         power = GetComponentInParent<C4_MissileFeature>().power;
-        randomdamagerange = GetComponentInParent<C4_MissileFeature>().randomdamagerange;
     }
     void OnTriggerEnter(Collider other)
     {

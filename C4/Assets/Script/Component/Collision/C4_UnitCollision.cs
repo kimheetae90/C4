@@ -1,62 +1,79 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class C4_UnitCollision : MonoBehaviour{
+public class C4_UnitCollision : MonoBehaviour
+{
 
-	bool canAvoid;
+    bool canAvoid;
 
-	void start(){
-		canAvoid = false;
-	}
+    void start()
+    {
+        canAvoid = false;
+    }
 
-	void OnTriggerEnter(Collider other)
-	{
+    void OnTriggerEnter(Collider other)
+    {
 
-		if (other.gameObject.layer == 9){
-			canAvoid = true;
-			return;
-		}
-		if (other.gameObject.layer == 8)
-		{
-			return;
-		}
-
-		C4_Object collisionObject = other.GetComponentInParent<C4_Object>();
-		C4_ControllUnitMove controllUnitMove = GetComponentInParent<C4_ControllUnitMove>();
-		C4_Unit unit = GetComponentInParent<C4_Unit>();
+        if (other.gameObject.layer == 9)
+        {
+            canAvoid = true;
+            return;
+        }
+        if (other.gameObject.layer == 8)
+        {
+            return;
+        }
 
 
-		switch(collisionObject.objectAttr.type)
-		{
-		case GameObjectType.Ally:
-		case GameObjectType.Enemy:
-			controllUnitMove.stopCompletely();
-			//this
-			unit.GetComponent<C4_Unit>().moveNoCondition(unit.transform.position
-			                                             + (unit.transform.position - collisionObject.transform.position).normalized * 8);
-			collisionObject.GetComponent<C4_Unit>().moveNoCondition(unit.transform.position
-			                                                        + (collisionObject.transform.position - unit.transform.position).normalized * 8);
-			break;
-		case GameObjectType.Missile:
+        C4_Object collisionObject = other.GetComponentInParent<C4_Object>();
 
-                //C4_MissileFeature missileFeature = collisionObject.GetComponent<C4_MissileFeature>();
-            C4_MissileCollision misslecol = other.gameObject.GetComponent<C4_MissileCollision>();
-            unit.damaged(misslecol.power + Random.Range(0, misslecol.randomdamagerange));
-			break;
-		}
-	}
+        switch (collisionObject.objectAttr.type)
+        {
+            case GameObjectType.Ally:
+            case GameObjectType.Enemy:
+                bump(collisionObject);
+                break;
+            case GameObjectType.Missile:
+                getDamage(other);
+                break;
+        }
+    }
 
-	void OnTriggerExit(Collider other){
-		if(canAvoid){
-			if (other.gameObject.layer == 9){
-				//reward
-				canAvoid = false;
-				return;
-			}
-		}
-	}
+    void OnTriggerExit(Collider other)
+    {
+        if (canAvoid)
+        {
+            if (other.gameObject.layer == 9)
+            {
+                //reward
+                canAvoid = false;
+                return;
+            }
+        }
+    }
 
-	void reward(){
+    void reward()
+    {
 
-	}
+    }
+
+    void bump(C4_Object collisionObject)
+    {
+
+        C4_ControllUnitMove controllUnitMove = GetComponentInParent<C4_ControllUnitMove>();
+        C4_Unit unit = GetComponentInParent<C4_Unit>();
+        controllUnitMove.stopCompletely();
+        unit.GetComponent<C4_Unit>().moveNoCondition(unit.transform.position
+                                                     + (unit.transform.position - collisionObject.transform.position).normalized * 8);
+        collisionObject.GetComponent<C4_Unit>().moveNoCondition(unit.transform.position
+                                                                + (collisionObject.transform.position - unit.transform.position).normalized * 8);
+    }
+
+    void getDamage(Collider other)
+    {
+        C4_Unit unit = GetComponentInParent<C4_Unit>();
+
+        C4_MissileCollision misslecol = other.gameObject.GetComponent<C4_MissileCollision>();
+        unit.damaged(misslecol.power + Random.Range(0, misslecol.randomdamagerange));
+    }
 }
