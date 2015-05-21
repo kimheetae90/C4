@@ -9,7 +9,7 @@ public class C4_MinimapUnit : MonoBehaviour {
 
 	void Start()
 	{
-		minimapUI = GameObject.Find("Minimap").GetComponent<C4_MinimapUI>();
+		minimapUI = GameObject.Find("MinimapComponent").GetComponent<C4_MinimapUI>();
 		rate = (0.4f);
 	}
 
