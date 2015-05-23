@@ -11,12 +11,14 @@ using System.Collections;
 public class C4_MissileFeature : MonoBehaviour
 {
     public int power;
+    public int randomdamagerange;
     public int splashpower;
     public float moveSpeed;
     public int type;
     public GameObject unit;
 	public Transform startPosition;
     public float misslerange;
+
 
     void Start()
     {

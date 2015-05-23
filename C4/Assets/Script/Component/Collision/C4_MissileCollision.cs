@@ -3,6 +3,13 @@ using System.Collections;
 
 public class C4_MissileCollision : MonoBehaviour {
     public int power;
+    public int randomdamagerange;
+
+    void Start()
+    {
+
+        randomdamagerange = GetComponentInParent<C4_MissileFeature>().randomdamagerange;
+    }
     /*
     void OnTriggerEnter(Collider other)
     {
