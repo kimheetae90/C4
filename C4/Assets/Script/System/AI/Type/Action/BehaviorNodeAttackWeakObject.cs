@@ -4,8 +4,6 @@ using System.Collections.Generic;
 //not yet
 public class BehaviorNodeAttackWeakObject : BehaviorNodeBaseAction
 {
-    float shotDelayTime = 1.5f;
-
 	public BehaviorNodeAttackWeakObject(List<string> listParams)
 		: base(listParams)
 	{

@@ -3,9 +3,6 @@ using System.Collections.Generic;
 
 public class BehaviorNodeMoveToNearObjectAction : BehaviorNodeBaseAction
 {
-    // Use this for initialization
-    float velocity;
-
     public BehaviorNodeMoveToNearObjectAction(List<string> listParams)
         : base(listParams)
     {
@@ -13,8 +10,6 @@ public class BehaviorNodeMoveToNearObjectAction : BehaviorNodeBaseAction
         {
             throw new BehaviorNodeException("BehaviorNodeFindObjectPrecondition 파라미터의 개수가 맞지 않습니다.");
         }
-
-        velocity = float.Parse(listParams[0]);
     }
 
     override public bool traversalNode(GameObject targetObject)

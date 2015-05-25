@@ -30,12 +30,9 @@ public class C4_UnitFeature : MonoBehaviour
     public int hp;
     [System.NonSerialized]
     public float gage;
-
-    C4_Unit type;
     
     void Start()
     {
-        type = transform.GetComponent<C4_Unit>();
         gage = 0;
         hp = fullHP;
         rageGage = 0;

@@ -8,7 +8,6 @@ public class C4_MissleColliderCollision : C4_MissileCollision
     Vector3 misslepos;
 
     public float stuntime;
-    stAilment statusAilment;
 
 
 	// Use this for initialization
@@ -16,9 +15,6 @@ public class C4_MissleColliderCollision : C4_MissileCollision
         gameObject.SetActive(false);
         missleFeature = GetComponentInParent<C4_MissileFeature>();
         isfirst = true;
-
-        stAilment stun = new Stun();
-        statusAilment = stun;
         power = transform.GetComponentInParent<C4_MissileFeature>().splashpower;
 	}
     
@@ -36,7 +32,6 @@ public class C4_MissleColliderCollision : C4_MissileCollision
             case GameObjectType.Enemy:
                 C4_UnitFeature unit = GetComponentInParent<C4_MissileFeature>().unit.GetComponent<C4_UnitFeature>();
                 
-                C4_WaterParkMissleCollision misslecol = transform.GetComponentInParent<C4_MissileFeature>().transform.GetChild(0).transform.GetComponent<C4_WaterParkMissleCollision>();
                 if (missleFeature.unit.GetComponent<C4_UnitFeature>().israge)
                 {
                     Debug.Log("ragemode 포를 쏜당");
