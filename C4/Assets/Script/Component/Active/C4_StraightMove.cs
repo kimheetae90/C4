@@ -35,6 +35,9 @@ public class C4_StraightMove : C4_Move
         yield return null;
         if (isMove)
         {
+			Vector3 missilePosition = transform.position;
+			missilePosition.y = 0;
+
             float distance = Vector3.Distance(toMove, transform.position);
             if (distance > moveSpeed * 0.02f)
             {

@@ -50,7 +50,7 @@ public class C4_PlayMode : C4_SceneMode
 
 		minimapAllyUnit = Minimap.GetComponent<C4_MinimapUI> ().AllyUnitUI; // 나중에 미니맵에 여러가지 텍스쳐 만들면 상황에 맞게 바꿀수 있음
 		GameObject initMinimapAllyUnit = Instantiate(minimapAllyUnit) as GameObject;
-		initMinimapAllyUnit.transform.parent = GameObject.Find ("MinimapUnit").transform;
+		initMinimapAllyUnit.transform.SetParent(GameObject.Find ("MinimapUnit").transform);
 		initMinimapAllyUnit.GetComponent<C4_MinimapUnit> ().myBoat = initPlayerGameObject;
 
         Vector3 missileInitPosition = new Vector3(transform.position.x, transform.position.y - 20, transform.position.z);
