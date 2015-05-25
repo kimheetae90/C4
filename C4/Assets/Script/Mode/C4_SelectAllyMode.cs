@@ -4,8 +4,9 @@ using System.Collections.Generic;
 
 public class C4_SelectAllyMode : C4_SceneMode {
 
-	void Awake () {
-		C4_GameManager.Instance.StartSelectAllyScene();
+	void Awake () 
+	{
+		C4_GameManager.Instance.StartSelectAllyMode();
 	}
 
 	public override void Start()

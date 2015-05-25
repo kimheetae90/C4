@@ -44,7 +44,6 @@ public class C4_GameManager : MonoBehaviour {
 	{
         isPlaying = false;
 		selectedAlly = new SelectedAlly(2);
-		LoadingScene ();
 	}
 
 	public void LoadingScene()

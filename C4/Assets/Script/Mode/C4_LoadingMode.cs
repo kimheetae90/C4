@@ -5,7 +5,7 @@ public class C4_LoadingMode : C4_SceneMode {
 
 	void Awake () 
 	{
-		C4_GameManager.Instance.LoadingScene();
+		C4_GameManager.Instance.StartLoadingMode();
 	}
 	
 	public override void Start()
