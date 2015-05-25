@@ -13,6 +13,9 @@ public class C4_ButtonUI : MonoBehaviour
     Canvas buttonuicanvas;
     int Allynum;
     // Use this for initialization
+
+    public GameObject pausebox;
+    public GameObject PlayerUI;
     public void initButtonUI()
     {
         buttonuicanvas = this.GetComponentInChildren<Canvas>();
@@ -27,6 +30,7 @@ public class C4_ButtonUI : MonoBehaviour
         }
 
         allocate();
+        pausebox.SetActive(false);
         
     }
     
@@ -73,6 +77,34 @@ public class C4_ButtonUI : MonoBehaviour
                 btlist[i].interactable = false;
             }
         }
+    }
+
+    public void pause()
+    {
+        if (Time.timeScale > 0){
+            Time.timeScale = 0;
+        }
+        pausebox.SetActive(true);
+        for (int i = 0; i < Allynum; i++)
+        {
+                btlist[i].interactable = false;
+        }
+        PlayerUI.SetActive(false);
+    }
+    public void restart()
+    {
+        Time.timeScale = 1;
+        Application.LoadLevel(0);
+    }
+    public void unpause()
+    {
+        Time.timeScale = 1;
+        pausebox.SetActive(false);
+        for (int i = 0; i < Allynum; i++)
+        {
+            btlist[i].interactable = true;
+        }
+        PlayerUI.SetActive(true);
     }
 
 }
