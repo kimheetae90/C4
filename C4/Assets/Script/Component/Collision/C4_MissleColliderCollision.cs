@@ -53,6 +53,15 @@ public class C4_MissleColliderCollision : C4_MissileCollision
                 misslepos.y = 0;
                 Vector3 tomove = misslepos + ((unitpos - misslepos).normalized)*transform.localScale.x;
                 move.startMove(tomove);
+
+                C4_EffectManage effect = unit.transform.GetChild(4).gameObject.GetComponent<C4_EffectManage>();
+                 
+                if (effect != null)
+                    {
+                        effect.GetComponent<C4_EffectManage>().showEffect();
+                    }
+
+
                 break;
 
         }

@@ -42,6 +42,12 @@ public class C4_BreakerMissleCollision : C4_MissileCollision
                         unit.rageUp(unit.GetComponent<C4_UnitFeature>().rageGageChargeInAttack);
 
                     }
+                     C4_EffectManage effect = unit.transform.GetChild(4).gameObject.GetComponent<C4_EffectManage>();
+                 
+                if (effect != null)
+                    {
+                        effect.GetComponent<C4_EffectManage>().showEffect();
+                    }
                break;
         }
         
