@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 //PlayManager
@@ -18,7 +18,7 @@ public class C4_PlayMode : C4_SceneMode
 
     void Awake()
     {
-		C4_GameManager.Instance.StartPlayScene();
+		C4_GameManager.Instance.StartPlayMode();
     }
 
     public override void Start()
