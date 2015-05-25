@@ -55,6 +55,7 @@ public class C4_AllyController : C4_Controller
 
 		Vector3 direction = (selectedAllyUnit.transform.position - clickPosition).normalized;
 		float value = Vector3.Distance (selectedAllyUnit.transform.position,clickPosition);
+		value *= 0.5f;
 		if (maxAttackRange <= value) 
 		{
 			value = maxAttackRange;

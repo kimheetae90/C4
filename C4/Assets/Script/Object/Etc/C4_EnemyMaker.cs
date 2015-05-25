@@ -21,7 +21,7 @@ public class C4_EnemyMaker : MonoBehaviour {
 
 		minimapEnemyUnit = Minimap.GetComponent<C4_MinimapUI> ().EnemyUnitUI; // 나중에 미니맵에 여러가지 텍스쳐 만들면 상황에 맞게 바꿀수 있음
 		GameObject initMinimapEnemyUnit = Instantiate(minimapEnemyUnit) as GameObject;
-		initMinimapEnemyUnit.transform.parent = GameObject.Find ("MinimapUnit").transform;
+		initMinimapEnemyUnit.transform.SetParent(GameObject.Find ("MinimapUnit").transform);
 		initMinimapEnemyUnit.GetComponent<C4_MinimapUnit> ().myBoat = initEnemyGameObject;
 
         Vector3 missileInitPosition = new Vector3(transform.position.x, transform.position.y - 20, transform.position.z);
