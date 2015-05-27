@@ -3,7 +3,6 @@ using System.Collections;
 
 public class C4_Water : C4_Ground
 {
-
     protected override void Awake()
     {
 		base.Awake ();

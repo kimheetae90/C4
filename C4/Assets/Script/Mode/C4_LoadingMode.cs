@@ -12,4 +12,9 @@ public class C4_LoadingMode : C4_SceneMode {
 	{
 		base.Start();
 	}
+
+	public void progressNextMode()
+	{
+		Application.LoadLevel ("Main");		
+	}
 }

@@ -14,7 +14,7 @@ public class C4_GameManager : MonoBehaviour {
                 if (!_instance)
                 {
                     GameObject container = new GameObject();
-					container.name = "C4_GameManager";
+					container.name = "GameManager";
                     _instance = container.AddComponent(typeof(C4_GameManager)) as C4_GameManager;
                 }
             }
@@ -44,17 +44,19 @@ public class C4_GameManager : MonoBehaviour {
 	{
         isPlaying = false;
 		selectedAlly = new SelectedAlly(2);
-	}
-
-	public void LoadingScene()
-	{
-		inputManager = GameObject.Find("InputManager").GetComponent<C4_InputManager>();
-		objectManager = GameObject.Find("ObjectManager").GetComponent<C4_ObjectManager>();
+		inputManager = GetComponent<C4_InputManager> ();
+		objectManager = GetComponent<C4_ObjectManager> ();
+		DontDestroyOnLoad (transform.gameObject);
 	}
 
 	public void StartLoadingMode()
 	{
 		sceneMode = GameObject.Find ("LoadingMode").GetComponent<C4_LoadingMode> ();
+	}
+
+	public void StartMainMode()
+	{
+		sceneMode = GameObject.Find ("MainMode").GetComponent<C4_SelectAllyMode> ();
 	}
 
 	public void StartSelectAllyMode()
@@ -64,7 +66,6 @@ public class C4_GameManager : MonoBehaviour {
 
     public void StartPlayMode()
 	{
-		LoadingScene ();
         sceneMode = GameObject.Find("PlayMode").GetComponent<C4_SceneMode>();
         isPlaying = true;
     }
