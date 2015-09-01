@@ -1,0 +1,1045 @@
+fileFormatVersion: 2
+guid: a8a1650ec1f8b4b46b8e6f7c53078e8e
+timeCreated: 1440763917
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Body_geo
+    100002: geo_grp
+    100004: head_geo
+    100006: head_jnt
+    100008: hend_end_jnt
+    100010: joint11
+    100012: joint12
+    100014: joint13
+    100016: joint4
+    100018: L_arm_geo
+    100020: L_arm_jnt
+    100022: L_claw_jnt
+    100024: l_ear01_jnt
+    100026: l_ear02_jnt
+    100028: l_ear_03_jnt
+    100030: L_ear_geo
+    100032: L_elbow_jnt
+    100034: l_foot_jnt
+    100036: L_hand_jnt
+    100038: l_knee_jnt
+    100040: l_leg_jnt
+    100042: l_toe_jnt
+    100044: //RootNode
+    100046: pelvis_jnt
+    100048: pPlane6
+    100050: R_arm_geo
+    100052: r_arm_jnt
+    100054: r_claw_jnt
+    100056: r_ear01_jnt
+    100058: r_ear02_jnt
+    100060: r_ear03_jnt
+    100062: R_ear_geo
+    100064: r_elbow_jnt
+    100066: r_foot_jnt
+    100068: r_hand_jnt
+    100070: r_knee_jnt
+    100072: R_leg_geo
+    100074: r_leg_jnt
+    100076: r_toe_jnt
+    100078: root_jnt
+    100080: spine01_jnt
+    100082: spine02_jnt
+    100084: spine03_jnt
+    100086: tail01_jnt
+    100088: tail02_jnt
+    100090: tail03_jnt
+    100092: tail04_jnt
+    100094: tail_geo
+    400000: Body_geo
+    400002: geo_grp
+    400004: head_geo
+    400006: head_jnt
+    400008: hend_end_jnt
+    400010: joint11
+    400012: joint12
+    400014: joint13
+    400016: joint4
+    400018: L_arm_geo
+    400020: L_arm_jnt
+    400022: L_claw_jnt
+    400024: l_ear01_jnt
+    400026: l_ear02_jnt
+    400028: l_ear_03_jnt
+    400030: L_ear_geo
+    400032: L_elbow_jnt
+    400034: l_foot_jnt
+    400036: L_hand_jnt
+    400038: l_knee_jnt
+    400040: l_leg_jnt
+    400042: l_toe_jnt
+    400044: //RootNode
+    400046: pelvis_jnt
+    400048: pPlane6
+    400050: R_arm_geo
+    400052: r_arm_jnt
+    400054: r_claw_jnt
+    400056: r_ear01_jnt
+    400058: r_ear02_jnt
+    400060: r_ear03_jnt
+    400062: R_ear_geo
+    400064: r_elbow_jnt
+    400066: r_foot_jnt
+    400068: r_hand_jnt
+    400070: r_knee_jnt
+    400072: R_leg_geo
+    400074: r_leg_jnt
+    400076: r_toe_jnt
+    400078: root_jnt
+    400080: spine01_jnt
+    400082: spine02_jnt
+    400084: spine03_jnt
+    400086: tail01_jnt
+    400088: tail02_jnt
+    400090: tail03_jnt
+    400092: tail04_jnt
+    400094: tail_geo
+    4300000: tail_geo
+    4300002: R_arm_geo
+    4300004: R_leg_geo
+    4300006: pPlane6
+    4300008: Body_geo
+    4300010: L_arm_geo
+    4300012: R_ear_geo
+    4300014: head_geo
+    4300016: L_ear_geo
+    7400000: Take 001
+    7400002: Idle
+    7400004: Walk
+    7400006: Ready
+    7400008: Attack
+    7400010: Stun
+    7400012: Death
+    9500000: //RootNode
+    13700000: Body_geo
+    13700002: head_geo
+    13700004: L_arm_geo
+    13700006: L_ear_geo
+    13700008: pPlane6
+    13700010: R_arm_geo
+    13700012: R_ear_geo
+    13700014: R_leg_geo
+    13700016: tail_geo
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 300
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: geo_grp
+        weight: 1
+      - path: geo_grp/Body_geo
+        weight: 1
+      - path: geo_grp/head_geo
+        weight: 1
+      - path: geo_grp/L_arm_geo
+        weight: 1
+      - path: geo_grp/L_ear_geo
+        weight: 1
+      - path: geo_grp/pPlane6
+        weight: 1
+      - path: geo_grp/R_arm_geo
+        weight: 1
+      - path: geo_grp/R_ear_geo
+        weight: 1
+      - path: geo_grp/R_leg_geo
+        weight: 1
+      - path: geo_grp/tail_geo
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/l_leg_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/l_leg_jnt/l_knee_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/l_leg_jnt/l_knee_jnt/l_foot_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/l_leg_jnt/l_knee_jnt/l_foot_jnt/l_toe_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/r_leg_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/r_leg_jnt/r_knee_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/r_leg_jnt/r_knee_jnt/r_foot_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/r_leg_jnt/r_knee_jnt/r_foot_jnt/r_toe_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/l_ear01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/l_ear01_jnt/l_ear02_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/l_ear01_jnt/l_ear02_jnt/l_ear_03_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/r_ear01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/r_ear01_jnt/r_ear02_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/r_ear01_jnt/r_ear02_jnt/r_ear03_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/joint13
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/joint13/joint12
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/joint13/joint12/joint11
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/L_arm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/L_arm_jnt/L_elbow_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/L_arm_jnt/L_elbow_jnt/L_hand_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/L_arm_jnt/L_elbow_jnt/L_hand_jnt/L_claw_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/r_arm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/r_arm_jnt/r_elbow_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/r_arm_jnt/r_elbow_jnt/r_hand_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/r_arm_jnt/r_elbow_jnt/r_hand_jnt/r_claw_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt/tail02_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt/tail02_jnt/tail03_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt/tail02_jnt/tail03_jnt/joint4
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt/tail02_jnt/tail03_jnt/joint4/tail04_jnt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 47
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: geo_grp
+        weight: 1
+      - path: geo_grp/Body_geo
+        weight: 1
+      - path: geo_grp/head_geo
+        weight: 1
+      - path: geo_grp/L_arm_geo
+        weight: 1
+      - path: geo_grp/L_ear_geo
+        weight: 1
+      - path: geo_grp/pPlane6
+        weight: 1
+      - path: geo_grp/R_arm_geo
+        weight: 1
+      - path: geo_grp/R_ear_geo
+        weight: 1
+      - path: geo_grp/R_leg_geo
+        weight: 1
+      - path: geo_grp/tail_geo
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/l_leg_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/l_leg_jnt/l_knee_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/l_leg_jnt/l_knee_jnt/l_foot_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/l_leg_jnt/l_knee_jnt/l_foot_jnt/l_toe_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/r_leg_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/r_leg_jnt/r_knee_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/r_leg_jnt/r_knee_jnt/r_foot_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/r_leg_jnt/r_knee_jnt/r_foot_jnt/r_toe_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/l_ear01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/l_ear01_jnt/l_ear02_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/l_ear01_jnt/l_ear02_jnt/l_ear_03_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/r_ear01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/r_ear01_jnt/r_ear02_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/r_ear01_jnt/r_ear02_jnt/r_ear03_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/joint13
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/joint13/joint12
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/joint13/joint12/joint11
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/L_arm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/L_arm_jnt/L_elbow_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/L_arm_jnt/L_elbow_jnt/L_hand_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/L_arm_jnt/L_elbow_jnt/L_hand_jnt/L_claw_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/r_arm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/r_arm_jnt/r_elbow_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/r_arm_jnt/r_elbow_jnt/r_hand_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/r_arm_jnt/r_elbow_jnt/r_hand_jnt/r_claw_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt/tail02_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt/tail02_jnt/tail03_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt/tail02_jnt/tail03_jnt/joint4
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt/tail02_jnt/tail03_jnt/joint4/tail04_jnt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 71
+      lastFrame: 108
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: geo_grp
+        weight: 1
+      - path: geo_grp/Body_geo
+        weight: 1
+      - path: geo_grp/head_geo
+        weight: 1
+      - path: geo_grp/L_arm_geo
+        weight: 1
+      - path: geo_grp/L_ear_geo
+        weight: 1
+      - path: geo_grp/pPlane6
+        weight: 1
+      - path: geo_grp/R_arm_geo
+        weight: 1
+      - path: geo_grp/R_ear_geo
+        weight: 1
+      - path: geo_grp/R_leg_geo
+        weight: 1
+      - path: geo_grp/tail_geo
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/l_leg_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/l_leg_jnt/l_knee_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/l_leg_jnt/l_knee_jnt/l_foot_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/l_leg_jnt/l_knee_jnt/l_foot_jnt/l_toe_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/r_leg_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/r_leg_jnt/r_knee_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/r_leg_jnt/r_knee_jnt/r_foot_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/r_leg_jnt/r_knee_jnt/r_foot_jnt/r_toe_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/l_ear01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/l_ear01_jnt/l_ear02_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/l_ear01_jnt/l_ear02_jnt/l_ear_03_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/r_ear01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/r_ear01_jnt/r_ear02_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/r_ear01_jnt/r_ear02_jnt/r_ear03_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/joint13
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/joint13/joint12
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/joint13/joint12/joint11
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/L_arm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/L_arm_jnt/L_elbow_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/L_arm_jnt/L_elbow_jnt/L_hand_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/L_arm_jnt/L_elbow_jnt/L_hand_jnt/L_claw_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/r_arm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/r_arm_jnt/r_elbow_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/r_arm_jnt/r_elbow_jnt/r_hand_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/r_arm_jnt/r_elbow_jnt/r_hand_jnt/r_claw_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt/tail02_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt/tail02_jnt/tail03_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt/tail02_jnt/tail03_jnt/joint4
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt/tail02_jnt/tail03_jnt/joint4/tail04_jnt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Ready
+      takeName: Take 001
+      firstFrame: 131
+      lastFrame: 153
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: geo_grp
+        weight: 1
+      - path: geo_grp/Body_geo
+        weight: 1
+      - path: geo_grp/head_geo
+        weight: 1
+      - path: geo_grp/L_arm_geo
+        weight: 1
+      - path: geo_grp/L_ear_geo
+        weight: 1
+      - path: geo_grp/pPlane6
+        weight: 1
+      - path: geo_grp/R_arm_geo
+        weight: 1
+      - path: geo_grp/R_ear_geo
+        weight: 1
+      - path: geo_grp/R_leg_geo
+        weight: 1
+      - path: geo_grp/tail_geo
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/l_leg_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/l_leg_jnt/l_knee_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/l_leg_jnt/l_knee_jnt/l_foot_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/l_leg_jnt/l_knee_jnt/l_foot_jnt/l_toe_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/r_leg_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/r_leg_jnt/r_knee_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/r_leg_jnt/r_knee_jnt/r_foot_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/r_leg_jnt/r_knee_jnt/r_foot_jnt/r_toe_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/l_ear01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/l_ear01_jnt/l_ear02_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/l_ear01_jnt/l_ear02_jnt/l_ear_03_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/r_ear01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/r_ear01_jnt/r_ear02_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/r_ear01_jnt/r_ear02_jnt/r_ear03_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/joint13
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/joint13/joint12
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/joint13/joint12/joint11
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/L_arm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/L_arm_jnt/L_elbow_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/L_arm_jnt/L_elbow_jnt/L_hand_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/L_arm_jnt/L_elbow_jnt/L_hand_jnt/L_claw_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/r_arm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/r_arm_jnt/r_elbow_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/r_arm_jnt/r_elbow_jnt/r_hand_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/r_arm_jnt/r_elbow_jnt/r_hand_jnt/r_claw_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt/tail02_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt/tail02_jnt/tail03_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt/tail02_jnt/tail03_jnt/joint4
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt/tail02_jnt/tail03_jnt/joint4/tail04_jnt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Attack
+      takeName: Take 001
+      firstFrame: 161
+      lastFrame: 183
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: geo_grp
+        weight: 1
+      - path: geo_grp/Body_geo
+        weight: 1
+      - path: geo_grp/head_geo
+        weight: 1
+      - path: geo_grp/L_arm_geo
+        weight: 1
+      - path: geo_grp/L_ear_geo
+        weight: 1
+      - path: geo_grp/pPlane6
+        weight: 1
+      - path: geo_grp/R_arm_geo
+        weight: 1
+      - path: geo_grp/R_ear_geo
+        weight: 1
+      - path: geo_grp/R_leg_geo
+        weight: 1
+      - path: geo_grp/tail_geo
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/l_leg_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/l_leg_jnt/l_knee_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/l_leg_jnt/l_knee_jnt/l_foot_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/l_leg_jnt/l_knee_jnt/l_foot_jnt/l_toe_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/r_leg_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/r_leg_jnt/r_knee_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/r_leg_jnt/r_knee_jnt/r_foot_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/r_leg_jnt/r_knee_jnt/r_foot_jnt/r_toe_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/l_ear01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/l_ear01_jnt/l_ear02_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/l_ear01_jnt/l_ear02_jnt/l_ear_03_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/r_ear01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/r_ear01_jnt/r_ear02_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/r_ear01_jnt/r_ear02_jnt/r_ear03_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/joint13
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/joint13/joint12
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/joint13/joint12/joint11
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/L_arm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/L_arm_jnt/L_elbow_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/L_arm_jnt/L_elbow_jnt/L_hand_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/L_arm_jnt/L_elbow_jnt/L_hand_jnt/L_claw_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/r_arm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/r_arm_jnt/r_elbow_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/r_arm_jnt/r_elbow_jnt/r_hand_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/r_arm_jnt/r_elbow_jnt/r_hand_jnt/r_claw_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt/tail02_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt/tail02_jnt/tail03_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt/tail02_jnt/tail03_jnt/joint4
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt/tail02_jnt/tail03_jnt/joint4/tail04_jnt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Stun
+      takeName: Take 001
+      firstFrame: 201
+      lastFrame: 235
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: geo_grp
+        weight: 1
+      - path: geo_grp/Body_geo
+        weight: 1
+      - path: geo_grp/head_geo
+        weight: 1
+      - path: geo_grp/L_arm_geo
+        weight: 1
+      - path: geo_grp/L_ear_geo
+        weight: 1
+      - path: geo_grp/pPlane6
+        weight: 1
+      - path: geo_grp/R_arm_geo
+        weight: 1
+      - path: geo_grp/R_ear_geo
+        weight: 1
+      - path: geo_grp/R_leg_geo
+        weight: 1
+      - path: geo_grp/tail_geo
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/l_leg_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/l_leg_jnt/l_knee_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/l_leg_jnt/l_knee_jnt/l_foot_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/l_leg_jnt/l_knee_jnt/l_foot_jnt/l_toe_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/r_leg_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/r_leg_jnt/r_knee_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/r_leg_jnt/r_knee_jnt/r_foot_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/r_leg_jnt/r_knee_jnt/r_foot_jnt/r_toe_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/l_ear01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/l_ear01_jnt/l_ear02_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/l_ear01_jnt/l_ear02_jnt/l_ear_03_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/r_ear01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/r_ear01_jnt/r_ear02_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/r_ear01_jnt/r_ear02_jnt/r_ear03_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/joint13
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/joint13/joint12
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/joint13/joint12/joint11
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/L_arm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/L_arm_jnt/L_elbow_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/L_arm_jnt/L_elbow_jnt/L_hand_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/L_arm_jnt/L_elbow_jnt/L_hand_jnt/L_claw_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/r_arm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/r_arm_jnt/r_elbow_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/r_arm_jnt/r_elbow_jnt/r_hand_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/r_arm_jnt/r_elbow_jnt/r_hand_jnt/r_claw_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt/tail02_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt/tail02_jnt/tail03_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt/tail02_jnt/tail03_jnt/joint4
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt/tail02_jnt/tail03_jnt/joint4/tail04_jnt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Death
+      takeName: Take 001
+      firstFrame: 261
+      lastFrame: 286
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: geo_grp
+        weight: 1
+      - path: geo_grp/Body_geo
+        weight: 1
+      - path: geo_grp/head_geo
+        weight: 1
+      - path: geo_grp/L_arm_geo
+        weight: 1
+      - path: geo_grp/L_ear_geo
+        weight: 1
+      - path: geo_grp/pPlane6
+        weight: 1
+      - path: geo_grp/R_arm_geo
+        weight: 1
+      - path: geo_grp/R_ear_geo
+        weight: 1
+      - path: geo_grp/R_leg_geo
+        weight: 1
+      - path: geo_grp/tail_geo
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/l_leg_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/l_leg_jnt/l_knee_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/l_leg_jnt/l_knee_jnt/l_foot_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/l_leg_jnt/l_knee_jnt/l_foot_jnt/l_toe_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/r_leg_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/r_leg_jnt/r_knee_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/r_leg_jnt/r_knee_jnt/r_foot_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/r_leg_jnt/r_knee_jnt/r_foot_jnt/r_toe_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/l_ear01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/l_ear01_jnt/l_ear02_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/l_ear01_jnt/l_ear02_jnt/l_ear_03_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/r_ear01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/r_ear01_jnt/r_ear02_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/hend_end_jnt/r_ear01_jnt/r_ear02_jnt/r_ear03_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/joint13
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/joint13/joint12
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/head_jnt/joint13/joint12/joint11
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/L_arm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/L_arm_jnt/L_elbow_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/L_arm_jnt/L_elbow_jnt/L_hand_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/L_arm_jnt/L_elbow_jnt/L_hand_jnt/L_claw_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/r_arm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/r_arm_jnt/r_elbow_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/r_arm_jnt/r_elbow_jnt/r_hand_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/spine02_jnt/spine03_jnt/pelvis_jnt/r_arm_jnt/r_elbow_jnt/r_hand_jnt/r_claw_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt/tail02_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt/tail02_jnt/tail03_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt/tail02_jnt/tail03_jnt/joint4
+        weight: 1
+      - path: root_jnt/spine01_jnt/tail01_jnt/tail02_jnt/tail03_jnt/joint4/tail04_jnt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
