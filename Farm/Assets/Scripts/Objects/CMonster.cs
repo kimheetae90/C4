@@ -23,7 +23,7 @@ public class CMonster : BaseObject
     void Awake()
     {
         isAlive = true;
-		ChangeState(ObjectState.Play_Monster_Ready);
+		ChangeState(ObjectState.Play_Monster_Reset);
         attackable = true;
         _hp = hp;
         monsterAnimation = GetComponent<CMonsterAnimation>();
@@ -41,21 +41,27 @@ public class CMonster : BaseObject
 
         switch (objectState)
         {
-		case ObjectState.Play_Monster_Ready:
-                MonsterReady();
+            case ObjectState.Play_Monster_Reset:
+                MonsterReset();
                 break;
-		case ObjectState.Play_Monster_Move:
+            case ObjectState.Play_Monster_Pause:
+                MonsterPause();
+                break;
+		    case ObjectState.Play_Monster_Ready:
+                break;
+		    case ObjectState.Play_Monster_Move:
                 MonsterMove();
                 break;
-		case ObjectState.Play_Monster_Attack:
+		    case ObjectState.Play_Monster_Attack:
                 MonsterAttack();
                 break;
-		case ObjectState.Play_Monster_Hitted:
+		    case ObjectState.Play_Monster_Hitted:
                 MonsterHitted();
                 break;
-		case ObjectState.Play_Monster_Return:
+		    case ObjectState.Play_Monster_Return:
+                MonsterReturn();
                 break;
-		case ObjectState.Play_Monster_Die:
+		    case ObjectState.Play_Monster_Die:
                 MonsterDie();
                 break;
         }
@@ -67,7 +73,6 @@ public class CMonster : BaseObject
 
     void OnTriggerStay(Collider other)
     {
-       
         if (other.CompareTag("Play_Farm"))
         {
             AttackFarm();
@@ -79,7 +84,7 @@ public class CMonster : BaseObject
             if (other.GetComponent<CPlayer>().isAlive)
             {
                 MonsterMoveStop();
-                if (attackable)
+                if (attackable&&objectState!=ObjectState.Play_Monster_Pause)
                 {
                     StartCoroutine("Attack_Player");
                     ChangeState(ObjectState.Play_Monster_Attack);
@@ -96,7 +101,7 @@ public class CMonster : BaseObject
             if (other.GetComponent<CTool>().isAlive)
             {
                 MonsterMoveStop();
-                if (attackable)
+                if (attackable && objectState != ObjectState.Play_Monster_Pause)
                 {
                     StartCoroutine(Attack_Tool(other.GetComponent<CTool>()));
                     ChangeState(ObjectState.Play_Monster_Attack);
@@ -111,7 +116,7 @@ public class CMonster : BaseObject
         {
             MonsterMoveStop();
             touchedFenceID = other.GetComponent<CFence>().id;
-            if (attackable)
+            if (attackable && objectState != ObjectState.Play_Monster_Pause)
             {
                 StartCoroutine(Attack_Fence(other.GetComponent<CFence>()));
                 ChangeState(ObjectState.Play_Monster_Attack);
@@ -132,13 +137,21 @@ public class CMonster : BaseObject
     }
 
    /// <summary>
-   /// Monster의 상태가 Ready상태가 되면 불러져서 변수들과 Collider를 초기화 시켜줌.
+   /// Monster의 상태가 Reset상태가 되면 불러져서 변수들과 Collider를 초기화 시켜줌.
    /// </summary>
-    void MonsterReady() {
+    void MonsterReset() {
         isAlive = true;
         _hp = hp;
         attackable = true;
         GetComponent<Collider>().enabled = true;
+    }
+    /// <summary>
+    /// Monster의 상태가 Pause가 되면 불려짐.
+    /// </summary>
+    void MonsterPause() {
+        MonsterMoveStop();
+        monsterAnimation.Reset();
+        monsterAnimation.Idle();
     }
 
     /// <summary>
@@ -169,6 +182,14 @@ public class CMonster : BaseObject
         monsterAnimation.Stun();
         StartCoroutine("Monster_Stun");
     }
+    /// <summary>
+    /// 밤시간이 지나서 Monster가 원래 자리로 Return하는 함수.
+    /// </summary>
+    void MonsterReturn() {
+        transform.GetComponent<CMove>().StartMove();
+        monsterAnimation.Reset();
+        monsterAnimation.Return();
+    }
 
     /// <summary>
     /// Monster의 Hp가 0이되어 상태가 Die가 되면 불러짐. 몬스터의 움직임을 멈추고 애니메이션 Death를 실행함.
@@ -185,10 +206,10 @@ public class CMonster : BaseObject
    
 
     /// <summary>
-    /// 다른 함수에서 몬스터의 상태를 Ready로 바꾸고 싶을때 사용되는 함수.
+    /// 다른 함수에서 몬스터의 상태를 Reset로 바꾸고 싶을때 사용되는 함수.
     /// </summary>
     public void Reset() {
-		ChangeState(ObjectState.Play_Monster_Ready);
+		ChangeState(ObjectState.Play_Monster_Reset);
     }
 
     /// <summary>
@@ -204,6 +225,15 @@ public class CMonster : BaseObject
     /// </summary>
     public void MonsterMoveStop() {
         transform.GetComponent<CMove>().StopMoveToTarget();
+    }
+    /// <summary>
+    /// 다른 함수에서 몬스터의 상태를 Return으로 바꾸고 싶을때 사용되는 함수.
+    /// </summary>
+    public void ReadyToReturn() {
+        ChangeState(ObjectState.Play_Monster_Return);
+    }
+    public void ReadyToPause() {
+        ChangeState(ObjectState.Play_Monster_Pause);
     }
 
     /// <summary>

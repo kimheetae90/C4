@@ -85,6 +85,8 @@ public enum GameState
 public enum ObjectState
 {
 	/* Play_Monster */
+    Play_Monster_Reset,//초기화 시키는 기능.
+    Play_Monster_Pause,// 일시정지 시키는 기능.
 	Play_Monster_Ready, // 준비된 상태.
 	Play_Monster_Move, // 몬스터가 이동하는 중.
 	Play_Monster_Attack, // 몬스터가 다른 오브젝트(농장, 플레이어, 도구)에 부딛혀서 공격하는 중
@@ -93,15 +95,22 @@ public enum ObjectState
 	Play_Monster_Die, // 몬스터가 죽은상태.
 	
 	/* Play_Missle */
+    Play_Missle_Reset,//초기화
+    Play_Missle_Pause,//일시정지
 	Play_Missle_Ready,//미사일이 준비된 상태
 	Play_Missle_Move, //미사일이 쏴져서 움직이고 있는 상태.
 	
 	/* Play_Player */
+    Play_Player_Reset,//초기화
+    Play_Player_Pause,//일시정지
+    Play_Player_Ready,// 준비된 상태.
 	Play_Player_CanHold,    // 플레이어가 아무것도 잡지 않아 도구를 잡을 수 있는 상태
 	Play_Player_CanNotHold, // 플레이어가 도구를 잡을 수 없는 상태
 	Play_Player_Die,        // 체력이 0 이하라서 움직일 수 없는 상태.
 	
 	/* Play_Tool */
+    Play_Tool_Reset,//초기화
+    Play_Tool_Pause,//일시정지
 	Play_Tool_CanHeld,       // 툴이 플레이어에게 잡힐 수 있는 상태
 	Play_Tool_CanNotHeld,    // 툴이 플레이어에게 잡혀있어 잡힐 수 없는 상태.
 	Play_Tool_UnAvailable,   // 툴의 hp가 0이라서 사용 불가능한 상태.

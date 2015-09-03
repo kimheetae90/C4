@@ -30,6 +30,9 @@ public class CToolController : Controller
             case MessageName.Play_ToolAttackMonster:
                 ToolAttackEnemy((int)_gameMessage.Get("tool_id"), (Vector3)_gameMessage.Get("tool_position"));
                 break;
+            case MessageName.Play_StageFailed:
+                ToolPause();
+                break;
         }
     }
 
@@ -76,5 +79,14 @@ public class CToolController : Controller
     void ToolAttackedByEnemy(int _id, int _monster_power)
     {
         FindToolOfID(_id).GetComponent<CTool>().Damaged(_monster_power);
+    }
+
+    /// <summary>
+    /// 모든 툴을 일시정지 시킴.
+    /// </summary>
+    void ToolPause() {
+        for (int i = 0; i < toolList.Count; i++) {
+            toolList[i].GetComponent<CTool>().ReadyToPause();
+        }
     }
 }

@@ -37,6 +37,11 @@ public class CTool : BaseObject
     {
         switch (objectState)
         {
+            case ObjectState.Play_Tool_Reset:
+                break;
+            case ObjectState.Play_Tool_Pause:
+                StopAttack();
+                break;
             case ObjectState.Play_Tool_CanHeld:
             case ObjectState.Play_Tool_CanAttack:
                 CheckCanAttack();
@@ -210,5 +215,11 @@ public class CTool : BaseObject
 	public ObjectState GetToolState()
     {
         return objectState;
+    }
+    /// <summary>
+    /// 툴의 State를 Pause로 바꿈. 외부함수에서 사용.
+    /// </summary>
+    public void ReadyToPause() {
+        ChangeState(ObjectState.Play_Tool_Pause);
     }
 }

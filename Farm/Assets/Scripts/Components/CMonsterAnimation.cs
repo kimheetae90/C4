@@ -15,11 +15,14 @@ public class CMonsterAnimation : MonoBehaviour {
 	
 	}
     public void Reset() {
-
+        transform.localScale = new Vector3(1, 1, 1);
         anim.SetBool("Walk", false);
         anim.SetBool("Ready", false);
         anim.SetBool("Attack", false);
         
+    }
+    public void Idle() {
+        anim.SetTrigger("Idle");
     }
 
     public void Walk() {
@@ -44,6 +47,11 @@ public class CMonsterAnimation : MonoBehaviour {
     public void Death() {
 
         anim.SetTrigger("Death");
+    }
+
+    public void Return() {
+        transform.localScale = new Vector3(-1, 1, 1);
+        anim.SetBool("Walk", true);
     }
 	// Update is called once per frame
 	

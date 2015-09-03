@@ -63,6 +63,9 @@ public class CMonsterController : Controller
             case MessageName.Play_MonsterReturn:
                 MonsterReturn();
                 break;
+            case MessageName.Play_StageFailed:
+                MonsterPause();
+                break;
 
         }
     }
@@ -271,9 +274,21 @@ public class CMonsterController : Controller
             monsterList[i].GetComponent<CMove>().SetTargetPos(returnPosition);
             if (monsterList[i].activeInHierarchy)
             {
-                monsterList[i].GetComponent<CMonster>().ReadyToMove();
+                monsterList[i].GetComponent<CMonster>().ReadyToReturn();
             }
             
+        }
+    }
+
+    void MonsterPause() {
+        StopCoroutine("GenMonster");
+        for (int i = 0; i < oneWavePerMonster; i++)
+        {
+            if (monsterList[i].activeInHierarchy)
+            {
+                monsterList[i].GetComponent<CMonster>().ReadyToPause();
+            }
+
         }
     }
     /// <summary>

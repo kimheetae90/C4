@@ -10,6 +10,7 @@ public class CPlayerController : Controller
     public Transform startPos;
     CMove move;
     bool isAdjacent;
+    ObjectState playerState;
 
     void Awake()
     {
@@ -29,16 +30,23 @@ public class CPlayerController : Controller
                 PlayerAttackedByEnemy(player, (int)_gameMessage.Get("monster_power"));
                 break;
             case MessageName.Play_PlayerMove:
-                ConfirmSelectedGameObject(_gameMessage);
-                
-                if (selectedGameObject.tag == "Play_Tool")
+                playerState = player.GetComponent<CPlayer>().GetPlayerState();
+                if (playerState != ObjectState.Play_Player_Pause)
                 {
-                    HoldOrPutDownTool(player, (GameObject)_gameMessage.Get("SelectedGameObject"), (Vector3)_gameMessage.Get("ClickPosition"));
+                    ConfirmSelectedGameObject(_gameMessage);
+
+                    if (selectedGameObject.tag == "Play_Tool")
+                    {
+                        HoldOrPutDownTool(player, (GameObject)_gameMessage.Get("SelectedGameObject"), (Vector3)_gameMessage.Get("ClickPosition"));
+                    }
+                    else
+                    {
+                        MovePlayerToTarget(player, (Vector3)_gameMessage.Get("ClickPosition"));
+                    }
                 }
-                else
-                {
-                    MovePlayerToTarget(player, (Vector3)_gameMessage.Get("ClickPosition"));
-                }
+                break;
+            case MessageName.Play_StageFailed:
+                player.GetComponent<CPlayer>().ReadyToPause();
                 break;
         }
     }

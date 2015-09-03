@@ -27,6 +27,16 @@ public class CPlayer : BaseObject
     protected override void ChangeState(ObjectState _objectState)
     {
         objectState = _objectState;
+        switch (objectState)
+        {
+            case ObjectState.Play_Player_Reset:
+                break;
+            case ObjectState.Play_Player_Pause:
+                PlayerPause();
+                break;
+            case ObjectState.Play_Player_Ready:
+                break;
+        }
     }
     
     /// <summary>
@@ -38,8 +48,10 @@ public class CPlayer : BaseObject
     {
         hp -= damage;
         if (hp <= 0)
+        {
             isAlive = false;
-		ChangeState(ObjectState.Play_Player_Die);
+            ChangeState(ObjectState.Play_Player_Die);
+        }
     }
 
     /// <summary>
@@ -50,6 +62,7 @@ public class CPlayer : BaseObject
     {
         switch (objectState)
         {
+            
 		case ObjectState.Play_Tool_CanAttack:
 		case ObjectState.Play_Player_CanHold:
 			ChangeState(ObjectState.Play_Player_CanNotHold);
@@ -75,5 +88,25 @@ public class CPlayer : BaseObject
                 break;
         }
     }
+    /// <summary>
+    /// 외부에서 사용되어 palyer의 state를 pause로 바꿈.
+    /// </summary>
+    public void ReadyToPause() {
 
+        ChangeState(ObjectState.Play_Player_Pause);
+    }
+    /// <summary>
+    /// player의 상태가 pause가 되면 불러져서 move를 stop시킴.
+    /// </summary>
+    void PlayerPause() {
+        GetComponent<CMove>().StopMoveToTarget();
+    }
+    /// <summary>
+    /// player의 state를 반환.
+    /// </summary>
+    /// <returns></returns>
+    public ObjectState GetPlayerState()
+    {
+        return objectState;
+    }
 }
