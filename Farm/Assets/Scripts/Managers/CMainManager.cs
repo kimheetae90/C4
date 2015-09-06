@@ -52,6 +52,14 @@ public class CMainManager : SceneManager {
         case GameState.Main_LoadSelectChapter:
             LoadSelectChapter();
 			break;
+        
+        case GameState.Main_LoadStorage:
+            StartStorage();
+            break;
+
+        case GameState.Main_LoadDevelopmentCenter:
+            StartDevelopmentCenter();
+            break;
 		}
 	}
 
@@ -62,10 +70,15 @@ public class CMainManager : SceneManager {
 	//////////////////////// 			구현               ////////////////////////
 	/// //////////////////////////////////////////////////////////////////////////
 
-	public void OnClickToStartMaintain()
+	public void OnClickToStartStorage()
     {
-		ChangeState (GameState.Main_LoadMaintain);
+		ChangeState (GameState.Main_LoadStorage);
 	}
+
+    public void OnClickToStartDevelopmentCenter()
+    {
+        ChangeState(GameState.Main_LoadDevelopmentCenter);
+    }
 
     void OnClickToLoadSelectChapter(GameObject _selectedGameObject)
 	{
@@ -96,6 +109,38 @@ public class CMainManager : SceneManager {
         InputTempDataAboutNextScene("MainTain");
         LoadLoadingScene();
 	}
+
+    void StartDevelopmentCenter()
+    {
+        StartCoroutine("LoadDevelopmentCenter");
+    }
+
+    /// <summary>
+    /// DevelopmentCenter씬으로 넘어가기 위한 코루틴함수.
+    /// </summary>
+    IEnumerator LoadDevelopmentCenter()
+    {
+        AsyncOperation async = Application.LoadLevelAsync("DevelopmentCenter");
+
+        while (async.isDone == false)
+            yield return null;
+    }
+
+    void StartStorage()
+    {
+        StartCoroutine("LoadStorage");
+    }
+
+    /// <summary>
+    /// Storage씬으로 넘어가기 위한 코루틴함수.
+    /// </summary>
+    IEnumerator LoadStorage()
+    {
+        AsyncOperation async = Application.LoadLevelAsync("Storage");
+
+        while (async.isDone == false)
+            yield return null;
+    }
 
 }
 

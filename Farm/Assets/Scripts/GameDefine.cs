@@ -57,11 +57,15 @@ public enum GameState
     Loading_LoadSelectChapter,      // SelectChapter 씬으로 이동하는 상태
     Loading_LoadSelectStage,        // SelectStage 씬으로 이동하는 상태
     Loading_LoadPlay,               // Play 씬으로 이동하는 상태
-	
+    Loading_LoadDevelopmentCenter,  // DevelopmentCenter 씬으로 이동하는 상태
+    Loading_LoadStorage,            // Storage씬으로 이동하는 상태
+
 	/* Main */
 	Main_Ready,	//Main이 처음 실행되었을 때 상태.
 	Main_LoadMaintain,	//버튼을 눌러서 정비화면으로 가는 중.
     Main_LoadSelectChapter, // 버튼을 눌러서 챕터 선택 화면으로 가는 중.
+    Main_LoadDevelopmentCenter, // 버튼을 눌러서 개발실로 가는 중.
+    Main_LoadStorage, // 버튼을 눌러서 무기창고로 가는 중.
 
     /* Select Chapter */
     SelectChapter_Ready, // SelectChapter가 처음 실행 되었을 때.

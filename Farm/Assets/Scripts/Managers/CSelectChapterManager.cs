@@ -44,7 +44,7 @@ public class CSelectChapterManager : SceneManager
             case GameState.SelectChapter_Ready:
                 break;
             case GameState.SelectChapter_LoadSelectStage:
-                LoadSelectStage();
+                StartSelectStage();
                 break;
         }
     }
@@ -76,14 +76,20 @@ public class CSelectChapterManager : SceneManager
         }
     }
 
-    /// <summary>
-    /// SelectStage씬으로 넘어가는 함수.
-    /// </summary>
-    void LoadSelectStage()
+    void StartSelectStage()
     {
-        InputTempDataAboutNextScene("SelectStage");
-        LoadLoadingScene();
+        StartCoroutine("LoadSelectStage");
     }
 
+    /// <summary>
+    /// SelectStage씬으로 넘어가기 위한 코루틴함수.
+    /// </summary>
+    IEnumerator LoadSelectStage()
+    {
+        AsyncOperation async = Application.LoadLevelAsync("SelectStage");
+
+        while (async.isDone == false)
+            yield return null;
+    }
 }
 
