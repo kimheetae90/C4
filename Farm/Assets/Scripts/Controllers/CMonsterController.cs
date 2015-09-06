@@ -269,12 +269,13 @@ public class CMonsterController : Controller
         StopCoroutine("GenMonster");
         for (int i = 0; i < oneWavePerMonster; i++)
         {
-            int _lineNum = monsterList[i].GetComponent<CMonster>().lineNumber;
+            if (monsterList[i].activeInHierarchy)
+            {
+            int _lineNum = monsterList[i].GetComponent<CMonster>().lineNumber-1;
             Vector3 returnPosition = new Vector3(startPosition[_lineNum].position.x+10, startPosition[_lineNum].position.y, startPosition[_lineNum].position.z);
             monsterList[i].GetComponent<Collider>().enabled = false;
             monsterList[i].GetComponent<CMove>().SetTargetPos(returnPosition);
-            if (monsterList[i].activeInHierarchy)
-            {
+            
                 monsterList[i].GetComponent<CMonster>().ReadyToReturn();
             }
             
