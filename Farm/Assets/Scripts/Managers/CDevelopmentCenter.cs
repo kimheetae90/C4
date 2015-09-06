@@ -33,10 +33,6 @@ public class CDevelopmentCenterManager : SceneManager
     protected override void ChangeState(GameState _gameState)
     {
         gameState = _gameState;
-
-        switch (gameState)
-        {
-        }
     }
 }
 

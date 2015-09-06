@@ -5,7 +5,7 @@ using System.Linq;
 
 public class CCameraController : Controller
 {
-    public Camera camera;
+    public Camera cam;
 
     Vector3 clickPos;
     Vector3 dragPos;
@@ -56,7 +56,7 @@ public class CCameraController : Controller
 
         if (Vector3.Distance(clickPos, dragPos) > 0.5f)
         {
-            Vector3 targetPos = new Vector3(camera.transform.position.x + (clickPos.x - dragPos.x), camera.transform.position.y, camera.transform.position.z);
+            Vector3 targetPos = new Vector3(cam.transform.position.x + (clickPos.x - dragPos.x), cam.transform.position.y, cam.transform.position.z);
 
             if (targetPos.x > rightEndXPos) {
                 targetPos.x = rightEndXPos;
@@ -64,9 +64,9 @@ public class CCameraController : Controller
             else if (targetPos.x < leftEndXPos) {
                 targetPos.x = leftEndXPos;
             }
-            camera.GetComponent<CMove>().SetTargetPos(targetPos);
-            camera.GetComponent<CMove>().SetMoveSpeed(Mathf.Abs(clickPos.x - dragPos.x) * 10);
-            camera.GetComponent<CMove>().StartMove();
+            cam.GetComponent<CMove>().SetTargetPos(targetPos);
+            cam.GetComponent<CMove>().SetMoveSpeed(Mathf.Abs(clickPos.x - dragPos.x) * 10);
+            cam.GetComponent<CMove>().StartMove();
         }
     }
     

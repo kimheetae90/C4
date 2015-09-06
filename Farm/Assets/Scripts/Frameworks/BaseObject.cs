@@ -32,6 +32,16 @@ public abstract class BaseObject : MonoBehaviour {
 		_gameMessage.Destroy ();
 	}
 
+	public void SendGameMessageToSceneManage(GameMessage _gameMessage)
+	{
+		if (_gameMessage == null){
+			LogManager.log ("Error : _gameMessage가 생성되지 않음(Null Pointer)");
+			return ;
+		}
+		
+		GameMaster.Instance.GetSceneManager ().DispatchGameMessage (_gameMessage);
+	}
+
 	void OnDestroy()
 	{
 			ObjectPooler.Instance.Destroy (this);
