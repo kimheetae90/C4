@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Farm/Assets/Scenes/Storage.unity.meta
 guid: 8d0b7da05f68d414a8e7c2d63d818e6a
 timeCreated: 1441511041
+=======
+guid: 671662508b786644d8ff633b4e9a8a20
+folderAsset: yes
+timeCreated: 1441524876
+>>>>>>> origin/gossi:Farm/Assets/Resources/FBXs/Backgrounds/Models.meta
 licenseType: Free
 DefaultImporter:
   userData: 

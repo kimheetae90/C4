@@ -9,7 +9,7 @@ public class CFence : BaseObject {
     void Awake()
     {
         ChangeState(ObjectState.Play_Fence_Alive);
-        m_hp = hp;
+        Reset();
     }
 
     protected override void UpdateState()
@@ -24,9 +24,17 @@ public class CFence : BaseObject {
 		case ObjectState.Play_Fence_Alive:
                 break;
 		case ObjectState.Play_Fence_Died:
-                
                 break;
         }
+    }
+
+
+    /// <summary>
+    /// 변수들을 초기화 하는 함수.
+    /// </summary>
+    public void Reset() {
+        m_hp = hp;
+        gameObject.SetActive(true);
     }
 
     /// <summary>

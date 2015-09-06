@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Farm/Assets/Scenes/DevelopmentCenter.unity.meta
 guid: 82a434a239dc2f84698873102c85695d
 timeCreated: 1441512577
+=======
+guid: 0e64d4466c27df846ba55fa76b33afd6
+folderAsset: yes
+timeCreated: 1441524872
+>>>>>>> origin/gossi:Farm/Assets/Resources/FBXs/Backgrounds/Animation.meta
 licenseType: Free
 DefaultImporter:
   userData: 

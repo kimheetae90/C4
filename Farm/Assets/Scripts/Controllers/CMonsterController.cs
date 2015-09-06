@@ -63,6 +63,9 @@ public class CMonsterController : Controller
             case MessageName.Play_MonsterReturn:
                 MonsterReturn();
                 break;
+            case MessageName.Play_StageFailed:
+                //MonsterPause();
+                break;
 
         }
     }
@@ -104,6 +107,7 @@ public class CMonsterController : Controller
         currentIter = 0;
         oneWavePerMonsterCount = 0;
         StartCoroutine("GenMonster");
+
     }
     /// <summary>
     /// regenTime에 맞춰 한마리씩 몬스터를 4개의 라인중 하나의 StartPostion에 위치시키고 Farm을 향해서 움직이게 만드는 코루틴.
@@ -120,21 +124,21 @@ public class CMonsterController : Controller
 
             switch (rand) {
 
-                case 0: monsterList[currentIter].GetComponent<CMonster>().lineNumber = 0;
+                case 0: monsterList[currentIter].GetComponent<CMonster>().lineNumber = 1;
                     break;
-                case 1: monsterList[currentIter].GetComponent<CMonster>().lineNumber = 1;
+                case 1: monsterList[currentIter].GetComponent<CMonster>().lineNumber = 2;
                     break;
-                case 2: monsterList[currentIter].GetComponent<CMonster>().lineNumber = 2;
+                case 2: monsterList[currentIter].GetComponent<CMonster>().lineNumber = 3;
                     break;
-                case 3: monsterList[currentIter].GetComponent<CMonster>().lineNumber = 3;
+                case 3: monsterList[currentIter].GetComponent<CMonster>().lineNumber = 4;
                     break;
             }
 
-            int _lineNum = monsterList[currentIter].GetComponent<CMonster>().lineNumber;
+            int _lineNum = monsterList[currentIter].GetComponent<CMonster>().lineNumber-1;
             Vector3 targetPosition = new Vector3(startPosition[_lineNum].position.x-100, startPosition[_lineNum].position.y, startPosition[_lineNum].position.z);
             monsterList[currentIter].SetActive(true);
-            monsterList[currentIter].GetComponent<CMonster>().Reset();
             monsterList[currentIter].transform.position = startPosition[_lineNum].position;
+            monsterList[currentIter].GetComponent<CMonster>().Reset();
             monsterList[currentIter].GetComponent<CMove>().SetTargetPos(targetPosition);
             monsterList[currentIter].GetComponent<CMonster>().ReadyToMove();
             currentIter++;
@@ -265,15 +269,28 @@ public class CMonsterController : Controller
         StopCoroutine("GenMonster");
         for (int i = 0; i < oneWavePerMonster; i++)
         {
-            int _lineNum = monsterList[i].GetComponent<CMonster>().lineNumber;
+            if (monsterList[i].activeInHierarchy)
+            {
+            int _lineNum = monsterList[i].GetComponent<CMonster>().lineNumber-1;
             Vector3 returnPosition = new Vector3(startPosition[_lineNum].position.x+10, startPosition[_lineNum].position.y, startPosition[_lineNum].position.z);
             monsterList[i].GetComponent<Collider>().enabled = false;
             monsterList[i].GetComponent<CMove>().SetTargetPos(returnPosition);
-            if (monsterList[i].activeInHierarchy)
-            {
-                monsterList[i].GetComponent<CMonster>().ReadyToMove();
+            
+                monsterList[i].GetComponent<CMonster>().ReadyToReturn();
             }
             
+        }
+    }
+
+    void MonsterPause() {
+        StopCoroutine("GenMonster");
+        for (int i = 0; i < oneWavePerMonster; i++)
+        {
+            if (monsterList[i].activeInHierarchy)
+            {
+                monsterList[i].GetComponent<CMonster>().ReadyToPause();
+            }
+
         }
     }
     /// <summary>

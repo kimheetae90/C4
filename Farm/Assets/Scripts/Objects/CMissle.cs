@@ -26,10 +26,15 @@ public class CMissle : BaseObject
 
         switch (objectState)
         {
-		case ObjectState.Play_Missle_Ready:
+            case ObjectState.Play_Missle_Reset:
+                break;
+            case ObjectState.Play_Missle_Pause:
+                MisslePause();
+                break;
+		    case ObjectState.Play_Missle_Ready:
                 GetComponent<CMove>().isMove = false;
                 break;
-		case ObjectState.Play_Missle_Move:
+		    case ObjectState.Play_Missle_Move:
                 break;
         }
     }
@@ -68,12 +73,23 @@ public class CMissle : BaseObject
         SendGameMessage(gameMsg);
     }
 
+    void MisslePause() {
+        GetComponent<CMove>().StopMoveToTarget();
+    }
+
     /// <summary>
     /// 미사일의 상태를 move로 바꿔줌.
     /// </summary>
     public void ReadyToMove()
     {
 		ChangeState(ObjectState.Play_Missle_Move);
+    }
+    /// <summary>
+    /// 미사일의 상태를 Pause로 바꿈. 외부에서 사용.
+    /// </summary>
+    public void ReadyToPause()
+    {
+        ChangeState(ObjectState.Play_Missle_Pause);
     }
 
     /// <summary>
@@ -84,5 +100,6 @@ public class CMissle : BaseObject
     {
         tool = _tool;
     }
+    
 
 }

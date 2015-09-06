@@ -89,28 +89,44 @@ public enum GameState
 public enum ObjectState
 {
 	/* Play_Monster */
+    Play_Monster_Reset,//초기화 시키는 기능.
+    Play_Monster_Pause,// 일시정지 시키는 기능.
 	Play_Monster_Ready, // 준비된 상태.
 	Play_Monster_Move, // 몬스터가 이동하는 중.
+    Play_Monster_ReadyForAttack,//공격 준비동작을 하는중.
 	Play_Monster_Attack, // 몬스터가 다른 오브젝트(농장, 플레이어, 도구)에 부딛혀서 공격하는 중
 	Play_Monster_Hitted, // 몬스터가 미사일에 맞은 상태.
 	Play_Monster_Return,//제한시간이 끝나서 몬스터가 다시 되돌아가는 상태.
 	Play_Monster_Die, // 몬스터가 죽은상태.
 	
 	/* Play_Missle */
+    Play_Missle_Reset,//초기화
+    Play_Missle_Pause,//일시정지
 	Play_Missle_Ready,//미사일이 준비된 상태
 	Play_Missle_Move, //미사일이 쏴져서 움직이고 있는 상태.
 	
 	/* Play_Player */
-	Play_Player_CanHold,    // 플레이어가 아무것도 잡지 않아 도구를 잡을 수 있는 상태
-	Play_Player_CanNotHold, // 플레이어가 도구를 잡을 수 없는 상태
-	Play_Player_Die,        // 체력이 0 이하라서 움직일 수 없는 상태.
+    Play_Player_Reset,//초기화
+    Play_Player_Pause,//일시정지
+    Play_Player_Ready,// 준비된 상태.
+    Play_Player_Move,//움직이고 있는 상태.
+    Play_Player_Idle_With_Tool,//도구를 잡고 가만히 있는 상태.
+    Play_Player_Move_Front_Wiht_Tool,//도구를 잡고 앞으로 가는 상태.
+    Play_Player_Move_Back_With_Tool,//도구를 잡고 뒤로 가는 상태.
+    Play_Player_Die,        // 체력이 0 이하라서 움직일 수 없는 상태.
+
+	//Play_Player_CanHold,    // 플레이어가 아무것도 잡지 않아 도구를 잡을 수 있는 상태
+	//Play_Player_CanNotHold, // 플레이어가 도구를 잡을 수 없는 상태
 	
 	/* Play_Tool */
-	Play_Tool_CanHeld,       // 툴이 플레이어에게 잡힐 수 있는 상태
-	Play_Tool_CanNotHeld,    // 툴이 플레이어에게 잡혀있어 잡힐 수 없는 상태.
-	Play_Tool_UnAvailable,   // 툴의 hp가 0이라서 사용 불가능한 상태.
-	Play_Tool_CanAttack,      // 적이 사정거리 안에 들어오거나 농장 안에 있는 상태가 아니라서 툴이 공격 가능한 상태.  
-	
+    Play_Tool_Reset,//초기화
+    Play_Tool_Pause,//일시정지
+    Play_Tool_Ready,//준비된 상태.(idle)
+    Play_Tool_Move,//움직이고 있는 상태.
+    Play_Tool_ReadyToShot,//공격 준비상태.
+    Play_Tool_Shot,//공격하고있는 상태.
+    Play_Tool_UnAvailable,   // 툴의 hp가 0이라서 사용 불가능한 상태.(die)
+
 	/* Play_Fence */
 	Play_Fence_Died,        // 울타리의 hp가 0이라서 사용 불가능한 상태
 	Play_Fence_Alive        // 울타리가 사용 가능한 상태.

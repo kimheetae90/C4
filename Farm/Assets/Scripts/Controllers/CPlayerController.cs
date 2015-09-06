@@ -6,10 +6,15 @@ using System.Linq;
 public class CPlayerController : Controller
 {
     GameObject player;
+    
     GameObject selectedGameObject;
     public Transform startPos;
     CMove move;
     bool isAdjacent;
+    ObjectState playerState;
+    GameObject holdedTool;
+
+    CPlayer playerScript;
 
     void Awake()
     {
@@ -29,16 +34,23 @@ public class CPlayerController : Controller
                 PlayerAttackedByEnemy(player, (int)_gameMessage.Get("monster_power"));
                 break;
             case MessageName.Play_PlayerMove:
-                ConfirmSelectedGameObject(_gameMessage);
-                
-                if (selectedGameObject.tag == "Play_Tool")
+                playerState = player.GetComponent<CPlayer>().GetPlayerState();
+                if (playerState != ObjectState.Play_Player_Pause)
                 {
-                    HoldOrPutDownTool(player, (GameObject)_gameMessage.Get("SelectedGameObject"), (Vector3)_gameMessage.Get("ClickPosition"));
+                    ConfirmSelectedGameObject(_gameMessage);
+
+                    if (selectedGameObject.tag == "Play_Tool" && player.GetComponent<CPlayer>().canHold)
+                    {
+                        HoldOnTool(player, (GameObject)_gameMessage.Get("SelectedGameObject"), (Vector3)_gameMessage.Get("ClickPosition"));
+                    }
+                    else
+                    {
+                        MovePlayerToTarget(player, (Vector3)_gameMessage.Get("ClickPosition"));
+                    }
                 }
-                else
-                {
-                    MovePlayerToTarget(player, (Vector3)_gameMessage.Get("ClickPosition"));
-                }
+                break;
+            case MessageName.Play_StageFailed:
+                player.GetComponent<CPlayer>().ReadyToPause();
                 break;
         }
     }
@@ -50,7 +62,8 @@ public class CPlayerController : Controller
     void Init()
     {
         player = ObjectPooler.Instance.GetGameObject("Play_Player");
-        player.GetComponent<CPlayer>().SetController(this);
+        playerScript = player.GetComponent<CPlayer>();
+        playerScript.SetController(this);
         player.transform.position = new Vector3(startPos.position.x, startPos.position.y + 0.5f, startPos.position.z);
         isAdjacent = false;
         move = player.GetComponent<CMove>();
@@ -63,7 +76,7 @@ public class CPlayerController : Controller
     /// <param name="_damage"></param>
     void PlayerAttackedByEnemy(GameObject _player, int _damage)
     {
-        _player.GetComponent<CPlayer>().Damaged(_damage);
+        playerScript.Damaged(_damage);
     }
 
     /// <summary>
@@ -73,8 +86,39 @@ public class CPlayerController : Controller
     /// <param name="_targetPos"></param>
     void MovePlayerToTarget(GameObject _player, Vector3 _targetPos)
     {
-        _player.GetComponent<CMove>().SetTargetPos(_targetPos);
-        _player.GetComponent<CMove>().StartMove();
+        move.SetTargetPos(_targetPos);
+        move.StartMove();
+
+        playerScript.ChangeStateToMove();
+
+        if (playerScript.canHold == false)
+        {//tool을 들고있을때
+            _targetPos = new Vector3(_targetPos.x - 2, _targetPos.y, _targetPos.z);
+            move.SetTargetPos(_targetPos);
+
+            if (_targetPos.x > player.transform.position.x)
+            {
+                playerScript.ChangeStateToMoveFrontWithTool();
+            }
+            else
+            {
+                playerScript.ChangeStateToMoveBackWithTool();
+            }
+            StopCoroutine("CheckPutDownTool");
+            StartCoroutine(CheckPutDownTool(_targetPos));
+        }
+        else {
+            playerScript.ChangeStateToMove();
+            if (_targetPos.x > player.transform.position.x)
+            {
+                playerScript.transform.localScale = new Vector3(1, 1, 1);
+            }
+            else
+            {
+                playerScript.transform.localScale = new Vector3(-1, 1, 1);
+            }
+        
+        }
     }
 
     /// <summary>
@@ -83,21 +127,10 @@ public class CPlayerController : Controller
     /// <param name="_player"></param>
     /// <param name="_tool"></param>
     /// <param name="_click_position"></param>
-    void HoldOrPutDownTool(GameObject _player, GameObject _tool, Vector3 _click_position)
+    void HoldOnTool(GameObject _player, GameObject _tool, Vector3 _click_position)
     {
-		ObjectState toolState = _tool.GetComponent<CTool>().GetToolState();
-
-        switch (toolState)
-        {
-		case ObjectState.Play_Tool_CanHeld:
-		case ObjectState.Play_Tool_CanAttack:
-                HoldTool(_player, _tool, _click_position);
-                break;
-		case ObjectState.Play_Tool_CanNotHeld:
-                PutDownTool(_player, _tool);
-                break;
-		case ObjectState.Play_Tool_UnAvailable:
-                break;
+        if (_tool.GetComponent<CTool>().canHeld) {
+            HoldTool(_player, _tool, _click_position);
         }
     }
 
@@ -109,8 +142,10 @@ public class CPlayerController : Controller
     /// <param name="_click_position"></param>
     void HoldTool(GameObject _player, GameObject _tool, Vector3 _click_position)
     {
-        MovePlayerToTarget(_player, _click_position);
-        StartCoroutine("CheckIsAdjacentToTool");
+        Vector3 targetPos = new Vector3(_click_position.x - 2, _click_position.y, _click_position.z);
+        MovePlayerToTarget(_player, targetPos);
+        StopCoroutine("CheckIsAdjacentToTool");
+        StartCoroutine(CheckIsAdjacentToTool(targetPos));
     }
 
     /// <summary>
@@ -121,25 +156,46 @@ public class CPlayerController : Controller
     void PutDownTool(GameObject _player, GameObject _tool)
     {
         _tool.GetComponent<CTool>().PutDownByPlayer(_player);
-        _player.GetComponent<CPlayer>().PutDownTool(_tool);
+        playerScript.PutDownTool(_tool);
         isAdjacent = false;
+        holdedTool = null;
+    }
+    /// <summary>
+    /// 툴을 놓을때 타겟포지션과 거리가 0.1차이 날때 내려놓게 하는 코루틴.
+    /// </summary>
+    /// <param name="targetPos"></param>
+    /// <returns></returns>
+    IEnumerator CheckPutDownTool(Vector3 targetPos) {
+        
+        float distance = Vector3.Distance(player.transform.position, targetPos);
+
+        while (distance > 0.1f)
+        {
+            distance = Vector3.Distance(player.transform.position, targetPos);
+            if (distance <= 0.1f&&holdedTool!=null) {
+                PutDownTool(player, holdedTool);
+                break;
+            }
+            yield return null;
+        }
+
     }
 
     /// <summary>
-    /// 툴을 집으러 갈 때, 툴과 거리가 2.0이하가 되었을 때만 툴을 집어드는 코루틴
+    /// 툴을 집으러 갈 때, 툴과 거리가 0.1이하가 되었을 때만 툴을 집어드는 코루틴
     /// </summary>
     /// <returns></returns>
-    IEnumerator CheckIsAdjacentToTool()
+    IEnumerator CheckIsAdjacentToTool(Vector3 targetPos)
     {
         while (!isAdjacent)
         {
-            if (DistancePlayerToTool(player, selectedGameObject) < 2.0f)
+            if (Vector3.Distance(player.transform.position, targetPos) < 0.1f)
             {
                 isAdjacent = true;
                 selectedGameObject.GetComponent<CTool>().HoldByPlayer(player);
-                player.GetComponent<CPlayer>().HoldTool(selectedGameObject);
+                playerScript.HoldTool(selectedGameObject);
+                holdedTool = selectedGameObject;
             }
-
             yield return null;          
         }
     }

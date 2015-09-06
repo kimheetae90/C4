@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CLineHelper : MonoBehaviour {
 
-    int lineNum;
+    public int lineNum;
     GameObject tmpLineMesh;
 
     /// <summary>
@@ -21,19 +21,19 @@ public class CLineHelper : MonoBehaviour {
            
         float yPos = gameObject.transform.position.y;
 
-        if (1.5f <= yPos && yPos < 4.5f)
+        if (-1.7f <= yPos && yPos < 9f)
         {
             lineNum = 1;
         }
-        else if (-2.1f <= yPos && yPos < 1.5f)
+        else if (-4.5f <= yPos && yPos < -1.7f)
         {
             lineNum = 2;
         }
-        else if (-5.5f <= yPos && yPos < -2.1f)
+        else if (-7.5f <= yPos && yPos < -4.5f)
         {
             lineNum = 3;
         }
-        else if (-9.0f <= yPos && yPos < -5.5f)
+        else if (-10.5f <= yPos && yPos < -7.5f)
         {
             lineNum = 4;
         }

@@ -36,6 +36,9 @@ public class CMissleController : Controller{
             case MessageName.Play_MissleDisappear:
                 MissleDisappear((int)_gameMessage.Get("tool_id"), (int)_gameMessage.Get("missle_id"));
                 break;
+            case MessageName.Play_StageFailed:
+                //MissleStop();
+                break;
 
         }
     }
@@ -55,7 +58,9 @@ public class CMissleController : Controller{
         missleAmount = 5;
     }
     
-
+    /// <summary>
+    /// 미사일을 정해진 숫자만큼 미리 만들어놓는 함수.
+    /// </summary>
     void Generate() {
 
         CToolController toolController = FindObjectOfType<CToolController>();
@@ -78,7 +83,11 @@ public class CMissleController : Controller{
     }
 
 
-
+    /// <summary>
+    /// 미사일이 tool에 의해 명령 받으면 missleDic에서 빼서 firedMissleDic에 넣고 공격함(앞으로나감).
+    /// </summary>
+    /// <param name="_tool_id">공격 명령을 내린 tool의 id</param>
+    /// <param name="_tool_position">공격명령을 내린 tool의 position</param>
     void MissleOrderedByTool(int _tool_id, Vector3 _tool_position) {
        
         GameObject _missle = (GameObject)missleDic[_tool_id].Dequeue();
@@ -91,6 +100,11 @@ public class CMissleController : Controller{
         firedMissleDic.Add(_missle.GetComponent<CMissle>().id, _missle);
     }
 
+    /// <summary>
+    /// 미사일이 몬스터를 맞춤.
+    /// </summary>
+    /// <param name="_monster_id">맞춘 몬스터의 id</param>
+    /// <param name="_missle_power">미사일의 power</param>
     void MissleAttackMonster(int _monster_id, int _missle_power) {
 
         GameMessage gameMsg = GameMessage.Create(MessageName.Play_MonsterDamagedByMissle);
@@ -98,7 +112,11 @@ public class CMissleController : Controller{
         gameMsg.Insert("missle_power", _missle_power);
         SendGameMessage(gameMsg);
     }
-
+    /// <summary>
+    /// 미사일이 사라짐. firedMissleDic에서 missleDic으로 옮김.
+    /// </summary>
+    /// <param name="_tool_id">미사일을 쏜 tool의 id</param>
+    /// <param name="_id">사라지는 미사일의 id</param>
     void MissleDisappear(int _tool_id, int _id)
     {
         GameObject _missle = firedMissleDic[_id];
@@ -106,5 +124,14 @@ public class CMissleController : Controller{
         _missle.GetComponent<CMove>().isMove = false;
         _missle.SetActive(false);
         missleDic[_tool_id].Enqueue(_missle);
+    }
+    /// <summary>
+    /// 게임이 끝난 경우. 이미 날아간 미사일들을 멈추게 함.
+    /// </summary>
+    void MissleStop() {
+        foreach (KeyValuePair<int, GameObject> missle in firedMissleDic) {
+
+            missle.Value.GetComponent<CMissle>().ReadyToPause();
+        }
     }
 }
