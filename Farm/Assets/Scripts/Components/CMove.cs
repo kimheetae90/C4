@@ -11,7 +11,7 @@ public class CMove : MonoBehaviour {
 
     void Start()
     {
-        isMove = false;
+        //isMove = false;
         m_moveSpeed = moveSpeed;
     }
 
@@ -47,7 +47,9 @@ public class CMove : MonoBehaviour {
         {
             StopMoveToTarget();
         }
-
+            
+        else
+        {
             if (Vector3.Distance(this.transform.position, toMove) > 0.05f * m_moveSpeed)
             {
                 transform.Translate((toMove - this.transform.position).normalized * Time.deltaTime * m_moveSpeed);
@@ -62,6 +64,7 @@ public class CMove : MonoBehaviour {
             {
                 StopMoveToTarget();
             }
+        }
         
     }
 

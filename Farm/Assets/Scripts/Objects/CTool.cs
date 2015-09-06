@@ -9,23 +9,31 @@ public class CTool : BaseObject
     public float attackRange;
     public int hp;
     public float weight;
+    public float attackReadySpeed;
+    public float attackSpeed;
     int m_hp;
 
     public bool isAlive;
+    public bool canHeld;
+    public bool shotable;
+
 
     List<BaseObject> listLatestFindObjects;
     GameObject player;
     CMove move;
     CLineHelper lineHelper;
+    CToolAnimation toolAnimation;
 
     void Awake()
     {
-        isAlive = true;
         listLatestFindObjects = new List<BaseObject>();
-		objectState = ObjectState.Play_Tool_CanHeld;
-        m_hp = hp;
         move = GetComponent<CMove>();
         lineHelper = GetComponent<CLineHelper>();
+        toolAnimation = GetComponent<CToolAnimation>();
+        
+    }
+    void Start() {
+        Reset();
     }
 
     void Update()
@@ -35,23 +43,11 @@ public class CTool : BaseObject
 
     protected override void UpdateState()
     {
-        switch (objectState)
+        if (canHeld == false && isAlive == true)
         {
-            case ObjectState.Play_Tool_Reset:
-                break;
-            case ObjectState.Play_Tool_Pause:
-                StopAttack();
-                break;
-            case ObjectState.Play_Tool_CanHeld:
-            case ObjectState.Play_Tool_CanAttack:
-                CheckCanAttack();
-                break;
-		    case ObjectState.Play_Tool_CanNotHeld:
-                transform.position = player.transform.position + new Vector3(1.0f, 0, 0);
-                break;
-            default:
-                break;
+            transform.position = player.transform.position + new Vector3(2.0f, 0, 0);
         }
+
     }
     protected override void ChangeState(ObjectState _objectState)
     {
@@ -62,16 +58,74 @@ public class CTool : BaseObject
 
         switch (_objectState)
         {
-		    case ObjectState.Play_Tool_CanAttack:
-                StartAttack();
+            case ObjectState.Play_Tool_Reset:
                 break;
-		    case ObjectState.Play_Tool_CanNotHeld:
-		    case ObjectState.Play_Tool_UnAvailable:
-                StopAttack();        
+            case ObjectState.Play_Tool_Pause:
+                StopAttack();
                 break;
+            case ObjectState.Play_Tool_Ready:
+                ToolReady();
+                break;
+            case ObjectState.Play_Tool_Move:
+                ToolMove();
+                break;
+            case ObjectState.Play_Tool_ReadyToShot:
+                ToolReadyToShot();
+                break;
+            case ObjectState.Play_Tool_Shot:
+                ToolShot();
+                break;
+            case ObjectState.Play_Tool_UnAvailable:
+                ToolDie();
+                break;
+
             default:
                 break;
         }
+    }
+
+
+    /// <summary>
+    /// 변수들을 초기화 하는 함수.
+    /// </summary>
+    void Reset()
+    {
+        isAlive = true;
+        canHeld = true;
+        shotable = true;
+        m_hp = hp;
+        attackSpeed = 2f;
+        StartAttack();
+        ChangeState(ObjectState.Play_Tool_Ready);
+    }
+
+    void ToolReady() {
+        toolAnimation.Reset();
+        toolAnimation.Idle();
+    }
+
+    void ToolMove() {
+        toolAnimation.Reset();
+        toolAnimation.Move();
+
+    }
+
+    void ToolReadyToShot() {
+        toolAnimation.Reset();
+        toolAnimation.Ready();
+    
+    }
+
+    void ToolShot() {
+        toolAnimation.Reset();
+        toolAnimation.Shot();
+        Shoot();
+    }
+
+    void ToolDie() {
+        toolAnimation.Reset();
+        toolAnimation.Die();
+        StopAttack();
     }
 
     /// <summary>
@@ -80,24 +134,38 @@ public class CTool : BaseObject
     /// <returns></returns>
     IEnumerator Attack()
     {
-        while (CheckCanAttack())
+        while (true)
 	    {
-	    	GameMessage gameMsg = GameMessage.Create(MessageName.Play_ToolAttackMonster);
-            gameMsg.Insert("tool_id", id);
-            gameMsg.Insert("tool_position", transform.position);
-            SendGameMessage(gameMsg);
-
-		    yield return new WaitForSeconds(2);
+            if (CheckCanAttack() && canHeld)
+            {
+                ChangeState(ObjectState.Play_Tool_ReadyToShot);
+                yield return new WaitForSeconds(attackReadySpeed);
+                ChangeState(ObjectState.Play_Tool_Shot);
+            }
+                ChangeState(ObjectState.Play_Tool_Ready);
+            yield return new WaitForSeconds(attackSpeed);
+            if (isAlive==false) {
+                break;
+            }
+            
 	    }
+    }
+    /// <summary>
+    /// 공격 가능한 상태(shootable)이면 미사일을 발사하는 함수.
+    /// </summary>
+    void Shoot() {
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_ToolAttackMonster);
+        gameMsg.Insert("tool_id", id);
+        gameMsg.Insert("tool_position", transform.position);
+        SendGameMessage(gameMsg);
     }
 
     /// <summary>
-    /// 공격 가능하면 Attack 코루틴을 start하는 함수.
+    /// 공격 가능한 상태가 되면 Attack 코루틴을 start하는 함수.
     /// </summary>
     void StartAttack()
     {
-        if (CheckCanAttack())
-            StartCoroutine("Attack");
+        StartCoroutine("Attack");
     }
 
     /// <summary>
@@ -116,7 +184,6 @@ public class CTool : BaseObject
     {
         if (transform.position.x > -18.5f && FindObjectsInRadious(attackRange, "Play_Monster"))
         {
-			ChangeState(ObjectState.Play_Tool_CanAttack);
             return true;
         }
         return false;
@@ -125,6 +192,7 @@ public class CTool : BaseObject
     /// <summary>
     /// 반경이 radius인 Sphere속에 파라미터로 넘겨준
     /// tag를 가진 게임오브젝트가 있는지에 대한 정보를 bool값으로 리턴하는 함수.
+    /// 같은 라인에 있는지까지 판단함.
     /// </summary>
     /// <param name="radius"></param>
     /// <param name="tag"></param>
@@ -132,15 +200,14 @@ public class CTool : BaseObject
     public bool FindObjectsInRadious(float radius, String tag)
     {
         listLatestFindObjects.Clear();
-
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
         for (int i = 0; i < hitColliders.Length; ++i)
         {
-
             BaseObject obj = hitColliders[i].transform.gameObject.GetComponentInParent<BaseObject>();
 
             if (obj != null && obj.tag.Equals(tag))
             {
+                if(obj.GetComponent<CMonster>().lineNumber==lineHelper.lineNum)
                 listLatestFindObjects.Add(obj);
             }
         }
@@ -182,15 +249,11 @@ public class CTool : BaseObject
     /// <param name="_player"></param>
     public void HoldByPlayer(GameObject _player)
     {
-        switch(objectState)
-        {
-		case ObjectState.Play_Tool_CanAttack:
-		case ObjectState.Play_Tool_CanHeld:
-                player = _player;
-			ChangeState(ObjectState.Play_Tool_CanNotHeld);
-                break;
-            default:
-                break;
+        if (canHeld) {
+            player = _player;
+            canHeld = false;
+
+            ChangeState(ObjectState.Play_Tool_Move);
         }
     }
 
@@ -200,11 +263,13 @@ public class CTool : BaseObject
     /// <param name="_player"></param>
     public void PutDownByPlayer(GameObject _player)
     {
-		if(objectState == ObjectState.Play_Tool_CanNotHeld)
+		if(canHeld==false)
         {
             player = null;
             lineHelper.OrderingYPos(gameObject);
-			ChangeState(ObjectState.Play_Tool_CanHeld);
+            canHeld = true;
+
+            ChangeState(ObjectState.Play_Tool_Ready);
         }
     }
 
@@ -222,4 +287,5 @@ public class CTool : BaseObject
     public void ReadyToPause() {
         ChangeState(ObjectState.Play_Tool_Pause);
     }
+    
 }

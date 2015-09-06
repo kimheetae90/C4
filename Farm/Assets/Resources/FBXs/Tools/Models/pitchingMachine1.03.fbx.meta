@@ -1,0 +1,1032 @@
+fileFormatVersion: 2
+guid: 05317a63f4d0ea140bebef999fd3c05b
+timeCreated: 1441526342
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: dw_pitchingMotorBox_jnt
+    100002: geo_grp
+    100004: joint14
+    100006: joint15
+    100008: joint16
+    100010: joint17
+    100012: joint18
+    100014: joint19
+    100016: joint20
+    100018: joint21
+    100020: joint22
+    100022: joint23
+    100024: joint24
+    100026: joint25
+    100028: joint26
+    100030: joint27
+    100032: joint28
+    100034: joint30
+    100036: joint32
+    100038: joint33
+    100040: joint34
+    100042: joint35
+    100044: joint36
+    100046: joint37
+    100048: lt_pitchingMotorBox_jnt
+    100050: pitchingBottle_geo
+    100052: pitchingDdong_jnt
+    100054: pitchingFire02_geo
+    100056: pitchingFire_geo
+    100058: pitchingLeg02_geo
+    100060: pitchingLeg_geo
+    100062: //RootNode
+    100064: pitchingMotorBox_geo
+    100066: pitchingMotorBox_jnt
+    100068: pitchingMotorBoxAntenaEnd_jnt
+    100070: pitchingMotorBoxAntenaPivot_jnt
+    100072: pitchingMovingDdong2_geo
+    100074: pitchingMovingDdong_geo
+    100076: pitchingMovingDdong_jnt
+    100078: pitchingWheelBack01_geo
+    100080: pitchingWheelBack01_jnt
+    100082: pitchingWheelBack02_geo
+    100084: pitchingWheelBack02_jnt
+    100086: pitchingWheelFront01_geo
+    100088: pitchingWheelFront01_jnt
+    100090: pitchingWheelFront02_geo
+    100092: pitchingWheelFront02_jnt
+    100094: pitchWheelBack_geo
+    100096: pitchWheelFront_geo
+    100098: pitchWheelFront_jnt
+    100100: q
+    100102: root_jnt
+    100104: rt_pitchingMotorBox_jnt
+    100106: up_pitchingMotorBox_jnt
+    100108: wheelBack_jnt
+    400000: dw_pitchingMotorBox_jnt
+    400002: geo_grp
+    400004: joint14
+    400006: joint15
+    400008: joint16
+    400010: joint17
+    400012: joint18
+    400014: joint19
+    400016: joint20
+    400018: joint21
+    400020: joint22
+    400022: joint23
+    400024: joint24
+    400026: joint25
+    400028: joint26
+    400030: joint27
+    400032: joint28
+    400034: joint30
+    400036: joint32
+    400038: joint33
+    400040: joint34
+    400042: joint35
+    400044: joint36
+    400046: joint37
+    400048: lt_pitchingMotorBox_jnt
+    400050: pitchingBottle_geo
+    400052: pitchingDdong_jnt
+    400054: pitchingFire02_geo
+    400056: pitchingFire_geo
+    400058: pitchingLeg02_geo
+    400060: pitchingLeg_geo
+    400062: //RootNode
+    400064: pitchingMotorBox_geo
+    400066: pitchingMotorBox_jnt
+    400068: pitchingMotorBoxAntenaEnd_jnt
+    400070: pitchingMotorBoxAntenaPivot_jnt
+    400072: pitchingMovingDdong2_geo
+    400074: pitchingMovingDdong_geo
+    400076: pitchingMovingDdong_jnt
+    400078: pitchingWheelBack01_geo
+    400080: pitchingWheelBack01_jnt
+    400082: pitchingWheelBack02_geo
+    400084: pitchingWheelBack02_jnt
+    400086: pitchingWheelFront01_geo
+    400088: pitchingWheelFront01_jnt
+    400090: pitchingWheelFront02_geo
+    400092: pitchingWheelFront02_jnt
+    400094: pitchWheelBack_geo
+    400096: pitchWheelFront_geo
+    400098: pitchWheelFront_jnt
+    400100: q
+    400102: root_jnt
+    400104: rt_pitchingMotorBox_jnt
+    400106: up_pitchingMotorBox_jnt
+    400108: wheelBack_jnt
+    4300000: pitchingMovingDdong_geo
+    4300002: pitchingWheelFront02_geo
+    4300004: pitchingWheelBack02_geo
+    4300006: pitchingFire02_geo
+    4300008: pitchingBottle_geo
+    4300010: q
+    4300012: pitchingWheelBack01_geo
+    4300014: pitchingFire_geo
+    4300016: pitchingLeg02_geo
+    4300018: pitchingMotorBox_geo
+    4300020: pitchWheelFront_geo
+    4300022: pitchingWheelFront01_geo
+    4300024: pitchingLeg_geo
+    4300026: pitchWheelBack_geo
+    4300028: pitchingMovingDdong2_geo
+    7400000: Take 001
+    7400002: Idle
+    7400004: Move
+    7400006: Ready
+    7400008: Shot
+    7400010: Die
+    9500000: //RootNode
+    13700000: pitchingBottle_geo
+    13700002: pitchingFire02_geo
+    13700004: pitchingFire_geo
+    13700006: pitchingLeg02_geo
+    13700008: pitchingLeg_geo
+    13700010: pitchingMotorBox_geo
+    13700012: pitchingMovingDdong2_geo
+    13700014: pitchingMovingDdong_geo
+    13700016: pitchingWheelBack01_geo
+    13700018: pitchingWheelBack02_geo
+    13700020: pitchingWheelFront01_geo
+    13700022: pitchingWheelFront02_geo
+    13700024: pitchWheelBack_geo
+    13700026: pitchWheelFront_geo
+    13700028: q
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 200
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: geo_grp
+        weight: 1
+      - path: geo_grp/pitchingBottle_geo
+        weight: 1
+      - path: geo_grp/pitchingFire02_geo
+        weight: 1
+      - path: geo_grp/pitchingFire_geo
+        weight: 1
+      - path: geo_grp/pitchingLeg02_geo
+        weight: 1
+      - path: geo_grp/pitchingLeg_geo
+        weight: 1
+      - path: geo_grp/pitchingMotorBox_geo
+        weight: 1
+      - path: geo_grp/pitchingMovingDdong2_geo
+        weight: 1
+      - path: geo_grp/pitchingMovingDdong_geo
+        weight: 1
+      - path: geo_grp/pitchingWheelBack01_geo
+        weight: 1
+      - path: geo_grp/pitchingWheelBack02_geo
+        weight: 1
+      - path: geo_grp/pitchingWheelFront01_geo
+        weight: 1
+      - path: geo_grp/pitchingWheelFront02_geo
+        weight: 1
+      - path: geo_grp/pitchWheelBack_geo
+        weight: 1
+      - path: geo_grp/pitchWheelFront_geo
+        weight: 1
+      - path: geo_grp/q
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/joint14
+        weight: 1
+      - path: root_jnt/joint14/joint15
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint17
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint17/pitchingDdong_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint17/pitchingDdong_jnt/joint33
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint17/pitchingDdong_jnt/pitchingMovingDdong_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint18
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint19
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/joint26
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/joint26/joint27
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/dw_pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/lt_pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/rt_pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/up_pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/up_pitchingMotorBox_jnt/pitchingMotorBoxAntenaPivot_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/up_pitchingMotorBox_jnt/pitchingMotorBoxAntenaPivot_jnt/pitchingMotorBoxAntenaEnd_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchWheelFront_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/wheelBack_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint21
+        weight: 1
+      - path: root_jnt/joint14/joint22
+        weight: 1
+      - path: root_jnt/joint14/joint23
+        weight: 1
+      - path: root_jnt/joint28
+        weight: 1
+      - path: root_jnt/joint30
+        weight: 1
+      - path: root_jnt/joint30/pitchingWheelFront01_jnt
+        weight: 1
+      - path: root_jnt/joint32
+        weight: 1
+      - path: root_jnt/joint32/pitchingWheelBack01_jnt
+        weight: 1
+      - path: root_jnt/joint34
+        weight: 1
+      - path: root_jnt/joint34/joint35
+        weight: 1
+      - path: root_jnt/joint34/joint35/pitchingWheelFront02_jnt
+        weight: 1
+      - path: root_jnt/joint34/joint36
+        weight: 1
+      - path: root_jnt/joint34/joint36/pitchingWheelBack02_jnt
+        weight: 1
+      - path: root_jnt/joint34/joint37
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 37
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: geo_grp
+        weight: 1
+      - path: geo_grp/pitchingBottle_geo
+        weight: 1
+      - path: geo_grp/pitchingFire02_geo
+        weight: 1
+      - path: geo_grp/pitchingFire_geo
+        weight: 1
+      - path: geo_grp/pitchingLeg02_geo
+        weight: 1
+      - path: geo_grp/pitchingLeg_geo
+        weight: 1
+      - path: geo_grp/pitchingMotorBox_geo
+        weight: 1
+      - path: geo_grp/pitchingMovingDdong2_geo
+        weight: 1
+      - path: geo_grp/pitchingMovingDdong_geo
+        weight: 1
+      - path: geo_grp/pitchingWheelBack01_geo
+        weight: 1
+      - path: geo_grp/pitchingWheelBack02_geo
+        weight: 1
+      - path: geo_grp/pitchingWheelFront01_geo
+        weight: 1
+      - path: geo_grp/pitchingWheelFront02_geo
+        weight: 1
+      - path: geo_grp/pitchWheelBack_geo
+        weight: 1
+      - path: geo_grp/pitchWheelFront_geo
+        weight: 1
+      - path: geo_grp/q
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/joint14
+        weight: 1
+      - path: root_jnt/joint14/joint15
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint17
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint17/pitchingDdong_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint17/pitchingDdong_jnt/joint33
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint17/pitchingDdong_jnt/pitchingMovingDdong_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint18
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint19
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/joint26
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/joint26/joint27
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/dw_pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/lt_pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/rt_pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/up_pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/up_pitchingMotorBox_jnt/pitchingMotorBoxAntenaPivot_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/up_pitchingMotorBox_jnt/pitchingMotorBoxAntenaPivot_jnt/pitchingMotorBoxAntenaEnd_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchWheelFront_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/wheelBack_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint21
+        weight: 1
+      - path: root_jnt/joint14/joint22
+        weight: 1
+      - path: root_jnt/joint14/joint23
+        weight: 1
+      - path: root_jnt/joint28
+        weight: 1
+      - path: root_jnt/joint30
+        weight: 1
+      - path: root_jnt/joint30/pitchingWheelFront01_jnt
+        weight: 1
+      - path: root_jnt/joint32
+        weight: 1
+      - path: root_jnt/joint32/pitchingWheelBack01_jnt
+        weight: 1
+      - path: root_jnt/joint34
+        weight: 1
+      - path: root_jnt/joint34/joint35
+        weight: 1
+      - path: root_jnt/joint34/joint35/pitchingWheelFront02_jnt
+        weight: 1
+      - path: root_jnt/joint34/joint36
+        weight: 1
+      - path: root_jnt/joint34/joint36/pitchingWheelBack02_jnt
+        weight: 1
+      - path: root_jnt/joint34/joint37
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Move
+      takeName: Take 001
+      firstFrame: 51
+      lastFrame: 74
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: geo_grp
+        weight: 1
+      - path: geo_grp/pitchingBottle_geo
+        weight: 1
+      - path: geo_grp/pitchingFire02_geo
+        weight: 1
+      - path: geo_grp/pitchingFire_geo
+        weight: 1
+      - path: geo_grp/pitchingLeg02_geo
+        weight: 1
+      - path: geo_grp/pitchingLeg_geo
+        weight: 1
+      - path: geo_grp/pitchingMotorBox_geo
+        weight: 1
+      - path: geo_grp/pitchingMovingDdong2_geo
+        weight: 1
+      - path: geo_grp/pitchingMovingDdong_geo
+        weight: 1
+      - path: geo_grp/pitchingWheelBack01_geo
+        weight: 1
+      - path: geo_grp/pitchingWheelBack02_geo
+        weight: 1
+      - path: geo_grp/pitchingWheelFront01_geo
+        weight: 1
+      - path: geo_grp/pitchingWheelFront02_geo
+        weight: 1
+      - path: geo_grp/pitchWheelBack_geo
+        weight: 1
+      - path: geo_grp/pitchWheelFront_geo
+        weight: 1
+      - path: geo_grp/q
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/joint14
+        weight: 1
+      - path: root_jnt/joint14/joint15
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint17
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint17/pitchingDdong_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint17/pitchingDdong_jnt/joint33
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint17/pitchingDdong_jnt/pitchingMovingDdong_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint18
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint19
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/joint26
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/joint26/joint27
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/dw_pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/lt_pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/rt_pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/up_pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/up_pitchingMotorBox_jnt/pitchingMotorBoxAntenaPivot_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/up_pitchingMotorBox_jnt/pitchingMotorBoxAntenaPivot_jnt/pitchingMotorBoxAntenaEnd_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchWheelFront_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/wheelBack_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint21
+        weight: 1
+      - path: root_jnt/joint14/joint22
+        weight: 1
+      - path: root_jnt/joint14/joint23
+        weight: 1
+      - path: root_jnt/joint28
+        weight: 1
+      - path: root_jnt/joint30
+        weight: 1
+      - path: root_jnt/joint30/pitchingWheelFront01_jnt
+        weight: 1
+      - path: root_jnt/joint32
+        weight: 1
+      - path: root_jnt/joint32/pitchingWheelBack01_jnt
+        weight: 1
+      - path: root_jnt/joint34
+        weight: 1
+      - path: root_jnt/joint34/joint35
+        weight: 1
+      - path: root_jnt/joint34/joint35/pitchingWheelFront02_jnt
+        weight: 1
+      - path: root_jnt/joint34/joint36
+        weight: 1
+      - path: root_jnt/joint34/joint36/pitchingWheelBack02_jnt
+        weight: 1
+      - path: root_jnt/joint34/joint37
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Ready
+      takeName: Take 001
+      firstFrame: 81
+      lastFrame: 108
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: geo_grp
+        weight: 1
+      - path: geo_grp/pitchingBottle_geo
+        weight: 1
+      - path: geo_grp/pitchingFire02_geo
+        weight: 1
+      - path: geo_grp/pitchingFire_geo
+        weight: 1
+      - path: geo_grp/pitchingLeg02_geo
+        weight: 1
+      - path: geo_grp/pitchingLeg_geo
+        weight: 1
+      - path: geo_grp/pitchingMotorBox_geo
+        weight: 1
+      - path: geo_grp/pitchingMovingDdong2_geo
+        weight: 1
+      - path: geo_grp/pitchingMovingDdong_geo
+        weight: 1
+      - path: geo_grp/pitchingWheelBack01_geo
+        weight: 1
+      - path: geo_grp/pitchingWheelBack02_geo
+        weight: 1
+      - path: geo_grp/pitchingWheelFront01_geo
+        weight: 1
+      - path: geo_grp/pitchingWheelFront02_geo
+        weight: 1
+      - path: geo_grp/pitchWheelBack_geo
+        weight: 1
+      - path: geo_grp/pitchWheelFront_geo
+        weight: 1
+      - path: geo_grp/q
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/joint14
+        weight: 1
+      - path: root_jnt/joint14/joint15
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint17
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint17/pitchingDdong_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint17/pitchingDdong_jnt/joint33
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint17/pitchingDdong_jnt/pitchingMovingDdong_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint18
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint19
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/joint26
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/joint26/joint27
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/dw_pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/lt_pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/rt_pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/up_pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/up_pitchingMotorBox_jnt/pitchingMotorBoxAntenaPivot_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/up_pitchingMotorBox_jnt/pitchingMotorBoxAntenaPivot_jnt/pitchingMotorBoxAntenaEnd_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchWheelFront_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/wheelBack_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint21
+        weight: 1
+      - path: root_jnt/joint14/joint22
+        weight: 1
+      - path: root_jnt/joint14/joint23
+        weight: 1
+      - path: root_jnt/joint28
+        weight: 1
+      - path: root_jnt/joint30
+        weight: 1
+      - path: root_jnt/joint30/pitchingWheelFront01_jnt
+        weight: 1
+      - path: root_jnt/joint32
+        weight: 1
+      - path: root_jnt/joint32/pitchingWheelBack01_jnt
+        weight: 1
+      - path: root_jnt/joint34
+        weight: 1
+      - path: root_jnt/joint34/joint35
+        weight: 1
+      - path: root_jnt/joint34/joint35/pitchingWheelFront02_jnt
+        weight: 1
+      - path: root_jnt/joint34/joint36
+        weight: 1
+      - path: root_jnt/joint34/joint36/pitchingWheelBack02_jnt
+        weight: 1
+      - path: root_jnt/joint34/joint37
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Shot
+      takeName: Take 001
+      firstFrame: 109
+      lastFrame: 140
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: geo_grp
+        weight: 1
+      - path: geo_grp/pitchingBottle_geo
+        weight: 1
+      - path: geo_grp/pitchingFire02_geo
+        weight: 1
+      - path: geo_grp/pitchingFire_geo
+        weight: 1
+      - path: geo_grp/pitchingLeg02_geo
+        weight: 1
+      - path: geo_grp/pitchingLeg_geo
+        weight: 1
+      - path: geo_grp/pitchingMotorBox_geo
+        weight: 1
+      - path: geo_grp/pitchingMovingDdong2_geo
+        weight: 1
+      - path: geo_grp/pitchingMovingDdong_geo
+        weight: 1
+      - path: geo_grp/pitchingWheelBack01_geo
+        weight: 1
+      - path: geo_grp/pitchingWheelBack02_geo
+        weight: 1
+      - path: geo_grp/pitchingWheelFront01_geo
+        weight: 1
+      - path: geo_grp/pitchingWheelFront02_geo
+        weight: 1
+      - path: geo_grp/pitchWheelBack_geo
+        weight: 1
+      - path: geo_grp/pitchWheelFront_geo
+        weight: 1
+      - path: geo_grp/q
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/joint14
+        weight: 1
+      - path: root_jnt/joint14/joint15
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint17
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint17/pitchingDdong_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint17/pitchingDdong_jnt/joint33
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint17/pitchingDdong_jnt/pitchingMovingDdong_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint18
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint19
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/joint26
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/joint26/joint27
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/dw_pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/lt_pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/rt_pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/up_pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/up_pitchingMotorBox_jnt/pitchingMotorBoxAntenaPivot_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/up_pitchingMotorBox_jnt/pitchingMotorBoxAntenaPivot_jnt/pitchingMotorBoxAntenaEnd_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchWheelFront_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/wheelBack_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint21
+        weight: 1
+      - path: root_jnt/joint14/joint22
+        weight: 1
+      - path: root_jnt/joint14/joint23
+        weight: 1
+      - path: root_jnt/joint28
+        weight: 1
+      - path: root_jnt/joint30
+        weight: 1
+      - path: root_jnt/joint30/pitchingWheelFront01_jnt
+        weight: 1
+      - path: root_jnt/joint32
+        weight: 1
+      - path: root_jnt/joint32/pitchingWheelBack01_jnt
+        weight: 1
+      - path: root_jnt/joint34
+        weight: 1
+      - path: root_jnt/joint34/joint35
+        weight: 1
+      - path: root_jnt/joint34/joint35/pitchingWheelFront02_jnt
+        weight: 1
+      - path: root_jnt/joint34/joint36
+        weight: 1
+      - path: root_jnt/joint34/joint36/pitchingWheelBack02_jnt
+        weight: 1
+      - path: root_jnt/joint34/joint37
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Die
+      takeName: Take 001
+      firstFrame: 151
+      lastFrame: 193
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: geo_grp
+        weight: 1
+      - path: geo_grp/pitchingBottle_geo
+        weight: 1
+      - path: geo_grp/pitchingFire02_geo
+        weight: 1
+      - path: geo_grp/pitchingFire_geo
+        weight: 1
+      - path: geo_grp/pitchingLeg02_geo
+        weight: 1
+      - path: geo_grp/pitchingLeg_geo
+        weight: 1
+      - path: geo_grp/pitchingMotorBox_geo
+        weight: 1
+      - path: geo_grp/pitchingMovingDdong2_geo
+        weight: 1
+      - path: geo_grp/pitchingMovingDdong_geo
+        weight: 1
+      - path: geo_grp/pitchingWheelBack01_geo
+        weight: 1
+      - path: geo_grp/pitchingWheelBack02_geo
+        weight: 1
+      - path: geo_grp/pitchingWheelFront01_geo
+        weight: 1
+      - path: geo_grp/pitchingWheelFront02_geo
+        weight: 1
+      - path: geo_grp/pitchWheelBack_geo
+        weight: 1
+      - path: geo_grp/pitchWheelFront_geo
+        weight: 1
+      - path: geo_grp/q
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/joint14
+        weight: 1
+      - path: root_jnt/joint14/joint15
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint17
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint17/pitchingDdong_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint17/pitchingDdong_jnt/joint33
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint17/pitchingDdong_jnt/pitchingMovingDdong_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint18
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint16/joint19
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/joint26
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/joint26/joint27
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/dw_pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/lt_pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/rt_pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/up_pitchingMotorBox_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/up_pitchingMotorBox_jnt/pitchingMotorBoxAntenaPivot_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchingMotorBox_jnt/up_pitchingMotorBox_jnt/pitchingMotorBoxAntenaPivot_jnt/pitchingMotorBoxAntenaEnd_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/pitchWheelFront_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint20/joint24/joint25/wheelBack_jnt
+        weight: 1
+      - path: root_jnt/joint14/joint15/joint21
+        weight: 1
+      - path: root_jnt/joint14/joint22
+        weight: 1
+      - path: root_jnt/joint14/joint23
+        weight: 1
+      - path: root_jnt/joint28
+        weight: 1
+      - path: root_jnt/joint30
+        weight: 1
+      - path: root_jnt/joint30/pitchingWheelFront01_jnt
+        weight: 1
+      - path: root_jnt/joint32
+        weight: 1
+      - path: root_jnt/joint32/pitchingWheelBack01_jnt
+        weight: 1
+      - path: root_jnt/joint34
+        weight: 1
+      - path: root_jnt/joint34/joint35
+        weight: 1
+      - path: root_jnt/joint34/joint35/pitchingWheelFront02_jnt
+        weight: 1
+      - path: root_jnt/joint34/joint36
+        weight: 1
+      - path: root_jnt/joint34/joint36/pitchingWheelBack02_jnt
+        weight: 1
+      - path: root_jnt/joint34/joint37
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

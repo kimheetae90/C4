@@ -1,0 +1,1344 @@
+fileFormatVersion: 2
+guid: 918bd3bdf35673d49a003afa47e5f152
+timeCreated: 1441542863
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: body_geo
+    100002: char_geo_grp
+    100004: //RootNode
+    100006: hat_geo
+    100008: head_geo
+    100010: joint19
+    100012: joint20
+    100014: joint22
+    100016: joint23
+    100018: joint24
+    100020: joint25
+    100022: joint37
+    100024: joint38
+    100026: joint39
+    100028: joint40
+    100030: joint42
+    100032: joint43
+    100034: joint44
+    100036: joint45
+    100038: joint46
+    100040: joint48
+    100042: joint49
+    100044: joint50
+    100046: L_foot_jnt
+    100048: lArm_geo
+    100050: lArm_jnt
+    100052: lLeg_geo
+    100054: R_foot_jnt
+    100056: rArm_geo
+    100058: rArm_jnt
+    100060: rElbow_jnt
+    100062: rHand_jnt
+    100064: rLeg_geo
+    100066: root_jnt
+    100068: rWrist_jnt
+    100070: spine01_jnt
+    400000: body_geo
+    400002: char_geo_grp
+    400004: //RootNode
+    400006: hat_geo
+    400008: head_geo
+    400010: joint19
+    400012: joint20
+    400014: joint22
+    400016: joint23
+    400018: joint24
+    400020: joint25
+    400022: joint37
+    400024: joint38
+    400026: joint39
+    400028: joint40
+    400030: joint42
+    400032: joint43
+    400034: joint44
+    400036: joint45
+    400038: joint46
+    400040: joint48
+    400042: joint49
+    400044: joint50
+    400046: L_foot_jnt
+    400048: lArm_geo
+    400050: lArm_jnt
+    400052: lLeg_geo
+    400054: R_foot_jnt
+    400056: rArm_geo
+    400058: rArm_jnt
+    400060: rElbow_jnt
+    400062: rHand_jnt
+    400064: rLeg_geo
+    400066: root_jnt
+    400068: rWrist_jnt
+    400070: spine01_jnt
+    4300000: rArm_geo
+    4300002: hat_geo
+    4300004: lArm_geo
+    4300006: lLeg_geo
+    4300008: rLeg_geo
+    4300010: body_geo
+    4300012: head_geo
+    7400000: Take 001
+    7400002: Idle
+    7400004: Move
+    7400006: ToolIdle
+    7400008: ToolMoveFront
+    7400010: ToolMoveBack
+    7400012: IdleOuch
+    7400014: MoveOuch
+    7400016: ToolIdleOuch
+    7400018: ToolMoveFrontOuch
+    7400020: ToolMoveBackOuch
+    7400022: Die
+    9500000: //RootNode
+    13700000: body_geo
+    13700002: hat_geo
+    13700004: head_geo
+    13700006: lArm_geo
+    13700008: lLeg_geo
+    13700010: rArm_geo
+    13700012: rLeg_geo
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 464
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: char_geo_grp
+        weight: 1
+      - path: char_geo_grp/body_geo
+        weight: 1
+      - path: char_geo_grp/hat_geo
+        weight: 1
+      - path: char_geo_grp/head_geo
+        weight: 1
+      - path: char_geo_grp/lArm_geo
+        weight: 1
+      - path: char_geo_grp/lLeg_geo
+        weight: 1
+      - path: char_geo_grp/rArm_geo
+        weight: 1
+      - path: char_geo_grp/rLeg_geo
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/L_foot_jnt
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43/joint44
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43/joint44/joint45
+        weight: 1
+      - path: root_jnt/R_foot_jnt
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38/joint39
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38/joint39/joint40
+        weight: 1
+      - path: root_jnt/spine01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25/joint19
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25/joint19/joint20
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint46
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48/joint49
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48/joint49/joint50
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt/rWrist_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt/rWrist_jnt/rHand_jnt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 37
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: char_geo_grp
+        weight: 1
+      - path: char_geo_grp/body_geo
+        weight: 1
+      - path: char_geo_grp/hat_geo
+        weight: 1
+      - path: char_geo_grp/head_geo
+        weight: 1
+      - path: char_geo_grp/lArm_geo
+        weight: 1
+      - path: char_geo_grp/lLeg_geo
+        weight: 1
+      - path: char_geo_grp/rArm_geo
+        weight: 1
+      - path: char_geo_grp/rLeg_geo
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/L_foot_jnt
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43/joint44
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43/joint44/joint45
+        weight: 1
+      - path: root_jnt/R_foot_jnt
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38/joint39
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38/joint39/joint40
+        weight: 1
+      - path: root_jnt/spine01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25/joint19
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25/joint19/joint20
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint46
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48/joint49
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48/joint49/joint50
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt/rWrist_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt/rWrist_jnt/rHand_jnt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Move
+      takeName: Take 001
+      firstFrame: 51
+      lastFrame: 68
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: char_geo_grp
+        weight: 1
+      - path: char_geo_grp/body_geo
+        weight: 1
+      - path: char_geo_grp/hat_geo
+        weight: 1
+      - path: char_geo_grp/head_geo
+        weight: 1
+      - path: char_geo_grp/lArm_geo
+        weight: 1
+      - path: char_geo_grp/lLeg_geo
+        weight: 1
+      - path: char_geo_grp/rArm_geo
+        weight: 1
+      - path: char_geo_grp/rLeg_geo
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/L_foot_jnt
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43/joint44
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43/joint44/joint45
+        weight: 1
+      - path: root_jnt/R_foot_jnt
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38/joint39
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38/joint39/joint40
+        weight: 1
+      - path: root_jnt/spine01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25/joint19
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25/joint19/joint20
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint46
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48/joint49
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48/joint49/joint50
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt/rWrist_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt/rWrist_jnt/rHand_jnt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: ToolIdle
+      takeName: Take 001
+      firstFrame: 91
+      lastFrame: 128
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: char_geo_grp
+        weight: 1
+      - path: char_geo_grp/body_geo
+        weight: 1
+      - path: char_geo_grp/hat_geo
+        weight: 1
+      - path: char_geo_grp/head_geo
+        weight: 1
+      - path: char_geo_grp/lArm_geo
+        weight: 1
+      - path: char_geo_grp/lLeg_geo
+        weight: 1
+      - path: char_geo_grp/rArm_geo
+        weight: 1
+      - path: char_geo_grp/rLeg_geo
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/L_foot_jnt
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43/joint44
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43/joint44/joint45
+        weight: 1
+      - path: root_jnt/R_foot_jnt
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38/joint39
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38/joint39/joint40
+        weight: 1
+      - path: root_jnt/spine01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25/joint19
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25/joint19/joint20
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint46
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48/joint49
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48/joint49/joint50
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt/rWrist_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt/rWrist_jnt/rHand_jnt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: ToolMoveFront
+      takeName: Take 001
+      firstFrame: 141
+      lastFrame: 164
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: char_geo_grp
+        weight: 1
+      - path: char_geo_grp/body_geo
+        weight: 1
+      - path: char_geo_grp/hat_geo
+        weight: 1
+      - path: char_geo_grp/head_geo
+        weight: 1
+      - path: char_geo_grp/lArm_geo
+        weight: 1
+      - path: char_geo_grp/lLeg_geo
+        weight: 1
+      - path: char_geo_grp/rArm_geo
+        weight: 1
+      - path: char_geo_grp/rLeg_geo
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/L_foot_jnt
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43/joint44
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43/joint44/joint45
+        weight: 1
+      - path: root_jnt/R_foot_jnt
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38/joint39
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38/joint39/joint40
+        weight: 1
+      - path: root_jnt/spine01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25/joint19
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25/joint19/joint20
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint46
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48/joint49
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48/joint49/joint50
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt/rWrist_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt/rWrist_jnt/rHand_jnt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: ToolMoveBack
+      takeName: Take 001
+      firstFrame: 171
+      lastFrame: 194
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: char_geo_grp
+        weight: 1
+      - path: char_geo_grp/body_geo
+        weight: 1
+      - path: char_geo_grp/hat_geo
+        weight: 1
+      - path: char_geo_grp/head_geo
+        weight: 1
+      - path: char_geo_grp/lArm_geo
+        weight: 1
+      - path: char_geo_grp/lLeg_geo
+        weight: 1
+      - path: char_geo_grp/rArm_geo
+        weight: 1
+      - path: char_geo_grp/rLeg_geo
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/L_foot_jnt
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43/joint44
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43/joint44/joint45
+        weight: 1
+      - path: root_jnt/R_foot_jnt
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38/joint39
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38/joint39/joint40
+        weight: 1
+      - path: root_jnt/spine01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25/joint19
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25/joint19/joint20
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint46
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48/joint49
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48/joint49/joint50
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt/rWrist_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt/rWrist_jnt/rHand_jnt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: IdleOuch
+      takeName: Take 001
+      firstFrame: 201
+      lastFrame: 237
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: char_geo_grp
+        weight: 1
+      - path: char_geo_grp/body_geo
+        weight: 1
+      - path: char_geo_grp/hat_geo
+        weight: 1
+      - path: char_geo_grp/head_geo
+        weight: 1
+      - path: char_geo_grp/lArm_geo
+        weight: 1
+      - path: char_geo_grp/lLeg_geo
+        weight: 1
+      - path: char_geo_grp/rArm_geo
+        weight: 1
+      - path: char_geo_grp/rLeg_geo
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/L_foot_jnt
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43/joint44
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43/joint44/joint45
+        weight: 1
+      - path: root_jnt/R_foot_jnt
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38/joint39
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38/joint39/joint40
+        weight: 1
+      - path: root_jnt/spine01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25/joint19
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25/joint19/joint20
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint46
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48/joint49
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48/joint49/joint50
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt/rWrist_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt/rWrist_jnt/rHand_jnt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: MoveOuch
+      takeName: Take 001
+      firstFrame: 251
+      lastFrame: 268
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: char_geo_grp
+        weight: 1
+      - path: char_geo_grp/body_geo
+        weight: 1
+      - path: char_geo_grp/hat_geo
+        weight: 1
+      - path: char_geo_grp/head_geo
+        weight: 1
+      - path: char_geo_grp/lArm_geo
+        weight: 1
+      - path: char_geo_grp/lLeg_geo
+        weight: 1
+      - path: char_geo_grp/rArm_geo
+        weight: 1
+      - path: char_geo_grp/rLeg_geo
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/L_foot_jnt
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43/joint44
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43/joint44/joint45
+        weight: 1
+      - path: root_jnt/R_foot_jnt
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38/joint39
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38/joint39/joint40
+        weight: 1
+      - path: root_jnt/spine01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25/joint19
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25/joint19/joint20
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint46
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48/joint49
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48/joint49/joint50
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt/rWrist_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt/rWrist_jnt/rHand_jnt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: ToolIdleOuch
+      takeName: Take 001
+      firstFrame: 291
+      lastFrame: 328
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: char_geo_grp
+        weight: 1
+      - path: char_geo_grp/body_geo
+        weight: 1
+      - path: char_geo_grp/hat_geo
+        weight: 1
+      - path: char_geo_grp/head_geo
+        weight: 1
+      - path: char_geo_grp/lArm_geo
+        weight: 1
+      - path: char_geo_grp/lLeg_geo
+        weight: 1
+      - path: char_geo_grp/rArm_geo
+        weight: 1
+      - path: char_geo_grp/rLeg_geo
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/L_foot_jnt
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43/joint44
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43/joint44/joint45
+        weight: 1
+      - path: root_jnt/R_foot_jnt
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38/joint39
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38/joint39/joint40
+        weight: 1
+      - path: root_jnt/spine01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25/joint19
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25/joint19/joint20
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint46
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48/joint49
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48/joint49/joint50
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt/rWrist_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt/rWrist_jnt/rHand_jnt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: ToolMoveFrontOuch
+      takeName: Take 001
+      firstFrame: 341
+      lastFrame: 364
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: char_geo_grp
+        weight: 1
+      - path: char_geo_grp/body_geo
+        weight: 1
+      - path: char_geo_grp/hat_geo
+        weight: 1
+      - path: char_geo_grp/head_geo
+        weight: 1
+      - path: char_geo_grp/lArm_geo
+        weight: 1
+      - path: char_geo_grp/lLeg_geo
+        weight: 1
+      - path: char_geo_grp/rArm_geo
+        weight: 1
+      - path: char_geo_grp/rLeg_geo
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/L_foot_jnt
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43/joint44
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43/joint44/joint45
+        weight: 1
+      - path: root_jnt/R_foot_jnt
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38/joint39
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38/joint39/joint40
+        weight: 1
+      - path: root_jnt/spine01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25/joint19
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25/joint19/joint20
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint46
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48/joint49
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48/joint49/joint50
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt/rWrist_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt/rWrist_jnt/rHand_jnt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: ToolMoveBackOuch
+      takeName: Take 001
+      firstFrame: 371
+      lastFrame: 394
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: char_geo_grp
+        weight: 1
+      - path: char_geo_grp/body_geo
+        weight: 1
+      - path: char_geo_grp/hat_geo
+        weight: 1
+      - path: char_geo_grp/head_geo
+        weight: 1
+      - path: char_geo_grp/lArm_geo
+        weight: 1
+      - path: char_geo_grp/lLeg_geo
+        weight: 1
+      - path: char_geo_grp/rArm_geo
+        weight: 1
+      - path: char_geo_grp/rLeg_geo
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/L_foot_jnt
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43/joint44
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43/joint44/joint45
+        weight: 1
+      - path: root_jnt/R_foot_jnt
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38/joint39
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38/joint39/joint40
+        weight: 1
+      - path: root_jnt/spine01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25/joint19
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25/joint19/joint20
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint46
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48/joint49
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48/joint49/joint50
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt/rWrist_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt/rWrist_jnt/rHand_jnt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Die
+      takeName: Take 001
+      firstFrame: 401
+      lastFrame: 451
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: char_geo_grp
+        weight: 1
+      - path: char_geo_grp/body_geo
+        weight: 1
+      - path: char_geo_grp/hat_geo
+        weight: 1
+      - path: char_geo_grp/head_geo
+        weight: 1
+      - path: char_geo_grp/lArm_geo
+        weight: 1
+      - path: char_geo_grp/lLeg_geo
+        weight: 1
+      - path: char_geo_grp/rArm_geo
+        weight: 1
+      - path: char_geo_grp/rLeg_geo
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/L_foot_jnt
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43/joint44
+        weight: 1
+      - path: root_jnt/L_foot_jnt/joint42/joint43/joint44/joint45
+        weight: 1
+      - path: root_jnt/R_foot_jnt
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38/joint39
+        weight: 1
+      - path: root_jnt/R_foot_jnt/joint37/joint38/joint39/joint40
+        weight: 1
+      - path: root_jnt/spine01_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25/joint19
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint25/joint19/joint20
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/joint46
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48/joint49
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/lArm_jnt/joint48/joint49/joint50
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt/rWrist_jnt
+        weight: 1
+      - path: root_jnt/spine01_jnt/joint22/joint23/joint24/rArm_jnt/rElbow_jnt/rWrist_jnt/rHand_jnt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

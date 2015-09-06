@@ -152,6 +152,7 @@ public class CPlayManager : SceneManager {
         GameMaster.Instance.tempData.Clear();
 		wave = 0;
 		ChangeState (GameState.Play_Reset);
+        UnPause();
 	}
 
     /// <summary>
@@ -292,6 +293,7 @@ public class CPlayManager : SceneManager {
     void StageFailed()
     {
         Debug.Log("스테이지 클리어 실패");
+        Pause();
         GameMessage gameMsg = GameMessage.Create(MessageName.Play_StageFailed);
         Broadcast(gameMsg);
     }
@@ -361,5 +363,13 @@ public class CPlayManager : SceneManager {
         {
             yield return null;
         }
+    }
+
+    void Pause() {
+
+        Time.timeScale = 0;
+    }
+    void UnPause() {
+        Time.timeScale = 1;
     }
 }

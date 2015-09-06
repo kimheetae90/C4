@@ -30,7 +30,6 @@ public class CMonsterAnimation : MonoBehaviour {
     }
 
     public void Ready() {
-
         anim.SetBool("Ready",true);
     }
 

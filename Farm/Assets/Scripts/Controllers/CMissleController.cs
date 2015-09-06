@@ -37,7 +37,7 @@ public class CMissleController : Controller{
                 MissleDisappear((int)_gameMessage.Get("tool_id"), (int)_gameMessage.Get("missle_id"));
                 break;
             case MessageName.Play_StageFailed:
-                MissleStop();
+                //MissleStop();
                 break;
 
         }
