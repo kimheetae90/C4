@@ -91,7 +91,7 @@ public class CMonsterController : Controller
 
         for (int i = 0; i < oneWavePerMonster; i++)
         {
-            monsterList.Add(ObjectPooler.Instance.GetGameObject("Mouse_Posion"));
+            monsterList.Add(ObjectPooler.Instance.GetGameObject("Mouse"));
             monsterList[i].GetComponent<CMonster>().SetController(this);
             monsterList[i].SetActive(false);
             monsterList[i].transform.position = new Vector3(startPos.position.x, startPos.position.y, startPos.position.z);
