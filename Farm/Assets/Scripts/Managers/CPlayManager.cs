@@ -24,7 +24,6 @@ public class CPlayManager : SceneManager {
 	
 	void Start()
 	{
-		Reset ();
         //ObjectPooler.Instance.GetGameObject("Background");
 	}
 	
@@ -59,7 +58,8 @@ public class CPlayManager : SceneManager {
             SceneChangeToNextStage();
             break;
         case MessageName.Play_SceneChangeToRestart:
-            SceneChangeToRestart();
+            //SceneChangeToRestart();
+            ResetStage();
             break;
         case MessageName.Play_MissleOrderedByTool:
             Broadcast(_gameMessage);
@@ -111,16 +111,18 @@ public class CPlayManager : SceneManager {
 		case GameState.Play_Init:
 			break;
 
-		case GameState.Play_Reset:
+        case GameState.Play_Reset: Reset();
 			break;
 
 		case GameState.Play_Ready:	
 			break;
 
 		case GameState.Play_Start:
+            limitTime = waveLimitTime;
 			break;
 
         case GameState.Play_Management:
+            limitTime = managementTime;
 			break;
 
         case GameState.Play_Clear: StageClear();
@@ -151,7 +153,8 @@ public class CPlayManager : SceneManager {
         chapterName = (string)GameMaster.Instance.tempData.Get("chapterName");
         GameMaster.Instance.tempData.Clear();
 		wave = 0;
-		ChangeState (GameState.Play_Reset);
+        ChangeState(GameState.Play_Management);
+		//ChangeState (GameState.Play_Reset);
         UnPause();
 	}
 
@@ -164,16 +167,10 @@ public class CPlayManager : SceneManager {
 	{
         Debug.Log(wave+1+"번째 웨이브");
 
-        limitTime = waveLimitTime;
-
-        if (wave != 0)
-        {
-            GameMessage gameMsg = GameMessage.Create(MessageName.Play_MaintainOver);
-            gameMsg.Insert("wavecount", wave+1);
-            Broadcast(gameMsg);
-
-        }
-       ChangeState (GameState.Play_Start);
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_MaintainOver);
+        gameMsg.Insert("wavecount", wave+1);
+        Broadcast(gameMsg);
+        ChangeState (GameState.Play_Start);
 	}
 
     
@@ -229,7 +226,6 @@ public class CPlayManager : SceneManager {
             else
             {
                 ChangeState(GameState.Play_Management);
-                limitTime = managementTime;
             }
 
             GameMessage gameMsg = GameMessage.Create(MessageName.Play_UIWaveTimerAmount);
@@ -371,5 +367,15 @@ public class CPlayManager : SceneManager {
     }
     void UnPause() {
         Time.timeScale = 1;
+    }
+
+
+    void ResetStage() {
+
+        wave = 0;
+        UnPause();
+        ChangeState(GameState.Play_Management);
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_StageRestart);
+        Broadcast(gameMsg);
     }
 }

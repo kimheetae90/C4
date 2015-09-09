@@ -51,7 +51,7 @@ public class GameMaster : MonoBehaviour {
 
 	public void SetSceneManager(SceneManager _sceneManager)
 	{
-		InputHelper.Instance.sceneManager = _sceneManager;
+        inputHelper.sceneManager = _sceneManager;
 		sceneManager = _sceneManager;
 	}
 }

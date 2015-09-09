@@ -33,6 +33,10 @@ public class CToolController : Controller
             case MessageName.Play_StageFailed:
                 //ToolPause();
                 break;
+            case MessageName.Play_StageRestart:
+                ResetStage();
+                break;
+
         }
     }
 
@@ -86,6 +90,16 @@ public class CToolController : Controller
     void ToolPause() {
         for (int i = 0; i < toolList.Count; i++) {
             toolList[i].GetComponent<CTool>().ReadyToPause();
+        }
+    }
+    /// <summary>
+    /// 게임을 다시시작했을때 불러지는 함수.
+    /// </summary>
+    void ResetStage() {
+        for (int i = 0; i < toolList.Count; i++)
+        {
+            toolList[i].transform.position = new Vector3(startPos.position.x + (i * 0.5f), startPos.position.y, startPos.position.z);
+            toolList[i].GetComponent<CTool>().Reset();
         }
     }
 }

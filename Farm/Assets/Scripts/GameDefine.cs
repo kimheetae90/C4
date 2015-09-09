@@ -17,6 +17,7 @@ public enum MessageName
     Play_ToolAttackMonster, // 툴이 공격함.
     Play_PlayerDamagedByMonster, // 플레이어가 몬스터에게 공격당함.
     Play_PlayerMove, // 플레이어가 특정 위치로 이동함
+    Play_ToolDiedWhileHelded,//툴이 운반되는 도중 hp가 0이됨. 플레이어에게 알림. (tool의 gameobject를 넘김)
 
 
     Play_MissleAttackMonster, //미사일이 몬스터를 공격함. monster_id와 missle_power,missle_id를 넘김.
@@ -31,6 +32,7 @@ public enum MessageName
     Play_SceneChangeToHome,
     Play_SceneChangeToNextStage,
     Play_SceneChangeToRestart,
+    Play_StageRestart,//컨트롤러들에게 스테이지가 다시시작된것을 알림.
 
     Play_CameraMove, // 드래그해서 카메라를 이동시킴.
 

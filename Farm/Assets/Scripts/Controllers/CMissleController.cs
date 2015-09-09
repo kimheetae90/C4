@@ -39,6 +39,8 @@ public class CMissleController : Controller{
             case MessageName.Play_StageFailed:
                 //MissleStop();
                 break;
+            case MessageName.Play_StageRestart: ResetStage();
+                break;
 
         }
     }
@@ -133,5 +135,16 @@ public class CMissleController : Controller{
 
             missle.Value.GetComponent<CMissle>().ReadyToPause();
         }
+    }
+    /// <summary>
+    /// 게임을 다시 시작한 경우 불러지는 함수.
+    /// </summary>
+    void ResetStage() {
+        foreach (KeyValuePair<int, GameObject> missle in firedMissleDic)
+        {
+            missleDic[missle.Value.GetComponent<CMissle>().tool.GetComponent<CTool>().id].Enqueue(missle.Value);
+        }
+        firedMissleDic.Clear();
+    
     }
 }

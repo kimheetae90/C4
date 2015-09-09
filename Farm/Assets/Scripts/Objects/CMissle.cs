@@ -16,7 +16,6 @@ public class CMissle : BaseObject
     void Update()
     {
         UpdateState();
-        
     }
 
 

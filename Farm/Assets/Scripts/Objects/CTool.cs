@@ -20,14 +20,12 @@ public class CTool : BaseObject
 
     List<BaseObject> listLatestFindObjects;
     GameObject player;
-    CMove move;
     CLineHelper lineHelper;
     CToolAnimation toolAnimation;
 
     void Awake()
     {
         listLatestFindObjects = new List<BaseObject>();
-        move = GetComponent<CMove>();
         lineHelper = GetComponent<CLineHelper>();
         toolAnimation = GetComponent<CToolAnimation>();
         
@@ -43,7 +41,7 @@ public class CTool : BaseObject
 
     protected override void UpdateState()
     {
-        if (canHeld == false && isAlive == true)
+        if (canHeld == false)
         {
             transform.position = player.transform.position + new Vector3(2.0f, 0, 0);
         }
@@ -88,14 +86,12 @@ public class CTool : BaseObject
     /// <summary>
     /// 변수들을 초기화 하는 함수.
     /// </summary>
-    void Reset()
+    public void Reset()
     {
         isAlive = true;
         canHeld = true;
         shotable = true;
         m_hp = hp;
-        attackSpeed = 2f;
-        StartAttack();
         ChangeState(ObjectState.Play_Tool_Ready);
     }
 
@@ -135,15 +131,19 @@ public class CTool : BaseObject
     IEnumerator Attack()
     {
         while (true)
-	    {
+        {
+            yield return new WaitForSeconds(attackSpeed);
             if (CheckCanAttack() && canHeld)
             {
                 ChangeState(ObjectState.Play_Tool_ReadyToShot);
                 yield return new WaitForSeconds(attackReadySpeed);
-                ChangeState(ObjectState.Play_Tool_Shot);
+                if (objectState == ObjectState.Play_Tool_ReadyToShot)
+                {
+                    ChangeState(ObjectState.Play_Tool_Shot);
+                }
             }
                 ChangeState(ObjectState.Play_Tool_Ready);
-            yield return new WaitForSeconds(attackSpeed);
+            
             if (isAlive==false) {
                 break;
             }
@@ -235,11 +235,18 @@ public class CTool : BaseObject
     /// <param name="damage"></param>
     public void Damaged(int damage)
     {
-        hp -= damage;
-        if (hp <= 0)
+        m_hp -= damage;
+        if (m_hp <= 0)
         {
             isAlive = false;
 			ChangeState(ObjectState.Play_Tool_UnAvailable);
+            if (canHeld == false) {
+                canHeld = true;
+                GameMessage gameMsg = GameMessage.Create(MessageName.Play_ToolDiedWhileHelded);
+                gameMsg.Insert("tool", this.gameObject);
+                SendGameMessageToSceneManage(gameMsg);
+                //player.GetComponent<CPlayer>().PutDownTool(this.gameObject);
+            }
         }
     }
 
@@ -249,11 +256,14 @@ public class CTool : BaseObject
     /// <param name="_player"></param>
     public void HoldByPlayer(GameObject _player)
     {
-        if (canHeld) {
+        if (canHeld)
+        {
+            Debug.Log("held");
             player = _player;
             canHeld = false;
 
-            ChangeState(ObjectState.Play_Tool_Move);
+            ChangeState(ObjectState.Play_Tool_Ready);
+            StopAttack();
         }
     }
 
@@ -270,6 +280,7 @@ public class CTool : BaseObject
             canHeld = true;
 
             ChangeState(ObjectState.Play_Tool_Ready);
+            StartAttack();
         }
     }
 
@@ -287,5 +298,7 @@ public class CTool : BaseObject
     public void ReadyToPause() {
         ChangeState(ObjectState.Play_Tool_Pause);
     }
-    
+    public void ReadyToMove() {
+        ChangeState(ObjectState.Play_Tool_Move);
+    }
 }

@@ -26,7 +26,6 @@ public class CMonsterController : Controller
     protected override void Start()
     {
         base.Start();
-        Reset();
     }
 
     public override void DispatchGameMessage(GameMessage _gameMessage)
@@ -66,6 +65,10 @@ public class CMonsterController : Controller
             case MessageName.Play_StageFailed:
                 //MonsterPause();
                 break;
+            case MessageName.Play_StageRestart:
+                ResetStage();
+                break;
+
 
         }
     }
@@ -88,7 +91,7 @@ public class CMonsterController : Controller
 
         for (int i = 0; i < oneWavePerMonster; i++)
         {
-            monsterList.Add(ObjectPooler.Instance.GetGameObject("Mouse"));
+            monsterList.Add(ObjectPooler.Instance.GetGameObject("Mouse_Posion"));
             monsterList[i].GetComponent<CMonster>().SetController(this);
             monsterList[i].SetActive(false);
             monsterList[i].transform.position = new Vector3(startPos.position.x, startPos.position.y, startPos.position.z);
@@ -269,7 +272,7 @@ public class CMonsterController : Controller
         StopCoroutine("GenMonster");
         for (int i = 0; i < oneWavePerMonster; i++)
         {
-            if (monsterList[i].activeInHierarchy)
+            if (monsterList[i].GetComponent<CMonster>().isAlive)
             {
             int _lineNum = monsterList[i].GetComponent<CMonster>().lineNumber-1;
             Vector3 returnPosition = new Vector3(startPosition[_lineNum].position.x+10, startPosition[_lineNum].position.y, startPosition[_lineNum].position.z);
@@ -321,5 +324,25 @@ public class CMonsterController : Controller
         
         GameMessage gameMsg = GameMessage.Create(MessageName.Play_OneWaveOver);
         SendGameMessage(gameMsg);
+    }
+
+    /// <summary>
+    /// 게임을 다시시작하면 불러지는 함수.
+    /// </summary>
+    void ResetStage() {
+        StopCoroutine("GenMonster");
+        oneWavePerMonsterCount = 0;
+        currentIter = 0;
+        for (int i = 0; i < oneWavePerMonster; i++)
+        {
+            monsterList[i].GetComponent<CMonster>().MonsterMoveStop();
+            monsterList[i].GetComponent<CMonster>().StopAttack();
+            monsterList[i].transform.position = new Vector3(startPos.position.x, startPos.position.y, startPos.position.z);
+            monsterList[i].GetComponent<CMove>().SetTargetPos(startPos.position);
+
+            //monsterList[i].GetComponent<CMonster>().Reset();
+        }
+        //Reset();
+        
     }
 }

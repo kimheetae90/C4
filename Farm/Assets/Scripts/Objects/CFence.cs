@@ -5,9 +5,12 @@ public class CFence : BaseObject {
 
     public int hp;
     int m_hp;
+
+    CFecnceAnimation fenceAnimation;
     
     void Awake()
     {
+        fenceAnimation = GetComponent<CFecnceAnimation>();
         ChangeState(ObjectState.Play_Fence_Alive);
         Reset();
     }
@@ -35,6 +38,7 @@ public class CFence : BaseObject {
     public void Reset() {
         m_hp = hp;
         gameObject.SetActive(true);
+        ChangeState(ObjectState.Play_Fence_Alive);
     }
 
     /// <summary>
@@ -44,8 +48,9 @@ public class CFence : BaseObject {
     /// <param name="damage"></param>
     public void Damaged(int damage)
     {
-        hp -= damage;
-        if (hp <= 0)
+        m_hp -= damage;
+        fenceAnimation.Hitted();
+        if (m_hp <= 0)
             Die();
     }
 

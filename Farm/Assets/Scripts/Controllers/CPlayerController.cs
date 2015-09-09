@@ -35,7 +35,7 @@ public class CPlayerController : Controller
                 break;
             case MessageName.Play_PlayerMove:
                 playerState = player.GetComponent<CPlayer>().GetPlayerState();
-                if (playerState != ObjectState.Play_Player_Pause)
+                if (playerState != ObjectState.Play_Player_Die)
                 {
                     ConfirmSelectedGameObject(_gameMessage);
 
@@ -51,6 +51,12 @@ public class CPlayerController : Controller
                 break;
             case MessageName.Play_StageFailed:
                 player.GetComponent<CPlayer>().ReadyToPause();
+                break;
+            case MessageName.Play_ToolDiedWhileHelded:
+                PutDownTool(player, (GameObject)_gameMessage.Get("tool"));
+                break;
+            case MessageName.Play_StageRestart:
+                ResetStage();
                 break;
         }
     }
@@ -95,7 +101,7 @@ public class CPlayerController : Controller
         {//tool을 들고있을때
             _targetPos = new Vector3(_targetPos.x - 2, _targetPos.y, _targetPos.z);
             move.SetTargetPos(_targetPos);
-
+            holdedTool.GetComponent<CTool>().ReadyToMove();
             if (_targetPos.x > player.transform.position.x)
             {
                 playerScript.ChangeStateToMoveFrontWithTool();
@@ -218,6 +224,16 @@ public class CPlayerController : Controller
     void ConfirmSelectedGameObject(GameMessage _gameMessage)
     {
         selectedGameObject = (GameObject)_gameMessage.Get("SelectedGameObject");
+    }
+
+    /// <summary>
+    /// 게임을 다시 시작하면 불러지는 함수.
+    /// </summary>
+    void ResetStage() {
+        player.transform.position = new Vector3(startPos.position.x, startPos.position.y + 0.5f, startPos.position.z);
+        isAdjacent = false;
+        playerScript.Reset();
+        
     }
 
 }

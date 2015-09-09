@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class CMonster : BaseObject
+public abstract class CMonster : BaseObject
 {
     public int power;
     public int hp;
@@ -75,67 +75,10 @@ public class CMonster : BaseObject
     {
     }
 
-    void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Play_Farm"))
-        {
-            AttackFarm();
-        }
+    protected abstract void OnTriggerStay(Collider other);
 
-        else if (other.CompareTag("Play_Player"))
-        {
-            if (other.GetComponent<CPlayer>().isAlive)
-            {
-                touchedWithPlayer = true;
-                MonsterMoveStop();
-                if (attackable)
-                {
-                    StartCoroutine("Attack_Player");
-                }
-            }
-            else {
-                touchedWithPlayer = false;
-            }
-        }
-
-        else if (other.CompareTag("Play_Tool"))
-        {
-            if (other.GetComponent<CTool>().isAlive)
-            {
-                touchedWithTool = true;
-                MonsterMoveStop();
-                if (attackable)
-                {
-                    StartCoroutine(Attack_Tool(other.GetComponent<CTool>()));
-                }
-
-            }
-            else {
-                touchedWithTool = false;
-            }
-        }
-        else if (other.CompareTag("Play_Fence"))
-        {
-            MonsterMoveStop();
-            touchedFenceID = other.GetComponent<CFence>().id;
-            if (attackable)
-            {
-                StartCoroutine(Attack_Fence(other.GetComponent<CFence>()));
-            }
-        }
-    }
-    void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Play_Player"))
-        {
-            touchedWithPlayer = false;
-        }
-
-        else if (other.CompareTag("Play_Tool"))
-        {
-            touchedWithTool = false;
-        }
-    }
+    protected abstract void OnTriggerExit(Collider other);
+    
 
    /// <summary>
    /// Monster의 상태가 Reset상태가 되면 불러져서 변수들과 Collider를 초기화 시켜줌.
@@ -147,6 +90,7 @@ public class CMonster : BaseObject
         GetComponent<Collider>().enabled = true;
         touchedWithPlayer = false;
         touchedWithTool = false;
+        touchedFenceID = 0;
     }
     /// <summary>
     /// Monster의 상태가 Pause가 되면 불려짐.
@@ -205,9 +149,17 @@ public class CMonster : BaseObject
     /// 밤시간이 지나서 Monster가 원래 자리로 Return하는 함수.
     /// </summary>
     void MonsterReturn() {
+        touchedFenceID=0;
+        touchedWithPlayer = false;
+        touchedWithTool = false;
+
+        StopCoroutine("Attack_Player");
+        StopCoroutine("Attack_Tool");
+        StopCoroutine("Attack_Fence");
         transform.GetComponent<CMove>().StartMove();
         monsterAnimation.Reset();
         monsterAnimation.Return();
+
     }
 
     /// <summary>
@@ -276,14 +228,17 @@ public class CMonster : BaseObject
     /// AttackPlayer함수를 호출하고, attackTime(공격속도)만큼 쉰 후에 아직 몬스터의 상태가 Attack이면 반복함.
     /// </summary>
     /// <returns></returns>
-    IEnumerator Attack_Player()
+    protected IEnumerator Attack_Player()
     {
         while (true)
         {
             attackable = false;
             ChangeState(ObjectState.Play_Monster_ReadyForAttack);
             yield return new WaitForSeconds(attackReadyTime);
-            ChangeState(ObjectState.Play_Monster_Attack);
+            if (objectState == ObjectState.Play_Monster_ReadyForAttack)
+            {
+                ChangeState(ObjectState.Play_Monster_Attack);
+            }
             if (touchedWithPlayer)
             {
                 AttackPlayer();
@@ -292,7 +247,11 @@ public class CMonster : BaseObject
             attackable = true;
             if (touchedWithPlayer==false)
             {
-                ChangeState(ObjectState.Play_Monster_Move);
+                if (objectState != ObjectState.Play_Monster_Return && objectState != ObjectState.Play_Monster_Ready)
+                {
+                    Debug.Log("why");
+                    ChangeState(ObjectState.Play_Monster_Move);
+                }
                 break;
             }
         }
@@ -304,14 +263,17 @@ public class CMonster : BaseObject
     /// </summary>
     /// <param name="_tool">현재 몬스터가 접촉하고있는 Tool을 받음.</param>
     /// <returns></returns>
-    IEnumerator Attack_Tool(CTool _tool)
+    protected IEnumerator Attack_Tool(CTool _tool)
     {
         while (true)
         {
             attackable = false;
             ChangeState(ObjectState.Play_Monster_ReadyForAttack);
             yield return new WaitForSeconds(attackReadyTime);
-            ChangeState(ObjectState.Play_Monster_Attack);
+            if (objectState == ObjectState.Play_Monster_ReadyForAttack)
+            {
+                ChangeState(ObjectState.Play_Monster_Attack);
+            }
             if (touchedWithTool)
             {
                 AttackTool(_tool);
@@ -320,7 +282,11 @@ public class CMonster : BaseObject
             attackable = true;
 			if (touchedWithTool==false)
             {
-                ChangeState(ObjectState.Play_Monster_Move);
+                if (objectState != ObjectState.Play_Monster_Return && objectState != ObjectState.Play_Monster_Ready)
+                {
+                    Debug.Log("why");
+                    ChangeState(ObjectState.Play_Monster_Move);
+                }
                 break;
             }
         }
@@ -332,14 +298,17 @@ public class CMonster : BaseObject
     /// </summary>
     /// <param name="_fence">현재 몬스터가 닿아 있는 Fence를 받음.</param>
     /// <returns></returns>
-    IEnumerator Attack_Fence(CFence _fence)
+    protected IEnumerator Attack_Fence(CFence _fence)
     {
         while (true)
         {
             attackable = false;
             ChangeState(ObjectState.Play_Monster_ReadyForAttack);
             yield return new WaitForSeconds(attackReadyTime);
-            ChangeState(ObjectState.Play_Monster_Attack);
+            if (objectState == ObjectState.Play_Monster_ReadyForAttack)
+            {
+                ChangeState(ObjectState.Play_Monster_Attack);
+            }
             if (touchedFenceID!=0)
             {
                 AttackFence(_fence);
@@ -348,7 +317,12 @@ public class CMonster : BaseObject
             attackable = true;
 			if (touchedFenceID==0)
             {
-                ChangeState(ObjectState.Play_Monster_Move);
+                if (objectState != ObjectState.Play_Monster_Return && objectState != ObjectState.Play_Monster_Ready)
+                {
+                    Debug.Log(objectState);
+                    Debug.Log("why");
+                    ChangeState(ObjectState.Play_Monster_Move);
+                }
                 break;
             }
         }
@@ -359,12 +333,13 @@ public class CMonster : BaseObject
     /// 일정시간(stunTime)동안 몬스터를 움직이지 않게 한 후에 몬스터가 아직 살아있으면 상태를 Move로 바꿈.
     /// </summary>
     /// <returns></returns>
-    IEnumerator Monster_Stun() {
+    protected IEnumerator Monster_Stun()
+    {
 
         yield return new WaitForSeconds(stunTime);
         if (_hp > 0)
         {
-            if(touchedWithPlayer==false&&touchedWithTool==false&&touchedFenceID==0)
+            if(touchedWithPlayer==false&&touchedWithTool==false&&touchedFenceID==0&&objectState!=ObjectState.Play_Monster_Return)
             ChangeState(ObjectState.Play_Monster_Move);
         }
     }
@@ -374,7 +349,7 @@ public class CMonster : BaseObject
     /// 몬스터가 Farm에 닿았을때 호출되는 함수.
     /// MonsterController에게 게임메세지 Play_MonsterAttackFarm을 보낸다.
     /// </summary>
-    void AttackFarm() {
+    protected void AttackFarm() {
         GameMessage gameMsg = GameMessage.Create(MessageName.Play_MonsterAttackFarm);
         transform.GetComponent<CMove>().StopMoveToTarget(); 
         gameMsg.Insert("id", id);
@@ -385,7 +360,8 @@ public class CMonster : BaseObject
     /// 몬스터가 Player에게 닿아있는 상태일때 코루틴에서 불려지는 함수.
     /// 몬스터가 공격 가능한 상태일때 MonsterController에게 게임메세지 Play_MonsterAttackPlayer를 보낸다.
     /// </summary>
-    void AttackPlayer() {
+    protected void AttackPlayer()
+    {
             GameMessage gameMsg = GameMessage.Create(MessageName.Play_MonsterAttackPlayer);
             gameMsg.Insert("monster_power", power);
             SendGameMessage(gameMsg);
@@ -396,7 +372,7 @@ public class CMonster : BaseObject
     /// 몬스터가 공격 가능한 상황일때 MonsterController에게 게임메세지 Play_MonsterAttackTool를 보낸다.
     /// </summary>
     /// <param name="_tool">몬스터가 현재 닿아있는 Tool을 받음.</param>
-    void AttackTool(CTool _tool)
+    protected void AttackTool(CTool _tool)
     {
             GameMessage gameMsg = GameMessage.Create(MessageName.Play_MonsterAttackTool);
             gameMsg.Insert("tool_id", _tool.id);
@@ -415,5 +391,17 @@ public class CMonster : BaseObject
             gameMsg.Insert("fence_id", _fence.id);
             gameMsg.Insert("monster_power", power);
             SendGameMessage(gameMsg);
+    }
+    /// <summary>
+    /// 모든 공격을 멈춤.
+    /// </summary>
+    public void StopAttack() {
+        touchedWithPlayer = false;
+        touchedWithTool = false;
+        touchedFenceID = 0;
+        StopCoroutine("Attack_Player");
+        StopCoroutine("Attack_Tool");
+        StopCoroutine("Attack_Fence");
+
     }
 }

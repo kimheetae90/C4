@@ -48,7 +48,7 @@ public class CPlay_UIController : Controller
     /// </summary>
     void ResetUI() {
         HidePopup();
-        WavetimerFill(1.0f);
+        WavetimerFill(0.0f);
         MaintainTimerFill(1.0f);
     }
     /// <summary>
@@ -118,5 +118,6 @@ public class CPlay_UIController : Controller
     {
         GameMessage gameMsg = GameMessage.Create(MessageName.Play_SceneChangeToRestart);
         SendGameMessage(gameMsg);
+        ResetUI();
     }
 }

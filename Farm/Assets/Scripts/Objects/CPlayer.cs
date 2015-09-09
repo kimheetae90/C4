@@ -36,12 +36,10 @@ public class CPlayer : BaseObject
 
             if (canHold)
             {
-                Debug.Log("stop");
                 ChangeState(ObjectState.Play_Player_Ready);
             }
             else
             {
-                Debug.Log("stop2");
                 ChangeState(ObjectState.Play_Player_Idle_With_Tool);
             }
         }
@@ -193,9 +191,9 @@ public class CPlayer : BaseObject
     /// <param name="damage"></param>
     public void Damaged(int damage)
     {
-        hp -= damage;
+        m_hp -= damage;
         Ouch();
-        if (hp <= 0)
+        if (m_hp <= 0)
         {
             isAlive = false;
             ChangeState(ObjectState.Play_Player_Die);
