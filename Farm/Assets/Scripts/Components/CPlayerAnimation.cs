@@ -4,7 +4,6 @@ using System.Collections;
 public class CPlayerAnimation : MonoBehaviour {
 
     Animator anim;
-    CPlayer player;
 
     void Awake()
     {
@@ -13,7 +12,6 @@ public class CPlayerAnimation : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        player = GetComponent<CPlayer>();
 
     }
     public void Reset()

@@ -4,7 +4,6 @@ using System.Collections;
 public class CToolAnimation : MonoBehaviour {
 
     Animator anim;
-    CTool tool;
 
     void Awake()
     {
@@ -13,7 +12,6 @@ public class CToolAnimation : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        tool = GetComponent<CTool>();
 
     }
     public void Reset()

@@ -23,10 +23,12 @@ public class CFenceController : Controller
     {
         switch (_gameMessage.messageName)
         {
-            case MessageName.Play_FenceDamagedByFence:
+            case MessageName.Play_FenceDamagedByMonster:
                 FenceAttackedByEnemy((int)_gameMessage.Get("fence_id"), (int)_gameMessage.Get("monster_power"));
                 break;
             case MessageName.Play_FenceDie: FenceDie((int)_gameMessage.Get("fence_id"));
+                break;
+            case MessageName.Play_StageRestart: ResetStage();
                 break;
         }
     }
@@ -78,5 +80,16 @@ public class CFenceController : Controller
         gameMsg.Insert("fence_id", _id);
         SendGameMessage(gameMsg);
         FindFenceOfID(_id).SetActive(false);
+    }
+    /// <summary>
+    /// 게임이 다시시작하면 불러지는 함수.
+    /// </summary>
+    void ResetStage() {
+        for (int i = 0; i < 4; i++)
+        {
+            fenceList[i].SetActive(true);
+            fenceList[i].transform.position = fencePosition[i].position;
+            fenceList[i].GetComponent<CFence>().Reset();
+        }
     }
 }

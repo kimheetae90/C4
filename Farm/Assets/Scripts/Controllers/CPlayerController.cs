@@ -35,11 +35,10 @@ public class CPlayerController : Controller
                 break;
             case MessageName.Play_PlayerMove:
                 playerState = player.GetComponent<CPlayer>().GetPlayerState();
-                if (playerState != ObjectState.Play_Player_Pause)
+                if (playerState != ObjectState.Play_Player_Die)
                 {
                     ConfirmSelectedGameObject(_gameMessage);
-
-                    if (selectedGameObject.tag == "Play_Tool" && player.GetComponent<CPlayer>().canHold)
+                    if (selectedGameObject.transform.tag == "Play_Tool" && player.GetComponent<CPlayer>().canHold)
                     {
                         HoldOnTool(player, (GameObject)_gameMessage.Get("SelectedGameObject"), (Vector3)_gameMessage.Get("ClickPosition"));
                     }
@@ -51,6 +50,12 @@ public class CPlayerController : Controller
                 break;
             case MessageName.Play_StageFailed:
                 player.GetComponent<CPlayer>().ReadyToPause();
+                break;
+            case MessageName.Play_ToolDiedWhileHelded:
+                PutDownTool(player, (GameObject)_gameMessage.Get("tool"));
+                break;
+            case MessageName.Play_StageRestart:
+                ResetStage();
                 break;
         }
     }
@@ -95,7 +100,7 @@ public class CPlayerController : Controller
         {//tool을 들고있을때
             _targetPos = new Vector3(_targetPos.x - 2, _targetPos.y, _targetPos.z);
             move.SetTargetPos(_targetPos);
-
+            holdedTool.GetComponent<CTool>().ChangeStateToMove();
             if (_targetPos.x > player.transform.position.x)
             {
                 playerScript.ChangeStateToMoveFrontWithTool();
@@ -191,10 +196,13 @@ public class CPlayerController : Controller
         {
             if (Vector3.Distance(player.transform.position, targetPos) < 0.1f)
             {
-                isAdjacent = true;
-                selectedGameObject.GetComponent<CTool>().HoldByPlayer(player);
-                playerScript.HoldTool(selectedGameObject);
-                holdedTool = selectedGameObject;
+                if (selectedGameObject.GetComponent<CTool>() != null)
+                {
+                    isAdjacent = true;
+                    selectedGameObject.GetComponent<CTool>().HoldByPlayer(player);
+                    playerScript.HoldTool(selectedGameObject);
+                    holdedTool = selectedGameObject;
+                }
             }
             yield return null;          
         }
@@ -218,6 +226,16 @@ public class CPlayerController : Controller
     void ConfirmSelectedGameObject(GameMessage _gameMessage)
     {
         selectedGameObject = (GameObject)_gameMessage.Get("SelectedGameObject");
+    }
+
+    /// <summary>
+    /// 게임을 다시 시작하면 불러지는 함수.
+    /// </summary>
+    void ResetStage() {
+        player.transform.position = new Vector3(startPos.position.x, startPos.position.y + 0.5f, startPos.position.z);
+        isAdjacent = false;
+        playerScript.Reset();
+        
     }
 
 }

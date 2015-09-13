@@ -4,14 +4,12 @@ using System.Collections;
 public class CMonsterAnimation : MonoBehaviour {
 
     Animator anim;
-    CMonster monster;
 
     void Awake() {
         anim = GetComponentInChildren<Animator>();
     }
 	// Use this for initialization
 	void Start () {
-        monster = GetComponent<CMonster>();
 	
 	}
     public void Reset() {

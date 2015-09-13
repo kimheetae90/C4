@@ -1,0 +1,1491 @@
+fileFormatVersion: 2
+guid: 4f73e57c32b27c64b90e4d22253aa8ff
+timeCreated: 1441795311
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: body_geo
+    100002: BodyBack_geo
+    100004: BodyFront_geo
+    100006: frefod_geo
+    100008: head
+    100010: joint14
+    100012: joint15
+    100014: joint16
+    100016: joint17
+    100018: joint18
+    100020: joint19
+    100022: joint20
+    100024: joint21
+    100026: joint22
+    100028: joint23
+    100030: joint24
+    100032: joint25
+    100034: joint26
+    100036: joint27
+    100038: joint28
+    100040: joint29
+    100042: joint30
+    100044: joint32
+    100046: joint33
+    100048: joint34
+    100050: joint36
+    100052: joint37
+    100054: joint38
+    100056: joint39
+    100058: joint40
+    100060: joint41
+    100062: joint42
+    100064: joint43
+    100066: joint44
+    100068: joint45
+    100070: joint46
+    100072: joint48
+    100074: joint49
+    100076: joint50
+    100078: joint51
+    100080: joint52
+    100082: joint53
+    100084: joint54
+    100086: joint55
+    100088: joint56
+    100090: joint57
+    100092: joint58
+    100094: joint59
+    100096: joint60
+    100098: joint61
+    100100: joint62
+    100102: joint64
+    100104: joint65
+    100106: joint66
+    100108: joint67
+    100110: L_arm_geo
+    100112: L_ear_geo
+    100114: L_leg_geo
+    100116: L_leg_jnt
+    100118: //RootNode
+    100120: poision_geo
+    100122: R_arm_geo
+    100124: R_ear_geo
+    100126: R_leg_geo
+    100128: R_leg_jnt
+    100130: root_jnt
+    100132: spine_jnt
+    100134: stone_Throwr_jnt
+    100136: stoneThrower_geo
+    100138: switch1
+    100140: tail_geo
+    100142: tail_jnt
+    100144: weight_geo
+    100146: wheel01_geo
+    100148: wheel02_geo
+    400000: body_geo
+    400002: BodyBack_geo
+    400004: BodyFront_geo
+    400006: frefod_geo
+    400008: head
+    400010: joint14
+    400012: joint15
+    400014: joint16
+    400016: joint17
+    400018: joint18
+    400020: joint19
+    400022: joint20
+    400024: joint21
+    400026: joint22
+    400028: joint23
+    400030: joint24
+    400032: joint25
+    400034: joint26
+    400036: joint27
+    400038: joint28
+    400040: joint29
+    400042: joint30
+    400044: joint32
+    400046: joint33
+    400048: joint34
+    400050: joint36
+    400052: joint37
+    400054: joint38
+    400056: joint39
+    400058: joint40
+    400060: joint41
+    400062: joint42
+    400064: joint43
+    400066: joint44
+    400068: joint45
+    400070: joint46
+    400072: joint48
+    400074: joint49
+    400076: joint50
+    400078: joint51
+    400080: joint52
+    400082: joint53
+    400084: joint54
+    400086: joint55
+    400088: joint56
+    400090: joint57
+    400092: joint58
+    400094: joint59
+    400096: joint60
+    400098: joint61
+    400100: joint62
+    400102: joint64
+    400104: joint65
+    400106: joint66
+    400108: joint67
+    400110: L_arm_geo
+    400112: L_ear_geo
+    400114: L_leg_geo
+    400116: L_leg_jnt
+    400118: //RootNode
+    400120: poision_geo
+    400122: R_arm_geo
+    400124: R_ear_geo
+    400126: R_leg_geo
+    400128: R_leg_jnt
+    400130: root_jnt
+    400132: spine_jnt
+    400134: stone_Throwr_jnt
+    400136: stoneThrower_geo
+    400138: switch1
+    400140: tail_geo
+    400142: tail_jnt
+    400144: weight_geo
+    400146: wheel01_geo
+    400148: wheel02_geo
+    4300000: head
+    4300002: R_ear_geo
+    4300004: L_arm_geo
+    4300006: body_geo
+    4300008: L_leg_geo
+    4300010: R_arm_geo
+    4300012: R_leg_geo
+    4300014: tail_geo
+    4300016: L_ear_geo
+    4300018: BodyBack_geo
+    4300020: switch1
+    4300022: BodyFront_geo
+    4300024: weight_geo
+    4300026: frefod_geo
+    4300028: wheel01_geo
+    4300030: wheel02_geo
+    7400000: Take 001
+    7400002: Idle
+    7400004: Walk
+    7400006: Ready
+    7400008: Attack
+    7400010: Stun
+    7400012: Die
+    9500000: //RootNode
+    13700000: body_geo
+    13700002: BodyBack_geo
+    13700004: BodyFront_geo
+    13700006: frefod_geo
+    13700008: head
+    13700010: L_arm_geo
+    13700012: L_ear_geo
+    13700014: L_leg_geo
+    13700016: R_arm_geo
+    13700018: R_ear_geo
+    13700020: R_leg_geo
+    13700022: switch1
+    13700024: tail_geo
+    13700026: weight_geo
+    13700028: wheel01_geo
+    13700030: wheel02_geo
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 330
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: poision_geo
+        weight: 1
+      - path: poision_geo/body_geo
+        weight: 1
+      - path: poision_geo/head
+        weight: 1
+      - path: poision_geo/L_arm_geo
+        weight: 1
+      - path: poision_geo/L_ear_geo
+        weight: 1
+      - path: poision_geo/L_leg_geo
+        weight: 1
+      - path: poision_geo/R_arm_geo
+        weight: 1
+      - path: poision_geo/R_ear_geo
+        weight: 1
+      - path: poision_geo/R_leg_geo
+        weight: 1
+      - path: poision_geo/tail_geo
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/L_leg_jnt
+        weight: 1
+      - path: root_jnt/L_leg_jnt/joint36
+        weight: 1
+      - path: root_jnt/L_leg_jnt/joint36/joint37
+        weight: 1
+      - path: root_jnt/L_leg_jnt/joint36/joint37/joint38
+        weight: 1
+      - path: root_jnt/R_leg_jnt
+        weight: 1
+      - path: root_jnt/R_leg_jnt/joint32
+        weight: 1
+      - path: root_jnt/R_leg_jnt/joint32/joint33
+        weight: 1
+      - path: root_jnt/R_leg_jnt/joint32/joint33/joint34
+        weight: 1
+      - path: root_jnt/spine_jnt
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint39
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint39/joint40
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint39/joint40/joint41
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint39/joint40/joint41/joint42
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint43
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint43/joint44
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint43/joint44/joint45
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint43/joint44/joint45/joint46
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint57
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint57/joint58
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint57/joint58/joint59
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint60
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint60/joint61
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint60/joint61/joint62
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint54
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint54/joint55
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint54/joint55/joint56
+        weight: 1
+      - path: root_jnt/tail_jnt
+        weight: 1
+      - path: root_jnt/tail_jnt/joint64
+        weight: 1
+      - path: root_jnt/tail_jnt/joint64/joint65
+        weight: 1
+      - path: root_jnt/tail_jnt/joint64/joint65/joint66
+        weight: 1
+      - path: root_jnt/tail_jnt/joint64/joint65/joint66/joint67
+        weight: 1
+      - path: stone_Throwr_jnt
+        weight: 1
+      - path: stone_Throwr_jnt/joint20
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint14
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint15
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint16
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint16/joint17
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint22
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint27
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint27/joint18
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint27/joint18/joint19
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint27/joint28
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint29
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint29/joint30
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint23
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint23/joint24
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint23/joint24/joint25
+        weight: 1
+      - path: stoneThrower_geo
+        weight: 1
+      - path: stoneThrower_geo/BodyBack_geo
+        weight: 1
+      - path: stoneThrower_geo/BodyFront_geo
+        weight: 1
+      - path: stoneThrower_geo/frefod_geo
+        weight: 1
+      - path: stoneThrower_geo/switch1
+        weight: 1
+      - path: stoneThrower_geo/weight_geo
+        weight: 1
+      - path: stoneThrower_geo/wheel01_geo
+        weight: 1
+      - path: stoneThrower_geo/wheel02_geo
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 47
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: poision_geo
+        weight: 1
+      - path: poision_geo/body_geo
+        weight: 1
+      - path: poision_geo/head
+        weight: 1
+      - path: poision_geo/L_arm_geo
+        weight: 1
+      - path: poision_geo/L_ear_geo
+        weight: 1
+      - path: poision_geo/L_leg_geo
+        weight: 1
+      - path: poision_geo/R_arm_geo
+        weight: 1
+      - path: poision_geo/R_ear_geo
+        weight: 1
+      - path: poision_geo/R_leg_geo
+        weight: 1
+      - path: poision_geo/tail_geo
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/L_leg_jnt
+        weight: 1
+      - path: root_jnt/L_leg_jnt/joint36
+        weight: 1
+      - path: root_jnt/L_leg_jnt/joint36/joint37
+        weight: 1
+      - path: root_jnt/L_leg_jnt/joint36/joint37/joint38
+        weight: 1
+      - path: root_jnt/R_leg_jnt
+        weight: 1
+      - path: root_jnt/R_leg_jnt/joint32
+        weight: 1
+      - path: root_jnt/R_leg_jnt/joint32/joint33
+        weight: 1
+      - path: root_jnt/R_leg_jnt/joint32/joint33/joint34
+        weight: 1
+      - path: root_jnt/spine_jnt
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint39
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint39/joint40
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint39/joint40/joint41
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint39/joint40/joint41/joint42
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint43
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint43/joint44
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint43/joint44/joint45
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint43/joint44/joint45/joint46
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint57
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint57/joint58
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint57/joint58/joint59
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint60
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint60/joint61
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint60/joint61/joint62
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint54
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint54/joint55
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint54/joint55/joint56
+        weight: 1
+      - path: root_jnt/tail_jnt
+        weight: 1
+      - path: root_jnt/tail_jnt/joint64
+        weight: 1
+      - path: root_jnt/tail_jnt/joint64/joint65
+        weight: 1
+      - path: root_jnt/tail_jnt/joint64/joint65/joint66
+        weight: 1
+      - path: root_jnt/tail_jnt/joint64/joint65/joint66/joint67
+        weight: 1
+      - path: stone_Throwr_jnt
+        weight: 1
+      - path: stone_Throwr_jnt/joint20
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint14
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint15
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint16
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint16/joint17
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint22
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint27
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint27/joint18
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint27/joint18/joint19
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint27/joint28
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint29
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint29/joint30
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint23
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint23/joint24
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint23/joint24/joint25
+        weight: 1
+      - path: stoneThrower_geo
+        weight: 1
+      - path: stoneThrower_geo/BodyBack_geo
+        weight: 1
+      - path: stoneThrower_geo/BodyFront_geo
+        weight: 1
+      - path: stoneThrower_geo/frefod_geo
+        weight: 1
+      - path: stoneThrower_geo/switch1
+        weight: 1
+      - path: stoneThrower_geo/weight_geo
+        weight: 1
+      - path: stoneThrower_geo/wheel01_geo
+        weight: 1
+      - path: stoneThrower_geo/wheel02_geo
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 71
+      lastFrame: 108
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: poision_geo
+        weight: 1
+      - path: poision_geo/body_geo
+        weight: 1
+      - path: poision_geo/head
+        weight: 1
+      - path: poision_geo/L_arm_geo
+        weight: 1
+      - path: poision_geo/L_ear_geo
+        weight: 1
+      - path: poision_geo/L_leg_geo
+        weight: 1
+      - path: poision_geo/R_arm_geo
+        weight: 1
+      - path: poision_geo/R_ear_geo
+        weight: 1
+      - path: poision_geo/R_leg_geo
+        weight: 1
+      - path: poision_geo/tail_geo
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/L_leg_jnt
+        weight: 1
+      - path: root_jnt/L_leg_jnt/joint36
+        weight: 1
+      - path: root_jnt/L_leg_jnt/joint36/joint37
+        weight: 1
+      - path: root_jnt/L_leg_jnt/joint36/joint37/joint38
+        weight: 1
+      - path: root_jnt/R_leg_jnt
+        weight: 1
+      - path: root_jnt/R_leg_jnt/joint32
+        weight: 1
+      - path: root_jnt/R_leg_jnt/joint32/joint33
+        weight: 1
+      - path: root_jnt/R_leg_jnt/joint32/joint33/joint34
+        weight: 1
+      - path: root_jnt/spine_jnt
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint39
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint39/joint40
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint39/joint40/joint41
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint39/joint40/joint41/joint42
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint43
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint43/joint44
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint43/joint44/joint45
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint43/joint44/joint45/joint46
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint57
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint57/joint58
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint57/joint58/joint59
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint60
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint60/joint61
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint60/joint61/joint62
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint54
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint54/joint55
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint54/joint55/joint56
+        weight: 1
+      - path: root_jnt/tail_jnt
+        weight: 1
+      - path: root_jnt/tail_jnt/joint64
+        weight: 1
+      - path: root_jnt/tail_jnt/joint64/joint65
+        weight: 1
+      - path: root_jnt/tail_jnt/joint64/joint65/joint66
+        weight: 1
+      - path: root_jnt/tail_jnt/joint64/joint65/joint66/joint67
+        weight: 1
+      - path: stone_Throwr_jnt
+        weight: 1
+      - path: stone_Throwr_jnt/joint20
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint14
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint15
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint16
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint16/joint17
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint22
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint27
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint27/joint18
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint27/joint18/joint19
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint27/joint28
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint29
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint29/joint30
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint23
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint23/joint24
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint23/joint24/joint25
+        weight: 1
+      - path: stoneThrower_geo
+        weight: 1
+      - path: stoneThrower_geo/BodyBack_geo
+        weight: 1
+      - path: stoneThrower_geo/BodyFront_geo
+        weight: 1
+      - path: stoneThrower_geo/frefod_geo
+        weight: 1
+      - path: stoneThrower_geo/switch1
+        weight: 1
+      - path: stoneThrower_geo/weight_geo
+        weight: 1
+      - path: stoneThrower_geo/wheel01_geo
+        weight: 1
+      - path: stoneThrower_geo/wheel02_geo
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Ready
+      takeName: Take 001
+      firstFrame: 131
+      lastFrame: 159
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: poision_geo
+        weight: 1
+      - path: poision_geo/body_geo
+        weight: 1
+      - path: poision_geo/head
+        weight: 1
+      - path: poision_geo/L_arm_geo
+        weight: 1
+      - path: poision_geo/L_ear_geo
+        weight: 1
+      - path: poision_geo/L_leg_geo
+        weight: 1
+      - path: poision_geo/R_arm_geo
+        weight: 1
+      - path: poision_geo/R_ear_geo
+        weight: 1
+      - path: poision_geo/R_leg_geo
+        weight: 1
+      - path: poision_geo/tail_geo
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/L_leg_jnt
+        weight: 1
+      - path: root_jnt/L_leg_jnt/joint36
+        weight: 1
+      - path: root_jnt/L_leg_jnt/joint36/joint37
+        weight: 1
+      - path: root_jnt/L_leg_jnt/joint36/joint37/joint38
+        weight: 1
+      - path: root_jnt/R_leg_jnt
+        weight: 1
+      - path: root_jnt/R_leg_jnt/joint32
+        weight: 1
+      - path: root_jnt/R_leg_jnt/joint32/joint33
+        weight: 1
+      - path: root_jnt/R_leg_jnt/joint32/joint33/joint34
+        weight: 1
+      - path: root_jnt/spine_jnt
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint39
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint39/joint40
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint39/joint40/joint41
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint39/joint40/joint41/joint42
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint43
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint43/joint44
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint43/joint44/joint45
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint43/joint44/joint45/joint46
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint57
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint57/joint58
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint57/joint58/joint59
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint60
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint60/joint61
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint60/joint61/joint62
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint54
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint54/joint55
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint54/joint55/joint56
+        weight: 1
+      - path: root_jnt/tail_jnt
+        weight: 1
+      - path: root_jnt/tail_jnt/joint64
+        weight: 1
+      - path: root_jnt/tail_jnt/joint64/joint65
+        weight: 1
+      - path: root_jnt/tail_jnt/joint64/joint65/joint66
+        weight: 1
+      - path: root_jnt/tail_jnt/joint64/joint65/joint66/joint67
+        weight: 1
+      - path: stone_Throwr_jnt
+        weight: 1
+      - path: stone_Throwr_jnt/joint20
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint14
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint15
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint16
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint16/joint17
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint22
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint27
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint27/joint18
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint27/joint18/joint19
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint27/joint28
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint29
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint29/joint30
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint23
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint23/joint24
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint23/joint24/joint25
+        weight: 1
+      - path: stoneThrower_geo
+        weight: 1
+      - path: stoneThrower_geo/BodyBack_geo
+        weight: 1
+      - path: stoneThrower_geo/BodyFront_geo
+        weight: 1
+      - path: stoneThrower_geo/frefod_geo
+        weight: 1
+      - path: stoneThrower_geo/switch1
+        weight: 1
+      - path: stoneThrower_geo/weight_geo
+        weight: 1
+      - path: stoneThrower_geo/wheel01_geo
+        weight: 1
+      - path: stoneThrower_geo/wheel02_geo
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Attack
+      takeName: Take 001
+      firstFrame: 171
+      lastFrame: 235
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: poision_geo
+        weight: 1
+      - path: poision_geo/body_geo
+        weight: 1
+      - path: poision_geo/head
+        weight: 1
+      - path: poision_geo/L_arm_geo
+        weight: 1
+      - path: poision_geo/L_ear_geo
+        weight: 1
+      - path: poision_geo/L_leg_geo
+        weight: 1
+      - path: poision_geo/R_arm_geo
+        weight: 1
+      - path: poision_geo/R_ear_geo
+        weight: 1
+      - path: poision_geo/R_leg_geo
+        weight: 1
+      - path: poision_geo/tail_geo
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/L_leg_jnt
+        weight: 1
+      - path: root_jnt/L_leg_jnt/joint36
+        weight: 1
+      - path: root_jnt/L_leg_jnt/joint36/joint37
+        weight: 1
+      - path: root_jnt/L_leg_jnt/joint36/joint37/joint38
+        weight: 1
+      - path: root_jnt/R_leg_jnt
+        weight: 1
+      - path: root_jnt/R_leg_jnt/joint32
+        weight: 1
+      - path: root_jnt/R_leg_jnt/joint32/joint33
+        weight: 1
+      - path: root_jnt/R_leg_jnt/joint32/joint33/joint34
+        weight: 1
+      - path: root_jnt/spine_jnt
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint39
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint39/joint40
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint39/joint40/joint41
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint39/joint40/joint41/joint42
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint43
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint43/joint44
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint43/joint44/joint45
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint43/joint44/joint45/joint46
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint57
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint57/joint58
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint57/joint58/joint59
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint60
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint60/joint61
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint60/joint61/joint62
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint54
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint54/joint55
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint54/joint55/joint56
+        weight: 1
+      - path: root_jnt/tail_jnt
+        weight: 1
+      - path: root_jnt/tail_jnt/joint64
+        weight: 1
+      - path: root_jnt/tail_jnt/joint64/joint65
+        weight: 1
+      - path: root_jnt/tail_jnt/joint64/joint65/joint66
+        weight: 1
+      - path: root_jnt/tail_jnt/joint64/joint65/joint66/joint67
+        weight: 1
+      - path: stone_Throwr_jnt
+        weight: 1
+      - path: stone_Throwr_jnt/joint20
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint14
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint15
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint16
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint16/joint17
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint22
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint27
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint27/joint18
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint27/joint18/joint19
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint27/joint28
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint29
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint29/joint30
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint23
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint23/joint24
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint23/joint24/joint25
+        weight: 1
+      - path: stoneThrower_geo
+        weight: 1
+      - path: stoneThrower_geo/BodyBack_geo
+        weight: 1
+      - path: stoneThrower_geo/BodyFront_geo
+        weight: 1
+      - path: stoneThrower_geo/frefod_geo
+        weight: 1
+      - path: stoneThrower_geo/switch1
+        weight: 1
+      - path: stoneThrower_geo/weight_geo
+        weight: 1
+      - path: stoneThrower_geo/wheel01_geo
+        weight: 1
+      - path: stoneThrower_geo/wheel02_geo
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Stun
+      takeName: Take 001
+      firstFrame: 241
+      lastFrame: 274
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: poision_geo
+        weight: 1
+      - path: poision_geo/body_geo
+        weight: 1
+      - path: poision_geo/head
+        weight: 1
+      - path: poision_geo/L_arm_geo
+        weight: 1
+      - path: poision_geo/L_ear_geo
+        weight: 1
+      - path: poision_geo/L_leg_geo
+        weight: 1
+      - path: poision_geo/R_arm_geo
+        weight: 1
+      - path: poision_geo/R_ear_geo
+        weight: 1
+      - path: poision_geo/R_leg_geo
+        weight: 1
+      - path: poision_geo/tail_geo
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/L_leg_jnt
+        weight: 1
+      - path: root_jnt/L_leg_jnt/joint36
+        weight: 1
+      - path: root_jnt/L_leg_jnt/joint36/joint37
+        weight: 1
+      - path: root_jnt/L_leg_jnt/joint36/joint37/joint38
+        weight: 1
+      - path: root_jnt/R_leg_jnt
+        weight: 1
+      - path: root_jnt/R_leg_jnt/joint32
+        weight: 1
+      - path: root_jnt/R_leg_jnt/joint32/joint33
+        weight: 1
+      - path: root_jnt/R_leg_jnt/joint32/joint33/joint34
+        weight: 1
+      - path: root_jnt/spine_jnt
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint39
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint39/joint40
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint39/joint40/joint41
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint39/joint40/joint41/joint42
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint43
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint43/joint44
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint43/joint44/joint45
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint43/joint44/joint45/joint46
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint57
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint57/joint58
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint57/joint58/joint59
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint60
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint60/joint61
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint60/joint61/joint62
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint54
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint54/joint55
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint54/joint55/joint56
+        weight: 1
+      - path: root_jnt/tail_jnt
+        weight: 1
+      - path: root_jnt/tail_jnt/joint64
+        weight: 1
+      - path: root_jnt/tail_jnt/joint64/joint65
+        weight: 1
+      - path: root_jnt/tail_jnt/joint64/joint65/joint66
+        weight: 1
+      - path: root_jnt/tail_jnt/joint64/joint65/joint66/joint67
+        weight: 1
+      - path: stone_Throwr_jnt
+        weight: 1
+      - path: stone_Throwr_jnt/joint20
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint14
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint15
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint16
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint16/joint17
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint22
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint27
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint27/joint18
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint27/joint18/joint19
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint27/joint28
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint29
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint29/joint30
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint23
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint23/joint24
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint23/joint24/joint25
+        weight: 1
+      - path: stoneThrower_geo
+        weight: 1
+      - path: stoneThrower_geo/BodyBack_geo
+        weight: 1
+      - path: stoneThrower_geo/BodyFront_geo
+        weight: 1
+      - path: stoneThrower_geo/frefod_geo
+        weight: 1
+      - path: stoneThrower_geo/switch1
+        weight: 1
+      - path: stoneThrower_geo/weight_geo
+        weight: 1
+      - path: stoneThrower_geo/wheel01_geo
+        weight: 1
+      - path: stoneThrower_geo/wheel02_geo
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Die
+      takeName: Take 001
+      firstFrame: 301
+      lastFrame: 326
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: poision_geo
+        weight: 1
+      - path: poision_geo/body_geo
+        weight: 1
+      - path: poision_geo/head
+        weight: 1
+      - path: poision_geo/L_arm_geo
+        weight: 1
+      - path: poision_geo/L_ear_geo
+        weight: 1
+      - path: poision_geo/L_leg_geo
+        weight: 1
+      - path: poision_geo/R_arm_geo
+        weight: 1
+      - path: poision_geo/R_ear_geo
+        weight: 1
+      - path: poision_geo/R_leg_geo
+        weight: 1
+      - path: poision_geo/tail_geo
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/L_leg_jnt
+        weight: 1
+      - path: root_jnt/L_leg_jnt/joint36
+        weight: 1
+      - path: root_jnt/L_leg_jnt/joint36/joint37
+        weight: 1
+      - path: root_jnt/L_leg_jnt/joint36/joint37/joint38
+        weight: 1
+      - path: root_jnt/R_leg_jnt
+        weight: 1
+      - path: root_jnt/R_leg_jnt/joint32
+        weight: 1
+      - path: root_jnt/R_leg_jnt/joint32/joint33
+        weight: 1
+      - path: root_jnt/R_leg_jnt/joint32/joint33/joint34
+        weight: 1
+      - path: root_jnt/spine_jnt
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint39
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint39/joint40
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint39/joint40/joint41
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint39/joint40/joint41/joint42
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint43
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint43/joint44
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint43/joint44/joint45
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint43/joint44/joint45/joint46
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint57
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint57/joint58
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint57/joint58/joint59
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint60
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint60/joint61
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint53/joint60/joint61/joint62
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint54
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint54/joint55
+        weight: 1
+      - path: root_jnt/spine_jnt/joint48/joint49/joint50/joint51/joint52/joint54/joint55/joint56
+        weight: 1
+      - path: root_jnt/tail_jnt
+        weight: 1
+      - path: root_jnt/tail_jnt/joint64
+        weight: 1
+      - path: root_jnt/tail_jnt/joint64/joint65
+        weight: 1
+      - path: root_jnt/tail_jnt/joint64/joint65/joint66
+        weight: 1
+      - path: root_jnt/tail_jnt/joint64/joint65/joint66/joint67
+        weight: 1
+      - path: stone_Throwr_jnt
+        weight: 1
+      - path: stone_Throwr_jnt/joint20
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint14
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint15
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint16
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint16/joint17
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint22
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint27
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint27/joint18
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint27/joint18/joint19
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint27/joint28
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint29
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint21/joint26/joint29/joint30
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint23
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint23/joint24
+        weight: 1
+      - path: stone_Throwr_jnt/joint20/joint23/joint24/joint25
+        weight: 1
+      - path: stoneThrower_geo
+        weight: 1
+      - path: stoneThrower_geo/BodyBack_geo
+        weight: 1
+      - path: stoneThrower_geo/BodyFront_geo
+        weight: 1
+      - path: stoneThrower_geo/frefod_geo
+        weight: 1
+      - path: stoneThrower_geo/switch1
+        weight: 1
+      - path: stoneThrower_geo/weight_geo
+        weight: 1
+      - path: stoneThrower_geo/wheel01_geo
+        weight: 1
+      - path: stoneThrower_geo/wheel02_geo
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

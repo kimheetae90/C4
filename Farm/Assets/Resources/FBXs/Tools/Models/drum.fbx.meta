@@ -1,0 +1,512 @@
+fileFormatVersion: 2
+guid: ecb450f11e463e547963518ee96cfa1c
+timeCreated: 1442059342
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: drum_geo
+    100004: drum_geo 1
+    100006: drum_root_jnt
+    100008: frameLeft_geo
+    100010: frameRight_geo
+    100012: joint38
+    100014: joint39
+    100016: joint40
+    100018: joint41
+    100020: joint43
+    100022: joint43 1
+    100024: joint44
+    100026: joint45
+    100028: joint45 1
+    100030: joint46
+    100032: joint46 1
+    100034: joint47
+    100036: joint48
+    100038: joint49
+    100040: joint50
+    100042: joint50 1
+    100044: joint50 2
+    100046: joint51
+    100048: joint51 1
+    100050: joint51 2
+    100052: joint52
+    100054: joint53
+    100056: wheel01_geo
+    100058: wheel02_geo
+    100060: wheel03_geo
+    100062: wheel04_geo
+    400000: //RootNode
+    400002: drum_geo
+    400004: drum_geo 1
+    400006: drum_root_jnt
+    400008: frameLeft_geo
+    400010: frameRight_geo
+    400012: joint38
+    400014: joint39
+    400016: joint40
+    400018: joint41
+    400020: joint43
+    400022: joint43 1
+    400024: joint44
+    400026: joint45
+    400028: joint45 1
+    400030: joint46
+    400032: joint46 1
+    400034: joint47
+    400036: joint48
+    400038: joint49
+    400040: joint50
+    400042: joint50 1
+    400044: joint50 2
+    400046: joint51
+    400048: joint51 1
+    400050: joint51 2
+    400052: joint52
+    400054: joint53
+    400056: wheel01_geo
+    400058: wheel02_geo
+    400060: wheel03_geo
+    400062: wheel04_geo
+    4300000: frameRight_geo
+    4300002: wheel02_geo
+    4300004: wheel01_geo
+    4300006: drum_geo
+    4300008: frameLeft_geo
+    4300010: wheel04_geo
+    4300012: wheel03_geo
+    7400000: Take 001
+    7400002: Idle
+    7400004: Move
+    7400006: Die
+    9500000: //RootNode
+    13700000: drum_geo 1
+    13700002: frameLeft_geo
+    13700004: frameRight_geo
+    13700006: wheel01_geo
+    13700008: wheel02_geo
+    13700010: wheel03_geo
+    13700012: wheel04_geo
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 150
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: drum_geo
+        weight: 1
+      - path: drum_geo/drum_geo 1
+        weight: 1
+      - path: drum_geo/frameLeft_geo
+        weight: 1
+      - path: drum_geo/frameRight_geo
+        weight: 1
+      - path: drum_geo/wheel01_geo
+        weight: 1
+      - path: drum_geo/wheel02_geo
+        weight: 1
+      - path: drum_geo/wheel03_geo
+        weight: 1
+      - path: drum_geo/wheel04_geo
+        weight: 1
+      - path: drum_root_jnt
+        weight: 1
+      - path: drum_root_jnt/joint38
+        weight: 1
+      - path: drum_root_jnt/joint43
+        weight: 1
+      - path: drum_root_jnt/joint43/joint41
+        weight: 1
+      - path: drum_root_jnt/joint44
+        weight: 1
+      - path: drum_root_jnt/joint44/joint45
+        weight: 1
+      - path: drum_root_jnt/joint44/joint46
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint49
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint49/joint50 1
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint49/joint51 1
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint49/joint52
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint49/joint52/joint50 2
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint49/joint52/joint51 2
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint50
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint51
+        weight: 1
+      - path: drum_root_jnt/joint48
+        weight: 1
+      - path: drum_root_jnt/joint48/joint39
+        weight: 1
+      - path: drum_root_jnt/joint48/joint43 1
+        weight: 1
+      - path: drum_root_jnt/joint48/joint43 1/joint40
+        weight: 1
+      - path: drum_root_jnt/joint48/joint47
+        weight: 1
+      - path: drum_root_jnt/joint48/joint47/joint45 1
+        weight: 1
+      - path: drum_root_jnt/joint48/joint47/joint46 1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 37
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: drum_geo
+        weight: 1
+      - path: drum_geo/drum_geo 1
+        weight: 1
+      - path: drum_geo/frameLeft_geo
+        weight: 1
+      - path: drum_geo/frameRight_geo
+        weight: 1
+      - path: drum_geo/wheel01_geo
+        weight: 1
+      - path: drum_geo/wheel02_geo
+        weight: 1
+      - path: drum_geo/wheel03_geo
+        weight: 1
+      - path: drum_geo/wheel04_geo
+        weight: 1
+      - path: drum_root_jnt
+        weight: 1
+      - path: drum_root_jnt/joint38
+        weight: 1
+      - path: drum_root_jnt/joint43
+        weight: 1
+      - path: drum_root_jnt/joint43/joint41
+        weight: 1
+      - path: drum_root_jnt/joint44
+        weight: 1
+      - path: drum_root_jnt/joint44/joint45
+        weight: 1
+      - path: drum_root_jnt/joint44/joint46
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint49
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint49/joint50 1
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint49/joint51 1
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint49/joint52
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint49/joint52/joint50 2
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint49/joint52/joint51 2
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint50
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint51
+        weight: 1
+      - path: drum_root_jnt/joint48
+        weight: 1
+      - path: drum_root_jnt/joint48/joint39
+        weight: 1
+      - path: drum_root_jnt/joint48/joint43 1
+        weight: 1
+      - path: drum_root_jnt/joint48/joint43 1/joint40
+        weight: 1
+      - path: drum_root_jnt/joint48/joint47
+        weight: 1
+      - path: drum_root_jnt/joint48/joint47/joint45 1
+        weight: 1
+      - path: drum_root_jnt/joint48/joint47/joint46 1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Move
+      takeName: Take 001
+      firstFrame: 51
+      lastFrame: 74
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: drum_geo
+        weight: 1
+      - path: drum_geo/drum_geo 1
+        weight: 1
+      - path: drum_geo/frameLeft_geo
+        weight: 1
+      - path: drum_geo/frameRight_geo
+        weight: 1
+      - path: drum_geo/wheel01_geo
+        weight: 1
+      - path: drum_geo/wheel02_geo
+        weight: 1
+      - path: drum_geo/wheel03_geo
+        weight: 1
+      - path: drum_geo/wheel04_geo
+        weight: 1
+      - path: drum_root_jnt
+        weight: 1
+      - path: drum_root_jnt/joint38
+        weight: 1
+      - path: drum_root_jnt/joint43
+        weight: 1
+      - path: drum_root_jnt/joint43/joint41
+        weight: 1
+      - path: drum_root_jnt/joint44
+        weight: 1
+      - path: drum_root_jnt/joint44/joint45
+        weight: 1
+      - path: drum_root_jnt/joint44/joint46
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint49
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint49/joint50 1
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint49/joint51 1
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint49/joint52
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint49/joint52/joint50 2
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint49/joint52/joint51 2
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint50
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint51
+        weight: 1
+      - path: drum_root_jnt/joint48
+        weight: 1
+      - path: drum_root_jnt/joint48/joint39
+        weight: 1
+      - path: drum_root_jnt/joint48/joint43 1
+        weight: 1
+      - path: drum_root_jnt/joint48/joint43 1/joint40
+        weight: 1
+      - path: drum_root_jnt/joint48/joint47
+        weight: 1
+      - path: drum_root_jnt/joint48/joint47/joint45 1
+        weight: 1
+      - path: drum_root_jnt/joint48/joint47/joint46 1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Die
+      takeName: Take 001
+      firstFrame: 91
+      lastFrame: 140
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: drum_geo
+        weight: 1
+      - path: drum_geo/drum_geo 1
+        weight: 1
+      - path: drum_geo/frameLeft_geo
+        weight: 1
+      - path: drum_geo/frameRight_geo
+        weight: 1
+      - path: drum_geo/wheel01_geo
+        weight: 1
+      - path: drum_geo/wheel02_geo
+        weight: 1
+      - path: drum_geo/wheel03_geo
+        weight: 1
+      - path: drum_geo/wheel04_geo
+        weight: 1
+      - path: drum_root_jnt
+        weight: 1
+      - path: drum_root_jnt/joint38
+        weight: 1
+      - path: drum_root_jnt/joint43
+        weight: 1
+      - path: drum_root_jnt/joint43/joint41
+        weight: 1
+      - path: drum_root_jnt/joint44
+        weight: 1
+      - path: drum_root_jnt/joint44/joint45
+        weight: 1
+      - path: drum_root_jnt/joint44/joint46
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint49
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint49/joint50 1
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint49/joint51 1
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint49/joint52
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint49/joint52/joint50 2
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint49/joint52/joint51 2
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint50
+        weight: 1
+      - path: drum_root_jnt/joint44/joint53/joint51
+        weight: 1
+      - path: drum_root_jnt/joint48
+        weight: 1
+      - path: drum_root_jnt/joint48/joint39
+        weight: 1
+      - path: drum_root_jnt/joint48/joint43 1
+        weight: 1
+      - path: drum_root_jnt/joint48/joint43 1/joint40
+        weight: 1
+      - path: drum_root_jnt/joint48/joint47
+        weight: 1
+      - path: drum_root_jnt/joint48/joint47/joint45 1
+        weight: 1
+      - path: drum_root_jnt/joint48/joint47/joint46 1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

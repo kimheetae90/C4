@@ -5,6 +5,9 @@ public class CMissle : BaseObject
 {
     public int power;
     public CTool tool;
+    public CMonster monster;
+    public float attackRange;
+    public float startPosX;
     
     
 
@@ -16,7 +19,6 @@ public class CMissle : BaseObject
     void Update()
     {
         UpdateState();
-        
     }
 
 
@@ -41,21 +43,54 @@ public class CMissle : BaseObject
 
     protected override void UpdateState()
     {
-        if (transform.position.x > 10)
+        if (tool != null)
         {
-			ChangeState(ObjectState.Play_Missle_Ready);
-            GameMessage gameMsg = GameMessage.Create(MessageName.Play_MissleDisappear);
-            gameMsg.Insert("missle_id", id);
-            gameMsg.Insert("tool_id", tool.id);
-            SendGameMessage(gameMsg);
+            if (transform.position.x > startPosX + attackRange)
+            {
+                ChangeState(ObjectState.Play_Missle_Ready);
+                GameMessage gameMsg = GameMessage.Create(MessageName.Play_MissleDisappear);
+                gameMsg.Insert("missle_id", id);
+                gameMsg.Insert("tool_id", tool.id);
+                SendGameMessage(gameMsg);
+            }
+        }
+        else if (monster != null) {
+            if (transform.position.x < startPosX - attackRange)
+            {
+                ChangeState(ObjectState.Play_Missle_Ready);
+                GameMessage gameMsg = GameMessage.Create(MessageName.Play_MissleDisappear);
+                gameMsg.Insert("missle_id", id);
+                gameMsg.Insert("monster_id", monster.id);
+                SendGameMessage(gameMsg);
+            }
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Play_Monster"))
+        if (tool != null)
         {
-            AttackMonster(other.GetComponent<CMonster>());
+            if (other.CompareTag("Play_Monster") && other.GetComponent<CMonster>().isAlive)
+            {
+                AttackMonster(other.GetComponent<CMonster>());
+            }
+        }
+        if (monster != null) {
+            if (other.CompareTag("Play_Player") && other.GetComponent<CPlayer>().isAlive)
+            {
+                Debug.Log("missleattackplayer");
+                AttackPlayer();
+            }
+            else if (other.CompareTag("Play_Tool") && other.GetComponent<CTool>().isAlive)
+            {
+                Debug.Log("missleattacktool");
+                AttackTool(other.GetComponent<CTool>());
+            }
+            else if (other.CompareTag("Play_Fence"))
+            {
+                AttackFence(other.GetComponent<CFence>());
+            }
+        
         }
     }
 
@@ -70,6 +105,43 @@ public class CMissle : BaseObject
         gameMsg.Insert("missle_power", power);
         gameMsg.Insert("missle_id", id);
         gameMsg.Insert("tool_id", tool.id);
+        SendGameMessage(gameMsg);
+    }
+
+    /// <summary>
+    /// 몬스터가 발사한 미사일이 플레이어에게 닿으면 호출되어 플레이어를 공격.
+    /// </summary>
+    void AttackPlayer() {
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_MissleAttackPlayer);
+        gameMsg.Insert("missle_power", power);
+        gameMsg.Insert("missle_id", id);
+        gameMsg.Insert("monster_id", monster.id);
+        SendGameMessage(gameMsg);
+    }
+    /// <summary>
+    /// 몬스터가 발사한 미사일이 툴에게 닿으면 호출되어 툴을 공격
+    /// </summary>
+    /// <param name="_tool">미사일을 맞은 툴</param>
+    void AttackTool(CTool _tool)
+    {
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_MissleAttackTool);
+        gameMsg.Insert("tool_id", _tool.GetComponent<CTool>().id);
+        gameMsg.Insert("missle_power", power);
+        gameMsg.Insert("missle_id", id);
+        gameMsg.Insert("monster_id", monster.id);
+        SendGameMessage(gameMsg);
+    }
+    /// <summary>
+    /// 몬스터가 발사한 미사일이 펜스에게 닿으면 호출되어 펜스를 공격
+    /// </summary>
+    /// <param name="_fence">미사일을 맞은 펜스.</param>
+    void AttackFence(CFence _fence)
+    {
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_MissleAttackFence);
+        gameMsg.Insert("fence_id", _fence.GetComponent<CFence>().id);
+        gameMsg.Insert("missle_power", power);
+        gameMsg.Insert("missle_id", id);
+        gameMsg.Insert("monster_id", monster.id);
         SendGameMessage(gameMsg);
     }
 
@@ -96,9 +168,17 @@ public class CMissle : BaseObject
     /// _tool을 미사일의 주인으로 함.
     /// </summary>
     /// <param name="_tool">미사일의 주인인 tool</param>
-    public void SetOwner(CTool _tool)
+    public void SetOwner(BaseObject _owner)
     {
-        tool = _tool;
+        if (_owner.GetComponent<CMonster>() != null) {
+            monster = _owner.GetComponent<CMonster>();
+            attackRange = monster.attackRange;
+        }
+        else if (_owner.GetComponent<CTool>() != null)
+        {
+            tool = _owner.GetComponent<CTool>();
+            attackRange = tool.attackRange;
+        }
     }
     
 
