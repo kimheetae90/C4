@@ -4,6 +4,8 @@ using System.Collections;
 
 public enum MessageName
 {
+    DevelopmentCenter_ActivateToolButton, // 가지고 있는 툴의 갯수만큼 버튼을 활성화 시킴.
+
     Play_MonsterAttackFence, // 몬스터가 울타리를 공격함. int형 변수, 몬스터의 id를 넘김.
 	Play_MonsterAttackFarm, // 몬스터가 농장을 공격함 int형 변수 몬스터의 id를 넘김.
     Play_MonsterAttackPlayer, // 몬스터가 플레이어를 공격함.  int형 변수 player_id와 monster_power를 넘김.
@@ -66,6 +68,14 @@ public enum GameState
     Main_LoadSelectChapter, // 버튼을 눌러서 챕터 선택 화면으로 가는 중.
     Main_LoadDevelopmentCenter, // 버튼을 눌러서 개발실로 가는 중.
     Main_LoadStorage, // 버튼을 눌러서 무기창고로 가는 중.
+
+    /* DevelopmentCenter */
+    DevelopmentCenter_Ready, // DevelopmentCenter이 처음 실행된 상태.
+    DevelopmentCenter_ActivateButton, // 사용 가능한 툴의 갯수만큼 버튼을 활성화 시키는 상태
+
+    /* Storage */
+    Storage_Ready, // Storage가 처음 실행된 상태.
+    Storage_ActivateButton, // 사용 가능한 툴의 갯수만큼 버튼을 활성화 시키는 상태
 
     /* Select Chapter */
     SelectChapter_Ready, // SelectChapter가 처음 실행 되었을 때.

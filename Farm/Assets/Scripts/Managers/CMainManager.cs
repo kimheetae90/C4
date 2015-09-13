@@ -80,6 +80,11 @@ public class CMainManager : SceneManager {
         ChangeState(GameState.Main_LoadDevelopmentCenter);
     }
 
+    public void OnClickToStartSelectChapter()
+    {
+        ChangeState(GameState.Main_LoadSelectChapter);
+    }
+
     void OnClickToLoadSelectChapter(GameObject _selectedGameObject)
 	{
         switch(_selectedGameObject.tag)
