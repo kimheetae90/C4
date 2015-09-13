@@ -8,7 +8,9 @@ public class CToolController : Controller
 
     public List<GameObject> toolList;
 
-    public Transform startPos;
+    public List<Transform> startPos;
+
+    public List<ToolName> toolName;
 
     void Awake()
     {
@@ -54,9 +56,11 @@ public class CToolController : Controller
 
         for (int i = 0; i < 3; i++)
         {
-            toolList.Add(ObjectPooler.Instance.GetGameObject("Play_Tool_PitchingMachine"));
+            //toolList.Add(ObjectPooler.Instance.GetGameObject("Play_Tool_PitchingMachine"));
+            //toolList.Add(ObjectPooler.Instance.GetGameObject("Play_Tool_Drum"));
+            toolList.Add(ObjectPooler.Instance.GetGameObject(toolName[i].ToString()));
             toolList[i].GetComponent<CTool>().SetController(this);
-            toolList[i].transform.position = new Vector3(startPos.position.x + (i*0.5f), startPos.position.y, startPos.position.z);
+            toolList[i].transform.position = startPos[i].position;
         }
 
     }
@@ -89,7 +93,7 @@ public class CToolController : Controller
     /// </summary>
     void ToolPause() {
         for (int i = 0; i < toolList.Count; i++) {
-            toolList[i].GetComponent<CTool>().ReadyToPause();
+            toolList[i].GetComponent<CTool>().ChangeStateToPause();
         }
     }
     /// <summary>
@@ -98,7 +102,7 @@ public class CToolController : Controller
     void ResetStage() {
         for (int i = 0; i < toolList.Count; i++)
         {
-            toolList[i].transform.position = new Vector3(startPos.position.x + (i * 0.5f), startPos.position.y, startPos.position.z);
+            toolList[i].transform.position = startPos[i].position;
             toolList[i].GetComponent<CTool>().Reset();
         }
     }

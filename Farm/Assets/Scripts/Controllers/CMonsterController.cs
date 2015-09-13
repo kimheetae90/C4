@@ -5,7 +5,9 @@ using System.Linq;
 
 public class CMonsterController : Controller
 {
-    List<GameObject> monsterList;
+    public List<GameObject> monsterList;
+
+    public List<MonsterName> monsterName;
 
     public int oneWavePerMonster = 12;//한 웨이브당 생성되는 몬스터 마리 수.
     int oneWavePerMonsterCount;
@@ -43,6 +45,9 @@ public class CMonsterController : Controller
                 break;
             case MessageName.Play_MonsterAttackTool:
                 MonsterAttackTool((int)_gameMessage.Get("tool_id"), (int)_gameMessage.Get("monster_power"));
+                break;
+            case MessageName.Play_MonsterShotMissle:
+                MonsterShotMissle((int)_gameMessage.Get("monster_id"), (Vector3)_gameMessage.Get("monster_position"));
                 break;
             case MessageName.Play_MonsterDamagedByMissle:
                 MonsterDamagedByMissle((int)_gameMessage.Get("monster_id"), (int)_gameMessage.Get("missle_power"));
@@ -88,10 +93,10 @@ public class CMonsterController : Controller
     void Init()
     {
         monsterList = new List<GameObject>();
-
+        oneWavePerMonster = monsterName.Count;
         for (int i = 0; i < oneWavePerMonster; i++)
         {
-            monsterList.Add(ObjectPooler.Instance.GetGameObject("Mouse"));
+            monsterList.Add(ObjectPooler.Instance.GetGameObject(monsterName[i].ToString()));
             monsterList[i].GetComponent<CMonster>().SetController(this);
             monsterList[i].SetActive(false);
             monsterList[i].transform.position = new Vector3(startPos.position.x, startPos.position.y, startPos.position.z);
@@ -141,9 +146,9 @@ public class CMonsterController : Controller
             Vector3 targetPosition = new Vector3(startPosition[_lineNum].position.x-100, startPosition[_lineNum].position.y, startPosition[_lineNum].position.z);
             monsterList[currentIter].SetActive(true);
             monsterList[currentIter].transform.position = startPosition[_lineNum].position;
-            monsterList[currentIter].GetComponent<CMonster>().Reset();
+            monsterList[currentIter].GetComponent<CMonster>().ChangeStateToReset();
             monsterList[currentIter].GetComponent<CMove>().SetTargetPos(targetPosition);
-            monsterList[currentIter].GetComponent<CMonster>().ReadyToMove();
+            monsterList[currentIter].GetComponent<CMonster>().ChangeStateToMove();
             currentIter++;
             if (currentIter >= oneWavePerMonster)
             {
@@ -196,7 +201,7 @@ public class CMonsterController : Controller
     /// <param name="_monster_power">공격한 Monster의 Power</param>
     void MonsterAttackFence(int _fence_id, int _monster_power)
     {
-        GameMessage gameMsg = GameMessage.Create(MessageName.Play_FenceDamagedByFence);
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_FenceDamagedByMonster);
         gameMsg.Insert("fence_id", _fence_id);
         gameMsg.Insert("monster_power", _monster_power);
         SendGameMessage(gameMsg);
@@ -226,11 +231,22 @@ public class CMonsterController : Controller
         {
             if (monsterList[i].activeInHierarchy && monsterList[i].GetComponent<CMonster>().touchedFenceID == _fenceid)
                 {
-                    monsterList[i].GetComponent<CMonster>().ReadyToMove();
+                    monsterList[i].GetComponent<CMonster>().ChangeStateToMove();
                     monsterList[i].GetComponent<CMonster>().touchedFenceID = 0;
                 }
         }
     
+    }
+    /// <summary>
+    /// 몬스터가 미사일을 발사해서 공격함.
+    /// </summary>
+    /// <param name="_id">미사일을 발사한 몬스터의 id</param>
+    /// <param name="_monsterPos">발사한지점. shotPos</param>
+    void MonsterShotMissle(int _id, Vector3 _monsterPos) {
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_MissleOrderedByMonster);
+        gameMsg.Insert("monster_id", _id);
+        gameMsg.Insert("monster_position", _monsterPos);
+        SendGameMessage(gameMsg);
     }
 
     /// <summary>
@@ -254,7 +270,7 @@ public class CMonsterController : Controller
     /// <param name="_id">죽은 monster의 id</param>
     void MonsterDied(int _id)
     {
-        FindMonsterOfID(_id).GetComponent<Collider>().enabled = false;
+        //FindMonsterOfID(_id).GetComponent<Collider>().enabled = false;
         oneWavePerMonsterCount++;
         StartCoroutine(MonsterDie(_id));
         if (oneWavePerMonsterCount >= oneWavePerMonster)
@@ -276,10 +292,10 @@ public class CMonsterController : Controller
             {
             int _lineNum = monsterList[i].GetComponent<CMonster>().lineNumber-1;
             Vector3 returnPosition = new Vector3(startPosition[_lineNum].position.x+10, startPosition[_lineNum].position.y, startPosition[_lineNum].position.z);
-            monsterList[i].GetComponent<Collider>().enabled = false;
+            //monsterList[i].GetComponent<Collider>().enabled = false;
             monsterList[i].GetComponent<CMove>().SetTargetPos(returnPosition);
             
-                monsterList[i].GetComponent<CMonster>().ReadyToReturn();
+            monsterList[i].GetComponent<CMonster>().ChangeStateToReturn();
             }
             
         }
@@ -291,7 +307,7 @@ public class CMonsterController : Controller
         {
             if (monsterList[i].activeInHierarchy)
             {
-                monsterList[i].GetComponent<CMonster>().ReadyToPause();
+                monsterList[i].GetComponent<CMonster>().ChangeStateToPause();
             }
 
         }

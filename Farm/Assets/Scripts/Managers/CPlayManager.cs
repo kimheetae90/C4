@@ -147,10 +147,10 @@ public class CPlayManager : SceneManager {
     /// </summary>
 	void Init()
 	{
-        stageNum = (int)GameMaster.Instance.tempData.Get("stageNum");
-        stageName = (string)GameMaster.Instance.tempData.Get("stageName");
-        chapterNum = (int)GameMaster.Instance.tempData.Get("chapterNum");
-        chapterName = (string)GameMaster.Instance.tempData.Get("chapterName");
+        //stageNum = (int)GameMaster.Instance.tempData.Get("stageNum");
+        //stageName = (string)GameMaster.Instance.tempData.Get("stageName");
+        //chapterNum = (int)GameMaster.Instance.tempData.Get("chapterNum");
+        //chapterName = (string)GameMaster.Instance.tempData.Get("chapterName");
         GameMaster.Instance.tempData.Clear();
 		wave = 0;
         ChangeState(GameState.Play_Management);

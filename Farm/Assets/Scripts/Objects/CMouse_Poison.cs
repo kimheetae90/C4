@@ -3,12 +3,11 @@ using System.Collections;
 
 public class CMouse_Poison : CMonster {
 
-	// Use this for initialization
-    protected override void OnTriggerStay(Collider other)
+    protected override void MonsterAttack()
     {
-    }
-
-    protected override void OnTriggerExit(Collider other)
-    {
+        MonsterMoveStop();
+        Shoot();
+        monsterAnimation.Reset();
+        monsterAnimation.Attack();
     }
 }

@@ -38,8 +38,7 @@ public class CPlayerController : Controller
                 if (playerState != ObjectState.Play_Player_Die)
                 {
                     ConfirmSelectedGameObject(_gameMessage);
-
-                    if (selectedGameObject.tag == "Play_Tool" && player.GetComponent<CPlayer>().canHold)
+                    if (selectedGameObject.transform.tag == "Play_Tool" && player.GetComponent<CPlayer>().canHold)
                     {
                         HoldOnTool(player, (GameObject)_gameMessage.Get("SelectedGameObject"), (Vector3)_gameMessage.Get("ClickPosition"));
                     }
@@ -101,7 +100,7 @@ public class CPlayerController : Controller
         {//tool을 들고있을때
             _targetPos = new Vector3(_targetPos.x - 2, _targetPos.y, _targetPos.z);
             move.SetTargetPos(_targetPos);
-            holdedTool.GetComponent<CTool>().ReadyToMove();
+            holdedTool.GetComponent<CTool>().ChangeStateToMove();
             if (_targetPos.x > player.transform.position.x)
             {
                 playerScript.ChangeStateToMoveFrontWithTool();
@@ -197,10 +196,13 @@ public class CPlayerController : Controller
         {
             if (Vector3.Distance(player.transform.position, targetPos) < 0.1f)
             {
-                isAdjacent = true;
-                selectedGameObject.GetComponent<CTool>().HoldByPlayer(player);
-                playerScript.HoldTool(selectedGameObject);
-                holdedTool = selectedGameObject;
+                if (selectedGameObject.GetComponent<CTool>() != null)
+                {
+                    isAdjacent = true;
+                    selectedGameObject.GetComponent<CTool>().HoldByPlayer(player);
+                    playerScript.HoldTool(selectedGameObject);
+                    holdedTool = selectedGameObject;
+                }
             }
             yield return null;          
         }

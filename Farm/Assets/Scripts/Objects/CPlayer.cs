@@ -221,6 +221,8 @@ public class CPlayer : BaseObject
             canHold = false;
             ChangeState(ObjectState.Play_Player_Idle_With_Tool);
             transform.localScale = new Vector3(1, 1, 1);
+
+            moveScript.SetMoveSpeed(m_moveSpeed-tool.GetComponent<CTool>().weight);
         }
     }
 
@@ -233,6 +235,10 @@ public class CPlayer : BaseObject
         if (canHold == false) {
             ChangeState(ObjectState.Play_Player_Ready);
             canHold = true;
+
+            m_moveSpeed = moveSpeed;
+            moveScript.SetMoveSpeed(m_moveSpeed);
+
         }
     }
     /// <summary>
@@ -255,4 +261,6 @@ public class CPlayer : BaseObject
     {
         return objectState;
     }
+
 }
+

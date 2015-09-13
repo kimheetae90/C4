@@ -16,18 +16,24 @@ public class CTool : BaseObject
     public bool isAlive;
     public bool canHeld;
     public bool shotable;
+    public Transform shotPosition;
+    public MissleName missleName;
+    
 
 
-    List<BaseObject> listLatestFindObjects;
+//    List<BaseObject> listLatestFindObjects;
     GameObject player;
     CLineHelper lineHelper;
     CToolAnimation toolAnimation;
+    CAttackRange attackRangeScript;
 
     void Awake()
     {
-        listLatestFindObjects = new List<BaseObject>();
         lineHelper = GetComponent<CLineHelper>();
         toolAnimation = GetComponent<CToolAnimation>();
+        if(GetComponentInChildren<CAttackRange>()!=null){
+            attackRangeScript = GetComponentInChildren<CAttackRange>();
+        }
         
     }
     void Start() {
@@ -59,7 +65,6 @@ public class CTool : BaseObject
             case ObjectState.Play_Tool_Reset:
                 break;
             case ObjectState.Play_Tool_Pause:
-                StopAttack();
                 break;
             case ObjectState.Play_Tool_Ready:
                 ToolReady();
@@ -93,6 +98,11 @@ public class CTool : BaseObject
         shotable = true;
         m_hp = hp;
         ChangeState(ObjectState.Play_Tool_Ready);
+
+        if (attackRangeScript != null) {
+            attackRangeScript.StopCoroutine("ToolAttack");
+        }
+        
     }
 
     void ToolReady() {
@@ -121,9 +131,13 @@ public class CTool : BaseObject
     void ToolDie() {
         toolAnimation.Reset();
         toolAnimation.Die();
-        StopAttack();
+        if (attackRangeScript != null)
+        {
+            attackRangeScript.StopCoroutine("ToolAttack");
+        }
     }
 
+    /*
     /// <summary>
     /// 공격할 수 있는 상황일 때, 2초마다 공격을 명령하는 함수
     /// </summary>
@@ -132,34 +146,47 @@ public class CTool : BaseObject
     {
         while (true)
         {
-            yield return new WaitForSeconds(attackSpeed);
-            if (CheckCanAttack() && canHeld)
+            if (shotable)
             {
-                ChangeState(ObjectState.Play_Tool_ReadyToShot);
-                yield return new WaitForSeconds(attackReadySpeed);
-                if (objectState == ObjectState.Play_Tool_ReadyToShot)
+                shotable = false;
+                yield return new WaitForSeconds(attackSpeed);
+                if (CheckCanAttack() && canHeld)
                 {
-                    ChangeState(ObjectState.Play_Tool_Shot);
+                    ChangeState(ObjectState.Play_Tool_ReadyToShot);
+                    yield return new WaitForSeconds(attackReadySpeed);
+                    if (objectState == ObjectState.Play_Tool_ReadyToShot)
+                    {
+                        ChangeState(ObjectState.Play_Tool_Shot);
+                    }
                 }
+                if (objectState != ObjectState.Play_Tool_Move)
+                {
+                    ChangeState(ObjectState.Play_Tool_Ready);
+                }
+
             }
-                ChangeState(ObjectState.Play_Tool_Ready);
-            
-            if (isAlive==false) {
+            else {
+                yield return null;
+            }
+
+            if (isAlive == false)
+            {
                 break;
             }
             
 	    }
     }
+     * */
     /// <summary>
     /// 공격 가능한 상태(shootable)이면 미사일을 발사하는 함수.
     /// </summary>
     void Shoot() {
         GameMessage gameMsg = GameMessage.Create(MessageName.Play_ToolAttackMonster);
         gameMsg.Insert("tool_id", id);
-        gameMsg.Insert("tool_position", transform.position);
+        gameMsg.Insert("tool_position", shotPosition.position);
         SendGameMessage(gameMsg);
     }
-
+    /*
     /// <summary>
     /// 공격 가능한 상태가 되면 Attack 코루틴을 start하는 함수.
     /// </summary>
@@ -175,14 +202,14 @@ public class CTool : BaseObject
     {
         StopCoroutine("Attack");
     }
-
+    */
     /// <summary>
     /// 공격할 수 있는 상황인지 판단하여 bool값을 리턴하는 함수.
     /// </summary>
     /// <returns></returns>
-    bool CheckCanAttack()
+    public bool CheckCanAttack()
     {
-        if (transform.position.x > -18.5f && FindObjectsInRadious(attackRange, "Play_Monster"))
+        if (transform.position.x > -18.5f &&shotable && canHeld && isAlive)
         {
             return true;
         }
@@ -197,6 +224,7 @@ public class CTool : BaseObject
     /// <param name="radius"></param>
     /// <param name="tag"></param>
     /// <returns></returns>
+    /*
     public bool FindObjectsInRadious(float radius, String tag)
     {
         listLatestFindObjects.Clear();
@@ -228,7 +256,7 @@ public class CTool : BaseObject
         }
         );
     }
-
+    */
     /// <summary>
     /// 파라미터로 넘겨준 데미지 값 만큼 hp를 깎는 함수. 0 이하가 되면 툴을 사용불가능한 상태로 만듦.
     /// </summary>
@@ -245,7 +273,6 @@ public class CTool : BaseObject
                 GameMessage gameMsg = GameMessage.Create(MessageName.Play_ToolDiedWhileHelded);
                 gameMsg.Insert("tool", this.gameObject);
                 SendGameMessageToSceneManage(gameMsg);
-                //player.GetComponent<CPlayer>().PutDownTool(this.gameObject);
             }
         }
     }
@@ -258,12 +285,19 @@ public class CTool : BaseObject
     {
         if (canHeld)
         {
-            Debug.Log("held");
             player = _player;
             canHeld = false;
+            shotable = false;
 
-            ChangeState(ObjectState.Play_Tool_Ready);
-            StopAttack();
+            if (attackRangeScript != null)
+            {
+                attackRangeScript.StopCoroutine("ToolAttack");
+            }
+
+            if (isAlive)
+            {
+                ChangeState(ObjectState.Play_Tool_Ready);
+            }
         }
     }
 
@@ -278,9 +312,12 @@ public class CTool : BaseObject
             player = null;
             lineHelper.OrderingYPos(gameObject);
             canHeld = true;
-
-            ChangeState(ObjectState.Play_Tool_Ready);
-            StartAttack();
+            shotable = true;
+            if (isAlive)
+            {
+                ChangeState(ObjectState.Play_Tool_Ready);
+            }
+            //StartAttack();
         }
     }
 
@@ -295,10 +332,19 @@ public class CTool : BaseObject
     /// <summary>
     /// 툴의 State를 Pause로 바꿈. 외부함수에서 사용.
     /// </summary>
-    public void ReadyToPause() {
+    public void ChangeStateToPause() {
         ChangeState(ObjectState.Play_Tool_Pause);
     }
-    public void ReadyToMove() {
+    public void ChangeStateToReady() {
+        ChangeState(ObjectState.Play_Tool_Ready);
+    }
+    public void ChangeStateToMove() {
         ChangeState(ObjectState.Play_Tool_Move);
+    }
+    public void ChangeStateToReadyToShot() {
+        ChangeState(ObjectState.Play_Tool_ReadyToShot);
+    }
+    public void ChangeStateToShot(){
+        ChangeState(ObjectState.Play_Tool_Shot);
     }
 }
