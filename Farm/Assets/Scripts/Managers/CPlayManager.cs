@@ -11,6 +11,7 @@ public class CPlayManager : SceneManager {
 	int wave;
 	public const int maxWave = 5;
 
+    public float readyForStageTime = 10f;
     public float managementTime =5f;
     public float waveLimitTime = 30f;
     public float limitTime;
@@ -24,6 +25,7 @@ public class CPlayManager : SceneManager {
 	
 	void Start()
 	{
+        ChangeState(GameState.Play_Ready);
         //ObjectPooler.Instance.GetGameObject("Background");
 	}
 	
@@ -33,14 +35,17 @@ public class CPlayManager : SceneManager {
 	
 	public override void DispatchInputData (InputData _inputData)
 	{
-        switch(_inputData.keyState)
+        if (gameState == GameState.Play_Start || gameState == GameState.Play_Management)
         {
-            case InputData.KeyState.Press:
-                CameraMove(_inputData);
-                break;
-            case InputData.KeyState.Up:
-                BroadcastClickMsg(_inputData);
-                break;
+            switch (_inputData.keyState)
+            {
+                case InputData.KeyState.Press:
+                    CameraMove(_inputData);
+                    break;
+                case InputData.KeyState.Up:
+                    BroadcastClickMsg(_inputData);
+                    break;
+            }
         }
 	}
 
@@ -114,7 +119,7 @@ public class CPlayManager : SceneManager {
         case GameState.Play_Reset: Reset();
 			break;
 
-		case GameState.Play_Ready:	
+        case GameState.Play_Ready: Ready();
 			break;
 
 		case GameState.Play_Start:
@@ -153,7 +158,8 @@ public class CPlayManager : SceneManager {
         //chapterName = (string)GameMaster.Instance.tempData.Get("chapterName");
         GameMaster.Instance.tempData.Clear();
 		wave = 0;
-        ChangeState(GameState.Play_Management);
+        //ChangeState(GameState.Play_Ready);
+        //ChangeState(GameState.Play_Management);
 		//ChangeState (GameState.Play_Reset);
         UnPause();
 	}
@@ -173,6 +179,17 @@ public class CPlayManager : SceneManager {
         ChangeState (GameState.Play_Start);
 	}
 
+    /// <summary>
+    /// 스테이지가 start 되기 전 카메라가 이동하는등의 상태.
+    /// </summary>
+    void Ready() {
+        StartCoroutine("ReadyForStage");
+    }
+
+    IEnumerator ReadyForStage() {
+        yield return new WaitForSeconds(readyForStageTime);
+        ChangeState(GameState.Play_Management);
+    }
     
     /// <summary>
     /// wavetime(밤시간)일때 항상 불려져서 ui가 남은 시간만큼 보이게 함.
@@ -279,6 +296,7 @@ public class CPlayManager : SceneManager {
     void StageClear() {
 
         Debug.Log("스테이지 클리어");
+        Pause();
         GameMessage gameMsg = GameMessage.Create(MessageName.Play_StageClear);
         Broadcast(gameMsg);
     }
@@ -374,8 +392,9 @@ public class CPlayManager : SceneManager {
 
         wave = 0;
         UnPause();
-        ChangeState(GameState.Play_Management);
         GameMessage gameMsg = GameMessage.Create(MessageName.Play_StageRestart);
         Broadcast(gameMsg);
+
+        ChangeState(GameState.Play_Management);
     }
 }

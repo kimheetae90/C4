@@ -30,8 +30,8 @@ public class CPlayerController : Controller
     {
         switch (_gameMessage.messageName)
         {
-            case MessageName.Play_PlayerDamagedByMonster:
-                PlayerAttackedByEnemy(player, (int)_gameMessage.Get("monster_power"));
+            case MessageName.Play_PlayersObjectDamagedByMonster:
+                PlayerAttackedByEnemy((int)_gameMessage.Get("object_id"), (int)_gameMessage.Get("monster_power"));
                 break;
             case MessageName.Play_PlayerMove:
                 playerState = player.GetComponent<CPlayer>().GetPlayerState();
@@ -69,7 +69,7 @@ public class CPlayerController : Controller
         player = ObjectPooler.Instance.GetGameObject("Play_Player");
         playerScript = player.GetComponent<CPlayer>();
         playerScript.SetController(this);
-        player.transform.position = new Vector3(startPos.position.x, startPos.position.y + 0.5f, startPos.position.z);
+        player.transform.position = new Vector3(startPos.position.x-3, startPos.position.y, startPos.position.z);
         isAdjacent = false;
         move = player.GetComponent<CMove>();
     }
@@ -79,9 +79,12 @@ public class CPlayerController : Controller
     /// </summary>
     /// <param name="_player"></param>
     /// <param name="_damage"></param>
-    void PlayerAttackedByEnemy(GameObject _player, int _damage)
+    void PlayerAttackedByEnemy(int _id, int _damage)
     {
-        playerScript.Damaged(_damage);
+        if (_id == playerScript.id)
+        {
+            playerScript.Damaged(_damage);
+        }
     }
 
     /// <summary>
@@ -232,7 +235,7 @@ public class CPlayerController : Controller
     /// 게임을 다시 시작하면 불러지는 함수.
     /// </summary>
     void ResetStage() {
-        player.transform.position = new Vector3(startPos.position.x, startPos.position.y + 0.5f, startPos.position.z);
+        player.transform.position = new Vector3(startPos.position.x-2, startPos.position.y, startPos.position.z);
         isAdjacent = false;
         playerScript.Reset();
         

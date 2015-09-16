@@ -321,6 +321,17 @@ public abstract class CMonster : BaseObject
     }
 
     /// <summary>
+    /// 몬스터가 플레이어진영의 오브젝트를 공격함.
+    /// </summary>
+    /// <param name="baseObject"></param>
+    public void AttackPlayersObject(BaseObject baseObject) {
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_MonsterAttackPlayersObject);
+        gameMsg.Insert("object_id", baseObject.id);
+        gameMsg.Insert("monster_power", power);
+        SendGameMessage(gameMsg);
+    }
+    /*
+    /// <summary>
     /// 몬스터가 Player에게 닿아있는 상태일때 코루틴에서 불려지는 함수.
     /// 몬스터가 공격 가능한 상태일때 MonsterController에게 게임메세지 Play_MonsterAttackPlayer를 보낸다.
     /// </summary>
@@ -356,6 +367,7 @@ public abstract class CMonster : BaseObject
             gameMsg.Insert("monster_power", power);
             SendGameMessage(gameMsg);
     }
+     */ 
     /// <summary>
     /// 모든 공격을 멈춤.
     /// </summary>

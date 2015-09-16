@@ -8,17 +8,23 @@ public class CToolController : Controller
 
     public List<GameObject> toolList;
 
+    public List<int> toolID;
+
     public List<Transform> startPos;
 
-    public List<ToolName> toolName;
+    //public List<ToolName> toolName;
 
     void Awake()
     {
+        toolID.Add(0);
+        toolID.Add(1);
+        toolID.Add(1);
         Init();
     }
 
     protected override void Start()
     {
+        
         base.Start();
     }
 
@@ -26,8 +32,8 @@ public class CToolController : Controller
     {
         switch (_gameMessage.messageName)
         {
-            case MessageName.Play_ToolDamagedByMonster:
-                ToolAttackedByEnemy((int)_gameMessage.Get("tool_id"), (int)_gameMessage.Get("monster_power"));
+            case MessageName.Play_PlayersObjectDamagedByMonster:
+                ToolAttackedByEnemy((int)_gameMessage.Get("object_id"), (int)_gameMessage.Get("monster_power"));
                 break;
             case MessageName.Play_ToolAttackMonster:
                 ToolAttackEnemy((int)_gameMessage.Get("tool_id"), (Vector3)_gameMessage.Get("tool_position"));
@@ -54,11 +60,12 @@ public class CToolController : Controller
     {
         toolList = new List<GameObject>();
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < toolID.Count; i++)
         {
             //toolList.Add(ObjectPooler.Instance.GetGameObject("Play_Tool_PitchingMachine"));
             //toolList.Add(ObjectPooler.Instance.GetGameObject("Play_Tool_Drum"));
-            toolList.Add(ObjectPooler.Instance.GetGameObject(toolName[i].ToString()));
+            ToolName toolNam = (ToolName)toolID[i];
+            toolList.Add(ObjectPooler.Instance.GetGameObject(toolNam.ToString()));
             toolList[i].GetComponent<CTool>().SetController(this);
             toolList[i].transform.position = startPos[i].position;
         }
@@ -85,7 +92,10 @@ public class CToolController : Controller
     /// <param name="_monster_power"></param>
     void ToolAttackedByEnemy(int _id, int _monster_power)
     {
-        FindToolOfID(_id).GetComponent<CTool>().Damaged(_monster_power);
+        if (FindToolOfID(_id)!= null)
+        {
+            FindToolOfID(_id).GetComponent<CTool>().Damaged(_monster_power);
+        }
     }
 
     /// <summary>

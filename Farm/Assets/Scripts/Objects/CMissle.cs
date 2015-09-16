@@ -76,24 +76,22 @@ public class CMissle : BaseObject
             }
         }
         if (monster != null) {
-            if (other.CompareTag("Play_Player") && other.GetComponent<CPlayer>().isAlive)
+            if ((other.CompareTag("Play_Player") && other.GetComponent<CPlayer>().isAlive) || (other.CompareTag("Play_Tool") && other.GetComponent<CTool>().isAlive) || other.CompareTag("Play_Fence"))
             {
-                Debug.Log("missleattackplayer");
-                AttackPlayer();
+                AttackPlayersObject(other.GetComponent<BaseObject>());
             }
-            else if (other.CompareTag("Play_Tool") && other.GetComponent<CTool>().isAlive)
-            {
-                Debug.Log("missleattacktool");
-                AttackTool(other.GetComponent<CTool>());
-            }
-            else if (other.CompareTag("Play_Fence"))
-            {
-                AttackFence(other.GetComponent<CFence>());
-            }
-        
         }
     }
 
+    void AttackPlayersObject(BaseObject _baseObject) {
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_MissleAttackPlayersObject);
+        gameMsg.Insert("object_id", _baseObject.GetComponent<BaseObject>().id);
+        gameMsg.Insert("missle_power", power);
+        gameMsg.Insert("missle_id", id);
+        gameMsg.Insert("monster_id", monster.id);
+        SendGameMessage(gameMsg);
+    }
+    
     /// <summary>
     /// 미사일이 몬스터에 닿으면 호출되어 몬스터를 공격하는 함수.
     /// PlayManager를 통해 MonsterController에게 게임메세지 Play_MissleAttackMonster를 보낸다.
@@ -107,7 +105,7 @@ public class CMissle : BaseObject
         gameMsg.Insert("tool_id", tool.id);
         SendGameMessage(gameMsg);
     }
-
+    /*
     /// <summary>
     /// 몬스터가 발사한 미사일이 플레이어에게 닿으면 호출되어 플레이어를 공격.
     /// </summary>
@@ -143,7 +141,7 @@ public class CMissle : BaseObject
         gameMsg.Insert("missle_id", id);
         gameMsg.Insert("monster_id", monster.id);
         SendGameMessage(gameMsg);
-    }
+    }*/
 
     void MisslePause() {
         GetComponent<CMove>().StopMoveToTarget();

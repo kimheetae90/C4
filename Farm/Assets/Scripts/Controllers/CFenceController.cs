@@ -23,8 +23,8 @@ public class CFenceController : Controller
     {
         switch (_gameMessage.messageName)
         {
-            case MessageName.Play_FenceDamagedByMonster:
-                FenceAttackedByEnemy((int)_gameMessage.Get("fence_id"), (int)_gameMessage.Get("monster_power"));
+            case MessageName.Play_PlayersObjectDamagedByMonster:
+                FenceAttackedByEnemy((int)_gameMessage.Get("object_id"), (int)_gameMessage.Get("monster_power"));
                 break;
             case MessageName.Play_FenceDie: FenceDie((int)_gameMessage.Get("fence_id"));
                 break;
@@ -68,7 +68,10 @@ public class CFenceController : Controller
     /// <param name="_monster_power"></param>
     void FenceAttackedByEnemy(int _id, int _monster_power)
     {
-        FindFenceOfID(_id).GetComponent<CFence>().Damaged(_monster_power);
+        if (FindFenceOfID(_id) != null)
+        {
+            FindFenceOfID(_id).GetComponent<CFence>().Damaged(_monster_power);
+        }
     }
 
     /// <summary>

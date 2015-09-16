@@ -10,9 +10,13 @@ public class CPlay_UIController : Controller
     public Text waveText;
     public Image waveTimer;
     public Image maintainTimer;
+    public Image timerBack;
+    public Image ready;
+    public Image start;
 
     public GameObject clearPopup;
     public GameObject failedPopup;
+    float readytime;
     void Awake()
     {
         ResetUI();
@@ -21,6 +25,7 @@ public class CPlay_UIController : Controller
     protected override void Start()
     {
         base.Start();
+        ReadyForStage(10f);
         
     }
 	// Use this for initialization
@@ -50,6 +55,38 @@ public class CPlay_UIController : Controller
         HidePopup();
         WavetimerFill(0.0f);
         MaintainTimerFill(1.0f);
+        ready.gameObject.SetActive(false);
+        start.gameObject.SetActive(false);
+    }
+    void HideUI() {
+        waveText.gameObject.SetActive(false);
+        WavetimerFill(0.0f);
+        MaintainTimerFill(0.0f);
+        timerBack.gameObject.SetActive(false);
+    }
+    void ShowUI() {
+        waveText.gameObject.SetActive(true);
+        WavetimerFill(0.0f);
+        MaintainTimerFill(1.0f);
+        timerBack.gameObject.SetActive(true);
+    }
+    void ReadyForStage(float _readytime) {
+        readytime = _readytime;
+        HideUI();
+        StartCoroutine("ReadyForStart");
+    }
+
+    IEnumerator ReadyForStart() {
+        yield return new WaitForSeconds(readytime-2f) ;
+        //ready
+        ready.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        //start
+        ready.gameObject.SetActive(false);
+        start.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        start.gameObject.SetActive(false);
+        ShowUI();
     }
     /// <summary>
     /// 정비시간이 끝나고 다음 웨이브가 시작되면 웨이브 카운트 TEXT를 바꿔준다.

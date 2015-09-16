@@ -13,6 +13,8 @@ public class CCameraController : Controller
     public int leftEndXPos;
     public int rightEndXPos;
 
+    float readytime;
+
     void Awake()
     {
     }
@@ -20,6 +22,7 @@ public class CCameraController : Controller
     protected override void Start()
     {
         base.Start();
+        Ready(10f);
     }
     
     public override void DispatchGameMessage(GameMessage _gameMessage)
@@ -68,6 +71,19 @@ public class CCameraController : Controller
             cam.GetComponent<CMove>().SetMoveSpeed(Mathf.Abs(clickPos.x - dragPos.x) * 10);
             cam.GetComponent<CMove>().StartMove();
         }
+    }
+    /// <summary>
+    /// 스테이지를 시작하기 전 카메라 무빙을 해주는 함수.
+    /// </summary>
+    /// <param name="_readytime">스테이지 시작전의 준비시간.</param>
+    void Ready(float _readytime) {
+        readytime = _readytime;
+        cam.transform.position = new Vector3(leftEndXPos,cam.transform.position.y,cam.transform.position.z);
+        Vector3 targetPos = new Vector3(-5.8f, cam.transform.position.y, cam.transform.position.z);
+        cam.GetComponent<CMove>().SetTargetPos(targetPos);
+        //cam.GetComponent<CMove>().SetMoveSpeed(2);
+        cam.GetComponent<CMove>().SetMoveSpeed(Vector3.Distance(transform.position, targetPos) / (readytime - 4f));
+        cam.GetComponent<CMove>().StartMove();
     }
     
 }
