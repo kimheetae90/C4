@@ -3,7 +3,9 @@ using System.Collections;
 
 public class CSelectChapterManager : SceneManager
 {
-
+    public GameObject buttonPrefab;
+    int chapterCount = 5;
+    CChapter chapter;
     protected override void Awake()
     {
         base.Awake();
@@ -42,6 +44,7 @@ public class CSelectChapterManager : SceneManager
         switch (gameState)
         {
             case GameState.SelectChapter_Ready:
+                CreateChapterButtons(chapterCount);
                 break;
             case GameState.SelectChapter_LoadSelectStage:
                 StartSelectStage();
@@ -91,5 +94,21 @@ public class CSelectChapterManager : SceneManager
         while (async.isDone == false)
             yield return null;
     }
-}
 
+    void CreateChapterButtons(int ChapterCount)
+    {
+        GameObject chapterObject = new GameObject("Chapter");
+        chapterObject.tag = "SelectChapter_Chapter";
+        for (int i = 0; i < ChapterCount; i++)
+        {
+            GameObject button = MonoBehaviour.Instantiate(buttonPrefab) as GameObject;
+            chapter = button.GetComponent<CChapter>();
+            chapter.chapterName = "Chapter" + i;
+            chapter.chapterNum = i;
+            button.transform.SetParent(chapterObject.transform);
+            float xPos = -6 + 3 * i;
+            button.name = "Chapter_" + i; // name을 변경
+            button.transform.position = new Vector3(xPos, 0, 0);
+        }
+    }
+}
