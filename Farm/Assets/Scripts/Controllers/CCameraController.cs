@@ -32,6 +32,9 @@ public class CCameraController : Controller
             case MessageName.Play_CameraMove:
                 CameraMove((InputData)_gameMessage.Get("inputData"));
                 break;
+            case MessageName.Play_SkipReadyState:
+                SkipReadyState();
+                break;
         }
     }
 
@@ -85,5 +88,14 @@ public class CCameraController : Controller
         cam.GetComponent<CMove>().SetMoveSpeed(Vector3.Distance(transform.position, targetPos) / (readytime - 4f));
         cam.GetComponent<CMove>().StartMove();
     }
+    /// <summary>
+    /// ready상태일때 skip버튼이 눌리면 카메라를 바로 기본위치로 이동시킴.
+    /// </summary>
+    void SkipReadyState() {
+        cam.transform.position = new Vector3(-5.8f, cam.transform.position.y, cam.transform.position.z);
+        cam.GetComponent<CMove>().StopMoveToTarget();
+    }
+
+    
     
 }

@@ -5,7 +5,7 @@ public class CToolAttackRange : CAttackRange {
 
     CTool tool;
 	// Use this for initialization
-	void Start () {
+	protected void Start () {
         base.Start();
         attackRange = GetComponentInParent<CTool>().attackRange;
         tool = transform.parent.GetComponent<CTool>();

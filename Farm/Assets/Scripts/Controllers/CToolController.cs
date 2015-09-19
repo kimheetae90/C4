@@ -17,7 +17,7 @@ public class CToolController : Controller
     void Awake()
     {
         toolID.Add(0);
-        toolID.Add(1);
+        toolID.Add(0);
         toolID.Add(1);
         Init();
     }

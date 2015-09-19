@@ -72,6 +72,16 @@ public class CPlayManager : SceneManager {
         case MessageName.Play_StageFailed:
             ChangeState(GameState.Play_Failed);
             break;
+        case MessageName.Play_SkipReadyState:
+            SkipReadyState();
+            Broadcast(_gameMessage);
+            break;
+        case MessageName.Play_Pause:
+            Pause();
+            break;
+        case MessageName.Play_Unpause:
+            UnPause();
+            break;
 
         default :
             Broadcast(_gameMessage);
@@ -185,11 +195,27 @@ public class CPlayManager : SceneManager {
     void Ready() {
         StartCoroutine("ReadyForStage");
     }
-
+    /// <summary>
+    /// 준비시간이 지난 후 gamestate를 management로 바꿈.
+    /// </summary>
+    /// <returns></returns>
     IEnumerator ReadyForStage() {
         yield return new WaitForSeconds(readyForStageTime);
         ChangeState(GameState.Play_Management);
+        readyForStageTime = 10f;
     }
+    /// <summary>
+    /// 스킵버튼이 눌렸을때.
+    /// </summary>
+    void SkipReadyState() {
+
+        StopCoroutine("ReadyForStage");
+        readyForStageTime = 1f;
+        StartCoroutine("ReadyForStage");
+
+    }
+
+    
     
     /// <summary>
     /// wavetime(밤시간)일때 항상 불려져서 ui가 남은 시간만큼 보이게 함.

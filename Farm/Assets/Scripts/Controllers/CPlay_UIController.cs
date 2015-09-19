@@ -14,8 +14,12 @@ public class CPlay_UIController : Controller
     public Image ready;
     public Image start;
 
+    public Button pauseButton;
+    public Button skipButton;
+
     public GameObject clearPopup;
     public GameObject failedPopup;
+    public GameObject pausePopup;
     float readytime;
     void Awake()
     {
@@ -26,6 +30,7 @@ public class CPlay_UIController : Controller
     {
         base.Start();
         ReadyForStage(10f);
+        skipButton.gameObject.SetActive(true);
         
     }
 	// Use this for initialization
@@ -55,6 +60,7 @@ public class CPlay_UIController : Controller
         HidePopup();
         WavetimerFill(0.0f);
         MaintainTimerFill(1.0f);
+        WaveTextChange(1);
         ready.gameObject.SetActive(false);
         start.gameObject.SetActive(false);
     }
@@ -84,6 +90,16 @@ public class CPlay_UIController : Controller
         //start
         ready.gameObject.SetActive(false);
         start.gameObject.SetActive(true);
+        skipButton.gameObject.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        start.gameObject.SetActive(false);
+        ShowUI();
+    }
+
+    IEnumerator SkipReadyState() {
+        ready.gameObject.SetActive(false);
+        start.gameObject.SetActive(true);
+        skipButton.gameObject.SetActive(false);
         yield return new WaitForSeconds(1f);
         start.gameObject.SetActive(false);
         ShowUI();
@@ -127,6 +143,7 @@ public class CPlay_UIController : Controller
     void HidePopup() {
         clearPopup.SetActive(false);
         failedPopup.SetActive(false);
+        pausePopup.SetActive(false);
     }
     /// <summary>
     /// 메인으로 가기 버튼을 눌렸을때 실행.
@@ -157,4 +174,32 @@ public class CPlay_UIController : Controller
         SendGameMessage(gameMsg);
         ResetUI();
     }
+
+
+    /// <summary>
+    /// 스킵버튼 누름.
+    /// </summary>
+    public void SkipButton() {
+        StopCoroutine("ReadyForStart");
+        StartCoroutine("SkipReadyState");
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_SkipReadyState);
+        SendGameMessage(gameMsg);
+    }
+
+    /// <summary>
+    /// 일시정지 버튼 눌림.
+    /// </summary>
+    public void PauseButton() {
+        pausePopup.SetActive(true);
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_Pause);
+        SendGameMessage(gameMsg);
+    }
+
+    public void UnPauseButton() {
+        pausePopup.SetActive(false);
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_Unpause);
+        SendGameMessage(gameMsg);
+    }
+
+    
 }

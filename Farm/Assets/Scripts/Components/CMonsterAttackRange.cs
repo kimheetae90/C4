@@ -5,7 +5,7 @@ public class CMonsterAttackRange : CAttackRange
 {
     CMonster monster;
 	// Use this for initialization
-	void Start () {
+	protected void Start () {
         base.Start();
         attackRange = GetComponentInParent<CMonster>().attackRange;
         monster = transform.parent.GetComponent<CMonster>();

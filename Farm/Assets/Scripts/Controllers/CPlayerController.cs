@@ -38,9 +38,16 @@ public class CPlayerController : Controller
                 if (playerState != ObjectState.Play_Player_Die)
                 {
                     ConfirmSelectedGameObject(_gameMessage);
-                    if (selectedGameObject.transform.tag == "Play_Tool" && player.GetComponent<CPlayer>().canHold)
+                    if (selectedGameObject.transform.tag == "Play_Tool")
                     {
-                        HoldOnTool(player, (GameObject)_gameMessage.Get("SelectedGameObject"), (Vector3)_gameMessage.Get("ClickPosition"));
+                        if (playerScript.canHold)
+                        {
+                            HoldOnTool(player, (GameObject)_gameMessage.Get("SelectedGameObject"), (Vector3)_gameMessage.Get("ClickPosition"));
+                        }
+                        else {
+                            MovePlayerToTarget(player, (Vector3)_gameMessage.Get("ClickPosition"));
+                        }
+
                     }
                     else
                     {
@@ -180,8 +187,15 @@ public class CPlayerController : Controller
         while (distance > 0.1f)
         {
             distance = Vector3.Distance(player.transform.position, targetPos);
-            if (distance <= 0.1f&&holdedTool!=null) {
-                PutDownTool(player, holdedTool);
+            if (distance <= 0.1f && holdedTool != null )
+            {
+                if (selectedGameObject.transform.tag != "Play_Tool")
+                {
+                    PutDownTool(player, holdedTool);
+                }
+                else {
+                    holdedTool.GetComponent<CTool>().ChangeStateToReady();
+                }
                 break;
             }
             yield return null;

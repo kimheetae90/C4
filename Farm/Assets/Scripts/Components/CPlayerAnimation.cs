@@ -62,7 +62,7 @@ public class CPlayerAnimation : MonoBehaviour {
 
     public void MoveBackWithToolOuch()
     {
-        anim.SetTrigger("MoveBackithToolOuch");
+        anim.SetTrigger("MoveBackWithToolOuch");
     }
 
     public void Die()

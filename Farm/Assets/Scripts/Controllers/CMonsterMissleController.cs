@@ -29,8 +29,9 @@ public class CMonsterMissleController : Controller
         switch (_gameMessage.messageName)
         {
             case MessageName.Play_MissleAttackPlayersObject:
-                MissleAttackPlayersObject((int)_gameMessage.Get("object_id"), (int)_gameMessage.Get("missle_power"));
                 MissleDisappear((int)_gameMessage.Get("monster_id"), (int)_gameMessage.Get("missle_id"));
+                MissleAttackPlayersObject((int)_gameMessage.Get("object_id"), (int)_gameMessage.Get("missle_power"));
+                
                 break;
             case MessageName.Play_MissleOrderedByMonster:
                 MissleOrderedByMonster((int)_gameMessage.Get("monster_id"), (Vector3)_gameMessage.Get("monster_position"));

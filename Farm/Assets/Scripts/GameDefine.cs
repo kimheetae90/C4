@@ -37,9 +37,11 @@ public enum MessageName
 	
     Play_OneWaveOver, // 한 웨이브가 끝남
 
-    //Play_ReadyForStage,//스테이지 준비.
+    Play_SkipReadyState,//gamestate가 ready일때 skip버튼이 눌렸을때 사용.
     Play_StageClear, // 스테이지 클리어.
     Play_StageFailed,//스테이지 클리어 실패.
+    Play_Pause,//일시정지 버튼이 눌렸을때 사용.
+    Play_Unpause,//일시정지상태에서 다시 게임을 진행할 때 사용.
 
     Play_SceneChangeToHome,
     Play_SceneChangeToNextStage,
