@@ -3,7 +3,10 @@ using System.Collections;
 
 public class CSelectStageManager : SceneManager
 {
+    public GameObject buttonPrefab;
 
+    int stageCount = 12;
+    CStage stage;
     protected override void Awake()
     {
         base.Awake();
@@ -42,6 +45,7 @@ public class CSelectStageManager : SceneManager
         switch (gameState)
         {
             case GameState.SelectStage_Ready:
+                CreateStageButtons(stageCount);
                 break;
             case GameState.SelectStage_LoadStage:
                 LoadStage();
@@ -75,7 +79,7 @@ public class CSelectStageManager : SceneManager
                 break;
         }
     }
-    
+
     /// <summary>
     /// 플레이 씬으로 넘어가는 함수.
     /// </summary>
@@ -84,6 +88,21 @@ public class CSelectStageManager : SceneManager
         InputTempDataAboutNextScene("Play");
         LoadLoadingScene();
     }
+    void CreateStageButtons(int StageCount)
+    {
+        GameObject stageObject = new GameObject("Stage");
+        stageObject.tag = "SelectStage_Stage";
 
+        for (int i = 0; i < StageCount; i++)
+        {
+            GameObject button = MonoBehaviour.Instantiate(buttonPrefab) as GameObject;
+            stage = button.GetComponent<CStage>();
+            stage.stageName = "Level" + "i";
+            stage.stageNum = i;
+            button.transform.SetParent(stageObject.transform);
+            float xPos = -8 + 1.5f * i;
+            button.name = "Stage_" + i; // name을 변경
+            button.transform.position = new Vector3(xPos, 0, 0);
+        }
+    }
 }
-
