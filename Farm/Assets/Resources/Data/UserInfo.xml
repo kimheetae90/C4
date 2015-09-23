@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserInfo>
+  <Gold>1000</Gold>
+  <Chapter>1</Chapter>
+  <Stage>1</Stage>
+  <Tool1>
+    <id>11201</id>
+    <level>1</level>
+  </Tool1>
+  <Tool2>
+    <id>13002</id>
+    <level>1</level>
+  </Tool2>
+  <Tool3>
+    <id>11201</id>
+    <level>1</level>
+  </Tool3>
+</UserInfo>

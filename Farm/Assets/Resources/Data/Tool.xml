@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ToolInfo>
+  <Tool>
+    <id>11201</id>
+    <power>10</power>
+    <range>3</range>
+    <hp>150</hp>
+    <piercingForce>0</piercingForce>
+    <moveSpeed>50</moveSpeed>
+  </Tool>
+  <Tool>
+    <id>13002</id>
+    <power>0</power>
+    <range>0</range>
+    <hp>300</hp>
+    <piercingForce>0</piercingForce>
+    <moveSpeed>70</moveSpeed>
+  </Tool>
+  <Tool>
+    <id>11103</id>
+    <power>13</power>
+    <range>1</range>
+    <hp>180</hp>
+    <piercingForce>50</piercingForce>
+    <moveSpeed>70</moveSpeed>
+  </Tool>
+</ToolInfo>
