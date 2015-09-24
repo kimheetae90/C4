@@ -6,7 +6,7 @@ public class CPlayer : BaseObject
     public int hp;
     public float moveSpeed;
     public GameObject player;
-    float m_moveSpeed;
+    public float m_moveSpeed;
     bool isMoveable;
     int m_hp;
 

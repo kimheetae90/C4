@@ -101,6 +101,14 @@ public class CPlayerController : Controller
     /// <param name="_targetPos"></param>
     void MovePlayerToTarget(GameObject _player, Vector3 _targetPos)
     {
+        _targetPos.z = 0;
+        if (_targetPos.x <= -15) {
+            _targetPos = new Vector3(-15,_targetPos.y,_targetPos.z);
+        }
+        if (_targetPos.y >= -0.3f)
+        {
+            _targetPos = new Vector3(_targetPos.x, -0.3f, _targetPos.z);
+        }
         move.SetTargetPos(_targetPos);
         move.StartMove();
 
@@ -108,9 +116,17 @@ public class CPlayerController : Controller
 
         if (playerScript.canHold == false)
         {//tool을 들고있을때
+            
             _targetPos = new Vector3(_targetPos.x - 2, _targetPos.y, _targetPos.z);
+            if (_targetPos.x <= -15)
+            {
+                _targetPos = new Vector3(-15, _targetPos.y, _targetPos.z);
+            }
             move.SetTargetPos(_targetPos);
-            holdedTool.GetComponent<CTool>().ChangeStateToMove();
+            if (holdedTool.GetComponent<CTool>().isAlive)
+            {
+                holdedTool.GetComponent<CTool>().ChangeStateToMove();
+            }
             if (_targetPos.x > player.transform.position.x)
             {
                 playerScript.ChangeStateToMoveFrontWithTool();
@@ -144,6 +160,7 @@ public class CPlayerController : Controller
     /// <param name="_click_position"></param>
     void HoldOnTool(GameObject _player, GameObject _tool, Vector3 _click_position)
     {
+        _click_position.z = 0;
         if (_tool.GetComponent<CTool>().canHeld) {
             HoldTool(_player, _tool, _click_position);
         }
@@ -158,6 +175,10 @@ public class CPlayerController : Controller
     void HoldTool(GameObject _player, GameObject _tool, Vector3 _click_position)
     {
         Vector3 targetPos = new Vector3(_click_position.x - 2, _click_position.y, _click_position.z);
+        if (targetPos.x <= -15)
+        {
+            targetPos = new Vector3(-15, targetPos.y, targetPos.z);
+        }
         MovePlayerToTarget(_player, targetPos);
         StopCoroutine("CheckIsAdjacentToTool");
         StartCoroutine(CheckIsAdjacentToTool(targetPos));
@@ -249,7 +270,7 @@ public class CPlayerController : Controller
     /// 게임을 다시 시작하면 불러지는 함수.
     /// </summary>
     void ResetStage() {
-        player.transform.position = new Vector3(startPos.position.x-2, startPos.position.y, startPos.position.z);
+        player.transform.position = new Vector3(startPos.position.x-3, startPos.position.y, startPos.position.z);
         isAdjacent = false;
         playerScript.Reset();
         

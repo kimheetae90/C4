@@ -76,6 +76,10 @@ public class CPlayManager : SceneManager {
             SkipReadyState();
             Broadcast(_gameMessage);
             break;
+            
+        case MessageName.Play_SceneChangeToStageSelect:
+            SceneChangeToSelectStage();
+            break;
         case MessageName.Play_Pause:
             Pause();
             break;
@@ -168,9 +172,6 @@ public class CPlayManager : SceneManager {
         //chapterName = (string)GameMaster.Instance.tempData.Get("chapterName");
         GameMaster.Instance.tempData.Clear();
 		wave = 0;
-        //ChangeState(GameState.Play_Ready);
-        //ChangeState(GameState.Play_Management);
-		//ChangeState (GameState.Play_Reset);
         UnPause();
 	}
 
@@ -303,6 +304,12 @@ public class CPlayManager : SceneManager {
     void SceneChangeToNextStage() {
         StartCoroutine("LoadMaintain");
     }
+
+    void SceneChangeToSelectStage() {
+        StartCoroutine("LoadSelectStage");
+    }
+
+
     /// <summary>
     /// 스테이지를 다시 시작하기 위해 gamemaster에게 현재 스테이지 정보를 넘기고
     /// LoadPlay 코루틴을 호출해서 play씬을 다시 실행.
@@ -382,6 +389,19 @@ public class CPlayManager : SceneManager {
     /// main씬으로 이동.
     /// </summary>
     /// <returns></returns>
+    IEnumerator LoadSelectStage()
+    {
+        AsyncOperation async = Application.LoadLevelAsync("SelectStage");
+
+        while (!async.isDone)
+        {
+            yield return null;
+        }
+    }
+    /// <summary>
+    /// stageSelect씬으로 이동.
+    /// </summary>
+    /// <returns></returns>
     IEnumerator LoadMain()
     {
         AsyncOperation async = Application.LoadLevelAsync("Main");
@@ -421,6 +441,6 @@ public class CPlayManager : SceneManager {
         GameMessage gameMsg = GameMessage.Create(MessageName.Play_StageRestart);
         Broadcast(gameMsg);
 
-        ChangeState(GameState.Play_Management);
+        ChangeState(GameState.Play_Ready);
     }
 }

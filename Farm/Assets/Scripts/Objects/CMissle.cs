@@ -8,6 +8,8 @@ public class CMissle : BaseObject
     public CMonster monster;
     public float attackRange;
     public float startPosX;
+    public int troughPower;
+    int _troughCounter;
     
     
 
@@ -104,9 +106,19 @@ public class CMissle : BaseObject
         GameMessage gameMsg = GameMessage.Create(MessageName.Play_MissleAttackMonster);
         gameMsg.Insert("monster_id", _monster.GetComponent<CMonster>().id);
         gameMsg.Insert("missle_power", power);
-        gameMsg.Insert("missle_id", id);
-        gameMsg.Insert("tool_id", tool.id);
         SendGameMessage(gameMsg);
+        _troughCounter++;
+        if (_troughCounter >= troughPower) {
+            MissleDisappear();
+        }
+    }
+
+    void MissleDisappear() {
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_MissleDisappear);
+        gameMsg.Insert("tool_id", tool.GetComponent<CTool>().id);
+        gameMsg.Insert("missle_id", id);
+        SendGameMessage(gameMsg);
+        _troughCounter = 0;
     }
 
     void MisslePause() {

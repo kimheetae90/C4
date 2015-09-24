@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public class CTool : BaseObject
+public abstract class CTool : BaseObject
 {
     public int damage;
     public float attackRange;
@@ -11,6 +11,7 @@ public class CTool : BaseObject
     public float weight;
     public float attackReadySpeed;
     public float attackSpeed;
+    public float keepAttackTime; //공격중인 시간 몇초인지.
     public int troughPower;//관통력
     int m_hp;
 
@@ -25,7 +26,7 @@ public class CTool : BaseObject
 
     GameObject player;
     CLineHelper lineHelper;
-    CToolAnimation toolAnimation;
+    protected CToolAnimation toolAnimation;
     CAttackRange attackRangeScript;
 
     void Awake()
@@ -37,7 +38,7 @@ public class CTool : BaseObject
         }
         
     }
-    void Start() {
+    protected void Start() {
         Reset();
     }
 
@@ -92,7 +93,7 @@ public class CTool : BaseObject
     /// <summary>
     /// 변수들을 초기화 하는 함수.
     /// </summary>
-    public void Reset()
+    public virtual void Reset()
     {
         foreach (Renderer rend in renderer) {
             rend.material.mainTexture = texture[0];
@@ -110,30 +111,33 @@ public class CTool : BaseObject
         
     }
 
-    void ToolReady() {
+    protected virtual void ToolReady() {
         toolAnimation.Reset();
         toolAnimation.Idle();
     }
 
-    void ToolMove() {
+    protected virtual void ToolMove()
+    {
         toolAnimation.Reset();
         toolAnimation.Move();
 
     }
 
-    void ToolReadyToShot() {
+    protected virtual void ToolReadyToShot()
+    {
         toolAnimation.Reset();
         toolAnimation.Ready();
     
     }
 
-    void ToolShot() {
+    protected virtual void ToolShot() {
+
         toolAnimation.Reset();
         toolAnimation.Shot();
-        Shoot();
     }
 
-    void ToolDie() {
+    protected virtual void ToolDie()
+    {
         toolAnimation.Reset();
         toolAnimation.Die();
         if (attackRangeScript != null)
@@ -145,7 +149,7 @@ public class CTool : BaseObject
     /// <summary>
     /// 공격 가능한 상태(shootable)이면 미사일을 발사하는 함수.
     /// </summary>
-    void Shoot() {
+    protected void Shoot() {
         GameMessage gameMsg = GameMessage.Create(MessageName.Play_ToolAttackMonster);
         gameMsg.Insert("tool_id", id);
         gameMsg.Insert("tool_position", shotPosition.position);
@@ -256,6 +260,19 @@ public class CTool : BaseObject
             //StartAttack();
         }
     }
+    /// <summary>
+    /// 툴이 직접적으로 몬스터를 공격함.
+    /// </summary>
+    /// <param name="monster_id"></param>
+    /// <param name="power"></param>
+    public void DirectAttackToMonster(int monster_id, int power)
+    {
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_MonsterDamaged);
+        gameMsg.Insert("monster_id", monster_id);
+        gameMsg.Insert("power", power);
+        SendGameMessageToSceneManage(gameMsg);
+    }
+
 
     /// <summary>
     /// 툴의 objectState를 리턴값으로 얻기 위한 함수.

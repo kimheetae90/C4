@@ -42,8 +42,8 @@ public class CMonsterController : Controller
             case MessageName.Play_MonsterShotMissle:
                 MonsterShotMissle((int)_gameMessage.Get("monster_id"), (Vector3)_gameMessage.Get("monster_position"));
                 break;
-            case MessageName.Play_MonsterDamagedByMissle:
-                MonsterDamagedByMissle((int)_gameMessage.Get("monster_id"), (int)_gameMessage.Get("missle_power"));
+            case MessageName.Play_MonsterDamaged:
+                MonsterDamagedByMissle((int)_gameMessage.Get("monster_id"), (int)_gameMessage.Get("power"));
                 break;
             case MessageName.Play_FenceDisappear_MonsterMove:
                 if (_gameMessage.Get("fence_id") != null)

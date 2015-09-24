@@ -29,9 +29,8 @@ public class CMissleController : Controller
         switch (_gameMessage.messageName)
         {
             case MessageName.Play_MissleAttackMonster:
-                MissleDisappear((int)_gameMessage.Get("tool_id"), (int)_gameMessage.Get("missle_id"));
+                //MissleDisappear((int)_gameMessage.Get("tool_id"), (int)_gameMessage.Get("missle_id"));
                 MissleAttackMonster((int)_gameMessage.Get("monster_id"), (int)_gameMessage.Get("missle_power"));
-                
                 break;
             case MessageName.Play_MissleOrderedByTool:
                 MissleOrderedByTool((int)_gameMessage.Get("tool_id"), (Vector3)_gameMessage.Get("tool_position"));
@@ -85,6 +84,7 @@ public class CMissleController : Controller
                     CMissle _missleScript = _missle.GetComponent<CMissle>();
                     _missleScript.SetController(this);
                     _missleScript.SetOwner(_tool);
+                    _missleScript.troughPower = _tool.troughPower;
                     _missle.SetActive(false);
                     missleDic[_id].Enqueue(_missle);
                 }
@@ -121,9 +121,9 @@ public class CMissleController : Controller
     /// <param name="_missle_power">미사일의 power</param>
     void MissleAttackMonster(int _monster_id, int _missle_power)
     {
-        GameMessage gameMsg = GameMessage.Create(MessageName.Play_MonsterDamagedByMissle);
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_MonsterDamaged);
         gameMsg.Insert("monster_id", _monster_id);
-        gameMsg.Insert("missle_power", _missle_power);
+        gameMsg.Insert("power", _missle_power);
         SendGameMessage(gameMsg);
     }
     /// <summary>

@@ -11,7 +11,6 @@ public class CMove : MonoBehaviour {
 
     void Start()
     {
-        //isMove = false;
         m_moveSpeed = moveSpeed;
     }
 

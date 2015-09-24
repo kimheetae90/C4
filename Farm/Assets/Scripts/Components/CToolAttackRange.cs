@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CToolAttackRange : CAttackRange {
 
-    CTool tool;
+    protected CTool tool;
 	// Use this for initialization
 	protected void Start () {
         base.Start();
@@ -13,7 +13,7 @@ public class CToolAttackRange : CAttackRange {
         attackRangeCollider.size = new Vector3(attackRange, 2, 2);
 	}
 	
-    void OnTriggerStay(Collider other)
+    protected virtual void OnTriggerStay(Collider other)
     {
             if (other.CompareTag("Play_Monster"))
             {
@@ -44,7 +44,7 @@ public class CToolAttackRange : CAttackRange {
                     tool.ChangeStateToShot();
                 }
             }
-
+            yield return new WaitForSeconds(tool.keepAttackTime);
             if (tool.GetToolState() != ObjectState.Play_Tool_Move && tool.GetToolState() != ObjectState.Play_Tool_UnAvailable)
             {
                 tool.ChangeStateToReady();

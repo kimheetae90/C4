@@ -1,0 +1,1052 @@
+fileFormatVersion: 2
+guid: 47695095ca4791944b627cb0ec7b4eab
+timeCreated: 1442995020
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: bottle_geo
+    100002: fireThrower_geo
+    100004: //RootNode
+    100006: frame1
+    100008: frame2
+    100010: handle
+    100012: joint102
+    100014: joint103
+    100016: joint104
+    100018: joint105
+    100020: joint106
+    100022: joint107
+    100024: joint108
+    100026: joint109
+    100028: joint110
+    100030: joint111
+    100032: joint112
+    100034: joint113
+    100036: joint114
+    100038: joint115
+    100040: joint116
+    100042: joint117
+    100044: joint118
+    100046: joint119
+    100048: joint120
+    100050: joint121
+    100052: joint122
+    100054: joint123
+    100056: joint54
+    100058: joint55
+    100060: joint56
+    100062: joint57
+    100064: joint70
+    100066: joint71
+    100068: joint72
+    100070: joint73
+    100072: joint74
+    100074: joint75
+    100076: joint76
+    100078: joint77
+    100080: joint78
+    100082: joint79
+    100084: joint80
+    100086: joint81
+    100088: joint82
+    100090: pPlane2
+    100092: pPlane3
+    100094: pPlane4
+    100096: root_jnt
+    100098: transform2
+    100100: transform4
+    100102: transform6
+    100104: transform8
+    100106: wheelBack01
+    100108: wheelBack02
+    100110: wheelFront01
+    100112: wheelFront02
+    400000: bottle_geo
+    400002: fireThrower_geo
+    400004: //RootNode
+    400006: frame1
+    400008: frame2
+    400010: handle
+    400012: joint102
+    400014: joint103
+    400016: joint104
+    400018: joint105
+    400020: joint106
+    400022: joint107
+    400024: joint108
+    400026: joint109
+    400028: joint110
+    400030: joint111
+    400032: joint112
+    400034: joint113
+    400036: joint114
+    400038: joint115
+    400040: joint116
+    400042: joint117
+    400044: joint118
+    400046: joint119
+    400048: joint120
+    400050: joint121
+    400052: joint122
+    400054: joint123
+    400056: joint54
+    400058: joint55
+    400060: joint56
+    400062: joint57
+    400064: joint70
+    400066: joint71
+    400068: joint72
+    400070: joint73
+    400072: joint74
+    400074: joint75
+    400076: joint76
+    400078: joint77
+    400080: joint78
+    400082: joint79
+    400084: joint80
+    400086: joint81
+    400088: joint82
+    400090: pPlane2
+    400092: pPlane3
+    400094: pPlane4
+    400096: root_jnt
+    400098: transform2
+    400100: transform4
+    400102: transform6
+    400104: transform8
+    400106: wheelBack01
+    400108: wheelBack02
+    400110: wheelFront01
+    400112: wheelFront02
+    4300000: handle
+    4300002: frame1
+    4300004: frame2
+    4300006: wheelBack01
+    4300008: wheelBack02
+    4300010: wheelFront02
+    4300012: wheelFront01
+    4300014: bottle_geo
+    4300016: pPlane2
+    4300018: pPlane3
+    4300020: pPlane4
+    7400000: Take 001
+    7400002: Idle
+    7400004: Move
+    7400006: Ready
+    7400008: Shot
+    7400010: Die
+    9500000: //RootNode
+    13700000: bottle_geo
+    13700002: frame1
+    13700004: frame2
+    13700006: handle
+    13700008: pPlane2
+    13700010: pPlane3
+    13700012: pPlane4
+    13700014: wheelBack01
+    13700016: wheelBack02
+    13700018: wheelFront01
+    13700020: wheelFront02
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 300
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: fireThrower_geo
+        weight: 1
+      - path: fireThrower_geo/bottle_geo
+        weight: 1
+      - path: fireThrower_geo/frame1
+        weight: 1
+      - path: fireThrower_geo/frame2
+        weight: 1
+      - path: fireThrower_geo/handle
+        weight: 1
+      - path: fireThrower_geo/pPlane2
+        weight: 1
+      - path: fireThrower_geo/pPlane3
+        weight: 1
+      - path: fireThrower_geo/pPlane4
+        weight: 1
+      - path: fireThrower_geo/wheelBack01
+        weight: 1
+      - path: fireThrower_geo/wheelBack02
+        weight: 1
+      - path: fireThrower_geo/wheelFront01
+        weight: 1
+      - path: fireThrower_geo/wheelFront02
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/joint73
+        weight: 1
+      - path: root_jnt/joint73/joint74
+        weight: 1
+      - path: root_jnt/joint73/joint74/joint77
+        weight: 1
+      - path: root_jnt/joint73/joint74/joint77/joint56
+        weight: 1
+      - path: root_jnt/joint73/joint75
+        weight: 1
+      - path: root_jnt/joint73/joint75/joint76
+        weight: 1
+      - path: root_jnt/joint73/joint75/joint76/joint54
+        weight: 1
+      - path: root_jnt/joint78
+        weight: 1
+      - path: root_jnt/joint78/joint79
+        weight: 1
+      - path: root_jnt/joint78/joint79/joint80
+        weight: 1
+      - path: root_jnt/joint78/joint79/joint80/joint57
+        weight: 1
+      - path: root_jnt/joint78/joint81
+        weight: 1
+      - path: root_jnt/joint78/joint81/joint82
+        weight: 1
+      - path: root_jnt/joint78/joint81/joint82/joint55
+        weight: 1
+      - path: root_jnt/joint114
+        weight: 1
+      - path: root_jnt/joint114/joint70
+        weight: 1
+      - path: root_jnt/joint114/joint70/joint71
+        weight: 1
+      - path: root_jnt/joint114/joint70/joint71/joint72
+        weight: 1
+      - path: root_jnt/joint114/joint115
+        weight: 1
+      - path: root_jnt/joint114/joint116
+        weight: 1
+      - path: root_jnt/joint114/joint119
+        weight: 1
+      - path: root_jnt/joint114/joint119/joint117
+        weight: 1
+      - path: root_jnt/joint114/joint119/joint118
+        weight: 1
+      - path: root_jnt/joint114/joint119/transform2
+        weight: 1
+      - path: root_jnt/joint114/joint119/transform4
+        weight: 1
+      - path: root_jnt/joint114/joint122
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120/joint110
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120/joint110/joint111
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120/joint110/joint111/joint113
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120/joint110/joint111/joint113/joint112
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint121
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint123
+        weight: 1
+      - path: root_jnt/transform6
+        weight: 1
+      - path: root_jnt/transform6/joint102
+        weight: 1
+      - path: root_jnt/transform6/joint102/joint103
+        weight: 1
+      - path: root_jnt/transform6/joint102/joint104
+        weight: 1
+      - path: root_jnt/transform6/joint102/joint104/joint105
+        weight: 1
+      - path: root_jnt/transform8
+        weight: 1
+      - path: root_jnt/transform8/joint106
+        weight: 1
+      - path: root_jnt/transform8/joint106/joint107
+        weight: 1
+      - path: root_jnt/transform8/joint106/joint108
+        weight: 1
+      - path: root_jnt/transform8/joint106/joint108/joint109
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 37
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: fireThrower_geo
+        weight: 1
+      - path: fireThrower_geo/bottle_geo
+        weight: 1
+      - path: fireThrower_geo/frame1
+        weight: 1
+      - path: fireThrower_geo/frame2
+        weight: 1
+      - path: fireThrower_geo/handle
+        weight: 1
+      - path: fireThrower_geo/pPlane2
+        weight: 1
+      - path: fireThrower_geo/pPlane3
+        weight: 1
+      - path: fireThrower_geo/pPlane4
+        weight: 1
+      - path: fireThrower_geo/wheelBack01
+        weight: 1
+      - path: fireThrower_geo/wheelBack02
+        weight: 1
+      - path: fireThrower_geo/wheelFront01
+        weight: 1
+      - path: fireThrower_geo/wheelFront02
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/joint73
+        weight: 1
+      - path: root_jnt/joint73/joint74
+        weight: 1
+      - path: root_jnt/joint73/joint74/joint77
+        weight: 1
+      - path: root_jnt/joint73/joint74/joint77/joint56
+        weight: 1
+      - path: root_jnt/joint73/joint75
+        weight: 1
+      - path: root_jnt/joint73/joint75/joint76
+        weight: 1
+      - path: root_jnt/joint73/joint75/joint76/joint54
+        weight: 1
+      - path: root_jnt/joint78
+        weight: 1
+      - path: root_jnt/joint78/joint79
+        weight: 1
+      - path: root_jnt/joint78/joint79/joint80
+        weight: 1
+      - path: root_jnt/joint78/joint79/joint80/joint57
+        weight: 1
+      - path: root_jnt/joint78/joint81
+        weight: 1
+      - path: root_jnt/joint78/joint81/joint82
+        weight: 1
+      - path: root_jnt/joint78/joint81/joint82/joint55
+        weight: 1
+      - path: root_jnt/joint114
+        weight: 1
+      - path: root_jnt/joint114/joint70
+        weight: 1
+      - path: root_jnt/joint114/joint70/joint71
+        weight: 1
+      - path: root_jnt/joint114/joint70/joint71/joint72
+        weight: 1
+      - path: root_jnt/joint114/joint115
+        weight: 1
+      - path: root_jnt/joint114/joint116
+        weight: 1
+      - path: root_jnt/joint114/joint119
+        weight: 1
+      - path: root_jnt/joint114/joint119/joint117
+        weight: 1
+      - path: root_jnt/joint114/joint119/joint118
+        weight: 1
+      - path: root_jnt/joint114/joint119/transform2
+        weight: 1
+      - path: root_jnt/joint114/joint119/transform4
+        weight: 1
+      - path: root_jnt/joint114/joint122
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120/joint110
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120/joint110/joint111
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120/joint110/joint111/joint113
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120/joint110/joint111/joint113/joint112
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint121
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint123
+        weight: 1
+      - path: root_jnt/transform6
+        weight: 1
+      - path: root_jnt/transform6/joint102
+        weight: 1
+      - path: root_jnt/transform6/joint102/joint103
+        weight: 1
+      - path: root_jnt/transform6/joint102/joint104
+        weight: 1
+      - path: root_jnt/transform6/joint102/joint104/joint105
+        weight: 1
+      - path: root_jnt/transform8
+        weight: 1
+      - path: root_jnt/transform8/joint106
+        weight: 1
+      - path: root_jnt/transform8/joint106/joint107
+        weight: 1
+      - path: root_jnt/transform8/joint106/joint108
+        weight: 1
+      - path: root_jnt/transform8/joint106/joint108/joint109
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Move
+      takeName: Take 001
+      firstFrame: 51
+      lastFrame: 74
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: fireThrower_geo
+        weight: 1
+      - path: fireThrower_geo/bottle_geo
+        weight: 1
+      - path: fireThrower_geo/frame1
+        weight: 1
+      - path: fireThrower_geo/frame2
+        weight: 1
+      - path: fireThrower_geo/handle
+        weight: 1
+      - path: fireThrower_geo/pPlane2
+        weight: 1
+      - path: fireThrower_geo/pPlane3
+        weight: 1
+      - path: fireThrower_geo/pPlane4
+        weight: 1
+      - path: fireThrower_geo/wheelBack01
+        weight: 1
+      - path: fireThrower_geo/wheelBack02
+        weight: 1
+      - path: fireThrower_geo/wheelFront01
+        weight: 1
+      - path: fireThrower_geo/wheelFront02
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/joint73
+        weight: 1
+      - path: root_jnt/joint73/joint74
+        weight: 1
+      - path: root_jnt/joint73/joint74/joint77
+        weight: 1
+      - path: root_jnt/joint73/joint74/joint77/joint56
+        weight: 1
+      - path: root_jnt/joint73/joint75
+        weight: 1
+      - path: root_jnt/joint73/joint75/joint76
+        weight: 1
+      - path: root_jnt/joint73/joint75/joint76/joint54
+        weight: 1
+      - path: root_jnt/joint78
+        weight: 1
+      - path: root_jnt/joint78/joint79
+        weight: 1
+      - path: root_jnt/joint78/joint79/joint80
+        weight: 1
+      - path: root_jnt/joint78/joint79/joint80/joint57
+        weight: 1
+      - path: root_jnt/joint78/joint81
+        weight: 1
+      - path: root_jnt/joint78/joint81/joint82
+        weight: 1
+      - path: root_jnt/joint78/joint81/joint82/joint55
+        weight: 1
+      - path: root_jnt/joint114
+        weight: 1
+      - path: root_jnt/joint114/joint70
+        weight: 1
+      - path: root_jnt/joint114/joint70/joint71
+        weight: 1
+      - path: root_jnt/joint114/joint70/joint71/joint72
+        weight: 1
+      - path: root_jnt/joint114/joint115
+        weight: 1
+      - path: root_jnt/joint114/joint116
+        weight: 1
+      - path: root_jnt/joint114/joint119
+        weight: 1
+      - path: root_jnt/joint114/joint119/joint117
+        weight: 1
+      - path: root_jnt/joint114/joint119/joint118
+        weight: 1
+      - path: root_jnt/joint114/joint119/transform2
+        weight: 1
+      - path: root_jnt/joint114/joint119/transform4
+        weight: 1
+      - path: root_jnt/joint114/joint122
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120/joint110
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120/joint110/joint111
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120/joint110/joint111/joint113
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120/joint110/joint111/joint113/joint112
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint121
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint123
+        weight: 1
+      - path: root_jnt/transform6
+        weight: 1
+      - path: root_jnt/transform6/joint102
+        weight: 1
+      - path: root_jnt/transform6/joint102/joint103
+        weight: 1
+      - path: root_jnt/transform6/joint102/joint104
+        weight: 1
+      - path: root_jnt/transform6/joint102/joint104/joint105
+        weight: 1
+      - path: root_jnt/transform8
+        weight: 1
+      - path: root_jnt/transform8/joint106
+        weight: 1
+      - path: root_jnt/transform8/joint106/joint107
+        weight: 1
+      - path: root_jnt/transform8/joint106/joint108
+        weight: 1
+      - path: root_jnt/transform8/joint106/joint108/joint109
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Ready
+      takeName: Take 001
+      firstFrame: 81
+      lastFrame: 106
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: fireThrower_geo
+        weight: 1
+      - path: fireThrower_geo/bottle_geo
+        weight: 1
+      - path: fireThrower_geo/frame1
+        weight: 1
+      - path: fireThrower_geo/frame2
+        weight: 1
+      - path: fireThrower_geo/handle
+        weight: 1
+      - path: fireThrower_geo/pPlane2
+        weight: 1
+      - path: fireThrower_geo/pPlane3
+        weight: 1
+      - path: fireThrower_geo/pPlane4
+        weight: 1
+      - path: fireThrower_geo/wheelBack01
+        weight: 1
+      - path: fireThrower_geo/wheelBack02
+        weight: 1
+      - path: fireThrower_geo/wheelFront01
+        weight: 1
+      - path: fireThrower_geo/wheelFront02
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/joint73
+        weight: 1
+      - path: root_jnt/joint73/joint74
+        weight: 1
+      - path: root_jnt/joint73/joint74/joint77
+        weight: 1
+      - path: root_jnt/joint73/joint74/joint77/joint56
+        weight: 1
+      - path: root_jnt/joint73/joint75
+        weight: 1
+      - path: root_jnt/joint73/joint75/joint76
+        weight: 1
+      - path: root_jnt/joint73/joint75/joint76/joint54
+        weight: 1
+      - path: root_jnt/joint78
+        weight: 1
+      - path: root_jnt/joint78/joint79
+        weight: 1
+      - path: root_jnt/joint78/joint79/joint80
+        weight: 1
+      - path: root_jnt/joint78/joint79/joint80/joint57
+        weight: 1
+      - path: root_jnt/joint78/joint81
+        weight: 1
+      - path: root_jnt/joint78/joint81/joint82
+        weight: 1
+      - path: root_jnt/joint78/joint81/joint82/joint55
+        weight: 1
+      - path: root_jnt/joint114
+        weight: 1
+      - path: root_jnt/joint114/joint70
+        weight: 1
+      - path: root_jnt/joint114/joint70/joint71
+        weight: 1
+      - path: root_jnt/joint114/joint70/joint71/joint72
+        weight: 1
+      - path: root_jnt/joint114/joint115
+        weight: 1
+      - path: root_jnt/joint114/joint116
+        weight: 1
+      - path: root_jnt/joint114/joint119
+        weight: 1
+      - path: root_jnt/joint114/joint119/joint117
+        weight: 1
+      - path: root_jnt/joint114/joint119/joint118
+        weight: 1
+      - path: root_jnt/joint114/joint119/transform2
+        weight: 1
+      - path: root_jnt/joint114/joint119/transform4
+        weight: 1
+      - path: root_jnt/joint114/joint122
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120/joint110
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120/joint110/joint111
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120/joint110/joint111/joint113
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120/joint110/joint111/joint113/joint112
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint121
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint123
+        weight: 1
+      - path: root_jnt/transform6
+        weight: 1
+      - path: root_jnt/transform6/joint102
+        weight: 1
+      - path: root_jnt/transform6/joint102/joint103
+        weight: 1
+      - path: root_jnt/transform6/joint102/joint104
+        weight: 1
+      - path: root_jnt/transform6/joint102/joint104/joint105
+        weight: 1
+      - path: root_jnt/transform8
+        weight: 1
+      - path: root_jnt/transform8/joint106
+        weight: 1
+      - path: root_jnt/transform8/joint106/joint107
+        weight: 1
+      - path: root_jnt/transform8/joint106/joint108
+        weight: 1
+      - path: root_jnt/transform8/joint106/joint108/joint109
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Shot
+      takeName: Take 001
+      firstFrame: 106
+      lastFrame: 161
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: fireThrower_geo
+        weight: 1
+      - path: fireThrower_geo/bottle_geo
+        weight: 1
+      - path: fireThrower_geo/frame1
+        weight: 1
+      - path: fireThrower_geo/frame2
+        weight: 1
+      - path: fireThrower_geo/handle
+        weight: 1
+      - path: fireThrower_geo/pPlane2
+        weight: 1
+      - path: fireThrower_geo/pPlane3
+        weight: 1
+      - path: fireThrower_geo/pPlane4
+        weight: 1
+      - path: fireThrower_geo/wheelBack01
+        weight: 1
+      - path: fireThrower_geo/wheelBack02
+        weight: 1
+      - path: fireThrower_geo/wheelFront01
+        weight: 1
+      - path: fireThrower_geo/wheelFront02
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/joint73
+        weight: 1
+      - path: root_jnt/joint73/joint74
+        weight: 1
+      - path: root_jnt/joint73/joint74/joint77
+        weight: 1
+      - path: root_jnt/joint73/joint74/joint77/joint56
+        weight: 1
+      - path: root_jnt/joint73/joint75
+        weight: 1
+      - path: root_jnt/joint73/joint75/joint76
+        weight: 1
+      - path: root_jnt/joint73/joint75/joint76/joint54
+        weight: 1
+      - path: root_jnt/joint78
+        weight: 1
+      - path: root_jnt/joint78/joint79
+        weight: 1
+      - path: root_jnt/joint78/joint79/joint80
+        weight: 1
+      - path: root_jnt/joint78/joint79/joint80/joint57
+        weight: 1
+      - path: root_jnt/joint78/joint81
+        weight: 1
+      - path: root_jnt/joint78/joint81/joint82
+        weight: 1
+      - path: root_jnt/joint78/joint81/joint82/joint55
+        weight: 1
+      - path: root_jnt/joint114
+        weight: 1
+      - path: root_jnt/joint114/joint70
+        weight: 1
+      - path: root_jnt/joint114/joint70/joint71
+        weight: 1
+      - path: root_jnt/joint114/joint70/joint71/joint72
+        weight: 1
+      - path: root_jnt/joint114/joint115
+        weight: 1
+      - path: root_jnt/joint114/joint116
+        weight: 1
+      - path: root_jnt/joint114/joint119
+        weight: 1
+      - path: root_jnt/joint114/joint119/joint117
+        weight: 1
+      - path: root_jnt/joint114/joint119/joint118
+        weight: 1
+      - path: root_jnt/joint114/joint119/transform2
+        weight: 1
+      - path: root_jnt/joint114/joint119/transform4
+        weight: 1
+      - path: root_jnt/joint114/joint122
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120/joint110
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120/joint110/joint111
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120/joint110/joint111/joint113
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120/joint110/joint111/joint113/joint112
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint121
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint123
+        weight: 1
+      - path: root_jnt/transform6
+        weight: 1
+      - path: root_jnt/transform6/joint102
+        weight: 1
+      - path: root_jnt/transform6/joint102/joint103
+        weight: 1
+      - path: root_jnt/transform6/joint102/joint104
+        weight: 1
+      - path: root_jnt/transform6/joint102/joint104/joint105
+        weight: 1
+      - path: root_jnt/transform8
+        weight: 1
+      - path: root_jnt/transform8/joint106
+        weight: 1
+      - path: root_jnt/transform8/joint106/joint107
+        weight: 1
+      - path: root_jnt/transform8/joint106/joint108
+        weight: 1
+      - path: root_jnt/transform8/joint106/joint108/joint109
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Die
+      takeName: Take 001
+      firstFrame: 171
+      lastFrame: 235
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: fireThrower_geo
+        weight: 1
+      - path: fireThrower_geo/bottle_geo
+        weight: 1
+      - path: fireThrower_geo/frame1
+        weight: 1
+      - path: fireThrower_geo/frame2
+        weight: 1
+      - path: fireThrower_geo/handle
+        weight: 1
+      - path: fireThrower_geo/pPlane2
+        weight: 1
+      - path: fireThrower_geo/pPlane3
+        weight: 1
+      - path: fireThrower_geo/pPlane4
+        weight: 1
+      - path: fireThrower_geo/wheelBack01
+        weight: 1
+      - path: fireThrower_geo/wheelBack02
+        weight: 1
+      - path: fireThrower_geo/wheelFront01
+        weight: 1
+      - path: fireThrower_geo/wheelFront02
+        weight: 1
+      - path: root_jnt
+        weight: 1
+      - path: root_jnt/joint73
+        weight: 1
+      - path: root_jnt/joint73/joint74
+        weight: 1
+      - path: root_jnt/joint73/joint74/joint77
+        weight: 1
+      - path: root_jnt/joint73/joint74/joint77/joint56
+        weight: 1
+      - path: root_jnt/joint73/joint75
+        weight: 1
+      - path: root_jnt/joint73/joint75/joint76
+        weight: 1
+      - path: root_jnt/joint73/joint75/joint76/joint54
+        weight: 1
+      - path: root_jnt/joint78
+        weight: 1
+      - path: root_jnt/joint78/joint79
+        weight: 1
+      - path: root_jnt/joint78/joint79/joint80
+        weight: 1
+      - path: root_jnt/joint78/joint79/joint80/joint57
+        weight: 1
+      - path: root_jnt/joint78/joint81
+        weight: 1
+      - path: root_jnt/joint78/joint81/joint82
+        weight: 1
+      - path: root_jnt/joint78/joint81/joint82/joint55
+        weight: 1
+      - path: root_jnt/joint114
+        weight: 1
+      - path: root_jnt/joint114/joint70
+        weight: 1
+      - path: root_jnt/joint114/joint70/joint71
+        weight: 1
+      - path: root_jnt/joint114/joint70/joint71/joint72
+        weight: 1
+      - path: root_jnt/joint114/joint115
+        weight: 1
+      - path: root_jnt/joint114/joint116
+        weight: 1
+      - path: root_jnt/joint114/joint119
+        weight: 1
+      - path: root_jnt/joint114/joint119/joint117
+        weight: 1
+      - path: root_jnt/joint114/joint119/joint118
+        weight: 1
+      - path: root_jnt/joint114/joint119/transform2
+        weight: 1
+      - path: root_jnt/joint114/joint119/transform4
+        weight: 1
+      - path: root_jnt/joint114/joint122
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120/joint110
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120/joint110/joint111
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120/joint110/joint111/joint113
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint120/joint110/joint111/joint113/joint112
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint121
+        weight: 1
+      - path: root_jnt/joint114/joint122/joint123
+        weight: 1
+      - path: root_jnt/transform6
+        weight: 1
+      - path: root_jnt/transform6/joint102
+        weight: 1
+      - path: root_jnt/transform6/joint102/joint103
+        weight: 1
+      - path: root_jnt/transform6/joint102/joint104
+        weight: 1
+      - path: root_jnt/transform6/joint102/joint104/joint105
+        weight: 1
+      - path: root_jnt/transform8
+        weight: 1
+      - path: root_jnt/transform8/joint106
+        weight: 1
+      - path: root_jnt/transform8/joint106/joint107
+        weight: 1
+      - path: root_jnt/transform8/joint106/joint108
+        weight: 1
+      - path: root_jnt/transform8/joint106/joint108/joint109
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
