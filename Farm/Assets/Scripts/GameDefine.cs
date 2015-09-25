@@ -169,6 +169,8 @@ public enum MonsterName {
     Play_Mouse_Corpse,
     Play_Mouse_Poison,
     Play_Mouse_Fat,
+    Play_Mouse_Boodoo,
+    Play_Mouse_Gundal,
 
 }
 
