@@ -66,27 +66,27 @@ public class MonsterDataLoadHelper : MonoBehaviour {
 
     //}
 
-    //public MonsterInfo GetMonsterInfo(int _id)
-    //{
-    //    monsterInfo = new MonsterInfo();
+    public MonsterInfo GetMonsterInfo(int _id)
+    {
+        monsterInfo = new MonsterInfo();
 
-    //    foreach (XmlNode node in monsterNodeList)
-    //    {
-    //        if (node["id"].InnerText == _id.ToString())
-    //        {
-    //            monsterInfo.hp = int.Parse(node["hp"].InnerText);
-    //            monsterInfo.power = int.Parse(node["power"].InnerText);
-    //            monsterInfo.cooldownTime = float.Parse(node["cooldownTime"].InnerText);
-    //            monsterInfo.attackSpeed = float.Parse(node["attackSpeed"].InnerText);
-    //            monsterInfo.range = float.Parse(node["range"].InnerText);
-    //            monsterInfo.moveSpeed = float.Parse(node["moveSpeed"].InnerText);
-    //            monsterInfo.skillID = int.Parse(node["skillID"].InnerText);
-    //            break;
-    //        }
-    //    }
+        foreach (XmlNode node in monsterNodeList)
+        {
+            if (node["id"].InnerText == _id.ToString())
+            {
+                monsterInfo.hp = int.Parse(node["hp"].InnerText);
+                monsterInfo.power = int.Parse(node["power"].InnerText);
+                monsterInfo.cooldownTime = float.Parse(node["cooldownTime"].InnerText);
+                monsterInfo.attackSpeed = float.Parse(node["attackSpeed"].InnerText);
+                monsterInfo.range = float.Parse(node["range"].InnerText);
+                monsterInfo.moveSpeed = float.Parse(node["moveSpeed"].InnerText);
+                monsterInfo.skillID = int.Parse(node["skillID"].InnerText);
+                break;
+            }
+        }
 
-    //    return monsterInfo;
-    //}
+        return monsterInfo;
+    }
 
     public List<MonsterInfo> GetMonsterInfoList()
     {
