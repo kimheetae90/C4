@@ -1,27 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ToolInfo>
+<ToolData>
   <Tool>
     <id>11201</id>
     <power>10</power>
     <range>3</range>
+    <attackSpeed>1</attackSpeed>
     <hp>150</hp>
     <piercingForce>0</piercingForce>
     <moveSpeed>50</moveSpeed>
+    <upgradePower>3</upgradePower>
+    <upgradeRange>0</upgradeRange>
+    <upgradeAttackSpeed>0</upgradeAttackSpeed>
+    <upgradeHp>10</upgradeHp>
+    <upgradePiercingForce>0</upgradePiercingForce>
+    <upgradeMoveSpeed>0.5</upgradeMoveSpeed>
+    <price>1000</price>
+    <upgradePrice>0</upgradePrice>
+    <open>1</open>
+    <have>2</have>    
   </Tool>
   <Tool>
     <id>13002</id>
     <power>0</power>
     <range>0</range>
+    <attackSpeed>1</attackSpeed>
     <hp>300</hp>
     <piercingForce>0</piercingForce>
     <moveSpeed>70</moveSpeed>
+    <upgradePower>0</upgradePower>
+    <upgradeRange>0</upgradeRange>
+    <upgradeAttackSpeed>0</upgradeAttackSpeed>
+    <upgradeHp>30</upgradeHp>
+    <upgradePiercingForce>0</upgradePiercingForce>
+    <upgradeMoveSpeed>0.5</upgradeMoveSpeed>
+    <price>1000</price>
+    <upgradePrice>0</upgradePrice>
+    <open>1</open>
+    <have>1</have>
   </Tool>
   <Tool>
     <id>11103</id>
     <power>13</power>
     <range>1</range>
+    <attackSpeed>1</attackSpeed>
     <hp>180</hp>
     <piercingForce>50</piercingForce>
     <moveSpeed>70</moveSpeed>
+    <upgradePower>3</upgradePower>
+    <upgradeRange>0.5</upgradeRange>
+    <upgradeAttackSpeed>0</upgradeAttackSpeed>
+    <upgradeHp>15</upgradeHp>
+    <upgradePiercingForce>0</upgradePiercingForce>
+    <upgradeMoveSpeed>0.5</upgradeMoveSpeed>
+    <price>1000</price>
+    <upgradePrice>0</upgradePrice>
+    <open>0</open>
+    <have>0</have>
   </Tool>
-</ToolInfo>
+</ToolData>

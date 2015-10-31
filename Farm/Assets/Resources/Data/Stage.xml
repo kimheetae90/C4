@@ -1,11 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<StageInfo>
+<StageData>
   <Chapter1>
-    <Stage1>      
-      <waveCount></waveCount>
-      <wave1MonsterCount></wave1MonsterCount>
-      <wave1Monster1id></wave1Monster1id>
-      <wave1monster1genTime></wave1monster1genTime>
+    <Stage1>
+      
     </Stage1>
   </Chapter1>
-</StageInfo>
+</StageData>

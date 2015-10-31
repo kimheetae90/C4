@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<MonsterInfo>
+<MonsterData>
   <Monster>
     <id>21101</id>
     <hp>3</hp>
@@ -70,4 +70,4 @@
     <moveSpeed>0.3</moveSpeed>
     <skillID>0</skillID>
   </Monster>
-</MonsterInfo>
+</MonsterData>
