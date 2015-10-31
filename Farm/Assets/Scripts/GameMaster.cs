@@ -30,13 +30,19 @@ public class GameMaster : MonoBehaviour {
 	[System.NonSerialized]
 	public GameMessagePooler gameMessageManager;
 
+    [System.NonSerialized]
 	public GameMessage tempData;
+
+    [System.NonSerialized]
+    public UserInfo userInfo;
 
 	void Awake () {
 		DontDestroyOnLoad (transform.gameObject);
 		gameMessageManager = new GameMessagePooler ();
 		tempData = new GameMessage ();
 		inputHelper = InputHelper.Instance;
+        userInfo = new UserInfo();
+        userInfo.LoadData();
 	}
 	
 	void Start()
