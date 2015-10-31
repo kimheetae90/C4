@@ -25,12 +25,16 @@ public abstract class CMonster : BaseObject
     public bool touchedWithPlayer;
     public bool touchedWithTool;
 
+    public List<Renderer> renderer;
+    public Texture[] texture = new Texture[3];
+
     protected CMonsterAnimation monsterAnimation;
     CAttackRange monsterAttackRange;
 
 
     void Awake()
     {
+        
         monsterAnimation = GetComponent<CMonsterAnimation>();
         monsterAttackRange = GetComponentInChildren<CAttackRange>();
     }
@@ -92,6 +96,12 @@ public abstract class CMonster : BaseObject
    /// Monster의 상태가 Reset상태가 되면 불러져서 변수들과 Collider를 초기화 시켜줌.
    /// </summary>
     void MonsterReset() {
+
+        foreach (Renderer rend in renderer)
+        {
+            rend.material.mainTexture = texture[0];
+        }
+
         isAlive = true;
         _hp = hp;
         attackable = true;
@@ -258,13 +268,42 @@ public abstract class CMonster : BaseObject
     /// <param name="_damage">몬스터 Controller에서 받은 메세지에 첨부되어있는 미사일의 Power</param>
     public void Damaged(int _damage)
     {
-        _hp -= _damage; 
+        _hp -= _damage;
+        ChangeTexture();
         ChangeState(ObjectState.Play_Monster_Hitted);
         if (_hp <= 0&&isAlive==true)
         {
             isAlive = false; 
             ChangeState(ObjectState.Play_Monster_Die);
         }
+    }
+
+    /// <summary>
+    /// 남은 체력 비례 텍스쳐 변경.
+    /// </summary>
+    void ChangeTexture()
+    {
+        if ((float)_hp / hp <= 0.3)
+        {
+            if (renderer.Count > 0 && renderer[0].material.mainTexture != texture[2])
+            {
+                foreach (Renderer rend in renderer)
+                {
+                    rend.material.mainTexture = texture[2];
+                }
+            }
+        }
+        else if ((float)_hp / hp <= 0.6f)
+        {
+            if (renderer.Count > 0 && renderer[0].material.mainTexture == texture[0])
+            {
+                foreach (Renderer rend in renderer)
+                {
+                    rend.material.mainTexture = texture[1];
+                }
+            }
+        }
+
     }
 
     /// <summary>
@@ -321,40 +360,14 @@ public abstract class CMonster : BaseObject
     }
 
     /// <summary>
-    /// 몬스터가 Player에게 닿아있는 상태일때 코루틴에서 불려지는 함수.
-    /// 몬스터가 공격 가능한 상태일때 MonsterController에게 게임메세지 Play_MonsterAttackPlayer를 보낸다.
+    /// 몬스터가 플레이어진영의 오브젝트를 공격함.
     /// </summary>
-    public void AttackPlayer()
-    {
-            GameMessage gameMsg = GameMessage.Create(MessageName.Play_MonsterAttackPlayer);
-            gameMsg.Insert("monster_power", power);
-            SendGameMessage(gameMsg);
-    }
-
-    /// <summary>
-    /// 몬스터가 Tool에게 닿아있는 상태일때 코루틴에서 불려지는 함수.
-    /// 몬스터가 공격 가능한 상황일때 MonsterController에게 게임메세지 Play_MonsterAttackTool를 보낸다.
-    /// </summary>
-    /// <param name="_tool">몬스터가 현재 닿아있는 Tool을 받음.</param>
-    public void AttackTool(CTool _tool)
-    {
-            GameMessage gameMsg = GameMessage.Create(MessageName.Play_MonsterAttackTool);
-            gameMsg.Insert("tool_id", _tool.id);
-            gameMsg.Insert("monster_power", power);
-            SendGameMessage(gameMsg);
-    }
-
-    /// <summary>
-    /// 몬스터가 Fence에게 닿아있는 상태일때 코루틴에서 불려지는 함수.
-    /// 몬스터가 공격 가능한 상황일때 MonsterController에게 게임메세지 Play_MonsterAttackFence를 보낸다.
-    /// </summary>
-    /// <param name="_fence">몬스터가 현재 닿아있는 Fence를 받음.</param>
-    public void AttackFence(CFence _fence)
-    {
-            GameMessage gameMsg = GameMessage.Create(MessageName.Play_MonsterAttackFence);
-            gameMsg.Insert("fence_id", _fence.id);
-            gameMsg.Insert("monster_power", power);
-            SendGameMessage(gameMsg);
+    /// <param name="baseObject"></param>
+    public void AttackPlayersObject(BaseObject baseObject) {
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_MonsterAttackPlayersObject);
+        gameMsg.Insert("object_id", baseObject.id);
+        gameMsg.Insert("monster_power", power);
+        SendGameMessage(gameMsg);
     }
     /// <summary>
     /// 모든 공격을 멈춤.

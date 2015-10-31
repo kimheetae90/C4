@@ -13,6 +13,9 @@ public class CPlayer : BaseObject
     public bool isAlive;
     public bool canHold;
 
+    public Material material;
+    public Texture[] texture = new Texture [3];
+
     CPlayerAnimation playerAnimation;
     CMove moveScript;
 
@@ -193,6 +196,7 @@ public class CPlayer : BaseObject
     {
         m_hp -= damage;
         Ouch();
+        ChangeTexture();
         if (m_hp <= 0)
         {
             isAlive = false;
@@ -200,9 +204,26 @@ public class CPlayer : BaseObject
         }
     }
     /// <summary>
+    /// 남은 체력 비례 텍스쳐 변경.
+    /// </summary>
+    void ChangeTexture()
+    {
+        if ((float)m_hp / hp <= 0.3f && material.mainTexture != texture[2])
+        {
+            material.mainTexture = texture[2];
+        }
+        else if ((float)m_hp / hp <= 0.6f && material.mainTexture == texture[0])
+        {
+
+            material.mainTexture = texture[1];
+        }
+    }
+    /// <summary>
     /// 변수들을 초기화.
     /// </summary>
-    public void Reset() {
+    public void Reset()
+    {
+        material.mainTexture = texture[0];
         isAlive = true;
         m_hp = hp;
         m_moveSpeed = moveSpeed;
@@ -222,7 +243,7 @@ public class CPlayer : BaseObject
             ChangeState(ObjectState.Play_Player_Idle_With_Tool);
             transform.localScale = new Vector3(1, 1, 1);
 
-            moveScript.SetMoveSpeed(m_moveSpeed-tool.GetComponent<CTool>().weight);
+            moveScript.SetMoveSpeed(m_moveSpeed*((float)tool.GetComponent<CTool>().weight/100));
         }
     }
 

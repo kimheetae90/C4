@@ -10,12 +10,13 @@ public enum MessageName
 	Play_MonsterAttackFarm, // 몬스터가 농장을 공격함 int형 변수 몬스터의 id를 넘김.
     Play_MonsterAttackPlayer, // 몬스터가 플레이어를 공격함.  int형 변수 player_id와 monster_power를 넘김.
     Play_MonsterAttackTool, // 몬스터가 도구를 공격함. tool_id와 monster_power를 넘김.
+    Play_MonsterAttackPlayersObject,
     Play_MonsterDamagedByMissle, // 몬스터가 총알에 맞음. monster_id와 missle_power를 받음.
     Play_MonsterDied,//몬스터가 체력이 다해 죽음. int형 변수 몬스터의 id를 넘김.
     Play_MonsterReturn,//제한시간이 다해서 몬스터가 원래 있던 위치로 돌아감.
     Play_MonsterShotMissle,//원거리공격을 하는 몬스터가 미사일을 발사함. monster_id와 shotPos를 넘김.
 
-
+    Play_PlayersObjectDamagedByMonster,
     Play_PlayerDamagedByMonster, // 플레이어가 몬스터에게 공격당함.
     Play_PlayerMove, // 플레이어가 특정 위치로 이동함
 
@@ -25,7 +26,7 @@ public enum MessageName
 
     Play_FenceDamagedByMonster, // 울타리가 몬스터에게 공격당함.
 
-
+    Play_MissleAttackPlayersObject,
     Play_MissleAttackMonster, //미사일이 몬스터를 공격함. monster_id와 missle_power,missle_id를 넘김.
     Play_MissleAttackPlayer,//몬스터가 발사한 미사일이 플레이어를 공격함. 
     Play_MissleAttackTool,//몬스터가 발사한 미사일이 툴을 공격함.
@@ -36,8 +37,11 @@ public enum MessageName
 	
     Play_OneWaveOver, // 한 웨이브가 끝남
 
+    Play_SkipReadyState,//gamestate가 ready일때 skip버튼이 눌렸을때 사용.
     Play_StageClear, // 스테이지 클리어.
     Play_StageFailed,//스테이지 클리어 실패.
+    Play_Pause,//일시정지 버튼이 눌렸을때 사용.
+    Play_Unpause,//일시정지상태에서 다시 게임을 진행할 때 사용.
 
     Play_SceneChangeToHome,
     Play_SceneChangeToNextStage,

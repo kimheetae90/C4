@@ -8,7 +8,6 @@ public class CMonsterController : Controller
     public List<GameObject> monsterList;
 
     public List<MonsterName> monsterName;
-
     public int oneWavePerMonster = 12;//한 웨이브당 생성되는 몬스터 마리 수.
     int oneWavePerMonsterCount;
 
@@ -37,14 +36,8 @@ public class CMonsterController : Controller
             case MessageName.Play_MonsterAttackFarm:
                 MonsterAttackFarm((int)_gameMessage.Get("id"));
                 break;
-            case MessageName.Play_MonsterAttackPlayer:
-                MonsterAttackPlayer((int)_gameMessage.Get("monster_power"));
-                break;
-            case MessageName.Play_MonsterAttackFence:
-                MonsterAttackFence((int)_gameMessage.Get("fence_id"), (int)_gameMessage.Get("monster_power"));
-                break;
-            case MessageName.Play_MonsterAttackTool:
-                MonsterAttackTool((int)_gameMessage.Get("tool_id"), (int)_gameMessage.Get("monster_power"));
+            case MessageName.Play_MonsterAttackPlayersObject:
+                MonsterAttackPlayersObject((int)_gameMessage.Get("object_id"), (int)_gameMessage.Get("monster_power"));
                 break;
             case MessageName.Play_MonsterShotMissle:
                 MonsterShotMissle((int)_gameMessage.Get("monster_id"), (Vector3)_gameMessage.Get("monster_position"));
@@ -178,7 +171,21 @@ public class CMonsterController : Controller
         SendGameMessage(gameMsg);
         MonsterDied(_id);
     }
-
+    /// <summary>
+    /// Play_MonsterAttackPlayersObject 메세지를 받았을때 호출. 몬스터가 플레이어 진영의 오브젝트를 공격함.
+    /// PlayManager를 통해 PlayerController에게 게임메세지 Play_PlayersObjectDamagedByMonster를 보내서 
+    /// object에게 _monster_power만큼의 데미지를 입힘.
+    /// </summary>
+    /// <param name="_object_id">맞은 object</param>
+    /// <param name="_monster_power">때린 몬스터의 power</param>
+    void MonsterAttackPlayersObject(int _object_id, int _monster_power)
+    {
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_PlayersObjectDamagedByMonster);
+        gameMsg.Insert("object_id", _object_id);
+        gameMsg.Insert("monster_power", _monster_power);
+        SendGameMessage(gameMsg);
+    }
+    /*
     /// <summary>
     /// Play_MonsterAttackPlayer 메세지를 받았을 때 호출되는 함수. 몬스터가 플레이어를 공격함.
     /// PlayManager를 통해 PlayerController에게 게임메세지 Play_PlayerDamagedByMonster를 보내서 
@@ -220,7 +227,7 @@ public class CMonsterController : Controller
         gameMsg.Insert("monster_power", _monster_power);
         SendGameMessage(gameMsg);
     }
-
+    */
     /// <summary>
     /// Fence가 사라져서 해당 Fence를 공격하고 있던 Monster의 상태를 Attack에서 Move로 바꿔줘서 움직이게 하는 함수.
     /// monterList의 모든 monster들 중에서, 현재 살아있고, 닿아있는 울타리의 아이디가 _fenceid인 monster의 상태를 Move로 바꿈.

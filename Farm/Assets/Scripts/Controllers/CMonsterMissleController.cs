@@ -28,17 +28,10 @@ public class CMonsterMissleController : Controller
     {
         switch (_gameMessage.messageName)
         {
-            case MessageName.Play_MissleAttackPlayer:
-                MissleAttackPlayer((int)_gameMessage.Get("missle_power"));
+            case MessageName.Play_MissleAttackPlayersObject:
                 MissleDisappear((int)_gameMessage.Get("monster_id"), (int)_gameMessage.Get("missle_id"));
-                break;
-            case MessageName.Play_MissleAttackTool:
-                MissleAttackTool((int)_gameMessage.Get("tool_id"), (int)_gameMessage.Get("missle_power"));
-                MissleDisappear((int)_gameMessage.Get("monster_id"), (int)_gameMessage.Get("missle_id"));
-                break;
-            case MessageName.Play_MissleAttackFence:
-                MissleAttackFence((int)_gameMessage.Get("fence_id"), (int)_gameMessage.Get("missle_power"));
-                MissleDisappear((int)_gameMessage.Get("monster_id"), (int)_gameMessage.Get("missle_id"));
+                MissleAttackPlayersObject((int)_gameMessage.Get("object_id"), (int)_gameMessage.Get("missle_power"));
+                
                 break;
             case MessageName.Play_MissleOrderedByMonster:
                 MissleOrderedByMonster((int)_gameMessage.Get("monster_id"), (Vector3)_gameMessage.Get("monster_position"));
@@ -48,6 +41,7 @@ public class CMonsterMissleController : Controller
                 break;
             case MessageName.Play_StageFailed:
                 //MissleStop();
+                //ResetStage();
                 break;
             case MessageName.Play_StageRestart: ResetStage();
                 break;
@@ -122,6 +116,13 @@ public class CMonsterMissleController : Controller
         firedMissleDic.Add(_missle.GetComponent<CMissle>().id, _missle);
     }
 
+    void MissleAttackPlayersObject(int _baseObject_id,int _missle_power) {
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_PlayersObjectDamagedByMonster);
+        gameMsg.Insert("object_id", _baseObject_id);
+        gameMsg.Insert("monster_power", _missle_power);
+        SendGameMessage(gameMsg);
+    }
+    /*
     /// <summary>
     /// 미사일이 몬스터를 맞춤.
     /// </summary>
@@ -147,7 +148,7 @@ public class CMonsterMissleController : Controller
         gameMsg.Insert("monster_power", _missle_power);
         SendGameMessage(gameMsg);
     }
-
+    */
 
 
     /// <summary>
@@ -180,7 +181,15 @@ public class CMonsterMissleController : Controller
     {
         foreach (KeyValuePair<int, GameObject> missle in firedMissleDic)
         {
-            missleDic[missle.Value.GetComponent<CMissle>().monster.GetComponent<CMonster>().id].Enqueue(missle.Value);
+            int _id = missle.Value.GetComponent<CMissle>().id;
+            int _monster_id = missle.Value.GetComponent<CMissle>().monster.id;
+
+            GameObject _missle = firedMissleDic[_id];
+            _missle.GetComponent<CMove>().isMove = false;
+            _missle.SetActive(false);
+            missleDic[_monster_id].Enqueue(_missle);
+            //GameObject _missle = firedMissleDic[_id];
+            //missleDic[missle.Value.GetComponent<CMissle>().monster.GetComponent<CMonster>().id].Enqueue(missle.Value);
         }
         firedMissleDic.Clear();
 

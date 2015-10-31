@@ -10,9 +10,17 @@ public class CPlay_UIController : Controller
     public Text waveText;
     public Image waveTimer;
     public Image maintainTimer;
+    public Image timerBack;
+    public Image ready;
+    public Image start;
+
+    public Button pauseButton;
+    public Button skipButton;
 
     public GameObject clearPopup;
     public GameObject failedPopup;
+    public GameObject pausePopup;
+    float readytime;
     void Awake()
     {
         ResetUI();
@@ -21,6 +29,8 @@ public class CPlay_UIController : Controller
     protected override void Start()
     {
         base.Start();
+        ReadyForStage(10f);
+        skipButton.gameObject.SetActive(true);
         
     }
 	// Use this for initialization
@@ -50,6 +60,49 @@ public class CPlay_UIController : Controller
         HidePopup();
         WavetimerFill(0.0f);
         MaintainTimerFill(1.0f);
+        WaveTextChange(1);
+        ready.gameObject.SetActive(false);
+        start.gameObject.SetActive(false);
+    }
+    void HideUI() {
+        waveText.gameObject.SetActive(false);
+        WavetimerFill(0.0f);
+        MaintainTimerFill(0.0f);
+        timerBack.gameObject.SetActive(false);
+    }
+    void ShowUI() {
+        waveText.gameObject.SetActive(true);
+        WavetimerFill(0.0f);
+        MaintainTimerFill(1.0f);
+        timerBack.gameObject.SetActive(true);
+    }
+    void ReadyForStage(float _readytime) {
+        readytime = _readytime;
+        HideUI();
+        StartCoroutine("ReadyForStart");
+    }
+
+    IEnumerator ReadyForStart() {
+        yield return new WaitForSeconds(readytime-2f) ;
+        //ready
+        ready.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        //start
+        ready.gameObject.SetActive(false);
+        start.gameObject.SetActive(true);
+        skipButton.gameObject.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        start.gameObject.SetActive(false);
+        ShowUI();
+    }
+
+    IEnumerator SkipReadyState() {
+        ready.gameObject.SetActive(false);
+        start.gameObject.SetActive(true);
+        skipButton.gameObject.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        start.gameObject.SetActive(false);
+        ShowUI();
     }
     /// <summary>
     /// 정비시간이 끝나고 다음 웨이브가 시작되면 웨이브 카운트 TEXT를 바꿔준다.
@@ -90,6 +143,7 @@ public class CPlay_UIController : Controller
     void HidePopup() {
         clearPopup.SetActive(false);
         failedPopup.SetActive(false);
+        pausePopup.SetActive(false);
     }
     /// <summary>
     /// 메인으로 가기 버튼을 눌렸을때 실행.
@@ -120,4 +174,32 @@ public class CPlay_UIController : Controller
         SendGameMessage(gameMsg);
         ResetUI();
     }
+
+
+    /// <summary>
+    /// 스킵버튼 누름.
+    /// </summary>
+    public void SkipButton() {
+        StopCoroutine("ReadyForStart");
+        StartCoroutine("SkipReadyState");
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_SkipReadyState);
+        SendGameMessage(gameMsg);
+    }
+
+    /// <summary>
+    /// 일시정지 버튼 눌림.
+    /// </summary>
+    public void PauseButton() {
+        pausePopup.SetActive(true);
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_Pause);
+        SendGameMessage(gameMsg);
+    }
+
+    public void UnPauseButton() {
+        pausePopup.SetActive(false);
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_Unpause);
+        SendGameMessage(gameMsg);
+    }
+
+    
 }

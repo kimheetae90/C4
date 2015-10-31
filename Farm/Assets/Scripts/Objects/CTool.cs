@@ -11,6 +11,7 @@ public class CTool : BaseObject
     public float weight;
     public float attackReadySpeed;
     public float attackSpeed;
+    public int troughPower;//관통력
     int m_hp;
 
     public bool isAlive;
@@ -18,10 +19,10 @@ public class CTool : BaseObject
     public bool shotable;
     public Transform shotPosition;
     public MissleName missleName;
-    
 
+    public List<Renderer> renderer;
+    public Texture[] texture = new Texture[3];
 
-//    List<BaseObject> listLatestFindObjects;
     GameObject player;
     CLineHelper lineHelper;
     CToolAnimation toolAnimation;
@@ -93,6 +94,10 @@ public class CTool : BaseObject
     /// </summary>
     public void Reset()
     {
+        foreach (Renderer rend in renderer) {
+            rend.material.mainTexture = texture[0];
+        }
+
         isAlive = true;
         canHeld = true;
         shotable = true;
@@ -137,46 +142,6 @@ public class CTool : BaseObject
         }
     }
 
-    /*
-    /// <summary>
-    /// 공격할 수 있는 상황일 때, 2초마다 공격을 명령하는 함수
-    /// </summary>
-    /// <returns></returns>
-    IEnumerator Attack()
-    {
-        while (true)
-        {
-            if (shotable)
-            {
-                shotable = false;
-                yield return new WaitForSeconds(attackSpeed);
-                if (CheckCanAttack() && canHeld)
-                {
-                    ChangeState(ObjectState.Play_Tool_ReadyToShot);
-                    yield return new WaitForSeconds(attackReadySpeed);
-                    if (objectState == ObjectState.Play_Tool_ReadyToShot)
-                    {
-                        ChangeState(ObjectState.Play_Tool_Shot);
-                    }
-                }
-                if (objectState != ObjectState.Play_Tool_Move)
-                {
-                    ChangeState(ObjectState.Play_Tool_Ready);
-                }
-
-            }
-            else {
-                yield return null;
-            }
-
-            if (isAlive == false)
-            {
-                break;
-            }
-            
-	    }
-    }
-     * */
     /// <summary>
     /// 공격 가능한 상태(shootable)이면 미사일을 발사하는 함수.
     /// </summary>
@@ -186,23 +151,6 @@ public class CTool : BaseObject
         gameMsg.Insert("tool_position", shotPosition.position);
         SendGameMessage(gameMsg);
     }
-    /*
-    /// <summary>
-    /// 공격 가능한 상태가 되면 Attack 코루틴을 start하는 함수.
-    /// </summary>
-    void StartAttack()
-    {
-        StartCoroutine("Attack");
-    }
-
-    /// <summary>
-    /// Attack 코루틴을 stop하는 함수
-    /// </summary>
-    void StopAttack()
-    {
-        StopCoroutine("Attack");
-    }
-    */
     /// <summary>
     /// 공격할 수 있는 상황인지 판단하여 bool값을 리턴하는 함수.
     /// </summary>
@@ -217,53 +165,13 @@ public class CTool : BaseObject
     }
 
     /// <summary>
-    /// 반경이 radius인 Sphere속에 파라미터로 넘겨준
-    /// tag를 가진 게임오브젝트가 있는지에 대한 정보를 bool값으로 리턴하는 함수.
-    /// 같은 라인에 있는지까지 판단함.
-    /// </summary>
-    /// <param name="radius"></param>
-    /// <param name="tag"></param>
-    /// <returns></returns>
-    /*
-    public bool FindObjectsInRadious(float radius, String tag)
-    {
-        listLatestFindObjects.Clear();
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
-        for (int i = 0; i < hitColliders.Length; ++i)
-        {
-            BaseObject obj = hitColliders[i].transform.gameObject.GetComponentInParent<BaseObject>();
-
-            if (obj != null && obj.tag.Equals(tag))
-            {
-                if(obj.GetComponent<CMonster>().lineNumber==lineHelper.lineNum)
-                listLatestFindObjects.Add(obj);
-            }
-        }
-
-        sortObj();
-
-        return listLatestFindObjects.Count > 0 ? true : false;
-    }
-
-    /// <summary>
-    /// List에 있는 오브젝트들을 가까운 거리 순으로 정렬해 주는 함수
-    /// </summary>
-    void sortObj()
-    {
-        listLatestFindObjects.Sort(delegate(BaseObject t1, BaseObject t2)
-        {
-            return Vector3.Distance(t1.transform.position, transform.position).CompareTo(Vector3.Distance(t2.transform.position, transform.position));
-        }
-        );
-    }
-    */
-    /// <summary>
     /// 파라미터로 넘겨준 데미지 값 만큼 hp를 깎는 함수. 0 이하가 되면 툴을 사용불가능한 상태로 만듦.
     /// </summary>
     /// <param name="damage"></param>
     public void Damaged(int damage)
     {
         m_hp -= damage;
+        ChangeTexture();
         if (m_hp <= 0)
         {
             isAlive = false;
@@ -275,6 +183,34 @@ public class CTool : BaseObject
                 SendGameMessageToSceneManage(gameMsg);
             }
         }
+    }
+
+    /// <summary>
+    /// 남은 체력 비례 텍스쳐 변경.
+    /// </summary>
+    void ChangeTexture()
+    {
+        if ((float)m_hp / hp <= 0.3) 
+        {
+            if (renderer.Count > 0 && renderer[0].material.mainTexture != texture[2])
+            {
+                foreach (Renderer rend in renderer)
+                {
+                    rend.material.mainTexture = texture[2];
+                }
+            }
+        }
+        else if ((float)m_hp / hp <= 0.6f)
+        {
+            if (renderer.Count > 0 && renderer[0].material.mainTexture == texture[0])
+            {
+                foreach (Renderer rend in renderer)
+                {
+                    rend.material.mainTexture = texture[1];
+                }
+            }
+        }
+        
     }
 
     /// <summary>

@@ -1,6 +1,16 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 67babc6f76bb9ca47b3a42d3ab4dfa6a
 timeCreated: 1442481792
+=======
+<<<<<<< HEAD
+guid: 16a5430d48e542c4d9775050aebe0f5e
+timeCreated: 1442375155
+=======
+guid: dda9741cd1d9c3d4097638bf19549bc2
+timeCreated: 1442639898
+>>>>>>> faker
+>>>>>>> master
 licenseType: Free
 NativeFormatImporter:
   userData: 

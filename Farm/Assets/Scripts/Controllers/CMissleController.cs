@@ -29,8 +29,9 @@ public class CMissleController : Controller
         switch (_gameMessage.messageName)
         {
             case MessageName.Play_MissleAttackMonster:
-                MissleAttackMonster((int)_gameMessage.Get("monster_id"), (int)_gameMessage.Get("missle_power"));
                 MissleDisappear((int)_gameMessage.Get("tool_id"), (int)_gameMessage.Get("missle_id"));
+                MissleAttackMonster((int)_gameMessage.Get("monster_id"), (int)_gameMessage.Get("missle_power"));
+                
                 break;
             case MessageName.Play_MissleOrderedByTool:
                 MissleOrderedByTool((int)_gameMessage.Get("tool_id"), (Vector3)_gameMessage.Get("tool_position"));
@@ -150,13 +151,19 @@ public class CMissleController : Controller
         }
     }
     /// <summary>
-    /// 게임을 다시 시작한 경우 불러지는 함수.
+    /// 게임을 다시 시작한 경우 불러지는 함수. 이미 쏜 미사일들을 다시 불러들임.
     /// </summary>
     void ResetStage()
     {
         foreach (KeyValuePair<int, GameObject> missle in firedMissleDic)
         {
-            missleDic[missle.Value.GetComponent<CMissle>().tool.GetComponent<CTool>().id].Enqueue(missle.Value);
+            int _id = missle.Value.GetComponent<CMissle>().id;
+            int _tool_id = missle.Value.GetComponent<CMissle>().tool.id;
+            GameObject _missle = firedMissleDic[_id];
+            _missle.GetComponent<CMove>().isMove = false;
+            _missle.SetActive(false);
+            missleDic[_tool_id].Enqueue(_missle);
+            //missleDic[missle.Value.GetComponent<CMissle>().tool.GetComponent<CTool>().id].Enqueue(missle.Value);
         }
         firedMissleDic.Clear();
 

@@ -1,7 +1,19 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 7871bd6759be5264aa127280e69016b4
 folderAsset: yes
 timeCreated: 1442481792
+=======
+<<<<<<< HEAD
+guid: 7f3ee980441c31546bd6e16d41070973
+folderAsset: yes
+timeCreated: 1442375155
+=======
+guid: 50d41d9c860ab6c4b928790c7864ec29
+folderAsset: yes
+timeCreated: 1442639898
+>>>>>>> faker
+>>>>>>> master
 licenseType: Free
 DefaultImporter:
   userData: 

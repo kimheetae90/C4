@@ -22,29 +22,11 @@ public class CAttack : MonoBehaviour {
     {
         if (monster != null && monster.GetMonsterState()==ObjectState.Play_Monster_Attack) {
 
-            if (other.CompareTag("Play_Player"))
-            {
-                Debug.Log(other.ToString());
-                if (attackable)
-                {
-                    monster.AttackPlayer();
-                    StartCoroutine("AttackCount");
-                }
-            }
-            else if (other.CompareTag("Play_Tool"))
+            if (other.CompareTag("Play_Player") || other.CompareTag("Play_Tool") || other.CompareTag("Play_Fence"))
             {
                 if (attackable)
                 {
-                    monster.AttackTool(other.GetComponent<CTool>());
-                    StartCoroutine("AttackCount");
-                }
-                
-            }
-            else if (other.CompareTag("Play_Fence"))
-            {
-                if (attackable)
-                {
-                    monster.AttackFence(other.GetComponent<CFence>());
+                    monster.AttackPlayersObject(other.GetComponent<BaseObject>());
                     StartCoroutine("AttackCount");
                 }
             }

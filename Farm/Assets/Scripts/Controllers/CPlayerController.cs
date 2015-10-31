@@ -30,17 +30,24 @@ public class CPlayerController : Controller
     {
         switch (_gameMessage.messageName)
         {
-            case MessageName.Play_PlayerDamagedByMonster:
-                PlayerAttackedByEnemy(player, (int)_gameMessage.Get("monster_power"));
+            case MessageName.Play_PlayersObjectDamagedByMonster:
+                PlayerAttackedByEnemy((int)_gameMessage.Get("object_id"), (int)_gameMessage.Get("monster_power"));
                 break;
             case MessageName.Play_PlayerMove:
                 playerState = player.GetComponent<CPlayer>().GetPlayerState();
                 if (playerState != ObjectState.Play_Player_Die)
                 {
                     ConfirmSelectedGameObject(_gameMessage);
-                    if (selectedGameObject.transform.tag == "Play_Tool" && player.GetComponent<CPlayer>().canHold)
+                    if (selectedGameObject.transform.tag == "Play_Tool")
                     {
-                        HoldOnTool(player, (GameObject)_gameMessage.Get("SelectedGameObject"), (Vector3)_gameMessage.Get("ClickPosition"));
+                        if (playerScript.canHold)
+                        {
+                            HoldOnTool(player, (GameObject)_gameMessage.Get("SelectedGameObject"), (Vector3)_gameMessage.Get("ClickPosition"));
+                        }
+                        else {
+                            MovePlayerToTarget(player, (Vector3)_gameMessage.Get("ClickPosition"));
+                        }
+
                     }
                     else
                     {
@@ -69,7 +76,7 @@ public class CPlayerController : Controller
         player = ObjectPooler.Instance.GetGameObject("Play_Player");
         playerScript = player.GetComponent<CPlayer>();
         playerScript.SetController(this);
-        player.transform.position = new Vector3(startPos.position.x, startPos.position.y + 0.5f, startPos.position.z);
+        player.transform.position = new Vector3(startPos.position.x-3, startPos.position.y, startPos.position.z);
         isAdjacent = false;
         move = player.GetComponent<CMove>();
     }
@@ -79,9 +86,12 @@ public class CPlayerController : Controller
     /// </summary>
     /// <param name="_player"></param>
     /// <param name="_damage"></param>
-    void PlayerAttackedByEnemy(GameObject _player, int _damage)
+    void PlayerAttackedByEnemy(int _id, int _damage)
     {
-        playerScript.Damaged(_damage);
+        if (_id == playerScript.id)
+        {
+            playerScript.Damaged(_damage);
+        }
     }
 
     /// <summary>
@@ -177,8 +187,15 @@ public class CPlayerController : Controller
         while (distance > 0.1f)
         {
             distance = Vector3.Distance(player.transform.position, targetPos);
-            if (distance <= 0.1f&&holdedTool!=null) {
-                PutDownTool(player, holdedTool);
+            if (distance <= 0.1f && holdedTool != null )
+            {
+                if (selectedGameObject.transform.tag != "Play_Tool")
+                {
+                    PutDownTool(player, holdedTool);
+                }
+                else {
+                    holdedTool.GetComponent<CTool>().ChangeStateToReady();
+                }
                 break;
             }
             yield return null;
@@ -232,7 +249,7 @@ public class CPlayerController : Controller
     /// 게임을 다시 시작하면 불러지는 함수.
     /// </summary>
     void ResetStage() {
-        player.transform.position = new Vector3(startPos.position.x, startPos.position.y + 0.5f, startPos.position.z);
+        player.transform.position = new Vector3(startPos.position.x-2, startPos.position.y, startPos.position.z);
         isAdjacent = false;
         playerScript.Reset();
         
