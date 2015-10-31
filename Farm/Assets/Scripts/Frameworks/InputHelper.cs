@@ -48,7 +48,12 @@ public class InputHelper : MonoBehaviour {
 		updateKeyState();
 		procKeyState();
 	}
-	
+
+    public void SetSceneManager(SceneManager _sceneManager)
+    {
+        sceneManager = _sceneManager;
+    }
+
 	private void updateKeyState()
 	{
 		inputData.preKeyState = inputData.keyState;

@@ -18,7 +18,8 @@ public abstract class SceneManager : MonoBehaviour {
 
 	protected virtual void Awake()
 	{
-		GameMaster.Instance.SetSceneManager (this);
+		GameMaster.Instance.SetSceneManager (this.GetComponent<SceneManager>());
+        InputHelper.Instance.SetSceneManager(this.GetComponent<SceneManager>());
 		controllerList = new List<Controller> ();
 		controllerDic = new Dictionary<string, Controller> ();
 	}
