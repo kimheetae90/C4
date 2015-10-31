@@ -4,15 +4,22 @@ using System.Collections.Generic;
 
 public abstract class CMonster : BaseObject
 {
-    public int power;
     public int hp;
     int _hp;
-    public int lineNumber;
-
+    public int power;
     public float attackReadyTime;
     public float attackTime;
-    public float stunTime;
     public float attackRange;
+    public float moveSpeed;
+    float m_moveSpeed;
+    public int passiveSkill;
+    public int activeSkill;
+
+    public int lineNumber;
+
+    
+    public float stunTime;
+    
 
     public MissleName missleName;
     public Transform shotPos;
@@ -30,11 +37,12 @@ public abstract class CMonster : BaseObject
 
     protected CMonsterAnimation monsterAnimation;
     CAttackRange monsterAttackRange;
+    CMove moveScript;
 
 
     void Awake()
     {
-        
+        moveScript = GetComponent<CMove>();
         monsterAnimation = GetComponent<CMonsterAnimation>();
         monsterAttackRange = GetComponentInChildren<CAttackRange>();
     }
@@ -101,11 +109,12 @@ public abstract class CMonster : BaseObject
         {
             rend.material.mainTexture = texture[0];
         }
-
+        m_moveSpeed = moveSpeed;
         isAlive = true;
         _hp = hp;
         attackable = true;
         GetComponent<Collider>().enabled = true;
+        moveScript.SetMoveSpeed(m_moveSpeed);
 
         monsterAttackRange.GetComponent<Collider>().enabled = true;
         touchedWithPlayer = false;
@@ -133,7 +142,7 @@ public abstract class CMonster : BaseObject
     /// Monster의 상태가 Move상태가 되면 불러져서 목표지점까지 움직이는것을 실행하고 애니메이션을 Walk로 바꿈.
     /// </summary>
     void MonsterMove() {
-        transform.GetComponent<CMove>().StartMove();
+        moveScript.StartMove();
         monsterAnimation.Reset();
         monsterAnimation.Walk();
     }
@@ -173,7 +182,8 @@ public abstract class CMonster : BaseObject
         touchedWithTool = false;
 
         monsterAttackRange.StopCoroutine("MonsterAttack");
-        transform.GetComponent<CMove>().StartMove();
+        moveScript.SetMoveSpeed(m_moveSpeed * 3);
+        moveScript.StartMove();
         GetComponent<Collider>().enabled = false;
         monsterAttackRange.GetComponent<Collider>().enabled = false;
         monsterAnimation.Reset();
@@ -257,7 +267,7 @@ public abstract class CMonster : BaseObject
     /// 몬스터의 움직임을 멈출 때 사용되는 함수.
     /// </summary>
     public void MonsterMoveStop() {
-        transform.GetComponent<CMove>().StopMoveToTarget();
+        moveScript.StopMoveToTarget();
     }
    
 
@@ -354,7 +364,7 @@ public abstract class CMonster : BaseObject
     /// </summary>
     protected void AttackFarm() {
         GameMessage gameMsg = GameMessage.Create(MessageName.Play_MonsterAttackFarm);
-        transform.GetComponent<CMove>().StopMoveToTarget(); 
+        moveScript.StopMoveToTarget(); 
         gameMsg.Insert("id", id);
         SendGameMessage(gameMsg);
     }

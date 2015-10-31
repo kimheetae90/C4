@@ -11,7 +11,7 @@ public enum MessageName
     Play_MonsterAttackPlayer, // 몬스터가 플레이어를 공격함.  int형 변수 player_id와 monster_power를 넘김.
     Play_MonsterAttackTool, // 몬스터가 도구를 공격함. tool_id와 monster_power를 넘김.
     Play_MonsterAttackPlayersObject,
-    Play_MonsterDamagedByMissle, // 몬스터가 총알에 맞음. monster_id와 missle_power를 받음.
+    Play_MonsterDamaged, // 몬스터가 맞음. monster_id와 missle_power를 받음.
     Play_MonsterDied,//몬스터가 체력이 다해 죽음. int형 변수 몬스터의 id를 넘김.
     Play_MonsterReturn,//제한시간이 다해서 몬스터가 원래 있던 위치로 돌아감.
     Play_MonsterShotMissle,//원거리공격을 하는 몬스터가 미사일을 발사함. monster_id와 shotPos를 넘김.
@@ -47,6 +47,7 @@ public enum MessageName
     Play_SceneChangeToNextStage,
     Play_SceneChangeToRestart,
     Play_StageRestart,//컨트롤러들에게 스테이지가 다시시작된것을 알림.
+    Play_SceneChangeToStageSelect,//일시정지해서 나가기버튼 눌렀을 때.
 
     Play_CameraMove, // 드래그해서 카메라를 이동시킴.
 
@@ -160,12 +161,16 @@ public enum ToolName {
 
     Play_Tool_PitchingMachine,
     Play_Tool_Drum,
+    Play_Tool_FlameThrower,
 }
 
 public enum MonsterName {
     
     Play_Mouse_Corpse,
     Play_Mouse_Poison,
+    Play_Mouse_Fat,
+    Play_Mouse_Boodoo,
+    Play_Mouse_Gundal,
 
 }
 

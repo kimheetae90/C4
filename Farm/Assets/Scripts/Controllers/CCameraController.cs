@@ -35,6 +35,10 @@ public class CCameraController : Controller
             case MessageName.Play_SkipReadyState:
                 SkipReadyState();
                 break;
+            case MessageName.Play_StageRestart:
+                Ready(10f);
+                break;
+                
         }
     }
 

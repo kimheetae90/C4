@@ -58,8 +58,7 @@ public class CPlay_UIController : Controller
     /// </summary>
     void ResetUI() {
         HidePopup();
-        WavetimerFill(0.0f);
-        MaintainTimerFill(1.0f);
+        ShowUI();
         WaveTextChange(1);
         ready.gameObject.SetActive(false);
         start.gameObject.SetActive(false);
@@ -172,7 +171,12 @@ public class CPlay_UIController : Controller
     {
         GameMessage gameMsg = GameMessage.Create(MessageName.Play_SceneChangeToRestart);
         SendGameMessage(gameMsg);
-        ResetUI();
+        //ResetUI();
+        HidePopup();
+        StopCoroutine("ReadyForStart");
+        ReadyForStage(10f);
+        skipButton.gameObject.SetActive(true);
+        
     }
 
 
@@ -183,6 +187,11 @@ public class CPlay_UIController : Controller
         StopCoroutine("ReadyForStart");
         StartCoroutine("SkipReadyState");
         GameMessage gameMsg = GameMessage.Create(MessageName.Play_SkipReadyState);
+        SendGameMessage(gameMsg);
+    }
+
+    public void ExitButton() {
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_SceneChangeToStageSelect);
         SendGameMessage(gameMsg);
     }
 
