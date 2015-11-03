@@ -6,13 +6,15 @@ using System.Xml;
 public class MonsterDataLoadHelper : MonoBehaviour {
     
     XmlNodeList monsterNodeList;
+    XMLLoader xmlLoader;
 
     MonsterInfo monsterInfo;
     List<MonsterInfo> monsterInfoList;
 
     void Awake()
     {
-        monsterNodeList = XMLLoader.GetNodes("Monster");        
+        xmlLoader = new XMLLoader();
+        monsterNodeList = xmlLoader.GetNodes("Monster");        
     }
 
     //void Start()

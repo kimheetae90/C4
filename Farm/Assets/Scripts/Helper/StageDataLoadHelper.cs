@@ -6,6 +6,7 @@ using System.Xml;
 public class StageDataLoadHelper : MonoBehaviour {
 
     XmlNodeList statgeNodeList;
+    XMLLoader xmlLoader;
         
     List<StageInfo> stageInfoList;
     StageInfo stageInfo;
@@ -24,11 +25,16 @@ public class StageDataLoadHelper : MonoBehaviour {
     //            );
     //    }
     //}
-    
+
+    void Awake()
+    {
+        xmlLoader = new XMLLoader();
+    }
+
     public void StageDataLoad(int _chapter, int stage)
     {
         string stageNo = "Stage" + _chapter.ToString() + "_" + stage.ToString();
-        statgeNodeList = XMLLoader.GetNodes(stageNo);
+        statgeNodeList = xmlLoader.GetNodes(stageNo);
     }
 
     public List<StageInfo> GetStageInfo(int _chapter, int _stage)

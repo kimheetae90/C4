@@ -4,29 +4,30 @@ using System.Xml;
 
 public class XMLLoader
 {
-    static XmlDocument xmlDoc = new XmlDocument();
-    static XmlNode xmlNode;
-    static XmlNodeList xmlNodeList;
     
-    public static XmlDocument GetFile(string _fileName)
+    public XmlDocument GetFile(string _fileName)
     {
         string fileName = "Data/" + _fileName;
-        
+        XmlDocument xmlDoc = new XmlDocument();
+
         TextAsset textAsset = (TextAsset)Resources.Load(fileName);
         xmlDoc.LoadXml(textAsset.text);
 
         return xmlDoc;
     }
 
-    public static XmlNode GetRootNode(string _dataName)
+    public XmlNode GetRootNode(string _dataName)
     {
-        string dataName = _dataName + "Data";        
+        string dataName = _dataName + "Data";    
+        XmlNode xmlNode;
+    
         xmlNode = GetFile(_dataName).SelectSingleNode(dataName);
         return xmlNode;
     }
 
-    public static XmlNodeList GetNodes(string _dataName)
+    public XmlNodeList GetNodes(string _dataName)
     {
+        XmlNodeList xmlNodeList;
         xmlNodeList = GetRootNode(_dataName).SelectNodes(_dataName);
         return xmlNodeList;
     }

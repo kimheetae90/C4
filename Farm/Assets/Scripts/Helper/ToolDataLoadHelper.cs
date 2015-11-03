@@ -6,13 +6,15 @@ using System.Xml;
 public class ToolDataLoadHelper : MonoBehaviour {
 
     XmlNodeList toolNodeList;
+    XMLLoader xmlLoader;
 
     ToolInfo toolInfo;
     List<ToolInfo> toolInfoList;
 
-    void Awake()
+    void Awake()    
     {
-        toolNodeList = XMLLoader.GetNodes("Tool");
+        xmlLoader = new XMLLoader();
+        toolNodeList = xmlLoader.GetNodes("Tool");
     }
 
     //void Start()
