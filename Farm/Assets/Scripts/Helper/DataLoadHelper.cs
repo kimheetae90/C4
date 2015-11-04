@@ -28,7 +28,6 @@ public class DataLoadHelper : MonoBehaviour
 
     List<ToolInfo> toolInfoList;
     List<MonsterInfo> monsterInfoList;
-    List<StageInfo> stageInfoList;
 
     void Awake()
     {
@@ -75,19 +74,14 @@ public class DataLoadHelper : MonoBehaviour
         return monsterInfoList.Find(x => x.id == _id);
     }
 
-    public void StageStart(int _chapter, int _stage)
+
+    public List<StageInfo> GetStageInfo(int _chapter, int _stage)
     {
+        List<StageInfo> stageInfoList = new List<StageInfo>();
+
         StageDataLoadHelper stageLoader = new StageDataLoadHelper();
         stageInfoList = stageLoader.GetStageInfo(_chapter, _stage);
-    }
 
-    public List<StageInfo> GetStageInfo()
-    {
         return stageInfoList;
-    }
-
-    public void StageClear()
-    {
-        stageInfoList.Clear();
     }
 }
