@@ -3,6 +3,7 @@ using System.Collections;
 
 public class MonsterInfo
 {
+    public int id;
     public int hp;
     public int power;
     public float cooldownTime;

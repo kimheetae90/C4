@@ -3,30 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 
-public class StageDataLoadHelper : MonoBehaviour {
+public class StageDataLoadHelper{
 
     XmlNodeList statgeNodeList;
     XMLLoader xmlLoader;
-        
-    List<StageInfo> stageInfoList;
-    StageInfo stageInfo;
 
-    //void Start()
-    //{
-    //    stageInfoList = GetStageInfo(1,1);
-
-    //    foreach(StageInfo node in stageInfoList)
-    //    {
-    //        Debug.Log(
-    //            "wave : " + node.wave + ", " +
-    //            "line : " + node.line + ", " +
-    //            "time : " + node.time + ", " +
-    //            "id : " + node.id
-    //            );
-    //    }
-    //}
-
-    void Awake()
+    public StageDataLoadHelper()
     {
         xmlLoader = new XMLLoader();
     }
@@ -41,7 +23,8 @@ public class StageDataLoadHelper : MonoBehaviour {
     {
         StageDataLoad(_chapter, _stage);
 
-        stageInfoList = new List<StageInfo>();
+        List<StageInfo> stageInfoList = new List<StageInfo>();
+        StageInfo stageInfo;
 
         foreach (XmlNode node in statgeNodeList)
         {

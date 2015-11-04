@@ -36,6 +36,9 @@ public class GameMaster : MonoBehaviour {
     [System.NonSerialized]
     public UserInfo userInfo;
 
+    [System.NonSerialized]
+    public BluePrint bluePrint;
+
 	void Awake () {
 		DontDestroyOnLoad (transform.gameObject);
 		gameMessageManager = new GameMessagePooler ();
@@ -43,6 +46,8 @@ public class GameMaster : MonoBehaviour {
 		inputHelper = InputHelper.Instance;
         userInfo = new UserInfo();
         userInfo.LoadData();
+        bluePrint = new BluePrint();
+        bluePrint.LoadData();
 	}
 	
 	void Start()

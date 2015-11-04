@@ -4,7 +4,6 @@ using System.Xml;
 
 public class XMLLoader
 {
-    
     public XmlDocument GetFile(string _fileName)
     {
         string fileName = "Data/" + _fileName;

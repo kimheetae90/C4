@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ToolInfo
 {
+    public int id;
     public int power;
     public float range;
     public float attackSpeed;

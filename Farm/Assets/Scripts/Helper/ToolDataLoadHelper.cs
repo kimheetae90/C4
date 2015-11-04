@@ -3,79 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 
-public class ToolDataLoadHelper : MonoBehaviour {
+public class ToolDataLoadHelper{
 
     XmlNodeList toolNodeList;
     XMLLoader xmlLoader;
 
-    ToolInfo toolInfo;
-    List<ToolInfo> toolInfoList;
-
-    void Awake()    
+    public ToolDataLoadHelper()
     {
         xmlLoader = new XMLLoader();
         toolNodeList = xmlLoader.GetNodes("Tool");
     }
 
-    //void Start()
-    //{
-    //    Debug.Log("툴로더");
-
-    //    Debug.Log("툴 1개 정보");
-    //    toolInfo = GetToolInfo(11201);
-    //    Debug.Log(
-    //        "power : " + toolInfo.power + ", " + 
-    //        "range : " + toolInfo.range + ", " + 
-    //        "attackSpeed : " + toolInfo.attackSpeed + ", " + 
-    //        "hp : " + toolInfo.hp + ", " + 
-    //        "piercingForce : " + toolInfo.piercingForce + ", " + 
-    //        "moveSpeed : " + toolInfo.moveSpeed + ", " + 
-    //        "upgradePower : " + toolInfo.upgradePower + ", " + 
-    //        "upgradeRange : " + toolInfo.upgradeRange + ", " + 
-    //        "upgradeAttackSpeed : " + toolInfo.upgradeAttackSpeed + ", " + 
-    //        "upgradeHp : " + toolInfo.upgradeHp + ", " + 
-    //        "upgradePiercingForce : " + toolInfo.upgradePiercingForce + ", " + 
-    //        "upgradeMoveSpeed : " + toolInfo.upgradeMoveSpeed + ", " + 
-    //        "price : " + toolInfo.price + ", " + 
-    //        "upgradePrice : " + toolInfo.upgradePrice + ", " + 
-    //        "open : " + toolInfo.open + ", " + 
-    //        "have : " + toolInfo.have
-    //        );
-
-    //    Debug.Log("전체 툴 정보");
-    //    toolInfoList = GetToolInfoList();
-    //    foreach (ToolInfo tool in toolInfoList)
-    //    {
-    //        Debug.Log(
-    //            "power : " + tool.power + ", " +
-    //            "range : " + tool.range + ", " +
-    //            "attackSpeed : " + tool.attackSpeed + ", " +
-    //            "hp : " + tool.hp + ", " +
-    //            "piercingForce : " + tool.piercingForce + ", " +
-    //            "moveSpeed : " + tool.moveSpeed + ", " +
-    //            "upgradePower : " + tool.upgradePower + ", " +
-    //            "upgradeRange : " + tool.upgradeRange + ", " +
-    //            "upgradeAttackSpeed : " + tool.upgradeAttackSpeed + ", " +
-    //            "upgradeHp : " + tool.upgradeHp + ", " +
-    //            "upgradePiercingForce : " + tool.upgradePiercingForce + ", " +
-    //            "upgradeMoveSpeed : " + tool.upgradeMoveSpeed + ", " +
-    //            "price : " + tool.price + ", " +
-    //            "upgradePrice : " + tool.upgradePrice + ", " +
-    //            "open : " + tool.open + ", " +
-    //            "have : " + tool.have
-    //            );
-    //    }
-
-    //}
 
     public ToolInfo GetToolInfo(int _id)
     {
-        toolInfo = new ToolInfo();
+        ToolInfo toolInfo = new ToolInfo();
 
         foreach (XmlNode node in toolNodeList)
         {
             if (node["id"].InnerText == _id.ToString())
             {
+                toolInfo.id = _id;
                 toolInfo.power = int.Parse(node["power"].InnerText);
                 toolInfo.range = float.Parse(node["range"].InnerText);
                 toolInfo.attackSpeed = float.Parse(node["attackSpeed"].InnerText);
@@ -90,8 +38,6 @@ public class ToolDataLoadHelper : MonoBehaviour {
                 toolInfo.upgradeMoveSpeed = float.Parse(node["upgradeMoveSpeed"].InnerText);
                 toolInfo.price = int.Parse(node["price"].InnerText);
                 toolInfo.upgradePrice = int.Parse(node["upgradePrice"].InnerText);
-                toolInfo.open = int.Parse(node["open"].InnerText);
-                toolInfo.have = int.Parse(node["have"].InnerText);
                 break;
             }
         }
@@ -101,12 +47,15 @@ public class ToolDataLoadHelper : MonoBehaviour {
 
     public List<ToolInfo> GetToolInfoList()
     {
-        toolInfoList = new List<ToolInfo>();
+        List<ToolInfo> toolInfoList = new List<ToolInfo>();
+
+        ToolInfo toolInfo;
 
         foreach (XmlNode node in toolNodeList)
         {
             toolInfo = new ToolInfo();
 
+            toolInfo.id = int.Parse(node["id"].InnerText);
             toolInfo.power = int.Parse(node["power"].InnerText);
             toolInfo.range = float.Parse(node["range"].InnerText);
             toolInfo.attackSpeed = float.Parse(node["attackSpeed"].InnerText);
@@ -121,8 +70,6 @@ public class ToolDataLoadHelper : MonoBehaviour {
             toolInfo.upgradeMoveSpeed = float.Parse(node["upgradeMoveSpeed"].InnerText);
             toolInfo.price = int.Parse(node["price"].InnerText);
             toolInfo.upgradePrice = int.Parse(node["upgradePrice"].InnerText);
-            toolInfo.open = int.Parse(node["open"].InnerText);
-            toolInfo.have = int.Parse(node["have"].InnerText);
             
             toolInfoList.Add(toolInfo);
         }
