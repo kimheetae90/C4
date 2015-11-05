@@ -27,14 +27,13 @@ public class DataLoadHelper : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////
 
     List<ToolInfo> toolInfoList;
-    List<MonsterInfo> monsterInfoList;
+    List<MonsterInfo> monsterInfoList;    
 
     void Awake()
     {
         DontDestroyOnLoad(this);
         toolInfoList = new List<ToolInfo>();
         monsterInfoList = new List<MonsterInfo>();
-        stageInfoList = new List<StageInfo>();
         ToolInfoLoad();
         MonsterInfoLoad();
     }
@@ -43,13 +42,11 @@ public class DataLoadHelper : MonoBehaviour
     {
         Debug.Log(GetToolInfo(13002).hp);
         Debug.Log(GetMonsterInfo(21101).attackSpeed);
-        StageStart(1,1);
+        List<StageInfo> stageInfoList = GetStageInfo(1,1);
         foreach(StageInfo node in stageInfoList)
         {
             Debug.Log(node.wave + ", " + node.line + ", " + node.time + ", " + node.id);
-        }
-        StageClear();
-        if (stageInfoList.Count == 0) Debug.Log("Clear");
+        }        
     }
 
     void ToolInfoLoad()
