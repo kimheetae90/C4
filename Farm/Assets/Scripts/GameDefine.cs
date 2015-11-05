@@ -4,6 +4,8 @@ using System.Collections;
 
 public enum MessageName
 {
+	LevelTool_ChangeChecker, // Change Checker.
+
     DevelopmentCenter_ActivateToolButton, // 가지고 있는 툴의 갯수만큼 버튼을 활성화 시킴.
 
     Play_MonsterAttackFence, // 몬스터가 울타리를 공격함. int형 변수, 몬스터의 id를 넘김.
@@ -57,13 +59,18 @@ public enum MessageName
     Play_MaintainOver,//정비시간이 지나고 gamestate를 다시 웨이브가 몰려오는 start state로 바꿈. wavecount를 넘김.(UI컨트롤러에서 사용)
 
     Play_FenceDie,//펜스가 사라진것을 펜스컨트롤러에게 알림. id를 넘김
-    Play_FenceDisappear_MonsterMove//펜스가 사라진것을 몬스터 컨트롤러에게 알려서 몬스터를 다시 움직이게 함.
-
+    Play_FenceDisappear_MonsterMove,//펜스가 사라진것을 몬스터 컨트롤러에게 알려서 몬스터를 다시 움직이게 함.
 }
 
 
 public enum GameState
 {
+	
+	/* LevelTool */
+	LevelTool_Checker,
+	LevelTool_Cam,
+	LevelTool_Marker,
+
 	/* GameLoading */
 	GameLoading_Ready,	//게임을 처음 켰을 때 상태, 터치를 받아 Main을 로드하기를 기다리는 상태이다.
 	GameLoading_LoadMainScene,	//Main을 로드를 시작함.
@@ -178,7 +185,6 @@ public enum MissleName {
     NonMissle,
     Missle,
 }
-
 
 
 
