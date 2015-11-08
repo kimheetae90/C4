@@ -12,9 +12,8 @@ public abstract class CMonster : BaseObject
     public float attackRange;
     public float moveSpeed;
     float m_moveSpeed;
-    public int passiveSkill;
-    public int activeSkill;
-
+    public int SkillID;
+    
     public int lineNumber;
 
     
@@ -36,15 +35,14 @@ public abstract class CMonster : BaseObject
     public Texture[] texture = new Texture[3];
 
     protected CMonsterAnimation monsterAnimation;
-    CAttackRange monsterAttackRange;
+    CMonsterAttackRange monsterAttackRange;
     CMove moveScript;
-
 
     void Awake()
     {
         moveScript = GetComponent<CMove>();
         monsterAnimation = GetComponent<CMonsterAnimation>();
-        monsterAttackRange = GetComponentInChildren<CAttackRange>();
+        monsterAttackRange = GetComponentInChildren<CMonsterAttackRange>();
     }
 
 
@@ -100,6 +98,22 @@ public abstract class CMonster : BaseObject
         }
     }
 
+
+   public void MonsterSetting(int m_hp, int _power, float _cooldownTime, float _attackSpeed, float _range, float _moveSpeed, int _skillID){
+
+       hp = m_hp;
+       _hp = m_hp;
+       power = _power;
+       attackReadyTime = _cooldownTime;
+       attackTime = _attackSpeed;
+       attackRange = _range;
+       moveSpeed = _moveSpeed;
+       m_moveSpeed = _moveSpeed;
+       SkillID = _skillID;
+
+       moveScript.SetMoveSpeed(_moveSpeed);
+       //monsterAttackRange.Setting();
+   }
    /// <summary>
    /// Monster의 상태가 Reset상태가 되면 불러져서 변수들과 Collider를 초기화 시켜줌.
    /// </summary>
@@ -167,7 +181,8 @@ public abstract class CMonster : BaseObject
     /// Monster가 맞아서 상태가 Hitted가 되면 불러져서 몬스터의 움직임을 멈추고 애니메이션 Stun을 실행하고
     /// 코루틴 Monster_Stun을 실행함(일정시간(StunTime)이 지난 후 다시 움직이게 함.)
     /// </summary>
-    void MonsterHitted() {
+    protected virtual void MonsterHitted()
+    {
         MonsterMoveStop();
         monsterAnimation.Reset();
         monsterAnimation.Stun();

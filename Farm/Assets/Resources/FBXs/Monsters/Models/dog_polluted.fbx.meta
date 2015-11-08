@@ -1,0 +1,1079 @@
+fileFormatVersion: 2
+guid: 3b5393b372d0515499896879229b5efb
+timeCreated: 1446975157
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: B_L_le_geo
+    100002: B_R_leg_geo
+    100004: body_geo
+    100006: //RootNode
+    100008: F_L_leg_geo
+    100010: F_R_leg_geo
+    100012: head_geo
+    100014: jaw_geo
+    100016: joint1
+    100018: joint10
+    100020: joint11
+    100022: joint12
+    100024: joint13
+    100026: joint14
+    100028: joint2
+    100030: joint27
+    100032: joint28
+    100034: joint29
+    100036: joint3
+    100038: joint30
+    100040: joint31
+    100042: joint32
+    100044: joint33
+    100046: joint34
+    100048: joint37
+    100050: joint39
+    100052: joint4
+    100054: joint40
+    100056: joint41
+    100058: joint42
+    100060: joint43
+    100062: joint44
+    100064: joint45
+    100066: joint46
+    100068: joint47
+    100070: joint48
+    100072: joint49
+    100074: joint5
+    100076: joint50
+    100078: joint51
+    100080: joint52
+    100082: joint53
+    100084: joint6
+    100086: joint7
+    100088: joint8
+    100090: joint9
+    100092: L_ear_geo
+    100094: polluted_geo
+    100096: R_ear_geo
+    100098: tail_geo
+    400000: B_L_le_geo
+    400002: B_R_leg_geo
+    400004: body_geo
+    400006: //RootNode
+    400008: F_L_leg_geo
+    400010: F_R_leg_geo
+    400012: head_geo
+    400014: jaw_geo
+    400016: joint1
+    400018: joint10
+    400020: joint11
+    400022: joint12
+    400024: joint13
+    400026: joint14
+    400028: joint2
+    400030: joint27
+    400032: joint28
+    400034: joint29
+    400036: joint3
+    400038: joint30
+    400040: joint31
+    400042: joint32
+    400044: joint33
+    400046: joint34
+    400048: joint37
+    400050: joint39
+    400052: joint4
+    400054: joint40
+    400056: joint41
+    400058: joint42
+    400060: joint43
+    400062: joint44
+    400064: joint45
+    400066: joint46
+    400068: joint47
+    400070: joint48
+    400072: joint49
+    400074: joint5
+    400076: joint50
+    400078: joint51
+    400080: joint52
+    400082: joint53
+    400084: joint6
+    400086: joint7
+    400088: joint8
+    400090: joint9
+    400092: L_ear_geo
+    400094: polluted_geo
+    400096: R_ear_geo
+    400098: tail_geo
+    4300000: L_ear_geo
+    4300002: head_geo
+    4300004: jaw_geo
+    4300006: R_ear_geo
+    4300008: F_L_leg_geo
+    4300010: body_geo
+    4300012: tail_geo
+    4300014: B_R_leg_geo
+    4300016: F_R_leg_geo
+    4300018: B_L_le_geo
+    7400000: Take 001
+    7400002: Idle
+    7400004: Walk
+    7400006: Ready
+    7400008: Attack
+    7400010: Stun
+    7400012: Death
+    9500000: //RootNode
+    13700000: B_L_le_geo
+    13700002: B_R_leg_geo
+    13700004: body_geo
+    13700006: F_L_leg_geo
+    13700008: F_R_leg_geo
+    13700010: head_geo
+    13700012: jaw_geo
+    13700014: L_ear_geo
+    13700016: R_ear_geo
+    13700018: tail_geo
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 300
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: joint49
+        weight: 1
+      - path: joint49/joint7
+        weight: 1
+      - path: joint49/joint7/joint8
+        weight: 1
+      - path: joint49/joint7/joint8/joint9
+        weight: 1
+      - path: joint49/joint7/joint8/joint9/joint10
+        weight: 1
+      - path: joint49/joint11
+        weight: 1
+      - path: joint49/joint11/joint12
+        weight: 1
+      - path: joint49/joint11/joint12/joint13
+        weight: 1
+      - path: joint49/joint11/joint12/joint13/joint14
+        weight: 1
+      - path: joint49/joint27
+        weight: 1
+      - path: joint49/joint27/joint28
+        weight: 1
+      - path: joint49/joint27/joint28/joint29
+        weight: 1
+      - path: joint49/joint27/joint28/joint29/joint30
+        weight: 1
+      - path: joint49/joint27/joint28/joint29/joint30/joint31
+        weight: 1
+      - path: joint49/joint50
+        weight: 1
+      - path: joint49/joint50/joint51
+        weight: 1
+      - path: joint49/joint50/joint51/joint41
+        weight: 1
+      - path: joint49/joint50/joint51/joint41/joint42
+        weight: 1
+      - path: joint49/joint50/joint51/joint41/joint42/joint43
+        weight: 1
+      - path: joint49/joint50/joint51/joint41/joint42/joint43/joint44
+        weight: 1
+      - path: joint49/joint50/joint51/joint45
+        weight: 1
+      - path: joint49/joint50/joint51/joint45/joint46
+        weight: 1
+      - path: joint49/joint50/joint51/joint45/joint46/joint47
+        weight: 1
+      - path: joint49/joint50/joint51/joint45/joint46/joint47/joint48
+        weight: 1
+      - path: joint49/joint50/joint51/joint52
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint32
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint32/joint33
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint1
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint1/joint2
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint1/joint2/joint3
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint4
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint4/joint5
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint4/joint5/joint6
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint39
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint39/joint40
+        weight: 1
+      - path: polluted_geo
+        weight: 1
+      - path: polluted_geo/B_L_le_geo
+        weight: 1
+      - path: polluted_geo/B_R_leg_geo
+        weight: 1
+      - path: polluted_geo/body_geo
+        weight: 1
+      - path: polluted_geo/F_L_leg_geo
+        weight: 1
+      - path: polluted_geo/F_R_leg_geo
+        weight: 1
+      - path: polluted_geo/head_geo
+        weight: 1
+      - path: polluted_geo/jaw_geo
+        weight: 1
+      - path: polluted_geo/L_ear_geo
+        weight: 1
+      - path: polluted_geo/R_ear_geo
+        weight: 1
+      - path: polluted_geo/tail_geo
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 47
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: joint49
+        weight: 1
+      - path: joint49/joint7
+        weight: 1
+      - path: joint49/joint7/joint8
+        weight: 1
+      - path: joint49/joint7/joint8/joint9
+        weight: 1
+      - path: joint49/joint7/joint8/joint9/joint10
+        weight: 1
+      - path: joint49/joint11
+        weight: 1
+      - path: joint49/joint11/joint12
+        weight: 1
+      - path: joint49/joint11/joint12/joint13
+        weight: 1
+      - path: joint49/joint11/joint12/joint13/joint14
+        weight: 1
+      - path: joint49/joint27
+        weight: 1
+      - path: joint49/joint27/joint28
+        weight: 1
+      - path: joint49/joint27/joint28/joint29
+        weight: 1
+      - path: joint49/joint27/joint28/joint29/joint30
+        weight: 1
+      - path: joint49/joint27/joint28/joint29/joint30/joint31
+        weight: 1
+      - path: joint49/joint50
+        weight: 1
+      - path: joint49/joint50/joint51
+        weight: 1
+      - path: joint49/joint50/joint51/joint41
+        weight: 1
+      - path: joint49/joint50/joint51/joint41/joint42
+        weight: 1
+      - path: joint49/joint50/joint51/joint41/joint42/joint43
+        weight: 1
+      - path: joint49/joint50/joint51/joint41/joint42/joint43/joint44
+        weight: 1
+      - path: joint49/joint50/joint51/joint45
+        weight: 1
+      - path: joint49/joint50/joint51/joint45/joint46
+        weight: 1
+      - path: joint49/joint50/joint51/joint45/joint46/joint47
+        weight: 1
+      - path: joint49/joint50/joint51/joint45/joint46/joint47/joint48
+        weight: 1
+      - path: joint49/joint50/joint51/joint52
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint32
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint32/joint33
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint1
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint1/joint2
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint1/joint2/joint3
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint4
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint4/joint5
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint4/joint5/joint6
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint39
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint39/joint40
+        weight: 1
+      - path: polluted_geo
+        weight: 1
+      - path: polluted_geo/B_L_le_geo
+        weight: 1
+      - path: polluted_geo/B_R_leg_geo
+        weight: 1
+      - path: polluted_geo/body_geo
+        weight: 1
+      - path: polluted_geo/F_L_leg_geo
+        weight: 1
+      - path: polluted_geo/F_R_leg_geo
+        weight: 1
+      - path: polluted_geo/head_geo
+        weight: 1
+      - path: polluted_geo/jaw_geo
+        weight: 1
+      - path: polluted_geo/L_ear_geo
+        weight: 1
+      - path: polluted_geo/R_ear_geo
+        weight: 1
+      - path: polluted_geo/tail_geo
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 71
+      lastFrame: 114
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: joint49
+        weight: 1
+      - path: joint49/joint7
+        weight: 1
+      - path: joint49/joint7/joint8
+        weight: 1
+      - path: joint49/joint7/joint8/joint9
+        weight: 1
+      - path: joint49/joint7/joint8/joint9/joint10
+        weight: 1
+      - path: joint49/joint11
+        weight: 1
+      - path: joint49/joint11/joint12
+        weight: 1
+      - path: joint49/joint11/joint12/joint13
+        weight: 1
+      - path: joint49/joint11/joint12/joint13/joint14
+        weight: 1
+      - path: joint49/joint27
+        weight: 1
+      - path: joint49/joint27/joint28
+        weight: 1
+      - path: joint49/joint27/joint28/joint29
+        weight: 1
+      - path: joint49/joint27/joint28/joint29/joint30
+        weight: 1
+      - path: joint49/joint27/joint28/joint29/joint30/joint31
+        weight: 1
+      - path: joint49/joint50
+        weight: 1
+      - path: joint49/joint50/joint51
+        weight: 1
+      - path: joint49/joint50/joint51/joint41
+        weight: 1
+      - path: joint49/joint50/joint51/joint41/joint42
+        weight: 1
+      - path: joint49/joint50/joint51/joint41/joint42/joint43
+        weight: 1
+      - path: joint49/joint50/joint51/joint41/joint42/joint43/joint44
+        weight: 1
+      - path: joint49/joint50/joint51/joint45
+        weight: 1
+      - path: joint49/joint50/joint51/joint45/joint46
+        weight: 1
+      - path: joint49/joint50/joint51/joint45/joint46/joint47
+        weight: 1
+      - path: joint49/joint50/joint51/joint45/joint46/joint47/joint48
+        weight: 1
+      - path: joint49/joint50/joint51/joint52
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint32
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint32/joint33
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint1
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint1/joint2
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint1/joint2/joint3
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint4
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint4/joint5
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint4/joint5/joint6
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint39
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint39/joint40
+        weight: 1
+      - path: polluted_geo
+        weight: 1
+      - path: polluted_geo/B_L_le_geo
+        weight: 1
+      - path: polluted_geo/B_R_leg_geo
+        weight: 1
+      - path: polluted_geo/body_geo
+        weight: 1
+      - path: polluted_geo/F_L_leg_geo
+        weight: 1
+      - path: polluted_geo/F_R_leg_geo
+        weight: 1
+      - path: polluted_geo/head_geo
+        weight: 1
+      - path: polluted_geo/jaw_geo
+        weight: 1
+      - path: polluted_geo/L_ear_geo
+        weight: 1
+      - path: polluted_geo/R_ear_geo
+        weight: 1
+      - path: polluted_geo/tail_geo
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Ready
+      takeName: Take 001
+      firstFrame: 131
+      lastFrame: 159
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: joint49
+        weight: 1
+      - path: joint49/joint7
+        weight: 1
+      - path: joint49/joint7/joint8
+        weight: 1
+      - path: joint49/joint7/joint8/joint9
+        weight: 1
+      - path: joint49/joint7/joint8/joint9/joint10
+        weight: 1
+      - path: joint49/joint11
+        weight: 1
+      - path: joint49/joint11/joint12
+        weight: 1
+      - path: joint49/joint11/joint12/joint13
+        weight: 1
+      - path: joint49/joint11/joint12/joint13/joint14
+        weight: 1
+      - path: joint49/joint27
+        weight: 1
+      - path: joint49/joint27/joint28
+        weight: 1
+      - path: joint49/joint27/joint28/joint29
+        weight: 1
+      - path: joint49/joint27/joint28/joint29/joint30
+        weight: 1
+      - path: joint49/joint27/joint28/joint29/joint30/joint31
+        weight: 1
+      - path: joint49/joint50
+        weight: 1
+      - path: joint49/joint50/joint51
+        weight: 1
+      - path: joint49/joint50/joint51/joint41
+        weight: 1
+      - path: joint49/joint50/joint51/joint41/joint42
+        weight: 1
+      - path: joint49/joint50/joint51/joint41/joint42/joint43
+        weight: 1
+      - path: joint49/joint50/joint51/joint41/joint42/joint43/joint44
+        weight: 1
+      - path: joint49/joint50/joint51/joint45
+        weight: 1
+      - path: joint49/joint50/joint51/joint45/joint46
+        weight: 1
+      - path: joint49/joint50/joint51/joint45/joint46/joint47
+        weight: 1
+      - path: joint49/joint50/joint51/joint45/joint46/joint47/joint48
+        weight: 1
+      - path: joint49/joint50/joint51/joint52
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint32
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint32/joint33
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint1
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint1/joint2
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint1/joint2/joint3
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint4
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint4/joint5
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint4/joint5/joint6
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint39
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint39/joint40
+        weight: 1
+      - path: polluted_geo
+        weight: 1
+      - path: polluted_geo/B_L_le_geo
+        weight: 1
+      - path: polluted_geo/B_R_leg_geo
+        weight: 1
+      - path: polluted_geo/body_geo
+        weight: 1
+      - path: polluted_geo/F_L_leg_geo
+        weight: 1
+      - path: polluted_geo/F_R_leg_geo
+        weight: 1
+      - path: polluted_geo/head_geo
+        weight: 1
+      - path: polluted_geo/jaw_geo
+        weight: 1
+      - path: polluted_geo/L_ear_geo
+        weight: 1
+      - path: polluted_geo/R_ear_geo
+        weight: 1
+      - path: polluted_geo/tail_geo
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Attack
+      takeName: Take 001
+      firstFrame: 171
+      lastFrame: 235
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: joint49
+        weight: 1
+      - path: joint49/joint7
+        weight: 1
+      - path: joint49/joint7/joint8
+        weight: 1
+      - path: joint49/joint7/joint8/joint9
+        weight: 1
+      - path: joint49/joint7/joint8/joint9/joint10
+        weight: 1
+      - path: joint49/joint11
+        weight: 1
+      - path: joint49/joint11/joint12
+        weight: 1
+      - path: joint49/joint11/joint12/joint13
+        weight: 1
+      - path: joint49/joint11/joint12/joint13/joint14
+        weight: 1
+      - path: joint49/joint27
+        weight: 1
+      - path: joint49/joint27/joint28
+        weight: 1
+      - path: joint49/joint27/joint28/joint29
+        weight: 1
+      - path: joint49/joint27/joint28/joint29/joint30
+        weight: 1
+      - path: joint49/joint27/joint28/joint29/joint30/joint31
+        weight: 1
+      - path: joint49/joint50
+        weight: 1
+      - path: joint49/joint50/joint51
+        weight: 1
+      - path: joint49/joint50/joint51/joint41
+        weight: 1
+      - path: joint49/joint50/joint51/joint41/joint42
+        weight: 1
+      - path: joint49/joint50/joint51/joint41/joint42/joint43
+        weight: 1
+      - path: joint49/joint50/joint51/joint41/joint42/joint43/joint44
+        weight: 1
+      - path: joint49/joint50/joint51/joint45
+        weight: 1
+      - path: joint49/joint50/joint51/joint45/joint46
+        weight: 1
+      - path: joint49/joint50/joint51/joint45/joint46/joint47
+        weight: 1
+      - path: joint49/joint50/joint51/joint45/joint46/joint47/joint48
+        weight: 1
+      - path: joint49/joint50/joint51/joint52
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint32
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint32/joint33
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint1
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint1/joint2
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint1/joint2/joint3
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint4
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint4/joint5
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint4/joint5/joint6
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint39
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint39/joint40
+        weight: 1
+      - path: polluted_geo
+        weight: 1
+      - path: polluted_geo/B_L_le_geo
+        weight: 1
+      - path: polluted_geo/B_R_leg_geo
+        weight: 1
+      - path: polluted_geo/body_geo
+        weight: 1
+      - path: polluted_geo/F_L_leg_geo
+        weight: 1
+      - path: polluted_geo/F_R_leg_geo
+        weight: 1
+      - path: polluted_geo/head_geo
+        weight: 1
+      - path: polluted_geo/jaw_geo
+        weight: 1
+      - path: polluted_geo/L_ear_geo
+        weight: 1
+      - path: polluted_geo/R_ear_geo
+        weight: 1
+      - path: polluted_geo/tail_geo
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Stun
+      takeName: Take 001
+      firstFrame: 201
+      lastFrame: 234
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: joint49
+        weight: 1
+      - path: joint49/joint7
+        weight: 1
+      - path: joint49/joint7/joint8
+        weight: 1
+      - path: joint49/joint7/joint8/joint9
+        weight: 1
+      - path: joint49/joint7/joint8/joint9/joint10
+        weight: 1
+      - path: joint49/joint11
+        weight: 1
+      - path: joint49/joint11/joint12
+        weight: 1
+      - path: joint49/joint11/joint12/joint13
+        weight: 1
+      - path: joint49/joint11/joint12/joint13/joint14
+        weight: 1
+      - path: joint49/joint27
+        weight: 1
+      - path: joint49/joint27/joint28
+        weight: 1
+      - path: joint49/joint27/joint28/joint29
+        weight: 1
+      - path: joint49/joint27/joint28/joint29/joint30
+        weight: 1
+      - path: joint49/joint27/joint28/joint29/joint30/joint31
+        weight: 1
+      - path: joint49/joint50
+        weight: 1
+      - path: joint49/joint50/joint51
+        weight: 1
+      - path: joint49/joint50/joint51/joint41
+        weight: 1
+      - path: joint49/joint50/joint51/joint41/joint42
+        weight: 1
+      - path: joint49/joint50/joint51/joint41/joint42/joint43
+        weight: 1
+      - path: joint49/joint50/joint51/joint41/joint42/joint43/joint44
+        weight: 1
+      - path: joint49/joint50/joint51/joint45
+        weight: 1
+      - path: joint49/joint50/joint51/joint45/joint46
+        weight: 1
+      - path: joint49/joint50/joint51/joint45/joint46/joint47
+        weight: 1
+      - path: joint49/joint50/joint51/joint45/joint46/joint47/joint48
+        weight: 1
+      - path: joint49/joint50/joint51/joint52
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint32
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint32/joint33
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint1
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint1/joint2
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint1/joint2/joint3
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint4
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint4/joint5
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint4/joint5/joint6
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint39
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint39/joint40
+        weight: 1
+      - path: polluted_geo
+        weight: 1
+      - path: polluted_geo/B_L_le_geo
+        weight: 1
+      - path: polluted_geo/B_R_leg_geo
+        weight: 1
+      - path: polluted_geo/body_geo
+        weight: 1
+      - path: polluted_geo/F_L_leg_geo
+        weight: 1
+      - path: polluted_geo/F_R_leg_geo
+        weight: 1
+      - path: polluted_geo/head_geo
+        weight: 1
+      - path: polluted_geo/jaw_geo
+        weight: 1
+      - path: polluted_geo/L_ear_geo
+        weight: 1
+      - path: polluted_geo/R_ear_geo
+        weight: 1
+      - path: polluted_geo/tail_geo
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Death
+      takeName: Take 001
+      firstFrame: 261
+      lastFrame: 286
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: joint49
+        weight: 1
+      - path: joint49/joint7
+        weight: 1
+      - path: joint49/joint7/joint8
+        weight: 1
+      - path: joint49/joint7/joint8/joint9
+        weight: 1
+      - path: joint49/joint7/joint8/joint9/joint10
+        weight: 1
+      - path: joint49/joint11
+        weight: 1
+      - path: joint49/joint11/joint12
+        weight: 1
+      - path: joint49/joint11/joint12/joint13
+        weight: 1
+      - path: joint49/joint11/joint12/joint13/joint14
+        weight: 1
+      - path: joint49/joint27
+        weight: 1
+      - path: joint49/joint27/joint28
+        weight: 1
+      - path: joint49/joint27/joint28/joint29
+        weight: 1
+      - path: joint49/joint27/joint28/joint29/joint30
+        weight: 1
+      - path: joint49/joint27/joint28/joint29/joint30/joint31
+        weight: 1
+      - path: joint49/joint50
+        weight: 1
+      - path: joint49/joint50/joint51
+        weight: 1
+      - path: joint49/joint50/joint51/joint41
+        weight: 1
+      - path: joint49/joint50/joint51/joint41/joint42
+        weight: 1
+      - path: joint49/joint50/joint51/joint41/joint42/joint43
+        weight: 1
+      - path: joint49/joint50/joint51/joint41/joint42/joint43/joint44
+        weight: 1
+      - path: joint49/joint50/joint51/joint45
+        weight: 1
+      - path: joint49/joint50/joint51/joint45/joint46
+        weight: 1
+      - path: joint49/joint50/joint51/joint45/joint46/joint47
+        weight: 1
+      - path: joint49/joint50/joint51/joint45/joint46/joint47/joint48
+        weight: 1
+      - path: joint49/joint50/joint51/joint52
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint32
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint32/joint33
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint1
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint1/joint2
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint1/joint2/joint3
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint4
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint4/joint5
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint4/joint5/joint6
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint39
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint39/joint40
+        weight: 1
+      - path: polluted_geo
+        weight: 1
+      - path: polluted_geo/B_L_le_geo
+        weight: 1
+      - path: polluted_geo/B_R_leg_geo
+        weight: 1
+      - path: polluted_geo/body_geo
+        weight: 1
+      - path: polluted_geo/F_L_leg_geo
+        weight: 1
+      - path: polluted_geo/F_R_leg_geo
+        weight: 1
+      - path: polluted_geo/head_geo
+        weight: 1
+      - path: polluted_geo/jaw_geo
+        weight: 1
+      - path: polluted_geo/L_ear_geo
+        weight: 1
+      - path: polluted_geo/R_ear_geo
+        weight: 1
+      - path: polluted_geo/tail_geo
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -166,11 +166,14 @@ public enum ToolName {
 
 public enum MonsterName {
     
-    Play_Mouse_Corpse,
-    Play_Mouse_Poison,
-    Play_Mouse_Fat,
-    Play_Mouse_Boodoo,
-    Play_Mouse_Gundal,
+    Play_Mouse_Corpse   =21101,
+    Play_Mouse_Fat      =21102,
+    Play_Mouse_Boodoo   =21103,
+    Play_Mouse_Gundal   =21204,
+    Play_Mouse_Elite    =21305,
+    Play_Mouse_Poison   =21206,
+
+    Play_Dog_Polluted   =22108,
 
 }
 

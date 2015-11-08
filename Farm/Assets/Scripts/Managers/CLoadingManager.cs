@@ -95,5 +95,11 @@ public class CLoadingManager : SceneManager
         nextScene = (string)GameMaster.Instance.tempData.Get("next_scene");
 
         GameMaster.Instance.tempData.Remove("next_scene");
+
+        if(nextScene=="Play")
+        {
+            GameMaster.Instance.tempData.Insert("StageInfo", DataLoadHelper.Instance.GetStageInfo((int)GameMaster.Instance.tempData.Get("chapterNum")+1, (int)GameMaster.Instance.tempData.Get("stageNum")+1));
+        }
+
     }
 }

@@ -9,7 +9,7 @@ public class CMonsterController : Controller
 
     public List<MonsterName> monsterName;
     public int oneWavePerMonster = 12;//한 웨이브당 생성되는 몬스터 마리 수.
-    int oneWavePerMonsterCount;
+    int oneWavePerMonsterCount;//한 웨이브에 죽은 몬스터 마리 수.
 
     public Transform startPos;
 
@@ -18,6 +18,11 @@ public class CMonsterController : Controller
     public float regenTime;
 
     public int currentIter;
+
+    float time;
+    int waveCount;
+
+    List<StageInfo> stageInfo;
 
     void Awake()
     {
@@ -55,7 +60,7 @@ public class CMonsterController : Controller
                 MonsterDied((int)_gameMessage.Get("id"));
                 break;
             case MessageName.Play_MaintainOver:
-                Reset();
+                Reset((int)_gameMessage.Get("wavecount"));
                 break;
             case MessageName.Play_MonsterReturn:
                 MonsterReturn();
@@ -85,28 +90,69 @@ public class CMonsterController : Controller
     /// </summary>
     void Init()
     {
+        time = 0;
+
+        stageInfo = (List<StageInfo>)GameMaster.Instance.tempData.Get("StageInfo");
+        stageInfo.Sort((info1, info2) => info1.time.CompareTo(info2.time));
+
+        //stageInfo.Sort((info1, info2) => info1.wave.CompareTo(info2.wave));
+         
+         
         monsterList = new List<GameObject>();
-        oneWavePerMonster = monsterName.Count;
+        foreach (StageInfo node in stageInfo) {
+            
+            //monsterList.Add(ObjectPooler.Instance.GetGameObject(node.id.ToString()));
+
+            GameObject monsteri = ObjectPooler.Instance.GetGameObject(((MonsterName)node.id).ToString());
+
+            monsteri.GetComponent<CMonster>().SetController(this);
+
+            monsteri.SetActive(false);
+            monsteri.transform.position = new Vector3(startPos.position.x, startPos.position.y, startPos.position.z);
+            MonsterInfo mInfo = DataLoadHelper.Instance.GetMonsterInfo(node.id);
+            monsteri.GetComponent<CMonster>().MonsterSetting(mInfo.hp, mInfo.power, mInfo.cooldownTime, mInfo.attackSpeed, mInfo.range, mInfo.moveSpeed, mInfo.skillID);
+
+            monsterList.Add(monsteri);
+            }
+        //oneWavePerMonster = monsterName.Count;
+
+        
+        
+        //////////////////////////////////////////////////////////
+        /*
         for (int i = 0; i < oneWavePerMonster; i++)
         {
             monsterList.Add(ObjectPooler.Instance.GetGameObject(monsterName[i].ToString()));
-            monsterList[i].GetComponent<CMonster>().SetController(this);
+            CMonster monsteri = monsterList[i].GetComponent<CMonster>();
+            monsteri.SetController(this);
             monsterList[i].SetActive(false);
             monsterList[i].transform.position = new Vector3(startPos.position.x, startPos.position.y, startPos.position.z);
         }
-
+        
         oneWavePerMonsterCount = 0;
         currentIter = 0;
+        */
     }
     /// <summary>
     /// monsterList에서 Iterator로 사용되는 currentIter와, 
-    /// 한 웨이브마다 몇마리의 몬스터가 죽었는지 체크하는 oneWavePerMonsterCount를 0으로 초기화
+    /// 한 웨이브마다 몇마리의 몬스터가 죽었는지 체크하는 oneWavePerMonsterCount를 0으로 초기화/
     /// 그리고 GenMonster 코루틴을 호출.
     /// </summary>
-    void Reset()
+    void Reset(int wave)
     {
+        waveCount = wave;
+        int monnum = 0;
+        foreach (StageInfo node in stageInfo)
+        {
+            if (node.wave == waveCount)
+            {
+                monnum++;
+            }
+        }
+
         currentIter = 0;
         oneWavePerMonsterCount = 0;
+        oneWavePerMonster = monnum;
         StartCoroutine("GenMonster");
 
     }
@@ -119,8 +165,10 @@ public class CMonsterController : Controller
     {
         while (true)
         {
-            yield return new WaitForSeconds(regenTime);
-
+            //yield return new WaitForSeconds(regenTime);
+            yield return null;
+            time += Time.deltaTime;
+            /*
             int rand = Random.Range(0,4);
 
             switch (rand) {
@@ -143,10 +191,39 @@ public class CMonsterController : Controller
             monsterList[currentIter].GetComponent<CMove>().SetTargetPos(targetPosition);
             monsterList[currentIter].GetComponent<CMonster>().ChangeStateToMove();
             currentIter++;
+
             if (currentIter >= oneWavePerMonster)
             {
                 break;
             }
+
+             */ 
+            /////////////////////////////////////////////////////////////////
+            
+            if (stageInfo[currentIter].time <= time)
+            {
+                Debug.Log("timegogo");
+                if (stageInfo[currentIter].wave == waveCount)
+                {
+                    monsterList[currentIter].GetComponent<CMonster>().lineNumber = stageInfo[currentIter].line;
+                    int _lineNum = monsterList[currentIter].GetComponent<CMonster>().lineNumber-1;
+                    Vector3 targetPos = new Vector3(startPosition[_lineNum].position.x - 100, startPosition[_lineNum].position.y, startPosition[_lineNum].position.z);
+                    monsterList[currentIter].SetActive(true);
+                    monsterList[currentIter].transform.position = startPosition[_lineNum].position;
+                    monsterList[currentIter].GetComponent<CMonster>().ChangeStateToReset();
+                    monsterList[currentIter].GetComponent<CMove>().SetTargetPos(targetPos);
+                    monsterList[currentIter].GetComponent<CMonster>().ChangeStateToMove();
+                }
+                currentIter++;
+            }
+
+            if (currentIter >= stageInfo.Count) {
+                time = 0;
+                break;
+            }
+             
+
+
         }
     }
     /// <summary>
@@ -293,7 +370,7 @@ public class CMonsterController : Controller
     /// </summary>
     void MonsterReturn() {
         StopCoroutine("GenMonster");
-        for (int i = 0; i < oneWavePerMonster; i++)
+        for (int i = 0; i < monsterList.Count; i++)
         {
             if (monsterList[i].GetComponent<CMonster>().isAlive)
             {
@@ -356,7 +433,7 @@ public class CMonsterController : Controller
         StopCoroutine("GenMonster");
         oneWavePerMonsterCount = 0;
         currentIter = 0;
-        for (int i = 0; i < oneWavePerMonster; i++)
+        for (int i = 0; i < monsterList.Count; i++)
         {
             monsterList[i].GetComponent<CMonster>().MonsterMoveStop();
             monsterList[i].GetComponent<CMonster>().StopAttack();

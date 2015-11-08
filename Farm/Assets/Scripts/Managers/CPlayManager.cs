@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class CPlayManager : SceneManager {
 
@@ -9,12 +10,15 @@ public class CPlayManager : SceneManager {
     string chapterName;
 		
 	int wave;
-	public const int maxWave = 5;
+	public const int maxWave = 3;
 
     public float readyForStageTime = 10f;
     public float managementTime =5f;
     public float waveLimitTime = 30f;
     public float limitTime;
+    
+
+    
 
 	protected override void Awake()
 	{
@@ -27,6 +31,8 @@ public class CPlayManager : SceneManager {
 	{
         ChangeState(GameState.Play_Ready);
         //ObjectPooler.Instance.GetGameObject("Background");
+
+        GameMaster.Instance.tempData.Clear();
 	}
 	
 	void Update () {
@@ -166,11 +172,12 @@ public class CPlayManager : SceneManager {
     /// </summary>
 	void Init()
 	{
+        
         //stageNum = (int)GameMaster.Instance.tempData.Get("stageNum");
         //stageName = (string)GameMaster.Instance.tempData.Get("stageName");
         //chapterNum = (int)GameMaster.Instance.tempData.Get("chapterNum");
         //chapterName = (string)GameMaster.Instance.tempData.Get("chapterName");
-        GameMaster.Instance.tempData.Clear();
+        
 		wave = 0;
         UnPause();
 	}
