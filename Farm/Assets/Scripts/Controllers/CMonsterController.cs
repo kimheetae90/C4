@@ -202,7 +202,6 @@ public class CMonsterController : Controller
             
             if (stageInfo[currentIter].time <= time)
             {
-                Debug.Log("timegogo");
                 if (stageInfo[currentIter].wave == waveCount)
                 {
                     monsterList[currentIter].GetComponent<CMonster>().lineNumber = stageInfo[currentIter].line;
