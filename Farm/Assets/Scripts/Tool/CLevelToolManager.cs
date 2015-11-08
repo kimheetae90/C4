@@ -17,7 +17,10 @@ public class CLevelToolManager : SceneManager {
 
 	public override void DispatchInputData (InputData _inputData)
 	{
-
+		if (_inputData.selectedGameObject.CompareTag ("Grid")) 
+		{
+			GameObject selectedGameObject = _inputData.selectedGameObject;
+		}
 	}
 
 	public override void DispatchGameMessage (GameMessage _gameMessage)
