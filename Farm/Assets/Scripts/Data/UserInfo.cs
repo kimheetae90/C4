@@ -67,7 +67,7 @@ public class UserInfo
         stage.InnerText = _stageNo.ToString();
         userInfoDoc.Save("Assets/Resources/Data/UserInfo.xml");
     }
-
+    
     public int GetTool1ID()
     {
         return int.Parse(tool1Id.InnerText);
