@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
@@ -20,7 +20,7 @@ public class CStorageManager : SceneManager
     void Start()
     {
         toolListBox = GameObject.Find("Tools");
-        ToolIDList = GameMaster.Instance.bluePrint.GetToolIDListHave();
+        ToolIDList = GameMaster.Instance.bluePrint.GetToolIDList();
         toolCount = ToolIDList.Count;
         RectTransform toolListRect = toolListBox.GetComponent<RectTransform>();
         toolListRect.sizeDelta = new Vector2(70 * toolCount , 0);

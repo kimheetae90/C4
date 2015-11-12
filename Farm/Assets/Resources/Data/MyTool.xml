@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MyToolData>
+  <Count>3</Count>
+  <MyTool>
+    <instance>1</instance>
+    <id>11201</id>
+    <level>1</level>
+  </MyTool>
+  <MyTool>
+    <instance>2</instance>
+    <id>11201</id>
+    <level>1</level>
+  </MyTool>
+  <MyTool>
+    <instance>3</instance>
+    <id>13002</id>
+    <level>1</level>
+  </MyTool>
+</MyToolData>

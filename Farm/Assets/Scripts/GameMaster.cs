@@ -39,6 +39,9 @@ public class GameMaster : MonoBehaviour {
     [System.NonSerialized]
     public BluePrint bluePrint;
 
+	[System.NonSerialized]
+	public MyTool myTool;
+
 	void Awake () {
 		DontDestroyOnLoad (transform.gameObject);
 		gameMessageManager = new GameMessagePooler ();
@@ -48,6 +51,8 @@ public class GameMaster : MonoBehaviour {
         userInfo.LoadData();
         bluePrint = new BluePrint();
         bluePrint.LoadData();
+		myTool = new MyTool ();
+		myTool.LoadData ();
 	}
 	
 	void Start()
