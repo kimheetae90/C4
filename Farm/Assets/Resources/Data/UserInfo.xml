@@ -3,10 +3,7 @@
   <Gold>1000</Gold>
   <Chapter>1</Chapter>
   <Stage>1</Stage>
-  <Tool1Id>11201</Tool1Id>
-  <Tool1Level>1</Tool1Level>
-  <Tool2Id>13002</Tool2Id>
-  <Tool2Level>1</Tool2Level>
-  <Tool3Id>11201</Tool3Id>
-  <Tool3Level>1</Tool3Level>
+  <Tool1Instance>1</Tool1Instance>
+  <Tool2Instance>2</Tool2Instance>
+  <Tool3Instance>3</Tool3Instance>
 </UserData>

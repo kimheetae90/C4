@@ -53,6 +53,7 @@ public class GameMaster : MonoBehaviour {
         bluePrint.LoadData();
 		myTool = new MyTool ();
 		myTool.LoadData ();
+		userInfo.SetTool1 (123);
 	}
 	
 	void Start()
