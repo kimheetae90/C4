@@ -11,7 +11,7 @@ public class CStorageManager : SceneManager
     int toolCount;
     int curToolID;
     List<int> ToolIDList;
-
+    
     protected override void Awake()
     {
         base.Awake();
@@ -20,10 +20,11 @@ public class CStorageManager : SceneManager
     void Start()
     {
         toolListBox = GameObject.Find("Tools");
-        ToolIDList = GameMaster.Instance.bluePrint.GetToolIDList();
+        ToolIDList = GameMaster.Instance.myTool.GetToolIDList();
         toolCount = ToolIDList.Count;
         RectTransform toolListRect = toolListBox.GetComponent<RectTransform>();
         toolListRect.sizeDelta = new Vector2(70 * toolCount , 0);
+        InitButtons();
         CreateToolButtons(toolCount);
     }
 
@@ -61,6 +62,18 @@ public class CStorageManager : SceneManager
     //////////////////////// 			구현               ////////////////////////
     /// //////////////////////////////////////////////////////////////////////////
     /// 
+    private void InitButtons()
+    {
+        Button upgradeButton = GameObject.Find("Button_Upgrade").GetComponent<Button>();
+        upgradeButton.onClick.AddListener(delegate { UpgrageTool(curToolID); });
+    }
+
+    private void UpgrageTool(int curToolID)
+    {
+        Debug.Log(curToolID);
+        int instance = GameMaster.Instance.myTool.GetInstanceByToolID(curToolID);
+        GameMaster.Instance.myTool.LevelUp(instance);
+    }
 
     void CreateToolButtons(int toolCount)
     {
@@ -90,9 +103,10 @@ public class CStorageManager : SceneManager
     void ShowToolInfo(Button button)
     {
         string[] idString = button.name.Split('_');
-
         int id = int.Parse(idString[2]);
         // TODO : 현재 버튼 이름으로 id값 파싱하는 중. button 이름이 바뀌거나 하면 이 부분 수정해주어야함.
+
+        ChangeCurToolId(id);
 
         Text ToolInfoText = GameObject.Find("Text_Tools_Info").GetComponent<Text>();
         ToolInfoText.text = "HP : " + DataLoadHelper.Instance.GetToolInfo(id).hp.ToString() + "\n";
