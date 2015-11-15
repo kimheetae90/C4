@@ -78,9 +78,9 @@ public class MyTool
 		XmlElement instanceElem = myToolDoc.CreateElement ("instance");
 		XmlElement idElem = myToolDoc.CreateElement ("id");
 		XmlElement levelElem = myToolDoc.CreateElement ("level");
-		instanceElem.InnerText = countNode.InnerText;
 		countNode.InnerText = (int.Parse (countNode.InnerText) + 1).ToString ();
-		idElem.InnerText = _id.ToString ();
+        instanceElem.InnerText = countNode.InnerText;
+        idElem.InnerText = _id.ToString ();
 		levelElem.InnerText = "1";
 		newTool.AppendChild (instanceElem);
 		newTool.AppendChild (idElem);
