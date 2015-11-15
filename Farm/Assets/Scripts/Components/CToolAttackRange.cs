@@ -38,7 +38,7 @@ public class CToolAttackRange : CAttackRange {
             if (tool.isAlive && tool.canHeld)
             {
                 tool.ChangeStateToReadyToShot();
-                yield return new WaitForSeconds(tool.attackReadySpeed);
+                yield return new WaitForSeconds(tool.m_attackReadySpeed);
                 if (tool.GetToolState() == ObjectState.Play_Tool_ReadyToShot)
                 {
                     tool.ChangeStateToShot();

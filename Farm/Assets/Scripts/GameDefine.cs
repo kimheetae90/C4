@@ -16,6 +16,8 @@ public enum MessageName
     Play_MonsterReturn,//제한시간이 다해서 몬스터가 원래 있던 위치로 돌아감.
     Play_MonsterShotMissle,//원거리공격을 하는 몬스터가 미사일을 발사함. monster_id와 shotPos를 넘김.
 
+    Play_MonsterDebuffToolsAttackSpeed,//흑사쥐의 패시브 스킬. 툴을 공격하면 툴의 공격속도를 감소시킴.
+
     Play_PlayersObjectDamagedByMonster,
     Play_PlayerDamagedByMonster, // 플레이어가 몬스터에게 공격당함.
     Play_PlayerMove, // 플레이어가 특정 위치로 이동함
@@ -57,7 +59,10 @@ public enum MessageName
     Play_MaintainOver,//정비시간이 지나고 gamestate를 다시 웨이브가 몰려오는 start state로 바꿈. wavecount를 넘김.(UI컨트롤러에서 사용)
 
     Play_FenceDie,//펜스가 사라진것을 펜스컨트롤러에게 알림. id를 넘김
-    Play_FenceDisappear_MonsterMove//펜스가 사라진것을 몬스터 컨트롤러에게 알려서 몬스터를 다시 움직이게 함.
+    Play_FenceDisappear_MonsterMove,//펜스가 사라진것을 몬스터 컨트롤러에게 알려서 몬스터를 다시 움직이게 함.
+
+    Play_PlayerSkill1Used,//스킬1을 사용함.
+    Play_PlayerSkill1CanUse,//스킬1을 다시 사용할수있음.
 
 }
 
@@ -154,7 +159,12 @@ public enum ObjectState
 
 	/* Play_Fence */
 	Play_Fence_Died,        // 울타리의 hp가 0이라서 사용 불가능한 상태
-	Play_Fence_Alive        // 울타리가 사용 가능한 상태.
+	Play_Fence_Alive,        // 울타리가 사용 가능한 상태.
+
+    /* Play_PlayerSkill */
+    Play_Skill_Waiting,//스킬이 사용가능한 상태.
+    Play_Skill_Activated,//스킬이 사용된 상태.
+    Play_Skill_Cooldown,//스킬이 사용된 후 쿨다운상태.
 }
 
 public enum ToolName {
