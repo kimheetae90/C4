@@ -44,6 +44,9 @@ public class CToolController : Controller
             case MessageName.Play_StageRestart:
                 ResetStage();
                 break;
+            case MessageName.Play_MonsterDebuffToolsAttackSpeed:
+                ToolsAttackSpeedDebuffed((int)_gameMessage.Get("object_id"));
+                break;
 
         }
     }
@@ -95,6 +98,13 @@ public class CToolController : Controller
         if (FindToolOfID(_id)!= null)
         {
             FindToolOfID(_id).GetComponent<CTool>().Damaged(_monster_power);
+        }
+    }
+
+    void ToolsAttackSpeedDebuffed(int _id) {
+        if (FindToolOfID(_id) != null)
+        {
+            FindToolOfID(_id).GetComponent<CTool>().AttackSpeedDebuff();
         }
     }
 

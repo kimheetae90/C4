@@ -12,7 +12,7 @@ public abstract class CMonster : BaseObject
     public float attackRange;
     public float moveSpeed;
     float m_moveSpeed;
-    public int SkillID;
+    public int SkillID;//일단 1이면 흑사쥐의 공격속도감소 디버프.
     
     public int lineNumber;
 
@@ -308,7 +308,7 @@ public abstract class CMonster : BaseObject
     /// </summary>
     void ChangeTexture()
     {
-        if ((float)_hp / hp <= 0.3)
+        if ((float)_hp / hp <= 0.3f)
         {
             if (renderer.Count > 0 && renderer[0].material.mainTexture != texture[2])
             {

@@ -91,8 +91,8 @@ public class CMonsterController : Controller
     void Init()
     {
         time = 0;
-
         stageInfo = (List<StageInfo>)GameMaster.Instance.tempData.Get("StageInfo");
+        
         stageInfo.Sort((info1, info2) => info1.time.CompareTo(info2.time));
 
         //stageInfo.Sort((info1, info2) => info1.wave.CompareTo(info2.wave));

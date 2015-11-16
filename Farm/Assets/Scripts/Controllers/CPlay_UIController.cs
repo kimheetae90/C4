@@ -17,6 +17,10 @@ public class CPlay_UIController : Controller
     public Button pauseButton;
     public Button skipButton;
 
+    public Button Skill1;
+    public Button Skill2;
+    public Button Skill3;
+
     public GameObject clearPopup;
     public GameObject failedPopup;
     public GameObject pausePopup;
@@ -177,6 +181,26 @@ public class CPlay_UIController : Controller
         ReadyForStage(10f);
         skipButton.gameObject.SetActive(true);
         
+    }
+
+    public void Skill1ButtonClick() {
+        Skill1.interactable = false;
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_PlayerSkill1Used);
+        SendGameMessage(gameMsg);
+        StartCoroutine("Skill1CoolDownCheck");
+    }
+
+    IEnumerator Skill1CoolDownCheck() {
+        yield return new WaitForSeconds(5f);
+        Skill1.interactable = true;
+    }
+
+    public void Skill2ButtonClick() {
+        Skill2.interactable = false;
+    }
+
+    public void Skill3ButtonClick() {
+        Skill3.interactable = false;
     }
 
 
