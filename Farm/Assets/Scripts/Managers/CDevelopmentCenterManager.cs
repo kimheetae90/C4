@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
-
+using System.Collections.Generic;
 public class CDevelopmentCenterManager : SceneManager
 {
-    public GameObject buttonPrefab;
+    public GameObject toolPrefab;
     GameObject toolListBox;
     int toolCount;
+    List<int> toolIDList;
 
     protected override void Awake()
     {
@@ -14,11 +16,11 @@ public class CDevelopmentCenterManager : SceneManager
     void Start()
     {
         toolListBox = GameObject.Find("Tools");
-        //toolCount = GetToolCount();
-        toolCount = 10; // 임의로 10 넣어둠. 나중에 위에 있는 함수 사용해서 받아오면 됨.
+        toolIDList = GameMaster.Instance.bluePrint.GetToolIDList();
+        toolCount = toolIDList.Count;
         RectTransform toolListRect = toolListBox.GetComponent<RectTransform>();
         toolListRect.sizeDelta = new Vector2(75 * toolCount, 0);
-        CreateToolButtons(10);
+        CreateToolButtons();
     }
 
     void Update()
@@ -67,22 +69,36 @@ public class CDevelopmentCenterManager : SceneManager
     /// //////////////////////////////////////////////////////////////////////////
     /// 
 
-    int GetToolsCount()
+    //    upgradeButton.onClick.AddListener(delegate { UpgrageTool(curToolID); });
+    
+    void CreateToolButtons()
     {
-        if (GameMaster.Instance.tempData.Get("ToolCount") == null) return 0;
+        for (int i = 0; i < toolIDList.Count; i++)
+        {
+            GameObject toolPanel = MonoBehaviour.Instantiate(toolPrefab) as GameObject;
+            int xPos = 35 + (75 * i);
+            toolPanel.name = "Panel_Tool_" + toolIDList[i];
+            toolPanel.transform.SetParent(toolListBox.transform);
+            toolPanel.GetComponent<RectTransform>().localPosition = new Vector3(xPos, 10, 0);
 
-        return (int)GameMaster.Instance.tempData.Get("ToolCount");
+            var texts = toolPanel.GetComponentsInChildren<Text>();
+            foreach(var tInfoText in texts)
+            {
+                if(tInfoText.gameObject.name == "Text_ToolInfo")
+                {
+                    tInfoText.text = toolIDList[i].ToString();
+                }
+            }
+
+            Button buyButton = toolPanel.GetComponentInChildren<Button>();
+            buyButton.onClick.RemoveAllListeners();
+            buyButton.onClick.AddListener(delegate { BuyTool(toolPanel); });
+        }
     }
 
-    void CreateToolButtons(int toolCount)
+    void BuyTool(GameObject tool)
     {
-        for (int i = 0; i < toolCount; i++)
-        {
-            GameObject button = MonoBehaviour.Instantiate(buttonPrefab) as GameObject;
-            int xPos = 35 + (75 * i);
-            button.name = "Button_Tool_" + i; // name을 변경
-            button.transform.SetParent(toolListBox.transform);
-            button.GetComponent<RectTransform>().localPosition = new Vector3(xPos, 0, 0);
-        }
+        int id = int.Parse(tool.name.Split('_')[2]);
+        GameMaster.Instance.myTool.BuyNewTool(id);
     }
 }
