@@ -7,6 +7,7 @@ public class CDevelopmentCenterManager : SceneManager
     public GameObject toolPrefab;
     GameObject toolListBox;
     int toolCount;
+    List<ToolInfo> toolInfoList;
     List<int> toolIDList;
 
     protected override void Awake()
@@ -16,6 +17,7 @@ public class CDevelopmentCenterManager : SceneManager
     void Start()
     {
         toolListBox = GameObject.Find("Tools");
+        toolInfoList = DataLoadHelper.Instance.GetToolList();
         toolIDList = GameMaster.Instance.bluePrint.GetToolIDList();
         toolCount = toolIDList.Count;
         RectTransform toolListRect = toolListBox.GetComponent<RectTransform>();
@@ -73,11 +75,11 @@ public class CDevelopmentCenterManager : SceneManager
     
     void CreateToolButtons()
     {
-        for (int i = 0; i < toolIDList.Count; i++)
+        for (int i = 0; i < toolInfoList.Count; i++)
         {
             GameObject toolPanel = MonoBehaviour.Instantiate(toolPrefab) as GameObject;
             int xPos = 35 + (75 * i);
-            toolPanel.name = "Panel_Tool_" + toolIDList[i];
+            toolPanel.name = "Panel_Tool_" + toolInfoList[i].id;
             toolPanel.transform.SetParent(toolListBox.transform);
             toolPanel.GetComponent<RectTransform>().localPosition = new Vector3(xPos, 10, 0);
 
@@ -86,11 +88,15 @@ public class CDevelopmentCenterManager : SceneManager
             {
                 if(tInfoText.gameObject.name == "Text_ToolInfo")
                 {
-                    tInfoText.text = toolIDList[i].ToString();
+                    tInfoText.text = toolInfoList[i].id.ToString();
                 }
             }
 
             Button buyButton = toolPanel.GetComponentInChildren<Button>();
+            if(toolInfoList[i].open == 0)
+            {
+                buyButton.interactable = false;
+            }
             buyButton.onClick.RemoveAllListeners();
             buyButton.onClick.AddListener(delegate { BuyTool(toolPanel); });
         }

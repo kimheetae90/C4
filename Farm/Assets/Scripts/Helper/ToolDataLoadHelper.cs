@@ -70,7 +70,7 @@ public class ToolDataLoadHelper{
             toolInfo.upgradeMoveSpeed = float.Parse(node["upgradeMoveSpeed"].InnerText);
             toolInfo.price = int.Parse(node["price"].InnerText);
             toolInfo.upgradePrice = int.Parse(node["upgradePrice"].InnerText);
-            
+            toolInfo.open = int.Parse(node["open"].InnerText);
             toolInfoList.Add(toolInfo);
         }
 
