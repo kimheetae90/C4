@@ -48,4 +48,13 @@ public class CBomb : CPlayerSkill {
         yield return new WaitForSeconds(cooldown);
         ChangeState(ObjectState.Play_Skill_Waiting);
     }
+
+    public override void Reset()
+    {
+        StopCoroutine("Activated");
+        StopCoroutine("CooldownCheck");
+        coll.enabled = false;
+
+        ChangeState(ObjectState.Play_Skill_Waiting);
+    }
 }

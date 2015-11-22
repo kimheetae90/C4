@@ -180,6 +180,9 @@ public class CPlay_UIController : Controller
         StopCoroutine("ReadyForStart");
         ReadyForStage(10f);
         skipButton.gameObject.SetActive(true);
+        Skill1.interactable = true;
+        Skill2.interactable = true;
+        Skill3.interactable = true;
         
     }
 
@@ -197,10 +200,26 @@ public class CPlay_UIController : Controller
 
     public void Skill2ButtonClick() {
         Skill2.interactable = false;
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_PlayerSkill2Used);
+        SendGameMessage(gameMsg);
+        StartCoroutine("Skill2CoolDownCheck");
+    }
+    IEnumerator Skill2CoolDownCheck()
+    {
+        yield return new WaitForSeconds(5f);
+        Skill2.interactable = true;
     }
 
     public void Skill3ButtonClick() {
         Skill3.interactable = false;
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_PlayerSkill3Used);
+        SendGameMessage(gameMsg);
+        StartCoroutine("Skill3CoolDownCheck");
+    }
+    IEnumerator Skill3CoolDownCheck()
+    {
+        yield return new WaitForSeconds(5f);
+        Skill3.interactable = true;
     }
 
 

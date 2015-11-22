@@ -50,6 +50,9 @@ public class CMonsterController : Controller
             case MessageName.Play_MonsterDamaged:
                 MonsterDamagedByMissle((int)_gameMessage.Get("monster_id"), (int)_gameMessage.Get("power"));
                 break;
+            case MessageName.Play_MonsterTrapped:
+                MonsterTrapped((int)_gameMessage.Get("monster_id"), (int)_gameMessage.Get("power"), (float)_gameMessage.Get("stunTime"));
+                break;
             case MessageName.Play_FenceDisappear_MonsterMove:
                 if (_gameMessage.Get("fence_id") != null)
                 {
@@ -64,6 +67,12 @@ public class CMonsterController : Controller
                 break;
             case MessageName.Play_MonsterReturn:
                 MonsterReturn();
+                break;
+            case MessageName.Play_MonsterBlinded:
+                MonsterBlind();
+                break;
+            case MessageName.Play_MonsterBlindOver:
+                MonsterBlindOver();
                 break;
             case MessageName.Play_StageFailed:
                 //MonsterPause();
@@ -343,6 +352,10 @@ public class CMonsterController : Controller
         FindMonsterOfID(_id).GetComponent<CMonster>().Damaged(_missle_power);
     }
 
+    void MonsterTrapped(int _id, int _power, float _stunTime) {
+        FindMonsterOfID(_id).GetComponent<CMonster>().Trapped(_power,_stunTime);
+    }
+
     /// <summary>
     /// 몬스터가 죽었을 때 호출되는 함수.
     /// 해당 몬스터의 Collider를 없애고 (몬스터가 죽고나서 시체가 사라지기 전까지 미사일이 투과해야함)
@@ -381,6 +394,32 @@ public class CMonsterController : Controller
             monsterList[i].GetComponent<CMonster>().ChangeStateToReturn();
             }
             
+        }
+    }
+    /// <summary>
+    /// 스킬 플래시가 사용되면 살아잇는 몬스터들을 전부 블라인드 상태로 만듬.
+    /// </summary>
+    void MonsterBlind() {
+        for (int i = 0; i < monsterList.Count; i++)
+        {
+            if (monsterList[i].GetComponent<CMonster>().isAlive)
+            {
+                monsterList[i].GetComponent<CMonster>().ChangeStateToBlind();
+            }
+
+        }
+    }
+    /// <summary>
+    /// 플래시 지속시간이 끝나면 살아잇는 몬스터들을 움직이게 함.
+    /// </summary>
+    void MonsterBlindOver() {
+        for (int i = 0; i < monsterList.Count; i++)
+        {
+            if (monsterList[i].GetComponent<CMonster>().isAlive)
+            {
+                monsterList[i].GetComponent<CMonster>().ChangeStateToMove();
+            }
+
         }
     }
 

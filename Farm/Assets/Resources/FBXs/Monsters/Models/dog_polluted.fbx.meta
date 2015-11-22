@@ -122,6 +122,7 @@ ModelImporter:
     7400008: Attack
     7400010: Stun
     7400012: Death
+    7400014: Attack2
     9500000: //RootNode
     13700000: B_L_le_geo
     13700002: B_R_leg_geo
@@ -914,6 +915,132 @@ ModelImporter:
       takeName: Take 001
       firstFrame: 261
       lastFrame: 286
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: joint49
+        weight: 1
+      - path: joint49/joint7
+        weight: 1
+      - path: joint49/joint7/joint8
+        weight: 1
+      - path: joint49/joint7/joint8/joint9
+        weight: 1
+      - path: joint49/joint7/joint8/joint9/joint10
+        weight: 1
+      - path: joint49/joint11
+        weight: 1
+      - path: joint49/joint11/joint12
+        weight: 1
+      - path: joint49/joint11/joint12/joint13
+        weight: 1
+      - path: joint49/joint11/joint12/joint13/joint14
+        weight: 1
+      - path: joint49/joint27
+        weight: 1
+      - path: joint49/joint27/joint28
+        weight: 1
+      - path: joint49/joint27/joint28/joint29
+        weight: 1
+      - path: joint49/joint27/joint28/joint29/joint30
+        weight: 1
+      - path: joint49/joint27/joint28/joint29/joint30/joint31
+        weight: 1
+      - path: joint49/joint50
+        weight: 1
+      - path: joint49/joint50/joint51
+        weight: 1
+      - path: joint49/joint50/joint51/joint41
+        weight: 1
+      - path: joint49/joint50/joint51/joint41/joint42
+        weight: 1
+      - path: joint49/joint50/joint51/joint41/joint42/joint43
+        weight: 1
+      - path: joint49/joint50/joint51/joint41/joint42/joint43/joint44
+        weight: 1
+      - path: joint49/joint50/joint51/joint45
+        weight: 1
+      - path: joint49/joint50/joint51/joint45/joint46
+        weight: 1
+      - path: joint49/joint50/joint51/joint45/joint46/joint47
+        weight: 1
+      - path: joint49/joint50/joint51/joint45/joint46/joint47/joint48
+        weight: 1
+      - path: joint49/joint50/joint51/joint52
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint32
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint32/joint33
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint1
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint1/joint2
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint1/joint2/joint3
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint4
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint4/joint5
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint37/joint4/joint5/joint6
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint39
+        weight: 1
+      - path: joint49/joint50/joint51/joint52/joint53/joint34/joint39/joint40
+        weight: 1
+      - path: polluted_geo
+        weight: 1
+      - path: polluted_geo/B_L_le_geo
+        weight: 1
+      - path: polluted_geo/B_R_leg_geo
+        weight: 1
+      - path: polluted_geo/body_geo
+        weight: 1
+      - path: polluted_geo/F_L_leg_geo
+        weight: 1
+      - path: polluted_geo/F_R_leg_geo
+        weight: 1
+      - path: polluted_geo/head_geo
+        weight: 1
+      - path: polluted_geo/jaw_geo
+        weight: 1
+      - path: polluted_geo/L_ear_geo
+        weight: 1
+      - path: polluted_geo/R_ear_geo
+        weight: 1
+      - path: polluted_geo/tail_geo
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Attack2
+      takeName: Take 001
+      firstFrame: 159
+      lastFrame: 201
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

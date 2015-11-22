@@ -18,6 +18,7 @@ public abstract class CMonster : BaseObject
 
     
     public float stunTime;
+    public float m_stunTime;
     
 
     public MissleName missleName;
@@ -81,6 +82,9 @@ public abstract class CMonster : BaseObject
 		    case ObjectState.Play_Monster_Return:
                 MonsterReturn();
                 break;
+            case ObjectState.Play_Monster_Blind:
+                MonsterBlind();
+                break;
 		    case ObjectState.Play_Monster_Die:
                 MonsterDie();
                 break;
@@ -109,6 +113,7 @@ public abstract class CMonster : BaseObject
        attackRange = _range;
        moveSpeed = _moveSpeed;
        m_moveSpeed = _moveSpeed;
+       m_stunTime = stunTime;
        SkillID = _skillID;
 
        moveScript.SetMoveSpeed(_moveSpeed);
@@ -157,6 +162,7 @@ public abstract class CMonster : BaseObject
     /// </summary>
     void MonsterMove() {
         moveScript.StartMove();
+        monsterAttackRange.GetComponent<Collider>().enabled = true;
         monsterAnimation.Reset();
         monsterAnimation.Walk();
     }
@@ -204,6 +210,15 @@ public abstract class CMonster : BaseObject
         monsterAnimation.Reset();
         monsterAnimation.Return();
 
+    }
+
+    void MonsterBlind() {
+        monsterAttackRange.StopCoroutine("MonsterAttack");
+        attackable = true;
+        monsterAttackRange.GetComponent<Collider>().enabled = false;
+        MonsterMoveStop();
+        monsterAnimation.Reset();
+        monsterAnimation.Idle();
     }
 
     /// <summary>
@@ -263,6 +278,9 @@ public abstract class CMonster : BaseObject
     {
         ChangeState(ObjectState.Play_Monster_Return);
     }
+    public void ChangeStateToBlind() {
+        ChangeState(ObjectState.Play_Monster_Blind);
+    }
     public void ChangeStateToPause()
     {
         ChangeState(ObjectState.Play_Monster_Pause);
@@ -302,6 +320,15 @@ public abstract class CMonster : BaseObject
             ChangeState(ObjectState.Play_Monster_Die);
         }
     }
+
+    public void Trapped(int _damage, float _stuntime) {
+
+        m_stunTime = _stuntime;
+        Damaged(_damage);
+        m_stunTime = stunTime;
+    }
+
+
 
     /// <summary>
     /// 남은 체력 비례 텍스쳐 변경.
@@ -364,10 +391,10 @@ public abstract class CMonster : BaseObject
     protected IEnumerator Monster_Stun()
     {
 
-        yield return new WaitForSeconds(stunTime);
+        yield return new WaitForSeconds(m_stunTime);
         if (_hp > 0)
         {
-            if(touchedWithPlayer==false&&touchedWithTool==false&&touchedFenceID==0&&objectState!=ObjectState.Play_Monster_Return)
+            if(touchedWithPlayer==false&&touchedWithTool==false&&touchedFenceID==0&&objectState!=ObjectState.Play_Monster_Return&&objectState!=ObjectState.Play_Monster_Blind&&objectState!=ObjectState.Play_Monster_Traped)
             ChangeState(ObjectState.Play_Monster_Move);
         }
     }

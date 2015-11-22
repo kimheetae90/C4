@@ -98,7 +98,7 @@ public class CMissle : BaseObject
         if (_baseObject.tag=="Play_Tool"&&monster.SkillID == 1) {
             GameMessage gameMsg2 = GameMessage.Create(MessageName.Play_MonsterDebuffToolsAttackSpeed);
             gameMsg.Insert("object_id", _baseObject.GetComponent<BaseObject>().id);
-            SendGameMessage(gameMsg2);
+            SendGameMessageToSceneManage(gameMsg2);
         }
     }
     
