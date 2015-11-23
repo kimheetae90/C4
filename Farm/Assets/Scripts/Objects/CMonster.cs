@@ -85,6 +85,9 @@ public abstract class CMonster : BaseObject
             case ObjectState.Play_Monster_Blind:
                 MonsterBlind();
                 break;
+            case ObjectState.Play_Monster_Traped:
+                MonsterTrapped();
+                break;
 		    case ObjectState.Play_Monster_Die:
                 MonsterDie();
                 break;
@@ -221,6 +224,13 @@ public abstract class CMonster : BaseObject
         monsterAnimation.Idle();
     }
 
+    void MonsterTrapped() {
+        MonsterMoveStop();
+        monsterAnimation.Reset();
+        monsterAnimation.Idle();
+        StartCoroutine("Monster_Trapped");
+    }
+
     /// <summary>
     /// Monster의 Hp가 0이되어 상태가 Die가 되면 불러짐. 몬스터의 움직임을 멈추고 애니메이션 Death를 실행함.
     /// 그리고 MonsterController에게 메세지를 보냄.
@@ -324,7 +334,14 @@ public abstract class CMonster : BaseObject
     public void Trapped(int _damage, float _stuntime) {
 
         m_stunTime = _stuntime;
-        Damaged(_damage);
+        _hp -= _damage;
+        ChangeTexture();
+        ChangeState(ObjectState.Play_Monster_Traped);
+        if (_hp <= 0 && isAlive == true)
+        {
+            isAlive = false;
+            ChangeState(ObjectState.Play_Monster_Die);
+        }
         m_stunTime = stunTime;
     }
 
@@ -396,6 +413,15 @@ public abstract class CMonster : BaseObject
         {
             if(touchedWithPlayer==false&&touchedWithTool==false&&touchedFenceID==0&&objectState!=ObjectState.Play_Monster_Return&&objectState!=ObjectState.Play_Monster_Blind&&objectState!=ObjectState.Play_Monster_Traped)
             ChangeState(ObjectState.Play_Monster_Move);
+        }
+    }
+
+    IEnumerator Monster_Trapped() {
+        yield return new WaitForSeconds(m_stunTime);
+        if (_hp > 0)
+        {
+            if (touchedWithPlayer == false && touchedWithTool == false && touchedFenceID == 0 && objectState != ObjectState.Play_Monster_Return && objectState != ObjectState.Play_Monster_Blind)
+                ChangeState(ObjectState.Play_Monster_Move);
         }
     }
 
