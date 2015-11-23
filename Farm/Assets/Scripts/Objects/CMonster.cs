@@ -193,7 +193,7 @@ public abstract class CMonster : BaseObject
     protected virtual void MonsterHitted()
     {
         MonsterMoveStop();
-        monsterAnimation.Reset();
+        //monsterAnimation.Reset();
         monsterAnimation.Stun();
         StartCoroutine("Monster_Stun");
     }
@@ -323,7 +323,15 @@ public abstract class CMonster : BaseObject
     {
         _hp -= _damage;
         ChangeTexture();
-        ChangeState(ObjectState.Play_Monster_Hitted);
+        if (objectState != ObjectState.Play_Monster_Blind && objectState != ObjectState.Play_Monster_Traped)
+        {
+
+            ChangeState(ObjectState.Play_Monster_Hitted);
+        }
+        else {
+
+            monsterAnimation.Stun();
+        }
         if (_hp <= 0&&isAlive==true)
         {
             isAlive = false; 
