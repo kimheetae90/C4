@@ -323,6 +323,13 @@ public abstract class CMonster : BaseObject
     {
         _hp -= _damage;
         ChangeTexture();
+
+        if (_hp <= 0 && isAlive == true)
+        {
+            isAlive = false;
+            ChangeState(ObjectState.Play_Monster_Die);
+        }
+
         if (objectState != ObjectState.Play_Monster_Blind && objectState != ObjectState.Play_Monster_Traped)
         {
 
@@ -332,11 +339,7 @@ public abstract class CMonster : BaseObject
 
             monsterAnimation.Stun();
         }
-        if (_hp <= 0&&isAlive==true)
-        {
-            isAlive = false; 
-            ChangeState(ObjectState.Play_Monster_Die);
-        }
+        
     }
 
     public void Trapped(int _damage, float _stuntime) {

@@ -62,7 +62,7 @@ public class CTrapController : Controller
                     break;
                 }
             }
-        }
+        }/*
         else {
             GameObject trap = ObjectPooler.Instance.GetGameObject("Play_Skill_Trap");
             trap.GetComponent<CTrap>().SetController(this);
@@ -75,7 +75,7 @@ public class CTrapController : Controller
             maxAmount++;
         
         }
-    
+    */
     }
 
     public void Reset() {

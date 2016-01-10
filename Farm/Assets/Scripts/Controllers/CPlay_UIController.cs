@@ -253,5 +253,17 @@ public class CPlay_UIController : Controller
         SendGameMessage(gameMsg);
     }
 
+    public void Speed1Button() {
+        Time.timeScale = 1;
+    }
+    public void Speed2Button()
+    {
+        Time.timeScale = 2;
+    }
+    public void Speed3Button()
+    {
+        Time.timeScale = 3;
+    }
+
     
 }

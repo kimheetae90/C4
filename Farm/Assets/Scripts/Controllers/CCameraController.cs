@@ -30,7 +30,8 @@ public class CCameraController : Controller
         switch (_gameMessage.messageName)
         {
             case MessageName.Play_CameraMove:
-                CameraMove((InputData)_gameMessage.Get("inputData"));
+                //CameraMove((InputData)_gameMessage.Get("inputData"));
+                //카메라 이동 일단 막음.
                 break;
             case MessageName.Play_SkipReadyState:
                 SkipReadyState();

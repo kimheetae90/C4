@@ -10,7 +10,7 @@ public class CPlayerController : Controller
     GameObject selectedGameObject;
     public Transform startPos;
     CMove move;
-    bool isAdjacent;
+    public bool isAdjacent;
     ObjectState playerState;
     GameObject holdedTool;
 
@@ -51,12 +51,22 @@ public class CPlayerController : Controller
                     }
                     else
                     {
-                        MovePlayerToTarget(player, (Vector3)_gameMessage.Get("ClickPosition"));
+                        if (playerScript.canHold == false)
+                        {
+                            if (selectedGameObject.tag == "Play_Tile")
+                            {
+                                MovePlayerToTarget(player, new Vector3(selectedGameObject.transform.position.x,((Vector3)_gameMessage.Get("ClickPosition")).y,((Vector3)_gameMessage.Get("ClickPosition")).z));
+                            }
+                        }
+                        else
+                        {
+                            MovePlayerToTarget(player, (Vector3)_gameMessage.Get("ClickPosition"));
+                        }
                     }
                 }
                 break;
             case MessageName.Play_StageFailed:
-                player.GetComponent<CPlayer>().ReadyToPause();
+                playerScript.ReadyToPause();
                 break;
             case MessageName.Play_ToolDiedWhileHelded:
                 PutDownTool(player, (GameObject)_gameMessage.Get("tool"));
@@ -102,9 +112,12 @@ public class CPlayerController : Controller
     void MovePlayerToTarget(GameObject _player, Vector3 _targetPos)
     {
         _targetPos.z = 0;
-        if (_targetPos.x <= -15) {
-            _targetPos = new Vector3(-15,_targetPos.y,_targetPos.z);
-        }
+        /* 플레이어가 울타리를 넘어갈때.
+            if (_targetPos.x <= -15)
+            {
+                _targetPos = new Vector3(-15, _targetPos.y, _targetPos.z);
+            }
+             */
         if (_targetPos.y >= -0.3f)
         {
             _targetPos = new Vector3(_targetPos.x, -0.3f, _targetPos.z);
@@ -116,27 +129,31 @@ public class CPlayerController : Controller
 
         if (playerScript.canHold == false)
         {//tool을 들고있을때
-            
-            _targetPos = new Vector3(_targetPos.x - 2, _targetPos.y, _targetPos.z);
-            if (_targetPos.x <= -15)
+            if (selectedGameObject.tag == "Play_Tile")
             {
-                _targetPos = new Vector3(-15, _targetPos.y, _targetPos.z);
+                _targetPos = new Vector3(_targetPos.x - 2, _targetPos.y, _targetPos.z);
+                /* 플레이어가 울타리를 넘어갈때.
+                if (_targetPos.x <= -15)
+                {
+                    _targetPos = new Vector3(-15, _targetPos.y, _targetPos.z);
+                }
+                 */
+                move.SetTargetPos(_targetPos);
+                if (holdedTool.GetComponent<CTool>().isAlive)
+                {
+                    holdedTool.GetComponent<CTool>().ChangeStateToMove();
+                }
+                if (_targetPos.x > player.transform.position.x)
+                {
+                    playerScript.ChangeStateToMoveFrontWithTool();
+                }
+                else
+                {
+                    playerScript.ChangeStateToMoveBackWithTool();
+                }
+                StopCoroutine("CheckPutDownTool");
+                StartCoroutine(CheckPutDownTool(_targetPos));
             }
-            move.SetTargetPos(_targetPos);
-            if (holdedTool.GetComponent<CTool>().isAlive)
-            {
-                holdedTool.GetComponent<CTool>().ChangeStateToMove();
-            }
-            if (_targetPos.x > player.transform.position.x)
-            {
-                playerScript.ChangeStateToMoveFrontWithTool();
-            }
-            else
-            {
-                playerScript.ChangeStateToMoveBackWithTool();
-            }
-            StopCoroutine("CheckPutDownTool");
-            StartCoroutine(CheckPutDownTool(_targetPos));
         }
         else {
             playerScript.ChangeStateToMove();
@@ -175,10 +192,12 @@ public class CPlayerController : Controller
     void HoldTool(GameObject _player, GameObject _tool, Vector3 _click_position)
     {
         Vector3 targetPos = new Vector3(_click_position.x - 2, _click_position.y, _click_position.z);
-        if (targetPos.x <= -15)
-        {
-            targetPos = new Vector3(-15, targetPos.y, targetPos.z);
-        }
+        /* 플레이어가 울타리를 넘어갈때.
+            if (_targetPos.x <= -15)
+            {
+                _targetPos = new Vector3(-15, _targetPos.y, _targetPos.z);
+            }
+             */
         MovePlayerToTarget(_player, targetPos);
         StopCoroutine("CheckIsAdjacentToTool");
         StartCoroutine(CheckIsAdjacentToTool(targetPos));

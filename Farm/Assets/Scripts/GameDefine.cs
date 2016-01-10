@@ -18,6 +18,7 @@ public enum MessageName
     Play_MonsterBlinded,//플래시 스킬이 사용되 몬스터들이 블라인드 상태가 됨
     Play_MonsterBlindOver,//플래시 지속시간이 끝나 몬스터들이 다시 옴직임.
     Play_MonsterTrapped,//몬스터가 트랩을 밟아 움직일 수 없는 상태.
+    Play_ShadowCalled,//Dog_Hell이 피격당해 분신을 생성함.
 
     Play_MonsterDebuffToolsAttackSpeed,//흑사쥐의 패시브 스킬. 툴을 공격하면 툴의 공격속도를 감소시킴.
 
@@ -194,6 +195,8 @@ public enum MonsterName {
 
     Play_Dog_Polluted   =22108,
     Play_Dog_Fighter    =22109,
+    Play_Dog_Hell       =22310,
+    Play_Dog_Shadow     =22311,//지옥견의 분신.
 
 }
 
