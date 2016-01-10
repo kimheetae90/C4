@@ -150,13 +150,16 @@ public class InputHelper : MonoBehaviour {
 			cam = Camera.main;
 		}
 		Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity);
-		if (hit.collider != null) {
-			GameObject clickObject = hit.collider.transform.root.gameObject;
-			if (clickObject != null) {
-				inputData.selectedGameObject = clickObject;
-				inputData.clickPosition = hit.point;
-			}
-		}
+        if (hit.collider != null)
+        {
+            Transform ct = hit.collider.transform;
+            if (ct != null)
+            {
+                inputData.clickedGameObject = ct.gameObject;
+                inputData.selectedGameObject = ct.root.gameObject;
+                inputData.clickPosition = hit.point;
+            }
+        }
 		else 
 		{
 			LogManager.log ("Error : Ray가 Collider와 만나지 않음");
