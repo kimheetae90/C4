@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,7 +30,7 @@ public class CSelectStageManager : SceneManager
     {
         if (_inputData.keyState == InputData.KeyState.Up)
         {
-            OnClickToStartStage(_inputData.selectedGameObject);
+            OnClickToStartStage(_inputData.downRootGameObject);
         }
     }
 

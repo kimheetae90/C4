@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class InputHelper : MonoBehaviour {
@@ -155,8 +155,8 @@ public class InputHelper : MonoBehaviour {
             Transform ct = hit.collider.transform;
             if (ct != null)
             {
-                inputData.clickedGameObject = ct.gameObject;
-                inputData.selectedGameObject = ct.root.gameObject;
+                inputData.downCorrectGameObject = ct.gameObject;
+                inputData.downRootGameObject = ct.root.gameObject;
                 inputData.clickPosition = hit.point;
             }
         }
@@ -176,7 +176,15 @@ public class InputHelper : MonoBehaviour {
 		}
 		Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity);
 		if (hit.collider != null) {
+			
 			inputData.dragPosition = hit.point;
+			Transform ct = hit.collider.transform;
+			if (ct != null)
+			{
+				inputData.dragCorrectGameObject = ct.gameObject;
+				inputData.dragRootGameObject = ct.root.gameObject;
+			}
+
 		} else {
 			LogManager.log ("Error : Ray가 Collider와 만나지 않음");
 		}
@@ -185,6 +193,20 @@ public class InputHelper : MonoBehaviour {
 	
 	void setupClickUp()
 	{
+		Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity);
+		if (hit.collider != null) {
+
+			Transform ct = hit.collider.transform;
+			if (ct != null)
+			{
+				inputData.upCorrectGameObject = ct.gameObject;
+				inputData.upRootGameObject = ct.root.gameObject;
+			}
+			
+		} else {
+			LogManager.log ("Error : Ray가 Collider와 만나지 않음");
+		}
+
 		inputData.multiTapDistance = 0;
 		inputData.preMultiTapDistance = 0;
 	}

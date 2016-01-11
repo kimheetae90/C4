@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -369,7 +369,7 @@ public class CPlayManager : SceneManager {
         
         GameMessage gameMsg = GameMessage.Create(MessageName.Play_PlayerMove);
         gameMsg.Insert("ClickPosition", _inputData.dragPosition);
-        gameMsg.Insert("SelectedGameObject", _inputData.selectedGameObject);
+        gameMsg.Insert("SelectedGameObject", _inputData.downRootGameObject);
         Broadcast(gameMsg);
     }
 

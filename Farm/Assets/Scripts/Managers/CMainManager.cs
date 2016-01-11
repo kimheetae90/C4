@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -51,7 +51,7 @@ public class CMainManager : SceneManager
     {
         if (_inputData.keyState == InputData.KeyState.Up)
         {
-            OnClickToLoadSelectChapter(_inputData.clickedGameObject);
+            OnClickToLoadSelectChapter(_inputData.downCorrectGameObject);
         }
     }
 
