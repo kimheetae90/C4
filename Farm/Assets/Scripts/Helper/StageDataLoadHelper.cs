@@ -13,9 +13,9 @@ public class StageDataLoadHelper{
         xmlLoader = new XMLLoader();
     }
 
-    public void StageDataLoad(int _chapter, int stage)
+    public void StageDataLoad(int _chapter, int _stage)
     {
-        string stageNo = "Stage" + _chapter.ToString() + "_" + stage.ToString();
+        string stageNo = "Stage" + _chapter.ToString() + "_" + _stage.ToString();
         statgeNodeList = xmlLoader.GetNodes(stageNo);
     }
 

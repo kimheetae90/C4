@@ -80,6 +80,15 @@ public class InputHelper : MonoBehaviour {
 			if (Input.GetMouseButtonUp(0))
 			{
 				inputData.keyState = InputData.KeyState.Up;
+				inputData.clickButton = InputData.ClickButton.Left;
+			}
+			if (Input.GetMouseButtonDown(1)) {
+				inputData.keyState = InputData.KeyState.Down;
+			}
+			if (Input.GetMouseButtonUp(1))
+			{
+				inputData.keyState = InputData.KeyState.Up;
+				inputData.clickButton = InputData.ClickButton.Right;
 			}
 		}
 		

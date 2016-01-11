@@ -5,6 +5,10 @@ using System.Collections;
 public enum MessageName
 {
 	LevelTool_ChangeChecker, // Change Checker.
+	LevelTool_ClickMarker, // Change Checker.
+	LevelTool_RemoveMarker,
+	LevelTool_SelectStageInfo,
+	LevelTool_ChangeWave,
 
     DevelopmentCenter_ActivateToolButton, // 가지고 있는 툴의 갯수만큼 버튼을 활성화 시킴.
 

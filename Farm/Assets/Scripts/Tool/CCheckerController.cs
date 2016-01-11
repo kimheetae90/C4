@@ -41,6 +41,7 @@ public class CCheckerController : Controller {
 		selectedChecker = tempChecker;
 		selectedChecker.ChangeToSelectedColor ();
 		GameMessage selectCheckerMessage = GameMessage.Create (MessageName.LevelTool_ChangeChecker);
+		selectCheckerMessage.Insert ("selectedChecker", selectedChecker);
 		SendGameMessage (selectCheckerMessage);
 	}
 }

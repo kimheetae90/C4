@@ -11,12 +11,20 @@ public struct InputData
 		Sleep,
 		MultiTap,
 	}
-	
+
+	public enum ClickButton
+	{
+		Left,
+		Middle,
+		Right,
+	}
 	
 	//좌표 정보
 	public Vector3 clickPosition;
 	public Vector3 dragPosition;
-	
+
+	public ClickButton clickButton;
+
 	//클릭한 대상에 대한 정보
 	public GameObject selectedGameObject;
 	
