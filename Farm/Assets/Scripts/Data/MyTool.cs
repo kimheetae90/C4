@@ -64,6 +64,7 @@ public class MyTool
 				int tempLevel = int.Parse(node["level"].InnerText);
 				tempLevel++;
 				node["level"].InnerText = tempLevel.ToString();
+                Debug.Log("Levelup");
 				break;
 			}
 		}
@@ -77,9 +78,9 @@ public class MyTool
 		XmlElement instanceElem = myToolDoc.CreateElement ("instance");
 		XmlElement idElem = myToolDoc.CreateElement ("id");
 		XmlElement levelElem = myToolDoc.CreateElement ("level");
-		instanceElem.InnerText = countNode.InnerText;
 		countNode.InnerText = (int.Parse (countNode.InnerText) + 1).ToString ();
-		idElem.InnerText = _id.ToString ();
+        instanceElem.InnerText = countNode.InnerText;
+        idElem.InnerText = _id.ToString ();
 		levelElem.InnerText = "1";
 		newTool.AppendChild (instanceElem);
 		newTool.AppendChild (idElem);
@@ -97,4 +98,28 @@ public class MyTool
 			Debug.Log(tool.instance + " -> id : " +tool.id + ", level : " + tool.level);
 		}
 	}
+
+    public List<int> GetToolIDList()
+    {
+        List<int> ToolIDList = new List<int>();
+
+        foreach (XmlNode tempNode in myToolNodeList)
+        {
+            ToolIDList.Add(int.Parse(tempNode["id"].InnerText));
+        }
+        return ToolIDList;
+    }
+
+    public int GetInstanceByToolID(int _id)
+    {
+        List<int> ToolIDList = new List<int>();
+
+        foreach (XmlNode tempNode in myToolNodeList)
+        {
+            if (int.Parse(tempNode["id"].InnerText) == _id)
+                return int.Parse(tempNode["instance"].InnerText);
+        }
+        return -1;
+    }
+
 }

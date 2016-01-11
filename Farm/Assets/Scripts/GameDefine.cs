@@ -92,8 +92,8 @@ public enum GameState
 
 	/* Main */
 	Main_Ready,	//Main이 처음 실행되었을 때 상태.
-	Main_LoadMaintain,	//버튼을 눌러서 정비화면으로 가는 중.
-    Main_LoadSelectChapter, // 버튼을 눌러서 챕터 선택 화면으로 가는 중.
+    Main_SelectChapter,
+    Main_SelectStage,
     Main_LoadDevelopmentCenter, // 버튼을 눌러서 개발실로 가는 중.
     Main_LoadStorage, // 버튼을 눌러서 무기창고로 가는 중.
 

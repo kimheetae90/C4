@@ -55,6 +55,11 @@ public class DataLoadHelper : MonoBehaviour
         return toolInfoList.Find(x => x.id == _id);
     }
 
+    public List<ToolInfo> GetToolList()
+    {
+        return toolInfoList;
+    }
+
     public MonsterInfo GetMonsterInfo(int _id)
     {
         return monsterInfoList.Find(x => x.id == _id);
