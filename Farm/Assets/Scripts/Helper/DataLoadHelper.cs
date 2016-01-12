@@ -38,17 +38,6 @@ public class DataLoadHelper : MonoBehaviour
         MonsterInfoLoad();
     }
 
-    void Start()
-    {
-        Debug.Log(GetToolInfo(13002).hp);
-        Debug.Log(GetMonsterInfo(21101).attackSpeed);
-        List<StageInfo> stageInfoList = GetStageInfo(1,1);
-        foreach(StageInfo node in stageInfoList)
-        {
-            Debug.Log(node.wave + ", " + node.line + ", " + node.time + ", " + node.id);
-        }        
-    }
-
     void ToolInfoLoad()
     {
         ToolDataLoadHelper toolLoader = new ToolDataLoadHelper();
@@ -64,6 +53,11 @@ public class DataLoadHelper : MonoBehaviour
     public ToolInfo GetToolInfo(int _id)
     { 
         return toolInfoList.Find(x => x.id == _id);
+    }
+
+    public List<ToolInfo> GetToolList()
+    {
+        return toolInfoList;
     }
 
     public MonsterInfo GetMonsterInfo(int _id)

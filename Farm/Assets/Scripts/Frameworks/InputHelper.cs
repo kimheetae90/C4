@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class InputHelper : MonoBehaviour {
@@ -159,13 +159,16 @@ public class InputHelper : MonoBehaviour {
 			cam = Camera.main;
 		}
 		Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity);
-		if (hit.collider != null) {
-			GameObject clickObject = hit.collider.transform.root.gameObject;
-			if (clickObject != null) {
-				inputData.selectedGameObject = clickObject;
-				inputData.clickPosition = hit.point;
-			}
-		}
+        if (hit.collider != null)
+        {
+            Transform ct = hit.collider.transform;
+            if (ct != null)
+            {
+                inputData.downCorrectGameObject = ct.gameObject;
+                inputData.downRootGameObject = ct.root.gameObject;
+                inputData.clickPosition = hit.point;
+            }
+        }
 		else 
 		{
 			LogManager.log ("Error : Ray가 Collider와 만나지 않음");
@@ -182,7 +185,15 @@ public class InputHelper : MonoBehaviour {
 		}
 		Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity);
 		if (hit.collider != null) {
+			
 			inputData.dragPosition = hit.point;
+			Transform ct = hit.collider.transform;
+			if (ct != null)
+			{
+				inputData.dragCorrectGameObject = ct.gameObject;
+				inputData.dragRootGameObject = ct.root.gameObject;
+			}
+
 		} else {
 			LogManager.log ("Error : Ray가 Collider와 만나지 않음");
 		}
@@ -191,6 +202,20 @@ public class InputHelper : MonoBehaviour {
 	
 	void setupClickUp()
 	{
+		Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity);
+		if (hit.collider != null) {
+
+			Transform ct = hit.collider.transform;
+			if (ct != null)
+			{
+				inputData.upCorrectGameObject = ct.gameObject;
+				inputData.upRootGameObject = ct.root.gameObject;
+			}
+			
+		} else {
+			LogManager.log ("Error : Ray가 Collider와 만나지 않음");
+		}
+
 		inputData.multiTapDistance = 0;
 		inputData.preMultiTapDistance = 0;
 	}

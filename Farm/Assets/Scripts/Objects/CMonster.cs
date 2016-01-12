@@ -12,13 +12,13 @@ public abstract class CMonster : BaseObject
     public float attackRange;
     public float moveSpeed;
     float m_moveSpeed;
-    public int passiveSkill;
-    public int activeSkill;
-
+    public int SkillID;//일단 1이면 흑사쥐의 공격속도감소 디버프.
+    
     public int lineNumber;
 
     
     public float stunTime;
+    public float m_stunTime;
     
 
     public MissleName missleName;
@@ -36,15 +36,14 @@ public abstract class CMonster : BaseObject
     public Texture[] texture = new Texture[3];
 
     protected CMonsterAnimation monsterAnimation;
-    CAttackRange monsterAttackRange;
+    CMonsterAttackRange monsterAttackRange;
     CMove moveScript;
-
 
     void Awake()
     {
         moveScript = GetComponent<CMove>();
         monsterAnimation = GetComponent<CMonsterAnimation>();
-        monsterAttackRange = GetComponentInChildren<CAttackRange>();
+        monsterAttackRange = GetComponentInChildren<CMonsterAttackRange>();
     }
 
 
@@ -83,6 +82,12 @@ public abstract class CMonster : BaseObject
 		    case ObjectState.Play_Monster_Return:
                 MonsterReturn();
                 break;
+            case ObjectState.Play_Monster_Blind:
+                MonsterBlind();
+                break;
+            case ObjectState.Play_Monster_Traped:
+                MonsterTrapped();
+                break;
 		    case ObjectState.Play_Monster_Die:
                 MonsterDie();
                 break;
@@ -100,6 +105,23 @@ public abstract class CMonster : BaseObject
         }
     }
 
+
+   public void MonsterSetting(int m_hp, int _power, float _cooldownTime, float _attackSpeed, float _range, float _moveSpeed, int _skillID){
+
+       hp = m_hp;
+       _hp = m_hp;
+       power = _power;
+       attackReadyTime = _cooldownTime;
+       attackTime = _attackSpeed;
+       attackRange = _range;
+       moveSpeed = _moveSpeed;
+       m_moveSpeed = _moveSpeed;
+       m_stunTime = stunTime;
+       SkillID = _skillID;
+
+       moveScript.SetMoveSpeed(_moveSpeed);
+       //monsterAttackRange.Setting();
+   }
    /// <summary>
    /// Monster의 상태가 Reset상태가 되면 불러져서 변수들과 Collider를 초기화 시켜줌.
    /// </summary>
@@ -143,6 +165,7 @@ public abstract class CMonster : BaseObject
     /// </summary>
     void MonsterMove() {
         moveScript.StartMove();
+        monsterAttackRange.GetComponent<Collider>().enabled = true;
         monsterAnimation.Reset();
         monsterAnimation.Walk();
     }
@@ -167,9 +190,10 @@ public abstract class CMonster : BaseObject
     /// Monster가 맞아서 상태가 Hitted가 되면 불러져서 몬스터의 움직임을 멈추고 애니메이션 Stun을 실행하고
     /// 코루틴 Monster_Stun을 실행함(일정시간(StunTime)이 지난 후 다시 움직이게 함.)
     /// </summary>
-    void MonsterHitted() {
+    protected virtual void MonsterHitted()
+    {
         MonsterMoveStop();
-        monsterAnimation.Reset();
+        //monsterAnimation.Reset();
         monsterAnimation.Stun();
         StartCoroutine("Monster_Stun");
     }
@@ -189,6 +213,22 @@ public abstract class CMonster : BaseObject
         monsterAnimation.Reset();
         monsterAnimation.Return();
 
+    }
+
+    void MonsterBlind() {
+        monsterAttackRange.StopCoroutine("MonsterAttack");
+        attackable = true;
+        monsterAttackRange.GetComponent<Collider>().enabled = false;
+        MonsterMoveStop();
+        monsterAnimation.Reset();
+        monsterAnimation.Idle();
+    }
+
+    void MonsterTrapped() {
+        MonsterMoveStop();
+        monsterAnimation.Reset();
+        monsterAnimation.Idle();
+        StartCoroutine("Monster_Trapped");
     }
 
     /// <summary>
@@ -248,6 +288,9 @@ public abstract class CMonster : BaseObject
     {
         ChangeState(ObjectState.Play_Monster_Return);
     }
+    public void ChangeStateToBlind() {
+        ChangeState(ObjectState.Play_Monster_Blind);
+    }
     public void ChangeStateToPause()
     {
         ChangeState(ObjectState.Play_Monster_Pause);
@@ -280,20 +323,47 @@ public abstract class CMonster : BaseObject
     {
         _hp -= _damage;
         ChangeTexture();
-        ChangeState(ObjectState.Play_Monster_Hitted);
-        if (_hp <= 0&&isAlive==true)
+
+        if (_hp <= 0 && isAlive == true)
         {
-            isAlive = false; 
+            isAlive = false;
             ChangeState(ObjectState.Play_Monster_Die);
         }
+
+        if (objectState != ObjectState.Play_Monster_Blind && objectState != ObjectState.Play_Monster_Traped)
+        {
+
+            ChangeState(ObjectState.Play_Monster_Hitted);
+        }
+        else {
+
+            monsterAnimation.Stun();
+        }
+        
     }
+
+    public void Trapped(int _damage, float _stuntime) {
+
+        m_stunTime = _stuntime;
+        _hp -= _damage;
+        ChangeTexture();
+        ChangeState(ObjectState.Play_Monster_Traped);
+        if (_hp <= 0 && isAlive == true)
+        {
+            isAlive = false;
+            ChangeState(ObjectState.Play_Monster_Die);
+        }
+        m_stunTime = stunTime;
+    }
+
+
 
     /// <summary>
     /// 남은 체력 비례 텍스쳐 변경.
     /// </summary>
     void ChangeTexture()
     {
-        if ((float)_hp / hp <= 0.3)
+        if ((float)_hp / hp <= 0.3f)
         {
             if (renderer.Count > 0 && renderer[0].material.mainTexture != texture[2])
             {
@@ -349,11 +419,20 @@ public abstract class CMonster : BaseObject
     protected IEnumerator Monster_Stun()
     {
 
-        yield return new WaitForSeconds(stunTime);
+        yield return new WaitForSeconds(m_stunTime);
         if (_hp > 0)
         {
-            if(touchedWithPlayer==false&&touchedWithTool==false&&touchedFenceID==0&&objectState!=ObjectState.Play_Monster_Return)
+            if(touchedWithPlayer==false&&touchedWithTool==false&&touchedFenceID==0&&objectState!=ObjectState.Play_Monster_Return&&objectState!=ObjectState.Play_Monster_Blind&&objectState!=ObjectState.Play_Monster_Traped)
             ChangeState(ObjectState.Play_Monster_Move);
+        }
+    }
+
+    IEnumerator Monster_Trapped() {
+        yield return new WaitForSeconds(m_stunTime);
+        if (_hp > 0)
+        {
+            if (touchedWithPlayer == false && touchedWithTool == false && touchedFenceID == 0 && objectState != ObjectState.Play_Monster_Return && objectState != ObjectState.Play_Monster_Blind)
+                ChangeState(ObjectState.Play_Monster_Move);
         }
     }
 

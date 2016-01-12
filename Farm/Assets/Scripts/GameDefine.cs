@@ -21,6 +21,12 @@ public enum MessageName
     Play_MonsterDied,//몬스터가 체력이 다해 죽음. int형 변수 몬스터의 id를 넘김.
     Play_MonsterReturn,//제한시간이 다해서 몬스터가 원래 있던 위치로 돌아감.
     Play_MonsterShotMissle,//원거리공격을 하는 몬스터가 미사일을 발사함. monster_id와 shotPos를 넘김.
+    Play_MonsterBlinded,//플래시 스킬이 사용되 몬스터들이 블라인드 상태가 됨
+    Play_MonsterBlindOver,//플래시 지속시간이 끝나 몬스터들이 다시 옴직임.
+    Play_MonsterTrapped,//몬스터가 트랩을 밟아 움직일 수 없는 상태.
+    Play_ShadowCalled,//Dog_Hell이 피격당해 분신을 생성함.
+
+    Play_MonsterDebuffToolsAttackSpeed,//흑사쥐의 패시브 스킬. 툴을 공격하면 툴의 공격속도를 감소시킴.
 
     Play_PlayersObjectDamagedByMonster,
     Play_PlayerDamagedByMonster, // 플레이어가 몬스터에게 공격당함.
@@ -64,6 +70,14 @@ public enum MessageName
 
     Play_FenceDie,//펜스가 사라진것을 펜스컨트롤러에게 알림. id를 넘김
     Play_FenceDisappear_MonsterMove,//펜스가 사라진것을 몬스터 컨트롤러에게 알려서 몬스터를 다시 움직이게 함.
+
+    Play_PlayerSkill1Used,//스킬1을 사용함.
+    Play_PlayerSkill1CanUse,//스킬1을 다시 사용할수있음.
+    Play_PlayerSkill2Used,//스킬2을 사용함.
+    Play_PlayerSkill2CanUse,//스킬2을 다시 사용할수있음.
+    Play_PlayerSkill3Used,//스킬3을 사용함.
+    Play_PlayerSkill4CanUse,//스킬3을 다시 사용할수있음.
+
 }
 
 
@@ -90,8 +104,8 @@ public enum GameState
 
 	/* Main */
 	Main_Ready,	//Main이 처음 실행되었을 때 상태.
-	Main_LoadMaintain,	//버튼을 눌러서 정비화면으로 가는 중.
-    Main_LoadSelectChapter, // 버튼을 눌러서 챕터 선택 화면으로 가는 중.
+    Main_SelectChapter,
+    Main_SelectStage,
     Main_LoadDevelopmentCenter, // 버튼을 눌러서 개발실로 가는 중.
     Main_LoadStorage, // 버튼을 눌러서 무기창고로 가는 중.
 
@@ -133,6 +147,8 @@ public enum ObjectState
 	Play_Monster_Attack, // 몬스터가 다른 오브젝트(농장, 플레이어, 도구)에 부딛혀서 공격하는 중
 	Play_Monster_Hitted, // 몬스터가 미사일에 맞은 상태.
 	Play_Monster_Return,//제한시간이 끝나서 몬스터가 다시 되돌아가는 상태.
+    Play_Monster_Blind,//몬스터가 플래시에 맞아 눈이 먼 상태. 움직이거나 공격할수없음.
+    Play_Monster_Traped,//몬스터가 덫에 걸려 움직일 수 없는 상태.
 	Play_Monster_Die, // 몬스터가 죽은상태.
 	
 	/* Play_Missle */
@@ -165,7 +181,12 @@ public enum ObjectState
 
 	/* Play_Fence */
 	Play_Fence_Died,        // 울타리의 hp가 0이라서 사용 불가능한 상태
-	Play_Fence_Alive        // 울타리가 사용 가능한 상태.
+	Play_Fence_Alive,        // 울타리가 사용 가능한 상태.
+
+    /* Play_PlayerSkill */
+    Play_Skill_Waiting,//스킬이 사용가능한 상태.
+    Play_Skill_Activated,//스킬이 사용된 상태.
+    Play_Skill_Cooldown,//스킬이 사용된 후 쿨다운상태.
 }
 
 public enum ToolName {
@@ -177,11 +198,17 @@ public enum ToolName {
 
 public enum MonsterName {
     
-    Play_Mouse_Corpse,
-    Play_Mouse_Poison,
-    Play_Mouse_Fat,
-    Play_Mouse_Boodoo,
-    Play_Mouse_Gundal,
+    Play_Mouse_Corpse   =21101,
+    Play_Mouse_Fat      =21102,
+    Play_Mouse_Boodoo   =21103,
+    Play_Mouse_Gundal   =21204,
+    Play_Mouse_Elite    =21305,
+    Play_Mouse_Poison   =21206,
+
+    Play_Dog_Polluted   =22108,
+    Play_Dog_Fighter    =22109,
+    Play_Dog_Hell       =22310,
+    Play_Dog_Shadow     =22311,//지옥견의 분신.
 
 }
 

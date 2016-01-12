@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -15,6 +16,8 @@ public abstract class SceneManager : MonoBehaviour {
 	List<Controller> controllerList;
 	Dictionary<string, Controller> controllerDic;
 	protected GameState gameState;
+    Text goldText;
+    Button backButton;
 
 	protected virtual void Awake()
 	{
@@ -22,6 +25,7 @@ public abstract class SceneManager : MonoBehaviour {
         InputHelper.Instance.SetSceneManager(this.GetComponent<SceneManager>());
 		controllerList = new List<Controller> ();
 		controllerDic = new Dictionary<string, Controller> ();
+        LoadCommonUIComponent();
 	}
 
 	public void AddController(Controller _controller, string _name)
@@ -66,4 +70,27 @@ public abstract class SceneManager : MonoBehaviour {
     {
         Application.LoadLevel("Loading");
     }
+
+    void GoToMainScene()
+    {
+        AsyncOperation async = Application.LoadLevelAsync("Main");
+    }
+
+    private void LoadCommonUIComponent()
+    {
+        if (GameObject.Find("Text_Money1") != null)
+        {
+            goldText = GameObject.Find("Text_Money1").GetComponent<Text>();
+            goldText.text = GameMaster.Instance.userInfo.GetGold().ToString();
+        }
+
+        if (GameObject.Find("Button_GoBack") != null)
+        {
+            backButton = GameObject.Find("Button_GoBack").GetComponent<Button>();
+            backButton.onClick.RemoveAllListeners();
+            backButton.onClick.AddListener(GoToMainScene);
+        }
+    }
+
+
 }

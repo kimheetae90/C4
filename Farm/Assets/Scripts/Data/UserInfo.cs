@@ -7,12 +7,9 @@ public class UserInfo
     XmlNode gold;
     XmlNode chapter;
     XmlNode stage;
-    XmlNode tool1Id;
-    XmlNode tool2Id;
-    XmlNode tool3Id;
-    XmlNode tool1Level;
-    XmlNode tool2Level;
-    XmlNode tool3Level;
+	XmlNode tool1;
+	XmlNode tool2;
+	XmlNode tool3;
 
     XmlNode userInfoNode;
     XmlDocument userInfoDoc;
@@ -27,12 +24,9 @@ public class UserInfo
         gold = userInfoNode["Gold"];
         chapter = userInfoNode["Chapter"];
         stage = userInfoNode["Stage"];
-        tool1Id = userInfoNode["Tool1Id"];
-        tool2Id = userInfoNode["Tool2Id"];
-        tool3Id = userInfoNode["Tool3Id"];
-        tool1Level = userInfoNode["Tool1Level"];
-        tool2Level = userInfoNode["Tool2Level"];
-        tool3Level = userInfoNode["Tool3Level"];
+		tool1 = userInfoNode["Tool1Instance"];
+		tool2 = userInfoNode["Tool2Instance"];
+		tool3 = userInfoNode["Tool3Instance"];
     }
 
     public int GetGold()
@@ -67,78 +61,44 @@ public class UserInfo
         stage.InnerText = _stageNo.ToString();
         userInfoDoc.Save("Assets/Resources/Data/UserInfo.xml");
     }
-
-    public int GetTool1ID()
+    
+    public int GetTool1()
     {
-        return int.Parse(tool1Id.InnerText);
+        return int.Parse(tool1.InnerText);
     }
 
-    public int GetTool2ID()
+    public int GetTool2()
     {
-        return int.Parse(tool2Id.InnerText);
+        return int.Parse(tool2.InnerText);
     }
 
-    public int GetTool3ID()
+    public int GetTool3()
     {
-        return int.Parse(tool3Id.InnerText);
+        return int.Parse(tool3.InnerText);
     }
 
-    public int GetTool1Level()
+    public void SetTool1(int _instance)
     {
-        return int.Parse(tool1Level.InnerText);
-    }
-
-    public int GetTool2Level()
-    {
-        return int.Parse(tool2Level.InnerText);
-    }
-
-    public int GetTool3Level()
-    {
-        return int.Parse(tool3Level.InnerText);
-    }
-
-    public void SetTool1ID(int _id)
-    {
-        tool1Id.InnerText = _id.ToString();
+		tool1.InnerText = _instance.ToString();
         userInfoDoc.Save("Assets/Resources/Data/UserInfo.xml");
     }
 
-    public void SetTool2ID(int _id)
+    public void SetTool2(int _instance)
     {
-        tool2Id.InnerText = _id.ToString();
+		tool2.InnerText = _instance.ToString();
         userInfoDoc.Save("Assets/Resources/Data/UserInfo.xml");
     }
 
-    public void SetTool3ID(int _id)
+    public void SetTool3(int _instance)
     {
-        tool3Id.InnerText = _id.ToString();
+		tool3.InnerText = _instance.ToString();
         userInfoDoc.Save("Assets/Resources/Data/UserInfo.xml");
     }
 
-    public void SetTool1Level(int _level)
-    {
-        tool1Level.InnerText = _level.ToString();
-        userInfoDoc.Save("Assets/Resources/Data/UserInfo.xml");
-    }
-
-    public void SetTool2Level(int _level)
-    {
-        tool2Level.InnerText = _level.ToString();
-        userInfoDoc.Save("Assets/Resources/Data/UserInfo.xml");
-    }
-
-    public void SetTool3Level(int _level)
-    {
-        tool3Level.InnerText = _level.ToString();
-        userInfoDoc.Save("Assets/Resources/Data/UserInfo.xml");
-    }
 
     public void PrintData()
     {
-        Debug.Log(GetGold() + ", " + GetChapter() + ", " + GetStage()
-            + ", " + GetTool1ID() + ", " + GetTool1Level()
-            + ", " + GetTool2ID() + ", " + GetTool2Level()
-            + ", " + GetTool3ID() + ", " + GetTool3Level());
+        Debug.Log (GetGold () + ", " + GetChapter () + ", " + GetStage ()
+			+ ", " + GetTool1 () + ", " + GetTool2 () + ", " + GetTool3 ());
     }
 }

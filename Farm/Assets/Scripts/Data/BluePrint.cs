@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System.Xml;
 
 public class BluePrint{
@@ -17,51 +18,30 @@ public class BluePrint{
         bluePrintNodeList = bluePrintNode.SelectNodes("BluePrint");
     }
 
-    public int GetOpen(int _id)
-    {
-        foreach(XmlNode tempNode in bluePrintNodeList)
-            if (tempNode["id"].InnerText == _id.ToString()) return int.Parse(tempNode["open"].InnerText);
-
-        return int.MinValue;
-    }
-
-    public int GetHave(int _id)
-    {
-        foreach (XmlNode tempNode in bluePrintNodeList)
-            if (tempNode["id"].InnerText == _id.ToString()) return int.Parse(tempNode["have"].InnerText);
-
-        return int.MinValue;
-    }
-
-    public void SetOpen(int _id, int _value)
-    {
-        foreach (XmlNode tempNode in bluePrintNodeList)
-        { 
-            if (tempNode["id"].InnerText == _id.ToString())
-            {
-                tempNode["open"].InnerText = _value.ToString();
-                bluePrintDoc.Save("Assets/Resources/Data/BluePrint.xml");
-                break;
-            }
-        }
-    }
-
-    public void SetHave(int _id, int _value)
-    {
-        foreach (XmlNode tempNode in bluePrintNodeList)
-        {
-            if (tempNode["id"].InnerText == _id.ToString())
-            {
-                tempNode["have"].InnerText = _value.ToString();
-                bluePrintDoc.Save("Assets/Resources/Data/BluePrint.xml");
-                break;
-            }
-        }
-    }
-
     public void PrintData()
     {
         foreach (XmlNode tempNode in bluePrintNodeList)
-            Debug.Log(tempNode["id"].InnerText + " -> open :" + tempNode["open"].InnerText + ", have" + tempNode["have"].InnerText);
+            Debug.Log(tempNode["id"].InnerText);
     }
+
+    public List<int> GetToolIDList()
+    {
+        List<int> ToolIDList = new List<int>();
+
+        foreach (XmlNode tempNode in bluePrintNodeList) 
+		{
+			ToolIDList.Add (int.Parse (tempNode ["id"].InnerText));
+		}
+        return ToolIDList;
+    }
+
+	public void OpenBluePrint(int _id)
+	{
+		XmlElement newBluePrint = bluePrintDoc.CreateElement ("BluePrint");
+		XmlElement idElement = bluePrintDoc.CreateElement ("id");
+		idElement.InnerText = _id.ToString ();
+		newBluePrint.AppendChild (idElement);
+		bluePrintDoc.DocumentElement.InsertAfter (newBluePrint, bluePrintNode.LastChild);
+		bluePrintDoc.Save("Assets/Resources/Data/BluePrint.xml");
+	}
 }

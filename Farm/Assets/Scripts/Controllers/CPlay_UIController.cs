@@ -17,6 +17,10 @@ public class CPlay_UIController : Controller
     public Button pauseButton;
     public Button skipButton;
 
+    public Button Skill1;
+    public Button Skill2;
+    public Button Skill3;
+
     public GameObject clearPopup;
     public GameObject failedPopup;
     public GameObject pausePopup;
@@ -176,7 +180,46 @@ public class CPlay_UIController : Controller
         StopCoroutine("ReadyForStart");
         ReadyForStage(10f);
         skipButton.gameObject.SetActive(true);
+        Skill1.interactable = true;
+        Skill2.interactable = true;
+        Skill3.interactable = true;
         
+    }
+
+    public void Skill1ButtonClick() {
+        Skill1.interactable = false;
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_PlayerSkill1Used);
+        SendGameMessage(gameMsg);
+        StartCoroutine("Skill1CoolDownCheck");
+    }
+
+    IEnumerator Skill1CoolDownCheck() {
+        yield return new WaitForSeconds(5f);
+        Skill1.interactable = true;
+    }
+
+    public void Skill2ButtonClick() {
+        Skill2.interactable = false;
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_PlayerSkill2Used);
+        SendGameMessage(gameMsg);
+        StartCoroutine("Skill2CoolDownCheck");
+    }
+    IEnumerator Skill2CoolDownCheck()
+    {
+        yield return new WaitForSeconds(5f);
+        Skill2.interactable = true;
+    }
+
+    public void Skill3ButtonClick() {
+        Skill3.interactable = false;
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_PlayerSkill3Used);
+        SendGameMessage(gameMsg);
+        StartCoroutine("Skill3CoolDownCheck");
+    }
+    IEnumerator Skill3CoolDownCheck()
+    {
+        yield return new WaitForSeconds(5f);
+        Skill3.interactable = true;
     }
 
 
@@ -208,6 +251,18 @@ public class CPlay_UIController : Controller
         pausePopup.SetActive(false);
         GameMessage gameMsg = GameMessage.Create(MessageName.Play_Unpause);
         SendGameMessage(gameMsg);
+    }
+
+    public void Speed1Button() {
+        Time.timeScale = 1;
+    }
+    public void Speed2Button()
+    {
+        Time.timeScale = 2;
+    }
+    public void Speed3Button()
+    {
+        Time.timeScale = 3;
     }
 
     

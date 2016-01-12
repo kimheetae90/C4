@@ -40,23 +40,23 @@ public class CLevelToolManager : SceneManager {
 
 	public override void DispatchInputData (InputData _inputData)
 	{
-		if (_inputData.selectedGameObject == null)
+		if (_inputData.downRootGameObject == null)
 			return;
 
 		switch(_inputData.keyState)
 		{
 		case InputData.KeyState.Up:
-			if (_inputData.selectedGameObject.CompareTag ("Grid") && _inputData.clickButton == InputData.ClickButton.Left) 
+			if (_inputData.downRootGameObject.CompareTag ("Grid") && _inputData.clickButton == InputData.ClickButton.Left) 
 			{
 				GameMessage selectMessage = GameMessage.Create(MessageName.LevelTool_ClickMarker);
-				selectMessage.Insert("clickGrid",_inputData.selectedGameObject);
+				selectMessage.Insert("clickGrid",_inputData.downRootGameObject);
 				selectMessage.Insert("selectedChecker",selectedChecker);
 				Broadcast(selectMessage);
 			}
-			else if (_inputData.selectedGameObject.CompareTag ("Grid") && _inputData.clickButton == InputData.ClickButton.Right) 
+			else if (_inputData.downRootGameObject.CompareTag ("Grid") && _inputData.clickButton == InputData.ClickButton.Right) 
 			{
 				GameMessage selectMessage = GameMessage.Create(MessageName.LevelTool_RemoveMarker);
-				selectMessage.Insert("clickGrid",_inputData.selectedGameObject);
+				selectMessage.Insert("clickGrid",_inputData.downRootGameObject);
 				Broadcast(selectMessage);
 			}
 			break;

@@ -26,8 +26,15 @@ public struct InputData
 	public ClickButton clickButton;
 
 	//클릭한 대상에 대한 정보
-	public GameObject selectedGameObject;
+	public GameObject downRootGameObject;
+	public GameObject downCorrectGameObject;
+
+	public GameObject upRootGameObject;
+	public GameObject upCorrectGameObject;
 	
+	public GameObject dragRootGameObject;
+	public GameObject dragCorrectGameObject;
+
 	//클릭,드래그 상태
 	public KeyState keyState;
 	public KeyState preKeyState;
@@ -45,7 +52,7 @@ public struct InputData
 		dragPosition = Vector3.zero;
 		clickDevicePosition = Vector2.zero;
 		dragDevicePosition = Vector2.zero;
-		selectedGameObject = null;
+		downRootGameObject = null;
 		keyState = KeyState.Sleep;
 		preKeyState = KeyState.Sleep;
 	}

@@ -10,10 +10,12 @@ public abstract class CTool : BaseObject
     public int hp;
     public float weight;
     public float attackReadySpeed;
+    public float m_attackReadySpeed;
     public float attackSpeed;
     public float keepAttackTime; //공격중인 시간 몇초인지.
     public int troughPower;//관통력
     int m_hp;
+    float attackSpeedDibuffTime;//디버프 시간이 몇초 남았는지.
 
     public bool isAlive;
     public bool canHeld;
@@ -103,6 +105,8 @@ public abstract class CTool : BaseObject
         canHeld = true;
         shotable = true;
         m_hp = hp;
+        m_attackReadySpeed = attackReadySpeed;
+        attackSpeedDibuffTime = 0;
         ChangeState(ObjectState.Play_Tool_Ready);
 
         if (attackRangeScript != null) {
@@ -185,6 +189,36 @@ public abstract class CTool : BaseObject
                 GameMessage gameMsg = GameMessage.Create(MessageName.Play_ToolDiedWhileHelded);
                 gameMsg.Insert("tool", this.gameObject);
                 SendGameMessageToSceneManage(gameMsg);
+            }
+        }
+    }
+    /// <summary>
+    /// 툴이 공격속도가 낮아지는 디버프에 걸림.
+    /// </summary>
+    public void AttackSpeedDebuff() {
+        if (attackSpeedDibuffTime < 5) {
+            attackSpeedDibuffTime = 5;
+        }
+        if (m_attackReadySpeed == attackReadySpeed) {
+            m_attackReadySpeed = attackReadySpeed * 2;
+        }
+        if (attackSpeedDibuffTime == 0) {
+            StartCoroutine("AttackSpeedDebuffTimeCheck");
+        }
+
+    }
+
+    IEnumerator AttackSpeedDebuffTimeCheck() {
+
+        while (true)
+        {
+            yield return null;
+            attackSpeedDibuffTime -= Time.deltaTime;
+
+            if (attackSpeedDibuffTime <= 0) {
+                m_attackReadySpeed = attackSpeed;
+                attackSpeedDibuffTime = 0;
+                break;
             }
         }
     }

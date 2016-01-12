@@ -11,7 +11,10 @@ public class CMove : MonoBehaviour {
 
     void Start()
     {
-        m_moveSpeed = moveSpeed;
+        if (moveSpeed != 0)
+        {
+            m_moveSpeed = moveSpeed;
+        }
     }
 
     public void SetMoveSpeed(float inputMoveSpeed)

@@ -1,18 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BluePrintData>
-  <BluePrint>
-    <id>11201</id>
-    <open>1</open>
-    <have>2</have>
-  </BluePrint>
-  <BluePrint>
-    <id>13002</id>
-    <open>1</open>
-    <have>1</have>
-  </BluePrint>
-  <BluePrint>
-    <id>11103</id>
-    <open>0</open>
-    <have>0</have>
-  </BluePrint>
+	<BluePrint>
+		<id>11201</id>
+	</BluePrint>
+	
+	<BluePrint>
+		<id>13002</id>
+	</BluePrint>
+	
 </BluePrintData>

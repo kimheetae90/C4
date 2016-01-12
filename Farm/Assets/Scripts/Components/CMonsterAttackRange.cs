@@ -7,16 +7,21 @@ public class CMonsterAttackRange : CAttackRange
 	// Use this for initialization
 	protected void Start () {
         base.Start();
-        attackRange = GetComponentInParent<CMonster>().attackRange;
-        monster = transform.parent.GetComponent<CMonster>();
-        attackRangeCollider.center = new Vector3(-attackRange / 2, 0, 0);
-        attackRangeCollider.size = new Vector3(attackRange, 2, 2);
+        Setting();
+        
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 	
 	}
+
+    public void Setting() {
+        attackRange = GetComponentInParent<CMonster>().attackRange;
+        monster = transform.parent.GetComponent<CMonster>();
+        attackRangeCollider.center = new Vector3(-attackRange / 2, 0, 0);
+        attackRangeCollider.size = new Vector3(attackRange, 2, 2);
+    }
 
     void OnTriggerStay(Collider other)
     {
