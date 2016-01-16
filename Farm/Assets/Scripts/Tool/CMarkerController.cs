@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -47,9 +47,15 @@ public class CMarkerController : Controller {
 			selectedGridGameObject = _gameMessage.Get("clickGrid") as GameObject;
 			RemoveMarker(selectedGridGameObject);
 			break;
+		case MessageName.LevelTool_ClearGridBoard:
+			ClearGridBoard();
+			break;
+		case MessageName.LevelTool_SetGridToStageInfo:
+			CGrid tempGrid = markerList.Find (x => (x.line == (int)_gameMessage.Get ("line")) && (x.time == (int)_gameMessage.Get ("time")));
+			ClickMarker((int)_gameMessage.Get("mark"),tempGrid.gameObject);
+			break;
 		}
 	}
-
 
 	void ClickMarker(int _checkNum, GameObject _selectedGrid)
 	{
@@ -61,6 +67,14 @@ public class CMarkerController : Controller {
 	{
 		CGrid tempGrid = _selectedGrid.GetComponent<CGrid> ();
 		tempGrid.SetMarkerNull (markerTexture[0]);
+	}
+
+	void ClearGridBoard()
+	{
+		foreach (CGrid node in markerList) 
+		{
+			RemoveMarker(node.gameObject);
+		}
 	}
 
 }

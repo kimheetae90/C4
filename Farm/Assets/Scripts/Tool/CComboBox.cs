@@ -17,6 +17,12 @@ public class CComboBox : MonoBehaviour {
 		sceneManager = GameObject.FindObjectOfType (typeof(SceneManager)) as SceneManager;
 	}
 
+	public void ButtonChange(int x)
+	{
+		slectedItem = items [x-1];
+		OnGUI ();
+	}
+
 	private void OnGUI()
 	{
 		if (GUI.Button(Box, slectedItem))

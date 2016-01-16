@@ -123,6 +123,7 @@ public class InputHelper : MonoBehaviour {
 				{
 					LogManager.log ("Error : EventSystem이 없음");
 				}
+				inputData.clear();
 				break;
 			case InputData.KeyState.Down:
 				setupClickDown();

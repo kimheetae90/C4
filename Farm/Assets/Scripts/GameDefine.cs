@@ -9,6 +9,9 @@ public enum MessageName
 	LevelTool_RemoveMarker,
 	LevelTool_SelectStageInfo,
 	LevelTool_ChangeWave,
+	LevelTool_ClearGridBoard,
+	LevelTool_ClearChecker,
+	LevelTool_SetGridToStageInfo,
 
     DevelopmentCenter_ActivateToolButton, // 가지고 있는 툴의 갯수만큼 버튼을 활성화 시킴.
 

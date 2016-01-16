@@ -53,6 +53,11 @@ public struct InputData
 		clickDevicePosition = Vector2.zero;
 		dragDevicePosition = Vector2.zero;
 		downRootGameObject = null;
+		downCorrectGameObject = null;
+		dragRootGameObject = null;
+		dragCorrectGameObject = null;
+		upRootGameObject = null;
+		upCorrectGameObject = null;
 		keyState = KeyState.Sleep;
 		preKeyState = KeyState.Sleep;
 	}

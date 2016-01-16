@@ -31,7 +31,17 @@ public class CCheckerController : Controller {
 		case MessageName.LevelTool_ChangeChecker:
 			ClickChecker((int)_gameMessage.Get("CheckerNum"));
 			break;
+		case MessageName.LevelTool_ClearGridBoard:
+			ClearChecker();
+			break;
 		}
+	}
+
+	void ClearChecker()
+	{
+		selectedChecker.ChangeToNonSelectedColor ();
+		GameMessage clearCheckerMsg = GameMessage.Create (MessageName.LevelTool_ClearChecker);
+		SendGameMessage (clearCheckerMsg);
 	}
 
 	public void ClickChecker(int num)
