@@ -13,7 +13,7 @@ public class CLevelToolManager : SceneManager {
 	int stage = 0;
 	int wave = 0;
 
-	List<StageInfo> stageInfoList;
+	List<CGridInfo> stageInfoList;
 	Dictionary<int,int> markerPerIDDic;
 	Dictionary<int,int> idPerMarkerDic;
 	List<int> levelToolInfoIDList;
@@ -25,16 +25,21 @@ public class CLevelToolManager : SceneManager {
 	XmlNodeList levelToolInfoNodeList;
 	TextAsset textAsset;
 
+	DataLoadHelper dataLoadHelper;
+	List<MonsterInfo> monsterList;
+
 	protected override void Awake()
 	{
 		base.Awake ();
 		xmlDoc = new XmlDocument ();
-		stageInfoList = new List<StageInfo> ();
+		stageInfoList = new List<CGridInfo> ();
 		markerPerIDDic = new Dictionary<int, int> ();
 		idPerMarkerDic = new Dictionary<int, int> ();
 		levelToolInfoIDList = new List<int> ();
 		xmlLoader = new XMLLoader();
 		gameState = GameState.LevelTool_Cam;
+		dataLoadHelper = GameObject.FindObjectOfType<DataLoadHelper> ();
+		monsterList = dataLoadHelper.GetMonsterList ();
 	}
 
 	// Update is called once per frame
@@ -83,6 +88,9 @@ public class CLevelToolManager : SceneManager {
 			break;
 		case MessageName.LevelTool_ClearChecker:
 			selectedChecker = null;
+			break;
+		case MessageName.LevelTool_ChangeMark:
+			ChangeMarkToID((int)_gameMessage.Get("mark"),(int)_gameMessage.Get("id"));
 			break;
 		}
 
@@ -144,6 +152,14 @@ public class CLevelToolManager : SceneManager {
 			inputMessage.Insert ("CheckerNum", (int)10);
 			Broadcast (inputMessage);
 		}
+		else if(Input.GetKeyDown (KeyCode.LeftArrow))
+		{
+			Camera.main.transform.Translate(new Vector3(-10,0,0));
+		}
+		else if(Input.GetKeyDown (KeyCode.RightArrow))
+		{
+			Camera.main.transform.Translate(new Vector3(10,0,0));
+		}
 	}
 
 	public void ChangeChapter(string _chapter)
@@ -180,7 +196,7 @@ public class CLevelToolManager : SceneManager {
 	void SetStageInfo()
 	{
 		string fileName = "Data/" + "Stage" + chapter.ToString() + "_" + stage.ToString();
-
+		xmlDoc = new XmlDocument ();
 		textAsset = (TextAsset)Resources.Load(fileName);
 
 		wave = 1;
@@ -201,27 +217,19 @@ public class CLevelToolManager : SceneManager {
 
 		xmlDoc.LoadXml (textAsset.text);
 		string stageNo = "Stage" + chapter.ToString () + "_" + stage.ToString ();
-		Debug.Log (stageNo);
 		rootNode = xmlDoc.SelectSingleNode(stageNo + "Data");
 		statgeNodeList = rootNode.SelectNodes(stageNo);
 		levelToolInfoNodeList = rootNode.SelectNodes ("LevelToolInfo");
 
-		stageInfoList = new List<StageInfo> ();
-		StageInfo stageInfo;
-		
-		foreach (XmlNode node in statgeNodeList) {
-			stageInfo = new StageInfo ();
-			
-			stageInfo.wave = int.Parse (node ["wave"].InnerText);
-			stageInfo.line = int.Parse (node ["line"].InnerText);
-			stageInfo.time = int.Parse (node ["time"].InnerText);
-			stageInfo.id = int.Parse (node ["id"].InnerText);
-			
-			stageInfoList.Add (stageInfo);
-		}
+		stageInfoList = new List<CGridInfo> ();
+		CGridInfo stageInfo;
 
+		
 		CLevelToolInfo levelToolInfo;
 		
+		GameMessage freshMsg = GameMessage.Create (MessageName.LevelTool_ClearCheckerInfo);
+		Broadcast (freshMsg);
+
 		foreach (XmlNode node in levelToolInfoNodeList) {
 			levelToolInfo = new CLevelToolInfo ();
 			int tempID = int.Parse (node ["id"].InnerText);
@@ -231,14 +239,36 @@ public class CLevelToolManager : SceneManager {
 				levelToolInfoIDList.Add(tempID);
 				markerPerIDDic.Add(tempID,tempMark);
 			}
-
+			
 			if(!idPerMarkerDic.ContainsKey(tempMark))
 			{
 				idPerMarkerDic.Add(tempMark,tempID);
 			}
+			
+			DrawMonsterPanel(tempMark,tempID);
 		}
 
+		foreach (XmlNode node in statgeNodeList) {
+			stageInfo = new CGridInfo ();
+			
+			stageInfo.wave = int.Parse (node ["wave"].InnerText);
+			stageInfo.line = int.Parse (node ["line"].InnerText);
+			stageInfo.time = int.Parse (node ["time"].InnerText);
+			stageInfo.checker = markerPerIDDic[int.Parse (node ["id"].InnerText)];
+			
+			stageInfoList.Add (stageInfo);
+		}
+
+
 		DrawGridPerWave (1);
+	}
+
+	void DrawMonsterPanel(int _mark, int _id)
+	{
+		GameMessage drawMonsterPanelMsg = GameMessage.Create (MessageName.LevelTool_DrawMonsterPanel);
+		drawMonsterPanelMsg.Insert ("mark", _mark);
+		drawMonsterPanelMsg.Insert ("id",_id);
+		Broadcast (drawMonsterPanelMsg);
 	}
 
 	void DrawGridPerWave(int _wave)
@@ -248,14 +278,14 @@ public class CLevelToolManager : SceneManager {
 		
 		waveComboBox.ButtonChange (_wave);
 		
-		foreach (StageInfo node in stageInfoList) 
+		foreach (CGridInfo node in stageInfoList) 
 		{
 			if(node.wave == _wave)
 			{
 				GameMessage stageInfoMsg = GameMessage.Create(MessageName.LevelTool_SetGridToStageInfo);
 				stageInfoMsg.Insert("line",node.line);
 				stageInfoMsg.Insert("time",node.time);
-				stageInfoMsg.Insert("mark",markerPerIDDic[node.id]);
+				stageInfoMsg.Insert("mark",node.checker);
 				Broadcast(stageInfoMsg);
 			}
 		}
@@ -263,6 +293,7 @@ public class CLevelToolManager : SceneManager {
 
 	void NewStageInfo()
 	{
+		waveComboBox.ButtonChange (1);
 		stageInfoList.Clear ();
 		GameMessage freshMsg = GameMessage.Create (MessageName.LevelTool_ClearGridBoard);
 		Broadcast (freshMsg);
@@ -275,12 +306,12 @@ public class CLevelToolManager : SceneManager {
 		int tempTime = tempGrid.time;
 		int tempID = idPerMarkerDic [selectedChecker.checkNum];
 
-		StageInfo newStageInfo = stageInfoList.Find (x=>(x.line == tempLine)&&(x.time == tempTime));
+		CGridInfo newStageInfo = stageInfoList.Find (x=>(x.line == tempLine)&&(x.time == tempTime));
 
 		if (newStageInfo == null) 
 		{
-			newStageInfo = new StageInfo();
-			newStageInfo.id = tempID;
+			newStageInfo = new CGridInfo();
+			newStageInfo.checker = selectedChecker.checkNum;
 			newStageInfo.line = tempLine;
 			newStageInfo.time = tempTime;
 			newStageInfo.wave = wave;
@@ -289,7 +320,7 @@ public class CLevelToolManager : SceneManager {
 		} 
 		else 
 		{
-			newStageInfo.id = tempID;
+			newStageInfo.checker = selectedChecker.checkNum;
 		}
 	}
 
@@ -300,7 +331,7 @@ public class CLevelToolManager : SceneManager {
 		int tempTime = tempGrid.time;
 		int tempID = idPerMarkerDic [tempGrid.marker];
 
-		StageInfo newStageInfo = stageInfoList.Find (x=>(x.line == tempLine)&&(x.time == tempTime));
+		CGridInfo newStageInfo = stageInfoList.Find (x=>(x.line == tempLine)&&(x.time == tempTime));
 		if (newStageInfo != null) 
 		{
 			stageInfoList.Remove(newStageInfo);
@@ -310,14 +341,11 @@ public class CLevelToolManager : SceneManager {
 
 	public void SaveStageInfo()
 	{
-		if (xmlDoc == null) 
+
+		if (textAsset == null) 
 		{
-			xmlDoc = new XmlDocument();
-			XmlDeclaration xmlDeclaration = xmlDoc.CreateXmlDeclaration("1.0","UTF-8",null);
-			XmlElement root = xmlDoc.DocumentElement;
-			root.InnerText = "Stage" + chapter.ToString() + "_"+stage.ToString() +"Data";
-			xmlDoc.InsertBefore(xmlDeclaration,root);
-			rootNode = xmlDoc.SelectSingleNode("Stage" + chapter.ToString() + "_"+stage.ToString() +"Data");
+			rootNode = xmlDoc.CreateElement("","Stage" + chapter.ToString() + "_"+stage.ToString() +"Data","");
+			xmlDoc.AppendChild(rootNode);
 		}
 
 		rootNode.RemoveAll ();
@@ -334,7 +362,7 @@ public class CLevelToolManager : SceneManager {
 			xmlDoc.DocumentElement.InsertAfter (toolInfoElement, rootNode.LastChild);
 		}
 
-		foreach (StageInfo node in stageInfoList) 
+		foreach (CGridInfo node in stageInfoList) 
 		{
 			XmlElement stageInfoElement = xmlDoc.CreateElement ("Stage"+chapter.ToString()+"_"+stage.ToString());
 			XmlElement waveElement = xmlDoc.CreateElement ("wave");
@@ -344,7 +372,7 @@ public class CLevelToolManager : SceneManager {
 			waveElement.InnerText = node.wave.ToString ();
 			lineElement.InnerText = node.line.ToString ();
 			timeElement.InnerText = node.time.ToString ();
-			idElement.InnerText = node.id.ToString ();
+			idElement.InnerText = idPerMarkerDic[node.checker].ToString();
 			stageInfoElement.AppendChild (waveElement);
 			stageInfoElement.AppendChild (lineElement);
 			stageInfoElement.AppendChild (timeElement);
@@ -355,4 +383,31 @@ public class CLevelToolManager : SceneManager {
 		xmlDoc.Save ("Assets/Resources/Data/Stage"+ chapter + "_" + stage + ".xml");
 	}
 
+	public void ClickMonsterPanel(int _id)
+	{
+		GameMessage clickMonsterPanelMsg = GameMessage.Create (MessageName.LevelTool_ClickMonsterPanel);
+		clickMonsterPanelMsg.Insert ("selectedChecker",selectedChecker.checkNum);
+		clickMonsterPanelMsg.Insert ("id",_id);
+		
+		if (!idPerMarkerDic.ContainsKey (selectedChecker.checkNum)) {
+			idPerMarkerDic.Add (selectedChecker.checkNum, _id);
+			markerPerIDDic.Add (_id, selectedChecker.checkNum);
+			levelToolInfoIDList.Add (_id);
+		}
+		else 
+		{
+			markerPerIDDic.Remove(idPerMarkerDic[selectedChecker.checkNum]);
+			levelToolInfoIDList.Remove(idPerMarkerDic[selectedChecker.checkNum]);
+			idPerMarkerDic.Remove(selectedChecker.checkNum);
+		}
+
+		Broadcast (clickMonsterPanelMsg);
+	}
+
+	void ChangeMarkToID(int _mark,int _id)
+	{
+		idPerMarkerDic.Add(_mark, _id);
+		markerPerIDDic.Add(_id,_mark);
+		levelToolInfoIDList.Add(_id);
+	}
 }

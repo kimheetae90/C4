@@ -12,6 +12,10 @@ public enum MessageName
 	LevelTool_ClearGridBoard,
 	LevelTool_ClearChecker,
 	LevelTool_SetGridToStageInfo,
+	LevelTool_ClickMonsterPanel,
+	LevelTool_DrawMonsterPanel,
+	LevelTool_ClearCheckerInfo,
+	LevelTool_ChangeMark,
 
     DevelopmentCenter_ActivateToolButton, // 가지고 있는 툴의 갯수만큼 버튼을 활성화 시킴.
 
