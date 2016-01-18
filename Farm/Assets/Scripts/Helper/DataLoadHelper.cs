@@ -65,6 +65,10 @@ public class DataLoadHelper : MonoBehaviour
         return monsterInfoList.Find(x => x.id == _id);
     }
 
+	public List<MonsterInfo> GetMonsterList()
+	{
+		return monsterInfoList;
+	}
 
     public List<StageInfo> GetStageInfo(int _chapter, int _stage)
     {
