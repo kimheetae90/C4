@@ -57,4 +57,23 @@
     <open>0</open>
     <have>0</have>
   </Tool>
+<Tool>
+    <id>31206</id>
+    <power>20</power>
+    <range>2</range>
+    <attackSpeed>3</attackSpeed>
+    <hp>180</hp>
+    <piercingForce>0</piercingForce>
+    <moveSpeed>50</moveSpeed>
+    <upgradePower>3</upgradePower>
+    <upgradeRange>0.5</upgradeRange>
+    <upgradeAttackSpeed>0</upgradeAttackSpeed>
+    <upgradeHp>15</upgradeHp>
+    <upgradePiercingForce>0</upgradePiercingForce>
+    <upgradeMoveSpeed>0.5</upgradeMoveSpeed>
+    <price>1000</price>
+    <upgradePrice>0</upgradePrice>
+    <open>1</open>
+    <have>0</have>
+  </Tool>
 </ToolData>

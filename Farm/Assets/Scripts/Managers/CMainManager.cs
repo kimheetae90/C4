@@ -18,20 +18,13 @@ public class CMainManager : SceneManager
 
     public GameObject chapterButton;
     public GameObject stageButton;
-    public GameObject skillButton;
 
     GameObject mainQuadUI;
     GameObject selectChapterQuadUI;
     GameObject selectStageQuadUI;
 
-    GameObject mainUI;
     GameObject storageUI;
     GameObject developmentCenterUI;
-
-    GameObject selectSkillPanel;
-    List<GameObject> skillButtons = new List<GameObject>();
-    List<string> curSkillList;
-
     protected override void Awake()
     {
         base.Awake();
@@ -71,8 +64,7 @@ public class CMainManager : SceneManager
         {
             case GameState.Main_Ready:
                 InitUIs();
-                InitPopup();
-                InitSkillButton();
+                InitButtons();
                 OffUIs();
                 ShowMainUI();
                 break;
@@ -99,7 +91,6 @@ public class CMainManager : SceneManager
 
     private void OffUIs()
     {
-        mainUI.SetActive(false);
         storageUI.SetActive(false);
         developmentCenterUI.SetActive(false);
         mainQuadUI.SetActive(false);
@@ -109,7 +100,6 @@ public class CMainManager : SceneManager
 
     void ShowMainUI()
     {
-        mainUI.SetActive(true);
         mainQuadUI.SetActive(true);
         selectChapterQuadUI.SetActive(false);
         selectStageQuadUI.SetActive(false);
@@ -166,7 +156,6 @@ public class CMainManager : SceneManager
 
     private void InitUIs()
     {
-        mainUI = GameObject.Find("MainUI");
         storageUI = GameObject.Find("StorageUI");
         developmentCenterUI = GameObject.Find("DevelopCenterUI");
         mainQuadUI = GameObject.Find("MainQuadUI");
@@ -178,7 +167,6 @@ public class CMainManager : SceneManager
 
     public void StartDevelopmentCenter()
     {
-        mainUI.SetActive(false);
         storageUI.SetActive(false);
         developmentCenterUI.SetActive(true);
         mainQuadUI.SetActive(false);
@@ -188,7 +176,6 @@ public class CMainManager : SceneManager
 
     public void StartStorage()
     {
-        mainUI.SetActive(false);
         storageUI.SetActive(true);
         developmentCenterUI.SetActive(false);
         mainQuadUI.SetActive(false);
@@ -198,7 +185,6 @@ public class CMainManager : SceneManager
 
     public void StartMain()
     {
-        mainUI.SetActive(true);
         storageUI.SetActive(false);
         developmentCenterUI.SetActive(false);
         mainQuadUI.SetActive(true);
@@ -240,114 +226,21 @@ public class CMainManager : SceneManager
 
     void LoadStage()
     {
-        InputTempDataAboutNextScene("Play", curSkillList);
+        InputTempDataAboutNextScene("Play");
         LoadLoadingScene();
     }
 
-    protected void InputTempDataAboutNextScene(string _scene_name, List<string> skillList)
+    //protected void InputTempDataAboutNextScene(string _scene_name, List<string> skillList)
+    //{
+    //    GameMaster.Instance.tempData.Insert("next_scene", _scene_name);
+    //    for (int i = 0; i < skillList.Count; i++)
+    //    {
+    //        GameMaster.Instance.tempData.Insert("skill_" + i, skillList[i]);
+    //    }
+    //}
+
+    private void InitButtons()
     {
-        GameMaster.Instance.tempData.Insert("next_scene", _scene_name);
-        for (int i = 0; i < skillList.Count; i++)
-        {
-            GameMaster.Instance.tempData.Insert("skill_" + i, skillList[i]);
-        }
-    }
-
-
-    private void InitPopup()
-    {
-        selectSkillPanel = GameObject.Find("Panel_SelectSkill");
-        GameObject.Find("Button_Close").GetComponent<Button>().onClick.RemoveAllListeners();
-        GameObject.Find("Button_Close").GetComponent<Button>().onClick.AddListener(ClosePopup);
-        InitPopupSkillList();
-        selectSkillPanel.SetActive(false);
-    }
-
-    private void InitPopupSkillList()
-    {
-        GameObject stageObject = new GameObject("Stage");
-        stageObject.tag = "SelectStage_Stage";
-
-        int skillCount = 10;
-
-        int row = 0;
-        int column = 0;
-        int columnCount = 7;
-        for (int i = 0; i < skillCount; i++)
-        {
-            if (i != 0 && i % columnCount == 0)
-            {
-                column = 0;
-                row++;
-            }
-
-            GameObject buttonObj = MonoBehaviour.Instantiate(skillButton) as GameObject;
-
-            // TODO : 나중에 이런 버튼 생성류 함수 따로 유틸함수로 빼야될듯.
-            buttonObj.transform.SetParent(selectSkillPanel.transform);
-            buttonObj.GetComponentInChildren<Text>().text = "skill_" + i;
-            Vector3 pos = new Vector3(-208 + (69 * column), 55 - (70 * row));
-            buttonObj.GetComponent<RectTransform>().localPosition = pos;
-
-            buttonObj.GetComponent<Button>().onClick.AddListener(delegate { AddSkill(buttonObj.GetComponent<Button>()); });
-            skillButtons.Add(buttonObj);
-            column++;
-        }
-    }
-
-    List<string> tmpSkillList;
-
-    private void OpenPopup()
-    {
-        selectSkillPanel.SetActive(true);
-        tmpSkillList = new List<string>();
-    }
-
-    private void ClosePopup()
-    {
-        selectSkillPanel.SetActive(false);
-        foreach (var sb in skillButtons)
-        {
-            sb.GetComponent<Button>().interactable = true;
-        }
-    }
-
-    private void AddSkill(Button sButton)
-    {
-        sButton.interactable = false;
-        tmpSkillList.Add(sButton.GetComponentInChildren<Text>().text);
-        if (tmpSkillList.Count >= 3)
-        {
-            ClosePopup();
-            ChangeCurSkills(tmpSkillList);
-            curSkillList = tmpSkillList;
-        }
-    }
-
-    private void ChangeCurSkills(List<string> curSkill)
-    {
-        int skillCount = 3;
-
-        for (int i = 0; i < skillCount; i++)
-        {
-            GameObject skillButton = GameObject.Find("Button_SelectedSkill_" + i);
-            skillButton.GetComponentInChildren<Text>().text = curSkill[i];
-        }
-    }
-
-    private void InitSkillButton()
-    {
-        // 아마 무조건 스킬 버튼이 고정일 것 같아서 (현재 기획서상 3개) 이렇게 코드작성하였음.
-        // 나중에 유저가 아직 스킬을 3개 이상 가지고 있지 않을때는 xml이 없어서 예외처리 안했음.
-        int skillCount = 3;
-
-        for (int i = 0; i < skillCount; i++)
-        {
-            GameObject skillButton = GameObject.Find("Button_SelectedSkill_" + i);
-            skillButton.GetComponent<Button>().onClick.RemoveAllListeners();
-            skillButton.GetComponent<Button>().onClick.AddListener(OpenPopup);
-        }
-
         // dev center init toolButton
         devToolListBox = GameObject.Find("DevTools");
         devToolInfoList = DataLoadHelper.Instance.GetToolList();
@@ -363,7 +256,8 @@ public class CMainManager : SceneManager
         storageToolCount = storageToolIDList.Count;
         RectTransform storageToolListRect = storageToolListBox.GetComponent<RectTransform>();
         toolListRect.sizeDelta = new Vector2(70 * storageToolCount, 0);
-        InitButtons();
+        Button upgradeButton = GameObject.Find("Button_Upgrade").GetComponent<Button>();
+        upgradeButton.onClick.AddListener(delegate { UpgrageTool(curStorageToolID); });
         CreateToolButtons(storageToolCount);
 
     }
@@ -373,7 +267,7 @@ public class CMainManager : SceneManager
         for (int i = 0; i < devToolInfoList.Count; i++)
         {
             GameObject toolPanel = MonoBehaviour.Instantiate(devToolPrefab) as GameObject;
-            int xPos = 35 + (75 * i);
+            int xPos = 60 * i;
             toolPanel.name = "Panel_Tool_" + devToolInfoList[i].id;
             toolPanel.transform.SetParent(devToolListBox.transform);
             toolPanel.GetComponent<RectTransform>().localPosition = new Vector3(xPos, 10, 0);
@@ -383,7 +277,15 @@ public class CMainManager : SceneManager
             {
                 if (tInfoText.gameObject.name == "Text_ToolInfo")
                 {
-                    tInfoText.text = devToolInfoList[i].id.ToString();
+                    int tID = devToolInfoList[i].id;
+
+                    tInfoText.text = tID.ToString() + "\n\n";
+
+                    tInfoText.text += "HP : " + DataLoadHelper.Instance.GetToolInfo(tID).hp.ToString() + "\n";
+                    tInfoText.text += "Power : " + DataLoadHelper.Instance.GetToolInfo(tID).power.ToString() + "\n";
+                    tInfoText.text += "AS : " + DataLoadHelper.Instance.GetToolInfo(tID).attackSpeed.ToString() + "\n";
+                    tInfoText.text += "Price : " + DataLoadHelper.Instance.GetToolInfo(tID).price.ToString() + "\n";
+
                 }
             }
 
@@ -400,13 +302,23 @@ public class CMainManager : SceneManager
     void BuyTool(GameObject tool)
     {
         int id = int.Parse(tool.name.Split('_')[2]);
+        
         GameMaster.Instance.myTool.BuyNewTool(id);
-    }
+        
+        storageToolIDList.Add(id);
+        
+        GameObject buttonObject = MonoBehaviour.Instantiate(storageButtonPrefab) as GameObject;
+        Button button = buttonObject.GetComponent<Button>();
 
-    private void InitButtons()
-    {
-        Button upgradeButton = GameObject.Find("Button_Upgrade").GetComponent<Button>();
-        upgradeButton.onClick.AddListener(delegate { UpgrageTool(curStorageToolID); });
+        int xPos = 30 + (70 * storageToolCount);
+        buttonObject.name = "Button_Tool_" + DataLoadHelper.Instance.GetToolInfo(storageToolIDList[storageToolCount]).id.ToString(); // name을 변경
+        buttonObject.GetComponentInChildren<Text>().text = DataLoadHelper.Instance.GetToolInfo(storageToolIDList[storageToolCount]).id.ToString();
+        buttonObject.transform.SetParent(storageToolListBox.transform);
+        buttonObject.GetComponent<RectTransform>().localPosition = new Vector3(xPos, 0, 0);
+        button.onClick.RemoveAllListeners();
+        button.onClick.AddListener(delegate { ShowToolInfo(button); });
+
+        buttons.Add(storageToolCount, button);
     }
 
     private void UpgrageTool(int curToolID)
@@ -416,38 +328,52 @@ public class CMainManager : SceneManager
         GameMaster.Instance.myTool.LevelUp(instance);
     }
 
+    Dictionary<int, Button> buttons = new Dictionary<int, Button>();
+
     void CreateToolButtons(int toolCount)
     {
+        if(toolCount < 1) return;
+
         for (int i = 0; i < toolCount; i++)
         {
-            GameObject button = MonoBehaviour.Instantiate(storageButtonPrefab) as GameObject;
+            GameObject buttonObject = MonoBehaviour.Instantiate(storageButtonPrefab) as GameObject;
+            Button button = buttonObject.GetComponent<Button>();
+
             int xPos = 30 + (70 * i);
-            button.name = "Button_Tool_" + DataLoadHelper.Instance.GetToolInfo(storageToolIDList[i]).id.ToString(); // name을 변경
-            button.transform.SetParent(storageToolListBox.transform);
-            button.GetComponent<RectTransform>().localPosition = new Vector3(xPos, 0, 0);
-            button.GetComponentInChildren<Text>().text = DataLoadHelper.Instance.GetToolInfo(storageToolIDList[i]).id.ToString();
-            button.GetComponent<Button>().onClick.RemoveAllListeners();
-            button.GetComponent<Button>().onClick.AddListener(delegate { ShowToolInfo(button.GetComponent<Button>()); });
+            buttonObject.name = "Button_Tool_" + DataLoadHelper.Instance.GetToolInfo(storageToolIDList[i]).id.ToString(); // name을 변경
+            buttonObject.transform.SetParent(storageToolListBox.transform);
+            buttonObject.GetComponent<RectTransform>().localPosition = new Vector3(xPos, 0, 0);
+            buttonObject.GetComponentInChildren<Text>().text = DataLoadHelper.Instance.GetToolInfo(storageToolIDList[i]).id.ToString();
+            button.onClick.RemoveAllListeners();
+            button.onClick.AddListener(delegate { ShowToolInfo(button); });
+
+            buttons.Add(i, button);
         }
-    }
 
-    public void OnPointerClick(Button button)
-    {
-        Debug.Log(button.name);
-    }
-
-    public void ChangeCurToolId(int id)
-    {
-        curStorageToolID = id;
+        Button b;
+        buttons.TryGetValue(0, out b);
+        ShowToolInfo(b);
     }
 
     void ShowToolInfo(Button button)
     {
+        foreach(var b in buttons)
+        {
+            if(b.Value == button)
+            {
+                b.Value.interactable =false;
+            }
+            else
+            {
+                b.Value.interactable = true;
+            }
+        }
+
         string[] idString = button.name.Split('_');
         int id = int.Parse(idString[2]);
         // TODO : 현재 버튼 이름으로 id값 파싱하는 중. button 이름이 바뀌거나 하면 이 부분 수정해주어야함.
 
-        ChangeCurToolId(id);
+        curStorageToolID = id;
 
         Text ToolInfoText = GameObject.Find("Text_Tools_Info").GetComponent<Text>();
         ToolInfoText.text = "HP : " + DataLoadHelper.Instance.GetToolInfo(id).hp.ToString() + "\n";
