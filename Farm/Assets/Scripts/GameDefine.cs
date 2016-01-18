@@ -49,6 +49,8 @@ public enum MessageName
     Play_MissleOrderedByTool,//미사일이 tool에 의해 공격하라고 명령받음(?) tool_id과 tool의 ShotPos을 받음
     Play_MissleOrderedByMonster,//미사일이 monster에 의해 공격하라고 명령받음(?) monster_id과 monster의 ShotPos을 받음
     Play_MissleDisappear,// 미사일이 맵 밖으로 사라져서 setactive를 꺼줘야할 때 사용.
+
+    Play_WoodAttacked,//나무방벽이 공격당함.
 	
     Play_OneWaveOver, // 한 웨이브가 끝남
 
@@ -68,6 +70,8 @@ public enum MessageName
 
     Play_UIWaveTimerAmount,// 타이머 UI에서 사용할 웨이브의 (현재 남은 시간/총 주어진 시간) 을 UI에게 넘겨줌.
     Play_UIMaintainTimerAmount,//타이머 UI에서 사용할 정비시간의 (현재 남은 시간/총 주어진 시간) 을 UI에게 넘겨줌.
+    Play_UIGageAmount,//Gage를 UI에게 넘겨줌.
+    Play_GageStop,//Gaging을 중단하고 UI를  안보이게 함.
 
     Play_MaintainOver,//정비시간이 지나고 gamestate를 다시 웨이브가 몰려오는 start state로 바꿈. wavecount를 넘김.(UI컨트롤러에서 사용)
 
@@ -79,7 +83,7 @@ public enum MessageName
     Play_PlayerSkill2Used,//스킬2을 사용함.
     Play_PlayerSkill2CanUse,//스킬2을 다시 사용할수있음.
     Play_PlayerSkill3Used,//스킬3을 사용함.
-    Play_PlayerSkill4CanUse,//스킬3을 다시 사용할수있음.
+    Play_PlayerSkill3CanUse,//스킬3을 다시 사용할수있음.
 
 }
 
@@ -190,6 +194,11 @@ public enum ObjectState
     Play_Skill_Waiting,//스킬이 사용가능한 상태.
     Play_Skill_Activated,//스킬이 사용된 상태.
     Play_Skill_Cooldown,//스킬이 사용된 후 쿨다운상태.
+
+    /* Play_Terrain */
+    Play_Terrain_Uncomplete,
+    Play_Terrain_Gaging,
+    Play_Terrain_Complete,
 }
 
 public enum ToolName {

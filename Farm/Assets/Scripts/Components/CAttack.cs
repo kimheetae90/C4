@@ -30,6 +30,14 @@ public class CAttack : MonoBehaviour {
                     StartCoroutine("AttackCount");
                 }
             }
+            else if (other.CompareTag("Play_Terrain"))
+            {
+                if (attackable&&other.GetComponent<CWood>()!=null&&other.GetComponent<CWood>().canAccess==false)
+                {
+                    monster.AttackPlayersObject(other.GetComponent<BaseObject>());
+                    StartCoroutine("AttackCount");
+                }
+            }
         }
     }
 

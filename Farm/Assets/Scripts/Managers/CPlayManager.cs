@@ -369,7 +369,8 @@ public class CPlayManager : SceneManager {
         
         GameMessage gameMsg = GameMessage.Create(MessageName.Play_PlayerMove);
         gameMsg.Insert("ClickPosition", _inputData.dragPosition);
-        gameMsg.Insert("SelectedGameObject", _inputData.downRootGameObject);
+        gameMsg.Insert("SelectedGameObject", _inputData.upRootGameObject);
+        gameMsg.Insert("selectedCorrectGameObject", _inputData.upCorrectGameObject);
         Broadcast(gameMsg);
     }
 

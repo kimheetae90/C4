@@ -31,6 +31,7 @@ public abstract class CMonster : BaseObject
 
     public bool touchedWithPlayer;
     public bool touchedWithTool;
+    public bool touchedWithWood;
 
     public List<Renderer> renderer;
     public Texture[] texture = new Texture[3];
@@ -453,17 +454,20 @@ public abstract class CMonster : BaseObject
     /// </summary>
     /// <param name="baseObject"></param>
     public void AttackPlayersObject(BaseObject baseObject) {
+       
         GameMessage gameMsg = GameMessage.Create(MessageName.Play_MonsterAttackPlayersObject);
         gameMsg.Insert("object_id", baseObject.id);
         gameMsg.Insert("monster_power", power);
         SendGameMessage(gameMsg);
     }
+
     /// <summary>
     /// 모든 공격을 멈춤.
     /// </summary>
     public void StopAttack() {
         touchedWithPlayer = false;
         touchedWithTool = false;
+        touchedWithWood = false;
         touchedFenceID = 0;
         monsterAttackRange.StopCoroutine("MonsterAttack");
 

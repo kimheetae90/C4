@@ -23,6 +23,12 @@ public class CToolAttackRange : CAttackRange {
                 }
 
             }
+            if (other.CompareTag("Play_Terrain")) {
+                if (tool.CheckCanAttack() && other.GetComponent<CWood>() != null && other.GetComponent<CWood>().canAccess == false)
+                {
+                    StartCoroutine("ToolAttack");
+                }
+            }
     }
 
     /// <summary>

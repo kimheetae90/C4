@@ -8,6 +8,7 @@ public class CPlayerController : Controller
     GameObject player;
     
     GameObject selectedGameObject;
+    GameObject selectedCorrectGameObject;
     public Transform startPos;
     CMove move;
     public bool isAdjacent;
@@ -49,13 +50,24 @@ public class CPlayerController : Controller
                         }
 
                     }
+                    else if (selectedGameObject.transform.tag == "Play_Terrain") 
+                    {
+                        if (playerScript.canHold)
+                        {
+                            AccessToTerrain(player, (GameObject)_gameMessage.Get("SelectedGameObject"), (Vector3)_gameMessage.Get("ClickPosition"));
+                        }
+                        else {
+                            MovePlayerToTarget(player, (Vector3)_gameMessage.Get("ClickPosition"));
+                        }
+                    
+                    }
                     else
                     {
                         if (playerScript.canHold == false)
                         {
-                            if (selectedGameObject.tag == "Play_Tile")
+                            if (selectedCorrectGameObject.tag == "Play_Tile")
                             {
-                                MovePlayerToTarget(player, new Vector3(selectedGameObject.transform.position.x,((Vector3)_gameMessage.Get("ClickPosition")).y,((Vector3)_gameMessage.Get("ClickPosition")).z));
+                                MovePlayerToTarget(player, new Vector3(selectedGameObject.transform.position.x, ((Vector3)_gameMessage.Get("ClickPosition")).y, ((Vector3)_gameMessage.Get("ClickPosition")).z));
                             }
                         }
                         else
@@ -112,6 +124,9 @@ public class CPlayerController : Controller
     void MovePlayerToTarget(GameObject _player, Vector3 _targetPos)
     {
         _targetPos.z = 0;
+
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_GageStop);
+        SendGameMessage(gameMsg);
         /* 플레이어가 울타리를 넘어갈때.
             if (_targetPos.x <= -15)
             {
@@ -129,9 +144,9 @@ public class CPlayerController : Controller
 
         if (playerScript.canHold == false)
         {//tool을 들고있을때
-            if (selectedGameObject.tag == "Play_Tile")
+            if (selectedCorrectGameObject.tag == "Play_Tile")
             {
-                _targetPos = new Vector3(_targetPos.x - 2, _targetPos.y, _targetPos.z);
+                _targetPos = new Vector3(selectedCorrectGameObject.transform.position.x - 2, selectedCorrectGameObject.transform.position.y, _targetPos.z);
                 /* 플레이어가 울타리를 넘어갈때.
                 if (_targetPos.x <= -15)
                 {
@@ -166,6 +181,25 @@ public class CPlayerController : Controller
                 playerScript.transform.localScale = new Vector3(-1, 1, 1);
             }
         
+        }
+    }
+
+
+    void AccessToTerrain(GameObject _player, GameObject _terrain, Vector3 _click_position)
+    {
+        _click_position.z = 0;
+        if (_terrain.GetComponent<CTerrain>().canAccess)
+        {
+            Vector3 targetPos = new Vector3(_click_position.x - 2, _click_position.y, _click_position.z);
+            /* 플레이어가 울타리를 넘어갈때.
+                if (_targetPos.x <= -15)
+                {
+                    _targetPos = new Vector3(-15, _targetPos.y, _targetPos.z);
+                }
+                 */
+            MovePlayerToTarget(_player, targetPos);
+            StopCoroutine("CheckDistanceToTerrain");
+            StartCoroutine(CheckDistanceToTerrain(targetPos));
         }
     }
 
@@ -243,6 +277,26 @@ public class CPlayerController : Controller
 
     }
 
+
+    IEnumerator CheckDistanceToTerrain(Vector3 targetPos)
+    {
+        while (selectedGameObject.tag=="Play_Terrain")
+        {
+            if (Vector3.Distance(player.transform.position, targetPos) < 0.1f)
+            {
+                if (selectedGameObject.GetComponent<CTerrain>() != null)
+                {
+                    selectedGameObject.GetComponent<CTerrain>().ChangeStateToGaging();
+                    //playerScript.HoldTool(selectedGameObject);
+                    //holdedTool = selectedGameObject;
+                    
+                }
+                break;
+            }
+            yield return null;
+        }
+    }
+
     /// <summary>
     /// 툴을 집으러 갈 때, 툴과 거리가 0.1이하가 되었을 때만 툴을 집어드는 코루틴
     /// </summary>
@@ -283,6 +337,7 @@ public class CPlayerController : Controller
     void ConfirmSelectedGameObject(GameMessage _gameMessage)
     {
         selectedGameObject = (GameObject)_gameMessage.Get("SelectedGameObject");
+        selectedCorrectGameObject = (GameObject)_gameMessage.Get("selectedCorrectGameObject");
     }
 
     /// <summary>

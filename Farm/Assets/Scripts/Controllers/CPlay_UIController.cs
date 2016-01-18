@@ -14,6 +14,9 @@ public class CPlay_UIController : Controller
     public Image ready;
     public Image start;
 
+    public Image gageBack;
+    public Image gage;
+
     public Button pauseButton;
     public Button skipButton;
 
@@ -53,6 +56,12 @@ public class CPlay_UIController : Controller
                 break;
             case MessageName.Play_StageFailed: ShowStageFailedPopup();
                 break;
+            case MessageName.Play_UIGageAmount:
+                GageFill((float)_gameMessage.Get("gage"), (float)_gameMessage.Get("maxGage"));
+                break;
+            case MessageName.Play_GageStop:
+                GageStop();
+                break;
 
         }
     }
@@ -66,12 +75,16 @@ public class CPlay_UIController : Controller
         WaveTextChange(1);
         ready.gameObject.SetActive(false);
         start.gameObject.SetActive(false);
+        gageBack.gameObject.SetActive(false);
+        gage.gameObject.SetActive(false);
     }
     void HideUI() {
         waveText.gameObject.SetActive(false);
         WavetimerFill(0.0f);
         MaintainTimerFill(0.0f);
         timerBack.gameObject.SetActive(false);
+        gageBack.gameObject.SetActive(false);
+        gage.gameObject.SetActive(false);
     }
     void ShowUI() {
         waveText.gameObject.SetActive(true);
@@ -83,6 +96,17 @@ public class CPlay_UIController : Controller
         readytime = _readytime;
         HideUI();
         StartCoroutine("ReadyForStart");
+    }
+
+    void GageFill(float _gage,float maxGage)
+    {
+        gageBack.gameObject.SetActive(true);
+        gage.gameObject.SetActive(true);
+        gage.fillAmount = _gage / maxGage;
+    }
+    void GageStop() {
+        gageBack.gameObject.SetActive(false);
+        gage.gameObject.SetActive(false);
     }
 
     IEnumerator ReadyForStart() {
