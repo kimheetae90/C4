@@ -67,6 +67,22 @@ public class CMonsterAttackRange : CAttackRange
                 }
 
             }
+        else if (other.CompareTag("Play_Terrain"))
+        {
+            if (other.GetComponent<CWood>()!=null&&other.GetComponent<CWood>().canAccess==false)
+            {
+                monster.touchedWithWood = true;
+                monster.MonsterMoveStop();
+                if (monster.CheckCanAttack())
+                {
+                    StartCoroutine("MonsterAttack");
+                }
+            }
+            else
+            {
+                monster.touchedWithWood = false;
+            }
+        }
     }
 
     void OnTriggerExit(Collider other)

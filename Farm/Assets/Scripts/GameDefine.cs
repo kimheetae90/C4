@@ -4,6 +4,19 @@ using System.Collections;
 
 public enum MessageName
 {
+	LevelTool_ChangeChecker, // Change Checker.
+	LevelTool_ClickMarker, // Change Checker.
+	LevelTool_RemoveMarker,
+	LevelTool_SelectStageInfo,
+	LevelTool_ChangeWave,
+	LevelTool_ClearGridBoard,
+	LevelTool_ClearChecker,
+	LevelTool_SetGridToStageInfo,
+	LevelTool_ClickMonsterPanel,
+	LevelTool_DrawMonsterPanel,
+	LevelTool_ClearCheckerInfo,
+	LevelTool_ChangeMark,
+
     DevelopmentCenter_ActivateToolButton, // 가지고 있는 툴의 갯수만큼 버튼을 활성화 시킴.
 
     Play_MonsterAttackFence, // 몬스터가 울타리를 공격함. int형 변수, 몬스터의 id를 넘김.
@@ -15,6 +28,10 @@ public enum MessageName
     Play_MonsterDied,//몬스터가 체력이 다해 죽음. int형 변수 몬스터의 id를 넘김.
     Play_MonsterReturn,//제한시간이 다해서 몬스터가 원래 있던 위치로 돌아감.
     Play_MonsterShotMissle,//원거리공격을 하는 몬스터가 미사일을 발사함. monster_id와 shotPos를 넘김.
+    Play_MonsterBlinded,//플래시 스킬이 사용되 몬스터들이 블라인드 상태가 됨
+    Play_MonsterBlindOver,//플래시 지속시간이 끝나 몬스터들이 다시 옴직임.
+    Play_MonsterTrapped,//몬스터가 트랩을 밟아 움직일 수 없는 상태.
+    Play_ShadowCalled,//Dog_Hell이 피격당해 분신을 생성함.
 
     Play_MonsterDebuffToolsAttackSpeed,//흑사쥐의 패시브 스킬. 툴을 공격하면 툴의 공격속도를 감소시킴.
 
@@ -36,6 +53,8 @@ public enum MessageName
     Play_MissleOrderedByTool,//미사일이 tool에 의해 공격하라고 명령받음(?) tool_id과 tool의 ShotPos을 받음
     Play_MissleOrderedByMonster,//미사일이 monster에 의해 공격하라고 명령받음(?) monster_id과 monster의 ShotPos을 받음
     Play_MissleDisappear,// 미사일이 맵 밖으로 사라져서 setactive를 꺼줘야할 때 사용.
+
+    Play_WoodAttacked,//나무방벽이 공격당함.
 	
     Play_OneWaveOver, // 한 웨이브가 끝남
 
@@ -55,6 +74,8 @@ public enum MessageName
 
     Play_UIWaveTimerAmount,// 타이머 UI에서 사용할 웨이브의 (현재 남은 시간/총 주어진 시간) 을 UI에게 넘겨줌.
     Play_UIMaintainTimerAmount,//타이머 UI에서 사용할 정비시간의 (현재 남은 시간/총 주어진 시간) 을 UI에게 넘겨줌.
+    Play_UIGageAmount,//Gage를 UI에게 넘겨줌.
+    Play_GageStop,//Gaging을 중단하고 UI를  안보이게 함.
 
     Play_MaintainOver,//정비시간이 지나고 gamestate를 다시 웨이브가 몰려오는 start state로 바꿈. wavecount를 넘김.(UI컨트롤러에서 사용)
 
@@ -63,12 +84,22 @@ public enum MessageName
 
     Play_PlayerSkill1Used,//스킬1을 사용함.
     Play_PlayerSkill1CanUse,//스킬1을 다시 사용할수있음.
+    Play_PlayerSkill2Used,//스킬2을 사용함.
+    Play_PlayerSkill2CanUse,//스킬2을 다시 사용할수있음.
+    Play_PlayerSkill3Used,//스킬3을 사용함.
+    Play_PlayerSkill3CanUse,//스킬3을 다시 사용할수있음.
 
 }
 
 
 public enum GameState
 {
+	
+	/* LevelTool */
+	LevelTool_Checker,
+	LevelTool_Cam,
+	LevelTool_Marker,
+
 	/* GameLoading */
 	GameLoading_Ready,	//게임을 처음 켰을 때 상태, 터치를 받아 Main을 로드하기를 기다리는 상태이다.
 	GameLoading_LoadMainScene,	//Main을 로드를 시작함.
@@ -127,6 +158,8 @@ public enum ObjectState
 	Play_Monster_Attack, // 몬스터가 다른 오브젝트(농장, 플레이어, 도구)에 부딛혀서 공격하는 중
 	Play_Monster_Hitted, // 몬스터가 미사일에 맞은 상태.
 	Play_Monster_Return,//제한시간이 끝나서 몬스터가 다시 되돌아가는 상태.
+    Play_Monster_Blind,//몬스터가 플래시에 맞아 눈이 먼 상태. 움직이거나 공격할수없음.
+    Play_Monster_Traped,//몬스터가 덫에 걸려 움직일 수 없는 상태.
 	Play_Monster_Die, // 몬스터가 죽은상태.
 	
 	/* Play_Missle */
@@ -165,6 +198,11 @@ public enum ObjectState
     Play_Skill_Waiting,//스킬이 사용가능한 상태.
     Play_Skill_Activated,//스킬이 사용된 상태.
     Play_Skill_Cooldown,//스킬이 사용된 후 쿨다운상태.
+
+    /* Play_Terrain */
+    Play_Terrain_Uncomplete,
+    Play_Terrain_Gaging,
+    Play_Terrain_Complete,
 }
 
 public enum ToolName {
@@ -184,6 +222,9 @@ public enum MonsterName {
     Play_Mouse_Poison   =21206,
 
     Play_Dog_Polluted   =22108,
+    Play_Dog_Fighter    =22109,
+    Play_Dog_Hell       =22310,
+    Play_Dog_Shadow     =22311,//지옥견의 분신.
 
 }
 
@@ -191,7 +232,6 @@ public enum MissleName {
     NonMissle,
     Missle,
 }
-
 
 
 

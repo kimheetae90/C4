@@ -23,5 +23,19 @@ public class CToolFireRange : CToolAttackRange {
             }
 
         }
+        else if(other.CompareTag("Play_Terrain")){
+            if (other.GetComponent<CWood>() != null && other.GetComponent<CWood>().canAccess == false) {
+                if (tool.CheckCanAttack())
+                {
+                    StartCoroutine("ToolAttack");
+                }
+
+                if (tool.GetToolState() == ObjectState.Play_Tool_Shot)
+                {
+                    //tool.DirectAttackToMonster(other.GetComponent<CMonster>().id, tool.damage);
+                    tool.DirectAttackWood(other.GetComponent<CWood>(), tool.damage);
+                }
+            }
+        }
     }
 }

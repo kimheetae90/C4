@@ -70,4 +70,44 @@
     <moveSpeed>0.3</moveSpeed>
     <skillID>0</skillID>
   </Monster>
+  <Monster>
+    <id>22108</id>
+    <hp>30</hp>
+    <power>20</power>
+    <cooldownTime>2.0</cooldownTime>
+    <attackSpeed>2.0</attackSpeed>
+    <range>1.5</range>
+    <moveSpeed>1.0</moveSpeed>
+    <skillID>0</skillID>
+  </Monster>
+  <Monster>
+    <id>22109</id>
+    <hp>30</hp>
+    <power>20</power>
+    <cooldownTime>2.0</cooldownTime>
+    <attackSpeed>2.0</attackSpeed>
+    <range>1.5</range>
+    <moveSpeed>1.0</moveSpeed>
+    <skillID>0</skillID>
+  </Monster>
+  <Monster>
+    <id>22310</id>
+    <hp>30</hp>
+    <power>20</power>
+    <cooldownTime>2.0</cooldownTime>
+    <attackSpeed>1.5</attackSpeed>
+    <range>1.5</range>
+    <moveSpeed>0.8</moveSpeed>
+    <skillID>0</skillID>
+  </Monster>
+  <Monster>
+    <id>22311</id>
+    <hp>1</hp>
+    <power>1</power>
+    <cooldownTime>2.0</cooldownTime>
+    <attackSpeed>1.5</attackSpeed>
+    <range>1.2</range>
+    <moveSpeed>1.5</moveSpeed>
+    <skillID>0</skillID>
+  </Monster>
 </MonsterData>

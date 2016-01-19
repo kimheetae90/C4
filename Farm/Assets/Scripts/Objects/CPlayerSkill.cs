@@ -46,4 +46,6 @@ public abstract class CPlayerSkill : BaseObject{
     public abstract void Cooldown();
 
     public abstract void Waiting();
+
+    public abstract void Reset();
 }

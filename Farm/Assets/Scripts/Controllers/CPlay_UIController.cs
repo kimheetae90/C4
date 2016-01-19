@@ -14,6 +14,9 @@ public class CPlay_UIController : Controller
     public Image ready;
     public Image start;
 
+    public Image gageBack;
+    public Image gage;
+
     public Button pauseButton;
     public Button skipButton;
 
@@ -53,6 +56,12 @@ public class CPlay_UIController : Controller
                 break;
             case MessageName.Play_StageFailed: ShowStageFailedPopup();
                 break;
+            case MessageName.Play_UIGageAmount:
+                GageFill((float)_gameMessage.Get("gage"), (float)_gameMessage.Get("maxGage"));
+                break;
+            case MessageName.Play_GageStop:
+                GageStop();
+                break;
 
         }
     }
@@ -66,12 +75,16 @@ public class CPlay_UIController : Controller
         WaveTextChange(1);
         ready.gameObject.SetActive(false);
         start.gameObject.SetActive(false);
+        gageBack.gameObject.SetActive(false);
+        gage.gameObject.SetActive(false);
     }
     void HideUI() {
         waveText.gameObject.SetActive(false);
         WavetimerFill(0.0f);
         MaintainTimerFill(0.0f);
         timerBack.gameObject.SetActive(false);
+        gageBack.gameObject.SetActive(false);
+        gage.gameObject.SetActive(false);
     }
     void ShowUI() {
         waveText.gameObject.SetActive(true);
@@ -83,6 +96,17 @@ public class CPlay_UIController : Controller
         readytime = _readytime;
         HideUI();
         StartCoroutine("ReadyForStart");
+    }
+
+    void GageFill(float _gage,float maxGage)
+    {
+        gageBack.gameObject.SetActive(true);
+        gage.gameObject.SetActive(true);
+        gage.fillAmount = _gage / maxGage;
+    }
+    void GageStop() {
+        gageBack.gameObject.SetActive(false);
+        gage.gameObject.SetActive(false);
     }
 
     IEnumerator ReadyForStart() {
@@ -180,6 +204,9 @@ public class CPlay_UIController : Controller
         StopCoroutine("ReadyForStart");
         ReadyForStage(10f);
         skipButton.gameObject.SetActive(true);
+        Skill1.interactable = true;
+        Skill2.interactable = true;
+        Skill3.interactable = true;
         
     }
 
@@ -197,10 +224,26 @@ public class CPlay_UIController : Controller
 
     public void Skill2ButtonClick() {
         Skill2.interactable = false;
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_PlayerSkill2Used);
+        SendGameMessage(gameMsg);
+        StartCoroutine("Skill2CoolDownCheck");
+    }
+    IEnumerator Skill2CoolDownCheck()
+    {
+        yield return new WaitForSeconds(5f);
+        Skill2.interactable = true;
     }
 
     public void Skill3ButtonClick() {
         Skill3.interactable = false;
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_PlayerSkill3Used);
+        SendGameMessage(gameMsg);
+        StartCoroutine("Skill3CoolDownCheck");
+    }
+    IEnumerator Skill3CoolDownCheck()
+    {
+        yield return new WaitForSeconds(5f);
+        Skill3.interactable = true;
     }
 
 
@@ -232,6 +275,18 @@ public class CPlay_UIController : Controller
         pausePopup.SetActive(false);
         GameMessage gameMsg = GameMessage.Create(MessageName.Play_Unpause);
         SendGameMessage(gameMsg);
+    }
+
+    public void Speed1Button() {
+        Time.timeScale = 1;
+    }
+    public void Speed2Button()
+    {
+        Time.timeScale = 2;
+    }
+    public void Speed3Button()
+    {
+        Time.timeScale = 3;
     }
 
     

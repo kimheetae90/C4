@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class CSelectChapterManager : SceneManager
@@ -25,7 +25,7 @@ public class CSelectChapterManager : SceneManager
     {
         if (_inputData.keyState == InputData.KeyState.Up)
         {
-            OnClickToStartSelectStage(_inputData.selectedGameObject);
+            OnClickToStartSelectStage(_inputData.downRootGameObject);
         }
     }
 

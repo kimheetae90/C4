@@ -307,6 +307,12 @@ public abstract class CTool : BaseObject
         SendGameMessageToSceneManage(gameMsg);
     }
 
+    public void DirectAttackWood(CWood _wood,int power) {
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_WoodAttacked);
+        gameMsg.Insert("wood_id", _wood.GetComponent<CWood>().id);
+        gameMsg.Insert("power", power);
+        SendGameMessageToSceneManage(gameMsg);
+    }
 
     /// <summary>
     /// 툴의 objectState를 리턴값으로 얻기 위한 함수.

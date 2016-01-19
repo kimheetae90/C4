@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <MyToolData>
-  <Count>13</Count>
+  <Count>7</Count>
   <MyTool>
     <instance>1</instance>
     <id>11201</id>
@@ -13,6 +13,26 @@
   </MyTool>
   <MyTool>
     <instance>3</instance>
+    <id>13002</id>
+    <level>1</level>
+  </MyTool>
+  <MyTool>
+    <instance>4</instance>
+    <id>13002</id>
+    <level>1</level>
+  </MyTool>
+  <MyTool>
+    <instance>5</instance>
+    <id>13002</id>
+    <level>1</level>
+  </MyTool>
+  <MyTool>
+    <instance>6</instance>
+    <id>13002</id>
+    <level>1</level>
+  </MyTool>
+  <MyTool>
+    <instance>7</instance>
     <id>13002</id>
     <level>1</level>
   </MyTool>

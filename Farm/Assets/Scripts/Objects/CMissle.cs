@@ -83,6 +83,12 @@ public class CMissle : BaseObject
                 AttackPlayersObject(other.GetComponent<BaseObject>());
             }
         }
+        if (other.CompareTag("Play_Terrain")) {
+            if (other.GetComponent<CWood>() != null && other.GetComponent<CWood>().canAccess == false)
+            {
+                AttackTerrain(other.GetComponent<CWood>());
+            }
+        }
     }
     /// <summary>
     /// 미사일이 플레이어 진영의 오브젝트에 닿으면 호출되어 공격함.
@@ -98,7 +104,7 @@ public class CMissle : BaseObject
         if (_baseObject.tag=="Play_Tool"&&monster.SkillID == 1) {
             GameMessage gameMsg2 = GameMessage.Create(MessageName.Play_MonsterDebuffToolsAttackSpeed);
             gameMsg.Insert("object_id", _baseObject.GetComponent<BaseObject>().id);
-            SendGameMessage(gameMsg2);
+            SendGameMessageToSceneManage(gameMsg2);
         }
     }
     
@@ -114,6 +120,18 @@ public class CMissle : BaseObject
         SendGameMessage(gameMsg);
         _troughCounter++;
         if (_troughCounter >= troughPower) {
+            MissleDisappear();
+        }
+    }
+
+    void AttackTerrain(CWood _wood) {
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_WoodAttacked);
+        gameMsg.Insert("wood_id", _wood.GetComponent<CWood>().id);
+        gameMsg.Insert("power", power);
+        SendGameMessageToSceneManage(gameMsg);
+        _troughCounter++;
+        if (_troughCounter >= troughPower)
+        {
             MissleDisappear();
         }
     }

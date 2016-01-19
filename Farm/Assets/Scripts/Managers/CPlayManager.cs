@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -359,12 +359,19 @@ public class CPlayManager : SceneManager {
     /// <param name="_inputData">현재의 inputData</param>
     void BroadcastClickMsg(InputData _inputData)
     {
+        /*
         if(Vector3.Distance(_inputData.clickPosition,_inputData.dragPosition)<=0.2f){
         GameMessage gameMsg = GameMessage.Create(MessageName.Play_PlayerMove);
         gameMsg.Insert("ClickPosition", _inputData.clickPosition);
         gameMsg.Insert("SelectedGameObject", _inputData.selectedGameObject);
         Broadcast(gameMsg);
-        }
+        }*/
+        
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_PlayerMove);
+        gameMsg.Insert("ClickPosition", _inputData.dragPosition);
+        gameMsg.Insert("SelectedGameObject", _inputData.upRootGameObject);
+        gameMsg.Insert("selectedCorrectGameObject", _inputData.upCorrectGameObject);
+        Broadcast(gameMsg);
     }
 
     /// <summary>

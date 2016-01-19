@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class InputHelper : MonoBehaviour {
@@ -80,6 +80,15 @@ public class InputHelper : MonoBehaviour {
 			if (Input.GetMouseButtonUp(0))
 			{
 				inputData.keyState = InputData.KeyState.Up;
+				inputData.clickButton = InputData.ClickButton.Left;
+			}
+			if (Input.GetMouseButtonDown(1)) {
+				inputData.keyState = InputData.KeyState.Down;
+			}
+			if (Input.GetMouseButtonUp(1))
+			{
+				inputData.keyState = InputData.KeyState.Up;
+				inputData.clickButton = InputData.ClickButton.Right;
 			}
 		}
 		
@@ -114,6 +123,7 @@ public class InputHelper : MonoBehaviour {
 				{
 					LogManager.log ("Error : EventSystem이 없음");
 				}
+				inputData.clear();
 				break;
 			case InputData.KeyState.Down:
 				setupClickDown();
@@ -155,8 +165,8 @@ public class InputHelper : MonoBehaviour {
             Transform ct = hit.collider.transform;
             if (ct != null)
             {
-                inputData.clickedGameObject = ct.gameObject;
-                inputData.selectedGameObject = ct.root.gameObject;
+                inputData.downCorrectGameObject = ct.gameObject;
+                inputData.downRootGameObject = ct.root.gameObject;
                 inputData.clickPosition = hit.point;
             }
         }
@@ -176,7 +186,15 @@ public class InputHelper : MonoBehaviour {
 		}
 		Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity);
 		if (hit.collider != null) {
+			
 			inputData.dragPosition = hit.point;
+			Transform ct = hit.collider.transform;
+			if (ct != null)
+			{
+				inputData.dragCorrectGameObject = ct.gameObject;
+				inputData.dragRootGameObject = ct.root.gameObject;
+			}
+
 		} else {
 			LogManager.log ("Error : Ray가 Collider와 만나지 않음");
 		}
@@ -185,6 +203,20 @@ public class InputHelper : MonoBehaviour {
 	
 	void setupClickUp()
 	{
+		Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity);
+		if (hit.collider != null) {
+
+			Transform ct = hit.collider.transform;
+			if (ct != null)
+			{
+				inputData.upCorrectGameObject = ct.gameObject;
+				inputData.upRootGameObject = ct.root.gameObject;
+			}
+			
+		} else {
+			LogManager.log ("Error : Ray가 Collider와 만나지 않음");
+		}
+
 		inputData.multiTapDistance = 0;
 		inputData.preMultiTapDistance = 0;
 	}

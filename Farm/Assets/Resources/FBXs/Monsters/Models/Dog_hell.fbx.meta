@@ -1,0 +1,1688 @@
+fileFormatVersion: 2
+guid: 4645e6d2e1c9c9e4cbb8a3fffb2f1cf4
+timeCreated: 1452427029
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: All_ctrl5
+    100002: body_geo
+    100004: //RootNode
+    100006: geo
+    100008: head_ct
+    100010: head_ctrl6
+    100012: head_geo
+    100014: jaw_geo
+    100016: joint339
+    100018: joint340
+    100020: joint341
+    100022: joint342
+    100024: joint343
+    100026: joint344
+    100028: joint350
+    100030: joint351
+    100032: joint352
+    100034: joint353
+    100036: joint354
+    100038: joint355
+    100040: joint359
+    100042: joint360
+    100044: joint361
+    100046: joint362
+    100048: joint363
+    100050: joint364
+    100052: joint365
+    100054: joint366
+    100056: joint367
+    100058: joint368
+    100060: joint369
+    100062: joint370
+    100064: joint371
+    100066: joint372
+    100068: joint373
+    100070: joint374
+    100072: joint375
+    100074: joint376
+    100076: joint377
+    100078: joint378
+    100080: joint379
+    100082: joint380
+    100084: joint381
+    100086: joint382
+    100088: joint383
+    100090: l_ear_ct
+    100092: l_ear_ct 1
+    100094: l_ear_ctrl1
+    100096: l_ear_ctrl2
+    100098: L_ear_geo
+    100100: L_F_leg_geo
+    100102: L_foot_ctrl
+    100104: L_foot_ctrl 1
+    100106: L_foot_ctrl 2
+    100108: L_foot_ctrl 3
+    100110: L_foot_grp
+    100112: L_foot_grp 1
+    100114: L_foot_grp2
+    100116: L_foot_grp3
+    100118: main_ct2
+    100120: nose_ct
+    100122: nose_ct 1
+    100124: nose_ctrl1
+    100126: nose_ctrl2
+    100128: pPlane8
+    100130: pPlane9
+    100132: R_ear_geo
+    100134: R_F_leg_geo
+    100136: r_foot_ctrl
+    100138: r_foot_ctrl 1
+    100140: r_foot_grp
+    100142: r_foot_grp1
+    100144: spine03_ct
+    100146: spine03_ct 1
+    100148: spine03_ct 2
+    100150: spine03_ctrl
+    100152: spine03_ctrl1
+    100154: spine03_ctrl2
+    100156: tail01_ct
+    100158: tail01_ctrl2
+    100160: tail02_ct
+    100162: tail02_ct 1
+    100164: tail02_ctrl
+    100166: tail02_ctrl1
+    100168: tail_geo
+    400000: All_ctrl5
+    400002: body_geo
+    400004: //RootNode
+    400006: geo
+    400008: head_ct
+    400010: head_ctrl6
+    400012: head_geo
+    400014: jaw_geo
+    400016: joint339
+    400018: joint340
+    400020: joint341
+    400022: joint342
+    400024: joint343
+    400026: joint344
+    400028: joint350
+    400030: joint351
+    400032: joint352
+    400034: joint353
+    400036: joint354
+    400038: joint355
+    400040: joint359
+    400042: joint360
+    400044: joint361
+    400046: joint362
+    400048: joint363
+    400050: joint364
+    400052: joint365
+    400054: joint366
+    400056: joint367
+    400058: joint368
+    400060: joint369
+    400062: joint370
+    400064: joint371
+    400066: joint372
+    400068: joint373
+    400070: joint374
+    400072: joint375
+    400074: joint376
+    400076: joint377
+    400078: joint378
+    400080: joint379
+    400082: joint380
+    400084: joint381
+    400086: joint382
+    400088: joint383
+    400090: l_ear_ct
+    400092: l_ear_ct 1
+    400094: l_ear_ctrl1
+    400096: l_ear_ctrl2
+    400098: L_ear_geo
+    400100: L_F_leg_geo
+    400102: L_foot_ctrl
+    400104: L_foot_ctrl 1
+    400106: L_foot_ctrl 2
+    400108: L_foot_ctrl 3
+    400110: L_foot_grp
+    400112: L_foot_grp 1
+    400114: L_foot_grp2
+    400116: L_foot_grp3
+    400118: main_ct2
+    400120: nose_ct
+    400122: nose_ct 1
+    400124: nose_ctrl1
+    400126: nose_ctrl2
+    400128: pPlane8
+    400130: pPlane9
+    400132: R_ear_geo
+    400134: R_F_leg_geo
+    400136: r_foot_ctrl
+    400138: r_foot_ctrl 1
+    400140: r_foot_grp
+    400142: r_foot_grp1
+    400144: spine03_ct
+    400146: spine03_ct 1
+    400148: spine03_ct 2
+    400150: spine03_ctrl
+    400152: spine03_ctrl1
+    400154: spine03_ctrl2
+    400156: tail01_ct
+    400158: tail01_ctrl2
+    400160: tail02_ct
+    400162: tail02_ct 1
+    400164: tail02_ctrl
+    400166: tail02_ctrl1
+    400168: tail_geo
+    4300000: L_ear_geo
+    4300002: head_geo
+    4300004: jaw_geo
+    4300006: R_ear_geo
+    4300008: L_F_leg_geo
+    4300010: body_geo
+    4300012: R_F_leg_geo
+    4300014: tail_geo
+    4300016: pPlane9
+    4300018: pPlane8
+    7400000: Take 001
+    7400002: Idle
+    7400004: Walk
+    7400006: Ready
+    7400008: Attack
+    7400010: Stun
+    7400012: Death
+    9500000: //RootNode
+    13700000: body_geo
+    13700002: head_geo
+    13700004: jaw_geo
+    13700006: L_ear_geo
+    13700008: L_F_leg_geo
+    13700010: pPlane8
+    13700012: pPlane9
+    13700014: R_ear_geo
+    13700016: R_F_leg_geo
+    13700018: tail_geo
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 71
+      lastFrame: 123
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: All_ctrl5
+        weight: 1
+      - path: All_ctrl5/main_ct2
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp2
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp2/L_foot_ctrl
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp2/L_foot_ctrl/L_foot_grp
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp2/L_foot_ctrl/L_foot_grp/L_foot_ctrl 2
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp3
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp3/L_foot_ctrl 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp3/L_foot_ctrl 1/L_foot_grp 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp3/L_foot_ctrl 1/L_foot_grp 1/L_foot_ctrl
+          3
+        weight: 1
+      - path: All_ctrl5/main_ct2/r_foot_grp
+        weight: 1
+      - path: All_ctrl5/main_ct2/r_foot_grp/r_foot_ctrl
+        weight: 1
+      - path: All_ctrl5/main_ct2/r_foot_grp1
+        weight: 1
+      - path: All_ctrl5/main_ct2/r_foot_grp1/r_foot_ctrl 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl1/nose_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1/l_ear_ctrl1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1/l_ear_ctrl1/l_ear_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1/l_ear_ctrl2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1/l_ear_ctrl2/l_ear_ct 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl1/spine03_ct 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct/tail02_ctrl
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct/tail02_ctrl/tail02_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct/tail02_ctrl/tail02_ct/tail02_ctrl1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct/tail02_ctrl/tail02_ct/tail02_ctrl1/tail02_ct
+          1
+        weight: 1
+      - path: geo
+        weight: 1
+      - path: geo/body_geo
+        weight: 1
+      - path: geo/head_geo
+        weight: 1
+      - path: geo/jaw_geo
+        weight: 1
+      - path: geo/L_ear_geo
+        weight: 1
+      - path: geo/L_F_leg_geo
+        weight: 1
+      - path: geo/pPlane8
+        weight: 1
+      - path: geo/pPlane9
+        weight: 1
+      - path: geo/R_ear_geo
+        weight: 1
+      - path: geo/R_F_leg_geo
+        weight: 1
+      - path: geo/tail_geo
+        weight: 1
+      - path: joint380
+        weight: 1
+      - path: joint380/joint352
+        weight: 1
+      - path: joint380/joint352/joint353
+        weight: 1
+      - path: joint380/joint352/joint353/joint354
+        weight: 1
+      - path: joint380/joint352/joint353/joint354/joint355
+        weight: 1
+      - path: joint380/joint367
+        weight: 1
+      - path: joint380/joint367/joint368
+        weight: 1
+      - path: joint380/joint367/joint368/joint369
+        weight: 1
+      - path: joint380/joint367/joint368/joint369/joint370
+        weight: 1
+      - path: joint380/joint367/joint368/joint369/joint370/joint371
+        weight: 1
+      - path: joint380/joint372
+        weight: 1
+      - path: joint380/joint372/joint373
+        weight: 1
+      - path: joint380/joint372/joint373/joint374
+        weight: 1
+      - path: joint380/joint372/joint373/joint374/joint375
+        weight: 1
+      - path: joint380/joint372/joint373/joint374/joint375/joint376
+        weight: 1
+      - path: joint380/joint381
+        weight: 1
+      - path: joint380/joint381/joint382
+        weight: 1
+      - path: joint380/joint381/joint382/joint359
+        weight: 1
+      - path: joint380/joint381/joint382/joint359/joint360
+        weight: 1
+      - path: joint380/joint381/joint382/joint359/joint360/joint361
+        weight: 1
+      - path: joint380/joint381/joint382/joint359/joint360/joint361/joint362
+        weight: 1
+      - path: joint380/joint381/joint382/joint363
+        weight: 1
+      - path: joint380/joint381/joint382/joint363/joint364
+        weight: 1
+      - path: joint380/joint381/joint382/joint363/joint364/joint365
+        weight: 1
+      - path: joint380/joint381/joint382/joint363/joint364/joint365/joint366
+        weight: 1
+      - path: joint380/joint381/joint382/joint383
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint339
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint339/joint340
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint339/joint340/joint341
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint342
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint342/joint343
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint342/joint343/joint344
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint378
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint378/joint350
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint378/joint350/joint351
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint378/joint379
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 71
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: All_ctrl5
+        weight: 1
+      - path: All_ctrl5/main_ct2
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp2
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp2/L_foot_ctrl
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp2/L_foot_ctrl/L_foot_grp
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp2/L_foot_ctrl/L_foot_grp/L_foot_ctrl 2
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp3
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp3/L_foot_ctrl 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp3/L_foot_ctrl 1/L_foot_grp 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp3/L_foot_ctrl 1/L_foot_grp 1/L_foot_ctrl
+          3
+        weight: 1
+      - path: All_ctrl5/main_ct2/r_foot_grp
+        weight: 1
+      - path: All_ctrl5/main_ct2/r_foot_grp/r_foot_ctrl
+        weight: 1
+      - path: All_ctrl5/main_ct2/r_foot_grp1
+        weight: 1
+      - path: All_ctrl5/main_ct2/r_foot_grp1/r_foot_ctrl 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl1/nose_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1/l_ear_ctrl1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1/l_ear_ctrl1/l_ear_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1/l_ear_ctrl2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1/l_ear_ctrl2/l_ear_ct 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl1/spine03_ct 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct/tail02_ctrl
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct/tail02_ctrl/tail02_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct/tail02_ctrl/tail02_ct/tail02_ctrl1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct/tail02_ctrl/tail02_ct/tail02_ctrl1/tail02_ct
+          1
+        weight: 1
+      - path: geo
+        weight: 1
+      - path: geo/body_geo
+        weight: 1
+      - path: geo/head_geo
+        weight: 1
+      - path: geo/jaw_geo
+        weight: 1
+      - path: geo/L_ear_geo
+        weight: 1
+      - path: geo/L_F_leg_geo
+        weight: 1
+      - path: geo/pPlane8
+        weight: 1
+      - path: geo/pPlane9
+        weight: 1
+      - path: geo/R_ear_geo
+        weight: 1
+      - path: geo/R_F_leg_geo
+        weight: 1
+      - path: geo/tail_geo
+        weight: 1
+      - path: joint380
+        weight: 1
+      - path: joint380/joint352
+        weight: 1
+      - path: joint380/joint352/joint353
+        weight: 1
+      - path: joint380/joint352/joint353/joint354
+        weight: 1
+      - path: joint380/joint352/joint353/joint354/joint355
+        weight: 1
+      - path: joint380/joint367
+        weight: 1
+      - path: joint380/joint367/joint368
+        weight: 1
+      - path: joint380/joint367/joint368/joint369
+        weight: 1
+      - path: joint380/joint367/joint368/joint369/joint370
+        weight: 1
+      - path: joint380/joint367/joint368/joint369/joint370/joint371
+        weight: 1
+      - path: joint380/joint372
+        weight: 1
+      - path: joint380/joint372/joint373
+        weight: 1
+      - path: joint380/joint372/joint373/joint374
+        weight: 1
+      - path: joint380/joint372/joint373/joint374/joint375
+        weight: 1
+      - path: joint380/joint372/joint373/joint374/joint375/joint376
+        weight: 1
+      - path: joint380/joint381
+        weight: 1
+      - path: joint380/joint381/joint382
+        weight: 1
+      - path: joint380/joint381/joint382/joint359
+        weight: 1
+      - path: joint380/joint381/joint382/joint359/joint360
+        weight: 1
+      - path: joint380/joint381/joint382/joint359/joint360/joint361
+        weight: 1
+      - path: joint380/joint381/joint382/joint359/joint360/joint361/joint362
+        weight: 1
+      - path: joint380/joint381/joint382/joint363
+        weight: 1
+      - path: joint380/joint381/joint382/joint363/joint364
+        weight: 1
+      - path: joint380/joint381/joint382/joint363/joint364/joint365
+        weight: 1
+      - path: joint380/joint381/joint382/joint363/joint364/joint365/joint366
+        weight: 1
+      - path: joint380/joint381/joint382/joint383
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint339
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint339/joint340
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint339/joint340/joint341
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint342
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint342/joint343
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint342/joint343/joint344
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint378
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint378/joint350
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint378/joint350/joint351
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint378/joint379
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 71
+      lastFrame: 122
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: All_ctrl5
+        weight: 1
+      - path: All_ctrl5/main_ct2
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp2
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp2/L_foot_ctrl
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp2/L_foot_ctrl/L_foot_grp
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp2/L_foot_ctrl/L_foot_grp/L_foot_ctrl 2
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp3
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp3/L_foot_ctrl 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp3/L_foot_ctrl 1/L_foot_grp 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp3/L_foot_ctrl 1/L_foot_grp 1/L_foot_ctrl
+          3
+        weight: 1
+      - path: All_ctrl5/main_ct2/r_foot_grp
+        weight: 1
+      - path: All_ctrl5/main_ct2/r_foot_grp/r_foot_ctrl
+        weight: 1
+      - path: All_ctrl5/main_ct2/r_foot_grp1
+        weight: 1
+      - path: All_ctrl5/main_ct2/r_foot_grp1/r_foot_ctrl 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl1/nose_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1/l_ear_ctrl1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1/l_ear_ctrl1/l_ear_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1/l_ear_ctrl2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1/l_ear_ctrl2/l_ear_ct 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl1/spine03_ct 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct/tail02_ctrl
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct/tail02_ctrl/tail02_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct/tail02_ctrl/tail02_ct/tail02_ctrl1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct/tail02_ctrl/tail02_ct/tail02_ctrl1/tail02_ct
+          1
+        weight: 1
+      - path: geo
+        weight: 1
+      - path: geo/body_geo
+        weight: 1
+      - path: geo/head_geo
+        weight: 1
+      - path: geo/jaw_geo
+        weight: 1
+      - path: geo/L_ear_geo
+        weight: 1
+      - path: geo/L_F_leg_geo
+        weight: 1
+      - path: geo/pPlane8
+        weight: 1
+      - path: geo/pPlane9
+        weight: 1
+      - path: geo/R_ear_geo
+        weight: 1
+      - path: geo/R_F_leg_geo
+        weight: 1
+      - path: geo/tail_geo
+        weight: 1
+      - path: joint380
+        weight: 1
+      - path: joint380/joint352
+        weight: 1
+      - path: joint380/joint352/joint353
+        weight: 1
+      - path: joint380/joint352/joint353/joint354
+        weight: 1
+      - path: joint380/joint352/joint353/joint354/joint355
+        weight: 1
+      - path: joint380/joint367
+        weight: 1
+      - path: joint380/joint367/joint368
+        weight: 1
+      - path: joint380/joint367/joint368/joint369
+        weight: 1
+      - path: joint380/joint367/joint368/joint369/joint370
+        weight: 1
+      - path: joint380/joint367/joint368/joint369/joint370/joint371
+        weight: 1
+      - path: joint380/joint372
+        weight: 1
+      - path: joint380/joint372/joint373
+        weight: 1
+      - path: joint380/joint372/joint373/joint374
+        weight: 1
+      - path: joint380/joint372/joint373/joint374/joint375
+        weight: 1
+      - path: joint380/joint372/joint373/joint374/joint375/joint376
+        weight: 1
+      - path: joint380/joint381
+        weight: 1
+      - path: joint380/joint381/joint382
+        weight: 1
+      - path: joint380/joint381/joint382/joint359
+        weight: 1
+      - path: joint380/joint381/joint382/joint359/joint360
+        weight: 1
+      - path: joint380/joint381/joint382/joint359/joint360/joint361
+        weight: 1
+      - path: joint380/joint381/joint382/joint359/joint360/joint361/joint362
+        weight: 1
+      - path: joint380/joint381/joint382/joint363
+        weight: 1
+      - path: joint380/joint381/joint382/joint363/joint364
+        weight: 1
+      - path: joint380/joint381/joint382/joint363/joint364/joint365
+        weight: 1
+      - path: joint380/joint381/joint382/joint363/joint364/joint365/joint366
+        weight: 1
+      - path: joint380/joint381/joint382/joint383
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint339
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint339/joint340
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint339/joint340/joint341
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint342
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint342/joint343
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint342/joint343/joint344
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint378
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint378/joint350
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint378/joint350/joint351
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint378/joint379
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Ready
+      takeName: Take 001
+      firstFrame: 131
+      lastFrame: 146
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: All_ctrl5
+        weight: 1
+      - path: All_ctrl5/main_ct2
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp2
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp2/L_foot_ctrl
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp2/L_foot_ctrl/L_foot_grp
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp2/L_foot_ctrl/L_foot_grp/L_foot_ctrl 2
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp3
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp3/L_foot_ctrl 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp3/L_foot_ctrl 1/L_foot_grp 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp3/L_foot_ctrl 1/L_foot_grp 1/L_foot_ctrl
+          3
+        weight: 1
+      - path: All_ctrl5/main_ct2/r_foot_grp
+        weight: 1
+      - path: All_ctrl5/main_ct2/r_foot_grp/r_foot_ctrl
+        weight: 1
+      - path: All_ctrl5/main_ct2/r_foot_grp1
+        weight: 1
+      - path: All_ctrl5/main_ct2/r_foot_grp1/r_foot_ctrl 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl1/nose_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1/l_ear_ctrl1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1/l_ear_ctrl1/l_ear_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1/l_ear_ctrl2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1/l_ear_ctrl2/l_ear_ct 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl1/spine03_ct 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct/tail02_ctrl
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct/tail02_ctrl/tail02_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct/tail02_ctrl/tail02_ct/tail02_ctrl1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct/tail02_ctrl/tail02_ct/tail02_ctrl1/tail02_ct
+          1
+        weight: 1
+      - path: geo
+        weight: 1
+      - path: geo/body_geo
+        weight: 1
+      - path: geo/head_geo
+        weight: 1
+      - path: geo/jaw_geo
+        weight: 1
+      - path: geo/L_ear_geo
+        weight: 1
+      - path: geo/L_F_leg_geo
+        weight: 1
+      - path: geo/pPlane8
+        weight: 1
+      - path: geo/pPlane9
+        weight: 1
+      - path: geo/R_ear_geo
+        weight: 1
+      - path: geo/R_F_leg_geo
+        weight: 1
+      - path: geo/tail_geo
+        weight: 1
+      - path: joint380
+        weight: 1
+      - path: joint380/joint352
+        weight: 1
+      - path: joint380/joint352/joint353
+        weight: 1
+      - path: joint380/joint352/joint353/joint354
+        weight: 1
+      - path: joint380/joint352/joint353/joint354/joint355
+        weight: 1
+      - path: joint380/joint367
+        weight: 1
+      - path: joint380/joint367/joint368
+        weight: 1
+      - path: joint380/joint367/joint368/joint369
+        weight: 1
+      - path: joint380/joint367/joint368/joint369/joint370
+        weight: 1
+      - path: joint380/joint367/joint368/joint369/joint370/joint371
+        weight: 1
+      - path: joint380/joint372
+        weight: 1
+      - path: joint380/joint372/joint373
+        weight: 1
+      - path: joint380/joint372/joint373/joint374
+        weight: 1
+      - path: joint380/joint372/joint373/joint374/joint375
+        weight: 1
+      - path: joint380/joint372/joint373/joint374/joint375/joint376
+        weight: 1
+      - path: joint380/joint381
+        weight: 1
+      - path: joint380/joint381/joint382
+        weight: 1
+      - path: joint380/joint381/joint382/joint359
+        weight: 1
+      - path: joint380/joint381/joint382/joint359/joint360
+        weight: 1
+      - path: joint380/joint381/joint382/joint359/joint360/joint361
+        weight: 1
+      - path: joint380/joint381/joint382/joint359/joint360/joint361/joint362
+        weight: 1
+      - path: joint380/joint381/joint382/joint363
+        weight: 1
+      - path: joint380/joint381/joint382/joint363/joint364
+        weight: 1
+      - path: joint380/joint381/joint382/joint363/joint364/joint365
+        weight: 1
+      - path: joint380/joint381/joint382/joint363/joint364/joint365/joint366
+        weight: 1
+      - path: joint380/joint381/joint382/joint383
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint339
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint339/joint340
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint339/joint340/joint341
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint342
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint342/joint343
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint342/joint343/joint344
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint378
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint378/joint350
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint378/joint350/joint351
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint378/joint379
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Attack
+      takeName: Take 001
+      firstFrame: 146
+      lastFrame: 170
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: All_ctrl5
+        weight: 1
+      - path: All_ctrl5/main_ct2
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp2
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp2/L_foot_ctrl
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp2/L_foot_ctrl/L_foot_grp
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp2/L_foot_ctrl/L_foot_grp/L_foot_ctrl 2
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp3
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp3/L_foot_ctrl 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp3/L_foot_ctrl 1/L_foot_grp 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp3/L_foot_ctrl 1/L_foot_grp 1/L_foot_ctrl
+          3
+        weight: 1
+      - path: All_ctrl5/main_ct2/r_foot_grp
+        weight: 1
+      - path: All_ctrl5/main_ct2/r_foot_grp/r_foot_ctrl
+        weight: 1
+      - path: All_ctrl5/main_ct2/r_foot_grp1
+        weight: 1
+      - path: All_ctrl5/main_ct2/r_foot_grp1/r_foot_ctrl 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl1/nose_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1/l_ear_ctrl1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1/l_ear_ctrl1/l_ear_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1/l_ear_ctrl2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1/l_ear_ctrl2/l_ear_ct 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl1/spine03_ct 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct/tail02_ctrl
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct/tail02_ctrl/tail02_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct/tail02_ctrl/tail02_ct/tail02_ctrl1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct/tail02_ctrl/tail02_ct/tail02_ctrl1/tail02_ct
+          1
+        weight: 1
+      - path: geo
+        weight: 1
+      - path: geo/body_geo
+        weight: 1
+      - path: geo/head_geo
+        weight: 1
+      - path: geo/jaw_geo
+        weight: 1
+      - path: geo/L_ear_geo
+        weight: 1
+      - path: geo/L_F_leg_geo
+        weight: 1
+      - path: geo/pPlane8
+        weight: 1
+      - path: geo/pPlane9
+        weight: 1
+      - path: geo/R_ear_geo
+        weight: 1
+      - path: geo/R_F_leg_geo
+        weight: 1
+      - path: geo/tail_geo
+        weight: 1
+      - path: joint380
+        weight: 1
+      - path: joint380/joint352
+        weight: 1
+      - path: joint380/joint352/joint353
+        weight: 1
+      - path: joint380/joint352/joint353/joint354
+        weight: 1
+      - path: joint380/joint352/joint353/joint354/joint355
+        weight: 1
+      - path: joint380/joint367
+        weight: 1
+      - path: joint380/joint367/joint368
+        weight: 1
+      - path: joint380/joint367/joint368/joint369
+        weight: 1
+      - path: joint380/joint367/joint368/joint369/joint370
+        weight: 1
+      - path: joint380/joint367/joint368/joint369/joint370/joint371
+        weight: 1
+      - path: joint380/joint372
+        weight: 1
+      - path: joint380/joint372/joint373
+        weight: 1
+      - path: joint380/joint372/joint373/joint374
+        weight: 1
+      - path: joint380/joint372/joint373/joint374/joint375
+        weight: 1
+      - path: joint380/joint372/joint373/joint374/joint375/joint376
+        weight: 1
+      - path: joint380/joint381
+        weight: 1
+      - path: joint380/joint381/joint382
+        weight: 1
+      - path: joint380/joint381/joint382/joint359
+        weight: 1
+      - path: joint380/joint381/joint382/joint359/joint360
+        weight: 1
+      - path: joint380/joint381/joint382/joint359/joint360/joint361
+        weight: 1
+      - path: joint380/joint381/joint382/joint359/joint360/joint361/joint362
+        weight: 1
+      - path: joint380/joint381/joint382/joint363
+        weight: 1
+      - path: joint380/joint381/joint382/joint363/joint364
+        weight: 1
+      - path: joint380/joint381/joint382/joint363/joint364/joint365
+        weight: 1
+      - path: joint380/joint381/joint382/joint363/joint364/joint365/joint366
+        weight: 1
+      - path: joint380/joint381/joint382/joint383
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint339
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint339/joint340
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint339/joint340/joint341
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint342
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint342/joint343
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint342/joint343/joint344
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint378
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint378/joint350
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint378/joint350/joint351
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint378/joint379
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Stun
+      takeName: Take 001
+      firstFrame: 201
+      lastFrame: 234
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: All_ctrl5
+        weight: 1
+      - path: All_ctrl5/main_ct2
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp2
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp2/L_foot_ctrl
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp2/L_foot_ctrl/L_foot_grp
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp2/L_foot_ctrl/L_foot_grp/L_foot_ctrl 2
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp3
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp3/L_foot_ctrl 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp3/L_foot_ctrl 1/L_foot_grp 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp3/L_foot_ctrl 1/L_foot_grp 1/L_foot_ctrl
+          3
+        weight: 1
+      - path: All_ctrl5/main_ct2/r_foot_grp
+        weight: 1
+      - path: All_ctrl5/main_ct2/r_foot_grp/r_foot_ctrl
+        weight: 1
+      - path: All_ctrl5/main_ct2/r_foot_grp1
+        weight: 1
+      - path: All_ctrl5/main_ct2/r_foot_grp1/r_foot_ctrl 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl1/nose_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1/l_ear_ctrl1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1/l_ear_ctrl1/l_ear_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1/l_ear_ctrl2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1/l_ear_ctrl2/l_ear_ct 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl1/spine03_ct 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct/tail02_ctrl
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct/tail02_ctrl/tail02_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct/tail02_ctrl/tail02_ct/tail02_ctrl1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct/tail02_ctrl/tail02_ct/tail02_ctrl1/tail02_ct
+          1
+        weight: 1
+      - path: geo
+        weight: 1
+      - path: geo/body_geo
+        weight: 1
+      - path: geo/head_geo
+        weight: 1
+      - path: geo/jaw_geo
+        weight: 1
+      - path: geo/L_ear_geo
+        weight: 1
+      - path: geo/L_F_leg_geo
+        weight: 1
+      - path: geo/pPlane8
+        weight: 1
+      - path: geo/pPlane9
+        weight: 1
+      - path: geo/R_ear_geo
+        weight: 1
+      - path: geo/R_F_leg_geo
+        weight: 1
+      - path: geo/tail_geo
+        weight: 1
+      - path: joint380
+        weight: 1
+      - path: joint380/joint352
+        weight: 1
+      - path: joint380/joint352/joint353
+        weight: 1
+      - path: joint380/joint352/joint353/joint354
+        weight: 1
+      - path: joint380/joint352/joint353/joint354/joint355
+        weight: 1
+      - path: joint380/joint367
+        weight: 1
+      - path: joint380/joint367/joint368
+        weight: 1
+      - path: joint380/joint367/joint368/joint369
+        weight: 1
+      - path: joint380/joint367/joint368/joint369/joint370
+        weight: 1
+      - path: joint380/joint367/joint368/joint369/joint370/joint371
+        weight: 1
+      - path: joint380/joint372
+        weight: 1
+      - path: joint380/joint372/joint373
+        weight: 1
+      - path: joint380/joint372/joint373/joint374
+        weight: 1
+      - path: joint380/joint372/joint373/joint374/joint375
+        weight: 1
+      - path: joint380/joint372/joint373/joint374/joint375/joint376
+        weight: 1
+      - path: joint380/joint381
+        weight: 1
+      - path: joint380/joint381/joint382
+        weight: 1
+      - path: joint380/joint381/joint382/joint359
+        weight: 1
+      - path: joint380/joint381/joint382/joint359/joint360
+        weight: 1
+      - path: joint380/joint381/joint382/joint359/joint360/joint361
+        weight: 1
+      - path: joint380/joint381/joint382/joint359/joint360/joint361/joint362
+        weight: 1
+      - path: joint380/joint381/joint382/joint363
+        weight: 1
+      - path: joint380/joint381/joint382/joint363/joint364
+        weight: 1
+      - path: joint380/joint381/joint382/joint363/joint364/joint365
+        weight: 1
+      - path: joint380/joint381/joint382/joint363/joint364/joint365/joint366
+        weight: 1
+      - path: joint380/joint381/joint382/joint383
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint339
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint339/joint340
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint339/joint340/joint341
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint342
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint342/joint343
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint342/joint343/joint344
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint378
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint378/joint350
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint378/joint350/joint351
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint378/joint379
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Death
+      takeName: Take 001
+      firstFrame: 261
+      lastFrame: 290
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: All_ctrl5
+        weight: 1
+      - path: All_ctrl5/main_ct2
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp2
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp2/L_foot_ctrl
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp2/L_foot_ctrl/L_foot_grp
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp2/L_foot_ctrl/L_foot_grp/L_foot_ctrl 2
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp3
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp3/L_foot_ctrl 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp3/L_foot_ctrl 1/L_foot_grp 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/L_foot_grp3/L_foot_ctrl 1/L_foot_grp 1/L_foot_ctrl
+          3
+        weight: 1
+      - path: All_ctrl5/main_ct2/r_foot_grp
+        weight: 1
+      - path: All_ctrl5/main_ct2/r_foot_grp/r_foot_ctrl
+        weight: 1
+      - path: All_ctrl5/main_ct2/r_foot_grp1
+        weight: 1
+      - path: All_ctrl5/main_ct2/r_foot_grp1/r_foot_ctrl 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl1/nose_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1/l_ear_ctrl1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1/l_ear_ctrl1/l_ear_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1/l_ear_ctrl2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl/spine03_ct/head_ctrl6/head_ct/nose_ctrl2/nose_ct
+          1/l_ear_ctrl2/l_ear_ct 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl1/spine03_ct 1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct/tail02_ctrl
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct/tail02_ctrl/tail02_ct
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct/tail02_ctrl/tail02_ct/tail02_ctrl1
+        weight: 1
+      - path: All_ctrl5/main_ct2/spine03_ctrl2/spine03_ct 2/tail01_ctrl2/tail01_ct/tail02_ctrl/tail02_ct/tail02_ctrl1/tail02_ct
+          1
+        weight: 1
+      - path: geo
+        weight: 1
+      - path: geo/body_geo
+        weight: 1
+      - path: geo/head_geo
+        weight: 1
+      - path: geo/jaw_geo
+        weight: 1
+      - path: geo/L_ear_geo
+        weight: 1
+      - path: geo/L_F_leg_geo
+        weight: 1
+      - path: geo/pPlane8
+        weight: 1
+      - path: geo/pPlane9
+        weight: 1
+      - path: geo/R_ear_geo
+        weight: 1
+      - path: geo/R_F_leg_geo
+        weight: 1
+      - path: geo/tail_geo
+        weight: 1
+      - path: joint380
+        weight: 1
+      - path: joint380/joint352
+        weight: 1
+      - path: joint380/joint352/joint353
+        weight: 1
+      - path: joint380/joint352/joint353/joint354
+        weight: 1
+      - path: joint380/joint352/joint353/joint354/joint355
+        weight: 1
+      - path: joint380/joint367
+        weight: 1
+      - path: joint380/joint367/joint368
+        weight: 1
+      - path: joint380/joint367/joint368/joint369
+        weight: 1
+      - path: joint380/joint367/joint368/joint369/joint370
+        weight: 1
+      - path: joint380/joint367/joint368/joint369/joint370/joint371
+        weight: 1
+      - path: joint380/joint372
+        weight: 1
+      - path: joint380/joint372/joint373
+        weight: 1
+      - path: joint380/joint372/joint373/joint374
+        weight: 1
+      - path: joint380/joint372/joint373/joint374/joint375
+        weight: 1
+      - path: joint380/joint372/joint373/joint374/joint375/joint376
+        weight: 1
+      - path: joint380/joint381
+        weight: 1
+      - path: joint380/joint381/joint382
+        weight: 1
+      - path: joint380/joint381/joint382/joint359
+        weight: 1
+      - path: joint380/joint381/joint382/joint359/joint360
+        weight: 1
+      - path: joint380/joint381/joint382/joint359/joint360/joint361
+        weight: 1
+      - path: joint380/joint381/joint382/joint359/joint360/joint361/joint362
+        weight: 1
+      - path: joint380/joint381/joint382/joint363
+        weight: 1
+      - path: joint380/joint381/joint382/joint363/joint364
+        weight: 1
+      - path: joint380/joint381/joint382/joint363/joint364/joint365
+        weight: 1
+      - path: joint380/joint381/joint382/joint363/joint364/joint365/joint366
+        weight: 1
+      - path: joint380/joint381/joint382/joint383
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint339
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint339/joint340
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint339/joint340/joint341
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint342
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint342/joint343
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint342/joint343/joint344
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint378
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint378/joint350
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint378/joint350/joint351
+        weight: 1
+      - path: joint380/joint381/joint382/joint383/joint377/joint378/joint379
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

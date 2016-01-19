@@ -6,7 +6,6 @@ using System.Linq;
 public class CMonsterController : Controller
 {
     public List<GameObject> monsterList;
-
     public List<MonsterName> monsterName;
     public int oneWavePerMonster = 12;//한 웨이브당 생성되는 몬스터 마리 수.
     int oneWavePerMonsterCount;//한 웨이브에 죽은 몬스터 마리 수.
@@ -23,6 +22,10 @@ public class CMonsterController : Controller
     int waveCount;
 
     List<StageInfo> stageInfo;
+
+    public List<GameObject> dog_shadowList;
+    public int activatedShadow;
+    public int maxShadow;
 
     void Awake()
     {
@@ -50,6 +53,9 @@ public class CMonsterController : Controller
             case MessageName.Play_MonsterDamaged:
                 MonsterDamagedByMissle((int)_gameMessage.Get("monster_id"), (int)_gameMessage.Get("power"));
                 break;
+            case MessageName.Play_MonsterTrapped:
+                MonsterTrapped((int)_gameMessage.Get("monster_id"), (int)_gameMessage.Get("power"), (float)_gameMessage.Get("stunTime"));
+                break;
             case MessageName.Play_FenceDisappear_MonsterMove:
                 if (_gameMessage.Get("fence_id") != null)
                 {
@@ -65,11 +71,21 @@ public class CMonsterController : Controller
             case MessageName.Play_MonsterReturn:
                 MonsterReturn();
                 break;
+            case MessageName.Play_MonsterBlinded:
+                MonsterBlind();
+                break;
+            case MessageName.Play_MonsterBlindOver:
+                MonsterBlindOver();
+                break;
             case MessageName.Play_StageFailed:
                 //MonsterPause();
                 break;
             case MessageName.Play_StageRestart:
                 ResetStage();
+                break;
+
+            case MessageName.Play_ShadowCalled:
+                CallShadow((Vector3)_gameMessage.Get("position"));
                 break;
 
 
@@ -113,7 +129,24 @@ public class CMonsterController : Controller
             monsteri.GetComponent<CMonster>().MonsterSetting(mInfo.hp, mInfo.power, mInfo.cooldownTime, mInfo.attackSpeed, mInfo.range, mInfo.moveSpeed, mInfo.skillID);
 
             monsterList.Add(monsteri);
+            if (node.id == 22310&&maxShadow==0)
+            {
+                dog_shadowList = new List<GameObject>();
+                activatedShadow = 0;
+                maxShadow = 10;
+                for (int i = 0; i < maxShadow; i++)
+                {
+                    GameObject shadow = ObjectPooler.Instance.GetGameObject("Play_Dog_Shadow");
+                    shadow.GetComponent<CMonster>().SetController(this);
+                    shadow.transform.position = new Vector3(startPos.position.x, startPos.position.y, startPos.position.z);
+                    MonsterInfo Info = DataLoadHelper.Instance.GetMonsterInfo(22311);
+                    shadow.GetComponent<CMonster>().MonsterSetting(Info.hp, Info.power, Info.cooldownTime, Info.attackSpeed, Info.range, Info.moveSpeed, Info.skillID);
+                    shadow.SetActive(false);
+                    dog_shadowList.Add(shadow);
+                   
+                }
             }
+       }
         //oneWavePerMonster = monsterName.Count;
 
         
@@ -232,7 +265,15 @@ public class CMonsterController : Controller
     /// <returns></returns>
     GameObject FindMonsterOfID(int _id)
     {
-        return monsterList.Find(enemy => enemy.GetComponent<CMonster>().id == _id) as GameObject;
+        
+        if (monsterList.Find(enemy => enemy.GetComponent<CMonster>().id == _id) as GameObject == null)
+        {
+            return dog_shadowList.Find(enemy => enemy.GetComponent<CMonster>().id == _id) as GameObject;
+        }
+        else
+        {
+            return monsterList.Find(enemy => enemy.GetComponent<CMonster>().id == _id) as GameObject;
+        }
     }
 
     /// <summary>
@@ -343,6 +384,10 @@ public class CMonsterController : Controller
         FindMonsterOfID(_id).GetComponent<CMonster>().Damaged(_missle_power);
     }
 
+    void MonsterTrapped(int _id, int _power, float _stunTime) {
+        FindMonsterOfID(_id).GetComponent<CMonster>().Trapped(_power,_stunTime);
+    }
+
     /// <summary>
     /// 몬스터가 죽었을 때 호출되는 함수.
     /// 해당 몬스터의 Collider를 없애고 (몬스터가 죽고나서 시체가 사라지기 전까지 미사일이 투과해야함)
@@ -353,8 +398,14 @@ public class CMonsterController : Controller
     /// <param name="_id">죽은 monster의 id</param>
     void MonsterDied(int _id)
     {
-        //FindMonsterOfID(_id).GetComponent<Collider>().enabled = false;
-        oneWavePerMonsterCount++;
+        FindMonsterOfID(_id).GetComponent<Collider>().enabled = false;
+        if (FindMonsterOfID(_id).GetComponent<CDog_Shadow>() == null)
+        {
+            oneWavePerMonsterCount++;
+        }
+        else {
+            activatedShadow--;
+        }
         StartCoroutine(MonsterDie(_id));
         if (oneWavePerMonsterCount >= oneWavePerMonster)
         {
@@ -383,6 +434,32 @@ public class CMonsterController : Controller
             
         }
     }
+    /// <summary>
+    /// 스킬 플래시가 사용되면 살아잇는 몬스터들을 전부 블라인드 상태로 만듬.
+    /// </summary>
+    void MonsterBlind() {
+        for (int i = 0; i < monsterList.Count; i++)
+        {
+            if (monsterList[i].GetComponent<CMonster>().isAlive)
+            {
+                monsterList[i].GetComponent<CMonster>().ChangeStateToBlind();
+            }
+
+        }
+    }
+    /// <summary>
+    /// 플래시 지속시간이 끝나면 살아잇는 몬스터들을 움직이게 함.
+    /// </summary>
+    void MonsterBlindOver() {
+        for (int i = 0; i < monsterList.Count; i++)
+        {
+            if (monsterList[i].GetComponent<CMonster>().isAlive)
+            {
+                monsterList[i].GetComponent<CMonster>().ChangeStateToMove();
+            }
+
+        }
+    }
 
     void MonsterPause() {
         StopCoroutine("GenMonster");
@@ -394,6 +471,48 @@ public class CMonsterController : Controller
             }
 
         }
+    }
+
+    void CallShadow(Vector3 pos) {
+        if (activatedShadow < maxShadow)
+        {
+            foreach (GameObject shadow in dog_shadowList)
+            {
+                if (shadow.activeInHierarchy == false)
+                {
+                    shadow.transform.position = pos;
+
+                    Vector3 targetPos = new Vector3(pos.x - 100, pos.y, pos.z);
+                    shadow.SetActive(true);
+                    shadow.GetComponent<CMonster>().ChangeStateToReset();
+                    shadow.GetComponent<CMove>().SetTargetPos(targetPos);
+                    shadow.GetComponent<CMonster>().ChangeStateToMove();
+
+                    shadow.GetComponent<Collider>().enabled = true;
+                    activatedShadow++;
+                    break;
+                }
+            }
+        }
+            /*
+        else
+        {
+             
+            GameObject shadow = ObjectPooler.Instance.GetGameObject("Play_Dog_Shadow");
+            shadow.GetComponent<CMonster>().SetController(this);
+            shadow.transform.position = pos;
+
+            Vector3 targetPos = new Vector3(pos.x - 100, pos.y, pos.z);
+            shadow.SetActive(true);
+            shadow.GetComponent<CMonster>().ChangeStateToReset();
+            shadow.GetComponent<CMove>().SetTargetPos(targetPos);
+            shadow.GetComponent<CMonster>().ChangeStateToMove();
+
+            shadow.GetComponent<Collider>().enabled = true;
+            activatedShadow++;
+            maxShadow++;
+
+        }*/
     }
     /// <summary>
     /// 몬스터가 죽으면 실행시켜서 해당 몬스터의 시체를 일정시간 후에 사라지게 함.
