@@ -17,7 +17,7 @@
     <price>1000</price>
     <upgradePrice>0</upgradePrice>
     <open>1</open>
-    <have>2</have>    
+    <have>1</have>    
   </Tool>
   <Tool>
     <id>13002</id>
@@ -54,8 +54,8 @@
     <upgradeMoveSpeed>0.5</upgradeMoveSpeed>
     <price>1000</price>
     <upgradePrice>0</upgradePrice>
-    <open>0</open>
-    <have>0</have>
+    <open>1</open>
+    <have>1</have>
   </Tool>
 <Tool>
     <id>31206</id>
@@ -73,7 +73,7 @@
     <upgradeMoveSpeed>0.5</upgradeMoveSpeed>
     <price>1000</price>
     <upgradePrice>0</upgradePrice>
-    <open>1</open>
+    <open>0</open>
     <have>0</have>
   </Tool>
 </ToolData>
