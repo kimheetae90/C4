@@ -31,7 +31,7 @@
     <skillID>0</skillID>
   </Monster>
   <Monster>
-    <id>21104</id>
+    <id>21204</id>
     <hp>50</hp>
     <power>10</power>
     <cooldownTime>1.0</cooldownTime>
