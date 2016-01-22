@@ -9,6 +9,8 @@ public class CTileController : Controller
 
     public GameObject tileParent;
     public List<GameObject> tileList;
+    public List<GameObject> rangeTileList;
+    public int playerCurrentTileNum;
 	// Use this for initialization
 
 
@@ -28,14 +30,35 @@ public class CTileController : Controller
         switch (_gameMessage.messageName)
         {
             
-
+            case MessageName.Play_ShowPlayerSkillRange:
+                TileScaleToLarge();
+                ShowRange();
+                break;
+            case MessageName.Play_HidePlayerSkillRange:
+                HideRange();
+                break;
+            case MessageName.Play_PlayerSkill1Used:
+                TileScaleToSmall();
+                break;
+            case MessageName.Play_TileChangeToRed:
+                TileToRed((int)_gameMessage.Get("tileNum"));
+                break;
+            case MessageName.Play_TileChangeToNormal:
+                TileToNormal((int)_gameMessage.Get("tileNum"));
+                break;
+            case MessageName.Play_TileScaleToLarge:
+                TileScaleToLarge();
+                break;
+            case MessageName.Play_TileScaleToSmall:
+                TileScaleToSmall();
+                break;
         }
     }
 
     void Init()
     {
         tileList = new List<GameObject>();
-
+        rangeTileList = new List<GameObject>();
 
 
         for (int i = 0; i < tilePos.Count; i++)
@@ -49,9 +72,100 @@ public class CTileController : Controller
             tile.transform.SetParent(tileParent.transform);
             tileList.Add(tile);
         }
-        //24번쨰 타일에 나무더미 설치.
-        tileList[24].GetComponent<CTile>().ChangeToRedtile();
+
+        //tool 3개 위치
+        tileList[1].GetComponent<CTile>().ChangeToRedtileTemporarily();
+        tileList[11].GetComponent<CTile>().ChangeToRedtileTemporarily();
+        tileList[21].GetComponent<CTile>().ChangeToRedtileTemporarily();
 
 
     }
+
+    void ShowRange() {
+
+
+        playerCurrentTileNum = FindObjectOfType<CPlayerController>().currentTileNum;
+        if (playerCurrentTileNum % 10 == 0) {
+            tileList[playerCurrentTileNum + 1].GetComponent<CTile>().ChangeToBlueTile();
+            tileList[playerCurrentTileNum + 2].GetComponent<CTile>().ChangeToBlueTile();
+            tileList[playerCurrentTileNum + 3].GetComponent<CTile>().ChangeToBlueTile();
+        }
+        else if (playerCurrentTileNum % 10 == 1)
+        {
+            tileList[playerCurrentTileNum - 1].GetComponent<CTile>().ChangeToBlueTile();
+            tileList[playerCurrentTileNum + 1].GetComponent<CTile>().ChangeToBlueTile();
+            tileList[playerCurrentTileNum + 2].GetComponent<CTile>().ChangeToBlueTile();
+            tileList[playerCurrentTileNum + 3].GetComponent<CTile>().ChangeToBlueTile();
+        }
+        else if (playerCurrentTileNum % 10 == 2)
+        {
+            tileList[playerCurrentTileNum - 2].GetComponent<CTile>().ChangeToBlueTile();
+            tileList[playerCurrentTileNum - 1].GetComponent<CTile>().ChangeToBlueTile();
+            tileList[playerCurrentTileNum + 1].GetComponent<CTile>().ChangeToBlueTile();
+            tileList[playerCurrentTileNum + 2].GetComponent<CTile>().ChangeToBlueTile();
+            tileList[playerCurrentTileNum + 3].GetComponent<CTile>().ChangeToBlueTile();
+        }
+        else if (playerCurrentTileNum % 10 == 7)
+        {
+            tileList[playerCurrentTileNum - 3].GetComponent<CTile>().ChangeToBlueTile();
+            tileList[playerCurrentTileNum - 2].GetComponent<CTile>().ChangeToBlueTile();
+            tileList[playerCurrentTileNum - 1].GetComponent<CTile>().ChangeToBlueTile();
+            tileList[playerCurrentTileNum + 1].GetComponent<CTile>().ChangeToBlueTile();
+            tileList[playerCurrentTileNum + 2].GetComponent<CTile>().ChangeToBlueTile();
+        }
+        else if (playerCurrentTileNum % 10 == 8)
+        {
+            tileList[playerCurrentTileNum - 3].GetComponent<CTile>().ChangeToBlueTile();
+            tileList[playerCurrentTileNum - 2].GetComponent<CTile>().ChangeToBlueTile();
+            tileList[playerCurrentTileNum - 1].GetComponent<CTile>().ChangeToBlueTile();
+            tileList[playerCurrentTileNum + 1].GetComponent<CTile>().ChangeToBlueTile();
+        }
+        else if (playerCurrentTileNum % 10 == 9)
+        {
+            tileList[playerCurrentTileNum - 3].GetComponent<CTile>().ChangeToBlueTile();
+            tileList[playerCurrentTileNum - 2].GetComponent<CTile>().ChangeToBlueTile();
+            tileList[playerCurrentTileNum - 1].GetComponent<CTile>().ChangeToBlueTile();
+        }
+        else
+        {
+            tileList[playerCurrentTileNum - 3].GetComponent<CTile>().ChangeToBlueTile();
+            tileList[playerCurrentTileNum - 2].GetComponent<CTile>().ChangeToBlueTile();
+            tileList[playerCurrentTileNum - 1].GetComponent<CTile>().ChangeToBlueTile();
+            tileList[playerCurrentTileNum + 1].GetComponent<CTile>().ChangeToBlueTile();
+            tileList[playerCurrentTileNum + 2].GetComponent<CTile>().ChangeToBlueTile();
+            tileList[playerCurrentTileNum + 3].GetComponent<CTile>().ChangeToBlueTile();
+        }
+        
+    }
+
+    void HideRange() {
+        foreach (GameObject tile in tileList)
+        {
+                tile.GetComponent<CTile>().ChangeToNormalTile();
+        }
+    }
+
+    void TileScaleToLarge() {
+        foreach (GameObject tile in tileList)
+        {
+            tile.GetComponent<CTile>().ChangeTileColliderScale(10f);
+        }
+    }
+    void TileScaleToSmall() {
+        foreach (GameObject tile in tileList)
+        {
+            tile.GetComponent<CTile>().ChangeTileColliderScale(0.2f);
+        }
+    }
+
+    void TileToRed(int tileNum) {
+
+        tileList[tileNum].GetComponent<CTile>().ChangeToRedtileTemporarily();
+    }
+
+    void TileToNormal(int tileNum)
+    {
+        tileList[tileNum].GetComponent<CTile>().ChangeToNormalTile();
+    }
+
 }

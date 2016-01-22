@@ -7,6 +7,7 @@ public abstract class CTerrain : BaseObject
     float _gage;
     float maxGage;
     public bool canAccess;
+    public int tileNum;
 	// Use this for initialization
 
     void Awake() {

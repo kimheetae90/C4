@@ -12,6 +12,7 @@ public class CPlayer : BaseObject
 
     public bool isAlive;
     public bool canHold;
+    public bool readyToBomb;
 
     public Material material;
     public Texture[] texture = new Texture [3];
@@ -228,6 +229,7 @@ public class CPlayer : BaseObject
         m_hp = hp;
         m_moveSpeed = moveSpeed;
         canHold = true;
+        readyToBomb = false;
         ChangeState(ObjectState.Play_Player_Ready);
     }
 

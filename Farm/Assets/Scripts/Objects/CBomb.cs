@@ -23,9 +23,18 @@ public class CBomb : CPlayerSkill {
             gameMsg.Insert("power", power);
             SendGameMessageToSceneManage(gameMsg);
         }
+
+        if (objectState == ObjectState.Play_Skill_Activated && (other.tag == "Play_Tool" || other.tag == "Play_Terrain"))
+        {
+            GameMessage gameMsg = GameMessage.Create(MessageName.Play_PlayersObjectDamagedByMonster);
+            gameMsg.Insert("object_id", other.GetComponent<BaseObject>().id);
+            gameMsg.Insert("monster_power", power);
+            SendGameMessageToSceneManage(gameMsg);
+        }
     }
 
     public override void Used() {
+        
         coll.enabled = true;
         StartCoroutine("Activated");
     }
@@ -56,5 +65,9 @@ public class CBomb : CPlayerSkill {
         coll.enabled = false;
 
         ChangeState(ObjectState.Play_Skill_Waiting);
+    }
+
+    public void ChangePos(Vector3 pos) {
+        transform.position = pos;
     }
 }

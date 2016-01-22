@@ -25,7 +25,7 @@ public class CPlayerSkillController : Controller{
         switch (_gameMessage.messageName)
         {
             case MessageName.Play_PlayerSkill1Used:
-                PlayerSkill1Used();
+                PlayerSkill1Used((Vector3)_gameMessage.Get("tilePos"));
                 break;
             case MessageName.Play_PlayerSkill2Used:
                 PlayerSkill2Used();
@@ -45,9 +45,10 @@ public class CPlayerSkillController : Controller{
     //////////////////////// 			구현               ////////////////////////
     /// //////////////////////////////////////////////////////////////////////////
     /// 
-    public void PlayerSkill1Used() {
+    public void PlayerSkill1Used(Vector3 tilePos) {
 
         skillList[0].GetComponent<CPlayerSkill>().ChangeStateToUsed();
+        skillList[0].GetComponent<CBomb>().ChangePos(tilePos);
     }
     public void PlayerSkill2Used()
     {

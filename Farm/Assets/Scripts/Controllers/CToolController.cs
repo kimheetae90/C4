@@ -70,6 +70,8 @@ public class CToolController : Controller
             ToolName toolNam = (ToolName)toolID[i];
             toolList.Add(ObjectPooler.Instance.GetGameObject(toolNam.ToString()));
             toolList[i].GetComponent<CTool>().SetController(this);
+            toolList[i].GetComponent<CTool>().currentTileNum = i * 10 + 1;
+            
             toolList[i].transform.position = startPos[i].position;
         }
 

@@ -10,6 +10,8 @@ public class CMonsterController : Controller
     public int oneWavePerMonster = 12;//한 웨이브당 생성되는 몬스터 마리 수.
     int oneWavePerMonsterCount;//한 웨이브에 죽은 몬스터 마리 수.
 
+    int stageMode = 0;
+
     public Transform startPos;
 
     public List<Transform> startPosition;
@@ -118,32 +120,34 @@ public class CMonsterController : Controller
         foreach (StageInfo node in stageInfo) {
             
             //monsterList.Add(ObjectPooler.Instance.GetGameObject(node.id.ToString()));
-
-            GameObject monsteri = ObjectPooler.Instance.GetGameObject(((MonsterName)node.id).ToString());
-
-            monsteri.GetComponent<CMonster>().SetController(this);
-
-            monsteri.SetActive(false);
-            monsteri.transform.position = new Vector3(startPos.position.x, startPos.position.y, startPos.position.z);
-            MonsterInfo mInfo = DataLoadHelper.Instance.GetMonsterInfo(node.id);
-            monsteri.GetComponent<CMonster>().MonsterSetting(mInfo.hp, mInfo.power, mInfo.cooldownTime, mInfo.attackSpeed, mInfo.range, mInfo.moveSpeed, mInfo.skillID);
-
-            monsterList.Add(monsteri);
-            if (node.id == 22310&&maxShadow==0)
+            if (node.wave != 0)
             {
-                dog_shadowList = new List<GameObject>();
-                activatedShadow = 0;
-                maxShadow = 10;
-                for (int i = 0; i < maxShadow; i++)
+                GameObject monsteri = ObjectPooler.Instance.GetGameObject(((MonsterName)node.id).ToString());
+
+                monsteri.GetComponent<CMonster>().SetController(this);
+
+                monsteri.SetActive(false);
+                monsteri.transform.position = new Vector3(startPos.position.x, startPos.position.y, startPos.position.z);
+                MonsterInfo mInfo = DataLoadHelper.Instance.GetMonsterInfo(node.id);
+                monsteri.GetComponent<CMonster>().MonsterSetting(mInfo.hp, mInfo.power, mInfo.cooldownTime, mInfo.attackSpeed, mInfo.range, mInfo.moveSpeed, mInfo.skillID);
+
+                monsterList.Add(monsteri);
+                if (node.id == 22310 && maxShadow == 0)
                 {
-                    GameObject shadow = ObjectPooler.Instance.GetGameObject("Play_Dog_Shadow");
-                    shadow.GetComponent<CMonster>().SetController(this);
-                    shadow.transform.position = new Vector3(startPos.position.x, startPos.position.y, startPos.position.z);
-                    MonsterInfo Info = DataLoadHelper.Instance.GetMonsterInfo(22311);
-                    shadow.GetComponent<CMonster>().MonsterSetting(Info.hp, Info.power, Info.cooldownTime, Info.attackSpeed, Info.range, Info.moveSpeed, Info.skillID);
-                    shadow.SetActive(false);
-                    dog_shadowList.Add(shadow);
-                   
+                    dog_shadowList = new List<GameObject>();
+                    activatedShadow = 0;
+                    maxShadow = 10;
+                    for (int i = 0; i < maxShadow; i++)
+                    {
+                        GameObject shadow = ObjectPooler.Instance.GetGameObject("Play_Dog_Shadow");
+                        shadow.GetComponent<CMonster>().SetController(this);
+                        shadow.transform.position = new Vector3(startPos.position.x, startPos.position.y, startPos.position.z);
+                        MonsterInfo Info = DataLoadHelper.Instance.GetMonsterInfo(22311);
+                        shadow.GetComponent<CMonster>().MonsterSetting(Info.hp, Info.power, Info.cooldownTime, Info.attackSpeed, Info.range, Info.moveSpeed, Info.skillID);
+                        shadow.SetActive(false);
+                        dog_shadowList.Add(shadow);
+
+                    }
                 }
             }
        }

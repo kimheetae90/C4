@@ -6,6 +6,8 @@ using System.Linq;
 
 public class CPlay_UIController : Controller
 {
+
+    CPlayer player;
     public Canvas canvas;
     public Text waveText;
     public Image waveTimer;
@@ -38,6 +40,7 @@ public class CPlay_UIController : Controller
         base.Start();
         ReadyForStage(10f);
         skipButton.gameObject.SetActive(true);
+        player = FindObjectOfType<CPlayer>();
         
     }
 	// Use this for initialization
@@ -61,6 +64,9 @@ public class CPlay_UIController : Controller
                 break;
             case MessageName.Play_GageStop:
                 GageStop();
+                break;
+            case MessageName.Play_PlayerSkill1Used:
+                StartCoroutine("Skill1CoolDownCheck");
                 break;
 
         }
@@ -211,10 +217,18 @@ public class CPlay_UIController : Controller
     }
 
     public void Skill1ButtonClick() {
-        Skill1.interactable = false;
-        GameMessage gameMsg = GameMessage.Create(MessageName.Play_PlayerSkill1Used);
-        SendGameMessage(gameMsg);
-        StartCoroutine("Skill1CoolDownCheck");
+        ObjectState playerstate = player.GetPlayerState();
+        if(player.canHold&&playerstate==ObjectState.Play_Player_Ready)
+        {
+            Skill1.interactable = false;
+            GameMessage gameMsg = GameMessage.Create(MessageName.Play_ShowPlayerSkillRange);
+            SendGameMessage(gameMsg);
+            GameMessage gameMsg2 = GameMessage.Create(MessageName.Play_GageStop);
+            SendGameMessage(gameMsg2);
+            //GameMessage gameMsg = GameMessage.Create(MessageName.Play_PlayerSkill1Used);
+            //SendGameMessage(gameMsg);
+            //StartCoroutine("Skill1CoolDownCheck");
+        }
     }
 
     IEnumerator Skill1CoolDownCheck() {

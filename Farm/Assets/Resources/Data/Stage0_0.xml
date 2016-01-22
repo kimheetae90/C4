@@ -12,4 +12,19 @@
     <time>20</time>
     <id>22310</id>
   </Stage0_0>
+
+  <Stage0_0>
+    <wave>0</wave>
+    <line>1</line>
+    <time>5</time>
+    <id>99999</id>
+  </Stage0_0>
+
+
+  <Stage0_0>
+    <wave>0</wave>
+    <line>4</line>
+    <time>6</time>
+    <id>99998</id>
+  </Stage0_0>
 </Stage0_0Data>

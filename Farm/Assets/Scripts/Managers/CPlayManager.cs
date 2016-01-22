@@ -8,7 +8,8 @@ public class CPlayManager : SceneManager {
     string stageName;
     int chapterNum;
     string chapterName;
-		
+
+
 	int wave;
 	public const int maxWave = 3;
 
@@ -177,7 +178,7 @@ public class CPlayManager : SceneManager {
         //stageName = (string)GameMaster.Instance.tempData.Get("stageName");
         //chapterNum = (int)GameMaster.Instance.tempData.Get("chapterNum");
         //chapterName = (string)GameMaster.Instance.tempData.Get("chapterName");
-        
+        stageMode = 0;
 		wave = 0;
         UnPause();
 	}

@@ -17,6 +17,8 @@ public abstract class CTool : BaseObject
     int m_hp;
     float attackSpeedDibuffTime;//디버프 시간이 몇초 남았는지.
 
+    public int currentTileNum;
+
     public bool isAlive;
     public bool canHeld;
     public bool shotable;
@@ -189,6 +191,8 @@ public abstract class CTool : BaseObject
                 GameMessage gameMsg = GameMessage.Create(MessageName.Play_ToolDiedWhileHelded);
                 gameMsg.Insert("tool", this.gameObject);
                 SendGameMessageToSceneManage(gameMsg);
+                GameMessage gameMsg2 = GameMessage.Create(MessageName.Play_TileScaleToSmall);
+                SendGameMessageToSceneManage(gameMsg2);
             }
         }
     }
@@ -272,6 +276,12 @@ public abstract class CTool : BaseObject
             {
                 ChangeState(ObjectState.Play_Tool_Ready);
             }
+
+            GameMessage gameMsg = GameMessage.Create(MessageName.Play_TileChangeToNormal);
+            gameMsg.Insert("tileNum", currentTileNum);
+            SendGameMessageToSceneManage(gameMsg);
+            GameMessage gameMsg2 = GameMessage.Create(MessageName.Play_TileScaleToLarge);
+            SendGameMessageToSceneManage(gameMsg2);
         }
     }
 
@@ -291,6 +301,11 @@ public abstract class CTool : BaseObject
             {
                 ChangeState(ObjectState.Play_Tool_Ready);
             }
+            GameMessage gameMsg = GameMessage.Create(MessageName.Play_TileChangeToRed);
+            gameMsg.Insert("tileNum", currentTileNum);
+            SendGameMessageToSceneManage(gameMsg);
+            GameMessage gameMsg2 = GameMessage.Create(MessageName.Play_TileScaleToSmall);
+            SendGameMessageToSceneManage(gameMsg2);
             //StartAttack();
         }
     }

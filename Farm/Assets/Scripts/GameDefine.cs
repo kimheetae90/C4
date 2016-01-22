@@ -88,6 +88,13 @@ public enum MessageName
     Play_PlayerSkill2CanUse,//스킬2을 다시 사용할수있음.
     Play_PlayerSkill3Used,//스킬3을 사용함.
     Play_PlayerSkill3CanUse,//스킬3을 다시 사용할수있음.
+    Play_ShowPlayerSkillRange,//플레이어 스킬의 사정거리를 보여줌.
+    Play_HidePlayerSkillRange,//플레이어 스킬의 사정거리를 숨김.
+
+    Play_TileChangeToRed,
+    Play_TileChangeToNormal,
+    Play_TileScaleToLarge,
+    Play_TileScaleToSmall,
 
 }
 

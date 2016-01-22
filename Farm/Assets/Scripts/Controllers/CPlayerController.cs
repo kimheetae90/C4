@@ -9,9 +9,10 @@ public class CPlayerController : Controller
     
     GameObject selectedGameObject;
     GameObject selectedCorrectGameObject;
+    public int currentTileNum;
     public Transform startPos;
     CMove move;
-    public bool isAdjacent;
+    bool isAdjacent;
     ObjectState playerState;
     GameObject holdedTool;
 
@@ -35,31 +36,43 @@ public class CPlayerController : Controller
                 PlayerAttackedByEnemy((int)_gameMessage.Get("object_id"), (int)_gameMessage.Get("monster_power"));
                 break;
             case MessageName.Play_PlayerMove:
-                playerState = player.GetComponent<CPlayer>().GetPlayerState();
-                if (playerState != ObjectState.Play_Player_Die)
+                playerState = playerScript.GetPlayerState();
+                ConfirmSelectedGameObject(_gameMessage);
+
+                if (playerScript.readyToBomb)
+                {   
+                    if (selectedCorrectGameObject.tag == "Play_Tile_Blue" || selectedCorrectGameObject.tag == "Play_Tile" || selectedCorrectGameObject.tag == "Play_Tile_Red")
+                    {
+                        MoveToBomb(selectedCorrectGameObject);
+                    }
+                    
+                }
+                else if (playerState != ObjectState.Play_Player_Die)
                 {
-                    ConfirmSelectedGameObject(_gameMessage);
+                    
                     if (selectedGameObject.transform.tag == "Play_Tool")
                     {
                         if (playerScript.canHold)
                         {
                             HoldOnTool(player, (GameObject)_gameMessage.Get("SelectedGameObject"), (Vector3)_gameMessage.Get("ClickPosition"));
                         }
-                        else {
+                        else
+                        {
                             MovePlayerToTarget(player, (Vector3)_gameMessage.Get("ClickPosition"));
                         }
 
                     }
-                    else if (selectedGameObject.transform.tag == "Play_Terrain") 
+                    else if (selectedGameObject.transform.tag == "Play_Terrain")
                     {
                         if (playerScript.canHold)
                         {
                             AccessToTerrain(player, (GameObject)_gameMessage.Get("SelectedGameObject"), (Vector3)_gameMessage.Get("ClickPosition"));
                         }
-                        else {
+                        else
+                        {
                             MovePlayerToTarget(player, (Vector3)_gameMessage.Get("ClickPosition"));
                         }
-                    
+
                     }
                     else
                     {
@@ -67,7 +80,7 @@ public class CPlayerController : Controller
                         {
                             if (selectedCorrectGameObject.tag == "Play_Tile")
                             {
-                                MovePlayerToTarget(player, new Vector3(selectedGameObject.transform.position.x, ((Vector3)_gameMessage.Get("ClickPosition")).y, ((Vector3)_gameMessage.Get("ClickPosition")).z));
+                                MovePlayerToTarget(player, new Vector3(selectedGameObject.transform.position.x, selectedGameObject.transform.position.y, ((Vector3)_gameMessage.Get("ClickPosition")).z));
                             }
                         }
                         else
@@ -80,11 +93,15 @@ public class CPlayerController : Controller
             case MessageName.Play_StageFailed:
                 playerScript.ReadyToPause();
                 break;
+            case MessageName.Play_ShowPlayerSkillRange:
+                ReadyToBomb();
+                break;
             case MessageName.Play_ToolDiedWhileHelded:
                 PutDownTool(player, (GameObject)_gameMessage.Get("tool"));
                 break;
             case MessageName.Play_StageRestart:
                 ResetStage();
+                
                 break;
         }
     }
@@ -98,9 +115,10 @@ public class CPlayerController : Controller
         player = ObjectPooler.Instance.GetGameObject("Play_Player");
         playerScript = player.GetComponent<CPlayer>();
         playerScript.SetController(this);
-        player.transform.position = new Vector3(startPos.position.x-3, startPos.position.y, startPos.position.z);
+        player.transform.position = new Vector3(startPos.position.x, startPos.position.y, startPos.position.z);
         isAdjacent = false;
         move = player.GetComponent<CMove>();
+        currentTileNum = 0;
     }
 
     /// <summary>
@@ -115,6 +133,71 @@ public class CPlayerController : Controller
             playerScript.Damaged(_damage);
         }
     }
+
+    void MoveToBomb(GameObject _selectedTile) {
+
+        if (_selectedTile.tag == "Play_Tile_Blue") {
+            if (_selectedTile.transform.position.x >= player.transform.position.x)
+            {
+                playerScript.transform.localScale = new Vector3(1, 1, 1);
+            }
+            else 
+            {
+                playerScript.transform.localScale = new Vector3(-1, 1, 1);
+            }
+            GameMessage gameMsg2 = GameMessage.Create(MessageName.Play_PlayerSkill1Used);
+            gameMsg2.Insert("tilePos", _selectedTile.transform.position);
+            SendGameMessage(gameMsg2);
+            playerScript.readyToBomb = false;
+            
+        }
+        else if (_selectedTile.tag == "Play_Tile" || _selectedTile.tag == "Play_Tile_Red") {
+            Vector3 targetPos;
+            int tileNum;
+            if (currentTileNum % 10 == _selectedTile.GetComponent<CTile>().tileNum % 10) { 
+                //같은 타일 col에 있을때.
+                targetPos = new Vector3(player.transform.position.x - 2f, _selectedTile.transform.position.y, 0);
+                if (_selectedTile.GetComponent<CTile>().tileNum % 10 == 0)
+                {
+                    tileNum = _selectedTile.GetComponent<CTile>().tileNum;
+                }
+                else {
+                    tileNum = _selectedTile.GetComponent<CTile>().tileNum - 1;
+                }
+                
+                
+            }
+            else if (Mathf.Abs((currentTileNum % 10) - (_selectedTile.GetComponent<CTile>().tileNum % 10))<=3)
+            {//x좌표상 거리가 타일 3개 내에 있을 때.
+                targetPos = new Vector3(player.transform.position.x,_selectedTile.transform.position.y,0);
+                tileNum = (_selectedTile.GetComponent<CTile>().tileNum / 10) * 10 + currentTileNum % 10;
+            }
+            else{//멀리있을때
+                if (_selectedTile.transform.position.x >= player.transform.position.x)
+                {
+                    targetPos = new Vector3(_selectedTile.transform.position.x - 2f * 3f, _selectedTile.transform.position.y, 0);
+                    tileNum = _selectedTile.GetComponent<CTile>().tileNum - 3;
+                }
+                else
+                {
+                    targetPos = new Vector3(_selectedTile.transform.position.x + 2f * 3f, _selectedTile.transform.position.y, 0);
+                    tileNum = _selectedTile.GetComponent<CTile>().tileNum + 3;
+                }
+            
+            }
+            //move
+            move.SetTargetPos(targetPos);
+            move.StartMove();
+
+            playerScript.ChangeStateToMove();
+
+            StopCoroutine("CheckDistanceToTile");
+            StartCoroutine(CheckDistanceToTile(targetPos,tileNum));
+        }
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_HidePlayerSkillRange);
+        SendGameMessage(gameMsg);
+    }
+
 
     /// <summary>
     /// 파라미터로 넘겨준 목표지점(Vector3)으로 이동하는 함수.
@@ -133,6 +216,14 @@ public class CPlayerController : Controller
                 _targetPos = new Vector3(-15, _targetPos.y, _targetPos.z);
             }
              */
+        
+        
+        if (selectedCorrectGameObject.tag == "Play_Tile" || selectedCorrectGameObject.tag == "Play_Tile_Red")
+        {
+
+           _targetPos = selectedCorrectGameObject.transform.position;
+        }
+
         if (_targetPos.y >= -0.3f)
         {
             _targetPos = new Vector3(_targetPos.x, -0.3f, _targetPos.z);
@@ -141,6 +232,9 @@ public class CPlayerController : Controller
         move.StartMove();
 
         playerScript.ChangeStateToMove();
+
+        StopCoroutine("CheckDistanceToTile");
+        StartCoroutine(CheckDistanceToTile(_targetPos,0));
 
         if (playerScript.canHold == false)
         {//tool을 들고있을때
@@ -184,13 +278,23 @@ public class CPlayerController : Controller
         }
     }
 
+    void ReadyToBomb() {
+        player.GetComponent<CPlayer>().readyToBomb = true;
+    }
 
     void AccessToTerrain(GameObject _player, GameObject _terrain, Vector3 _click_position)
     {
         _click_position.z = 0;
         if (_terrain.GetComponent<CTerrain>().canAccess)
         {
-            Vector3 targetPos = new Vector3(_click_position.x - 2, _click_position.y, _click_position.z);
+            Vector3 targetPos;
+            if (_player.transform.position.x <= _terrain.transform.position.x)
+            {
+                targetPos = new Vector3(_click_position.x - 2, _click_position.y, _click_position.z);
+            }
+            else {
+                targetPos = new Vector3(_click_position.x + 2, _click_position.y, _click_position.z);
+            }
             /* 플레이어가 울타리를 넘어갈때.
                 if (_targetPos.x <= -15)
                 {
@@ -265,7 +369,13 @@ public class CPlayerController : Controller
             {
                 if (selectedGameObject.transform.tag != "Play_Tool")
                 {
+                    holdedTool.GetComponent<CTool>().currentTileNum = selectedCorrectGameObject.GetComponent<CTile>().tileNum;
                     PutDownTool(player, holdedTool);
+                    currentTileNum = selectedCorrectGameObject.GetComponent<CTile>().tileNum-1;
+                    if (selectedCorrectGameObject.GetComponent<CTile>().tileNum % 10 == 0) {
+                        currentTileNum = selectedCorrectGameObject.GetComponent<CTile>().tileNum;
+                    }
+
                 }
                 else {
                     holdedTool.GetComponent<CTool>().ChangeStateToReady();
@@ -277,26 +387,7 @@ public class CPlayerController : Controller
 
     }
 
-
-    IEnumerator CheckDistanceToTerrain(Vector3 targetPos)
-    {
-        while (selectedGameObject.tag=="Play_Terrain")
-        {
-            if (Vector3.Distance(player.transform.position, targetPos) < 0.1f)
-            {
-                if (selectedGameObject.GetComponent<CTerrain>() != null)
-                {
-                    selectedGameObject.GetComponent<CTerrain>().ChangeStateToGaging();
-                    //playerScript.HoldTool(selectedGameObject);
-                    //holdedTool = selectedGameObject;
-                    
-                }
-                break;
-            }
-            yield return null;
-        }
-    }
-
+    
     /// <summary>
     /// 툴을 집으러 갈 때, 툴과 거리가 0.1이하가 되었을 때만 툴을 집어드는 코루틴
     /// </summary>
@@ -319,6 +410,70 @@ public class CPlayerController : Controller
         }
     }
 
+    //도착햇는지 확인
+    IEnumerator CheckDistanceToTile(Vector3 targetPos,int tileNum)
+    {
+        while (selectedCorrectGameObject.tag == "Play_Tile" || selectedCorrectGameObject.tag == "Play_Tile_Red")
+        {
+            if (Vector3.Distance(player.transform.position, targetPos) < 0.1f)
+            {
+                currentTileNum = selectedCorrectGameObject.GetComponent<CTile>().tileNum;
+                if (playerScript.readyToBomb) {
+                    currentTileNum = tileNum;
+                    if (player.transform.position.x <= selectedCorrectGameObject.transform.position.x)
+                    {
+                        playerScript.transform.localScale = new Vector3(1, 1, 1);
+                    }
+                    else
+                    {
+                        playerScript.transform.localScale = new Vector3(-1, 1, 1);
+                    }
+                    GameMessage gameMsg = GameMessage.Create(MessageName.Play_PlayerSkill1Used);
+                    gameMsg.Insert("tilePos", selectedCorrectGameObject.transform.position);
+                    SendGameMessage(gameMsg);
+
+                    playerScript.readyToBomb = false;
+                }
+                break;
+            }
+            yield return null;
+        }
+    }
+
+    IEnumerator CheckDistanceToTerrain(Vector3 targetPos)
+    {
+        while (selectedGameObject.tag == "Play_Terrain")
+        {
+            if (Vector3.Distance(player.transform.position, targetPos) < 0.1f)
+            {
+                if (selectedGameObject.GetComponent<CTerrain>() != null)
+                {
+                    if (player.transform.position.x <= selectedGameObject.transform.position.x)
+                    {
+                        playerScript.transform.localScale = new Vector3(1, 1, 1);
+                        if (selectedGameObject.GetComponent<CTerrain>().tileNum % 10 == 0)
+                        {
+                            currentTileNum = selectedGameObject.GetComponent<CTerrain>().tileNum;
+                        }
+                        else {
+                            currentTileNum = selectedGameObject.GetComponent<CTerrain>().tileNum-1;
+                        }
+                    }
+                    else
+                    {
+                        playerScript.transform.localScale = new Vector3(-1, 1, 1);
+
+                        currentTileNum = selectedGameObject.GetComponent<CTerrain>().tileNum + 1;
+                    }
+                    selectedGameObject.GetComponent<CTerrain>().ChangeStateToGaging();
+
+                }
+                break;
+            }
+            yield return null;
+        }
+    }
+
     /// <summary>
     /// 두 오브젝트 사이의 거리를 float값으로 리턴하는 함수.
     /// </summary>
@@ -338,13 +493,14 @@ public class CPlayerController : Controller
     {
         selectedGameObject = (GameObject)_gameMessage.Get("SelectedGameObject");
         selectedCorrectGameObject = (GameObject)_gameMessage.Get("selectedCorrectGameObject");
+        
     }
 
     /// <summary>
     /// 게임을 다시 시작하면 불러지는 함수.
     /// </summary>
     void ResetStage() {
-        player.transform.position = new Vector3(startPos.position.x-3, startPos.position.y, startPos.position.z);
+        player.transform.position = new Vector3(startPos.position.x, startPos.position.y, startPos.position.z);
         isAdjacent = false;
         playerScript.Reset();
         
