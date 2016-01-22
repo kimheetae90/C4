@@ -46,6 +46,13 @@ public class ObjectPooler : MonoBehaviour {
 		}
 	}
 
+	public void ClearAllObject()
+	{
+		prefabPool.Clear ();
+		onMemoryObjectNameList.Clear ();
+		objectPool.Clear ();
+	}
+
 	public void RegisterPrefab(string _name)
 	{
 		GameObject tempPrefab;

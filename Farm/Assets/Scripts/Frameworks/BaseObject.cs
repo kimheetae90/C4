@@ -41,9 +41,4 @@ public abstract class BaseObject : MonoBehaviour {
 		
 		GameMaster.Instance.GetSceneManager ().DispatchGameMessage (_gameMessage);
 	}
-
-	void OnDestroy()
-	{
-			ObjectPooler.Instance.Destroy (this);
-	}
 }

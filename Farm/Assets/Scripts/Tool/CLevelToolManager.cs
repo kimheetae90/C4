@@ -339,6 +339,13 @@ public class CLevelToolManager : SceneManager {
 
 	}
 
+	public void StartTest()
+	{
+		GameMaster.Instance.tempData.Insert("StageInfo", DataLoadHelper.Instance.GetStageInfo(chapter, stage));
+
+		Application.LoadLevelAsync("Play");
+	}
+
 	public void SaveStageInfo()
 	{
 

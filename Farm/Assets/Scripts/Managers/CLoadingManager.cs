@@ -63,6 +63,7 @@ public class CLoadingManager : SceneManager
     /// </summary>
     void StartLoadNextScene()
     {
+		ObjectPooler.Instance.ClearAllObject ();
         StartCoroutine("LoadNextScene");
     }
 

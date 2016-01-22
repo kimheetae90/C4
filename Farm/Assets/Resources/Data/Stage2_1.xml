@@ -1,0 +1,22 @@
+<Stage2_1Data>
+  <LevelToolInfo>
+    <id>22108</id>
+    <mark>2</mark>
+  </LevelToolInfo>
+  <LevelToolInfo>
+    <id>21103</id>
+    <mark>1</mark>
+  </LevelToolInfo>
+  <Stage2_1>
+    <wave>1</wave>
+    <line>3</line>
+    <time>1</time>
+    <id>22108</id>
+  </Stage2_1>
+  <Stage2_1>
+    <wave>1</wave>
+    <line>2</line>
+    <time>1</time>
+    <id>21103</id>
+  </Stage2_1>
+</Stage2_1Data>
