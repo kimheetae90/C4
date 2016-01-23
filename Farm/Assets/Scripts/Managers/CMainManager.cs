@@ -172,12 +172,12 @@ public class CMainManager : SceneManager
         {
             GameObject chapterObject = MonoBehaviour.Instantiate(chapterButton) as GameObject;
             chapterObject.AddComponent<CChapter>();
-            chapterObject.GetComponent<CChapter>().chapterName = "Chapter" + i;
-            chapterObject.GetComponent<CChapter>().chapterNum = i;
+            chapterObject.GetComponent<CChapter>().chapterName = "Chapter" + (i + 1);
+            chapterObject.GetComponent<CChapter>().chapterNum = (i + 1);
             chapterObject.transform.SetParent(selectChapterQuadUI.transform);
 
             float xPos = -4f + (2.0f) * i;
-            chapterObject.name = "Chapter_" + i; // name을 변경
+            chapterObject.name = "Chapter_" + (i+1); // name을 변경
             chapterObject.transform.position = new Vector3(xPos, 0, 0);
         }
     }
@@ -188,12 +188,12 @@ public class CMainManager : SceneManager
         {
             GameObject stageObject = MonoBehaviour.Instantiate(stageButton) as GameObject;
             stageObject.AddComponent<CStage>();
-            stageObject.GetComponent<CStage>().stageName = "Stage" + i;
-            stageObject.GetComponent<CStage>().stageNum = i;
+            stageObject.GetComponent<CStage>().stageName = "Stage" + (i + 1);
+            stageObject.GetComponent<CStage>().stageNum = (i + 1);
             stageObject.transform.SetParent(selectStageQuadUI.transform);
 
-            float xPos = -8f + (2.0f) * i;
-            stageObject.name = "Stage_" + i; // name을 변경
+            float xPos = -8f + (2.0f) * (i + 1);
+            stageObject.name = "Stage_" + (i + 1); // name을 변경
             stageObject.transform.position = new Vector3(xPos, 0, 0);
         }
     }
