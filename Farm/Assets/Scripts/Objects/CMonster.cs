@@ -13,12 +13,16 @@ public abstract class CMonster : BaseObject
     public float moveSpeed;
     float m_moveSpeed;
     public int SkillID;//일단 1이면 흑사쥐의 공격속도감소 디버프.
+
+    public ParticleSystem particle;
     
     public int lineNumber;
 
     
     public float stunTime;
     public float m_stunTime;
+    
+
     
 
     public MissleName missleName;
@@ -196,6 +200,7 @@ public abstract class CMonster : BaseObject
         MonsterMoveStop();
         //monsterAnimation.Reset();
         monsterAnimation.Stun();
+        particle.Play();
         StartCoroutine("Monster_Stun");
     }
     /// <summary>
@@ -421,6 +426,7 @@ public abstract class CMonster : BaseObject
     {
 
         yield return new WaitForSeconds(m_stunTime);
+        particle.Stop();
         if (_hp > 0)
         {
             if(touchedWithPlayer==false&&touchedWithTool==false&&touchedFenceID==0&&objectState!=ObjectState.Play_Monster_Return&&objectState!=ObjectState.Play_Monster_Blind&&objectState!=ObjectState.Play_Monster_Traped)
