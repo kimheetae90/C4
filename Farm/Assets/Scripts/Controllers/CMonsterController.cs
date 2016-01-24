@@ -109,12 +109,20 @@ public class CMonsterController : Controller
     void Init()
     {
         time = 0;
-        stageInfo = (List<StageInfo>)GameMaster.Instance.tempData.Get("StageInfo");
+        stageInfo = ((List<StageInfo>)GameMaster.Instance.tempData.Get("StageInfo")).ToList<StageInfo>();
+
+        for (int i = stageInfo.Count-1; i >= 0; i--) {
+            StageInfo info = stageInfo[i];
+            if (info.wave == 0) {
+                stageInfo.Remove(info);
+            }
+        }
         
         stageInfo.Sort((info1, info2) => info1.time.CompareTo(info2.time));
 
         //stageInfo.Sort((info1, info2) => info1.wave.CompareTo(info2.wave));
          
+        
          
         monsterList = new List<GameObject>();
         foreach (StageInfo node in stageInfo) {

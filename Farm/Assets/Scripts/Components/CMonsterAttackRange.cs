@@ -21,6 +21,10 @@ public class CMonsterAttackRange : CAttackRange
         monster = transform.parent.GetComponent<CMonster>();
         attackRangeCollider.center = new Vector3(-attackRange / 2, 0, 0);
         attackRangeCollider.size = new Vector3(attackRange, 2, 2);
+        if (GetComponentInParent<CMouse_Boss>() != null) {
+            attackRangeCollider.center = new Vector3(-attackRange / 4, 0, 0);
+            attackRangeCollider.size = new Vector3(attackRange, 8, 2);
+        }
     }
 
     void OnTriggerStay(Collider other)

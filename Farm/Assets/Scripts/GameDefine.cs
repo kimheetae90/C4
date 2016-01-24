@@ -227,11 +227,13 @@ public enum MonsterName {
     Play_Mouse_Gundal   =21204,
     Play_Mouse_Elite    =21305,
     Play_Mouse_Poison   =21206,
+    Play_Mouse_Boss     =21407,
 
     Play_Dog_Polluted   =22108,
     Play_Dog_Fighter    =22109,
     Play_Dog_Hell       =22310,
     Play_Dog_Shadow     =22311,//지옥견의 분신.
+    
 
 }
 
