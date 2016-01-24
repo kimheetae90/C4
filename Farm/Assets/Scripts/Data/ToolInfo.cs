@@ -5,6 +5,7 @@ public class ToolInfo
 {
     public int id;
     public int power;
+    public string name;
     public float range;
     public float attackSpeed;
     public int hp;

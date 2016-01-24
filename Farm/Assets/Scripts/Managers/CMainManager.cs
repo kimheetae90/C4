@@ -18,6 +18,8 @@ public class CMainManager : SceneManager
     GameObject selectStageQuadUI;
 
     GameObject storageUI;
+    Image storageCurToolImage;
+
     protected override void Awake()
     {
         base.Awake();
@@ -147,6 +149,7 @@ public class CMainManager : SceneManager
         selectChapterQuadUI = GameObject.Find("SelectChapterQuadUI");
         CreateChapterButtons(5);
         selectStageQuadUI = GameObject.Find("SelectStageQuadUI");
+        storageCurToolImage = GameObject.Find("Image_Tool").GetComponent<Image>();
         CreateStageButtons(10);
     }
 
@@ -283,6 +286,7 @@ public class CMainManager : SceneManager
     }
 
     Dictionary<int, Button> buttons = new Dictionary<int, Button>();
+    Dictionary<int, Sprite> ToolSprites = new Dictionary<int, Sprite>();
 
     void CreateToolButtons(int toolCount)
     {
@@ -293,29 +297,69 @@ public class CMainManager : SceneManager
             GameObject buttonObject = MonoBehaviour.Instantiate(storageButtonPrefab) as GameObject;
             Button button = buttonObject.GetComponent<Button>();
 
-            int xPos = 50 + (90 * i);
-            buttonObject.name = "Button_Tool_" + DataLoadHelper.Instance.GetToolInfo(storageToolIDList[i]).id.ToString(); // name을 변경
+            int xPos = 50 + (105 * i);
+            int toolId = DataLoadHelper.Instance.GetToolInfo(storageToolIDList[i]).id;
+            buttonObject.name = "Button_Tool_" + toolId.ToString(); // name을 변경
             buttonObject.transform.SetParent(storageToolListBox.transform);
             buttonObject.GetComponent<RectTransform>().localPosition = new Vector3(xPos, 0, 0);
-            buttonObject.GetComponentInChildren<Text>().text = DataLoadHelper.Instance.GetToolInfo(storageToolIDList[i]).id.ToString();
+            //Tool_11103_Icon
+            string path = "UIs/Main/UI_Storage/Tool_" + toolId + "_Icon";
+            Debug.Log(path);
+
+            Texture2D tmpTexture = Resources.Load(path) as Texture2D;
+            Rect rect = new Rect(0, 0, tmpTexture.width, tmpTexture.height);
+            Vector2 pivot = new Vector2(0.5f, 0.5f);
+            Sprite sprite = Sprite.Create(tmpTexture, rect, pivot);
+
+            if (sprite == null) Debug.Log("이미지 못찾음");
+            button.image.overrideSprite = sprite;
+
+            ToolSprites.Add(toolId, sprite);
+
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(delegate { ShowToolInfo(button); });
 
-            buttons.Add(i, button);
+            buttons.Add(toolId, button);
         }
 
-        Button b;
-        buttons.TryGetValue(0, out b);
-        ShowToolInfo(b);
+        int count = 0;
+
+        foreach(var b in buttons)
+        {
+            if(count == 0) ShowToolInfo(b.Value);
+            count++;
+        }
     }
+
+    Dictionary<int, GameObject> selectedUIs = new Dictionary<int, GameObject>();
 
     void ShowToolInfo(Button button)
     {
-        foreach(var b in buttons)
+        string[] idString = button.name.Split('_');
+        int id = int.Parse(idString[2]);
+        // TODO : 현재 버튼 이름으로 id값 파싱하는 중. button 이름이 바뀌거나 하면 이 부분 수정해주어야함.
+
+        foreach (var b in buttons)
+        {
+            int buttonId = b.Key;
+
+            foreach (var i in b.Value.gameObject.GetComponentsInChildren<Image>())
+            {
+                if (selectedUIs.ContainsKey(buttonId) == false)
+                {
+                    if (i.gameObject.name == "SelectedUI")
+                    {
+                        selectedUIs.Add(buttonId, i.gameObject);
+                    }
+                }
+            }
+        }
+
+        foreach (var b in buttons)
         {
             if(b.Value == button)
             {
-                b.Value.interactable =false;
+                b.Value.interactable = false;
             }
             else
             {
@@ -323,21 +367,27 @@ public class CMainManager : SceneManager
             }
         }
 
-        string[] idString = button.name.Split('_');
-        int id = int.Parse(idString[2]);
-        // TODO : 현재 버튼 이름으로 id값 파싱하는 중. button 이름이 바뀌거나 하면 이 부분 수정해주어야함.
+        foreach(var ui in selectedUIs)
+        {
+            if (ui.Key == id)
+            {
+                ui.Value.SetActive(true);
+            }
+            else
+            {
+                ui.Value.SetActive(false);
+            }
+        }
 
         curStorageToolID = id;
+        Sprite curSprite;
+        ToolSprites.TryGetValue(id, out curSprite);
+        storageCurToolImage.overrideSprite = curSprite;
 
         GameObject hp = GameObject.Find("Stat_HP");
         GameObject damage = GameObject.Find("Stat_AD");
         GameObject attackRate = GameObject.Find("Stat_AS");
         GameObject moveRate = GameObject.Find("Stat_MoveRate");
-
-        hp.GetComponentInChildren<Text>().text = "체력";
-        damage.GetComponentInChildren<Text>().text = "공격력";
-        attackRate.GetComponentInChildren<Text>().text = "공격속도";
-        moveRate.GetComponentInChildren<Text>().text = "이동력";
 
         float hpPer = DataLoadHelper.Instance.GetToolInfo(id).hp / 300.0f;
         float damagePer = DataLoadHelper.Instance.GetToolInfo(id).power / 50.0f; ;
@@ -349,11 +399,12 @@ public class CMainManager : SceneManager
         attackRate.GetComponentInChildren<Image>().fillAmount = attackRatePer;
         moveRate.GetComponentInChildren<Image>().fillAmount = moveRatePer;
 
+
         Text ToolNameText = GameObject.Find("Text_Tool_Name").GetComponent<Text>();
-        ToolNameText.text = "Name" + "\n" + DataLoadHelper.Instance.GetToolInfo(id).id.ToString();
+        ToolNameText.text = DataLoadHelper.Instance.GetToolInfo(id).name.ToString();
 
         Text Text_Tool_Price = GameObject.Find("Text_Tool_Price").GetComponent<Text>();
-        Text_Tool_Price.text = "Upgrade Price" + "\n" + DataLoadHelper.Instance.GetToolInfo(id).upgradePrice.ToString();
+        Text_Tool_Price.text = DataLoadHelper.Instance.GetToolInfo(id).upgradePrice.ToString();
     }
 
 }
