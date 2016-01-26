@@ -24,6 +24,7 @@ public class ToolDataLoadHelper{
             if (node["id"].InnerText == _id.ToString())
             {
                 toolInfo.id = _id;
+                toolInfo.name = node["name"].InnerText.ToString();
                 toolInfo.power = int.Parse(node["power"].InnerText);
                 toolInfo.range = float.Parse(node["range"].InnerText);
                 toolInfo.attackSpeed = float.Parse(node["attackSpeed"].InnerText);
@@ -56,6 +57,7 @@ public class ToolDataLoadHelper{
             toolInfo = new ToolInfo();
 
             toolInfo.id = int.Parse(node["id"].InnerText);
+            toolInfo.name = node["name"].InnerText.ToString();
             toolInfo.power = int.Parse(node["power"].InnerText);
             toolInfo.range = float.Parse(node["range"].InnerText);
             toolInfo.attackSpeed = float.Parse(node["attackSpeed"].InnerText);

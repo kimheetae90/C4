@@ -4,35 +4,15 @@
   <MyTool>
     <instance>1</instance>
     <id>11201</id>
-    <level>1</level>
+    <level>4</level>
   </MyTool>
   <MyTool>
     <instance>2</instance>
-    <id>11201</id>
+    <id>11103</id>
     <level>1</level>
   </MyTool>
   <MyTool>
     <instance>3</instance>
-    <id>13002</id>
-    <level>1</level>
-  </MyTool>
-  <MyTool>
-    <instance>4</instance>
-    <id>13002</id>
-    <level>1</level>
-  </MyTool>
-  <MyTool>
-    <instance>5</instance>
-    <id>13002</id>
-    <level>1</level>
-  </MyTool>
-  <MyTool>
-    <instance>6</instance>
-    <id>13002</id>
-    <level>1</level>
-  </MyTool>
-  <MyTool>
-    <instance>7</instance>
     <id>13002</id>
     <level>1</level>
   </MyTool>

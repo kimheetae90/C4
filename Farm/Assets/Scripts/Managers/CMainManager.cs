@@ -10,21 +10,17 @@ public class CMainManager : SceneManager
     int curStorageToolID;
     List<int> storageToolIDList;
 
-    public GameObject devToolPrefab;
-    GameObject devToolListBox;
-    int devToolCount;
-    List<ToolInfo> devToolInfoList;
-    List<int> devToolIDList;
-
     public GameObject chapterButton;
     public GameObject stageButton;
 
     GameObject mainQuadUI;
-    GameObject selectChapterQuadUI;
-    GameObject selectStageQuadUI;
+    //GameObject selectChapterQuadUI;
+    //GameObject selectStageQuadUI;
 
     GameObject storageUI;
-    GameObject developmentCenterUI;
+    GameObject stageUI;
+    Image storageCurToolImage;
+
     protected override void Awake()
     {
         base.Awake();
@@ -73,14 +69,8 @@ public class CMainManager : SceneManager
             case GameState.Main_LoadStorage:
                 StartStorage();
                 break;
-            case GameState.Main_LoadDevelopmentCenter:
-                StartDevelopmentCenter();
-                break;
             case GameState.Main_SelectChapter:
-                ShowSelectChapterUI();
-                break;
-            case GameState.Main_SelectStage:
-                ShowSelectStageUI();
+                StartSelectStage();
                 break;
         }
     }
@@ -92,41 +82,32 @@ public class CMainManager : SceneManager
     private void OffUIs()
     {
         storageUI.SetActive(false);
-        developmentCenterUI.SetActive(false);
         mainQuadUI.SetActive(false);
-        selectChapterQuadUI.SetActive(false);
-        selectStageQuadUI.SetActive(false);
+        stageUI.SetActive(false);
     }
 
     void ShowMainUI()
     {
         mainQuadUI.SetActive(true);
-        selectChapterQuadUI.SetActive(false);
-        selectStageQuadUI.SetActive(false);
     }
 
     void ShowSelectChapterUI()
     {
         mainQuadUI.SetActive(false);
-        selectChapterQuadUI.SetActive(true);
-        selectStageQuadUI.SetActive(false);
     }
     void ShowSelectStageUI()
     {
         mainQuadUI.SetActive(false);
-        selectChapterQuadUI.SetActive(false);
-        selectStageQuadUI.SetActive(true);
     }
 
     void OnClickToLoadSelectChapter(GameObject _selectedGameObject)
     {
+        Debug.Log(_selectedGameObject.tag);
+
         switch (_selectedGameObject.tag)
         {
             case "Main_ToStorage":
                 ChangeState(GameState.Main_LoadStorage);
-                break;
-            case "Main_ToDevCenter":
-                ChangeState(GameState.Main_LoadDevelopmentCenter);
                 break;
             case "Main_ToSelectChapter":
                 ChangeState(GameState.Main_SelectChapter);
@@ -144,10 +125,10 @@ public class CMainManager : SceneManager
                 ChangeState(GameState.Loading_LoadPlay);
                 break;
             case "Main_LoadStage":
-                CStage tempStage = _selectedGameObject.GetComponent<CStage>();
-                GameMaster.Instance.tempData.Insert("stageNum", tempStage.stageNum);
-                GameMaster.Instance.tempData.Insert("stageName", tempStage.stageName);
-                LoadStage();
+                //CStage tempStage = _selectedGameObject.GetComponent<CStage>();
+                //GameMaster.Instance.tempData.Insert("stageNum", tempStage.stageNum);
+                //GameMaster.Instance.tempData.Insert("stageName", tempStage.stageName);
+                //LoadStage();
                 break;
             default:
                 break;
@@ -157,178 +138,111 @@ public class CMainManager : SceneManager
     private void InitUIs()
     {
         storageUI = GameObject.Find("StorageUI");
-        developmentCenterUI = GameObject.Find("DevelopCenterUI");
+        stageUI = GameObject.Find("SelectStageUI");
         mainQuadUI = GameObject.Find("MainQuadUI");
-        selectChapterQuadUI = GameObject.Find("SelectChapterQuadUI");
-        CreateChapterButtons(5);
-        selectStageQuadUI = GameObject.Find("SelectStageQuadUI");
-        CreateStageButtons(10);
-    }
-
-    public void StartDevelopmentCenter()
-    {
-        storageUI.SetActive(false);
-        developmentCenterUI.SetActive(true);
-        mainQuadUI.SetActive(false);
-        selectChapterQuadUI.SetActive(false);
-        selectStageQuadUI.SetActive(false);
+        //CreateChapterButtons(5);
+        storageCurToolImage = GameObject.Find("Image_Tool").GetComponent<Image>();
+        //CreateStageButtons(10);
     }
 
     public void StartStorage()
     {
         storageUI.SetActive(true);
-        developmentCenterUI.SetActive(false);
         mainQuadUI.SetActive(false);
-        selectChapterQuadUI.SetActive(false);
-        selectStageQuadUI.SetActive(false);
+        stageUI.SetActive(false);
     }
 
     public void StartMain()
     {
         storageUI.SetActive(false);
-        developmentCenterUI.SetActive(false);
         mainQuadUI.SetActive(true);
-        selectChapterQuadUI.SetActive(false);
-        selectStageQuadUI.SetActive(false);
+        stageUI.SetActive(false);
     }
 
-    void CreateChapterButtons(int ChapterCount)
+    public void StartSelectStage()
     {
-        for (int i = 0; i < ChapterCount; i++)
-        {
-            GameObject chapterObject = MonoBehaviour.Instantiate(chapterButton) as GameObject;
-            chapterObject.AddComponent<CChapter>();
-            chapterObject.GetComponent<CChapter>().chapterName = "Chapter" + i;
-            chapterObject.GetComponent<CChapter>().chapterNum = i;
-            chapterObject.transform.SetParent(selectChapterQuadUI.transform);
-
-            float xPos = -4f + (2.0f) * i;
-            chapterObject.name = "Chapter_" + i; // name을 변경
-            chapterObject.transform.position = new Vector3(xPos, 0, 0);
-        }
+        storageUI.SetActive(false);
+        mainQuadUI.SetActive(false);
+        stageUI.SetActive(true);
     }
+
+    //void CreateChapterButtons(int ChapterCount)
+    //{
+    //    for (int i = 0; i < ChapterCount; i++)
+    //    {
+    //        GameObject chapterObject = MonoBehaviour.Instantiate(chapterButton) as GameObject;
+    //        chapterObject.AddComponent<CChapter>();
+    //        chapterObject.GetComponent<CChapter>().chapterName = "Chapter" + (i + 1);
+    //        chapterObject.GetComponent<CChapter>().chapterNum = (i + 1);
+    //        chapterObject.transform.SetParent(selectChapterQuadUI.transform);
+
+    //        float xPos = -4f + (2.0f) * i;
+    //        chapterObject.name = "Chapter_" + (i+1); // name을 변경
+    //        chapterObject.transform.position = new Vector3(xPos, 0, 0);
+    //    }
+    //}
 
     void CreateStageButtons(int StageCount)
     {
+        int x = -200;
+        int y = 60;
+
         for (int i = 0; i < StageCount; i++)
         {
-            GameObject stageObject = MonoBehaviour.Instantiate(stageButton) as GameObject;
-            stageObject.AddComponent<CStage>();
-            stageObject.GetComponent<CStage>().stageName = "Stage" + i;
-            stageObject.GetComponent<CStage>().stageNum = i;
-            stageObject.transform.SetParent(selectStageQuadUI.transform);
+            if (i != 0 && i % 5 == 0)
+            {
+                x = -200;
+                y -= 140;
+            }
 
-            float xPos = -8f + (2.0f) * i;
-            stageObject.name = "Stage_" + i; // name을 변경
-            stageObject.transform.position = new Vector3(xPos, 0, 0);
+            GameObject stageObject = MonoBehaviour.Instantiate(stageButton) as GameObject;
+
+            stageObject.GetComponent<Button>().onClick.AddListener(delegate { LoadStage(stageObject); });
+
+            CStage stageInfo = stageObject.AddComponent<CStage>();
+            stageInfo.stageName = "Stage" + (i + 1);
+            stageInfo.stageNum = (i + 1);
+
+            GameObject parent = GameObject.Find("Panel_Stages");
+            stageObject.transform.SetParent(parent.transform);
+            stageObject.name = "Stage_" + (i + 1); // name을 변경
+            stageObject.transform.position = new Vector3(466.5f + x, 242.5f + y, 0);
+            x += 100;
         }
     }
 
-    void LoadStage()
+    void LoadStage(GameObject stageObj)
     {
+        GameMaster.Instance.tempData.Insert("chapterNum", 1);
+        GameMaster.Instance.tempData.Insert("stageNum", stageObj.GetComponent<CStage>().stageNum);
+
         InputTempDataAboutNextScene("Play");
         LoadLoadingScene();
     }
 
-    //protected void InputTempDataAboutNextScene(string _scene_name, List<string> skillList)
-    //{
-    //    GameMaster.Instance.tempData.Insert("next_scene", _scene_name);
-    //    for (int i = 0; i < skillList.Count; i++)
-    //    {
-    //        GameMaster.Instance.tempData.Insert("skill_" + i, skillList[i]);
-    //    }
-    //}
-
     private void InitButtons()
     {
-        // dev center init toolButton
-        devToolListBox = GameObject.Find("DevTools");
-        devToolInfoList = DataLoadHelper.Instance.GetToolList();
-        devToolIDList = GameMaster.Instance.bluePrint.GetToolIDList();
-        devToolCount = devToolIDList.Count;
-        RectTransform toolListRect = devToolListBox.GetComponent<RectTransform>();
-        toolListRect.sizeDelta = new Vector2(75 * devToolCount, 0);
-        CreateDevToolButtons();
-
         // storage init toolButton
         storageToolListBox = GameObject.Find("StorageTools");
         storageToolIDList = GameMaster.Instance.myTool.GetToolIDList();
         storageToolCount = storageToolIDList.Count;
         RectTransform storageToolListRect = storageToolListBox.GetComponent<RectTransform>();
-        toolListRect.sizeDelta = new Vector2(70 * storageToolCount, 0);
+        storageToolListRect.sizeDelta = new Vector2(80 * storageToolCount, 0);
         Button upgradeButton = GameObject.Find("Button_Upgrade").GetComponent<Button>();
         upgradeButton.onClick.AddListener(delegate { UpgrageTool(curStorageToolID); });
         CreateToolButtons(storageToolCount);
 
-    }
-
-    void CreateDevToolButtons()
-    {
-        for (int i = 0; i < devToolInfoList.Count; i++)
-        {
-            GameObject toolPanel = MonoBehaviour.Instantiate(devToolPrefab) as GameObject;
-            int xPos = 60 * i;
-            toolPanel.name = "Panel_Tool_" + devToolInfoList[i].id;
-            toolPanel.transform.SetParent(devToolListBox.transform);
-            toolPanel.GetComponent<RectTransform>().localPosition = new Vector3(xPos, 10, 0);
-
-            var texts = toolPanel.GetComponentsInChildren<Text>();
-            foreach (var tInfoText in texts)
-            {
-                if (tInfoText.gameObject.name == "Text_ToolInfo")
-                {
-                    int tID = devToolInfoList[i].id;
-
-                    tInfoText.text = tID.ToString() + "\n\n";
-
-                    tInfoText.text += "HP : " + DataLoadHelper.Instance.GetToolInfo(tID).hp.ToString() + "\n";
-                    tInfoText.text += "Power : " + DataLoadHelper.Instance.GetToolInfo(tID).power.ToString() + "\n";
-                    tInfoText.text += "AS : " + DataLoadHelper.Instance.GetToolInfo(tID).attackSpeed.ToString() + "\n";
-                    tInfoText.text += "Price : " + DataLoadHelper.Instance.GetToolInfo(tID).price.ToString() + "\n";
-
-                }
-            }
-
-            Button buyButton = toolPanel.GetComponentInChildren<Button>();
-            if (devToolInfoList[i].open == 0)
-            {
-                buyButton.interactable = false;
-            }
-            buyButton.onClick.RemoveAllListeners();
-            buyButton.onClick.AddListener(delegate { BuyTool(toolPanel); });
-        }
-    }
-
-    void BuyTool(GameObject tool)
-    {
-        int id = int.Parse(tool.name.Split('_')[2]);
-        
-        GameMaster.Instance.myTool.BuyNewTool(id);
-        
-        storageToolIDList.Add(id);
-        
-        GameObject buttonObject = MonoBehaviour.Instantiate(storageButtonPrefab) as GameObject;
-        Button button = buttonObject.GetComponent<Button>();
-
-        int xPos = 30 + (70 * storageToolCount);
-        buttonObject.name = "Button_Tool_" + DataLoadHelper.Instance.GetToolInfo(storageToolIDList[storageToolCount]).id.ToString(); // name을 변경
-        buttonObject.GetComponentInChildren<Text>().text = DataLoadHelper.Instance.GetToolInfo(storageToolIDList[storageToolCount]).id.ToString();
-        buttonObject.transform.SetParent(storageToolListBox.transform);
-        buttonObject.GetComponent<RectTransform>().localPosition = new Vector3(xPos, 0, 0);
-        button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(delegate { ShowToolInfo(button); });
-
-        buttons.Add(storageToolCount, button);
+        CreateStageButtons(10);
     }
 
     private void UpgrageTool(int curToolID)
     {
-        Debug.Log(curToolID);
         int instance = GameMaster.Instance.myTool.GetInstanceByToolID(curToolID);
         GameMaster.Instance.myTool.LevelUp(instance);
     }
 
     Dictionary<int, Button> buttons = new Dictionary<int, Button>();
+    Dictionary<int, Sprite> ToolSprites = new Dictionary<int, Sprite>();
 
     void CreateToolButtons(int toolCount)
     {
@@ -339,29 +253,68 @@ public class CMainManager : SceneManager
             GameObject buttonObject = MonoBehaviour.Instantiate(storageButtonPrefab) as GameObject;
             Button button = buttonObject.GetComponent<Button>();
 
-            int xPos = 30 + (70 * i);
-            buttonObject.name = "Button_Tool_" + DataLoadHelper.Instance.GetToolInfo(storageToolIDList[i]).id.ToString(); // name을 변경
+            int xPos = 50 + (105 * i);
+            int toolId = DataLoadHelper.Instance.GetToolInfo(storageToolIDList[i]).id;
+            buttonObject.name = "Button_Tool_" + toolId.ToString(); // name을 변경
             buttonObject.transform.SetParent(storageToolListBox.transform);
             buttonObject.GetComponent<RectTransform>().localPosition = new Vector3(xPos, 0, 0);
-            buttonObject.GetComponentInChildren<Text>().text = DataLoadHelper.Instance.GetToolInfo(storageToolIDList[i]).id.ToString();
+            //Tool_11103_Icon
+            string path = "UIs/Main/UI_Storage/Tool_" + toolId + "_Icon";
+
+            Texture2D tmpTexture = Resources.Load(path) as Texture2D;
+            Rect rect = new Rect(0, 0, tmpTexture.width, tmpTexture.height);
+            Vector2 pivot = new Vector2(0.5f, 0.5f);
+            Sprite sprite = Sprite.Create(tmpTexture, rect, pivot);
+
+            if (sprite == null) Debug.Log("이미지 못찾음");
+            button.image.overrideSprite = sprite;
+
+            ToolSprites.Add(toolId, sprite);
+
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(delegate { ShowToolInfo(button); });
 
-            buttons.Add(i, button);
+            buttons.Add(toolId, button);
         }
 
-        Button b;
-        buttons.TryGetValue(0, out b);
-        ShowToolInfo(b);
+        int count = 0;
+
+        foreach(var b in buttons)
+        {
+            if(count == 0) ShowToolInfo(b.Value);
+            count++;
+        }
     }
+
+    Dictionary<int, GameObject> selectedUIs = new Dictionary<int, GameObject>();
 
     void ShowToolInfo(Button button)
     {
-        foreach(var b in buttons)
+        string[] idString = button.name.Split('_');
+        int id = int.Parse(idString[2]);
+        // TODO : 현재 버튼 이름으로 id값 파싱하는 중. button 이름이 바뀌거나 하면 이 부분 수정해주어야함.
+
+        foreach (var b in buttons)
+        {
+            int buttonId = b.Key;
+
+            foreach (var i in b.Value.gameObject.GetComponentsInChildren<Image>())
+            {
+                if (selectedUIs.ContainsKey(buttonId) == false)
+                {
+                    if (i.gameObject.name == "SelectedUI")
+                    {
+                        selectedUIs.Add(buttonId, i.gameObject);
+                    }
+                }
+            }
+        }
+
+        foreach (var b in buttons)
         {
             if(b.Value == button)
             {
-                b.Value.interactable =false;
+                b.Value.interactable = false;
             }
             else
             {
@@ -369,26 +322,44 @@ public class CMainManager : SceneManager
             }
         }
 
-        string[] idString = button.name.Split('_');
-        int id = int.Parse(idString[2]);
-        // TODO : 현재 버튼 이름으로 id값 파싱하는 중. button 이름이 바뀌거나 하면 이 부분 수정해주어야함.
+        foreach(var ui in selectedUIs)
+        {
+            if (ui.Key == id)
+            {
+                ui.Value.SetActive(true);
+            }
+            else
+            {
+                ui.Value.SetActive(false);
+            }
+        }
 
         curStorageToolID = id;
+        Sprite curSprite;
+        ToolSprites.TryGetValue(id, out curSprite);
+        storageCurToolImage.overrideSprite = curSprite;
 
-        Text ToolInfoText = GameObject.Find("Text_Tools_Info").GetComponent<Text>();
-        ToolInfoText.text = "HP : " + DataLoadHelper.Instance.GetToolInfo(id).hp.ToString() + "\n";
-        ToolInfoText.text += "Power : " + DataLoadHelper.Instance.GetToolInfo(id).power.ToString() + "\n";
-        ToolInfoText.text += "Range : " + DataLoadHelper.Instance.GetToolInfo(id).range.ToString() + "\n";
-        ToolInfoText.text += "PF : " + DataLoadHelper.Instance.GetToolInfo(id).piercingForce.ToString() + "\n";
-        ToolInfoText.text += "AS : " + DataLoadHelper.Instance.GetToolInfo(id).attackSpeed.ToString() + "\n";
-        ToolInfoText.text += "MS : " + DataLoadHelper.Instance.GetToolInfo(id).moveSpeed.ToString() + "\n";
-        ToolInfoText.text += "Price : " + DataLoadHelper.Instance.GetToolInfo(id).price.ToString() + "\n";
+        GameObject hp = GameObject.Find("Stat_HP");
+        GameObject damage = GameObject.Find("Stat_AD");
+        GameObject attackRate = GameObject.Find("Stat_AS");
+        GameObject moveRate = GameObject.Find("Stat_MoveRate");
+
+        float hpPer = DataLoadHelper.Instance.GetToolInfo(id).hp / 300.0f;
+        float damagePer = DataLoadHelper.Instance.GetToolInfo(id).power / 50.0f; ;
+        float attackRatePer = DataLoadHelper.Instance.GetToolInfo(id).attackSpeed / 10.0f;
+        float moveRatePer = DataLoadHelper.Instance.GetToolInfo(id).moveSpeed / 100.0f;
+
+        hp.GetComponentInChildren<Image>().fillAmount = hpPer;
+        damage.GetComponentInChildren<Image>().fillAmount = damagePer;
+        attackRate.GetComponentInChildren<Image>().fillAmount = attackRatePer;
+        moveRate.GetComponentInChildren<Image>().fillAmount = moveRatePer;
+
 
         Text ToolNameText = GameObject.Find("Text_Tool_Name").GetComponent<Text>();
-        ToolNameText.text = "Name" + "\n" + DataLoadHelper.Instance.GetToolInfo(id).id.ToString();
+        ToolNameText.text = DataLoadHelper.Instance.GetToolInfo(id).name.ToString();
 
         Text Text_Tool_Price = GameObject.Find("Text_Tool_Price").GetComponent<Text>();
-        Text_Tool_Price.text = "Upgrade Price" + "\n" + DataLoadHelper.Instance.GetToolInfo(id).upgradePrice.ToString();
+        Text_Tool_Price.text = DataLoadHelper.Instance.GetToolInfo(id).upgradePrice.ToString();
     }
 
 }

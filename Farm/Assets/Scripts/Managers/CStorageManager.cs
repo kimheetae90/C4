@@ -118,9 +118,9 @@ public class CStorageManager : SceneManager
         ToolInfoText.text += "Price : " + DataLoadHelper.Instance.GetToolInfo(id).price.ToString() + "\n";
 
         Text ToolNameText = GameObject.Find("Text_Tool_Name").GetComponent<Text>();
-        ToolNameText.text = "Name" + "\n" + DataLoadHelper.Instance.GetToolInfo(id).id.ToString();
+        ToolNameText.text = DataLoadHelper.Instance.GetToolInfo(id).name.ToString();
 
         Text Text_Tool_Price = GameObject.Find("Text_Tool_Price").GetComponent<Text>();
-        Text_Tool_Price.text = "Upgrade Price" + "\n" + DataLoadHelper.Instance.GetToolInfo(id).upgradePrice.ToString();
+        Text_Tool_Price.text = DataLoadHelper.Instance.GetToolInfo(id).upgradePrice.ToString();
     }
 }

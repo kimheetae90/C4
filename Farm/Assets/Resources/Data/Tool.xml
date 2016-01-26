@@ -2,6 +2,7 @@
 <ToolData>
   <Tool>
     <id>11201</id>
+    <name>피칭머신</name>
     <power>10</power>
     <range>3</range>
     <attackSpeed>1</attackSpeed>
@@ -17,10 +18,11 @@
     <price>1000</price>
     <upgradePrice>0</upgradePrice>
     <open>1</open>
-    <have>2</have>    
+    <have>1</have>    
   </Tool>
   <Tool>
     <id>13002</id>
+    <name>드럼통</name>
     <power>0</power>
     <range>0</range>
     <attackSpeed>1</attackSpeed>
@@ -40,6 +42,7 @@
   </Tool>
   <Tool>
     <id>11103</id>
+    <name>화염방사기</name>
     <power>13</power>
     <range>1</range>
     <attackSpeed>1</attackSpeed>
@@ -54,11 +57,12 @@
     <upgradeMoveSpeed>0.5</upgradeMoveSpeed>
     <price>1000</price>
     <upgradePrice>0</upgradePrice>
-    <open>0</open>
-    <have>0</have>
+    <open>1</open>
+    <have>1</have>
   </Tool>
 <Tool>
     <id>31206</id>
+    <name>임시</name>
     <power>20</power>
     <range>2</range>
     <attackSpeed>3</attackSpeed>
@@ -73,7 +77,7 @@
     <upgradeMoveSpeed>0.5</upgradeMoveSpeed>
     <price>1000</price>
     <upgradePrice>0</upgradePrice>
-    <open>1</open>
+    <open>0</open>
     <have>0</have>
   </Tool>
 </ToolData>
