@@ -2,6 +2,8 @@
 <MonsterData>
   <Monster>
     <id>21101</id>
+    <name>
+    </name>
     <hp>3</hp>
     <power>1</power>
     <cooldownTime>0.5</cooldownTime>
@@ -12,16 +14,20 @@
   </Monster>
   <Monster>
     <id>21102</id>
+    <name>
+    </name>
     <hp>100</hp>
     <power>10</power>
     <cooldownTime>1.5</cooldownTime>
     <attackSpeed>1.0</attackSpeed>
     <range>0.8</range>
-    <moveSpeed>0.5</moveSpeed>        
+    <moveSpeed>0.5</moveSpeed>
     <skillID>0</skillID>
   </Monster>
   <Monster>
     <id>21103</id>
+    <name>
+    </name>
     <hp>30</hp>
     <power>7</power>
     <cooldownTime>1.0</cooldownTime>
@@ -32,6 +38,8 @@
   </Monster>
   <Monster>
     <id>21204</id>
+    <name>
+    </name>
     <hp>50</hp>
     <power>10</power>
     <cooldownTime>1.0</cooldownTime>
@@ -42,6 +50,8 @@
   </Monster>
   <Monster>
     <id>21305</id>
+    <name>
+    </name>
     <hp>120</hp>
     <power>15</power>
     <cooldownTime>1.5</cooldownTime>
@@ -52,6 +62,8 @@
   </Monster>
   <Monster>
     <id>21206</id>
+    <name>
+    </name>
     <hp>170</hp>
     <power>20</power>
     <cooldownTime>2.0</cooldownTime>
@@ -62,6 +74,8 @@
   </Monster>
   <Monster>
     <id>21407</id>
+    <name>
+    </name>
     <hp>700</hp>
     <power>30</power>
     <cooldownTime>1.0</cooldownTime>
@@ -72,6 +86,8 @@
   </Monster>
   <Monster>
     <id>22108</id>
+    <name>
+    </name>
     <hp>30</hp>
     <power>20</power>
     <cooldownTime>2.0</cooldownTime>
@@ -82,6 +98,8 @@
   </Monster>
   <Monster>
     <id>22109</id>
+    <name>
+    </name>
     <hp>30</hp>
     <power>20</power>
     <cooldownTime>2.0</cooldownTime>
@@ -92,6 +110,8 @@
   </Monster>
   <Monster>
     <id>22310</id>
+    <name>
+    </name>
     <hp>30</hp>
     <power>20</power>
     <cooldownTime>2.0</cooldownTime>
@@ -102,6 +122,8 @@
   </Monster>
   <Monster>
     <id>22311</id>
+    <name>
+    </name>
     <hp>1</hp>
     <power>1</power>
     <cooldownTime>2.0</cooldownTime>

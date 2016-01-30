@@ -18,7 +18,7 @@
     <price>1000</price>
     <upgradePrice>0</upgradePrice>
     <open>1</open>
-    <have>1</have>    
+    <have>1</have>
   </Tool>
   <Tool>
     <id>13002</id>
@@ -60,7 +60,7 @@
     <open>1</open>
     <have>1</have>
   </Tool>
-<Tool>
+  <Tool>
     <id>31206</id>
     <name>임시</name>
     <power>20</power>
