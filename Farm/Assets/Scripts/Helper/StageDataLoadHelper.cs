@@ -19,6 +19,20 @@ public class StageDataLoadHelper{
         statgeNodeList = xmlLoader.GetNodes(stageNo);
     }
 
+	public bool GetClearInfo(int _chapter, int _stage)
+	{
+		string stageNo = "Stage" + _chapter.ToString() + "_" + _stage.ToString();
+		int tempClearInfo = int.Parse (xmlLoader.GetRootNode (stageNo).SelectSingleNode ("ClearInfo").InnerText);
+		if (tempClearInfo == 1) 
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+	}
+
     public List<StageInfo> GetStageInfo(int _chapter, int _stage)
     {
         StageDataLoad(_chapter, _stage);

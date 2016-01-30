@@ -39,15 +39,15 @@ public abstract class SceneManager : MonoBehaviour {
 	protected abstract void UpdateState ();
 	protected abstract void ChangeState (GameState _gameState);
 
-	protected Controller SendTo(string _name, GameMessage _gameMessage)
+	protected void SendTo(string _name, GameMessage _gameMessage)
 	{
 		if (controllerDic.ContainsKey (_name)) 
 		{
-			return controllerDic[_name];
+			controllerDic[_name].DispatchGameMessage(_gameMessage);
 		}
 		else 
 		{
-			return	null;
+			Debug.Log(GetType().ToString() +  " : " + _name + " is Not Key");
 		}
 	}
 

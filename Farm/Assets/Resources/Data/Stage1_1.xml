@@ -1,13 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Stage1_1Data>
-  <LevelToolInfo>
-    <id>21101</id>
-    <mark>1</mark>
-  </LevelToolInfo>
-  <LevelToolInfo>
-    <id>21103</id>
-    <mark>2</mark>
-  </LevelToolInfo>
+  <ClearInfo>0</ClearInfo>
   <Stage1_1>
     <wave>1</wave>
     <line>1</line>

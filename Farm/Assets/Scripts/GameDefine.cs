@@ -4,18 +4,12 @@ using System.Collections;
 
 public enum MessageName
 {
-	LevelTool_ChangeChecker, // Change Checker.
-	LevelTool_ClickMarker, // Change Checker.
-	LevelTool_RemoveMarker,
-	LevelTool_SelectStageInfo,
-	LevelTool_ChangeWave,
-	LevelTool_ClearGridBoard,
-	LevelTool_ClearChecker,
-	LevelTool_SetGridToStageInfo,
-	LevelTool_ClickMonsterPanel,
-	LevelTool_DrawMonsterPanel,
-	LevelTool_ClearCheckerInfo,
-	LevelTool_ChangeMark,
+	Tool_ClearBoard,
+	Tool_SendDictionary,
+	Tool_LoadBoard,
+	Tool_DrawGrid,
+	Tool_EraseGrid,
+	Tool_DrawStageInfo,
 
     DevelopmentCenter_ActivateToolButton, // 가지고 있는 툴의 갯수만큼 버튼을 활성화 시킴.
 
