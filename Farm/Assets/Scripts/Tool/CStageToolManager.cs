@@ -11,6 +11,14 @@ public class CStageToolManager : SceneManager {
 	int waveNo;
 	bool clearInfo;
 
+	int tool1ID;
+	int tool1Lv;
+	int tool2ID;
+	int tool2Lv;
+	int tool3ID;
+	int tool3Lv;
+
+
 	List<StageInfo> stageInfoList;
 	public Text waveText;
 	public Toggle clearInfoTG;
@@ -23,6 +31,17 @@ public class CStageToolManager : SceneManager {
 
 	// Update is called once per frame
 	void Update () {
+
+		if (Input.GetKeyDown (KeyCode.LeftArrow)) 
+		{
+			Camera.main.transform.Translate(new Vector3(-2,0,0));
+		}
+		else if (Input.GetKey (KeyCode.RightArrow)) 
+		{
+			Camera.main.transform.Translate(new Vector3(2,0,0));
+		}
+
+
 		UpdateState ();
 	}
 
@@ -87,7 +106,6 @@ public class CStageToolManager : SceneManager {
 		DrawAllStageInfo ();
 	}
 
-
 	public void SetClearInfo(Toggle _toggle)
 	{
 		clearInfo = _toggle.isOn;
@@ -117,6 +135,54 @@ public class CStageToolManager : SceneManager {
 			clearInfoTG.isOn = false;
 
 		SetWave (1);
+	}
+
+	public void Tool1ID(int _id)
+	{
+		tool1ID = _id;
+	}
+
+	public void Tool2ID(int _id)
+	{
+		tool2ID = _id;
+	}
+
+	public void Tool3ID(int _id)
+	{
+		tool3ID = _id;
+	}
+
+	public void Tool1Lv(Text _lv)
+	{
+		tool1Lv = int.Parse(_lv.text);
+	}
+
+	public void Tool2Lv(Text _lv)
+	{
+		tool2Lv = int.Parse(_lv.text);
+	}
+
+	public void Tool3Lv(Text _lv)
+	{
+		tool3Lv = int.Parse(_lv.text);
+	}
+
+	public void Test()
+	{
+		
+		GameMaster.Instance.tempData.Insert ("chapterNo", chapterNo);
+		GameMaster.Instance.tempData.Insert ("stageNo", stageNo);
+
+		GameMaster.Instance.tempData.Insert ("StageInfo", stageInfoList);
+		GameMaster.Instance.tempData.Insert ("ClearInfo", clearInfo);
+		GameMaster.Instance.tempData.Insert ("Tool1ID", tool1ID);
+		GameMaster.Instance.tempData.Insert ("Tool1Lv", tool1Lv);
+		GameMaster.Instance.tempData.Insert ("Tool2ID", tool2ID);
+		GameMaster.Instance.tempData.Insert ("Tool2Lv", tool2Lv);
+		GameMaster.Instance.tempData.Insert ("Tool3ID", tool3ID);
+		GameMaster.Instance.tempData.Insert ("Tool3Lv", tool3Lv);
+
+		Application.LoadLevelAsync ("Play");
 	}
 
 	void DrawAllStageInfo()
