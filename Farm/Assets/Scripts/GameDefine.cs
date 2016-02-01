@@ -89,6 +89,10 @@ public enum MessageName
     Play_TileChangeToNormal,
     Play_TileScaleToLarge,
     Play_TileScaleToSmall,
+    Play_TrainHolded,
+    Play_TrainPutdown,
+    Play_PutOreIntoTrain,
+    Play_OreFullCount,//train에 광물이 꽉참.
 
 }
 

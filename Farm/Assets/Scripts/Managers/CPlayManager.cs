@@ -17,6 +17,8 @@ public class CPlayManager : SceneManager {
     public float managementTime =5f;
     public float waveLimitTime = 30f;
     public float limitTime;
+
+    bool stageType;//false는 일반 true은 광물.
     
 
     
@@ -178,6 +180,9 @@ public class CPlayManager : SceneManager {
         //stageName = (string)GameMaster.Instance.tempData.Get("stageName");
         //chapterNum = (int)GameMaster.Instance.tempData.Get("chapterNum");
         //chapterName = (string)GameMaster.Instance.tempData.Get("chapterName");
+
+        stageType = (bool)GameMaster.Instance.tempData.Get("ClearInfo");
+
 		wave = 0;
         UnPause();
 	}
@@ -209,8 +214,17 @@ public class CPlayManager : SceneManager {
     /// <returns></returns>
     IEnumerator ReadyForStage() {
         yield return new WaitForSeconds(readyForStageTime);
+        if(stageType==false){
         ChangeState(GameState.Play_Management);
         readyForStageTime = 10f;
+        }
+        else{
+        ChangeState(GameState.Play_Start);
+        GameMessage gameMsg = GameMessage.Create(MessageName.Play_MaintainOver);
+        gameMsg.Insert("wavecount", wave + 1);
+        Broadcast(gameMsg);
+            readyForStageTime = 10f;
+        }
     }
     /// <summary>
     /// 스킵버튼이 눌렸을때.
@@ -251,9 +265,16 @@ public class CPlayManager : SceneManager {
     /// 한웨이브가 끝남을 알림.
     /// </summary>
     void WaveTimeOver() {
-        GameMessage gameMsg = GameMessage.Create(MessageName.Play_MonsterReturn);
-        Broadcast(gameMsg);
-        OneWaveOver();
+        if (stageType == false)
+        {
+            GameMessage gameMsg = GameMessage.Create(MessageName.Play_MonsterReturn);
+            Broadcast(gameMsg);
+            OneWaveOver();
+        }
+        else {
+
+            ChangeState(GameState.Play_Failed);
+        }
     }
 
     /// <summary>
@@ -269,6 +290,10 @@ public class CPlayManager : SceneManager {
     {
         if (gameState != GameState.Play_Failed)
         {
+            if (stageType == true) {
+                ChangeState(GameState.Play_Clear);
+            }
+            
             wave++;
             if (wave == maxWave)
             {

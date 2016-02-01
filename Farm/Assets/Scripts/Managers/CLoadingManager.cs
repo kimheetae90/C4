@@ -98,7 +98,12 @@ public class CLoadingManager : SceneManager
 
         if(nextScene=="Play")
         {
-            GameMaster.Instance.tempData.Insert("StageInfo", DataLoadHelper.Instance.GetStageInfo((int)GameMaster.Instance.tempData.Get("chapterNum"), (int)GameMaster.Instance.tempData.Get("stageNum")));
+            StageDataLoadHelper stageLoader = new StageDataLoadHelper();
+            
+            //GameMaster.Instance.tempData.Insert("StageInfo", DataLoadHelper.Instance.GetStageInfo((int)GameMaster.Instance.tempData.Get("chapterNum"), (int)GameMaster.Instance.tempData.Get("stageNum")));
+            //GameMaster.Instance.tempData.Insert("ClearInfo", stageLoader.GetClearInfo(0,0));
+            GameMaster.Instance.tempData.Insert("StageInfo", DataLoadHelper.Instance.GetStageInfo(0, 0));
+            GameMaster.Instance.tempData.Insert("ClearInfo", stageLoader.GetClearInfo(0,0));
         }
 
     }

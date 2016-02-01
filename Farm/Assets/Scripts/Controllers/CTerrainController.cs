@@ -5,17 +5,19 @@ using System.Linq;
 
 public class CTerrainController : Controller
 {
-
-
     public List<GameObject> terrainList;
     public List<Transform> tilePos;
     List<StageInfo> stageInfo;
 
-    int MaxOre;
-    int OreCount;
+    int maxOre;
+    int oreCount;
+
+
+    bool stageType;//false는 일반 true은 광물.
 
     void Awake() {
         stageInfo = (List<StageInfo>)GameMaster.Instance.tempData.Get("StageInfo");
+        stageType = (bool)GameMaster.Instance.tempData.Get("ClearInfo");
     }
 
     protected override void Start()
@@ -23,7 +25,7 @@ public class CTerrainController : Controller
         base.Start();
         tilePos = FindObjectOfType<CTileController>().tilePos;
         Init();
-        OreCount = 0;
+        oreCount = 0;
     }
 
     // Update is called once per frame
@@ -39,6 +41,11 @@ public class CTerrainController : Controller
                 break;
             case MessageName.Play_PlayersObjectDamagedByMonster:
                 WoodAttacked((int)_gameMessage.Get("object_id"), (int)_gameMessage.Get("monster_power"));
+                break;
+            case MessageName.Play_PutOreIntoTrain:
+                PutOreIntoTrain();
+                break;
+            case MessageName.Play_StageRestart: ResetStage();
                 break;
 
         }
@@ -59,6 +66,7 @@ public class CTerrainController : Controller
                     wood.GetComponent<CWood>().SetController(this);
                     wood.transform.position = tilePos[tileNum].position;
                     wood.GetComponent<CWood>().tileNum = tileNum;
+                    wood.GetComponent<CWood>().startTileNum = tileNum;
                     terrainList.Add(wood);
                     GameMessage gameMsg = GameMessage.Create(MessageName.Play_TileChangeToRed);
                     gameMsg.Insert("tileNum", tileNum);
@@ -67,22 +75,33 @@ public class CTerrainController : Controller
                 }
                 else if (node.id == 99999)
                 { //광물
-                    /*
+                    
                     int tileNum = (node.line - 1) * 10 + (node.time - 1);
                     GameObject ore = ObjectPooler.Instance.GetGameObject("Play_Ore");
                     ore.GetComponent<COre>().SetController(this);
                     ore.transform.position = tilePos[tileNum].position;
                     ore.GetComponent<COre>().tileNum = tileNum;
+                    ore.GetComponent<COre>().startTileNum = tileNum;
                     terrainList.Add(ore);
                     GameMessage gameMsg = GameMessage.Create(MessageName.Play_TileChangeToRed);
                     gameMsg.Insert("tileNum", tileNum);
                     SendGameMessage(gameMsg);
-                    MaxOre++;
-                     */
+                    maxOre++;
+                     
                 }
             }
         }
 
+    }
+
+    void ResetStage() {
+        foreach (GameObject terrain in terrainList) {
+            terrain.transform.position = tilePos[terrain.GetComponent<CTerrain>().startTileNum].position;
+            GameMessage gameMsg = GameMessage.Create(MessageName.Play_TileChangeToRed);
+            gameMsg.Insert("tileNum", terrain.GetComponent<CTerrain>().startTileNum);
+            SendGameMessage(gameMsg);
+            terrain.GetComponent<CTerrain>().Reset();
+        }
     }
 
     void StopGaging() {
@@ -100,5 +119,13 @@ public class CTerrainController : Controller
             }
         }
 
+    }
+
+    void PutOreIntoTrain() {
+        oreCount++;
+        if (oreCount >= maxOre) {
+            GameMessage gameMsg = GameMessage.Create(MessageName.Play_OreFullCount);
+            SendGameMessage(gameMsg);
+        }
     }
 }

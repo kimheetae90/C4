@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Stage0_0Data>
+  <ClearInfo>1</ClearInfo>
   <Stage0_0>
     <wave>1</wave>
     <line>3</line>
@@ -17,7 +18,7 @@
 
   <Stage0_0>
     <wave>0</wave>
-    <line>4</line>
+    <line>3</line>
     <time>6</time>
     <id>99998</id>
   </Stage0_0>

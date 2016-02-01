@@ -244,8 +244,14 @@ public class CPlayer : BaseObject
             canHold = false;
             ChangeState(ObjectState.Play_Player_Idle_With_Tool);
             transform.localScale = new Vector3(1, 1, 1);
-
-            moveScript.SetMoveSpeed(m_moveSpeed*((float)tool.GetComponent<CTool>().weight/100));
+            if (tool.GetComponent<CTool>() != null)
+            {
+                moveScript.SetMoveSpeed(m_moveSpeed * ((float)tool.GetComponent<CTool>().weight / 100));
+            }
+            else if (tool.GetComponent<COre>() != null)
+            {
+                //무게관련.
+            }
         }
     }
 

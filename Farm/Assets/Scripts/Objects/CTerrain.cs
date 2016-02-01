@@ -8,6 +8,7 @@ public abstract class CTerrain : BaseObject
     float maxGage;
     public bool canAccess;
     public int tileNum;
+    public int startTileNum;
 	// Use this for initialization
 
     void Awake() {
@@ -86,6 +87,10 @@ public abstract class CTerrain : BaseObject
             }
             yield return null;
         }
+    }
+
+    public virtual void Reset() {
+        ChangeState(ObjectState.Play_Terrain_Uncomplete);
     }
 
     /// <summary>

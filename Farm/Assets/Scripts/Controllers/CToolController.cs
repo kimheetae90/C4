@@ -11,8 +11,11 @@ public class CToolController : Controller
     public List<int> toolID;
 
     public List<Transform> startPos;
+    public GameObject train;
 
     //public List<ToolName> toolName;
+
+    bool stageType;//false는 일반 true은 광물.
 
     void Awake()
     {
@@ -47,6 +50,9 @@ public class CToolController : Controller
             case MessageName.Play_MonsterDebuffToolsAttackSpeed:
                 ToolsAttackSpeedDebuffed((int)_gameMessage.Get("object_id"));
                 break;
+            case MessageName.Play_OreFullCount:
+                TrainFullcount();
+                break;
 
         }
     }
@@ -61,6 +67,8 @@ public class CToolController : Controller
 
     void Init()
     {
+
+        stageType = (bool)GameMaster.Instance.tempData.Get("ClearInfo");
         toolList = new List<GameObject>();
 
         for (int i = 0; i < toolID.Count; i++)
@@ -74,6 +82,15 @@ public class CToolController : Controller
             
             toolList[i].transform.position = startPos[i].position;
         }
+
+        if (stageType) {
+            train = ObjectPooler.Instance.GetGameObject("Play_Tool_Train");
+            train.GetComponent<CTool>().SetController(this);
+            train.transform.position = startPos[3].position;
+            train.GetComponent<CTool>().currentTileNum = 31;
+        }
+
+
 
     }
 
@@ -126,6 +143,18 @@ public class CToolController : Controller
         {
             toolList[i].transform.position = startPos[i].position;
             toolList[i].GetComponent<CTool>().Reset();
+            toolList[i].GetComponent<CTool>().currentTileNum = i * 10 + 1;
         }
+
+        if (stageType)
+        {
+            train.transform.position = startPos[3].position;
+            train.GetComponent<CTool>().currentTileNum = 31;
+            train.GetComponent<CTool>().Reset();
+        }
+    }
+
+    void TrainFullcount() {
+        train.GetComponent<CTool_Train>().isFull = true;
     }
 }

@@ -15,6 +15,10 @@ public class CPlay_UIController : Controller
     public Image timerBack;
     public Image ready;
     public Image start;
+    public Image star1;
+    public Image star2;
+    public Image star3;
+    public GameObject track;
 
     public Image gageBack;
     public Image gage;
@@ -30,8 +34,13 @@ public class CPlay_UIController : Controller
     public GameObject failedPopup;
     public GameObject pausePopup;
     float readytime;
+
+
+    bool stageType;//false는 일반 true은 광물.
+
     void Awake()
     {
+        stageType = (bool)GameMaster.Instance.tempData.Get("ClearInfo");
         ResetUI();
     }
 
@@ -83,6 +92,17 @@ public class CPlay_UIController : Controller
         start.gameObject.SetActive(false);
         gageBack.gameObject.SetActive(false);
         gage.gameObject.SetActive(false);
+        star1.gameObject.SetActive(false);
+        star2.gameObject.SetActive(false);
+        star3.gameObject.SetActive(false);
+
+        if (stageType)
+        {
+            track.SetActive(true);
+        }
+        else {
+            track.SetActive(false);
+        }
     }
     void HideUI() {
         waveText.gameObject.SetActive(false);
@@ -162,6 +182,24 @@ public class CPlay_UIController : Controller
     /// 스테이지 클리어 팝업을 보여줌.
     /// </summary>
     void ShowStageClearPopup() {
+        star1.gameObject.SetActive(true);
+        int aliveToolCount = 0;
+        foreach (GameObject tool in FindObjectOfType<CToolController>().toolList) {
+
+            if (tool.GetComponent<CTool>().isAlive)
+            {
+                aliveToolCount++;
+            }
+
+            if (aliveToolCount == 3) {
+                star2.gameObject.SetActive(true);
+                star3.gameObject.SetActive(true);
+            }
+            else if (aliveToolCount == 2) {
+                star2.gameObject.SetActive(true);
+            }
+        }
+
         clearPopup.SetActive(true);
     }
     /// <summary>

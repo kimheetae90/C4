@@ -9,6 +9,11 @@ public class CFenceController : Controller
     public List<GameObject> fenceList;
     public List<Transform> fencePosition;
 
+    public GameObject fenceFrame;
+    public GameObject fenceFrameShort;
+
+    bool stageType;//false는 일반 true은 광물.
+
     void Awake()
     {
         Init();
@@ -49,15 +54,34 @@ public class CFenceController : Controller
     
     void Init()
     {
+
+        stageType = (bool)GameMaster.Instance.tempData.Get("ClearInfo");
         fenceList = new List<GameObject>();
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 3; i++)
         {
             fenceList.Add(ObjectPooler.Instance.GetGameObject("Play_Fence"));
             fenceList[i].GetComponent<CFence>().SetController(this);
             fenceList[i].SetActive(true);
             fenceList[i].transform.position = fencePosition[i].position;
         }
+
+        if (stageType == false)
+        {
+            fenceList.Add(ObjectPooler.Instance.GetGameObject("Play_Fence"));
+            fenceList[3].GetComponent<CFence>().SetController(this);
+            fenceList[3].SetActive(true);
+            fenceList[3].transform.position = fencePosition[3].position;
+            fenceFrame.SetActive(true);
+            fenceFrameShort.SetActive(false);
+            
+        }
+        else {
+            fenceFrame.SetActive(false);
+            fenceFrameShort.SetActive(true);
+        }
+
+        
     }
 
     /// <summary>
@@ -88,7 +112,7 @@ public class CFenceController : Controller
     /// 게임이 다시시작하면 불러지는 함수.
     /// </summary>
     void ResetStage() {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < fenceList.Count; i++)
         {
             fenceList[i].SetActive(true);
             fenceList[i].transform.position = fencePosition[i].position;

@@ -6,11 +6,17 @@ using System.Linq;
 public class CTileController : Controller
 {
     public List<Transform> tilePos;
+    public Transform trainEndPos;
 
     public GameObject tileParent;
     public List<GameObject> tileList;
     public List<GameObject> rangeTileList;
     public int playerCurrentTileNum;
+    
+
+
+    bool stageType;//false는 일반 true은 광물.
+
 	// Use this for initialization
 
 
@@ -52,11 +58,21 @@ public class CTileController : Controller
             case MessageName.Play_TileScaleToSmall:
                 TileScaleToSmall();
                 break;
+            case MessageName.Play_TrainHolded:
+                TrainHolded();
+                break;
+            case MessageName.Play_TrainPutdown:
+                TrainPutdown();
+                break;
+            case MessageName.Play_StageRestart: ResetStage();
+                break;
         }
     }
 
     void Init()
     {
+        stageType = (bool)GameMaster.Instance.tempData.Get("ClearInfo");
+
         tileList = new List<GameObject>();
         rangeTileList = new List<GameObject>();
 
@@ -78,7 +94,34 @@ public class CTileController : Controller
         tileList[11].GetComponent<CTile>().ChangeToRedtileTemporarily();
         tileList[21].GetComponent<CTile>().ChangeToRedtileTemporarily();
 
+        if (stageType) {
 
+            GameObject tile = ObjectPooler.Instance.GetGameObject("Play_Tile");
+            tile.GetComponent<CTile>().SetController(this);
+            tile.transform.position = trainEndPos.position;
+            tile.GetComponent<CTile>().tileNum = 40;
+            tile.transform.SetParent(tileParent.transform);
+            tileList.Add(tile);
+
+            for (int i = 30; i < 41; i++)
+            {
+                tileList[i].GetComponent<CTile>().ChangeToRedtile();
+            }
+        }
+
+
+    }
+    void ResetStage() {
+
+        foreach (GameObject tile in tileList)
+        {
+            tile.GetComponent<CTile>().ChangeToNormalTile();
+        }
+
+        tileList[1].GetComponent<CTile>().ChangeToRedtileTemporarily();
+        tileList[11].GetComponent<CTile>().ChangeToRedtileTemporarily();
+        tileList[21].GetComponent<CTile>().ChangeToRedtileTemporarily();
+    
     }
 
     void ShowRange() {
@@ -166,6 +209,20 @@ public class CTileController : Controller
     void TileToNormal(int tileNum)
     {
         tileList[tileNum].GetComponent<CTile>().ChangeToNormalTile();
+    }
+
+    void TrainHolded() {
+        for (int i = 30; i < 41; i++) {
+            tileList[i].GetComponent<CTile>().ChangeToBlueTile();
+        }
+    }
+
+    void TrainPutdown()
+    {
+        for (int i = 30; i < 41; i++)
+        {
+            tileList[i].GetComponent<CTile>().ChangeToNormalTile();
+        }
     }
 
 }

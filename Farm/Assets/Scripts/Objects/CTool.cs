@@ -28,10 +28,10 @@ public abstract class CTool : BaseObject
     public List<Renderer> renderer;
     public Texture[] texture = new Texture[3];
 
-    GameObject player;
-    CLineHelper lineHelper;
+    protected GameObject player;
+    protected CLineHelper lineHelper;
     protected CToolAnimation toolAnimation;
-    CAttackRange attackRangeScript;
+    protected CAttackRange attackRangeScript;
 
     void Awake()
     {
@@ -42,7 +42,7 @@ public abstract class CTool : BaseObject
         }
         
     }
-    protected void Start() {
+    protected virtual void Start() {
         Reset();
     }
 
@@ -178,7 +178,7 @@ public abstract class CTool : BaseObject
     /// 파라미터로 넘겨준 데미지 값 만큼 hp를 깎는 함수. 0 이하가 되면 툴을 사용불가능한 상태로 만듦.
     /// </summary>
     /// <param name="damage"></param>
-    public void Damaged(int damage)
+    public virtual void Damaged(int damage)
     {
         m_hp -= damage;
         ChangeTexture();
@@ -259,7 +259,7 @@ public abstract class CTool : BaseObject
     /// 툴이 플레이어에게 잡힐 때 호출하는 함수
     /// </summary>
     /// <param name="_player"></param>
-    public void HoldByPlayer(GameObject _player)
+    public virtual void HoldByPlayer(GameObject _player)
     {
         if (canHeld)
         {
@@ -289,7 +289,7 @@ public abstract class CTool : BaseObject
     /// 툴이 플레이어에 의해 놓여질 때 호출되는 함수.
     /// </summary>
     /// <param name="_player"></param>
-    public void PutDownByPlayer(GameObject _player)
+    public virtual void PutDownByPlayer(GameObject _player)
     {
 		if(canHeld==false)
         {
